@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1, viewport-fit=cover"
+    />
+    <title>Programa de Limpieza | Norte Garín</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      (function () {
+        const saved = localStorage.getItem("theme");
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const useDark = saved ? saved === "dark" : prefersDark;
+        if (useDark) document.documentElement.classList.add("dark");
+      })();
+    </script>
+
+    <style>
+      :root {
+        --bg-main: #f1f5f9;
+        --bg-card: #ffffff;
+        --border: rgba(0, 0, 0, 0.08);
+        --brand: #10b981;
+        --accent-blue: #0ea5e9;
+        --text-primary: #0f172a;
+        --text-muted: #64748b;
+        --header-bg: rgba(241, 245, 249, 0.78);
+        --btn-bg: rgba(255, 255, 255, 0.85);
+        --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
+        --btn-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
+        --soft: rgba(2, 6, 23, 0.03);
+      }
+      html.dark {
+        --bg-main: #0a0f1d;
+        --bg-card: #1a2235;
+        --border: rgba(255, 255, 255, 0.06);
+        --brand: #34d399;
+        --accent-blue: #38bdf8;
+        --text-primary: #f8fafc;
+        --text-muted: #94a3b8;
+        --header-bg: rgba(10, 15, 29, 0.75);
+        --btn-bg: rgba(18, 26, 42, 0.78);
+        --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+        --btn-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+        --soft: rgba(255, 255, 255, 0.03);
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text-primary);
+        margin: 0;
+        background-color: var(--bg-main);
+        padding-bottom: 50px;
+      }
+      .page-bg {
+        min-height: 100vh;
+        background-image: radial-gradient(
+          900px 520px at 50% -10%,
+          rgba(16, 185, 129, 0.18),
+          transparent 60%
+        );
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--header-bg);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+        padding: 8px;
+      }
+
+      .btn-header {
+        background: var(--btn-bg);
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        border-radius: 14px;
+        padding: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--btn-shadow);
+        transition: transform 0.1s ease;
+      }
+      .btn-header:active {
+        transform: scale(0.95);
+      }
+
+      .hero-banner {
+        position: relative;
+        width: 100%;
+        height: 160px;
+        border-radius: 26px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+      .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.2) 50%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+      }
+
+      .month-article {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 35px;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+      }
+      .row-week {
+        background: var(--soft);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.2s ease;
+        margin-bottom: 0.8rem;
+      }
+      .is-current {
+        border: 2px solid var(--brand);
+        background: rgba(16, 185, 129, 0.06);
+        transform: scale(1.01);
+      }
+
+      .deep-cleaning-banner {
+        background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+        color: white;
+        padding: 1.2rem;
+        border-radius: 22px;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        box-shadow: 0 12px 30px rgba(14, 165, 233, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .day-box {
+        text-align: center;
+      }
+      .day-label {
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        font-weight: 900;
+        color: var(--text-muted);
+      }
+      .day-number {
+        font-size: 1.3rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+      .divider-vert {
+        border-left: 1px solid var(--border);
+        padding-left: 1rem;
+        margin-left: 1rem;
+      }
+      .group-chip {
+        background: rgba(16, 185, 129, 0.12);
+        color: var(--brand);
+        font-weight: 900;
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 10px;
+        border: 1px solid rgba(16, 185, 129, 0.22);
+        text-transform: uppercase;
+      }
+      .today-badge {
+        color: var(--brand);
+        font-size: 0.6rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body class="page-bg pb-10">
+    <header>
+      <div class="max-w-md mx-auto">
+        <div class="hero-banner group">
+          <img src="img/limpieza.jpg" alt="Limpieza" />
+          <div class="hero-overlay"></div>
+
+          <div class="absolute inset-0 p-4 flex flex-col justify-between">
+            <div class="flex justify-between items-center">
+              <a href="index.html" class="btn-header" aria-label="Volver">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </a>
+              <button onclick="toggleTheme()" class="btn-header">
+                <span id="theme-icon">🌙</span>
+              </button>
+            </div>
+
+            <div class="text-white">
+              <h1
+                class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg"
+              >
+                Limpieza
+              </h1>
+              <p
+                class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400 drop-shadow-md"
+              >
+                Enero / Febrero 2026
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main
+      class="max-w-md mx-auto px-4 mt-6 space-y-8"
+      id="programa-container"
+    ></main>
+
+    <script>
+      const html = document.documentElement;
+      const themeIcon = document.getElementById("theme-icon");
+      function syncThemeIcon() {
+        themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
+      }
+      function toggleTheme() {
+        html.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          html.classList.contains("dark") ? "dark" : "light"
+        );
+        syncThemeIcon();
+      }
+      syncThemeIcon();
+
+      const SECUENCIA_4 = [
+        "Grupos 1 y 2",
+        "Grupos 3 y 4",
+        "Grupos 1 y 2",
+        "Grupos 3 y 4",
+      ];
+      const INICIO_REFERENCIA = new Date(2025, 11, 2);
+      const FECHA_CAMBIO_DIAS = new Date(2026, 0, 8);
+      const LIMPIEZA_PROFUNDA_MESES = [0, 3, 6, 9];
+
+      function startOfDay(d) {
+        const x = new Date(d);
+        x.setHours(0, 0, 0, 0);
+        return x;
+      }
+      function endOfDay(d) {
+        const x = new Date(d);
+        x.setHours(23, 59, 59, 999);
+        return x;
+      }
+
+      function obtenerDiasInicioMes(y, m, dow) {
+        let dias = [];
+        let d = new Date(y, m, 1);
+        while (d.getDay() !== dow) d.setDate(d.getDate() + 1);
+        while (d.getMonth() === m) {
+          dias.push(new Date(d));
+          d.setDate(d.getDate() + 7);
+        }
+        return dias;
+      }
+
+      function obtenerLunesDelMes(y, m) {
+        let d = new Date(y, m, 1);
+        let lunes = [];
+        while (d.getDay() !== 1) d.setDate(d.getDate() + 1);
+        while (d.getMonth() === m) {
+          lunes.push(new Date(d));
+          d.setDate(d.getDate() + 7);
+        }
+        return lunes;
+      }
+
+      function calcularAsignacion(fechaBase) {
+        const diffWeeks = Math.floor(
+          Math.abs(startOfDay(fechaBase) - startOfDay(INICIO_REFERENCIA)) /
+            (1000 * 60 * 60 * 24 * 7)
+        );
+        return SECUENCIA_4[diffWeeks % SECUENCIA_4.length];
+      }
+
+      function esSemanaActual(d1, d2) {
+        const hoy = new Date();
+        return hoy >= startOfDay(d1) && hoy <= endOfDay(d2);
+      }
+
+      function renderMes(y, m) {
+        const fechaMes = new Date(y, m, 1);
+        const nombreMes = fechaMes
+          .toLocaleDateString("es-ES", { month: "long" })
+          .toUpperCase();
+        const iniciosMartes = obtenerDiasInicioMes(y, m, 2).filter((base) => {
+          const d2 = new Date(base);
+          d2.setDate(d2.getDate() + 4);
+          return endOfDay(d2) < startOfDay(FECHA_CAMBIO_DIAS);
+        });
+        const iniciosJueves = obtenerDiasInicioMes(y, m, 4).filter(
+          (base) => startOfDay(base) >= startOfDay(FECHA_CAMBIO_DIAS)
+        );
+        const semanas = [
+          ...iniciosMartes.map((d) => ({ base: d, mode: "OLD" })),
+          ...iniciosJueves.map((d) => ({ base: d, mode: "NEW" })),
+        ].sort((a, b) => a.base - b.base);
+
+        let htmlLimpieza = "";
+        if (LIMPIEZA_PROFUNDA_MESES.includes(m)) {
+          const lunes = obtenerLunesDelMes(y, m);
+          htmlLimpieza = `
+            <div class="deep-cleaning-banner">
+              <div class="text-[10px] uppercase font-black tracking-widest opacity-90 mb-1">¡Atención Grupos!</div>
+              <div class="text-lg font-black">LIMPIEZA PROFUNDA</div>
+              <div class="text-xs mt-1 font-bold opacity-90">Lunes: ${lunes
+                .map((l) => l.getDate())
+                .join(", ")} de ${nombreMes.toLowerCase()}</div>
+            </div>`;
+        }
+
+        const filas = semanas
+          .map(({ base, mode }) => {
+            const isNew = mode === "NEW";
+            const d1 = new Date(base);
+            const d2 = new Date(d1);
+            d2.setDate(d1.getDate() + (isNew ? 3 : 4));
+            const actual = esSemanaActual(d1, d2);
+            return `
+            <div class="row-week ${actual ? "is-current" : ""}">
+              <div class="flex gap-4">
+                <div class="day-box"><div class="day-label">${
+                  isNew ? "Jue" : "Mar"
+                }</div><div class="day-number">${String(d1.getDate()).padStart(
+              2,
+              "0"
+            )}</div></div>
+                <div class="day-box divider-vert"><div class="day-label">${
+                  isNew ? "Dom" : "Sáb"
+                }</div><div class="day-number">${String(d2.getDate()).padStart(
+              2,
+              "0"
+            )}</div></div>
+              </div>
+              <div class="flex flex-col items-end">
+                ${actual ? '<span class="today-badge">Esta semana</span>' : ""}
+                <div class="group-chip">${calcularAsignacion(d1)}</div>
+              </div>
+            </div>`;
+          })
+          .join("");
+
+        return `<article class="month-article">
+          <div class="text-center mb-6"><h2 class="text-xl font-black uppercase tracking-widest">${nombreMes} 2026</h2><div class="w-10 h-1 mx-auto mt-2 rounded-full bg-[var(--brand)]"></div></div>
+          ${htmlLimpieza}<div class="space-y-2">${filas}</div>
+        </article>`;
+      }
+
+      function iniciar() {
+        const cont = document.getElementById("programa-container");
+        cont.innerHTML = renderMes(2026, 0) + renderMes(2026, 1);
+        setTimeout(() => {
+          const current = document.querySelector(".is-current");
+          if (current)
+            current.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 450);
+      }
+      iniciar();
+    </script>
+  </body>
+</html>

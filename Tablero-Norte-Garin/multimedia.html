@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Audio & Video | Norte Garín</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      (function () {
+        const saved = localStorage.getItem("theme");
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const useDark = saved ? saved === "dark" : prefersDark;
+        if (useDark) document.documentElement.classList.add("dark");
+      })();
+    </script>
+
+    <style>
+      :root {
+        --bg-main: #f1f5f9;
+        --bg-card: #ffffff;
+        --border: rgba(0, 0, 0, 0.08);
+        --brand: #10b981;
+        --text-primary: #0f172a;
+        --text-muted: #64748b;
+        --header-bg: rgba(241, 245, 249, 0.78);
+        --btn-bg: rgba(255, 255, 255, 0.85);
+        --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
+        --btn-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
+        --soft: rgba(2, 6, 23, 0.03);
+      }
+      html.dark {
+        --bg-main: #0a0f1d;
+        --bg-card: #1a2235;
+        --border: rgba(255, 255, 255, 0.06);
+        --brand: #34d399;
+        --text-primary: #f8fafc;
+        --text-muted: #94a3b8;
+        --header-bg: rgba(10, 15, 29, 0.75);
+        --btn-bg: rgba(18, 26, 42, 0.78);
+        --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+        --btn-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+        --soft: rgba(255, 255, 255, 0.03);
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text-primary);
+        margin: 0;
+        background-color: var(--bg-main);
+        padding-bottom: 40px;
+      }
+      .page-bg {
+        min-height: 100vh;
+        background-image: radial-gradient(
+          900px 520px at 50% -10%,
+          rgba(16, 185, 129, 0.18),
+          transparent 60%
+        );
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--header-bg);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+        padding: 8px;
+      }
+
+      .btn-header {
+        background: var(--btn-bg);
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        border-radius: 14px;
+        padding: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--btn-shadow);
+        transition: transform 0.1s ease;
+      }
+      .btn-header:active {
+        transform: scale(0.95);
+      }
+
+      .hero-banner {
+        position: relative;
+        width: 100%;
+        height: 160px;
+        border-radius: 26px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+      .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.2) 50%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+      }
+
+      .week-entry {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 35px;
+        margin-bottom: 24px;
+        padding: 24px;
+        position: relative;
+        box-shadow: var(--shadow);
+      }
+      .week-current {
+        border: 2px solid var(--brand);
+        box-shadow:
+          0 0 25px rgba(16, 185, 129, 0.18),
+          var(--shadow);
+      }
+      .current-badge {
+        position: absolute;
+        top: -12px;
+        right: 30px;
+        background: var(--brand);
+        color: white;
+        padding: 4px 14px;
+        border-radius: 12px;
+        font-size: 0.7rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        box-shadow: 0 8px 15px rgba(16, 185, 129, 0.35);
+      }
+
+      .week-header {
+        font-size: 1.15rem;
+        font-weight: 900;
+        margin-bottom: 1.2rem;
+        text-align: center;
+        letter-spacing: -0.02em;
+      }
+      .assignment-section {
+        background: var(--soft);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 16px;
+        margin-bottom: 12px;
+      }
+      .section-title {
+        font-size: 0.8rem;
+        font-weight: 900;
+        color: var(--brand);
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .role-title {
+        font-weight: 800;
+        color: var(--text-muted);
+        margin-bottom: 6px;
+        display: block;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+      }
+      .person-name {
+        display: block;
+        background: var(--bg-card);
+        color: var(--text-primary);
+        padding: 12px 16px;
+        border-radius: 14px;
+        font-size: 1rem;
+        font-weight: 700;
+        border: 1px solid var(--border);
+      }
+    </style>
+  </head>
+
+  <body class="page-bg pb-10">
+    <header>
+      <div class="max-w-md mx-auto">
+        <div class="hero-banner group">
+          <img src="img/audio-video.png" alt="Multimedia" />
+          <div class="hero-overlay"></div>
+
+          <div class="absolute inset-0 p-4 flex flex-col justify-between">
+            <div class="flex justify-between items-center">
+              <a href="index.html" class="btn-header" aria-label="Volver">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </a>
+              <button onclick="toggleTheme()" class="btn-header">
+                <span id="theme-icon">🌙</span>
+              </button>
+            </div>
+
+            <div class="text-white">
+              <h1
+                class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg"
+              >
+                Audio & Video
+              </h1>
+              <p
+                class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400 drop-shadow-md"
+              >
+                Acomodadores y Multimedia
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-6 mt-6" id="app-container"></main>
+
+    <script>
+      const html = document.documentElement;
+      const themeIcon = document.getElementById("theme-icon");
+
+      function syncThemeIcon() {
+        themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
+      }
+      function toggleTheme() {
+        html.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          html.classList.contains("dark") ? "dark" : "light",
+        );
+        syncThemeIcon();
+      }
+      syncThemeIcon();
+
+      const ROLES = [
+        {
+          group: "Audio y Video",
+          key: "audio_video",
+          title: "🎧 Audio y Video",
+        },
+        {
+          group: "Audio y Video",
+          key: "microfonistas",
+          title: "🎤 Microfonistas",
+        },
+        { group: "Audio y Video", key: "plataforma", title: "📖 Plataforma" },
+        { group: "Acomodadores", key: "entrada", title: "🤝 Entrada" },
+        { group: "Acomodadores", key: "auditorio", title: "🪑 Auditorio" },
+      ];
+
+      const PROGRAM_DATA = [
+        {
+          label: "05 Ene al 11 Ene",
+          start: new Date(2026, 0, 5),
+          end: new Date(2026, 0, 11, 23, 59),
+          audio_video: "Caetano Ferrari - Lucas Segovia",
+          microfonistas: "Lucas Galeano - Daniel Quaranta",
+          plataforma: "Daniel Albis",
+          entrada: "Elias Coria",
+          auditorio: "Diego Sarraute",
+        },
+        {
+          label: "12 Ene al 18 Ene",
+          start: new Date(2026, 0, 12),
+          end: new Date(2026, 0, 18, 23, 59),
+          audio_video: "Mario Segovia - Pablo Zuñiga",
+          microfonistas: "Samuel Duran - Elias Coria",
+          plataforma: "Lucas Segovia",
+          entrada: "León Segovia",
+          auditorio: "Daniel Albis",
+        },
+        {
+          label: "19 Ene al 25 Ene",
+          start: new Date(2026, 0, 19),
+          end: new Date(2026, 0, 25, 23, 59),
+          audio_video: "Mario Segovia - Horacio Salgado",
+          microfonistas: "Elvio Casco - Lucas Galeano",
+          plataforma: "Caetano Ferrari",
+          entrada: "Pablo Zuñiga",
+          auditorio: "Francisco Araoz",
+        },
+        {
+          label: "26 Ene al 01 Feb",
+          start: new Date(2026, 0, 26),
+          end: new Date(2026, 1, 1, 23, 59),
+          audio_video: "Pablo Zuñiga - Horacio Salgado",
+          microfonistas: "Sebastian Meza - Elias Coria",
+          plataforma: "Diego Sarraute",
+          entrada: "Adolfo Gutiérrez",
+          auditorio: "Darío Cortéz",
+        },
+      ];
+
+      function render() {
+        const container = document.getElementById("app-container");
+        const now = new Date();
+        container.innerHTML = "";
+
+        PROGRAM_DATA.forEach((week) => {
+          const isCurrent = now >= week.start && now <= week.end;
+          const card = document.createElement("div");
+          card.className = `week-entry ${isCurrent ? "week-current" : ""}`;
+
+          let htmlBlock = isCurrent
+            ? `<span class="current-badge">Esta Semana</span>`
+            : "";
+          htmlBlock += `<div class="week-header">Semana del ${week.label}</div>`;
+
+          ["Audio y Video", "Acomodadores"].forEach((gName) => {
+            htmlBlock += `<div class="assignment-section">
+              <h2 class="section-title">
+                ${gName === "Audio y Video" ? "🔊" : "👥"} ${gName}
+              </h2>`;
+
+            ROLES.filter((r) => r.group === gName).forEach((role) => {
+              const val = week[role.key] || "Sin asignar";
+              htmlBlock += `<div class="mb-4 last:mb-0">
+                <label class="role-title">${role.title}</label>
+                <div class="person-name">${val}</div>
+              </div>`;
+            });
+            htmlBlock += `</div>`;
+          });
+
+          card.innerHTML = htmlBlock;
+          container.appendChild(card);
+        });
+
+        setTimeout(() => {
+          const current = document.querySelector(".week-current");
+          if (current)
+            current.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 350);
+      }
+
+      window.onload = render;
+    </script>
+  </body>
+</html>
