@@ -224,12 +224,14 @@
     <header>
       <div class="max-w-md mx-auto">
         <div class="hero-banner group">
-          <img src="img/discursos.png" alt="Conferencias" />
+          <!-- RUTA ABSOLUTA (evita problemas estando dentro de /conferencias/) -->
+          <img src="/img/discursos.png" alt="Conferencias" />
           <div class="hero-overlay"></div>
 
           <div class="absolute inset-0 p-4 flex flex-col justify-between">
             <div class="flex justify-between items-center">
-              <a href="index.html" class="btn-header" aria-label="Volver">
+              <!-- Volver al inicio (ruta absoluta) -->
+              <a href="/index.html" class="btn-header" aria-label="Volver">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
@@ -270,8 +272,8 @@
       <main id="mainContainer"></main>
     </div>
 
-    <!-- Carga de datos externos -->
-    <script src="conferencias-data.js"></script>
+    <!-- Carga de datos externos (ruta absoluta) -->
+    <script src="/conferencias-data.js"></script>
 
     <script>
       const html = document.documentElement;
@@ -290,13 +292,8 @@
       }
       syncThemeIcon();
 
-      // Datos: ahora vienen de conferencias-data.js
+      // Datos: vienen de conferencias-data.js
       const data = window.CONFERENCIAS_DATA || [];
-      if (!data.length) {
-        console.warn(
-          "CONFERENCIAS_DATA vacío o no cargó conferencias-data.js",
-        );
-      }
 
       function render() {
         const container = document.getElementById("mainContainer");
@@ -324,7 +321,9 @@
                     foundNext = true;
                   }
                   return `
-                  <article class="card ${isNext ? "is-current" : ""}" style="${isPast ? "opacity:0.45; filter: grayscale(1);" : ""}">
+                  <article class="card ${isNext ? "is-current" : ""}" style="${
+                    isPast ? "opacity:0.45; filter: grayscale(1);" : ""
+                  }">
                     <div class="date-circle">${v.date}</div>
                     <div class="info">
                       ${isNext ? '<span class="badge-next">Próxima reunión</span>' : ""}
@@ -340,7 +339,11 @@
                 })
                 .join("")}
             </div>
-            ${m.salen.length ? `<div class="salen-title mt-2">Discursantes que salen</div>` : ""}
+            ${
+              m.salen.length
+                ? `<div class="salen-title mt-2">Discursantes que salen</div>`
+                : ""
+            }
             <div class="pb-4">
               ${m.salen
                 .map(
