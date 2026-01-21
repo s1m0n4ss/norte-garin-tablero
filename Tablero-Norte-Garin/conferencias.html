@@ -270,6 +270,9 @@
       <main id="mainContainer"></main>
     </div>
 
+    <!-- Carga de datos externos -->
+    <script src="conferencias-data.js"></script>
+
     <script>
       const html = document.documentElement;
       const themeIcon = document.getElementById("theme-icon");
@@ -287,109 +290,13 @@
       }
       syncThemeIcon();
 
-      const data = [
-        {
-          month: "Enero 2026",
-          year: 2026,
-          monthIdx: 0,
-          vienen: [
-            {
-              date: "04",
-              day: "Domingo",
-              time: "9:30 am",
-              title: "Avancemos con la organización unida de Jehová",
-              speaker: "Enzo Módica",
-              congregation: "Sur, Benavídez",
-              chairman: "Lucas Segovia",
-            },
-            {
-              date: "11",
-              day: "Domingo",
-              time: "9:30 am",
-              title: "Tenga fe en Dios y sus promesas",
-              speaker: "Agustín Galindez",
-              congregation: "Sur, Benavídez",
-              chairman: "Caetano Ferrari",
-            },
-            {
-              date: "18",
-              day: "Domingo",
-              time: "9:30 am",
-              title: "Visita de Pastoreo a la sucursal",
-              speaker: "—",
-              congregation: "—",
-              chairman: "Elvio Casco",
-            },
-            {
-              date: "25",
-              day: "Domingo",
-              time: "9:30 am",
-              title: "Joven, ¿cómo puedes ser feliz y tener éxito?",
-              speaker: "Elvio Casco",
-              congregation: "Norte, Garín",
-              chairman: "León Segovia",
-            },
-          ],
-          salen: [
-            {
-              day: "Sábado",
-              date: "10",
-              name: "Horacio Salgado",
-              extra: "Bosquejo 103",
-            },
-            {
-              day: "Sábado",
-              date: "31",
-              name: "Adolfo Gutiérrez",
-              extra: "Bosquejo 138",
-            },
-          ],
-        },
-        {
-          month: "Febrero 2026",
-          year: 2026,
-          monthIdx: 1,
-          vienen: [
-            {
-              date: "01",
-              day: "Domingo",
-              time: "9:30 am",
-              title: "Actuemos con sabiduría en este mundo insensato",
-              speaker: "Daniel Albis",
-              congregation: "Norte, Garín",
-              chairman: "Horacio Salgado",
-            },
-            {
-              date: "08",
-              day: "Domingo",
-              time: "9:30 am",
-              title: "¿Dónde encontrará una esperanza segura?",
-              speaker: "Lucas Segovia",
-              congregation: "Norte, Garín",
-              chairman: "Adolfo Gutierrez",
-            },
-            {
-              date: "15",
-              day: "Domingo",
-              time: "9:30 am",
-              title: "¿Qué lo ayudará a tener éxito en la vida?",
-              speaker: "Mauricio Tierno",
-              congregation: "S. de Circuito",
-              chairman: "Dario Cortez",
-            },
-            {
-              date: "22",
-              day: "Domingo",
-              time: "9:30 am",
-              title: "Consigamos que nuestro corazón sea sabio",
-              speaker: "Santiago Vega",
-              congregation: "Este, San Fernando",
-              chairman: "Mario Segovia",
-            },
-          ],
-          salen: [],
-        },
-      ];
+      // Datos: ahora vienen de conferencias-data.js
+      const data = window.CONFERENCIAS_DATA || [];
+      if (!data.length) {
+        console.warn(
+          "CONFERENCIAS_DATA vacío o no cargó conferencias-data.js",
+        );
+      }
 
       function render() {
         const container = document.getElementById("mainContainer");
@@ -439,7 +346,7 @@
                 .map(
                   (s) => `
                 <div class="salen-item">
-                  <span class="font-bold">${s.day} ${s.date}:</span> ${s.name} 
+                  <span class="font-bold">${s.day} ${s.date}:</span> ${s.name}
                   <span class="opacity-60 text-xs ml-1">(${s.extra})</span>
                 </div>
               `,
