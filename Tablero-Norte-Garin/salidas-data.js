@@ -229,7 +229,7 @@
       ],
       31: [
         { h: "09:30", l: "Ravignani y Concordia", c: "Daniel Albis", t: "53" },
-        { h: "18:00", l: "Jockey Club", c: "Adolfo Gutiérrez", t: "57" },
+        { h: "18:00", l: "Puente 5", c: "Horacio Salgado", t: "57" },
         { h: "19:00", l: "Pred. pública Estación", c: "Adolfo Gutiérrez" },
       ],
     },
