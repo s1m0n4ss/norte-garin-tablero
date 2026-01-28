@@ -138,17 +138,17 @@
       ],
 
       7: [
-        // ✅ Hora explícita: 10:00
-        { h: "10:00", l: "Predicación de Grupo (4 grupos)" },
-        { h: "–", l: "G1 – Flia Segovia", c: "Diego Sarraute", t: "19" },
-        { h: "–", l: "G2 – Hermana Doris", c: "Manuel Feril", t: "23" },
+        // ✅ Hora explícita: 09:30
+        { h: "09:30", l: "Predicación de Grupo" },
+        { h: "09:30", l: "G1 – Flia Segovia", c: "Diego Sarraute", t: "19" },
+        { h: "09:300", l: "G2 – Hermana Doris", c: "Manuel Feril", t: "23" },
         {
-          h: "–",
+          h: "09:30",
           l: "G3 – Andes y 1° de Mayo",
           c: "Darío Cortez",
           t: "38",
         },
-        { h: "–", l: "G4 – Familia Durán", c: "Caetano Ferrari", t: "22" },
+        { h: "09:30", l: "G4 – Familia Durán", c: "Caetano Ferrari", t: "22" },
         {
           h: "18:00",
           l: "Golf Club Argentino y Jockey Club",
