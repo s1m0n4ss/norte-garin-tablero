@@ -1,5 +1,13 @@
 /* =========================
    SALIDAS - CALENDARIO ÚNICO (COMPARTIDO)
+   Visible: 28 Ene 2026 -> 28 Feb 2026
+   Reglas:
+   - Mañana: 09:00 hs (salvo indicación explícita)
+   - Tarde: 18:00 hs
+   - Jueves: Reunión 19:30 pm (no salida tarde)
+   - Domingo: Reunión 9:30 am
+   - Sábados: 19:00 Predicación pública Estación Garín
+   - Viernes por la tarde: NO hay salidas
    ========================= */
 (function () {
   const wd = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
@@ -27,187 +35,13 @@
     return new Date(y, (m || 1) - 1, d || 1);
   }
 
-  // ====== TUS DATOS (copiados tal cual) ======
-  const DEC_2025 = {
-    y: 2025,
-    m: 12,
-    d: {
-      29: [
-        { h: "09:30", l: "Hna. Casas", c: "Diego Sarraute", t: "16" },
-        { h: "18:00", l: "Paso y Andes", c: "Diego Sarraute", t: "2" },
-      ],
-      30: [{ h: "09:30", l: "Colón y Beliera", c: "Diego Sarraute", t: "24" }],
-      31: [{ h: "09:30", l: "Flia. Flores", c: "Francisco Araoz", t: "33" }],
-    },
-  };
-
+  // =========================
+  // ENERO 2026 (solo desde el 28)
+  // =========================
   const JAN_2026 = {
     y: 2026,
     m: 1,
     d: {
-      1: [{ type: "feriado", l: "Feriado Año Nuevo" }],
-      2: [
-        { h: "09:00", l: "Storni y Cigliutti", c: "Francisco Araoz", t: "4" },
-        { h: "18:00", l: "Flia. Segovia", c: "Lucas Segovia", t: "25" },
-      ],
-      3: [
-        {
-          h: "09:30",
-          l: "Fructuoso Díaz y 1.º de Mayo",
-          c: "Horacio Salgado",
-          t: "31",
-        },
-        { type: "reunion", l: "Reunión 19:30 pm" },
-      ],
-      4: [
-        { h: "10:00", l: "Salida de grupos (4 grupos)" },
-        { h: "–", l: "G1 – Familia Segovia", c: "Daniel Albis", t: "19" },
-        { h: "–", l: "G2 – Familia Salgado", c: "Mario Segovia", t: "1" },
-        {
-          h: "–",
-          l: "G3 – Patricias Arg. y Andes",
-          c: "Elvio Casco",
-          t: "37",
-        },
-        {
-          h: "–",
-          l: "G4 – Francia y Al. Brown",
-          c: "Adolfo Gutiérrez",
-          t: "20",
-        },
-      ],
-      5: [
-        { h: "09:00", l: "Hna. Carmen Casas", c: "Diego Sarraute", t: "6" },
-        { h: "18:00", l: "Colón y Magallanes", c: "Diego Sarraute", t: "30" },
-      ],
-      6: [
-        { h: "09:00", l: "Colón y Centenario", c: "Diego Sarraute", t: "12" },
-        { h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "45" },
-      ],
-      7: [{ h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "27" }],
-      8: [
-        {
-          h: "09:00",
-          l: "Andes y Patricias Arg.",
-          c: "Diego Sarraute",
-          t: "38",
-        },
-        { type: "reunion", l: "Reunión 19:30 pm" },
-      ],
-      9: [
-        { h: "09:00", l: "San Martín y Colón", c: "Francisco Araoz", t: "8" },
-        { h: "18:00", l: "Familia Segovia", c: "Lucas Segovia", t: "18" },
-      ],
-      10: [
-        { h: "09:30", l: "Salida de grupos" },
-        {
-          h: "–09:30",
-          l: "Grupo 1 – Francia y Al. Brown",
-          c: "Diego Sarraute",
-          t: "20",
-        },
-        {
-          h: "09:30–",
-          l: "Grupo 2 – Hno Manuel Feril",
-          c: "Manuel Feril",
-          t: "21",
-        },
-        {
-          h: "09:30–",
-          l: "Grupo 3 – Familia Miño",
-          c: "Pablo Zuñiga",
-          t: "17",
-        },
-        {
-          h: "09:30–",
-          l: "Grupo 4 – Familia Durán",
-          c: "Lucas Segovia",
-          t: "22",
-        },
-        { h: "18:00", l: "F. Díaz y Beliera", c: "Lucas Segovia", t: "32" },
-        { h: "19:00", l: "Pred. pública Estación", c: "Adolfo Gutiérrez" },
-      ],
-      11: [{ type: "reunion", l: "Reunión 9:30 am" }],
-      12: [
-        { h: "09:00", l: "Hna. Carmen Casas", c: "Diego Sarraute", t: "11" },
-        { h: "18:00", l: "Andes y Ressio", c: "Diego Sarraute", t: "3" },
-      ],
-      13: [
-        {
-          h: "09:00",
-          l: "Colón y Almirante Brown",
-          c: "Diego Sarraute",
-          t: "23",
-        },
-        { h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "46" },
-      ],
-      14: [{ h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" }],
-      15: [
-        { h: "09:00", l: "San Martín y Paso", c: "Diego Sarraute", t: "7" },
-        { type: "reunion", l: "Reunión 19:30 pm" },
-      ],
-      16: [
-        { h: "09:00", l: "San Martín y Colón", c: "Francisco Araoz", t: "13" },
-        { h: "18:00", l: "Familia Segovia", c: "Lucas Segovia", t: "24" },
-      ],
-      17: [
-        { h: "09:30", l: "Ambrosetti y Concordia", c: "Elvio Casco", t: "54" },
-        { h: "18:00", l: "Plaza de Vicenzo", c: "León Segovia", t: "44" },
-        { h: "19:00", l: "Pred. pública Estación", c: "Adolfo Gutiérrez" },
-      ],
-      18: [{ type: "reunion", l: "Reunión 9:30 am" }],
-      19: [
-        { h: "09:00", l: "Hna. Carmen Casas", c: "Diego Sarraute", t: "16" },
-        {
-          h: "18:00",
-          l: "Centenario y Cigliutti",
-          c: "Diego Sarraute",
-          t: "10",
-        },
-      ],
-      20: [
-        { h: "09:00", l: "Francia y Centenario", c: "Diego Sarraute", t: "14" },
-        { h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "41" },
-      ],
-      21: [{ h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" }],
-      22: [
-        { h: "09:00", l: "Andes y Fournier", c: "Diego Sarraute", t: "2" },
-        { type: "reunion", l: "Reunión 19:30 pm" },
-      ],
-      23: [
-        { h: "09:00", l: "Andes y 1.º de Mayo", c: "Francisco Araoz", t: "33" },
-        { h: "18:00", l: "Familia Segovia", c: "Lucas Segovia", t: "25" },
-      ],
-      24: [
-        {
-          h: "09:30",
-          l: "Olivera César y Uruguay",
-          c: "Darío Cortez",
-          t: "28",
-        },
-        { h: "18:00", l: "Barrio Salas", c: "Horacio Salgado", t: "52" },
-        { h: "19:00", l: "Pred. pública Estación", c: "Adolfo Gutiérrez" },
-      ],
-      25: [{ type: "reunion", l: "Reunión 9:30 am" }],
-      26: [
-        { h: "09:00", l: "Hna. Carmen Casas", c: "Diego Sarraute", t: "6" },
-        {
-          h: "18:00",
-          l: "Patricias Arg. y Calle 3",
-          c: "Diego Sarraute",
-          t: "34",
-        },
-      ],
-      27: [
-        {
-          h: "09:00",
-          l: "Fructuoso Díaz y 1.º de Mayo",
-          c: "Diego Sarraute",
-          t: "35",
-        },
-        { h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "43" },
-        { h: "19:00", l: "Pred. telefónica", c: "Mario Segovia" },
-      ],
       28: [{ h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "27" }],
       29: [
         {
@@ -235,7 +69,259 @@
     },
   };
 
-  const CALENDARIO = [DEC_2025, JAN_2026];
+  // =========================
+  // FEBRERO 2026 (completo)
+  // =========================
+  const FEB_2026 = {
+    y: 2026,
+    m: 2,
+    d: {
+      1: [{ type: "reunion", l: "Reunión 9:30 am" }],
+
+      2: [
+        { h: "09:00", l: "Hermana Carmen Casas", c: "Diego Sarraute", t: "11" },
+        {
+          h: "18:00",
+          l: "Rastreador Fournier y Cigliutti",
+          c: "Diego Sarraute",
+          t: "1",
+        },
+      ],
+
+      3: [
+        {
+          h: "09:00",
+          l: "Andes y 1° de Mayo",
+          c: "Diego Sarraute",
+          t: "37",
+        },
+        { h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "39" },
+      ],
+
+      4: [
+        { h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" },
+      ],
+
+      5: [
+        {
+          h: "09:00",
+          l: "Paso y Fructuoso Díaz",
+          c: "Diego Sarraute",
+          t: "5",
+        },
+        { type: "reunion", l: "Reunión 19:30 pm" },
+      ],
+
+      6: [
+        {
+          h: "09:00",
+          l: "Fructuoso Diaz y Magallanes",
+          c: "Francisco Araoz",
+          t: "31",
+        },
+        // Viernes tarde: NO hay salida
+      ],
+
+      7: [
+        { h: "10:00", l: "Predicación de Grupo (4 grupos)" },
+        { h: "–", l: "G1 – Flia Segovia", c: "Diego Sarraute", t: "19" },
+        { h: "–", l: "G2 – Hermana Doris", c: "Manuel Feril", t: "23" },
+        {
+          h: "–",
+          l: "G3 – Andes y 1° de Mayo",
+          c: "Darío Cortez",
+          t: "38",
+        },
+        { h: "–", l: "G4 – Familia Durán", c: "Caetano Ferrari", t: "22" },
+        {
+          h: "18:00",
+          l: "Golf Club Argentino y Jockey Club",
+          c: "León Segovia",
+          t: "51",
+        },
+        { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      8: [{ type: "reunion", l: "Reunión 9:30 am" }],
+
+      9: [
+        { h: "09:00", l: "Hermana Carmen Casas", c: "Diego Sarraute", t: "16" },
+        {
+          h: "18:00",
+          l: "Francia y San Martín",
+          c: "Diego Sarraute",
+          t: "8",
+        },
+      ],
+
+      10: [
+        {
+          h: "09:00",
+          l: "Francia y San Martín",
+          c: "Diego Sarraute",
+          t: "13",
+        },
+        { type: "reunion", l: "Reunión (Visita del Superintendente)" },
+      ],
+
+      11: [
+        {
+          h: "09:00",
+          l: "Familia Miño",
+          c: "Mauricio Tierno",
+          t: "12",
+        },
+        {
+          h: "18:00",
+          l: "Hermana Fany Villantoy",
+          c: "Mauricio Tierno",
+          t: "17, 25",
+        },
+      ],
+
+      12: [
+        {
+          h: "09:00",
+          l: "Hermana Cintia Cancino",
+          c: "Mauricio Tierno",
+          t: "30, 32",
+        },
+        { type: "reunion", l: "Reunión 19:30 pm" },
+      ],
+
+      13: [
+        { h: "09:00", l: "Familia Segovia", c: "Mauricio Tierno", t: "18" },
+        // Viernes tarde: NO hay salida (aunque era visita)
+      ],
+
+      14: [
+        { h: "09:00", l: "Salón del Reino", c: "Mauricio Tierno", t: "3, 4, 6, 10" },
+        {
+          h: "18:00",
+          l: "Hermano Manuel Feril",
+          c: "Mauricio Tierno",
+          t: "20, 21, 28",
+        },
+        { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      15: [{ type: "reunion", l: "Reunión 9:30 am" }],
+
+      16: [
+        {
+          h: "09:00",
+          l: "Uruguay y Centenario",
+          c: "Diego Sarraute",
+          t: "14",
+        },
+        {
+          h: "18:00",
+          l: "Colon y San Martin",
+          c: "Diego Sarraute",
+          t: "7",
+        },
+      ],
+
+      17: [
+        { h: "09:00", l: "Colón y Beliera", c: "Diego Sarraute", t: "24" },
+        { h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "44" },
+      ],
+
+      18: [
+        { h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" },
+      ],
+
+      19: [
+        { h: "09:00", l: "Falco y Magallanes", c: "Diego Sarraute", t: "33" },
+        { type: "reunion", l: "Reunión 19:30 pm" },
+      ],
+
+      20: [
+        { h: "09:00", l: "Andes y Ressio", c: "Francisco Araoz", t: "2" },
+        // Viernes tarde: NO hay salida
+      ],
+
+      21: [
+        {
+          h: "09:00",
+          l: "Golf Club Argentino y Jockey Club",
+          c: "Daniel Albis",
+          t: "49",
+        },
+        {
+          h: "18:00",
+          l: "Ambrosetti y Concordia",
+          c: "León Segovia",
+          t: "54",
+        },
+        { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      22: [{ type: "reunion", l: "Reunión 9:30 am" }],
+
+      23: [
+        {
+          h: "09:00",
+          l: "Patricias Argentinas y Calle 3",
+          c: "Diego Sarraute",
+          t: "34",
+        },
+        {
+          h: "18:00",
+          l: "Fructuoso Diaz y Maipú",
+          c: "Diego Sarraute",
+          t: "35",
+        },
+      ],
+
+      24: [
+        { h: "09:00", l: "Colón y Beliera", c: "Diego Sarraute", t: "29" },
+        {
+          h: "18:00",
+          l: "Plaza de Vicenzo",
+          c: "Horacio Salgado",
+          t: "41, 42",
+        },
+      ],
+
+      25: [
+        { h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" },
+      ],
+
+      26: [
+        {
+          h: "09:00",
+          l: "Fructuoso Diaz y Patricias Argentinas",
+          c: "Diego Sarraute",
+          t: "36",
+        },
+        { type: "reunion", l: "Reunión 19:30 pm" },
+      ],
+
+      27: [
+        { h: "09:00", l: "Andes y Fournier", c: "Francisco Araoz", t: "1" },
+        // Viernes tarde: NO hay salida
+      ],
+
+      28: [
+        {
+          h: "09:00",
+          l: "Golf Club Argentino y Golf Club Santa Lucía",
+          c: "Elvio Casco",
+          t: "47",
+        },
+        {
+          h: "18:00",
+          l: "Golf Club Argentino y Salta Polo Club",
+          c: "Horacio Salgado",
+          t: "48",
+        },
+        { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+    },
+  };
+
+  const CALENDARIO = [JAN_2026, FEB_2026];
 
   // ===== Helpers para consultar por fecha =====
   function getEntriesForDate(date) {
@@ -285,8 +371,8 @@
     parseTerr,
     territoryUrl,
     CALENDARIO,
-    DEC_2025,
     JAN_2026,
+    FEB_2026,
     getEntriesForDate,
     getTodayText,
     getDayText,
