@@ -4,10 +4,9 @@
    Reglas:
    - Mañana: 09:00 hs (salvo indicación explícita)
    - Tarde: 18:00 hs
-   - Jueves: Reunión 19:30 pm (no salida tarde)
+   - Jueves: Reunión 19:30 pm (no salida tarde)  [EXCEPTO: 12/02 se quita reunión por visita]
    - Domingo: Reunión 9:30 am
    - Sábados: 19:00 Predicación pública Estación Garín
-   - Viernes por la tarde: NO hay salidas
    ========================= */
 (function () {
   const wd = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
@@ -34,6 +33,22 @@
     const [y, m, d] = String(iso).split("-").map(Number);
     return new Date(y, (m || 1) - 1, d || 1);
   }
+
+  // ===== Maps helpers =====
+  const mapsUrl = (addressInGarin) =>
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      addressInGarin + ", Garín, Buenos Aires, Argentina",
+    )}`;
+
+  // Direcciones (Garín)
+  const MAPS = {
+    FLORES: mapsUrl("Almirante Brown 2775"),
+    SEGOVIA: mapsUrl("Almirante Brown 3632"),
+    CINTIA: mapsUrl("Beliera 3512"),
+    MINO: mapsUrl("Paso 842"),
+    VILLANTOY: mapsUrl("Ituzaingó 1040"),
+    MANUEL_FERIL: mapsUrl("Uruguay 1193"),
+  };
 
   // =========================
   // ENERO 2026 (solo desde el 28)
@@ -123,6 +138,7 @@
       ],
 
       7: [
+        // ✅ Hora explícita: 10:00
         { h: "10:00", l: "Predicación de Grupo (4 grupos)" },
         { h: "–", l: "G1 – Flia Segovia", c: "Diego Sarraute", t: "19" },
         { h: "–", l: "G2 – Hermana Doris", c: "Manuel Feril", t: "23" },
@@ -164,18 +180,24 @@
         { type: "reunion", l: "Reunión (Visita del Superintendente)" },
       ],
 
+      // =========================
+      // Visita Superintendente: 11–14
+      // + Botón Mapa (maps)
+      // =========================
       11: [
         {
           h: "09:00",
           l: "Familia Miño",
           c: "Mauricio Tierno",
           t: "12",
+          maps: MAPS.MINO,
         },
         {
           h: "18:00",
           l: "Hermana Fany Villantoy",
           c: "Mauricio Tierno",
           t: "17, 25",
+          maps: MAPS.VILLANTOY,
         },
       ],
 
@@ -185,22 +207,42 @@
           l: "Hermana Cintia Cancino",
           c: "Mauricio Tierno",
           t: "30, 32",
+          maps: MAPS.CINTIA,
         },
-        { type: "reunion", l: "Reunión 19:30 pm" },
+        // ✅ QUITADO: reunión del jueves 12 (esa semana fue el martes)
       ],
 
       13: [
-        { h: "09:00", l: "Familia Segovia", c: "Mauricio Tierno", t: "18" },
-        // Viernes tarde: NO hay salida (aunque era visita)
+        {
+          h: "09:00",
+          l: "Familia Segovia",
+          c: "Mauricio Tierno",
+          t: "18",
+          maps: MAPS.SEGOVIA,
+        },
+        // (Te lo dejo como salida de visita tal cual tu programa)
+        {
+          h: "18:00",
+          l: "Familia Flores",
+          c: "Mauricio Tierno",
+          t: "26, 27",
+          maps: MAPS.FLORES,
+        },
       ],
 
       14: [
-        { h: "09:00", l: "Salón del Reino", c: "Mauricio Tierno", t: "3, 4, 6, 10" },
+        {
+          h: "09:00",
+          l: "Salón del Reino",
+          c: "Mauricio Tierno",
+          t: "3, 4, 6, 10",
+        },
         {
           h: "18:00",
           l: "Hermano Manuel Feril",
           c: "Mauricio Tierno",
           t: "20, 21, 28",
+          maps: MAPS.MANUEL_FERIL,
         },
         { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" },
       ],
@@ -340,7 +382,7 @@
     if (e.type) return e.l;
 
     const h = String(e.h || "").trim();
-    const hasHora = h && h !== "–" && !h.includes("–"); // evita "– hs" en resumen
+    const hasHora = h && h !== "–" && !h.includes("–");
     const hora = hasHora ? `${h} — ` : "";
 
     const conduce = e.c ? ` (Conduce: ${e.c})` : "";
