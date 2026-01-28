@@ -324,18 +324,25 @@
       }
 
       function item(e) {
-        if (e.type) {
-          const cls = e.type === "feriado" ? "feriado" : "reunion";
-          return `<div class="special ${cls}">${e.l}</div>`;
-        }
-        return `<div class="item"><div class="time">${
-          e.h
-        } hs</div><div class="place">${
-          e.l
-        }</div><div class="meta">Conduce: <span style="color: var(--text-primary); font-weight: 900;">${
-          e.c || ""
-        }</span></div>${terrHtml(e.t)}</div>`;
-      }
+  if (e.type) {
+    const cls = e.type === "feriado" ? "feriado" : "reunion";
+    return `<div class="special ${cls}">${e.l}</div>`;
+  }
+
+  const mapaBtn = e.maps
+    ? `<a class="btn-map" href="${e.maps}" target="_blank" rel="noopener">📍 Mapa</a>`
+    : "";
+
+  return `<div class="item">
+    <div class="time">${e.h} hs</div>
+    <div class="place">${e.l}</div>
+    <div class="meta">
+      Conduce: <span style="color: var(--text-primary); font-weight: 900;">${e.c || ""}</span>
+      ${mapaBtn ? `<span class="ml-2">${mapaBtn}</span>` : ""}
+    </div>
+    ${terrHtml(e.t)}
+  </div>`;
+}
 
       function block(monthNum, dayNum, L, arr) {
         return `<div class="day" data-m="${monthNum}" data-d="${dayNum}"><div class="card">${arr
