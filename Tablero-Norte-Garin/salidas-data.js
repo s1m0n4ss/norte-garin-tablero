@@ -35,44 +35,7 @@
 
   // ====== DATOS ======
 
-  // Enero 2026: SOLO desde el 28 al 31
-  const JAN_2026 = {
-    y: 2026,
-    m: 1,
-    d: {
-      28: [{ h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "27" }],
-      29: [
-        {
-          h: "09:00",
-          l: "Patricias Arg. y F. Díaz",
-          c: "Diego Sarraute",
-          t: "36",
-        },
-        { type: "reunion", l: "Reunión 19:30 pm" },
-      ],
-      30: [
-        {
-          h: "09:00",
-          l: "Storni y Fructuoso Díaz",
-          c: "Francisco Araoz",
-          t: "4",
-        },
-        { h: "18:00", l: "Familia Segovia", c: "Lucas Segovia", t: "18" },
-      ],
-      31: [
-        {
-          h: "09:30",
-          l: "Ravignani y Concordia",
-          c: "Daniel Albis",
-          t: "53",
-        },
-        { h: "18:00", l: "Puente 5", c: "Horacio Salgado", t: "57" },
-        { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" },
-      ],
-    },
-  };
-
-  // Febrero 2026 completo
+  // Febrero 2026 completo (único mes visible)
   const FEB_2026 = {
     y: 2026,
     m: 2,
@@ -94,9 +57,7 @@
         { h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "39" },
       ],
 
-      4: [
-        { h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" },
-      ],
+      4: [{ h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" }],
 
       5: [
         {
@@ -118,7 +79,6 @@
       ],
 
       7: [
-        // ✅ Ajuste: 09:30 (NO 10:00)
         { h: "09:30", l: "Predicación de Grupo" },
 
         { h: "–", l: "Grupo 1 – Flia. Segovia", c: "Diego Sarraute", t: "19" },
@@ -153,7 +113,6 @@
 
       10: [
         { h: "09:00", l: "Francia y San Martín", c: "Diego Sarraute", t: "13" },
-        // ✅ Semana de visita: la reunión es el martes (no jueves)
         { type: "reunion", l: "Reunión 19:30 pm (Visita del Superintendente)" },
       ],
 
@@ -176,7 +135,6 @@
       ],
 
       12: [
-        // ✅ Sin reunión este jueves
         {
           h: "09:00",
           l: "Hna. Cintia Cancino",
@@ -221,38 +179,28 @@
 
       15: [{ type: "reunion", l: "Reunión 9:30 am" }],
 
+      // ✅ 16 y 17 SOLO MAÑANA, 10:30
       16: [
         {
-          h: "09:00",
+          h: "10:30",
           l: "Uruguay y Centenario",
           c: "Diego Sarraute",
           t: "14",
         },
-        { h: "18:00", l: "Colón y San Martín", c: "Diego Sarraute", t: "7" },
       ],
 
       17: [
-        { h: "09:00", l: "Colón y Beliera", c: "Diego Sarraute", t: "24" },
-        { h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "44" },
+        { h: "10:30", l: "Colón y Beliera", c: "Diego Sarraute", t: "24" },
       ],
 
-      18: [
-        {
-          h: "09:00",
-          l: "Familia Flores",
-          c: "Francisco Araoz",
-          t: "15",
-        },
-      ],
+      18: [{ h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" }],
 
       19: [
         { h: "09:00", l: "Falco y Magallanes", c: "Diego Sarraute", t: "33" },
         { type: "reunion", l: "Reunión 19:30 pm" },
       ],
 
-      20: [
-        { h: "09:00", l: "Andes y Ressio", c: "Francisco Araoz", t: "2" },
-      ],
+      20: [{ h: "09:00", l: "Andes y Ressio", c: "Francisco Araoz", t: "2" }],
 
       21: [
         {
@@ -301,14 +249,7 @@
         },
       ],
 
-      25: [
-        {
-          h: "09:00",
-          l: "Familia Flores",
-          c: "Francisco Araoz",
-          t: "9",
-        },
-      ],
+      25: [{ h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" }],
 
       26: [
         {
@@ -320,14 +261,7 @@
         { type: "reunion", l: "Reunión 19:30 pm" },
       ],
 
-      27: [
-        {
-          h: "09:00",
-          l: "Andes y Fournier",
-          c: "Francisco Araoz",
-          t: "1",
-        },
-      ],
+      27: [{ h: "09:00", l: "Andes y Fournier", c: "Francisco Araoz", t: "1" }],
 
       28: [
         {
@@ -351,7 +285,7 @@
     },
   };
 
-  const CALENDARIO = [JAN_2026, FEB_2026];
+  const CALENDARIO = [FEB_2026];
 
   // ===== Helpers para consultar por fecha =====
   function getEntriesForDate(date) {
@@ -401,7 +335,6 @@
     parseTerr,
     territoryUrl,
     CALENDARIO,
-    JAN_2026,
     FEB_2026,
     getEntriesForDate,
     getTodayText,
