@@ -383,6 +383,19 @@
             </p>
           </div>
 
+          <!-- ✅ NUEVO: Semana de la visita (10 al 15 Febrero) -->
+          <div
+            class="activity-item border-l-4 p-4 rounded-2xl"
+            style="border-left-color: #f59e0b"
+          >
+            <p class="text-[10px] font-bold uppercase tracking-wider muted">
+              Semana de la visita
+            </p>
+            <p id="dash-visita" class="font-extrabold text-sm mt-1">
+              Cargando...
+            </p>
+          </div>
+
           <div
             class="activity-item border-l-4 p-4 rounded-2xl"
             style="border-left-color: #22c55e"
@@ -497,6 +510,7 @@
           </div>
         </a>
 
+        <!-- (lo dejé igual que tu HTML original: aunque en el menú usás /conferencias/ ) -->
         <a
           href="conferencias.html"
           class="card rounded-[26px] p-4 shadow-lg hover:-translate-y-0.5 transition"
@@ -635,7 +649,10 @@
       const CONFERENCIAS = [
         { date: "2026-01-11", title: "Tenga fe en Dios y sus promesas" },
         { date: "2026-01-18", title: "Visita de Pastoreo a la sucursal" },
-        { date: "2026-01-25", title: "Joven, ¿cómo puedes ser feliz y tener éxito?" },
+        {
+          date: "2026-01-25",
+          title: "Joven, ¿cómo puedes ser feliz y tener éxito?",
+        },
         {
           date: "2026-02-01",
           title: "Actuemos con sabiduría en este mundo insensato",
@@ -654,6 +671,12 @@
         },
       ];
 
+      // ✅ Semana de la visita (10 al 15 Feb 2026)
+      const VISITA = {
+        start: "2026-02-10",
+        end: "2026-02-15",
+      };
+
       const GRUPOS_LIMPIEZA = [
         "Grupos 1 y 2",
         "Grupos 3 y 4",
@@ -671,6 +694,33 @@
         return new Date(y, m - 1, d);
       }
 
+      function formatShortDate(d) {
+        return d.toLocaleDateString("es-AR", { day: "2-digit", month: "short" });
+      }
+
+      function visitaText(now) {
+        const start = startOfDay(parseISOToLocalDate(VISITA.start));
+        const end = startOfDay(parseISOToLocalDate(VISITA.end));
+        const today = startOfDay(now);
+
+        if (today < start) {
+          const days = Math.ceil((start - today) / (1000 * 60 * 60 * 24));
+          return `Faltan ${days} día(s) — ${formatShortDate(start)} al ${formatShortDate(
+            end
+          )}`;
+        }
+
+        if (today > end) {
+          return `Finalizada — ${formatShortDate(start)} al ${formatShortDate(end)}`;
+        }
+
+        const dayN = Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1;
+        const total = Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1;
+        return `EN CURSO (Día ${dayN}/${total}) — ${formatShortDate(start)} al ${formatShortDate(
+          end
+        )}`;
+      }
+
       // ---- Salidas: solo "la próxima salida del día", SIN territorio ni conduce ----
       function nextSalidaOfTodayText() {
         if (!window.SALIDAS_CAL || !window.SALIDAS_CAL.getEntriesForDate)
@@ -680,12 +730,10 @@
         const entries = window.SALIDAS_CAL.getEntriesForDate(now) || [];
         if (!entries.length) return null;
 
-        // Consideramos solo items con hora real (evita feriado/reunión y "–")
         const timed = entries
           .filter((e) => !e.type && e.h && e.h !== "–")
           .map((e) => {
             const raw = String(e.h).trim();
-            // si viene un rango tipo "–09:30" o "09:30–", tomamos 09:30
             const match = raw.match(/(\d{1,2}):(\d{2})/);
             if (!match) return null;
             const hh = Number(match[1]);
@@ -699,7 +747,6 @@
         if (!timed.length) return null;
 
         const nowMinutes = now.getHours() * 60 + now.getMinutes();
-        // Próxima >= ahora; si ya pasaron todas, mostrar la primera del día
         const next = timed.find((x) => x.minutes >= nowMinutes) || timed[0];
 
         const hh = String(Math.floor(next.minutes / 60)).padStart(2, "0");
@@ -727,6 +774,9 @@
         document.getElementById("dash-salida").textContent =
           salidaTxt || "Consulte el programa de salidas";
 
+        // ✅ Semana de la visita
+        document.getElementById("dash-visita").textContent = visitaText(now);
+
         // Limpieza semanal (rotación)
         const diffWeeks = Math.floor(
           Math.abs(startOfDay(now) - startOfDay(INICIO_LIMPIEZA)) /
@@ -746,16 +796,13 @@
           : "Consulte el programa";
       }
 
-      // Bind botones
       document
         .getElementById("btnTheme")
         .addEventListener("click", toggleTheme);
 
       window.addEventListener("DOMContentLoaded", () => {
-        // Seguridad: si el archivo salidas-data.js no cargó, no rompe el index
         updateDashboard();
       });
     </script>
   </body>
 </html>
-
