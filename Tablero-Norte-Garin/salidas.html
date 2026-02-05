@@ -173,6 +173,7 @@
         align-items: center;
         gap: 6px;
         line-height: 1;
+        cursor: pointer;
       }
       .btn-map img {
         display: inline-block;
@@ -203,6 +204,68 @@
         font-weight: 900;
         color: var(--accent);
         border: 1px dashed var(--accent);
+      }
+
+      /* ===== Modal visor de territorios ===== */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.62);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        z-index: 9999;
+      }
+      .modal-overlay.show {
+        display: flex;
+      }
+      .modal-card {
+        width: min(920px, 100%);
+        background: var(--bg-card);
+        color: var(--text-primary);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        border-radius: 26px;
+        overflow: hidden;
+      }
+      .modal-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 14px 12px 16px;
+        border-bottom: 1px solid var(--border);
+        background: var(--card-bg);
+      }
+      .modal-title {
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+      .modal-close {
+        background: var(--btn-bg);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 10px 12px;
+        box-shadow: var(--btn-shadow);
+        cursor: pointer;
+        font-weight: 900;
+      }
+      .modal-body {
+        padding: 14px;
+      }
+      .modal-img {
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        display: block;
+      }
+      .modal-foot {
+        padding: 12px 14px 16px 14px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
       }
     </style>
   </head>
@@ -299,6 +362,41 @@
       <div id="grid"></div>
     </main>
 
+    <!-- ===== Modal visor de territorios ===== -->
+    <div
+      id="territoryModal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mapa de territorio"
+    >
+      <div class="modal-card">
+        <div class="modal-head">
+          <div class="modal-title" id="territoryTitle">Territorio</div>
+          <button class="modal-close" type="button" id="btnCloseTerritory">
+            Cerrar
+          </button>
+        </div>
+        <div class="modal-body">
+          <img
+            id="territoryImg"
+            class="modal-img"
+            src="img/TERRITORIOGARIN.png"
+            alt="Mapa de territorios Garín"
+          />
+        </div>
+        <div class="modal-foot">
+          <a
+            class="btn-surface px-4 py-2 rounded-xl active:scale-95"
+            href="img/TERRITORIOGARIN.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Abrir imagen</a
+          >
+        </div>
+      </div>
+    </div>
+
     <script src="salidas-data.js"></script>
     <script>
       const html = document.documentElement;
@@ -318,18 +416,40 @@
       }
       syncThemeIcon();
 
-      // ✅ Territorios con icono PNG (alta calidad)
+      // ===== Modal Territorios =====
+      const territoryModal = document.getElementById("territoryModal");
+      const territoryTitle = document.getElementById("territoryTitle");
+      const btnCloseTerritory = document.getElementById("btnCloseTerritory");
+
+      function openTerritory(n) {
+        territoryTitle.textContent = `Territorio T-${n}`;
+        territoryModal.classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+      function closeTerritory() {
+        territoryModal.classList.remove("show");
+        document.body.style.overflow = "";
+      }
+      btnCloseTerritory.addEventListener("click", closeTerritory);
+      territoryModal.addEventListener("click", (e) => {
+        if (e.target === territoryModal) closeTerritory();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeTerritory();
+      });
+
+      // ✅ Territorios: ya NO linkean a Google Sites.
       function terrHtml(t) {
         const arr = window.SALIDAS_CAL.parseTerr(t);
         if (!arr.length) return "";
         return `<div class="terr-wrap">${arr
           .map((n) => {
-            const url = window.SALIDAS_CAL.territoryUrl(n);
+            const safe = String(n).replace(/"/g, "&quot;");
             return `
-              <a class="btn-map" href="${url}" target="_blank" rel="noopener noreferrer" aria-label="Abrir territorio ${n}">
+              <button type="button" class="btn-map" onclick="openTerritory('${safe}')">
                 <img src="img/TERRITORIOGARIN.png" alt="" width="16" height="16" loading="lazy" decoding="async" />
-                <span>T-${n}</span>
-              </a>`;
+                <span>T-${safe}</span>
+              </button>`;
           })
           .join("")}</div>`;
       }
@@ -443,4 +563,3 @@
     </script>
   </body>
 </html>
-```0
