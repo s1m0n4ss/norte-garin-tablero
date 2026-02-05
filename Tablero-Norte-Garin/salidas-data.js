@@ -122,11 +122,11 @@
       ],
 
       // ===== Visita del Superintendente (11 al 14)
-      // ✅ Ajuste solicitado: mañanas 09:30 / tardes 17:30 =====
+      // ✅ Ajuste solicitado: mañanas 10:00 / tardes 17:30 =====
 
       11: [
         {
-          h: "09:30",
+          h: "10:00",
           l: "Familia Miño",
           c: "Mauricio Tierno",
           t: "12",
@@ -143,7 +143,7 @@
 
       12: [
         {
-          h: "09:30",
+          h: "10:00",
           l: "Hna. Cintia Cancino",
           c: "Mauricio Tierno",
           t: "30, 32",
@@ -153,7 +153,7 @@
 
       13: [
         {
-          h: "09:30",
+          h: "10:00",
           l: "Familia Segovia",
           c: "Mauricio Tierno",
           t: "18",
@@ -170,7 +170,7 @@
 
       14: [
         {
-          h: "09:30",
+          h: "10:00",
           l: "Salón del Reino",
           c: "Mauricio Tierno",
           t: "3, 4, 6, 10",
