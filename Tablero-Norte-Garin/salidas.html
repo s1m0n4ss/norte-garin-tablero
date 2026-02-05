@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Salidas a Predicar | Enero 2026</title>
+    <title>Salidas a Predicar | Febrero 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
@@ -171,7 +171,14 @@
         text-decoration: none;
         display: inline-flex;
         align-items: center;
-        gap: 4px;
+        gap: 6px;
+        line-height: 1;
+      }
+      .btn-map img {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
       }
       .special {
         text-align: center;
@@ -241,6 +248,7 @@
               href="https://sites.google.com/d/1lruVYoKFTmeAFmk0MalJIS2XRaEltSKA/p/1777c_tYb5MjpE46teQgmHpztWfbaqGMb/edit"
               target="_blank"
               class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600/90 text-white shadow-lg active:scale-95 transition border border-white/10"
+              rel="noopener noreferrer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +266,7 @@
                 <line x1="15" y1="6" x2="15" y2="21" />
               </svg>
               <span class="text-[10px] font-black uppercase tracking-wider"
-                >Mapa</span
+                >Ver ubicación</span
               >
             </a>
 
@@ -279,7 +287,7 @@
             <p
               class="font-bold text-[10px] uppercase tracking-[0.2em] mt-1 text-blue-300 drop-shadow-md"
             >
-              Enero 2026
+              Febrero 2026
             </p>
           </div>
         </div>
@@ -310,48 +318,53 @@
       }
       syncThemeIcon();
 
+      // ✅ Territorios con icono PNG (alta calidad)
       function terrHtml(t) {
         const arr = window.SALIDAS_CAL.parseTerr(t);
         if (!arr.length) return "";
         return `<div class="terr-wrap">${arr
-          .map(
-            (n) =>
-              `<a class="btn-map" href="${window.SALIDAS_CAL.territoryUrl(
-                n
-              )}" target="_blank">🗺️ T-${n}</a>`
-          )
+          .map((n) => {
+            const url = window.SALIDAS_CAL.territoryUrl(n);
+            return `
+              <a class="btn-map" href="${url}" target="_blank" rel="noopener noreferrer" aria-label="Abrir territorio ${n}">
+                <img src="img/TERRITORIOGARIN.png" alt="" width="16" height="16" loading="lazy" decoding="async" />
+                <span>T-${n}</span>
+              </a>`;
+          })
           .join("")}</div>`;
       }
 
       function item(e) {
-  if (e.type) {
-    const cls = e.type === "feriado" ? "feriado" : "reunion";
-    return `<div class="special ${cls}">${e.l}</div>`;
-  }
+        if (e.type) {
+          const cls = e.type === "feriado" ? "feriado" : "reunion";
+          return `<div class="special ${cls}">${e.l}</div>`;
+        }
 
-  const mapaBtn = e.maps
-    ? `<a class="btn-map" href="${e.maps}" target="_blank" rel="noopener">📍 Ver ubicación</a>`
-    : "";
+        const mapaBtn = e.maps
+          ? `<a class="btn-map" href="${e.maps}" target="_blank" rel="noopener noreferrer">📍 Ver ubicación</a>`
+          : "";
 
-  return `<div class="item">
-    <div class="time">${e.h} hs</div>
-    <div class="place">${e.l}</div>
-    <div class="meta">
-      Conduce: <span style="color: var(--text-primary); font-weight: 900;">${e.c || ""}</span>
-      ${mapaBtn ? `<span class="ml-2">${mapaBtn}</span>` : ""}
-    </div>
-    ${terrHtml(e.t)}
-  </div>`;
-}
+        return `<div class="item">
+          <div class="time">${e.h} hs</div>
+          <div class="place">${e.l}</div>
+          <div class="meta">
+            Conduce: <span style="color: var(--text-primary); font-weight: 900;">${
+              e.c || ""
+            }</span>
+            ${mapaBtn ? `<span class="ml-2">${mapaBtn}</span>` : ""}
+          </div>
+          ${terrHtml(e.t)}
+        </div>`;
+      }
 
       function block(monthNum, dayNum, L, arr) {
-        return `<div class="day" data-m="${monthNum}" data-d="${dayNum}"><div class="card">${arr
-          .map(item)
-          .join(
-            ""
-          )}</div><div class="circle"><span class="text-[10px] font-black uppercase opacity-60 leading-none mb-1">${
-          L.w
-        }</span><span class="text-xl font-black leading-none">${dayNum}</span></div></div>`;
+        return `<div class="day" data-m="${monthNum}" data-d="${dayNum}">
+          <div class="card">${arr.map(item).join("")}</div>
+          <div class="circle">
+            <span class="text-[10px] font-black uppercase opacity-60 leading-none mb-1">${L.w}</span>
+            <span class="text-xl font-black leading-none">${dayNum}</span>
+          </div>
+        </div>`;
       }
 
       function dividerMonth(y, m) {
@@ -369,11 +382,10 @@
           "NOV",
           "DIC",
         ];
-        return `<div class="day"><div class="card divider-card uppercase tracking-widest text-xs py-2">${
-          meses[m - 1]
-        } ${y}</div><div class="circle"><span class="text-xs font-black">${
-          meses[m - 1]
-        }</span></div></div>`;
+        return `<div class="day">
+          <div class="card divider-card uppercase tracking-widest text-xs py-2">${meses[m - 1]} ${y}</div>
+          <div class="circle"><span class="text-xs font-black">${meses[m - 1]}</span></div>
+        </div>`;
       }
 
       function markToday() {
@@ -395,19 +407,22 @@
           !window.SALIDAS_CAL ||
           !Array.isArray(window.SALIDAS_CAL.CALENDARIO)
         ) {
-          g.innerHTML =
-            '<div class="card">No se pudo cargar el calendario.</div>';
+          g.innerHTML = '<div class="card">No se pudo cargar el calendario.</div>';
           return;
         }
+
         const months = [...window.SALIDAS_CAL.CALENDARIO].sort(
           (a, b) => a.y - b.y || a.m - b.m
         );
+
         let htmlOut = "";
         let lastYM = "";
+
         months.forEach((M) => {
           const ym = `${M.y}-${M.m}`;
           if (ym !== lastYM) htmlOut += dividerMonth(M.y, M.m);
           lastYM = ym;
+
           Object.keys(M.d || {})
             .sort((a, b) => a - b)
             .forEach((d) => {
@@ -419,10 +434,13 @@
               );
             });
         });
+
         g.innerHTML = htmlOut;
         markToday();
       }
+
       document.addEventListener("DOMContentLoaded", render);
     </script>
   </body>
 </html>
+```0
