@@ -89,7 +89,12 @@
           c: "Darío Cortez",
           t: "38",
         },
-        { h: "–", l: "Grupo 4 – Familia Durán", c: "Caetano Ferrari", t: "22" },
+        {
+          h: "–",
+          l: "Grupo 4 – Familia Durán",
+          c: "Caetano Ferrari",
+          t: "22",
+        },
 
         {
           h: "18:00",
@@ -116,17 +121,19 @@
         { type: "reunion", l: "Reunión 19:30 pm (Visita del Superintendente)" },
       ],
 
-      // ===== Visita del Superintendente (11 al 14) =====
+      // ===== Visita del Superintendente (11 al 14)
+      // ✅ Ajuste solicitado: mañanas 09:30 / tardes 17:30 =====
+
       11: [
         {
-          h: "09:00",
+          h: "09:30",
           l: "Familia Miño",
           c: "Mauricio Tierno",
           t: "12",
           maps: mapsSearch("Paso 842, Garín, Buenos Aires"),
         },
         {
-          h: "18:00",
+          h: "17:30",
           l: "Hna. Fany Villantoy",
           c: "Mauricio Tierno",
           t: "17, 25",
@@ -136,7 +143,7 @@
 
       12: [
         {
-          h: "09:00",
+          h: "09:30",
           l: "Hna. Cintia Cancino",
           c: "Mauricio Tierno",
           t: "30, 32",
@@ -146,14 +153,14 @@
 
       13: [
         {
-          h: "09:00",
+          h: "09:30",
           l: "Familia Segovia",
           c: "Mauricio Tierno",
           t: "18",
           maps: mapsSearch("Almirante Brown 3632, Garín, Buenos Aires"),
         },
         {
-          h: "18:00",
+          h: "17:30",
           l: "Familia Flores",
           c: "Mauricio Tierno",
           t: "26, 27",
@@ -169,7 +176,7 @@
           t: "3, 4, 6, 10",
         },
         {
-          h: "18:00",
+          h: "17:30",
           l: "Hno. Manuel Feril",
           c: "Mauricio Tierno",
           t: "20, 21, 28",
