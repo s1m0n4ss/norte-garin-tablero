@@ -191,6 +191,19 @@
         font-weight: 700;
         border: 1px solid var(--border);
       }
+
+      .asamblea-row {
+        background: var(--soft);
+        border: 2px dashed var(--brand);
+        border-radius: 22px;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--brand);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
     </style>
   </head>
 
@@ -198,7 +211,7 @@
     <header>
       <div class="max-w-md mx-auto">
         <div class="hero-banner group">
-          <img src="img/audio-video.png" alt="Multimedia" />
+          <img src="https://images.unsplash.com/photo-1590602847446-249e28d632bc?q=80&w=800&auto=format&fit=crop" alt="Multimedia" />
           <div class="hero-overlay"></div>
 
           <div class="absolute inset-0 p-4 flex flex-col justify-between">
@@ -275,47 +288,44 @@
         { group: "Acomodadores", key: "auditorio", title: "🪑 Auditorio" },
       ];
 
+      // PROGRAMA MENSUAL: FEBRERO 2026
       const PROGRAM_DATA = [
         {
-          label: "05 Ene al 11 Ene",
-          start: new Date(2026, 0, 5),
-          end: new Date(2026, 0, 11, 23, 59),
-          audio_video: "Caetano Ferrari - Lucas Segovia",
-          microfonistas: "Lucas Galeano - Daniel Quaranta",
-          plataforma: "Daniel Albis",
-          entrada: "Elias Coria",
-          auditorio: "Diego Sarraute",
-        },
-        {
-          label: "12 Ene al 18 Ene",
-          start: new Date(2026, 0, 12),
-          end: new Date(2026, 0, 18, 23, 59),
-          audio_video: "Mario Segovia - Pablo Zuñiga",
-          microfonistas: "Samuel Duran - Elias Coria",
-          plataforma: "Lucas Segovia",
-          entrada: "León Segovia",
-          auditorio: "Daniel Albis",
-        },
-        {
-          label: "19 Ene al 25 Ene",
-          start: new Date(2026, 0, 19),
-          end: new Date(2026, 0, 25, 23, 59),
-          audio_video: "Mario Segovia - Horacio Salgado",
-          microfonistas: "Elvio Casco - Lucas Galeano",
-          plataforma: "Caetano Ferrari",
-          entrada: "Pablo Zuñiga",
+          label: "02 Feb al 08 Feb",
+          start: new Date(2026, 1, 2),
+          end: new Date(2026, 1, 8, 23, 59),
+          audio_video: "Mario Segovia - Caetano Ferrari",
+          microfonistas: "Samuel Duran - Sebastian Meza",
+          plataforma: "Daniel Albiz",
+          entrada: "Adolfo Gutierrez",
           auditorio: "Francisco Araoz",
         },
         {
-          label: "26 Ene al 01 Feb",
-          start: new Date(2026, 0, 26),
-          end: new Date(2026, 1, 1, 23, 59),
-          audio_video: "Pablo Zuñiga - Horacio Salgado",
-          microfonistas: "Sebastian Meza - Elias Coria",
+          label: "09 Feb al 15 Feb",
+          start: new Date(2026, 1, 9),
+          end: new Date(2026, 1, 15, 23, 59),
+          audio_video: "Lucas Segovia - Dario Cortez",
+          microfonistas: "Samuel Duran - Elias Coria",
           plataforma: "Diego Sarraute",
-          entrada: "Adolfo Gutiérrez",
-          auditorio: "Darío Cortéz",
+          entrada: "León Segovia",
+          auditorio: "Pablo Zuñiga",
         },
+        {
+          label: "16 Feb al 22 Feb",
+          start: new Date(2026, 1, 16),
+          end: new Date(2026, 1, 22, 23, 59),
+          audio_video: "Caetano Ferrari - Cristian Segovia",
+          microfonistas: "Elvio Casco - Daniel Albiz",
+          plataforma: "Lucas Segovia",
+          entrada: "Diego Sarraute",
+          auditorio: "Adolfo Gutierrez",
+        },
+        {
+          label: "23 Feb al 01 Mar",
+          start: new Date(2026, 1, 23),
+          end: new Date(2026, 2, 1, 23, 59),
+          isAsamblea: true
+        }
       ];
 
       function render() {
@@ -333,21 +343,25 @@
             : "";
           htmlBlock += `<div class="week-header">Semana del ${week.label}</div>`;
 
-          ["Audio y Video", "Acomodadores"].forEach((gName) => {
-            htmlBlock += `<div class="assignment-section">
-              <h2 class="section-title">
-                ${gName === "Audio y Video" ? "🔊" : "👥"} ${gName}
-              </h2>`;
+          if (week.isAsamblea) {
+            htmlBlock += `<div class="asamblea-row">ASAMBLEA</div>`;
+          } else {
+            ["Audio y Video", "Acomodadores"].forEach((gName) => {
+              htmlBlock += `<div class="assignment-section">
+                <h2 class="section-title">
+                  ${gName === "Audio y Video" ? "🔊" : "👥"} ${gName}
+                </h2>`;
 
-            ROLES.filter((r) => r.group === gName).forEach((role) => {
-              const val = week[role.key] || "Sin asignar";
-              htmlBlock += `<div class="mb-4 last:mb-0">
-                <label class="role-title">${role.title}</label>
-                <div class="person-name">${val}</div>
-              </div>`;
+              ROLES.filter((r) => r.group === gName).forEach((role) => {
+                const val = week[role.key] || "Sin asignar";
+                htmlBlock += `<div class="mb-4 last:mb-0">
+                  <label class="role-title">${role.title}</label>
+                  <div class="person-name">${val}</div>
+                </div>`;
+              });
+              htmlBlock += `</div>`;
             });
-            htmlBlock += `</div>`;
-          });
+          }
 
           card.innerHTML = htmlBlock;
           container.appendChild(card);
@@ -364,3 +378,4 @@
     </script>
   </body>
 </html>
+
