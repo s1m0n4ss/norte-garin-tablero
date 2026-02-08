@@ -113,7 +113,7 @@
 
       9: [
         { h: "09:00", l: "Hna. Carmen Casas", c: "Diego Sarraute", t: "16" },
-        { h: "18:00", l: "Francia y San Martín", c: "Diego Sarraute", t: "8" },
+        { h: "18:00", l: "Colón y San Martín", c: "Diego Sarraute", t: "8" },
       ],
 
       10: [
