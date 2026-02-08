@@ -2,807 +2,272 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Norte Garín | Tablero Digital</title>
 
-    <!-- Evita "flash" de tema -->
     <script>
       (function () {
         const saved = localStorage.getItem("theme");
-        const prefersDark =
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
         const useDark = saved ? saved === "dark" : prefersDark;
         if (useDark) document.documentElement.classList.add("dark");
       })();
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet" />
 
     <style>
       :root {
-        --bg-main: #f1f5f9;
-        --bg-card: #ffffff;
-        --text-primary: #0f172a;
-        --text-muted: #64748b;
-        --border: rgba(0, 0, 0, 0.08);
-        --accent: #3b82f6;
-        --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
-
-        --sidebar-bg: rgba(255, 255, 255, 0.86);
-        --sidebar-border: rgba(0, 0, 0, 0.06);
-        --sidebar-text: #0f172a;
-        --sidebar-muted: #64748b;
-        --sidebar-hover-bg: rgba(59, 130, 246, 0.08);
-        --sidebar-active-bg: rgba(59, 130, 246, 0.12);
-        --sidebar-active-border: rgba(59, 130, 246, 0.22);
-
-        --overlay-bg: rgba(2, 6, 23, 0.35);
+        --bg-main: #f1f5f9; --bg-card: #ffffff; --text-primary: #0f172a; --text-muted: #64748b;
+        --border: rgba(0, 0, 0, 0.08); --accent: #3b82f6; --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
+        --btn-bg: rgba(255, 255, 255, 0.85);
       }
-
       html.dark {
-        --bg-main: #0a0f1d;
-        --bg-card: #121a2a;
-        --text-primary: #f8fafc;
-        --text-muted: #94a3b8;
-        --border: rgba(255, 255, 255, 0.06);
-        --accent: #3b82f6;
-        --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+        --bg-main: #0a0f1d; --bg-card: #121a2a; --text-primary: #f8fafc; --text-muted: #94a3b8;
+        --border: rgba(255, 255, 255, 0.06); --accent: #3b82f6; --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+        --btn-bg: rgba(18, 26, 42, 0.82);
+      }
+      body { font-family: "Inter", sans-serif; background-color: var(--bg-main); color: var(--text-primary); margin: 0; padding-bottom: 60px; }
+      .page-bg { min-height: 100vh; background-image: radial-gradient(900px 500px at 50% -10%, rgba(59, 130, 246, 0.16), transparent 60%); }
+      
+      .btn-surface { background: var(--btn-bg); border: 1px solid var(--border); color: var(--text-primary); box-shadow: 0 10px 25px rgba(2, 6, 23, 0.12); backdrop-filter: blur(8px); transition: all 0.15s ease; }
+      .btn-surface:active { transform: scale(0.95); }
 
-        --sidebar-bg: rgba(18, 26, 42, 0.92);
-        --sidebar-border: rgba(255, 255, 255, 0.06);
-        --sidebar-text: #f8fafc;
-        --sidebar-muted: #94a3b8;
-        --sidebar-hover-bg: rgba(59, 130, 246, 0.14);
-        --sidebar-active-bg: rgba(59, 130, 246, 0.18);
-        --sidebar-active-border: rgba(59, 130, 246, 0.22);
+      #sidebar { transition: transform 0.3s ease-in-out; background: var(--bg-card); z-index: 100; }
+      .nav-link { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 18px; color: var(--text-muted); transition: all 0.2s ease; }
+      .nav-link.active { background: rgba(59, 130, 246, 0.12); color: var(--accent); font-weight: 800; border: 1px solid rgba(59, 130, 246, 0.2); }
 
-        --overlay-bg: rgba(0, 0, 0, 0.6);
-      }
-
-      html,
-      body {
-        height: 100%;
-      }
-
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: var(--bg-main);
-        color: var(--text-primary);
-        transition: background 0.25s ease, color 0.25s ease;
-      }
-
-      .page-bg {
-        min-height: 100vh;
-        background: radial-gradient(
-            900px 500px at 50% -10%,
-            rgba(59, 130, 246, 0.16),
-            transparent 60%
-          ),
-          radial-gradient(
-            700px 400px at 10% 20%,
-            rgba(34, 197, 94, 0.08),
-            transparent 55%
-          ),
-          linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0),
-            rgba(255, 255, 255, 0)
-          );
-      }
-      html.dark .page-bg {
-        background: radial-gradient(
-            900px 500px at 50% -10%,
-            rgba(59, 130, 246, 0.25),
-            transparent 60%
-          ),
-          radial-gradient(
-            700px 400px at 10% 20%,
-            rgba(59, 130, 246, 0.12),
-            transparent 55%
-          ),
-          radial-gradient(
-            700px 500px at 80% 30%,
-            rgba(14, 165, 233, 0.08),
-            transparent 60%
-          ),
-          linear-gradient(to bottom, rgba(10, 15, 29, 1), rgba(10, 15, 29, 1));
-      }
-
-      .card {
-        background-color: var(--bg-card);
-        border: 1px solid var(--border);
-        color: var(--text-primary);
-        box-shadow: var(--shadow);
-      }
-
-      .btn-surface {
-        background: color-mix(in oklab, var(--bg-card) 92%, transparent);
-        border: 1px solid var(--border);
-        color: var(--text-primary);
-        box-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
-        transition: transform 0.15s ease, box-shadow 0.15s ease,
-          background 0.2s ease;
-      }
-      html.dark .btn-surface {
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-      }
-      .btn-surface:hover {
-        transform: translateY(-1px);
-      }
-      .btn-surface:active {
-        transform: scale(0.96);
-      }
-
-      #sidebar {
-        transition: transform 0.3s ease-in-out;
-        background: var(--sidebar-bg);
-        border-right: 1px solid var(--sidebar-border);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-      }
-
-      .sidebar-overlay {
-        transition: opacity 0.25s ease-in-out;
-        background: var(--overlay-bg);
-      }
-
-      .nav-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 18px;
-        border-radius: 18px;
-        color: var(--sidebar-muted);
-        transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease,
-          border 0.2s ease;
-        border: 1px solid transparent;
-      }
-      .nav-link:hover {
-        background: var(--sidebar-hover-bg);
-        color: var(--sidebar-text);
-        transform: translateX(2px);
-      }
-      .nav-link.active {
-        background: var(--sidebar-active-bg);
-        color: var(--sidebar-text);
-        border: 1px solid var(--sidebar-active-border);
-      }
-
-      .muted {
-        color: var(--text-muted);
-      }
-
-      .activity-item {
-        background: color-mix(in oklab, var(--bg-card) 86%, transparent);
-        border: 1px solid var(--border);
-      }
-      html.dark .activity-item {
-        background: rgba(255, 255, 255, 0.03);
-      }
-
-      .hero-band {
-        width: min(980px, calc(100vw - 48px));
-        margin: 0 auto;
-      }
-      @media (min-width: 1024px) {
-        .hero-band {
-          width: min(1100px, calc(100vw - 64px));
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          scroll-behavior: auto !important;
-          transition: none !important;
-          animation: none !important;
-        }
-      }
+      .card { background-color: var(--bg-card); border: 1px solid var(--border); box-shadow: var(--shadow); position: relative; }
+      .activity-slide { transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
   </head>
 
-  <body class="pb-10 overflow-x-hidden page-bg">
-    <div
-      id="overlay"
-      class="fixed inset-0 z-40 hidden sidebar-overlay opacity-0"
-      aria-hidden="true"
-    ></div>
+  <body class="page-bg">
+    <div id="overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity duration-300"></div>
 
-    <aside
-      id="sidebar"
-      class="fixed top-0 left-0 h-full w-72 z-50 transform -translate-x-full shadow-2xl"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Menú principal"
-    >
-      <div class="p-8">
-        <div class="flex items-center gap-3 mb-10">
-          <div
-            class="h-10 w-10 rounded-2xl bg-blue-500/15 border border-blue-500/20 flex items-center justify-center font-black"
-            style="color: var(--sidebar-text)"
-            aria-hidden="true"
-          >
-            ✦
-          </div>
-          <div>
-            <h2
-              class="font-extrabold leading-tight"
-              style="color: var(--sidebar-text)"
-            >
-              Norte Garín
-            </h2>
-            <p class="text-xs" style="color: var(--sidebar-muted)">
-              Tablero digital
-            </p>
-          </div>
-        </div>
-
-        <nav class="space-y-2">
-          <a href="index.html" class="nav-link active font-bold">Inicio</a>
-          <a href="salidas.html" class="nav-link">Salidas</a>
-          <a href="vida-ministerio.html" class="nav-link">Vida y Ministerio</a>
-          <a href="/conferencias/" class="nav-link">Discursos</a>
-          <a href="multimedia.html" class="nav-link">Multimedia</a>
-          <a href="lectores.html" class="nav-link">Lectores</a>
-          <a href="limpieza.html" class="nav-link">Limpieza</a>
-          <a href="grupos.html" class="nav-link">Grupos</a>
-
-          <!-- Nuevo: Próximos eventos (solo en barra lateral) -->
-          <a href="proximos-eventos.html" class="nav-link">Próximos eventos</a>
-        </nav>
-
-        <div class="mt-10 text-xs" style="color: var(--sidebar-muted)">
-          <p class="mb-2" style="color: var(--sidebar-text); font-weight: 800">
-            Consejo:
-          </p>
-          <p>Usá el modo claro/oscuro según el entorno para mejor lectura.</p>
-        </div>
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 transform -translate-x-full shadow-2xl p-8">
+      <div class="flex items-center gap-3 mb-10">
+        <div class="h-10 w-10 rounded-2xl bg-blue-500/20 flex items-center justify-center font-black text-blue-500">✦</div>
+        <div><h2 class="font-extrabold leading-tight">Norte Garín</h2><p class="text-[10px] opacity-60 uppercase font-bold tracking-widest">Digital Board</p></div>
       </div>
+      <nav class="space-y-2">
+        <a href="index.html" class="nav-link active font-bold">Inicio</a>
+        <a href="salidas.html" class="nav-link">Salidas</a>
+        <a href="vida-ministerio.html" class="nav-link">Vida y Ministerio</a>
+        <a href="conferencias.html" class="nav-link">Discursos</a>
+        <a href="multimedia.html" class="nav-link">Multimedia</a>
+        <a href="lectores.html" class="nav-link">Lectores</a>
+        <a href="limpieza.html" class="nav-link">Limpieza</a>
+        <a href="grupos.html" class="nav-link">Grupos</a>
+      </nav>
     </aside>
 
-    <header class="p-6 max-w-lg md:max-w-xl mx-auto">
-      <div class="flex justify-between items-center mb-6">
-        <div class="flex items-center gap-3">
-          <button
-            type="button"
-            id="btnMenu"
-            class="btn-surface p-3 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
-            aria-label="Abrir menú"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="opacity-80"
-              aria-hidden="true"
-            >
-              <line x1="4" x2="20" y1="12" y2="12" />
-              <line x1="4" x2="20" y1="6" y2="6" />
-              <line x1="4" x2="20" y1="18" y2="18" />
-            </svg>
-          </button>
-
-          <div>
-            <h1 class="text-lg font-extrabold tracking-tight">Norte Garín</h1>
-            <p id="today-date" class="muted text-xs"></p>
-          </div>
+    <header class="p-6 max-w-lg mx-auto">
+      <div class="relative w-full h-64 rounded-[40px] overflow-hidden shadow-2xl group">
+        <img src="img/image_4.png.jpg" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" alt="Hero" />
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80"></div>
+        
+        <div class="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
+          <button id="btnMenu" class="btn-surface p-3 rounded-2xl active:scale-90"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button>
+          <button id="btnTheme" class="btn-surface p-3 rounded-2xl active:scale-90"><span id="theme-icon">🌙</span></button>
         </div>
 
-        <button
-          type="button"
-          id="btnTheme"
-          class="btn-surface p-3 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
-          aria-label="Cambiar tema"
-          title="Cambiar tema"
-        >
-          <span id="theme-icon" aria-hidden="true">🌙</span>
-        </button>
-      </div>
-
-      <div class="hero-band">
-        <div
-          class="relative overflow-hidden rounded-[40px] mb-0 h-64 shadow-2xl"
-        >
-          <img
-            src="img/image_4.png.jpg"
-            class="absolute inset-0 w-full h-full object-cover"
-            alt="Fondo"
-            loading="eager"
-            decoding="async"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/70"
-          ></div>
-
-          <div
-            class="absolute inset-0 flex flex-col justify-center items-center text-center p-6"
-          >
-            <div
-              class="mb-3 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white/90 text-[11px] font-semibold tracking-wide"
-            >
-              Actividad de la Congregación
-            </div>
-            <h2
-              class="text-4xl font-black tracking-tighter leading-none text-white"
-            >
-              TABLERO<br />DIGITAL
-            </h2>
-          </div>
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6 mt-6">
+          <div class="mb-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/90 text-[10px] font-black tracking-widest uppercase">Actividad de la Congregación</div>
+          <h2 class="text-4xl font-black tracking-tighter leading-none text-white drop-shadow-lg uppercase">Norte<br />Garín</h2>
+          <p id="today-date" class="text-white/70 text-[11px] font-bold mt-2 uppercase tracking-tighter"></p>
         </div>
       </div>
+    </header>
 
-      <section
-        class="card rounded-[35px] p-6 mb-8 border-t-4 shadow-xl -mt-10 relative z-10"
-        style="border-top-color: var(--accent)"
-      >
+    <main class="max-w-lg mx-auto px-6">
+      <section class="card rounded-[35px] p-6 mb-8 border-t-4 shadow-xl -mt-14 relative z-10 overflow-hidden" style="border-top-color: var(--accent)">
         <div class="flex items-center justify-between mb-4">
-          <h3
-            class="text-xs font-black uppercase tracking-widest flex items-center gap-2"
-            style="color: var(--accent)"
-          >
-            <span class="relative flex h-2 w-2" aria-hidden="true">
-              <span
-                class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                style="background: var(--accent)"
-              ></span>
-              <span
-                class="relative inline-flex rounded-full h-2 w-2"
-                style="background: var(--accent)"
-              ></span>
-            </span>
+          <h3 class="text-[10px] font-black uppercase tracking-[0.15em] flex items-center gap-2" style="color: var(--accent)">
+            <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background: var(--accent)"></span><span class="relative inline-flex rounded-full h-2 w-2" style="background: var(--accent)"></span></span>
             Resumen de Actividades
           </h3>
-          <p class="text-[11px] muted">
-            Actualizado: <span id="dash-updated">—</span>
-          </p>
+          <div id="carousel-dots" class="flex gap-1.5">
+            <div class="h-1 w-3 rounded-full bg-blue-500 transition-all"></div>
+            <div class="h-1 w-1 rounded-full bg-gray-300 transition-all"></div>
+            <div class="h-1 w-1 rounded-full bg-gray-300 transition-all"></div>
+            <div class="h-1 w-1 rounded-full bg-gray-300 transition-all"></div>
+          </div>
         </div>
 
-        <div class="space-y-4">
-          <div
-            class="activity-item border-l-4 p-4 rounded-2xl"
-            style="border-left-color: var(--accent)"
-          >
-            <p class="text-[10px] font-bold uppercase tracking-wider muted">
-              Salida de Hoy
-            </p>
-            <p id="dash-salida" class="font-extrabold text-sm mt-1">
-              Cargando...
-            </p>
+        <div id="activity-carousel" class="relative h-24">
+          <div class="activity-slide absolute inset-0 opacity-100">
+            <div class="border-l-4 p-4 rounded-2xl bg-slate-500/5" style="border-left-color: var(--accent)">
+              <p id="label-salida" class="text-[9px] font-black uppercase tracking-widest opacity-50">Próxima Salida de Hoy</p>
+              <p id="dash-salida" class="font-extrabold text-sm mt-1 leading-tight">Cargando...</p>
+            </div>
           </div>
-
-          <!-- ✅ NUEVO: Semana de la visita (10 al 15 Febrero) -->
-          <div
-            class="activity-item border-l-4 p-4 rounded-2xl"
-            style="border-left-color: #f59e0b"
-          >
-            <p class="text-[10px] font-bold uppercase tracking-wider muted">
-              Semana de la visita
-            </p>
-            <p id="dash-visita" class="font-extrabold text-sm mt-1">
-              Cargando...
-            </p>
+          <div class="activity-slide absolute inset-0 opacity-0 pointer-events-none">
+            <div class="border-l-4 p-4 rounded-2xl bg-slate-500/5" style="border-left-color: #f59e0b">
+              <p class="text-[9px] font-black uppercase tracking-widest opacity-50">Semana de la visita</p>
+              <p id="dash-visita" class="font-extrabold text-sm mt-1 leading-tight text-orange-500">Cargando...</p>
+            </div>
           </div>
-
-          <div
-            class="activity-item border-l-4 p-4 rounded-2xl"
-            style="border-left-color: #22c55e"
-          >
-            <p class="text-[10px] font-bold uppercase tracking-wider muted">
-              Limpieza Semanal
-            </p>
-            <p id="dash-limpieza" class="font-extrabold text-sm mt-1">
-              Cargando...
-            </p>
+          <div class="activity-slide absolute inset-0 opacity-0 pointer-events-none">
+            <div class="border-l-4 p-4 rounded-2xl bg-slate-500/5" style="border-left-color: #22c55e">
+              <p class="text-[9px] font-black uppercase tracking-widest opacity-50">Limpieza Semanal</p>
+              <p id="dash-limpieza" class="font-extrabold text-sm mt-1 leading-tight">Cargando...</p>
+            </div>
           </div>
-
-          <div
-            class="activity-item border-l-4 p-4 rounded-2xl"
-            style="border-left-color: #a855f7"
-          >
-            <p class="text-[10px] font-bold uppercase tracking-wider muted">
-              Próximo Discurso (Dom)
-            </p>
-            <p id="dash-discurso" class="font-extrabold text-sm mt-1">
-              Cargando...
-            </p>
+          <div class="activity-slide absolute inset-0 opacity-0 pointer-events-none">
+            <div class="border-l-4 p-4 rounded-2xl bg-slate-500/5" style="border-left-color: #a855f7">
+              <p class="text-[9px] font-black uppercase tracking-widest opacity-50">Próximo Discurso (Dom)</p>
+              <p id="dash-discurso" class="font-extrabold text-sm mt-1 leading-tight">Cargando...</p>
+            </div>
           </div>
-
-          <!-- IMPORTANTE: "Próximos eventos" NO va acá. Solo en barra lateral -->
         </div>
       </section>
 
-      <a
-        href="https://jworg.zoom.us/my/norte.garin?pwd=ZXVVZWhZTmdTNFpuUkI3c014RFlMQT09"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="rounded-[30px] p-5 flex items-center justify-between bg-blue-600 text-white shadow-xl active:scale-95 transition mb-8"
-      >
+      <a href="https://jworg.zoom.us/my/norte.garin?pwd=ZXVVZWhZTmdTNFpuUkI3c014RFlMQT09" target="_blank" class="rounded-[30px] p-5 flex items-center justify-between bg-blue-600 text-white shadow-xl active:scale-95 transition mb-8">
         <div class="flex items-center gap-4">
-          <div class="bg-white/20 p-3 rounded-2xl" aria-hidden="true">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="m22 8-6 4 6 4V8Z" />
-              <rect width="14" height="12" x="2" y="6" rx="2" ry="2" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-lg font-extrabold leading-tight">
-              Reunión por Zoom
-            </h3>
-            <p class="text-[11px] font-medium opacity-90">
-              Tocar para conectarse
-            </p>
-          </div>
+          <div class="bg-white/20 p-3 rounded-2xl"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z" /><rect width="14" height="12" x="2" y="6" rx="2" ry="2" /></svg></div>
+          <div><h3 class="text-lg font-extrabold leading-tight">Reunión por Zoom</h3><p class="text-[10px] font-bold opacity-90 uppercase tracking-widest">Tocar para conectar</p></div>
         </div>
-        <div class="bg-white/10 p-2 rounded-full" aria-hidden="true">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M5 12h14m-7-7 7 7-7 7" />
-          </svg>
-        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7" /></svg>
       </a>
 
       <section class="grid grid-cols-2 gap-4">
-        <a
-          href="salidas.html"
-          class="card rounded-[26px] p-4 shadow-lg hover:-translate-y-0.5 transition"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="h-10 w-10 rounded-2xl bg-blue-500/15 border border-blue-500/20 flex items-center justify-center"
-              aria-hidden="true"
-            >
-              📌
-            </div>
-            <div>
-              <p class="text-xs font-bold muted">Programa</p>
-              <p class="font-extrabold mt-0.5">Salidas</p>
-            </div>
-          </div>
+        <a href="salidas.html" class="card rounded-[26px] p-4 shadow-lg active:scale-95 transition">
+          <div class="flex items-center gap-3"><div class="h-10 w-10 rounded-2xl bg-blue-500/10 flex items-center justify-center">📌</div><div><p class="text-[10px] font-bold opacity-50 uppercase leading-none">Programa</p><p class="font-extrabold mt-1">Salidas</p></div></div>
         </a>
-
-        <a
-          href="vida-ministerio.html"
-          class="card rounded-[26px] p-4 shadow-lg hover:-translate-y-0.5 transition"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="h-10 w-10 rounded-2xl bg-indigo-500/15 border border-indigo-500/20 flex items-center justify-center"
-              aria-hidden="true"
-            >
-              📖
-            </div>
-            <div>
-              <p class="text-xs font-bold muted">Reunión</p>
-              <p class="font-extrabold mt-0.5">Vida y Ministerio</p>
-            </div>
-          </div>
+        <a href="vida-ministerio.html" class="card rounded-[26px] p-4 shadow-lg active:scale-95 transition">
+          <div class="flex items-center gap-3"><div class="h-10 w-10 rounded-2xl bg-indigo-500/10 flex items-center justify-center">📖</div><div><p class="text-[10px] font-bold opacity-50 uppercase leading-none">Reunión</p><p class="font-extrabold mt-1">Vida y Min.</p></div></div>
         </a>
-
-        <!-- (lo dejé igual que tu HTML original: aunque en el menú usás /conferencias/ ) -->
-        <a
-          href="conferencias.html"
-          class="card rounded-[26px] p-4 shadow-lg hover:-translate-y-0.5 transition"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="h-10 w-10 rounded-2xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center"
-              aria-hidden="true"
-            >
-              🎙️
-            </div>
-            <div>
-              <p class="text-xs font-bold muted">Domingo</p>
-              <p class="font-extrabold mt-0.5">Discursos</p>
-            </div>
-          </div>
+        <a href="conferencias.html" class="card rounded-[26px] p-4 shadow-lg active:scale-95 transition">
+          <div class="flex items-center gap-3"><div class="h-10 w-10 rounded-2xl bg-emerald-500/10 flex items-center justify-center">🎙️</div><div><p class="text-[10px] font-bold opacity-50 uppercase leading-none">Domingo</p><p class="font-extrabold mt-1">Discursos</p></div></div>
         </a>
-
-        <a
-          href="multimedia.html"
-          class="card rounded-[26px] p-4 shadow-lg hover:-translate-y-0.5 transition"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="h-10 w-10 rounded-2xl bg-teal-500/15 border border-teal-500/20 flex items-center justify-center"
-              aria-hidden="true"
-            >
-              🔊
-            </div>
-            <div>
-              <p class="text-xs font-bold muted">Asignaciones</p>
-              <p class="font-extrabold mt-0.5">Multimedia</p>
-            </div>
-          </div>
+        <a href="multimedia.html" class="card rounded-[26px] p-4 shadow-lg active:scale-95 transition">
+          <div class="flex items-center gap-3"><div class="h-10 w-10 rounded-2xl bg-teal-500/10 flex items-center justify-center">🔊</div><div><p class="text-[10px] font-bold opacity-50 uppercase leading-none">Encargados</p><p class="font-extrabold mt-1 text-sm leading-tight">Multimedia</p></div></div>
         </a>
-
-        <a
-          href="lectores.html"
-          class="card rounded-[26px] p-4 shadow-lg hover:-translate-y-0.5 transition"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="h-10 w-10 rounded-2xl bg-sky-500/15 border border-sky-500/20 flex items-center justify-center"
-              aria-hidden="true"
-            >
-              📰
-            </div>
-            <div>
-              <p class="text-xs font-bold muted">Asignaciones</p>
-              <p class="font-extrabold mt-0.5">Lectores</p>
-            </div>
-          </div>
+        <a href="lectores.html" class="card rounded-[26px] p-4 shadow-lg active:scale-95 transition">
+          <div class="flex items-center gap-3"><div class="h-10 w-10 rounded-2xl bg-sky-500/10 flex items-center justify-center">📰</div><div><p class="text-[10px] font-bold opacity-50 uppercase leading-none">Atalaya</p><p class="font-extrabold mt-1">Lectores</p></div></div>
         </a>
-
-        <a
-          href="limpieza.html"
-          class="card rounded-[26px] p-4 shadow-lg hover:-translate-y-0.5 transition"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="h-10 w-10 rounded-2xl bg-green-500/15 border border-green-500/20 flex items-center justify-center"
-              aria-hidden="true"
-            >
-              🧼
-            </div>
-            <div>
-              <p class="text-xs font-bold muted">Organización</p>
-              <p class="font-extrabold mt-0.5">Limpieza</p>
-            </div>
-          </div>
+        <a href="limpieza.html" class="card rounded-[26px] p-4 shadow-lg active:scale-95 transition">
+          <div class="flex items-center gap-3"><div class="h-10 w-10 rounded-2xl bg-green-500/10 flex items-center justify-center">🧼</div><div><p class="text-[10px] font-bold opacity-50 uppercase leading-none">Salón</p><p class="font-extrabold mt-1">Limpieza</p></div></div>
         </a>
       </section>
-    </header>
+    </main>
 
-    <!-- Importante: cargar datos compartidos de salidas -->
     <script src="salidas-data.js"></script>
-
     <script>
-      // =========================
-      // TEMA CLARO / OSCURO
-      // =========================
       const html = document.documentElement;
       const themeIcon = document.getElementById("theme-icon");
-
-      function syncThemeIcon() {
-        themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
-      }
-
-      function toggleTheme() {
-        if (html.classList.contains("dark")) {
-          html.classList.remove("dark");
-          localStorage.setItem("theme", "light");
-        } else {
-          html.classList.add("dark");
-          localStorage.setItem("theme", "dark");
-        }
-        syncThemeIcon();
-      }
-      syncThemeIcon();
-
-      // =========================
-      // SIDEBAR
-      // =========================
       const sidebar = document.getElementById("sidebar");
       const overlay = document.getElementById("overlay");
 
-      function openMenu() {
-        sidebar.classList.remove("-translate-x-full");
+      function toggleTheme() {
+        html.classList.toggle("dark");
+        localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
+        themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
+      }
+      document.getElementById("btnTheme").onclick = toggleTheme;
+
+      document.getElementById("btnMenu").onclick = () => {
+        sidebar.classList.replace("-translate-x-full", "translate-x-0");
         overlay.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-        requestAnimationFrame(() => overlay.classList.add("opacity-100"));
-      }
-
-      function closeMenu() {
-        sidebar.classList.add("-translate-x-full");
+        setTimeout(() => overlay.classList.add("opacity-100"), 10);
+      };
+      overlay.onclick = () => {
+        sidebar.classList.replace("translate-x-0", "-translate-x-full");
         overlay.classList.remove("opacity-100");
-        document.body.style.overflow = "";
-        setTimeout(() => overlay.classList.add("hidden"), 220);
-      }
+        setTimeout(() => overlay.classList.add("hidden"), 300);
+      };
 
-      function toggleMenu() {
-        const isOpen = !sidebar.classList.contains("-translate-x-full");
-        isOpen ? closeMenu() : openMenu();
-      }
-
-      document.getElementById("btnMenu").addEventListener("click", toggleMenu);
-      overlay.addEventListener("click", closeMenu);
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeMenu();
-      });
-
-      // =========================
       // DATOS DASHBOARD
-      // =========================
       const CONFERENCIAS = [
         { date: "2026-01-11", title: "Tenga fe en Dios y sus promesas" },
         { date: "2026-01-18", title: "Visita de Pastoreo a la sucursal" },
-        {
-          date: "2026-01-25",
-          title: "Joven, ¿cómo puedes ser feliz y tener éxito?",
-        },
-        {
-          date: "2026-02-01",
-          title: "Actuemos con sabiduría en este mundo insensato",
-        },
-        {
-          date: "2026-02-08",
-          title: "¿Dónde encontrará una esperanza segura?",
-        },
-        {
-          date: "2026-02-15",
-          title: "¿Qué lo ayudará a tener éxito en la vida?",
-        },
-        {
-          date: "2026-02-22",
-          title: "Consigamos que nuestro corazón sea sabio",
-        },
+        { date: "2026-01-25", title: "Joven, ¿cómo puedes ser feliz y tener éxito?" },
+        { date: "2026-02-01", title: "Actuemos con sabiduría en este mundo insensato" },
+        { date: "2026-02-08", title: "¿Dónde encontrará una esperanza segura?" },
+        { date: "2026-02-15", title: "¿Qué lo ayudará a tener éxito en la vida?" },
+        { date: "2026-02-22", title: "Consigamos que nuestro corazón sea sabio" },
       ];
-
-      // ✅ Semana de la visita (10 al 15 Feb 2026)
-      const VISITA = {
-        start: "2026-02-10",
-        end: "2026-02-15",
-      };
-
-      const GRUPOS_LIMPIEZA = [
-        "Grupos 1 y 2",
-        "Grupos 3 y 4",
-        "Grupos 1 y 2",
-        "Grupos 3 y 4",
-      ];
+      const VISITA = { start: "2026-02-10", end: "2026-02-15" };
+      const GRUPOS_LIMPIEZA = ["Grupos 1 y 2", "Grupos 3 y 4", "Grupos 1 y 2", "Grupos 3 y 4"];
       const INICIO_LIMPIEZA = new Date(2025, 11, 2);
 
-      function startOfDay(d) {
-        return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-      }
-
-      function parseISOToLocalDate(iso) {
-        const [y, m, d] = iso.split("-").map(Number);
-        return new Date(y, m - 1, d);
-      }
-
-      function formatShortDate(d) {
-        return d.toLocaleDateString("es-AR", { day: "2-digit", month: "short" });
-      }
-
-      function visitaText(now) {
-        const start = startOfDay(parseISOToLocalDate(VISITA.start));
-        const end = startOfDay(parseISOToLocalDate(VISITA.end));
-        const today = startOfDay(now);
-
-        if (today < start) {
-          const days = Math.ceil((start - today) / (1000 * 60 * 60 * 24));
-          return `Faltan ${days} día(s) — ${formatShortDate(start)} al ${formatShortDate(
-            end
-          )}`;
-        }
-
-        if (today > end) {
-          return `Finalizada — ${formatShortDate(start)} al ${formatShortDate(end)}`;
-        }
-
-        const dayN = Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1;
-        const total = Math.floor((end - start) / (1000 * 60 * 60 * 24)) + 1;
-        return `EN CURSO (Día ${dayN}/${total}) — ${formatShortDate(start)} al ${formatShortDate(
-          end
-        )}`;
-      }
-
-      // ---- Salidas: solo "la próxima salida del día", SIN territorio ni conduce ----
-      function nextSalidaOfTodayText() {
-        if (!window.SALIDAS_CAL || !window.SALIDAS_CAL.getEntriesForDate)
-          return null;
-
-        const now = new Date();
-        const entries = window.SALIDAS_CAL.getEntriesForDate(now) || [];
-        if (!entries.length) return null;
-
-        const timed = entries
-          .filter((e) => !e.type && e.h && e.h !== "–")
-          .map((e) => {
-            const raw = String(e.h).trim();
-            const match = raw.match(/(\d{1,2}):(\d{2})/);
-            if (!match) return null;
-            const hh = Number(match[1]);
-            const mm = Number(match[2]);
-            const minutes = hh * 60 + mm;
-            return { minutes, l: e.l || "" };
-          })
-          .filter(Boolean)
-          .sort((a, b) => a.minutes - b.minutes);
-
-        if (!timed.length) return null;
-
-        const nowMinutes = now.getHours() * 60 + now.getMinutes();
-        const next = timed.find((x) => x.minutes >= nowMinutes) || timed[0];
-
-        const hh = String(Math.floor(next.minutes / 60)).padStart(2, "0");
-        const mm = String(next.minutes % 60).padStart(2, "0");
-        return `${hh}:${mm} hs — ${next.l}`.trim();
-      }
+      function parseISO(iso) { const [y, m, d] = iso.split("-").map(Number); return new Date(y, m - 1, d); }
 
       function updateDashboard() {
         const now = new Date();
+        document.getElementById("today-date").textContent = now.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" });
 
-        // Fecha amigable
-        const options = { weekday: "long", day: "numeric", month: "long" };
-        document.getElementById("today-date").textContent =
-          now.toLocaleDateString("es-AR", options);
+        const startV = parseISO(VISITA.start); startV.setHours(0,0,0,0);
+        const endV = parseISO(VISITA.end); endV.setHours(0,0,0,0);
+        const today = new Date(); today.setHours(0,0,0,0);
+        
+        let vText = "";
+        if (today < startV) vText = `Faltan ${Math.ceil((startV-today)/86400000)} días — ${startV.toLocaleDateString("es-AR", {day:'numeric', month:'short'})} al ${endV.toLocaleDateString("es-AR", {day:'numeric', month:'short'})}`;
+        else if (today > endV) vText = "Finalizada";
+        else vText = `EN CURSO (Día ${Math.floor((today-startV)/86400000)+1}/6)`;
+        document.getElementById("dash-visita").innerText = vText;
 
-        // Actualizado
-        document.getElementById("dash-updated").textContent =
-          now.toLocaleTimeString("es-AR", {
-            hour: "2-digit",
-            minute: "2-digit",
-          });
+        const diffWeeks = Math.floor(Math.abs(today - INICIO_LIMPIEZA) / (1000 * 60 * 60 * 24 * 7));
+        document.getElementById("dash-limpieza").innerText = GRUPOS_LIMPIEZA[diffWeeks % GRUPOS_LIMPIEZA.length];
 
-        // Salida (próxima del día)
-        const salidaTxt = nextSalidaOfTodayText();
-        document.getElementById("dash-salida").textContent =
-          salidaTxt || "Consulte el programa de salidas";
+        const proximo = CONFERENCIAS.find(c => parseISO(c.date) >= today);
+        document.getElementById("dash-discurso").innerText = proximo ? proximo.title : "Consulte el programa";
 
-        // ✅ Semana de la visita
-        document.getElementById("dash-visita").textContent = visitaText(now);
+        // LÓGICA DE SALIDAS INTELIGENTE
+        if (window.SALIDAS_CAL) {
+          const nowTime = now.getHours() * 60 + now.getMinutes();
+          
+          // Buscar hoy
+          const entriesToday = window.SALIDAS_CAL.getEntriesForDate(now) || [];
+          const nextToday = entriesToday
+            .filter(e => e.h && e.h !== "–")
+            .map(e => {
+                const [h, m] = e.h.split(':').map(Number);
+                return { ...e, totalMin: h * 60 + m };
+            })
+            .filter(e => e.totalMin >= nowTime)
+            .sort((a, b) => a.totalMin - b.totalMin);
 
-        // Limpieza semanal (rotación)
-        const diffWeeks = Math.floor(
-          Math.abs(startOfDay(now) - startOfDay(INICIO_LIMPIEZA)) /
-            (1000 * 60 * 60 * 24 * 7)
-        );
-        document.getElementById("dash-limpieza").textContent =
-          GRUPOS_LIMPIEZA[diffWeeks % GRUPOS_LIMPIEZA.length];
+          if (nextToday.length > 0) {
+            document.getElementById("label-salida").innerText = "Próxima Salida de Hoy";
+            document.getElementById("dash-salida").innerText = `${nextToday[0].h} hs — ${nextToday[0].l}`;
+          } else {
+            // No hay más hoy, buscar mañana
+            const mañana = new Date(now);
+            mañana.setDate(mañana.getDate() + 1);
+            const entriesMañana = window.SALIDAS_CAL.getEntriesForDate(mañana) || [];
+            const nextMañana = entriesMañana.filter(e => e.h && e.h !== "–").sort((a, b) => a.h.localeCompare(b.h));
 
-        // Próximo discurso
-        const today = startOfDay(now);
-        const proximo = CONFERENCIAS.find((c) => {
-          const conf = parseISOToLocalDate(c.date);
-          return conf >= today;
-        });
-        document.getElementById("dash-discurso").textContent = proximo
-          ? proximo.title
-          : "Consulte el programa";
+            if (nextMañana.length > 0) {
+              document.getElementById("label-salida").innerText = "Próxima Salida: Mañana";
+              document.getElementById("dash-salida").innerText = `${nextMañana[0].h} hs — ${nextMañana[0].l}`;
+            } else {
+              document.getElementById("label-salida").innerText = "Próxima Salida";
+              document.getElementById("dash-salida").innerText = "No hay salidas programadas próximamente";
+            }
+          }
+        }
       }
 
-      document
-        .getElementById("btnTheme")
-        .addEventListener("click", toggleTheme);
+      // CARRUSEL
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.activity-slide');
+      const dots = document.querySelectorAll('#carousel-dots div');
 
-      window.addEventListener("DOMContentLoaded", () => {
-        updateDashboard();
-      });
+      function nextSlide() {
+        slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
+        slides[currentSlide].classList.add('pointer-events-none');
+        dots[currentSlide].className = "h-1 w-1 rounded-full bg-gray-300 transition-all";
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.replace('opacity-0', 'opacity-100');
+        slides[currentSlide].classList.remove('pointer-events-none');
+        dots[currentSlide].className = "h-1 w-3 rounded-full bg-blue-500 transition-all";
+      }
+      setInterval(nextSlide, 3500);
+
+      window.onload = updateDashboard;
     </script>
   </body>
 </html>
