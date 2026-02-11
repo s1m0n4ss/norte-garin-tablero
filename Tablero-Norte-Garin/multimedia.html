@@ -88,6 +88,8 @@
         justify-content: center;
         box-shadow: var(--btn-shadow);
         transition: transform 0.1s ease;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
       }
       .btn-header:active {
         transform: scale(0.95);
@@ -118,6 +120,64 @@
         );
       }
 
+      /* ===== SIDEBAR ===== */
+      #overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(8px);
+        z-index: 90;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+      }
+      #overlay.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 18rem;
+        z-index: 100;
+        transform: translateX(-110%);
+        transition: transform 0.28s ease;
+        background: var(--bg-card);
+        border-right: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        padding: 26px;
+      }
+      #sidebar.open {
+        transform: translateX(0);
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        border-radius: 18px;
+        color: var(--text-muted);
+        transition: all 0.2s ease;
+        font-weight: 700;
+      }
+      .nav-link:hover {
+        background: rgba(2, 6, 23, 0.04);
+      }
+      html.dark .nav-link:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .nav-link.active {
+        background: rgba(16, 185, 129, 0.14);
+        color: var(--brand);
+        font-weight: 900;
+        border: 1px solid rgba(16, 185, 129, 0.22);
+      }
+
+      /* ===== CONTENIDO ===== */
       .week-entry {
         background: var(--bg-card);
         border: 1px solid var(--border);
@@ -208,16 +268,48 @@
   </head>
 
   <body class="page-bg pb-10">
+    <!-- Overlay + Sidebar -->
+    <div id="overlay"></div>
+
+    <aside id="sidebar" aria-label="Menú">
+      <div class="flex items-center gap-3 mb-10">
+        <div
+          class="h-10 w-10 rounded-2xl flex items-center justify-center font-black"
+          style="background: rgba(16,185,129,0.18); color: var(--brand);"
+        >
+          ✦
+        </div>
+        <div>
+          <h2 class="font-extrabold leading-tight">Norte Garín</h2>
+          <p class="text-[10px] opacity-60 uppercase font-bold tracking-widest">
+            Digital Board
+          </p>
+        </div>
+      </div>
+
+      <nav class="space-y-2">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="salidas.html" class="nav-link">Salidas</a>
+        <a href="vida-ministerio.html" class="nav-link">Vida y Ministerio</a>
+        <a href="conferencias.html" class="nav-link">Discursos</a>
+        <a href="multimedia.html" class="nav-link active">Multimedia</a>
+        <a href="lectores.html" class="nav-link">Lectores</a>
+        <a href="limpieza.html" class="nav-link">Limpieza</a>
+        <a href="grupos.html" class="nav-link">Grupos</a>
+        <a href="proximos-eventos.html" class="nav-link">Próximos eventos</a>
+      </nav>
+    </aside>
+
     <header>
       <div class="max-w-md mx-auto">
         <div class="hero-banner group">
-          <!-- ✅ Banner local -->
           <img src="img/audio-video.png" alt="Multimedia" />
           <div class="hero-overlay"></div>
 
           <div class="absolute inset-0 p-4 flex flex-col justify-between">
             <div class="flex justify-between items-center">
-              <a href="index.html" class="btn-header" aria-label="Volver">
+              <!-- ✅ MENÚ (en vez de volver) -->
+              <button id="btnMenu" class="btn-header" type="button" aria-label="Abrir menú">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
@@ -229,19 +321,21 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 >
-                  <path d="m15 18-6-6 6-6" />
+                  <line x1="4" x2="20" y1="12" y2="12" />
+                  <line x1="4" x2="20" y1="6" y2="6" />
+                  <line x1="4" x2="20" y1="18" y2="18" />
                 </svg>
-              </a>
-              <button onclick="toggleTheme()" class="btn-header">
+              </button>
+
+              <!-- ✅ Tema -->
+              <button id="btnTheme" class="btn-header" type="button" aria-label="Cambiar tema">
                 <span id="theme-icon">🌙</span>
               </button>
             </div>
 
             <div class="text-white">
-              <h1
-                class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg"
-              >
-                Audio & Video
+              <h1 class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg">
+                Audio &amp; Video
               </h1>
               <p
                 class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400 drop-shadow-md"
@@ -273,17 +367,34 @@
       }
       syncThemeIcon();
 
+      // Sidebar
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      const btnMenu = document.getElementById("btnMenu");
+      const btnTheme = document.getElementById("btnTheme");
+
+      function openMenu() {
+        sidebar.classList.add("open");
+        overlay.classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+      function closeMenu() {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("show");
+        document.body.style.overflow = "";
+      }
+
+      btnMenu.addEventListener("click", openMenu);
+      overlay.addEventListener("click", closeMenu);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+
+      btnTheme.addEventListener("click", toggleTheme);
+
       const ROLES = [
-        {
-          group: "Audio y Video",
-          key: "audio_video",
-          title: "🎧 Audio y Video",
-        },
-        {
-          group: "Audio y Video",
-          key: "microfonistas",
-          title: "🎤 Microfonistas",
-        },
+        { group: "Audio y Video", key: "audio_video", title: "🎧 Audio y Video" },
+        { group: "Audio y Video", key: "microfonistas", title: "🎤 Microfonistas" },
         { group: "Audio y Video", key: "plataforma", title: "📖 Plataforma" },
         { group: "Acomodadores", key: "entrada", title: "🤝 Entrada" },
         { group: "Acomodadores", key: "auditorio", title: "🪑 Auditorio" },
@@ -325,8 +436,8 @@
           label: "23 Feb al 01 Mar",
           start: new Date(2026, 1, 23),
           end: new Date(2026, 2, 1, 23, 59),
-          isAsamblea: true
-        }
+          isAsamblea: true,
+        },
       ];
 
       function render() {
@@ -339,9 +450,7 @@
           const card = document.createElement("div");
           card.className = `week-entry ${isCurrent ? "week-current" : ""}`;
 
-          let htmlBlock = isCurrent
-            ? `<span class="current-badge">Esta Semana</span>`
-            : "";
+          let htmlBlock = isCurrent ? `<span class="current-badge">Esta Semana</span>` : "";
           htmlBlock += `<div class="week-header">Semana del ${week.label}</div>`;
 
           if (week.isAsamblea) {
@@ -370,8 +479,7 @@
 
         setTimeout(() => {
           const current = document.querySelector(".week-current");
-          if (current)
-            current.scrollIntoView({ behavior: "smooth", block: "center" });
+          if (current) current.scrollIntoView({ behavior: "smooth", block: "center" });
         }, 350);
       }
 
