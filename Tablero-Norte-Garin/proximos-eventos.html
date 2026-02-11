@@ -24,14 +24,13 @@
 
     <style>
       :root {
-        /* Cambiá solo esta URL por tu imagen final */
-        --hero-image: url("https://images.unsplash.com/photo-1520975693411-6edc5a0fdd67?auto=format&fit=crop&w=1600&q=80");
+        /* ✅ Banner local (carpeta img del repo) */
+        --hero-image: url("img/file_00000000174471f5b349ad702b47ce01.png");
       }
       html,
       body {
         font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       }
-      /* Fondo general tipo "app" */
       body {
         background: radial-gradient(1200px 600px at 20% -10%, rgba(59, 130, 246, 0.25), transparent 60%),
           radial-gradient(900px 500px at 90% 10%, rgba(14, 165, 233, 0.18), transparent 55%),
@@ -43,7 +42,6 @@
           linear-gradient(180deg, #070b14, #050710 55%, #04050c);
       }
 
-      /* HERO estilo "como tu captura": menos alto + texto abajo-izq + degradado suave solo desde abajo */
       .hero {
         background-image: var(--hero-image);
         background-size: cover;
@@ -56,10 +54,6 @@
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
       }
-      /* Mejora visual del texto en imagen (se lee sin tapar tanto) */
-      .hero-title {
-        text-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
-      }
     </style>
 
     <script>
@@ -67,9 +61,7 @@
         darkMode: "class",
         theme: {
           extend: {
-            borderRadius: {
-              xl2: "1.25rem",
-            },
+            borderRadius: { xl2: "1.25rem" },
           },
         },
       };
@@ -78,94 +70,88 @@
 
   <body class="min-h-full text-slate-100">
     <main class="mx-auto max-w-md px-4 pt-5 pb-10">
-      <!-- HERO -->
+      <!-- CONTENEDOR -->
       <section class="relative overflow-hidden rounded-[2rem] glass">
-        <!-- Imagen (ajustada para que NO sea tan alta como antes) -->
-        <div class="hero relative h-[240px] sm:h-[280px]">
-          <!-- Controles flotantes -->
-          <div class="absolute left-4 top-4 z-20 flex items-center gap-3">
-            <button
-              class="h-12 w-12 rounded-2xl bg-black/35 ring-1 ring-white/10 backdrop-blur-md grid place-items-center hover:bg-black/40 active:scale-[0.98] transition"
-              aria-label="Abrir menú"
-              type="button"
-              id="btnMenu"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              </svg>
-            </button>
-          </div>
+        <!-- HERO (más bajo, como Vida y Ministerio) -->
+        <div class="hero relative h-[170px] sm:h-[210px]">
+          <!-- Botones flotantes -->
+          <button
+            class="absolute left-4 top-4 z-20 h-12 w-12 rounded-2xl bg-black/35 ring-1 ring-white/10 backdrop-blur-md grid place-items-center hover:bg-black/40 active:scale-[0.98] transition"
+            aria-label="Abrir menú"
+            type="button"
+            id="btnMenu"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
 
-          <div class="absolute right-4 top-4 z-20">
-            <button
-              class="h-12 w-12 rounded-2xl bg-black/35 ring-1 ring-white/10 backdrop-blur-md grid place-items-center hover:bg-black/40 active:scale-[0.98] transition"
-              aria-label="Cambiar tema"
-              type="button"
-              id="btnTheme"
-              title="Cambiar tema"
-            >
-              <span id="themeIcon" class="text-xl">☀️</span>
-            </button>
-          </div>
+          <button
+            class="absolute right-4 top-4 z-20 h-12 w-12 rounded-2xl bg-black/35 ring-1 ring-white/10 backdrop-blur-md grid place-items-center hover:bg-black/40 active:scale-[0.98] transition"
+            aria-label="Cambiar tema"
+            type="button"
+            id="btnTheme"
+            title="Cambiar tema"
+          >
+            <span id="themeIcon" class="text-xl">☀️</span>
+          </button>
 
-          <!-- Degradado SOLO desde abajo (como tu captura) -->
-          <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+          <!-- Degradado SOLO desde abajo -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/15 to-transparent"></div>
 
-            <!-- Texto abajo-izquierda (simplificado y más limpio) -->
-            <div class="absolute bottom-0 left-0 right-0 z-10 p-6">
-              <h1 class="hero-title text-[38px] leading-[1.05] font-black tracking-tight text-white">
-                PRÓXIMOS EVENTOS
-              </h1>
-
-              <p class="mt-1 text-sm font-extrabold tracking-[0.35em] text-sky-300 uppercase">
-                NORTE GARÍN
-              </p>
-            </div>
+          <!-- Texto (más chico y compacto) -->
+          <div class="absolute bottom-0 left-0 right-0 z-10 px-5 pb-5">
+            <h1 class="text-[26px] leading-[1.05] font-black tracking-tight text-white">
+              PRÓXIMOS EVENTOS
+            </h1>
+            <p class="mt-1 text-[12px] font-extrabold tracking-[0.32em] text-sky-300 uppercase">
+              NORTE GARÍN
+            </p>
           </div>
         </div>
 
-        <!-- Barra inferior (tabs) -->
+        <!-- Tabs (más aire + no se aplasta en móvil) -->
         <div class="px-5 pb-5 pt-4">
-          <div class="flex items-center gap-3">
-            <div class="flex-1 rounded-2xl bg-white/5 ring-1 ring-white/10 p-2">
-              <div class="flex items-center justify-between gap-2">
-                <button
-                  class="flex-1 rounded-xl px-3 py-2 text-xs font-extrabold tracking-widest uppercase text-sky-300 bg-sky-500/10 ring-1 ring-sky-400/20"
-                  type="button"
-                >
-                  Eventos futuros
-                </button>
-                <button
-                  class="rounded-xl px-4 py-2 text-xs font-extrabold tracking-widest uppercase text-slate-200/85 bg-white/5 ring-1 ring-white/10"
-                  type="button"
-                >
-                  3 próximos
-                </button>
-              </div>
+          <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-2">
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                class="rounded-xl px-3 py-2 text-xs font-extrabold tracking-widest uppercase text-sky-300 bg-sky-500/10 ring-1 ring-sky-400/20"
+                type="button"
+              >
+                Eventos futuros
+              </button>
+              <button
+                class="rounded-xl px-3 py-2 text-xs font-extrabold tracking-widest uppercase text-slate-200/85 bg-white/5 ring-1 ring-white/10"
+                type="button"
+              >
+                3 próximos
+              </button>
             </div>
           </div>
 
-          <!-- Cards -->
+          <!-- Cards (más padding + layout que no corta en móvil) -->
           <div class="mt-4 space-y-4">
             <!-- Card 1 -->
             <article class="relative overflow-hidden rounded-[1.75rem] bg-white/5 ring-1 ring-white/10 p-5">
               <div class="absolute inset-y-0 left-0 w-[5px] bg-sky-500/80"></div>
 
-              <div class="flex items-start justify-between gap-4">
-                <div>
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div class="min-w-0">
                   <p class="text-xs tracking-[0.25em] uppercase text-slate-200/70 font-bold">
                     Jueves, 2 de abril de 2026
                   </p>
-                  <h2 class="mt-2 text-3xl font-extrabold tracking-tight">Conmemoración</h2>
 
-                  <div class="mt-3 inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1">
+                  <h2 class="mt-2 text-[30px] leading-[1.05] font-extrabold tracking-tight break-words">
+                    Conmemoración
+                  </h2>
+
+                  <div class="mt-3 inline-flex max-w-full items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1">
                     <span class="text-sm" aria-hidden="true">📅</span>
                     <span class="text-sm font-bold text-slate-200/90">01/04/2026</span>
                   </div>
                 </div>
 
-                <div class="shrink-0 rounded-full bg-white/5 ring-1 ring-white/10 px-4 py-3 text-center">
+                <div class="shrink-0 self-start rounded-full bg-white/5 ring-1 ring-white/10 px-4 py-3 text-center">
                   <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">Todo</p>
                   <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">el</p>
                   <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">día</p>
@@ -177,17 +163,18 @@
             <article class="relative overflow-hidden rounded-[1.75rem] bg-white/5 ring-1 ring-white/10 p-5">
               <div class="absolute inset-y-0 left-0 w-[5px] bg-sky-500/55"></div>
 
-              <div class="flex items-start justify-between gap-4">
-                <div>
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div class="min-w-0">
                   <p class="text-xs tracking-[0.25em] uppercase text-slate-200/70 font-bold">
                     Domingo, 10 de mayo de 2026
                   </p>
-                  <h2 class="mt-2 text-3xl font-extrabold tracking-tight">
+
+                  <h2 class="mt-2 text-[26px] leading-[1.12] font-extrabold tracking-tight break-words">
                     Asamblea de circuito con el representante de la sucursal
                   </h2>
                 </div>
 
-                <div class="shrink-0 rounded-full bg-white/5 ring-1 ring-white/10 px-4 py-3 text-center">
+                <div class="shrink-0 self-start rounded-full bg-white/5 ring-1 ring-white/10 px-4 py-3 text-center">
                   <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">Todo</p>
                   <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">el</p>
                   <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">día</p>
@@ -195,24 +182,26 @@
               </div>
             </article>
 
-            <!-- Card 3 (ejemplo) -->
+            <!-- Card 3 -->
             <article class="relative overflow-hidden rounded-[1.75rem] bg-white/5 ring-1 ring-white/10 p-5">
               <div class="absolute inset-y-0 left-0 w-[5px] bg-sky-500/35"></div>
 
-              <div class="flex items-start justify-between gap-4">
-                <div>
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div class="min-w-0">
                   <p class="text-xs tracking-[0.25em] uppercase text-slate-200/70 font-bold">
                     Sábado, 20 de junio de 2026
                   </p>
-                  <h2 class="mt-2 text-3xl font-extrabold tracking-tight">
+
+                  <h2 class="mt-2 text-[26px] leading-[1.12] font-extrabold tracking-tight break-words">
                     Limpieza y mantenimiento del Salón
                   </h2>
-                  <p class="mt-2 text-sm text-slate-200/75">
+
+                  <p class="mt-2 text-sm text-slate-200/75 break-words">
                     Punto de encuentro: Salón del Reino · 09:00 hs
                   </p>
                 </div>
 
-                <div class="shrink-0 rounded-full bg-white/5 ring-1 ring-white/10 px-4 py-3 text-center">
+                <div class="shrink-0 self-start rounded-full bg-white/5 ring-1 ring-white/10 px-4 py-3 text-center">
                   <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">Mañana</p>
                 </div>
               </div>
@@ -221,7 +210,6 @@
         </div>
       </section>
 
-      <!-- Nota -->
       <p class="mt-5 text-xs text-slate-200/60 leading-relaxed">
         Para cambiar la imagen del banner: editá
         <code class="px-1 py-0.5 rounded bg-white/5 ring-1 ring-white/10">--hero-image</code>
@@ -239,7 +227,6 @@
         const isDark = document.documentElement.classList.contains("dark");
         themeIcon.textContent = isDark ? "🌙" : "☀️";
       }
-
       syncIcon();
 
       btnTheme.addEventListener("click", () => {
