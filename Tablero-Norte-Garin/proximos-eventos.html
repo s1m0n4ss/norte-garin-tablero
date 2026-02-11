@@ -5,27 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Próximos eventos | Norte Garín</title>
 
+    <!-- Anti "flash" de tema (IGUAL que index) -->
     <script>
       (function () {
         const saved = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const prefersDark =
+          window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
         const useDark = saved ? saved === "dark" : prefersDark;
         if (useDark) document.documentElement.classList.add("dark");
       })();
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
+      /* ====== VARIABLES (IGUAL ESTILO index) ====== */
       :root {
-        --bg-main: #f1f5f9; --bg-card: #ffffff; --text-primary: #0f172a; --text-muted: #64748b;
-        --border: rgba(0, 0, 0, 0.08); --accent: #3b82f6; --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
+        --bg-main: #f1f5f9;
+        --bg-card: #ffffff;
+        --text-primary: #0f172a;
+        --text-muted: #64748b;
+        --border: rgba(0, 0, 0, 0.08);
+        --accent: #3b82f6;
+        --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
         --btn-bg: rgba(255, 255, 255, 0.85);
       }
       html.dark {
-        --bg-main: #0a0f1d; --bg-card: #121a2a; --text-primary: #f8fafc; --text-muted: #94a3b8;
-        --border: rgba(255, 255, 255, 0.06); --accent: #3b82f6; --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+        --bg-main: #0a0f1d;
+        --bg-card: #121a2a;
+        --text-primary: #f8fafc;
+        --text-muted: #94a3b8;
+        --border: rgba(255, 255, 255, 0.06);
+        --accent: #3b82f6;
+        --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
         --btn-bg: rgba(18, 26, 42, 0.82);
       }
 
@@ -39,7 +55,11 @@
 
       .page-bg {
         min-height: 100vh;
-        background-image: radial-gradient(900px 500px at 50% -10%, rgba(59, 130, 246, 0.16), transparent 60%);
+        background-image: radial-gradient(
+          900px 520px at 50% -10%,
+          rgba(59, 130, 246, 0.16),
+          transparent 60%
+        );
       }
 
       .btn-surface {
@@ -50,15 +70,41 @@
         backdrop-filter: blur(8px);
         transition: all 0.15s ease;
       }
-      .btn-surface:active { transform: scale(0.95); }
+      .btn-surface:active {
+        transform: scale(0.95);
+      }
 
-      #sidebar { transition: transform 0.3s ease-in-out; background: var(--bg-card); z-index: 100; }
-      .nav-link { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 18px; color: var(--text-muted); transition: all 0.2s ease; font-weight: 800; text-decoration: none; }
-      .nav-link.active { background: rgba(59, 130, 246, 0.12); color: var(--accent); font-weight: 900; border: 1px solid rgba(59, 130, 246, 0.2); }
+      #sidebar {
+        transition: transform 0.3s ease-in-out;
+        background: var(--bg-card);
+        z-index: 100;
+      }
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        border-radius: 18px;
+        color: var(--text-muted);
+        transition: all 0.2s ease;
+      }
+      .nav-link.active {
+        background: rgba(59, 130, 246, 0.12);
+        color: var(--accent);
+        font-weight: 800;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+      }
 
-      .card { background-color: var(--bg-card); border: 1px solid var(--border); box-shadow: var(--shadow); position: relative; }
+      .card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        position: relative;
+      }
 
-      .muted { color: var(--text-muted); }
+      .muted {
+        color: var(--text-muted);
+      }
 
       .pill {
         display: inline-flex;
@@ -67,7 +113,7 @@
         padding: 8px 12px;
         border-radius: 999px;
         border: 1px solid rgba(59, 130, 246, 0.22);
-        background: rgba(59, 130, 246, 0.10);
+        background: rgba(59, 130, 246, 0.1);
         color: var(--accent);
         font-weight: 900;
         font-size: 11px;
@@ -76,8 +122,12 @@
         white-space: nowrap;
       }
 
-      .event-card { border-left: 4px solid var(--accent); }
-      .event-title { letter-spacing: -0.02em; }
+      .event-card {
+        border-left: 4px solid var(--accent);
+      }
+      .event-title {
+        letter-spacing: -0.02em;
+      }
       .tag {
         font-size: 10px;
         font-weight: 900;
@@ -88,22 +138,37 @@
         border: 1px solid var(--border);
         color: var(--text-muted);
         background: rgba(2, 6, 23, 0.03);
+        line-height: 1;
       }
-      html.dark .tag { background: rgba(255, 255, 255, 0.04); }
+      html.dark .tag {
+        background: rgba(255, 255, 255, 0.04);
+      }
     </style>
   </head>
 
   <body class="page-bg">
     <!-- overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity duration-300"></div>
+    <div
+      id="overlay"
+      class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity duration-300"
+    ></div>
 
     <!-- sidebar -->
-    <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 transform -translate-x-full shadow-2xl p-8">
+    <aside
+      id="sidebar"
+      class="fixed top-0 left-0 h-full w-72 transform -translate-x-full shadow-2xl p-8"
+    >
       <div class="flex items-center gap-3 mb-10">
-        <div class="h-10 w-10 rounded-2xl bg-blue-500/20 flex items-center justify-center font-black text-blue-500">✦</div>
+        <div
+          class="h-10 w-10 rounded-2xl bg-blue-500/20 flex items-center justify-center font-black text-blue-500"
+        >
+          ✦
+        </div>
         <div>
           <h2 class="font-extrabold leading-tight">Norte Garín</h2>
-          <p class="text-[10px] opacity-60 uppercase font-bold tracking-widest">Digital Board</p>
+          <p class="text-[10px] opacity-60 uppercase font-bold tracking-widest">
+            Digital Board
+          </p>
         </div>
       </div>
 
@@ -120,54 +185,90 @@
       </nav>
     </aside>
 
-    <!-- header / hero -->
-    <header class="p-6 max-w-lg mx-auto">
-      <div class="relative w-full h-64 rounded-[40px] overflow-hidden shadow-2xl group">
-        <!-- ✅ TU IMAGEN -->
+    <!-- HEADER / BANNER (más bajo, tipo Vida y Ministerio) -->
+    <header class="p-6 max-w-md mx-auto">
+      <div class="relative w-full h-40 rounded-[32px] overflow-hidden shadow-2xl group">
+        <!-- ✅ TU IMAGEN (colocada en /img/) -->
         <img
           src="img/file_00000000174471f5b349ad702b47ce01.png"
           class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
           alt="Próximos eventos"
         />
-        <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-black/80"></div>
 
+        <!-- overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/20 to-black/80"></div>
+
+        <!-- botones -->
         <div class="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
-          <button id="btnMenu" class="btn-surface p-3 rounded-2xl active:scale-90" aria-label="Menú">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <button
+            id="btnMenu"
+            class="btn-surface p-3 rounded-2xl active:scale-90"
+            aria-label="Menú"
+            type="button"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <line x1="4" x2="20" y1="12" y2="12" />
               <line x1="4" x2="20" y1="6" y2="6" />
               <line x1="4" x2="20" y1="18" y2="18" />
             </svg>
           </button>
 
-          <button id="btnTheme" class="btn-surface p-3 rounded-2xl active:scale-90" aria-label="Tema">
+          <button
+            id="btnTheme"
+            class="btn-surface p-3 rounded-2xl active:scale-90"
+            aria-label="Tema"
+            type="button"
+          >
             <span id="theme-icon">🌙</span>
           </button>
         </div>
 
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6 mt-6">
-          <div class="mb-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/90 text-[10px] font-black tracking-widest uppercase">
-            Calendario de la congregación
-          </div>
-          <h1 class="text-4xl font-black tracking-tighter leading-none text-white drop-shadow-lg uppercase">
+        <!-- texto (SIN "calendario de la congregación") -->
+        <div class="absolute inset-0 p-4 flex flex-col justify-end z-10">
+          <h1 class="text-white text-2xl font-black uppercase tracking-tighter drop-shadow-lg leading-none">
             Próximos<br />Eventos
           </h1>
-          <p id="subtitle" class="text-white/70 text-[11px] font-bold mt-2 uppercase tracking-tighter"></p>
+          <p
+            id="subtitle"
+            class="text-white/70 text-[11px] font-bold mt-2 uppercase tracking-tighter"
+          ></p>
         </div>
       </div>
     </header>
 
-    <main class="max-w-lg mx-auto px-6">
-      <section class="card rounded-[35px] p-6 mb-8 border-t-4 shadow-xl -mt-14 relative z-10 overflow-hidden" style="border-top-color: var(--accent)">
+    <main class="max-w-md mx-auto px-6">
+      <section
+        class="card rounded-[35px] p-6 mb-8 border-t-4 shadow-xl -mt-10 relative z-10 overflow-hidden"
+        style="border-top-color: var(--accent)"
+      >
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-[10px] font-black uppercase tracking-[0.15em] flex items-center gap-2" style="color: var(--accent)">
+          <h2
+            class="text-[10px] font-black uppercase tracking-[0.15em] flex items-center gap-2"
+            style="color: var(--accent)"
+          >
             <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background: var(--accent)"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2" style="background: var(--accent)"></span>
+              <span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                style="background: var(--accent)"
+              ></span>
+              <span
+                class="relative inline-flex rounded-full h-2 w-2"
+                style="background: var(--accent)"
+              ></span>
             </span>
             Eventos futuros
           </h2>
+
           <span id="countPill" class="pill">0 próximos</span>
         </div>
 
@@ -176,7 +277,7 @@
     </main>
 
     <script>
-      // ===== Tema + menú (igual que index)
+      // ===== Tema + menú (IGUAL que index) =====
       const html = document.documentElement;
       const themeIcon = document.getElementById("theme-icon");
       const sidebar = document.getElementById("sidebar");
@@ -205,10 +306,16 @@
       };
 
       // =========================
-      //   DATOS (eventos correctos)
+      //   DATOS (solo los que ya teníamos)
       // =========================
       const EVENTS = [
-        { title: "Conmemoración", allDay: true, start: "2026-04-02", end: "2026-04-02", location: "" },
+        {
+          title: "Conmemoración",
+          allDay: true,
+          start: "2026-04-02",
+          end: "2026-04-02",
+          location: "",
+        },
         {
           title: "Asamblea de circuito con el representante de la sucursal",
           allDay: true,
@@ -225,7 +332,7 @@
         },
       ];
 
-      // ===== Helpers
+      // ===== Helpers =====
       function parseISO(iso) {
         const [y, m, d] = String(iso).split("-").map(Number);
         return new Date(y, (m || 1) - 1, d || 1, 0, 0, 0, 0);
@@ -239,19 +346,29 @@
         return end.getTime() >= today.getTime();
       }
 
-      function fmtDateRange(ev) {
+      function fmtDateLine(ev) {
         const locale = "es-AR";
         const s = parseISO(ev.start);
         const e = parseISO(ev.end || ev.start);
         const sameDay = s.getTime() === e.getTime();
 
-        if (sameDay) {
-          return s.toLocaleDateString(locale, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-        }
+        const sTxt = s.toLocaleDateString(locale, {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
 
-        const sShort = s.toLocaleDateString(locale, { day: "numeric", month: "short" });
-        const eTxt = e.toLocaleDateString(locale, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-        return `${sShort} al ${eTxt}`;
+        if (sameDay) return sTxt;
+
+        const eTxt = e.toLocaleDateString(locale, {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+
+        return `${sTxt} — ${eTxt}`;
       }
 
       function fmtTime(ev) {
@@ -259,16 +376,7 @@
         return ev.time ? ev.time : "";
       }
 
-      function esc(s) {
-        return String(s || "")
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#039;");
-      }
-
-      // ===== Render
+      // ===== Render =====
       const $events = document.getElementById("events");
       const $count = document.getElementById("countPill");
 
@@ -278,7 +386,6 @@
           .sort((a, b) => parseISO(a.start) - parseISO(b.start));
 
         $count.textContent = `${upcoming.length} próximos`;
-
         document.getElementById("subtitle").textContent =
           upcoming.length ? `Siguientes ${upcoming.length} eventos` : "No hay eventos cargados";
 
@@ -291,30 +398,46 @@
           return;
         }
 
-        $events.innerHTML = upcoming.map((ev) => {
-          const dateLine = esc(fmtDateRange(ev));
-          const timeLine = esc(fmtTime(ev));
-          const loc = esc((ev.location || "").trim());
+        $events.innerHTML = upcoming
+          .map((ev) => {
+            const dateLine = fmtDateLine(ev);
+            const timeLine = fmtTime(ev);
+            const loc = (ev.location || "").trim();
 
-          return `
-            <article class="card event-card rounded-[26px] p-5 mb-4">
-              <div class="flex items-start justify-between gap-3">
-                <div>
-                  <p class="text-[10px] font-black uppercase tracking-[0.15em] muted">${dateLine}</p>
-                  <h3 class="event-title font-extrabold text-lg mt-2 leading-tight">${esc(ev.title)}</h3>
+            const startISO = ev.start; // mantener exacto lo cargado
+            const startDate = parseISO(startISO);
+
+            const hasRange = ev.end && ev.end !== ev.start;
+            let rangeDays = "";
+            if (hasRange) {
+              const days = Math.round((parseISO(ev.end) - parseISO(ev.start)) / 86400000) + 1;
+              rangeDays = `<span class="pill">⏳ ${days} días</span>`;
+            }
+
+            return `
+              <article class="card event-card rounded-[26px] p-5 mb-4">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <p class="text-[10px] font-black uppercase tracking-[0.15em] muted">${dateLine}</p>
+                    <h3 class="event-title font-extrabold text-lg mt-2 leading-tight">${ev.title}</h3>
+                  </div>
+                  <span class="tag">${timeLine || "&nbsp;"}</span>
                 </div>
-                <span class="tag">${timeLine || "&nbsp;"}</span>
-              </div>
 
-              ${loc ? `<p class="mt-3 text-sm font-bold muted">${loc}</p>` : ""}
+                ${loc ? `<p class="mt-3 text-sm font-bold muted">${loc}</p>` : ""}
 
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="pill">📅 ${parseISO(ev.start).toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit", year: "numeric" })}</span>
-                ${ev.end && ev.end !== ev.start ? `<span class="pill">⏳ ${Math.round((parseISO(ev.end) - parseISO(ev.start)) / 86400000) + 1} días</span>` : ""}
-              </div>
-            </article>
-          `;
-        }).join("");
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="pill">📅 ${startDate.toLocaleDateString("es-AR", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric",
+                  })}</span>
+                  ${rangeDays}
+                </div>
+              </article>
+            `;
+          })
+          .join("");
       }
 
       render();
