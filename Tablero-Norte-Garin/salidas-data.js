@@ -117,18 +117,17 @@
       ],
 
       10: [
-        // MODIFICADO: Uruguay y Centenario / Territorio 14
         { h: "09:00", l: "Uruguay y Centenario", c: "Diego Sarraute", t: "14" },
         { type: "reunion", l: "Reunión 19:30 pm (Visita del Superintendente)" },
       ],
 
-      // ===== Visita del Superintendente (11 al 14)
+      // ===== Visita del Superintendente (11 al 14) =====
       11: [
         {
-          h: "10:00",
+          h: "09:30", // ✅ Ajustado
           l: "Familia Miño",
           c: "Mauricio Tierno",
-          t: "12, 13", // MODIFICADO: Agregado territorio 13
+          t: "12, 13",
           maps: mapsSearch("Paso 842, Garín, Buenos Aires"),
         },
         {
@@ -142,7 +141,7 @@
 
       12: [
         {
-          h: "10:00",
+          h: "09:30", // ✅ Ajustado
           l: "Hna. Cintia Cancino",
           c: "Mauricio Tierno",
           t: "30, 32",
@@ -152,7 +151,7 @@
 
       13: [
         {
-          h: "10:00",
+          h: "09:30", // ✅ Ajustado
           l: "Familia Segovia",
           c: "Mauricio Tierno",
           t: "18",
@@ -169,7 +168,7 @@
 
       14: [
         {
-          h: "10:00",
+          h: "09:30", // ✅ Ajustado
           l: "Salón del Reino",
           c: "Mauricio Tierno",
           t: "3, 4, 6, 10",
@@ -188,9 +187,9 @@
       16: [
         {
           h: "10:30",
-          l: "Francia y San Martín", // MODIFICADO: Cambio de punto de encuentro
+          l: "Francia y San Martín",
           c: "Diego Sarraute",
-          t: "14", // Se mantiene territorio 14
+          t: "14",
         },
       ],
 
