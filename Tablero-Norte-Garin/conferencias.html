@@ -244,20 +244,16 @@
                   <path d="m15 18-6-6 6-6" />
                 </svg>
               </a>
-              <button onclick="toggleTheme()" class="btn-header">
+              <button id="themeBtn" class="btn-header" type="button">
                 <span id="theme-icon">🌙</span>
               </button>
             </div>
 
             <div class="text-white">
-              <h1
-                class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg"
-              >
+              <h1 class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg">
                 Conferencias
               </h1>
-              <p
-                class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400 drop-shadow-md"
-              >
+              <p class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400 drop-shadow-md">
                 Programa 2026
               </p>
             </div>
@@ -270,9 +266,6 @@
       <main id="mainContainer"></main>
     </div>
 
-    <!-- Carga de datos externos -->
-    <script src="conferencias-data.js"></script>
-
     <script>
       const html = document.documentElement;
       const themeIcon = document.getElementById("theme-icon");
@@ -282,48 +275,105 @@
       }
       function toggleTheme() {
         html.classList.toggle("dark");
-        localStorage.setItem(
-          "theme",
-          html.classList.contains("dark") ? "dark" : "light",
-        );
+        localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
         syncThemeIcon();
       }
+      document.getElementById("themeBtn").addEventListener("click", toggleTheme);
       syncThemeIcon();
 
-      // Datos: ahora vienen de conferencias-data.js
-      const data = window.CONFERENCIAS_DATA || [];
-      if (!data.length) {
-        console.warn(
-          "CONFERENCIAS_DATA vacío o no cargó conferencias-data.js",
-        );
+      // --- CARGA ROBUSTA DE DATOS ---
+      const DATA_CANDIDATE_PATHS = [
+        "./conferencias-data.js",
+        "./js/conferencias-data.js",
+        "./data/conferencias-data.js",
+        "../conferencias-data.js",
+      ];
+
+      function showDataError(tried, lastErr) {
+        const container = document.getElementById("mainContainer");
+        const list = tried.map(p => `<li class="text-xs opacity-80">${p}</li>`).join("");
+        container.innerHTML = `
+          <section class="month-section">
+            <header class="month-header"><h2 class="month-title">No se pudo cargar datos</h2></header>
+            <article class="card">
+              <div class="info">
+                <h3>Falta conferencias-data.js o no está en la ruta correcta</h3>
+                <div class="details">
+                  <p>Tu archivo <b>sí</b> está bien (debe definir <b>window.CONFERENCIAS_DATA</b>), pero el navegador no lo está encontrando.</p>
+                  <p class="mt-2"><b>Rutas intentadas:</b></p>
+                  <ul class="mt-1">${list}</ul>
+                  ${lastErr ? `<p class="mt-2 text-xs opacity-70">Detalle: ${String(lastErr)}</p>` : ""}
+                </div>
+              </div>
+            </article>
+          </section>
+        `;
+      }
+
+      function loadScript(src) {
+        return new Promise((resolve, reject) => {
+          const s = document.createElement("script");
+          // cache-bust para evitar que quede una versión vieja
+          const withBust = src + (src.includes("?") ? "&" : "?") + "v=" + Date.now();
+          s.src = withBust;
+          s.async = true;
+          s.onload = () => resolve(src);
+          s.onerror = () => reject(new Error("No se pudo cargar: " + src));
+          document.head.appendChild(s);
+        });
+      }
+
+      async function ensureDataLoaded() {
+        const tried = [];
+        let lastErr = null;
+
+        for (const path of DATA_CANDIDATE_PATHS) {
+          tried.push(path);
+          try {
+            await loadScript(path);
+            if (Array.isArray(window.CONFERENCIAS_DATA) && window.CONFERENCIAS_DATA.length) {
+              return { ok: true, tried };
+            }
+            // Si el script cargó pero no dejó datos, probamos igual otras rutas (por si cargó un archivo equivocado).
+            lastErr = new Error("Script cargó pero CONFERENCIAS_DATA no apareció o está vacío: " + path);
+          } catch (e) {
+            lastErr = e;
+          }
+        }
+
+        return { ok: false, tried, lastErr };
+      }
+
+      function parseISO(y, mIdx, dStr) {
+        // dStr viene "04" -> number 4
+        const d = parseInt(dStr, 10);
+        const dt = new Date(y, mIdx, d);
+        dt.setHours(0, 0, 0, 0);
+        return dt;
       }
 
       function render() {
+        const data = window.CONFERENCIAS_DATA || [];
         const container = document.getElementById("mainContainer");
         const now = new Date();
         now.setHours(0, 0, 0, 0);
+
         let foundNext = false;
 
         container.innerHTML = data
-          .map(
-            (m) => `
-          <section class="month-section">
-            <header class="month-header"><h2 class="month-title">${m.month}</h2></header>
-            <div class="vienen-list">
-              ${m.vienen
-                .map((v) => {
-                  const itemDate = new Date(
-                    m.year,
-                    m.monthIdx,
-                    parseInt(v.date),
-                  );
-                  const isPast = itemDate < now;
-                  let isNext = false;
-                  if (!isPast && !foundNext) {
-                    isNext = true;
-                    foundNext = true;
-                  }
-                  return `
+          .map((m) => {
+            const vienenHtml = (m.vienen || [])
+              .map((v) => {
+                const itemDate = parseISO(m.year, m.monthIdx, v.date);
+                const isPast = itemDate < now;
+
+                let isNext = false;
+                if (!isPast && !foundNext) {
+                  isNext = true;
+                  foundNext = true;
+                }
+
+                return `
                   <article class="card ${isNext ? "is-current" : ""}" style="${isPast ? "opacity:0.45; filter: grayscale(1);" : ""}">
                     <div class="date-circle">${v.date}</div>
                     <div class="info">
@@ -336,36 +386,58 @@
                         <p class="mt-1 font-bold text-emerald-500">${v.day} – ${v.time}</p>
                       </div>
                     </div>
-                  </article>`;
-                })
-                .join("")}
-            </div>
-            ${m.salen.length ? `<div class="salen-title mt-2">Discursantes que salen</div>` : ""}
-            <div class="pb-4">
-              ${m.salen
-                .map(
-                  (s) => `
-                <div class="salen-item">
-                  <span class="font-bold">${s.day} ${s.date}:</span> ${s.name}
-                  <span class="opacity-60 text-xs ml-1">(${s.extra})</span>
+                  </article>
+                `;
+              })
+              .join("");
+
+            const salen = m.salen || [];
+            const salenTitle = salen.length ? `<div class="salen-title mt-2">Discursantes que salen</div>` : "";
+            const salenHtml = salen
+              .map(
+                (s) => `
+                  <div class="salen-item">
+                    <span class="font-bold">${s.day} ${s.date}:</span> ${s.name}
+                    <span class="opacity-60 text-xs ml-1">(${s.extra})</span>
+                  </div>
+                `
+              )
+              .join("");
+
+            return `
+              <section class="month-section">
+                <header class="month-header">
+                  <h2 class="month-title">${m.month}</h2>
+                </header>
+
+                <div class="vienen-list">
+                  ${vienenHtml}
                 </div>
-              `,
-                )
-                .join("")}
-            </div>
-          </section>
-        `,
-          )
+
+                ${salenTitle}
+                <div class="pb-4">
+                  ${salenHtml}
+                </div>
+              </section>
+            `;
+          })
           .join("");
 
+        // Scroll al próximo
         setTimeout(() => {
           const nextItem = document.querySelector(".is-current");
-          if (nextItem)
-            nextItem.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 450);
+          if (nextItem) nextItem.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 350);
       }
 
-      document.addEventListener("DOMContentLoaded", render);
+      document.addEventListener("DOMContentLoaded", async () => {
+        const result = await ensureDataLoaded();
+        if (!result.ok) {
+          showDataError(result.tried, result.lastErr);
+          return;
+        }
+        render();
+      });
     </script>
   </body>
 </html>
