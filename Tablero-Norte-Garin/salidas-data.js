@@ -124,7 +124,7 @@
       // ===== Visita del Superintendente (11 al 14) =====
       11: [
         {
-          h: "09:30", // ✅ Ajustado
+          h: "09:30",
           l: "Familia Miño",
           c: "Mauricio Tierno",
           t: "12, 13",
@@ -141,7 +141,7 @@
 
       12: [
         {
-          h: "09:30", // ✅ Ajustado
+          h: "09:30",
           l: "Hna. Cintia Cancino",
           c: "Mauricio Tierno",
           t: "30, 32",
@@ -151,7 +151,7 @@
 
       13: [
         {
-          h: "09:30", // ✅ Ajustado
+          h: "09:30",
           l: "Familia Segovia",
           c: "Mauricio Tierno",
           t: "18",
@@ -168,7 +168,7 @@
 
       14: [
         {
-          h: "09:30", // ✅ Ajustado
+          h: "09:30",
           l: "Salón del Reino",
           c: "Mauricio Tierno",
           t: "3, 4, 6, 10",
@@ -184,9 +184,11 @@
 
       15: [{ type: "reunion", l: "Reunión 9:30 am" }],
 
+      // ✅ 16 y 17: 10:00 hs + nota "Feriado"
       16: [
+        { type: "feriado", l: "Feriado" },
         {
-          h: "10:30",
+          h: "10:00",
           l: "Francia y San Martín",
           c: "Diego Sarraute",
           t: "14",
@@ -194,7 +196,13 @@
       ],
 
       17: [
-        { h: "10:30", l: "Colón y Beliera", c: "Diego Sarraute", t: "24" },
+        { type: "feriado", l: "Feriado" },
+        {
+          h: "10:00",
+          l: "Colón y Beliera",
+          c: "Diego Sarraute",
+          t: "24",
+        },
       ],
 
       18: [{ h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" }],
