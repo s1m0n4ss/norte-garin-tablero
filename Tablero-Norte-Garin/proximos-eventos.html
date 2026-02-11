@@ -1,609 +1,426 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <title>Norte Garín | Próximos eventos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Próximos eventos | Norte Garín</title>
 
-    <!-- Evita "flash" de tema -->
     <script>
       (function () {
+        // Respeta preferencia guardada o del sistema (igual que tus otras páginas)
         const saved = localStorage.getItem("theme");
         const prefersDark =
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches;
+          window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
         const useDark = saved ? saved === "dark" : prefersDark;
         if (useDark) document.documentElement.classList.add("dark");
       })();
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
       rel="stylesheet"
     />
 
     <style>
       :root {
-        --bg-main: #f1f5f9;
-        --bg-card: #ffffff;
-        --text-primary: #0f172a;
-        --text-muted: #64748b;
-        --border: rgba(0, 0, 0, 0.08);
-        --accent: #3b82f6;
-        --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
+        --bg: #f1f5f9;
+        --card: #ffffff;
+        --text: #0f172a;
+        --muted: #64748b;
+        --border: rgba(0, 0, 0, 0.12);
+        --shadow: 0 18px 45px rgba(2, 6, 23, 0.12);
+        --btnbg: rgba(255, 255, 255, 0.85);
+        --btnborder: rgba(0, 0, 0, 0.10);
 
-        --sidebar-bg: rgba(255, 255, 255, 0.86);
-        --sidebar-border: rgba(0, 0, 0, 0.06);
-        --sidebar-text: #0f172a;
-        --sidebar-muted: #64748b;
-        --sidebar-hover-bg: rgba(59, 130, 246, 0.08);
-        --sidebar-active-bg: rgba(59, 130, 246, 0.12);
-        --sidebar-active-border: rgba(59, 130, 246, 0.22);
+        --chip: rgba(59, 130, 246, 0.12);
+        --chiptext: #2563eb;
 
-        --overlay-bg: rgba(2, 6, 23, 0.35);
+        --frame: rgba(255, 255, 255, 0.06);
       }
 
       html.dark {
-        --bg-main: #0a0f1d;
-        --bg-card: #121a2a;
-        --text-primary: #f8fafc;
-        --text-muted: #94a3b8;
-        --border: rgba(255, 255, 255, 0.06);
-        --accent: #3b82f6;
+        --bg: #0a0f1d;
+        --card: #0f172a;
+        --text: #f8fafc;
+        --muted: #94a3b8;
+        --border: rgba(255, 255, 255, 0.14);
         --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+        --btnbg: rgba(18, 26, 42, 0.82);
+        --btnborder: rgba(255, 255, 255, 0.10);
 
-        --sidebar-bg: rgba(18, 26, 42, 0.92);
-        --sidebar-border: rgba(255, 255, 255, 0.06);
-        --sidebar-text: #f8fafc;
-        --sidebar-muted: #94a3b8;
-        --sidebar-hover-bg: rgba(59, 130, 246, 0.14);
-        --sidebar-active-bg: rgba(59, 130, 246, 0.18);
-        --sidebar-active-border: rgba(59, 130, 246, 0.22);
+        --chip: rgba(59, 130, 246, 0.18);
+        --chiptext: #93c5fd;
 
-        --overlay-bg: rgba(0, 0, 0, 0.6);
+        --frame: rgba(255, 255, 255, 0.08);
       }
 
-      html,
+      * { box-sizing: border-box; }
       body {
-        height: 100%;
-      }
-
-      body {
+        margin: 0;
         font-family: "Inter", sans-serif;
-        background-color: var(--bg-main);
-        color: var(--text-primary);
-        transition: background 0.25s ease, color 0.25s ease;
+        background: var(--bg);
+        color: var(--text);
+        padding-bottom: 40px;
       }
 
       .page-bg {
         min-height: 100vh;
-        background: radial-gradient(
-            900px 520px at 50% -10%,
-            rgba(59, 130, 246, 0.16),
-            transparent 60%
-          ),
-          radial-gradient(
-            700px 420px at 15% 20%,
-            rgba(16, 185, 129, 0.1),
-            transparent 55%
-          ),
-          linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0),
-            rgba(255, 255, 255, 0)
-          );
-      }
-      html.dark .page-bg {
-        background: radial-gradient(
-            900px 520px at 50% -10%,
-            rgba(59, 130, 246, 0.22),
-            transparent 60%
-          ),
-          radial-gradient(
-            700px 420px at 80% 20%,
-            rgba(14, 165, 233, 0.12),
-            transparent 55%
-          ),
-          radial-gradient(
-            650px 420px at 10% 35%,
-            rgba(34, 197, 94, 0.08),
-            transparent 55%
-          ),
-          linear-gradient(to bottom, rgba(10, 15, 29, 1), rgba(10, 15, 29, 1));
+        background-image: radial-gradient(
+          900px 520px at 50% -10%,
+          rgba(59, 130, 246, 0.18),
+          transparent 60%
+        );
       }
 
-      .card {
-        background-color: var(--bg-card);
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding: 10px 10px 8px;
+        background: color-mix(in srgb, var(--bg) 82%, transparent);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+      }
+
+      .wrap {
+        max-width: 430px;
+        margin: 0 auto;
+      }
+
+      .hero {
+        position: relative;
+        border-radius: 28px;
+        overflow: hidden;
         border: 1px solid var(--border);
-        color: var(--text-primary);
+        box-shadow: var(--shadow);
+        height: 150px;
+        background: linear-gradient(140deg, rgba(59,130,246,.22), transparent 55%),
+                    linear-gradient(0deg, rgba(0,0,0,.65), rgba(0,0,0,.25) 55%, rgba(0,0,0,.55));
+      }
+
+      .hero-inner {
+        position: absolute;
+        inset: 0;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .hero-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .btn {
+        appearance: none;
+        border: 1px solid var(--btnborder);
+        background: var(--btnbg);
+        color: var(--text);
+        border-radius: 16px;
+        padding: 10px 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
+        cursor: pointer;
+        transition: transform .12s ease;
+        text-decoration: none;
+        font-weight: 800;
+      }
+      .btn:active { transform: scale(0.96); }
+
+      .hero-title {
+        color: #fff;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        font-size: 26px;
+        line-height: 1.05;
+        margin: 0;
+        text-shadow: 0 10px 30px rgba(0,0,0,.45);
+      }
+
+      .hero-sub {
+        margin: 6px 0 0;
+        color: rgba(255,255,255,.75);
+        font-weight: 800;
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      main {
+        padding: 16px 14px 0;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin: 8px 2px 12px;
+      }
+      .section-header h2 {
+        margin: 0;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: var(--chip);
+        color: var(--chiptext);
+        border: 1px solid color-mix(in srgb, var(--chiptext) 22%, transparent);
+        font-weight: 900;
+        font-size: 11px;
+        letter-spacing: 0.04em;
+      }
+
+      /* Tarjeta estilo captura */
+      .event-card {
+        background: color-mix(in srgb, var(--card) 88%, transparent);
+        border: 2px solid var(--frame);
+        border-radius: 22px;
+        padding: 18px 18px 16px;
+        box-shadow: 0 14px 40px rgba(0,0,0,.18);
+        margin-bottom: 14px;
+      }
+
+      .event-date {
+        color: rgba(255,255,255,.55);
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        margin: 0 0 10px;
+      }
+      html:not(.dark) .event-date { color: color-mix(in srgb, var(--muted) 92%, transparent); }
+
+      .event-title {
+        margin: 0 0 10px;
+        font-size: 30px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        line-height: 1.06;
+        color: rgba(255,255,255,.92);
+      }
+      html:not(.dark) .event-title { color: var(--text); }
+
+      .event-meta {
+        margin: 10px 0 0;
+        color: rgba(255,255,255,.60);
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1.35;
+      }
+      html:not(.dark) .event-meta { color: var(--muted); }
+
+      .event-meta .time {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 22px;
+        font-weight: 700;
+        color: rgba(255,255,255,.55);
+      }
+      html:not(.dark) .event-meta .time { color: color-mix(in srgb, var(--muted) 92%, transparent); }
+
+      .event-meta .loc {
+        display: block;
+        font-size: 22px;
+        font-weight: 600;
+        color: rgba(255,255,255,.45);
+      }
+      html:not(.dark) .event-meta .loc { color: color-mix(in srgb, var(--muted) 88%, transparent); }
+
+      .empty {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 18px;
+        color: var(--muted);
+        font-weight: 700;
         box-shadow: var(--shadow);
       }
 
-      .btn-surface {
-        background: color-mix(in oklab, var(--bg-card) 92%, transparent);
-        border: 1px solid var(--border);
-        color: var(--text-primary);
-        box-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
-        transition: transform 0.15s ease, box-shadow 0.15s ease,
-          background 0.2s ease;
-      }
-      html.dark .btn-surface {
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-      }
-      .btn-surface:hover {
-        transform: translateY(-1px);
-      }
-      .btn-surface:active {
-        transform: scale(0.96);
-      }
-
-      /* Sidebar */
-      #sidebar {
-        transition: transform 0.3s ease-in-out;
-        background: var(--sidebar-bg);
-        border-right: 1px solid var(--sidebar-border);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-      }
-      .sidebar-overlay {
-        transition: opacity 0.25s ease-in-out;
-        background: var(--overlay-bg);
-      }
-      .nav-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 18px;
-        border-radius: 18px;
-        color: var(--sidebar-muted);
-        transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease,
-          border 0.2s ease;
-        border: 1px solid transparent;
-      }
-      .nav-link:hover {
-        background: var(--sidebar-hover-bg);
-        color: var(--sidebar-text);
-        transform: translateX(2px);
-      }
-      .nav-link.active {
-        background: var(--sidebar-active-bg);
-        color: var(--sidebar-text);
-        border: 1px solid var(--sidebar-active-border);
-      }
-      .muted {
-        color: var(--text-muted);
-      }
-
-      /* Layout / responsiveness */
-      .wrap {
-        width: min(980px, calc(100vw - 32px));
-        margin: 0 auto;
-      }
-      @media (min-width: 768px) {
-        .wrap {
-          width: min(980px, calc(100vw - 48px));
-        }
-      }
-
-      /* Event cards */
-      .event-card {
-        border: 1px solid var(--border);
-        background: color-mix(in oklab, var(--bg-card) 92%, transparent);
-        border-radius: 28px;
-        padding: 18px;
-      }
-      html.dark .event-card {
-        background: rgba(255, 255, 255, 0.03);
-      }
-
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        border: 1px solid var(--border);
-        background: color-mix(in oklab, var(--bg-card) 90%, transparent);
-        padding: 8px 12px;
-        border-radius: 999px;
-        font-weight: 900;
-        font-size: 11px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-      html.dark .pill {
-        background: rgba(255, 255, 255, 0.04);
-      }
-
-      .pill-accent {
-        color: var(--accent);
-        border-color: color-mix(in oklab, var(--accent) 30%, var(--border));
-      }
-
-      .date-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 12px;
-        border-radius: 999px;
-        border: 1px solid var(--border);
-        background: color-mix(in oklab, var(--bg-card) 90%, transparent);
-        font-size: 12px;
-        font-weight: 900;
-        white-space: nowrap;
-      }
-      html.dark .date-chip {
-        background: rgba(255, 255, 255, 0.04);
-      }
-
-      @media (max-width: 420px) {
-        .event-card {
-          padding: 14px;
-          border-radius: 24px;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          scroll-behavior: auto !important;
-          transition: none !important;
-          animation: none !important;
-        }
+      /* Pequeño ajuste para pantallas chicas */
+      @media (max-width: 380px) {
+        .event-title { font-size: 26px; }
+        .event-meta .time, .event-meta .loc { font-size: 18px; }
       }
     </style>
   </head>
 
-  <body class="page-bg pb-10 overflow-x-hidden">
-    <!-- overlay -->
-    <div
-      id="overlay"
-      class="fixed inset-0 z-40 hidden sidebar-overlay opacity-0"
-      aria-hidden="true"
-    ></div>
+  <body class="page-bg">
+    <header>
+      <div class="wrap">
+        <div class="hero">
+          <div class="hero-inner">
+            <div class="hero-top">
+              <a class="btn" href="index.html" aria-label="Volver">
+                <!-- flecha -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </a>
 
-    <!-- sidebar -->
-    <aside
-      id="sidebar"
-      class="fixed top-0 left-0 h-full w-72 z-50 transform -translate-x-full shadow-2xl"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Menú principal"
-    >
-      <div class="p-8">
-        <div class="flex items-center gap-3 mb-10">
-          <div
-            class="h-10 w-10 rounded-2xl bg-blue-500/15 border border-blue-500/20 flex items-center justify-center font-black"
-            style="color: var(--sidebar-text)"
-            aria-hidden="true"
-          >
-            ✦
-          </div>
-          <div>
-            <h2
-              class="font-extrabold leading-tight"
-              style="color: var(--sidebar-text)"
-            >
-              Norte Garín
-            </h2>
-            <p class="text-xs" style="color: var(--sidebar-muted)">
-              Tablero digital
-            </p>
+              <button class="btn" id="btnTheme" type="button" aria-label="Cambiar tema">
+                <span id="themeIcon">🌙</span>
+              </button>
+            </div>
+
+            <div>
+              <h1 class="hero-title">Próximos<br />Eventos</h1>
+              <p class="hero-sub">Calendario de la congregación</p>
+            </div>
           </div>
         </div>
-
-        <nav class="space-y-2">
-          <a href="index.html" class="nav-link font-bold">Inicio</a>
-          <a href="salidas.html" class="nav-link">Salidas</a>
-          <a href="vida-ministerio.html" class="nav-link">Vida y Ministerio</a>
-          <a href="conferencias.html" class="nav-link">Discursos</a>
-          <a href="multimedia.html" class="nav-link">Multimedia</a>
-          <a href="lectores.html" class="nav-link">Lectores</a>
-          <a href="limpieza.html" class="nav-link">Limpieza</a>
-          <a href="grupos.html" class="nav-link">Grupos</a>
-          <a href="proximos-eventos.html" class="nav-link active"
-            >Próximos eventos</a
-          >
-        </nav>
-
-        <div class="mt-10 text-xs" style="color: var(--sidebar-muted)">
-          <p class="mb-2" style="color: var(--sidebar-text); font-weight: 800">
-            Consejo:
-          </p>
-          <p>Usá el modo claro/oscuro según el entorno para mejor lectura.</p>
-        </div>
-      </div>
-    </aside>
-
-    <!-- top bar -->
-    <header class="wrap pt-6">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <button
-            onclick="toggleMenu()"
-            class="btn-surface p-3 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
-            aria-label="Abrir menú"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="opacity-80"
-              aria-hidden="true"
-            >
-              <line x1="4" x2="20" y1="12" y2="12" />
-              <line x1="4" x2="20" y1="6" y2="6" />
-              <line x1="4" x2="20" y1="18" y2="18" />
-            </svg>
-          </button>
-
-          <div>
-            <h1 class="text-lg font-extrabold tracking-tight">
-              Próximos eventos
-            </h1>
-            <p id="today-date" class="muted text-xs"></p>
-          </div>
-        </div>
-
-        <button
-          onclick="toggleTheme()"
-          class="btn-surface p-3 rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60"
-          aria-label="Cambiar tema"
-          title="Cambiar tema"
-        >
-          <span id="theme-icon" aria-hidden="true">🌙</span>
-        </button>
       </div>
     </header>
 
-    <!-- content -->
-    <main class="wrap mt-6">
-      <section
-        class="card rounded-[35px] p-6 md:p-8 border-t-4 shadow-xl"
-        style="border-top-color: var(--accent)"
-      >
-        <div class="flex items-start justify-between gap-3 flex-wrap">
-          <div>
-            <p
-              class="text-xs font-black uppercase tracking-widest"
-              style="color: var(--accent)"
-            >
-              Agenda especial
-            </p>
-            <h2 class="text-2xl md:text-3xl font-black tracking-tight mt-2">
-              Proximos eventos
-            </h2>
-          </div>
+    <main class="wrap">
+      <div class="section-header">
+        <h2>Eventos futuros</h2>
+        <span class="chip" id="countChip">0</span>
+      </div>
 
-          <div class="pill pill-accent">
-            <span aria-hidden="true">🗓️</span>
-            <span id="count-pill">0 evento(s)</span>
-          </div>
-        </div>
-
-        <div id="events" class="mt-6 space-y-4"></div>
-
-        <div id="empty" class="hidden mt-8">
-          <div class="event-card">
-            <div class="font-extrabold">No hay eventos próximos</div>
-            <p class="muted text-sm font-semibold mt-2">
-              Cuando cargues nuevos eventos, aparecerán aquí automáticamente.
-            </p>
-          </div>
-        </div>
-      </section>
+      <div id="events"></div>
     </main>
 
     <script>
-      // =========================
-      // TEMA CLARO / OSCURO
-      // =========================
       const html = document.documentElement;
-      const themeIcon = document.getElementById("theme-icon");
+      const themeIcon = document.getElementById("themeIcon");
 
       function syncThemeIcon() {
         themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
       }
-      function toggleTheme() {
-        if (html.classList.contains("dark")) {
-          html.classList.remove("dark");
-          localStorage.setItem("theme", "light");
-        } else {
-          html.classList.add("dark");
-          localStorage.setItem("theme", "dark");
-        }
+      document.getElementById("btnTheme").onclick = () => {
+        html.classList.toggle("dark");
+        localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
         syncThemeIcon();
-      }
+      };
       syncThemeIcon();
 
       // =========================
-      // SIDEBAR
+      //   DATOS (tus eventos)
       // =========================
-      const sidebar = document.getElementById("sidebar");
-      const overlay = document.getElementById("overlay");
-
-      function openMenu() {
-        sidebar.classList.remove("-translate-x-full");
-        overlay.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-        requestAnimationFrame(() => overlay.classList.add("opacity-100"));
-      }
-
-      function closeMenu() {
-        sidebar.classList.add("-translate-x-full");
-        overlay.classList.remove("opacity-100");
-        document.body.style.overflow = "";
-        setTimeout(() => overlay.classList.add("hidden"), 220);
-      }
-
-      function toggleMenu() {
-        const isOpen = !sidebar.classList.contains("-translate-x-full");
-        isOpen ? closeMenu() : openMenu();
-      }
-
-      overlay.onclick = closeMenu;
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeMenu();
-      });
-
-      // =========================
-      // FECHA HEADER
-      // =========================
-      function setFriendlyDate() {
-        const now = new Date();
-        const options = {
-          weekday: "long",
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        };
-        document.getElementById("today-date").textContent =
-          now.toLocaleDateString("es-AR", options);
-      }
-
-      // =========================
-      // EVENTOS
-      // =========================
-      const EVENTOS = [
+      const EVENTS = [
         {
-          start: "2026-02-10",
-          end: "2026-02-15",
-          label: "mar 10 feb – dom 15 feb 2026",
-          title: "Visita a la congregación del superintendente de circuito",
-        },
-        {
-          start: "2026-03-01",
-          end: "2026-03-01",
-          label: "dom 1 mar 2026",
-          title: "Asamblea de circuito con el superintendente de circuito",
-        },
-        {
+          title: "Conmemoración",
+          allDay: true,
           start: "2026-04-02",
           end: "2026-04-02",
-          label: "jue 2 abr 2026",
-          title: "Conmemoración",
+          location: ""
         },
         {
+          title: "Asamblea de circuito con el representante de la sucursal",
+          allDay: true,
           start: "2026-05-10",
           end: "2026-05-10",
-          label: "dom 10 may 2026",
-          title: "Asamblea de circuito con el representante de la sucursal",
+          location: "Salón de Asambleas - Ezeiza - Ezeiza (Bs. As.-ARG)"
         },
-
-        // NUEVO
         {
+          title: "Asamblea regional",
+          allDay: true,
           start: "2026-08-21",
           end: "2026-08-23",
-          label: "vie 21 ago – dom 23 ago 2026",
-          title: "Asamblea Regional",
-          allDay: true,
-          location: "Salón de Asambleas de Ezeiza, Bs. As.",
+          location: "Salón de Asambleas de Ezeiza, Bs. As."
         },
       ];
 
-      function parseISOToLocalDate(iso) {
-        const [y, m, d] = iso.split("-").map(Number);
-        return new Date(y, m - 1, d);
+      // =========================
+      //   Render
+      // =========================
+      const $events = document.getElementById("events");
+      const $count = document.getElementById("countChip");
+
+      function parseISO(iso) {
+        const [y, m, d] = String(iso).split("-").map(Number);
+        return new Date(y, (m || 1) - 1, d || 1, 0, 0, 0, 0);
       }
-      function startOfDay(d) {
-        return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+
+      function fmtDateLine(ev) {
+        // "vie, 21 ago – dom, 23 ago 2026" o "jue, 2 abr 2026"
+        const start = parseISO(ev.start);
+        const end = parseISO(ev.end || ev.start);
+
+        const sameDay = start.getTime() === end.getTime();
+        const locale = "es-AR";
+
+        const wStart = start.toLocaleDateString(locale, { weekday: "short" });
+        const dStart = start.toLocaleDateString(locale, { day: "numeric" });
+        const mStart = start.toLocaleDateString(locale, { month: "short" });
+        const yStart = start.getFullYear();
+
+        const wEnd = end.toLocaleDateString(locale, { weekday: "short" });
+        const dEnd = end.toLocaleDateString(locale, { day: "numeric" });
+        const mEnd = end.toLocaleDateString(locale, { month: "short" });
+        const yEnd = end.getFullYear();
+
+        if (sameDay) return `${wStart}, ${dStart} ${mStart} ${yStart}`;
+
+        // Si cruza de año, mostramos ambos. Si no, mostramos uno.
+        const yearPart = (yStart === yEnd) ? ` ${yStart}` : ` ${yStart}–${yEnd}`;
+        return `${wStart}, ${dStart} ${mStart} – ${wEnd}, ${dEnd} ${mEnd}${yearPart}`;
       }
-      function diffDays(from, to) {
-        const ms = startOfDay(to) - startOfDay(from);
-        return Math.ceil(ms / (1000 * 60 * 60 * 24));
+
+      function fmtTime(ev) {
+        if (ev.allDay) return "Todo el día";
+        // Si en el futuro querés horarios: "19:30" etc.
+        // Podés agregar ev.time = "19:30" y se muestra:
+        if (ev.time) return ev.time;
+        return "";
       }
-      function fmtDateDDMMYYYY(d) {
-        const dd = String(d.getDate()).padStart(2, "0");
-        const mm = String(d.getMonth() + 1).padStart(2, "0");
-        const yyyy = d.getFullYear();
-        return `${dd}/${mm}/${yyyy}`;
+
+      function isFutureOrToday(ev) {
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        const end = parseISO(ev.end || ev.start);
+        end.setHours(0,0,0,0);
+        return end.getTime() >= today.getTime();
       }
 
       function render() {
-        setFriendlyDate();
+        const upcoming = EVENTS
+          .filter(isFutureOrToday)
+          .sort((a,b) => parseISO(a.start) - parseISO(b.start));
 
-        const cont = document.getElementById("events");
-        const empty = document.getElementById("empty");
-        const countPill = document.getElementById("count-pill");
-
-        const today = startOfDay(new Date());
-
-        const upcoming = EVENTOS.filter((e) => {
-          const end = parseISOToLocalDate(e.end || e.start);
-          return startOfDay(end) >= today;
-        }).sort((a, b) => {
-          return parseISOToLocalDate(a.start) - parseISOToLocalDate(b.start);
-        });
-
-        countPill.textContent = `${upcoming.length} evento(s)`;
+        $count.textContent = upcoming.length ? `${upcoming.length} próximos` : "0";
 
         if (!upcoming.length) {
-          cont.innerHTML = "";
-          empty.classList.remove("hidden");
+          $events.innerHTML = `<div class="empty">No hay eventos futuros cargados.</div>`;
           return;
         }
-        empty.classList.add("hidden");
 
-        cont.innerHTML = upcoming
-          .map((e) => {
-            const start = parseISOToLocalDate(e.start);
-            const daysLeft = diffDays(today, start);
-            const tag =
-              daysLeft <= 0
-                ? "HOY"
-                : daysLeft === 1
-                ? "FALTA 1 DÍA"
-                : `FALTAN ${daysLeft} DÍAS`;
+        $events.innerHTML = upcoming.map(ev => {
+          const dateLine = fmtDateLine(ev);
+          const timeLine = fmtTime(ev);
+          const loc = (ev.location || "").trim();
 
-            const dateChip = fmtDateDDMMYYYY(start);
-
-            return `
-              <article class="event-card">
-                <div class="flex items-start justify-between gap-3 flex-wrap">
-                  <div class="flex items-center gap-2 flex-wrap">
-                    <span class="pill pill-accent">
-                      <span aria-hidden="true">⏱️</span>
-                      ${tag}
-                    </span>
-                  </div>
-                  <span class="date-chip">
-                    <span aria-hidden="true">📌</span>
-                    ${dateChip}
-                  </span>
-                </div>
-
-                <h3 class="text-lg md:text-xl font-black tracking-tight mt-4">
-                  ${e.title}
-                </h3>
-
-                <p class="muted text-sm font-semibold mt-2">${e.label}</p>
-
-                ${
-                  e.allDay
-                    ? `<p class="text-xs font-extrabold mt-3" style="color: var(--accent)">Todo el día</p>`
-                    : ``
-                }
-                ${
-                  e.location
-                    ? `<p class="muted text-sm font-semibold mt-1">${e.location}</p>`
-                    : ``
-                }
-              </article>
-            `;
-          })
-          .join("");
+          return `
+            <article class="event-card">
+              <p class="event-date">${dateLine}</p>
+              <h3 class="event-title">${ev.title}</h3>
+              <div class="event-meta">
+                ${timeLine ? `<span class="time">${timeLine}</span>` : ``}
+                ${loc ? `<span class="loc">${loc}</span>` : ``}
+              </div>
+            </article>
+          `;
+        }).join("");
       }
 
-      document.addEventListener("DOMContentLoaded", render);
+      render();
     </script>
   </body>
 </html>
-
+```0
