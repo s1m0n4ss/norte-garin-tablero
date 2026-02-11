@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="h-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Próximos eventos | Norte Garín</title>
 
+    <!-- Anti "flash" de tema -->
     <script>
       (function () {
         const saved = localStorage.getItem("theme");
@@ -23,374 +24,230 @@
 
     <style>
       :root {
-        --bg-main: #f1f5f9;
-        --bg-card: #ffffff;
-        --text-primary: #0f172a;
-        --text-muted: #64748b;
-        --border: rgba(0, 0, 0, 0.08);
-        --accent: #3b82f6;
-        --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
-        --btn-bg: rgba(255, 255, 255, 0.85);
+        /* Cambiá solo esta URL por tu imagen final */
+        --hero-image: url("https://images.unsplash.com/photo-1520975693411-6edc5a0fdd67?auto=format&fit=crop&w=1600&q=80");
       }
-      html.dark {
-        --bg-main: #0a0f1d;
-        --bg-card: #121a2a;
-        --text-primary: #f8fafc;
-        --text-muted: #94a3b8;
-        --border: rgba(255, 255, 255, 0.06);
-        --accent: #3b82f6;
-        --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
-        --btn-bg: rgba(18, 26, 42, 0.82);
-      }
-
+      html,
       body {
-        font-family: "Inter", sans-serif;
-        background-color: var(--bg-main);
-        color: var(--text-primary);
-        margin: 0;
-        padding-bottom: 60px;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      }
+      /* Fondo general tipo "app" */
+      body {
+        background: radial-gradient(1200px 600px at 20% -10%, rgba(59, 130, 246, 0.25), transparent 60%),
+          radial-gradient(900px 500px at 90% 10%, rgba(14, 165, 233, 0.18), transparent 55%),
+          linear-gradient(180deg, #0b1220, #070b14 55%, #060812);
+      }
+      .dark body {
+        background: radial-gradient(1200px 600px at 20% -10%, rgba(59, 130, 246, 0.22), transparent 60%),
+          radial-gradient(900px 500px at 90% 10%, rgba(14, 165, 233, 0.16), transparent 55%),
+          linear-gradient(180deg, #070b14, #050710 55%, #04050c);
       }
 
-      .page-bg {
-        min-height: 100vh;
-        background-image: radial-gradient(
-          900px 500px at 50% -10%,
-          rgba(59, 130, 246, 0.16),
-          transparent 60%
-        );
+      /* HERO estilo "como tu captura": menos alto + texto abajo-izq + degradado suave solo desde abajo */
+      .hero {
+        background-image: var(--hero-image);
+        background-size: cover;
+        background-position: center;
       }
-
-      .btn-surface {
-        background: var(--btn-bg);
-        border: 1px solid var(--border);
-        color: var(--text-primary);
-        box-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
-        backdrop-filter: blur(8px);
-        transition: all 0.15s ease;
+      .glass {
+        background: rgba(15, 23, 42, 0.55);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
-      .btn-surface:active {
-        transform: scale(0.95);
-      }
-
-      #sidebar {
-        transition: transform 0.3s ease-in-out;
-        background: var(--bg-card);
-        z-index: 100;
-      }
-      .nav-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 18px;
-        border-radius: 18px;
-        color: var(--text-muted);
-        transition: all 0.2s ease;
-      }
-      .nav-link.active {
-        background: rgba(59, 130, 246, 0.12);
-        color: var(--accent);
-        font-weight: 800;
-        border: 1px solid rgba(59, 130, 246, 0.2);
-      }
-
-      .card {
-        background-color: var(--bg-card);
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
-        position: relative;
-      }
-
-      .muted {
-        color: var(--text-muted);
-      }
-
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 12px;
-        border-radius: 999px;
-        border: 1px solid rgba(59, 130, 246, 0.22);
-        background: rgba(59, 130, 246, 0.10);
-        color: var(--accent);
-        font-weight: 900;
-        font-size: 11px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-
-      .event-card {
-        border-left: 4px solid var(--accent);
-      }
-
-      .event-title {
-        letter-spacing: -0.02em;
-      }
-
-      .event-meta-line {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        align-items: center;
-        margin-top: 10px;
-      }
-
-      .tag {
-        font-size: 10px;
-        font-weight: 900;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        padding: 7px 10px;
-        border-radius: 999px;
-        border: 1px solid var(--border);
-        color: var(--text-muted);
-        background: rgba(2, 6, 23, 0.03);
-      }
-      html.dark .tag {
-        background: rgba(255, 255, 255, 0.04);
+      /* Mejora visual del texto en imagen (se lee sin tapar tanto) */
+      .hero-title {
+        text-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
       }
     </style>
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            borderRadius: {
+              xl2: "1.25rem",
+            },
+          },
+        },
+      };
+    </script>
   </head>
 
-  <body class="page-bg">
-    <!-- overlay -->
-    <div
-      id="overlay"
-      class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity duration-300"
-    ></div>
-
-    <!-- sidebar -->
-    <aside
-      id="sidebar"
-      class="fixed top-0 left-0 h-full w-72 transform -translate-x-full shadow-2xl p-8"
-    >
-      <div class="flex items-center gap-3 mb-10">
-        <div
-          class="h-10 w-10 rounded-2xl bg-blue-500/20 flex items-center justify-center font-black text-blue-500"
-        >
-          ✦
-        </div>
-        <div>
-          <h2 class="font-extrabold leading-tight">Norte Garín</h2>
-          <p class="text-[10px] opacity-60 uppercase font-bold tracking-widest">
-            Digital Board
-          </p>
-        </div>
-      </div>
-
-      <nav class="space-y-2">
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="salidas.html" class="nav-link">Salidas</a>
-        <a href="vida-ministerio.html" class="nav-link">Vida y Ministerio</a>
-        <a href="proximos-eventos.html" class="nav-link active">Próximos eventos</a>
-        <a href="conferencias.html" class="nav-link">Discursos</a>
-        <a href="multimedia.html" class="nav-link">Multimedia</a>
-        <a href="lectores.html" class="nav-link">Lectores</a>
-        <a href="limpieza.html" class="nav-link">Limpieza</a>
-        <a href="grupos.html" class="nav-link">Grupos</a>
-      </nav>
-    </aside>
-
-    <!-- header / hero -->
-    <header class="p-6 max-w-lg mx-auto">
-      <div class="relative w-full h-64 rounded-[40px] overflow-hidden shadow-2xl group">
-        <img
-          src="img/file_00000000174471f5b349ad702b47ce01.png"
-          class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
-          alt="Próximos eventos"
-        />
-        <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-black/80"></div>
-
-        <div class="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
-          <button id="btnMenu" class="btn-surface p-3 rounded-2xl active:scale-90" aria-label="Menú">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="4" x2="20" y1="12" y2="12" />
-              <line x1="4" x2="20" y1="6" y2="6" />
-              <line x1="4" x2="20" y1="18" y2="18" />
-            </svg>
-          </button>
-
-          <button id="btnTheme" class="btn-surface p-3 rounded-2xl active:scale-90" aria-label="Tema">
-            <span id="theme-icon">🌙</span>
-          </button>
-        </div>
-
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6 mt-6">
-          <div
-            class="mb-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/90 text-[10px] font-black tracking-widest uppercase"
-          >
-            Calendario de la congregación
+  <body class="min-h-full text-slate-100">
+    <main class="mx-auto max-w-md px-4 pt-5 pb-10">
+      <!-- HERO -->
+      <section class="relative overflow-hidden rounded-[2rem] glass">
+        <!-- Imagen (ajustada para que NO sea tan alta como antes) -->
+        <div class="hero relative h-[240px] sm:h-[280px]">
+          <!-- Controles flotantes -->
+          <div class="absolute left-4 top-4 z-20 flex items-center gap-3">
+            <button
+              class="h-12 w-12 rounded-2xl bg-black/35 ring-1 ring-white/10 backdrop-blur-md grid place-items-center hover:bg-black/40 active:scale-[0.98] transition"
+              aria-label="Abrir menú"
+              type="button"
+              id="btnMenu"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
           </div>
-          <h1 class="text-4xl font-black tracking-tighter leading-none text-white drop-shadow-lg uppercase">
-            Próximos<br />Eventos
-          </h1>
-          <p id="subtitle" class="text-white/70 text-[11px] font-bold mt-2 uppercase tracking-tighter"></p>
+
+          <div class="absolute right-4 top-4 z-20">
+            <button
+              class="h-12 w-12 rounded-2xl bg-black/35 ring-1 ring-white/10 backdrop-blur-md grid place-items-center hover:bg-black/40 active:scale-[0.98] transition"
+              aria-label="Cambiar tema"
+              type="button"
+              id="btnTheme"
+              title="Cambiar tema"
+            >
+              <span id="themeIcon" class="text-xl">☀️</span>
+            </button>
+          </div>
+
+          <!-- Degradado SOLO desde abajo (como tu captura) -->
+          <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+
+            <!-- Texto abajo-izquierda (simplificado y más limpio) -->
+            <div class="absolute bottom-0 left-0 right-0 z-10 p-6">
+              <h1 class="hero-title text-[38px] leading-[1.05] font-black tracking-tight text-white">
+                PRÓXIMOS EVENTOS
+              </h1>
+
+              <p class="mt-1 text-sm font-extrabold tracking-[0.35em] text-sky-300 uppercase">
+                NORTE GARÍN
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </header>
 
-    <main class="max-w-lg mx-auto px-6">
-      <section class="card rounded-[35px] p-6 mb-8 border-t-4 shadow-xl -mt-14 relative z-10 overflow-hidden"
-        style="border-top-color: var(--accent)">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-[10px] font-black uppercase tracking-[0.15em] flex items-center gap-2" style="color: var(--accent)">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background: var(--accent)"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2" style="background: var(--accent)"></span>
-            </span>
-            Eventos futuros
-          </h2>
+        <!-- Barra inferior (tabs) -->
+        <div class="px-5 pb-5 pt-4">
+          <div class="flex items-center gap-3">
+            <div class="flex-1 rounded-2xl bg-white/5 ring-1 ring-white/10 p-2">
+              <div class="flex items-center justify-between gap-2">
+                <button
+                  class="flex-1 rounded-xl px-3 py-2 text-xs font-extrabold tracking-widest uppercase text-sky-300 bg-sky-500/10 ring-1 ring-sky-400/20"
+                  type="button"
+                >
+                  Eventos futuros
+                </button>
+                <button
+                  class="rounded-xl px-4 py-2 text-xs font-extrabold tracking-widest uppercase text-slate-200/85 bg-white/5 ring-1 ring-white/10"
+                  type="button"
+                >
+                  3 próximos
+                </button>
+              </div>
+            </div>
+          </div>
 
-          <span id="countPill" class="pill">0 próximos</span>
+          <!-- Cards -->
+          <div class="mt-4 space-y-4">
+            <!-- Card 1 -->
+            <article class="relative overflow-hidden rounded-[1.75rem] bg-white/5 ring-1 ring-white/10 p-5">
+              <div class="absolute inset-y-0 left-0 w-[5px] bg-sky-500/80"></div>
+
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs tracking-[0.25em] uppercase text-slate-200/70 font-bold">
+                    Jueves, 2 de abril de 2026
+                  </p>
+                  <h2 class="mt-2 text-3xl font-extrabold tracking-tight">Conmemoración</h2>
+
+                  <div class="mt-3 inline-flex items-center gap-2 rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1">
+                    <span class="text-sm" aria-hidden="true">📅</span>
+                    <span class="text-sm font-bold text-slate-200/90">01/04/2026</span>
+                  </div>
+                </div>
+
+                <div class="shrink-0 rounded-full bg-white/5 ring-1 ring-white/10 px-4 py-3 text-center">
+                  <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">Todo</p>
+                  <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">el</p>
+                  <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">día</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="relative overflow-hidden rounded-[1.75rem] bg-white/5 ring-1 ring-white/10 p-5">
+              <div class="absolute inset-y-0 left-0 w-[5px] bg-sky-500/55"></div>
+
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs tracking-[0.25em] uppercase text-slate-200/70 font-bold">
+                    Domingo, 10 de mayo de 2026
+                  </p>
+                  <h2 class="mt-2 text-3xl font-extrabold tracking-tight">
+                    Asamblea de circuito con el representante de la sucursal
+                  </h2>
+                </div>
+
+                <div class="shrink-0 rounded-full bg-white/5 ring-1 ring-white/10 px-4 py-3 text-center">
+                  <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">Todo</p>
+                  <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">el</p>
+                  <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">día</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 (ejemplo) -->
+            <article class="relative overflow-hidden rounded-[1.75rem] bg-white/5 ring-1 ring-white/10 p-5">
+              <div class="absolute inset-y-0 left-0 w-[5px] bg-sky-500/35"></div>
+
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs tracking-[0.25em] uppercase text-slate-200/70 font-bold">
+                    Sábado, 20 de junio de 2026
+                  </p>
+                  <h2 class="mt-2 text-3xl font-extrabold tracking-tight">
+                    Limpieza y mantenimiento del Salón
+                  </h2>
+                  <p class="mt-2 text-sm text-slate-200/75">
+                    Punto de encuentro: Salón del Reino · 09:00 hs
+                  </p>
+                </div>
+
+                <div class="shrink-0 rounded-full bg-white/5 ring-1 ring-white/10 px-4 py-3 text-center">
+                  <p class="text-xs tracking-widest uppercase text-slate-200/70 font-bold">Mañana</p>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
-
-        <div id="events"></div>
       </section>
+
+      <!-- Nota -->
+      <p class="mt-5 text-xs text-slate-200/60 leading-relaxed">
+        Para cambiar la imagen del banner: editá
+        <code class="px-1 py-0.5 rounded bg-white/5 ring-1 ring-white/10">--hero-image</code>
+        en
+        <code class="px-1 py-0.5 rounded bg-white/5 ring-1 ring-white/10">:root</code>.
+      </p>
     </main>
 
     <script>
-      // ===== Tema + menú (igual que index)
-      const html = document.documentElement;
-      const themeIcon = document.getElementById("theme-icon");
-      const sidebar = document.getElementById("sidebar");
-      const overlay = document.getElementById("overlay");
+      // Tema claro/oscuro
+      const btnTheme = document.getElementById("btnTheme");
+      const themeIcon = document.getElementById("themeIcon");
 
-      function syncThemeIcon() {
-        themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
-      }
-      function toggleTheme() {
-        html.classList.toggle("dark");
-        localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
-        syncThemeIcon();
-      }
-      document.getElementById("btnTheme").onclick = toggleTheme;
-      syncThemeIcon();
-
-      document.getElementById("btnMenu").onclick = () => {
-        sidebar.classList.replace("-translate-x-full", "translate-x-0");
-        overlay.classList.remove("hidden");
-        setTimeout(() => overlay.classList.add("opacity-100"), 10);
-      };
-      overlay.onclick = () => {
-        sidebar.classList.replace("translate-x-0", "-translate-x-full");
-        overlay.classList.remove("opacity-100");
-        setTimeout(() => overlay.classList.add("hidden"), 300);
-      };
-
-      // ===== Datos
-      const EVENTS = [
-        {
-          title: "Conmemoración",
-          allDay: true,
-          start: "2026-04-02",
-          end: "2026-04-02",
-          location: ""
-        },
-        {
-          title: "Asamblea de circuito con el representante de la sucursal",
-          allDay: true,
-          start: "2026-05-10",
-          end: "2026-05-10",
-          location: "Salón de Asambleas - Ezeiza - Ezeiza (Bs. As.-ARG)"
-        },
-        {
-          title: "Asamblea regional",
-          allDay: true,
-          start: "2026-08-21",
-          end: "2026-08-23",
-          location: "Salón de Asambleas de Ezeiza, Bs. As."
-        },
-      ];
-
-      // ===== Helpers
-      function parseISO(iso) {
-        const [y, m, d] = String(iso).split("-").map(Number);
-        return new Date(y, (m || 1) - 1, d || 1, 0, 0, 0, 0);
+      function syncIcon() {
+        const isDark = document.documentElement.classList.contains("dark");
+        themeIcon.textContent = isDark ? "🌙" : "☀️";
       }
 
-      function isFutureOrToday(ev) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const end = parseISO(ev.end || ev.start);
-        end.setHours(0, 0, 0, 0);
-        return end.getTime() >= today.getTime();
-      }
+      syncIcon();
 
-      function fmtDateRange(ev) {
-        const locale = "es-AR";
-        const s = parseISO(ev.start);
-        const e = parseISO(ev.end || ev.start);
-
-        const sameDay = s.getTime() === e.getTime();
-
-        const sTxt = s.toLocaleDateString(locale, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-        if (sameDay) return sTxt;
-
-        const sShort = s.toLocaleDateString(locale, { day: "numeric", month: "short" });
-        const eTxt = e.toLocaleDateString(locale, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-        return `${sShort} al ${eTxt}`;
-      }
-
-      function fmtTime(ev) {
-        if (ev.allDay) return "Todo el día";
-        return ev.time ? ev.time : "";
-      }
-
-      // ===== Render
-      const $events = document.getElementById("events");
-      const $count = document.getElementById("countPill");
-
-      function render() {
-        const upcoming = EVENTS
-          .filter(isFutureOrToday)
-          .sort((a, b) => parseISO(a.start) - parseISO(b.start));
-
-        $count.textContent = `${upcoming.length} próximos`;
-
-        // subtítulo en el hero
-        const sub = upcoming.length
-          ? `Siguientes ${upcoming.length} eventos`
-          : "No hay eventos cargados";
-        document.getElementById("subtitle").textContent = sub;
-
-        if (!upcoming.length) {
-          $events.innerHTML = `
-            <div class="card rounded-[26px] p-5">
-              <p class="muted font-bold text-sm">No hay eventos futuros cargados.</p>
-            </div>
-          `;
-          return;
-        }
-
-        $events.innerHTML = upcoming.map((ev) => {
-          const dateLine = fmtDateRange(ev);
-          const timeLine = fmtTime(ev);
-          const loc = (ev.location || "").trim();
-
-          return `
-            <article class="card event-card rounded-[26px] p-5 mb-4">
-              <div class="flex items-start justify-between gap-3">
-                <div>
-                  <p class="text-[10px] font-black uppercase tracking-[0.15em] muted">${dateLine}</p>
-                  <h3 class="event-title font-extrabold text-lg mt-2 leading-tight">${ev.title}</h3>
-                </div>
-                <span class="tag">${timeLine || " "}</span>
-              </div>
-
-              ${loc ? `<p class="mt-3 text-sm font-bold muted">${loc}</p>` : ""}
-
-              <div class="event-meta-line">
-                <span class="pill">📅 ${new Date(ev.start).toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit", year: "numeric" })}</span>
-                ${ev.end && ev.end !== ev.start ? `<span class="pill">⏳ ${Math.round((parseISO(ev.end) - parseISO(ev.start)) / 86400000) + 1} días</span>` : ""}
-              </div>
-            </article>
-          `;
-        }).join("");
-      }
-
-      render();
+      btnTheme.addEventListener("click", () => {
+        const root = document.documentElement;
+        root.classList.toggle("dark");
+        localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
+        syncIcon();
+      });
     </script>
   </body>
 </html>
