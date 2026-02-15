@@ -115,6 +115,7 @@ window.CONFERENCIAS_DATA = [
   date: "01",
   special: true,
   title: "ASAMBLEA DE CIRCUITO",
+// subtitle: "Sin reunión en el Salón"  <-- sacalo
 
 },  
       {
