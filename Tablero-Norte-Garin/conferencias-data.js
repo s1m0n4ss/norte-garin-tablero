@@ -104,4 +104,75 @@ window.CONFERENCIAS_DATA = [
     ],
     salen: [],
   },
+
+  // ✅ NUEVO: Marzo 2026 (mismo esquema que Febrero)
+  {
+    month: "Marzo 2026",
+    year: 2026,
+    monthIdx: 2,
+    vienen: [
+    {
+  day: "",
+  date: "",
+  name: "ASAMBLEA DE CIRCUITO",
+  extra: "",
+},  
+      {
+        date: "08",
+        day: "Domingo",
+        time: "9:30 am",
+        title: "La resurrección: una victoria sobre la muerte",
+        speaker: "Hernán Carreras",
+        congregation: "Este, Pilar, Buenos Aires",
+        chairman: "Dario Cortez",
+      },
+      {
+        date: "15",
+        day: "Domingo",
+        time: "9:30 am",
+        title: "Unidos al feliz pueblo de Dios",
+        speaker: "Adrián Perillo",
+        congregation: "Este, Pilar, Buenos Aires",
+        chairman: "Caetano Ferrari",
+      },
+      {
+        date: "22",
+        day: "Domingo",
+        time: "9:30 am",
+        title: "“Hagamos el bien a todos”",
+        speaker: "Mario Segovia",
+        congregation: "Norte, Garín, Buenos Aires",
+        chairman: "Adolfo Gutiérrez",
+      },
+      {
+        date: "29",
+        day: "Domingo",
+        time: "9:30 am",
+        title: "Discurso especial: ¿Quién salvará el planeta?",
+        speaker: "Julian Giacobbe",
+        congregation: "Este, Ingeniero Maschwitz, Buenos Aires",
+        chairman: "Leon Segovia",
+      },
+    ],
+    salen: [
+      {
+        day: "Sábado",
+        date: "07",
+        name: "Lucas Segovia",
+        extra: "Bosquejo 175",
+      },
+      {
+        day: "Domingo",
+        date: "08",
+        name: "Daniel Albis",
+        extra: "Bosquejo 166",
+      },
+      {
+        day: "Sábado",
+        date: "14",
+        name: "Darío Cortez",
+        extra: "Bosquejo 192",
+      },
+    ],
+  },
 ];
