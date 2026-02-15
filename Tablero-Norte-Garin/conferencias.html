@@ -2,14 +2,18 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>Arreglos de Conferencia | Norte Garín</title>
 
     <script>
       (function () {
         const saved = localStorage.getItem("theme");
         const prefersDark =
-          window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
         const useDark = saved ? saved === "dark" : prefersDark;
         if (useDark) document.documentElement.classList.add("dark");
       })();
@@ -58,6 +62,7 @@
         margin: 0;
         background-color: var(--bg-main);
       }
+
       .page-bg {
         min-height: 100vh;
         background-image: radial-gradient(
@@ -92,7 +97,9 @@
         user-select: none;
         -webkit-tap-highlight-color: transparent;
       }
-      .btn-header:active { transform: scale(0.95); }
+      .btn-header:active {
+        transform: scale(0.95);
+      }
 
       .hero-banner {
         position: relative;
@@ -148,7 +155,9 @@
         box-shadow: var(--shadow);
         padding: 26px;
       }
-      #sidebar.open { transform: translateX(0); }
+      #sidebar.open {
+        transform: translateX(0);
+      }
 
       .nav-link {
         display: flex;
@@ -160,8 +169,12 @@
         transition: all 0.2s ease;
         font-weight: 700;
       }
-      .nav-link:hover { background: rgba(2, 6, 23, 0.04); }
-      html.dark .nav-link:hover { background: rgba(255, 255, 255, 0.05); }
+      .nav-link:hover {
+        background: rgba(2, 6, 23, 0.04);
+      }
+      html.dark .nav-link:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
 
       .nav-link.active {
         background: rgba(16, 185, 129, 0.14);
@@ -222,12 +235,14 @@
         font-size: 1.3rem;
         box-shadow: 0 8px 15px rgba(16, 185, 129, 0.25);
       }
+
       .info h3 {
         margin: 0 0 4px 0;
         font-size: 1.05rem;
         font-weight: 900;
         line-height: 1.2;
       }
+
       .details {
         font-size: 0.85rem;
         color: var(--text-muted);
@@ -240,6 +255,7 @@
         font-size: 0.7rem;
         margin-right: 4px;
       }
+
       .badge-next {
         background: #ef4444;
         color: white;
@@ -250,6 +266,34 @@
         text-transform: uppercase;
         display: inline-block;
         margin-bottom: 4px;
+      }
+
+      /* Card especial (Asamblea / Sin reunión) */
+      .card.special {
+        background: linear-gradient(
+          135deg,
+          rgba(16, 185, 129, 0.18),
+          rgba(16, 185, 129, 0.06)
+        );
+      }
+      html.dark .card.special {
+        background: linear-gradient(
+          135deg,
+          rgba(16, 185, 129, 0.16),
+          rgba(16, 185, 129, 0.05)
+        );
+      }
+      .special-title {
+        font-size: 1rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .special-sub {
+        margin-top: 6px;
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: var(--text-muted);
       }
 
       .salen-title {
@@ -298,7 +342,7 @@
       <div class="flex items-center gap-3 mb-10">
         <div
           class="h-10 w-10 rounded-2xl flex items-center justify-center font-black"
-          style="background: rgba(16,185,129,0.18); color: var(--accent);"
+          style="background: rgba(16, 185, 129, 0.18); color: var(--accent)"
         >
           ✦
         </div>
@@ -332,9 +376,23 @@
           <div class="absolute inset-0 p-4 flex flex-col justify-between">
             <div class="flex justify-between items-center">
               <!-- BOTÓN MENÚ (izquierda) -->
-              <button id="btnMenu" class="btn-header" type="button" aria-label="Abrir menú">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <button
+                id="btnMenu"
+                class="btn-header"
+                type="button"
+                aria-label="Abrir menú"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
                   <line x1="4" x2="20" y1="12" y2="12"></line>
                   <line x1="4" x2="20" y1="6" y2="6"></line>
                   <line x1="4" x2="20" y1="18" y2="18"></line>
@@ -342,16 +400,25 @@
               </button>
 
               <!-- TEMA (derecha) -->
-              <button id="btnTheme" class="btn-header" type="button" aria-label="Cambiar tema">
+              <button
+                id="btnTheme"
+                class="btn-header"
+                type="button"
+                aria-label="Cambiar tema"
+              >
                 <span id="theme-icon">🌙</span>
               </button>
             </div>
 
             <div class="text-white">
-              <h1 class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg">
+              <h1
+                class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg"
+              >
                 Conferencias
               </h1>
-              <p class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400 drop-shadow-md">
+              <p
+                class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400 drop-shadow-md"
+              >
                 Programa 2026
               </p>
             </div>
@@ -378,7 +445,10 @@
       }
       function toggleTheme() {
         html.classList.toggle("dark");
-        localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
+        localStorage.setItem(
+          "theme",
+          html.classList.contains("dark") ? "dark" : "light"
+        );
         syncThemeIcon();
       }
       document.getElementById("btnTheme").addEventListener("click", toggleTheme);
@@ -401,7 +471,6 @@
       document.getElementById("btnMenu").addEventListener("click", openMenu);
       overlay.addEventListener("click", closeMenu);
 
-      // Cierra con Escape (por si abrís desde PC)
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeMenu();
       });
@@ -420,10 +489,69 @@
         el.innerHTML = `<h3>No se pudieron cargar los datos</h3><p>${msg}</p>`;
       }
 
+      function escapeHtml(str) {
+        return String(str ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function renderVieneCard({ v, isNext, isPast }) {
+        const dateText = escapeHtml(v.date ?? "--");
+        const titleText = escapeHtml(v.title ?? "");
+
+        const baseStyle = isPast ? "opacity:0.45; filter: grayscale(1);" : "";
+        const nextBadge = isNext
+          ? '<span class="badge-next">Próxima reunión</span>'
+          : "";
+
+        // ✅ Caso especial: Asamblea / sin reunión (no mostrar campos que pueden ser undefined)
+        if (v.special || v.type === "ASAMBLEA") {
+          const subtitle = escapeHtml(v.subtitle ?? "Sin reunión en el Salón");
+          return `
+            <article class="card special ${isNext ? "is-current" : ""}" style="${baseStyle}">
+              <div class="date-circle">${dateText}</div>
+              <div class="info">
+                ${nextBadge}
+                <div class="special-title">${titleText || "ASAMBLEA DE CIRCUITO"}</div>
+                <div class="special-sub">${subtitle}</div>
+              </div>
+            </article>
+          `;
+        }
+
+        // Card normal
+        const speaker = escapeHtml(v.speaker ?? "—");
+        const congregation = escapeHtml(v.congregation ?? "—");
+        const chairman = escapeHtml(v.chairman ?? "—");
+        const day = escapeHtml(v.day ?? "");
+        const time = escapeHtml(v.time ?? "");
+
+        return `
+          <article class="card ${isNext ? "is-current" : ""}" style="${baseStyle}">
+            <div class="date-circle">${dateText}</div>
+            <div class="info">
+              ${nextBadge}
+              <h3>${titleText}</h3>
+              <div class="details">
+                <p><b>Orador:</b> ${speaker}</p>
+                <p><b>Congregación:</b> ${congregation}</p>
+                <p><b>Preside:</b> ${chairman}</p>
+                <p class="mt-1 font-bold text-emerald-500">${day}${day && time ? " – " : ""}${time}</p>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
       function render() {
         const data = window.CONFERENCIAS_DATA || [];
         if (!Array.isArray(data) || data.length === 0) {
-          showDataError("Falta <b>conferencias-data.js</b> o <b>CONFERENCIAS_DATA</b> está vacío.");
+          showDataError(
+            "Falta <b>conferencias-data.js</b> o <b>CONFERENCIAS_DATA</b> está vacío."
+          );
           return;
         }
 
@@ -445,23 +573,7 @@
                   foundNext = true;
                 }
 
-                return `
-                  <article class="card ${isNext ? "is-current" : ""}" style="${
-                    isPast ? "opacity:0.45; filter: grayscale(1);" : ""
-                  }">
-                    <div class="date-circle">${v.date}</div>
-                    <div class="info">
-                      ${isNext ? '<span class="badge-next">Próxima reunión</span>' : ""}
-                      <h3>${v.title}</h3>
-                      <div class="details">
-                        <p><b>Orador:</b> ${v.speaker}</p>
-                        <p><b>Congregación:</b> ${v.congregation}</p>
-                        <p><b>Preside:</b> ${v.chairman}</p>
-                        <p class="mt-1 font-bold text-emerald-500">${v.day} – ${v.time}</p>
-                      </div>
-                    </div>
-                  </article>
-                `;
+                return renderVieneCard({ v, isNext, isPast });
               })
               .join("");
 
@@ -471,19 +583,25 @@
               : "";
 
             const salenHtml = salen
-              .map(
-                (s) => `
-                <div class="salen-item">
-                  <span class="font-bold">${s.day} ${s.date}:</span> ${s.name}
-                  <span class="opacity-60 text-xs ml-1">(${s.extra})</span>
-                </div>
-              `,
-              )
+              .map((s) => {
+                const day = escapeHtml(s.day ?? "");
+                const date = escapeHtml(s.date ?? "");
+                const name = escapeHtml(s.name ?? "");
+                const extra = escapeHtml(s.extra ?? "");
+                return `
+                  <div class="salen-item">
+                    <span class="font-bold">${day} ${date}:</span> ${name}
+                    ${extra ? `<span class="opacity-60 text-xs ml-1">(${extra})</span>` : ""}
+                  </div>
+                `;
+              })
               .join("");
 
             return `
               <section class="month-section">
-                <header class="month-header"><h2 class="month-title">${m.month}</h2></header>
+                <header class="month-header">
+                  <h2 class="month-title">${escapeHtml(m.month ?? "")}</h2>
+                </header>
                 <div class="vienen-list">${vienenHtml}</div>
                 ${salenTitle}
                 <div class="pb-4">${salenHtml}</div>
@@ -494,7 +612,8 @@
 
         setTimeout(() => {
           const nextItem = document.querySelector(".is-current");
-          if (nextItem) nextItem.scrollIntoView({ behavior: "smooth", block: "center" });
+          if (nextItem)
+            nextItem.scrollIntoView({ behavior: "smooth", block: "center" });
         }, 350);
       }
 
