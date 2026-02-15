@@ -90,7 +90,7 @@ window.CONFERENCIAS_DATA = [
         title: "¿Qué lo ayudará a tener éxito en la vida?",
         speaker: "Mauricio Tierno",
         congregation: "S. de Circuito",
-        chairman: "Dario Cortez",
+        chairman: "Horacio Salgado",
       },
       {
         date: "22",
