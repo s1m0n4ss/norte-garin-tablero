@@ -175,7 +175,6 @@
       html.dark .nav-link:hover {
         background: rgba(255, 255, 255, 0.05);
       }
-
       .nav-link.active {
         background: rgba(16, 185, 129, 0.14);
         color: var(--accent);
@@ -335,7 +334,6 @@
   </head>
 
   <body class="page-bg">
-    <!-- Overlay + Sidebar -->
     <div id="overlay"></div>
 
     <aside id="sidebar" aria-label="Menú">
@@ -375,7 +373,6 @@
 
           <div class="absolute inset-0 p-4 flex flex-col justify-between">
             <div class="flex justify-between items-center">
-              <!-- BOTÓN MENÚ (izquierda) -->
               <button
                 id="btnMenu"
                 class="btn-header"
@@ -399,7 +396,6 @@
                 </svg>
               </button>
 
-              <!-- TEMA (derecha) -->
               <button
                 id="btnTheme"
                 class="btn-header"
@@ -432,11 +428,9 @@
       <div id="dataError" class="alert hidden"></div>
     </div>
 
-    <!-- Datos externos (igual que vos lo tenés) -->
     <script src="conferencias-data.js"></script>
 
     <script>
-      // === TEMA ===
       const html = document.documentElement;
       const themeIcon = document.getElementById("theme-icon");
 
@@ -454,7 +448,6 @@
       document.getElementById("btnTheme").addEventListener("click", toggleTheme);
       syncThemeIcon();
 
-      // === SIDEBAR ===
       const sidebar = document.getElementById("sidebar");
       const overlay = document.getElementById("overlay");
 
@@ -475,7 +468,6 @@
         if (e.key === "Escape") closeMenu();
       });
 
-      // === RENDER ===
       function parseDate(y, mIdx, dStr) {
         const d = parseInt(dStr, 10);
         const dt = new Date(y, mIdx, d);
@@ -507,22 +499,26 @@
           ? '<span class="badge-next">Próxima reunión</span>'
           : "";
 
-        // ✅ Caso especial: Asamblea / sin reunión (no mostrar campos que pueden ser undefined)
+        // ✅ Caso especial: Asamblea / sin reunión
         if (v.special || v.type === "ASAMBLEA") {
-          const subtitle = escapeHtml(v.subtitle ?? "Sin reunión en el Salón");
+          // ⛔️ NO default: si no hay subtitle, no se muestra nada.
+          const subtitle = String(v.subtitle ?? "").trim();
+          const subtitleHtml = subtitle
+            ? `<div class="special-sub">${escapeHtml(subtitle)}</div>`
+            : "";
+
           return `
             <article class="card special ${isNext ? "is-current" : ""}" style="${baseStyle}">
               <div class="date-circle">${dateText}</div>
               <div class="info">
                 ${nextBadge}
                 <div class="special-title">${titleText || "ASAMBLEA DE CIRCUITO"}</div>
-                <div class="special-sub">${subtitle}</div>
+                ${subtitleHtml}
               </div>
             </article>
           `;
         }
 
-        // Card normal
         const speaker = escapeHtml(v.speaker ?? "—");
         const congregation = escapeHtml(v.congregation ?? "—");
         const chairman = escapeHtml(v.chairman ?? "—");
@@ -591,7 +587,11 @@
                 return `
                   <div class="salen-item">
                     <span class="font-bold">${day} ${date}:</span> ${name}
-                    ${extra ? `<span class="opacity-60 text-xs ml-1">(${extra})</span>` : ""}
+                    ${
+                      extra
+                        ? `<span class="opacity-60 text-xs ml-1">(${extra})</span>`
+                        : ""
+                    }
                   </div>
                 `;
               })
