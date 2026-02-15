@@ -112,10 +112,10 @@ window.CONFERENCIAS_DATA = [
     monthIdx: 2,
     vienen: [
     {
-  day: "",
-  date: "",
-  name: "ASAMBLEA DE CIRCUITO",
-  extra: "",
+  date: "01",
+  special: true,
+  title: "ASAMBLEA DE CIRCUITO",
+
 },  
       {
         date: "08",
