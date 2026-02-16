@@ -1,103 +1,1270 @@
 <!doctype html>
 <html lang="es">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover"/>
-<title>Vida y Ministerio | Norte Garín</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover" />
+    <title>Vida y Ministerio | Norte Garín</title>
 
-<script>
-(function(){
- const saved=localStorage.getItem("theme");
- const prefersDark=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;
- const useDark=saved?saved==="dark":prefersDark;
- if(useDark)document.documentElement.classList.add("dark");
-})();
-</script>
+    <!-- Anti "flash" de tema -->
+    <script>
+      (function () {
+        const saved = localStorage.getItem("theme");
+        const prefersDark =
+          window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const useDark = saved ? saved === "dark" : prefersDark;
+        if (useDark) document.documentElement.classList.add("dark");
+      })();
+    </script>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-/* --- TODO TU CSS ORIGINAL SIN CAMBIOS --- */
-</style>
-</head>
+    <style>
+      :root {
+        --bg-main: #f1f5f9;
+        --bg-card: #ffffff;
+        --border: rgba(0, 0, 0, 0.08);
+        --text: #0f172a;
+        --muted: #64748b;
+        --accent: #2563eb;
 
-<body class="page-bg">
+        --verde: #10b981;
+        --amarillo: #f59e0b;
+        --rojo: #ef4444;
 
-<!-- ===== TODO TU BODY ORIGINAL SIN CAMBIOS HASTA EL TEMPLATE ===== -->
+        --header-bg: rgba(241, 245, 249, 0.86);
+        --btn-bg: rgba(255, 255, 255, 0.85);
 
-<template id="weeksTmpl">
+        --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
+        --btn-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
 
-<!-- ==== TODO TU CONTENIDO ORIGINAL DE ENERO Y FEBRERO ==== -->
+        --soft: rgba(2, 6, 23, 0.04);
+      }
 
-<!-- ================= SEMANA 2–8 MARZO ================= -->
-<article class="page" data-key="2026-03-02" data-title="2–8 DE MARZO" data-book="ISAÍAS 41, 42">
-<header>
-<div class="presidente-en-pagina">Presidente: <span class="asignado">LEÓN SEGOVIA</span></div>
-<div class="inicio-programa"><strong>Canción 8</strong> y oración <span class="asignado">ELVIO CASCO</span></div>
-</header>
+      html.dark {
+        --bg-main: #0a0f1d;
+        --bg-card: #121a2a;
+        --border: rgba(255, 255, 255, 0.08);
+        --text: #f8fafc;
+        --muted: #94a3b8;
+        --accent: #60a5fa;
 
-<section class="bloque verde">
-<h3>TESOROS DE LA BIBLIA</h3>
-<div class="section"><div class="sect-title"><h4>1.</h4></div><span class="asignado">DIEGO SARRAUTE</span></div>
-<div class="section"><div class="sect-title"><h4>2.</h4></div><span class="asignado">DANIEL ALBIS</span></div>
-<div class="section"><div class="sect-title"><h4>3.</h4></div><span class="asignado">CRISTIAN SEGOVIA</span></div>
-</section>
+        --verde: #34d399;
+        --amarillo: #fbbf24;
+        --rojo: #f87171;
 
-<section class="bloque amarillo">
-<h3>SEAMOS MEJORES MAESTROS</h3>
-<div class="section"><span class="asignado">ÁNGELA CÉSPEDES / ALICIA VERA</span></div>
-<div class="section"><span class="asignado">TEODORA DUCOLI / MIRTA SEGOVIA</span></div>
-<div class="section"><span class="asignado">MANUEL FERIL</span></div>
-</section>
+        --header-bg: rgba(10, 15, 29, 0.78);
+        --btn-bg: rgba(18, 26, 42, 0.82);
 
-<section class="bloque rojo">
-<h3>NUESTRA VIDA CRISTIANA</h3>
-<div class="section"><span class="asignado">HORACIO</span></div>
-<div class="section"><span class="asignado">MARIO</span></div>
-<div class="section"><span class="asignado">LUCAS</span></div>
-</section>
+        --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+        --btn-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 
-<div class="pie">Oración final: <span class="asignado">DARÍO</span></div>
-</article>
+        --soft: rgba(255, 255, 255, 0.05);
+      }
 
-<!-- ================= SEMANA 9–15 MARZO ================= -->
-<article class="page" data-key="2026-03-09" data-title="9–15 DE MARZO" data-book="ISAÍAS 43, 44">
-<header>
-<div class="presidente-en-pagina">Presidente: <span class="asignado">MARIO SEGOVIA</span></div>
-<div class="inicio-programa">Oración <span class="asignado">CRISTIAN SEGOVIA</span></div>
-</header>
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: var(--bg-main);
+        color: var(--text);
+        padding-bottom: 40px;
+      }
 
-<section class="bloque verde">
-<h3>TESOROS DE LA BIBLIA</h3>
-<div class="section"><span class="asignado">DANIEL QUARANTA</span></div>
-<div class="section"><span class="asignado">CAETANO FERRARI</span></div>
-<div class="section"><span class="asignado">SEBASTIÁN MEZA</span></div>
-</section>
+      .page-bg {
+        min-height: 100vh;
+        background-image: radial-gradient(
+          900px 500px at 50% -10%,
+          rgba(59, 130, 246, 0.16),
+          transparent 60%
+        );
+      }
 
-<section class="bloque amarillo">
-<h3>SEAMOS MEJORES MAESTROS</h3>
-<div class="section"><span class="asignado">MARA / TAMARA NATALE</span></div>
-<div class="section"><span class="asignado">MARTINA HUAMACONDOR / ALICIA SÁNCHEZ</span></div>
-<div class="section"><span class="asignado">FEDERICO PALLADINO / HÉCTOR PALAVECINO</span></div>
-<div class="section"><span class="asignado">JOSÉ CANCINO / DANTER HUAMACONDOR</span></div>
-</section>
+      .container {
+        width: min(520px, 100%);
+        margin: 0 auto;
+        padding: 0 18px;
+      }
 
-<section class="bloque rojo">
-<h3>NUESTRA VIDA CRISTIANA</h3>
-<div class="section"><span class="asignado">Informe de servicio anual – LUCAS SEGOVIA</span></div>
-<div class="section"><span class="asignado">DARÍO CORTES</span></div>
-</section>
+      /* Banner */
+      header.topbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--header-bg);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 0;
+      }
 
-<div class="pie">Oración final: <span class="asignado">ELVIO CASCO</span></div>
-</article>
+      .hero-banner {
+        position: relative;
+        width: 100%;
+        height: 168px;
+        border-radius: 26px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
 
-</template>
+      .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
 
-<script>
-// ===== CAMBIO CLAVE =====
-filteredWeeks = allWeeks; 
-</script>
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.2) 50%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+      }
 
-</body>
+      .btn-surface {
+        background: var(--btn-bg);
+        border: 1px solid var(--border);
+        color: var(--text);
+        border-radius: 14px;
+        padding: 10px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--btn-shadow);
+        backdrop-filter: blur(8px);
+        transition: transform 0.1s ease;
+      }
+
+      .btn-surface:active {
+        transform: scale(0.95);
+      }
+
+      /* Listado */
+      .list {
+        padding: 18px 0 40px;
+      }
+
+      .week-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        border-radius: 24px;
+        padding: 14px;
+        cursor: pointer;
+        transition: transform 0.15s ease;
+        margin-bottom: 14px;
+        position: relative;
+      }
+
+      .week-card:active {
+        transform: scale(0.99);
+      }
+
+      .week-current {
+        border: 2.5px solid var(--accent) !important;
+        transform: scale(1.01);
+      }
+
+      .badge-now {
+        font-size: 9px;
+        font-weight: 900;
+        color: var(--accent);
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      .card-verde {
+        border-top: 4px solid var(--verde);
+      }
+      .card-amarillo {
+        border-top: 4px solid var(--amarillo);
+      }
+      .card-rojo {
+        border-top: 4px solid var(--rojo);
+      }
+      .card-asamblea {
+        border-top: 4px solid var(--accent);
+      }
+
+      .week-title {
+        font-size: 17px;
+        font-weight: 900;
+        margin: 0;
+      }
+
+      .tag {
+        border: 1px solid var(--border);
+        background: var(--soft);
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 999px;
+      }
+
+      .week-sub {
+        font-size: 11px;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .week-cta {
+        font-size: 11px;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-top: 10px;
+      }
+
+      /* Visor */
+      .viewer {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: min(92vw, 600px);
+        height: min(85vh, 800px);
+        background: var(--bg-main);
+        border-radius: 26px;
+        z-index: 100;
+        display: none;
+        overflow: hidden;
+        flex-direction: column;
+        box-shadow: var(--shadow);
+      }
+      .viewer.show {
+        display: flex;
+      }
+
+      .v-head {
+        background: var(--bg-card);
+        padding: 15px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .v-body {
+        padding: 15px;
+        overflow-y: auto;
+        flex: 1;
+      }
+
+      .page {
+        background: var(--bg-card);
+        border-radius: 20px;
+        padding: 20px;
+        border: 1px solid var(--border);
+      }
+
+      .bloque {
+        margin-top: 20px;
+      }
+
+      .bloque h3 {
+        font-size: 12px;
+        font-weight: 900;
+        border-bottom: 3px solid currentColor;
+        padding-bottom: 5px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+
+      .verde h3 {
+        color: var(--verde);
+      }
+      .amarillo h3 {
+        color: var(--amarillo);
+      }
+      .rojo h3 {
+        color: var(--rojo);
+      }
+
+      .section {
+        background: var(--soft);
+        border-radius: 14px;
+        padding: 12px;
+        margin-bottom: 10px;
+        border: 1px solid var(--border);
+      }
+
+      .sect-title h4 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .asignado {
+        font-size: 12px;
+        font-weight: 900;
+        color: var(--muted);
+        text-transform: uppercase;
+        display: block;
+        margin-top: 6px;
+      }
+
+      .duration {
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      .presidente-en-pagina {
+        text-align: center;
+        font-weight: 900;
+        margin-bottom: 15px;
+      }
+
+      .inicio-programa,
+      .pie {
+        text-align: center;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      /* Menú lateral (igual estilo index, pero usando tu estructura overlay + sidebar) */
+      .menu-overlay,
+      .viewer-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px);
+        z-index: 60;
+        display: none;
+      }
+      .menu-overlay.show,
+      .viewer-overlay.show {
+        display: block;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100vh;
+        z-index: 70;
+        transform: translateX(-110%);
+        transition: transform 0.3s ease;
+        background: rgba(18, 26, 42, 0.95);
+        backdrop-filter: blur(16px);
+        padding: 25px;
+        color: #fff;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .side-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+      .side-badge {
+        width: 42px;
+        height: 42px;
+        border-radius: 16px;
+        background: rgba(59, 130, 246, 0.18);
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        color: #60a5fa;
+      }
+      .side-title {
+        margin: 0;
+        font-weight: 900;
+        line-height: 1.1;
+      }
+      .side-sub {
+        margin: 2px 0 0;
+        font-size: 10px;
+        opacity: 0.7;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .nav-link {
+        display: block;
+        padding: 12px 14px;
+        border-radius: 16px;
+        font-weight: 900;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        margin-bottom: 10px;
+      }
+      .nav-link.active {
+        background: rgba(59, 130, 246, 0.75);
+        border-color: rgba(59, 130, 246, 0.85);
+      }
+    </style>
+  </head>
+
+  <body class="page-bg">
+    <!-- Overlay menú -->
+    <div id="menuOverlay" class="menu-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar" aria-hidden="true">
+      <div class="side-header">
+        <div class="side-badge">✦</div>
+        <div>
+          <p class="side-title">Norte Garín</p>
+          <p class="side-sub">Digital Board</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="salidas.html" class="nav-link">Salidas</a>
+        <a href="vida-ministerio.html" class="nav-link active">Vida y Ministerio</a>
+        <a href="proximos-eventos.html" class="nav-link">Próximos eventos</a>
+        <a href="conferencias.html" class="nav-link">Discursos</a>
+        <a href="multimedia.html" class="nav-link">Multimedia</a>
+        <a href="lectores.html" class="nav-link">Lectores</a>
+        <a href="limpieza.html" class="nav-link">Limpieza</a>
+        <a href="grupos.html" class="nav-link">Grupos</a>
+      </nav>
+    </aside>
+
+    <!-- Header -->
+    <header class="topbar">
+      <div class="container">
+        <div class="hero-banner">
+          <img src="img/vida-ministerio.png" alt="Reunión" />
+          <div class="hero-overlay"></div>
+
+          <div class="absolute inset-0 p-4 flex flex-col justify-between">
+            <div class="flex justify-between items-center">
+              <button id="btnMenu" class="btn-surface" aria-label="Menú" type="button">☰</button>
+
+              <button id="btnTheme" class="btn-surface" aria-label="Tema" type="button">
+                <span id="theme-icon">🌙</span>
+              </button>
+            </div>
+
+            <div class="text-white">
+              <h1 class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg">
+                Vida y Ministerio
+              </h1>
+              <p
+                class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-400 drop-shadow-md"
+              >
+                Norte Garín
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="container list">
+      <section id="thumbs"></section>
+    </main>
+
+    <!-- Visor -->
+    <div id="viewerOverlay" class="viewer-overlay"></div>
+
+    <section id="viewer" class="viewer" aria-modal="true" role="dialog">
+      <div class="v-head">
+        <div class="flex justify-between items-start mb-4">
+          <div>
+            <p id="vTitle" class="font-black uppercase text-lg"></p>
+            <p id="vSub" class="text-blue-500 font-bold text-xs"></p>
+          </div>
+          <button id="closeViewer" class="btn-surface px-4 font-black" type="button">✕</button>
+        </div>
+
+        <div class="flex gap-2">
+          <button id="prevWeek" class="btn-surface flex-1 text-[10px] font-black uppercase" type="button">
+            Anterior
+          </button>
+          <button id="nextWeek" class="btn-surface flex-1 text-[10px] font-black uppercase" type="button">
+            Siguiente
+          </button>
+        </div>
+      </div>
+
+      <div id="vContent" class="v-body"></div>
+    </section>
+
+    <!-- ====== CONTENIDO (TAL CUAL TUYO) ====== -->
+    <template id="weeksTmpl">
+      <article
+        class="page"
+        data-key="2026-01-05"
+        data-title="5–11 DE ENERO"
+        data-book="ISAÍAS 17-20"
+      >
+        <header>
+          <div class="presidente-en-pagina">
+            Presidente: <span class="asignado">LEÓN SEGOVIA</span>
+          </div>
+          <div class="inicio-programa">
+            <strong>Canción 153</strong> y oración
+            <span class="asignado">HORACIO SALGADO</span> | Palabras de
+            introducción (1 min.)
+          </div>
+        </header>
+        <section class="bloque verde">
+          <h3>TESOROS DE LA BIBLIA</h3>
+          <div class="section">
+            <div class="sect-title">
+              <h4>1. "Lo que van a recibir quienes nos despojan"</h4>
+            </div>
+            <span class="asignado">MARIO SEGOVIA</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>2. Busquemos perlas escondidas</h4>
+            </div>
+            <span class="asignado">CAETANO FERRARI</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>3. Lectura de la Biblia (Is 19:1-7)</h4>
+            </div>
+            <span class="asignado">HÉCTOR PALAVECINO</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque amarillo">
+          <h3>SEAMOS MEJORES MAESTROS</h3>
+          <div class="section">
+            <div class="sect-title"><h4>4. Empiece conversaciones</h4></div>
+            <span class="asignado">ELIDA BENÍTEZ / MORELIA HARLOS</span>
+            <div class="duration">(3 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>5. Haga revisitas</h4></div>
+            <span class="asignado">ÁNGELA CESPEDES / NELIDA BECERRA</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>6. Discurso</h4></div>
+            <span class="asignado">SEBASTIÁN MESA</span>
+            <div class="duration">(5 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque rojo">
+          <h3>NUESTRA VIDA CRISTIANA</h3>
+          <div class="section">
+            <div class="sect-title"><h4>Canción 148</h4></div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>7. Acuérdate de "la Roca de tu fortaleza"</h4>
+            </div>
+            <span class="asignado">HORACIO SALGADO</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>
+                8. Esforcémonos por aprender de los amigos de Jehová todos los
+                días
+              </h4>
+            </div>
+            <span class="asignado">LUCAS SEGOVIA</span>
+            <div class="duration">(5 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>9. Estudio bíblico de la congregación</h4>
+            </div>
+            <span class="asignado">DANIEL ALBIS</span>
+            <div class="duration">(30 mins.)</div>
+          </div>
+        </section>
+        <div class="pie">
+          Palabras de conclusión (3 mins.) | <strong>Canción 151</strong> y
+          oración | <span class="asignado">JUAN CARLOS SÁNCHEZ</span>
+        </div>
+      </article>
+
+      <article
+        class="page"
+        data-key="2026-01-12"
+        data-title="12–18 DE ENERO"
+        data-book="ISAÍAS 21-23"
+      >
+        <header>
+          <div class="presidente-en-pagina">
+            Presidente: <span class="asignado">MARIO SEGOVIA</span>
+          </div>
+          <div class="inicio-programa">
+            <strong>Canción 120</strong> y oración
+            <span class="asignado">MARIO SEGOVIA</span> | Palabras de
+            introducción (1 min.)
+          </div>
+        </header>
+        <section class="bloque verde">
+          <h3>TESOROS DE LA BIBLIA</h3>
+          <div class="section">
+            <div class="sect-title">
+              <h4>1. Qué aprendemos de lo que le pasó a Sebná</h4>
+            </div>
+            <span class="asignado">LUCAS SEGOVIA</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>2. Busquemos perlas escondidas</h4>
+            </div>
+            <span class="asignado">DIEGO SARRAUTE</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>3. Lectura de la Biblia (Is 23:1-14)</h4>
+            </div>
+            <span class="asignado">LUCAS GALEANO</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque amarillo">
+          <h3>SEAMOS MEJORES MAESTROS</h3>
+          <div class="section">
+            <div class="sect-title"><h4>4. Empiece conversaciones</h4></div>
+            <span class="asignado">DANIEL COLLADO / DANIEL QUARANTA</span>
+            <div class="duration">(1 min.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>5. Empiece conversaciones</h4></div>
+            <span class="asignado">MICAELA SARRAUTE / CARMEN CASAS</span>
+            <div class="duration">(3 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>6. Haga revisitas</h4></div>
+            <span class="asignado">PAULINA LLORENTE / TEODORA DUCOLI</span>
+            <div class="duration">(2 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>7. Discurso: ¿A quién me gustaría parecerme?</h4>
+            </div>
+            <span class="asignado">BENJAMIN DURAN</span>
+            <div class="duration">(5 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque rojo">
+          <h3>NUESTRA VIDA CRISTIANA</h3>
+          <div class="section">
+            <div class="sect-title"><h4>Canción 124</h4></div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>8. Necesidades de la congregación</h4>
+            </div>
+            <span class="asignado">HORACIO SALGADO</span>
+            <div class="duration">(15 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>9. Estudio bíblico de la congregación</h4>
+            </div>
+            <span class="asignado">DARÍO CORTEZ</span>
+            <div class="duration">(30 mins.)</div>
+          </div>
+        </section>
+        <div class="pie">
+          Palabras de conclusión (3 mins.) | <strong>Canción 3</strong> y
+          oración | <span class="asignado">CAETANO FERRARI</span>
+        </div>
+      </article>
+
+      <article
+        class="page"
+        data-key="2026-01-19"
+        data-title="19–25 DE ENERO"
+        data-book="ISAÍAS 24-27"
+      >
+        <header>
+          <div class="presidente-en-pagina">
+            Presidente: <span class="asignado">DANIEL ALBIS</span>
+          </div>
+          <div class="inicio-programa">
+            <strong>Canción 159</strong> y oración
+            <span class="asignado">LEÓN SEGOVIA</span> | Palabras de
+            introducción (1 min.)
+          </div>
+        </header>
+        <section class="bloque verde">
+          <h3>TESOROS DE LA BIBLIA</h3>
+          <div class="section">
+            <div class="sect-title"><h4>1. "¡Este es nuestro Dios!"</h4></div>
+            <span class="asignado">CAETANO FERRARI</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>2. Busquemos perlas escondidas</h4>
+            </div>
+            <span class="asignado">LUCAS SEGOVIA</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>3. Lectura de la Biblia (Is 25:1-9)</h4>
+            </div>
+            <span class="asignado">FRANCO GALEANO</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque amarillo">
+          <h3>SEAMOS MEJORES MAESTROS</h3>
+          <div class="section">
+            <div class="sect-title"><h4>4. Empiece conversaciones</h4></div>
+            <span class="asignado">MORELIA HARLOS / MARTINA HUAMACONDOR</span>
+            <div class="duration">(3 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>5. Haga revisitas</h4></div>
+            <span class="asignado">CARMEN CASAS / MIRTA SEGOVIA</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>6. Explique sus creencias</h4></div>
+            <span class="asignado">BIBIANA PALACIOS / ROXANA PALAVECINO</span>
+            <div class="duration">(5 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque rojo">
+          <h3>NUESTRA VIDA CRISTIANA</h3>
+          <div class="section">
+            <div class="sect-title"><h4>Canción 144</h4></div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>
+                7. Apoyémonos en Jehová y preparémonos para cuando necesitemos
+                atención médica o una operación
+              </h4>
+            </div>
+            <span class="asignado">DARIO CORTEZ</span>
+            <div class="duration">(15 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>8. Estudio bíblico de la congregación</h4>
+            </div>
+            <span class="asignado">ADOLFO GUTIÉRREZ</span>
+            <div class="duration">(30 mins.)</div>
+          </div>
+        </section>
+        <div class="pie">
+          Palabras de conclusión (3 mins.) | <strong>Canción 53</strong> y
+          oración | <span class="asignado">DIEGO SARRAUTE</span>
+        </div>
+      </article>
+
+      <article
+        class="page"
+        data-key="2026-01-26"
+        data-title="26 DE ENE. – 1 DE FEB."
+        data-book="ISAÍAS 28, 29"
+      >
+        <header>
+          <div class="presidente-en-pagina">
+            Presidente: <span class="asignado">LUCAS SEGOVIA</span>
+          </div>
+          <div class="inicio-programa">
+            <strong>Canción 28</strong> y oración
+            <span class="asignado">DANIEL QUARANTA</span> | Palabras de
+            introducción (1 min.)
+          </div>
+        </header>
+        <section class="bloque verde">
+          <h3>TESOROS DE LA BIBLIA</h3>
+          <div class="section">
+            <div class="sect-title">
+              <h4>1. No honremos a Jehová solo de labios para afuera</h4>
+            </div>
+            <span class="asignado">DIEGO SARRAUTE</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>2. Busquemos perlas escondidas</h4>
+            </div>
+            <span class="asignado">DARIO CORTEZ</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>3. Lectura de la Biblia (Is 29:13-24)</h4>
+            </div>
+            <span class="asignado">JUAN CARLOS SÁNCHEZ</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque amarillo">
+          <h3>SEAMOS MEJORES MAESTROS</h3>
+          <div class="section">
+            <div class="sect-title"><h4>4. Empiece conversaciones</h4></div>
+            <span class="asignado">YANINA GALEANO / ALICIA SÁNCHEZ</span>
+            <div class="duration">(2 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>5. Haga revisitas</h4></div>
+            <span class="asignado">CECILIA LEAL / ALICIA VERA</span>
+            <div class="duration">(3 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>6. Haga discípulos</h4></div>
+            <span class="asignado">SABRINA SEGOVIA / TAMARA NATALE</span>
+            <div class="duration">(2 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque rojo">
+          <h3>NUESTRA VIDA CRISTIANA</h3>
+          <div class="section">
+            <div class="sect-title"><h4>Canción 89</h4></div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>8. "Yo siempre hago lo que a él le agrada"</h4>
+            </div>
+            <span class="asignado">CAETANO FERRARI</span>
+            <div class="duration">(8 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>9. Necesidades locales</h4></div>
+            <span class="asignado">LUCAS SEGOVIA</span>
+            <div class="duration">(7 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>10. Estudio bíblico de la congregación</h4>
+            </div>
+            <span class="asignado">ELVIO CASCO</span>
+            <div class="duration">(30 mins.)</div>
+          </div>
+        </section>
+        <div class="pie">
+          Palabras de conclusión (3 mins.) | <strong>Canción 55</strong> y
+          oración | <span class="asignado">LEÓN SEGOVIA</span>
+        </div>
+      </article>
+
+      <article
+        class="page"
+        data-key="2026-02-02"
+        data-title="2–8 DE FEBRERO"
+        data-book="ISAÍAS 30-32"
+      >
+        <header>
+          <div class="presidente-en-pagina">
+            Presidente: <span class="asignado">DARÍO CORTEZ</span>
+          </div>
+          <div class="inicio-programa">
+            <strong>Canción 8</strong> y oración
+            <span class="asignado">DANIEL QUARANTA</span> | Palabras de
+            introducción (1 min.)
+          </div>
+        </header>
+        <section class="bloque verde">
+          <h3>TESOROS DE LA BIBLIA</h3>
+          <div class="section">
+            <div class="sect-title">
+              <h4>1. Busquemos refugio bajo las alas de Jehová</h4>
+            </div>
+            <span class="asignado">ADOLFO GUTIERREZ</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>2. Busquemos perlas escondidas</h4>
+            </div>
+            <span class="asignado">DIEGO SARRAUTE</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>3. Lectura de la Biblia (Is 31:1-9)</h4>
+            </div>
+            <span class="asignado">GUILLERMO MIÑO</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque amarillo">
+          <h3>SEAMOS MEJORES MAESTROS</h3>
+          <div class="section">
+            <div class="sect-title"><h4>4. Empiece conversaciones</h4></div>
+            <span class="asignado">MICAELA SARRAUTE / NORMA BARRERA</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>5. Empiece conversaciones</h4></div>
+            <span class="asignado">DORIS TALLARICO / CARMEN CASAS</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>6. Haga revisitas</h4></div>
+            <span class="asignado">LIDIA CANSINO / MÓNICA CASCO</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque rojo">
+          <h3>NUESTRA VIDA CRISTIANA</h3>
+          <div class="section">
+            <div class="sect-title"><h4>Canción 157</h4></div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>7. “El resultado de la verdadera rectitud será paz”</h4>
+            </div>
+            <span class="asignado">ELVIO CASCO</span>
+            <div class="duration">(15 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>8. Estudio bíblico de la congregación</h4>
+            </div>
+            <span class="asignado">HORACIO SALGADO</span>
+            <div class="duration">(30 mins.)</div>
+          </div>
+        </section>
+        <div class="pie">
+          Palabras de conclusión (3 mins.) | <strong>Canción 133</strong> y
+          oración | <span class="asignado">ADOLFO GUTIERREZ</span>
+        </div>
+      </article>
+
+      <article
+        class="page"
+        data-key="2026-02-09"
+        data-title="9–15 DE FEBRERO"
+        data-book="ISAÍAS 33-35"
+      >
+        <header>
+          <div class="presidente-en-pagina">
+            Presidente: <span class="asignado">ADOLFO GUTIERREZ</span>
+          </div>
+          <div class="inicio-programa">
+            <strong>Canción 3</strong> y oración
+            <span class="asignado">CRISTIAN SEGOVIA</span> | Palabras de
+            introducción (1 min.)
+          </div>
+        </header>
+        <section class="bloque verde">
+          <h3>TESOROS DE LA BIBLIA</h3>
+          <div class="section">
+            <div class="sect-title">
+              <h4>1. “Él es la estabilidad de tus tiempos”</h4>
+            </div>
+            <span class="asignado">ELVIO CASCO</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>2. Busquemos perlas escondidas</h4>
+            </div>
+            <span class="asignado">HORACIO SALGADO</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>3. Lectura de la Biblia (Is 35:1-10)</h4>
+            </div>
+            <span class="asignado">FEDERICO PALLADINO</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque amarillo">
+          <h3>SEAMOS MEJORES MAESTROS</h3>
+          <div class="section">
+            <div class="sect-title"><h4>4. Empiece conversaciones</h4></div>
+            <span class="asignado">ALICIA SÁNCHEZ / CINTIA CANSINO</span>
+            <div class="duration">(3 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>5. Haga revisitas</h4></div>
+            <span class="asignado">TAMARA NATALE / MELANY PEREYRA</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>6. Discurso</h4></div>
+            <span class="asignado">CAETANO FERRARI</span>
+            <div class="duration">(5 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque rojo">
+          <h3>NUESTRA VIDA CRISTIANA</h3>
+          <div class="section">
+            <div class="sect-title"><h4>Canción 41</h4></div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>7. Informe 1 del Cuerpo Gobernante</h4>
+            </div>
+            <span class="asignado">DANIEL ALBIS</span>
+            <div class="duration">(15 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>8. Discurso de servicio:"Sirvamos felices al Dios Feliz"</h4>
+            </div>
+            <span class="asignado">MAURICIO TIERNO</span>
+            <div class="duration">(30 mins.)</div>
+          </div>
+        </section>
+        <div class="pie">
+          Palabras de conclusión (3 mins.) | <strong>Canción 23</strong> y
+          oración | <span class="asignado">LEÓN SEGOVIA</span>
+        </div>
+      </article>
+
+      <article
+        class="page"
+        data-key="2026-02-16"
+        data-title="16–22 DE FEBRERO"
+        data-book="ISAÍAS 36, 37"
+      >
+        <header>
+          <div class="presidente-en-pagina">
+            Presidente: <span class="asignado">ELVIO CASCO</span>
+          </div>
+          <div class="inicio-programa">
+            <strong>Canción 150</strong> y oración
+            <span class="asignado">CAETANO FERRARI</span> | Palabras de
+            introducción (1 min.)
+          </div>
+        </header>
+        <section class="bloque verde">
+          <h3>TESOROS DE LA BIBLIA</h3>
+          <div class="section">
+            <div class="sect-title">
+              <h4>1. “No tengas miedo por las palabras que has oído”</h4>
+            </div>
+            <span class="asignado">HORACIO SALGADO</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>2. Busquemos perlas escondidas</h4>
+            </div>
+            <span class="asignado">LEÓN SEGOVIA</span>
+            <div class="duration">(10 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>3. Lectura de la Biblia (Is 37:14-23)</h4>
+            </div>
+            <span class="asignado">FRANCISCO ARAOZ</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque amarillo">
+          <h3>SEAMOS MEJORES MAESTROS</h3>
+          <div class="section">
+            <div class="sect-title"><h4>4. Empiece conversaciones</h4></div>
+            <span class="asignado">SOFÍA ZUÑIGA / ANDREA GUTIERREZ</span>
+            <div class="duration">(3 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>5. Empiece conversaciones</h4></div>
+            <span class="asignado">ROXANA PALAVECINO / LIDIA CANSINO</span>
+            <div class="duration">(4 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title"><h4>6. Explique sus creencias</h4></div>
+            <span class="asignado">MÓNICA CASCO / CECILIA LELA</span>
+            <div class="duration">(5 mins.)</div>
+          </div>
+        </section>
+        <section class="bloque rojo">
+          <h3>NUESTRA VIDA CRISTIANA</h3>
+          <div class="section">
+            <div class="sect-title"><h4>Canción 118</h4></div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>7. “¿Por qué están tan confiados?”</h4>
+            </div>
+            <span class="asignado">DIEGO SARRAUTE</span>
+            <div class="duration">(15 mins.)</div>
+          </div>
+          <div class="section">
+            <div class="sect-title">
+              <h4>8. Estudio bíblico de la congregación</h4>
+            </div>
+            <span class="asignado">MARIO SEGOVIA</span>
+            <div class="duration">(30 mins.)</div>
+          </div>
+        </section>
+        <div class="pie">
+          Palabras de conclusión (3 mins.) | <strong>Canción 9</strong> y
+          oración | <span class="asignado">DANIEL ALBIS</span>
+        </div>
+      </article>
+
+      <article
+        class="page"
+        data-key="2026-02-23"
+        data-title="23 DE FEB. – 1 DE MAR."
+        data-book="ASAMBLEA"
+      >
+        <div class="flex flex-col items-center justify-center py-10 text-center">
+          <h2 class="text-3xl font-black text-blue-600 mb-4 uppercase">
+            Asamblea De circuito
+          </h2>
+          <p class="text-lg font-bold">
+            No habrá reunión de entre semana en el Salón del Reino.
+          </p>
+          <div
+            class="mt-6 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-3xl border border-blue-200 dark:border-blue-800"
+          >
+            <p class="text-sm font-black uppercase tracking-widest text-blue-500">
+              Recordatorio
+            </p>
+            <p class="mt-2 font-medium">
+              Tema de la asamblea: "Tienen que adorarlo con espíritu y con
+              verdad" JUAN 4:24.
+            </p>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script>
+      // ===== Tema + menú (igual experiencia que index)
+      const html = document.documentElement;
+      const themeIcon = document.getElementById("theme-icon");
+      const sidebar = document.getElementById("sidebar");
+      const menuOverlay = document.getElementById("menuOverlay");
+
+      function syncThemeIcon() {
+        themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
+      }
+
+      function toggleTheme() {
+        html.classList.toggle("dark");
+        localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
+        syncThemeIcon();
+      }
+
+      document.getElementById("btnTheme").onclick = toggleTheme;
+      syncThemeIcon();
+
+      document.getElementById("btnMenu").onclick = () => {
+        sidebar.classList.add("open");
+        sidebar.setAttribute("aria-hidden", "false");
+        menuOverlay.classList.add("show");
+      };
+
+      menuOverlay.onclick = () => {
+        sidebar.classList.remove("open");
+        sidebar.setAttribute("aria-hidden", "true");
+        menuOverlay.classList.remove("show");
+      };
+
+      // ===== Render del contenido (tu lógica intacta)
+      const thumbs = document.getElementById("thumbs");
+      const tmpl = document.getElementById("weeksTmpl");
+      const allWeeks = Array.from(tmpl.content.querySelectorAll("article.page"));
+
+      let filteredWeeks = [];
+      let currentIndex = 0;
+
+      function render() {
+        thumbs.innerHTML = "";
+
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+
+        // Lunes de la semana actual (ISO-ish)
+        const diaS = hoy.getDay();
+        const diff = hoy.getDate() - diaS + (diaS === 0 ? -6 : 1);
+        const lunesActual = new Date(new Date().setDate(diff));
+        lunesActual.setHours(0, 0, 0, 0);
+
+        filteredWeeks = allWeeks.filter((w) => {
+          const fechaSemana = new Date(w.dataset.key + "T00:00:00");
+          return fechaSemana >= lunesActual;
+        });
+
+        filteredWeeks.forEach((w, i) => {
+          const card = document.createElement("article");
+          card.className = "week-card";
+
+          const fechaSemana = new Date(w.dataset.key + "T00:00:00");
+          if (fechaSemana.getTime() === lunesActual.getTime()) {
+            card.classList.add("week-current");
+            card.innerHTML += `<span class="badge-now">● SEMANA ACTUAL</span>`;
+          }
+
+          if (w.dataset.book === "ASAMBLEA") card.classList.add("card-asamblea");
+          else {
+            const colors = ["card-verde", "card-amarillo", "card-rojo"];
+            card.classList.add(colors[i % 3]);
+          }
+
+          const subText =
+            w.dataset.book === "ASAMBLEA"
+              ? "Semana 23 de febrero"
+              : w.querySelector(".presidente-en-pagina")?.textContent || "";
+
+          card.innerHTML += `
+            <div class="flex justify-between items-start mb-2 gap-3">
+              <h3 class="week-title">${w.dataset.title}</h3>
+              <span class="tag">${w.dataset.book}</span>
+            </div>
+            <p class="week-sub">${subText}</p>
+            <p class="week-cta">Ver programa</p>
+          `;
+
+          card.onclick = () => openWeek(i);
+          thumbs.appendChild(card);
+        });
+      }
+
+      function openWeek(i) {
+        currentIndex = i;
+        const w = filteredWeeks[i];
+
+        document.getElementById("vTitle").textContent = w.dataset.title;
+        document.getElementById("vSub").textContent = w.dataset.book;
+
+        const vContent = document.getElementById("vContent");
+        vContent.innerHTML = "";
+        vContent.appendChild(w.cloneNode(true));
+
+        document.getElementById("viewer").classList.add("show");
+        document.getElementById("viewerOverlay").classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeViewer() {
+        document.getElementById("viewer").classList.remove("show");
+        document.getElementById("viewerOverlay").classList.remove("show");
+        document.body.style.overflow = "";
+      }
+
+      document.getElementById("closeViewer").onclick = closeViewer;
+      document.getElementById("viewerOverlay").onclick = closeViewer;
+
+      document.getElementById("prevWeek").onclick = () =>
+        openWeek((currentIndex + filteredWeeks.length - 1) % filteredWeeks.length);
+
+      document.getElementById("nextWeek").onclick = () =>
+        openWeek((currentIndex + 1) % filteredWeeks.length);
+
+      render();
+    </script>
+  </body>
 </html>
