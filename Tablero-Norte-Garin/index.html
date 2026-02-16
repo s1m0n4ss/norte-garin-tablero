@@ -30,7 +30,7 @@
       }
       body { font-family: "Inter", sans-serif; background-color: var(--bg-main); color: var(--text-primary); margin: 0; padding-bottom: 60px; }
       .page-bg { min-height: 100vh; background-image: radial-gradient(900px 500px at 50% -10%, rgba(59, 130, 246, 0.16), transparent 60%); }
-      
+
       .btn-surface { background: var(--btn-bg); border: 1px solid var(--border); color: var(--text-primary); box-shadow: 0 10px 25px rgba(2, 6, 23, 0.12); backdrop-filter: blur(8px); transition: all 0.15s ease; }
       .btn-surface:active { transform: scale(0.95); }
 
@@ -60,7 +60,7 @@
         <a href="lectores.html" class="nav-link">Lectores</a>
         <a href="limpieza.html" class="nav-link">Limpieza</a>
         <a href="grupos.html" class="nav-link">Grupos</a>
-<a href="proximos-eventos.html" class="nav-link">Próximos eventos</a>
+        <a href="proximos-eventos.html" class="nav-link">Próximos eventos</a>
       </nav>
     </aside>
 
@@ -68,7 +68,7 @@
       <div class="relative w-full h-64 rounded-[40px] overflow-hidden shadow-2xl group">
         <img src="img/image_4.png.jpg" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" alt="Hero" />
         <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80"></div>
-        
+
         <div class="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
           <button id="btnMenu" class="btn-surface p-3 rounded-2xl active:scale-90"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button>
           <button id="btnTheme" class="btn-surface p-3 rounded-2xl active:scale-90"><span id="theme-icon">🌙</span></button>
@@ -104,18 +104,22 @@
               <p id="dash-salida" class="font-extrabold text-sm mt-1 leading-tight">Cargando...</p>
             </div>
           </div>
+
+          <!-- ✅ REEMPLAZO: "Semana de la visita" -> "Asamblea de Circuito" -->
           <div class="activity-slide absolute inset-0 opacity-0 pointer-events-none">
-            <div class="border-l-4 p-4 rounded-2xl bg-slate-500/5" style="border-left-color: #f59e0b">
-              <p class="text-[9px] font-black uppercase tracking-widest opacity-50">Semana de la visita</p>
-              <p id="dash-visita" class="font-extrabold text-sm mt-1 leading-tight text-orange-500">Cargando...</p>
+            <div class="border-l-4 p-4 rounded-2xl bg-slate-500/5" style="border-left-color: #22c55e">
+              <p class="text-[9px] font-black uppercase tracking-widest opacity-50">Asamblea de Circuito</p>
+              <p id="dash-asamblea" class="font-extrabold text-sm mt-1 leading-tight text-emerald-500">Cargando...</p>
             </div>
           </div>
+
           <div class="activity-slide absolute inset-0 opacity-0 pointer-events-none">
             <div class="border-l-4 p-4 rounded-2xl bg-slate-500/5" style="border-left-color: #22c55e">
               <p class="text-[9px] font-black uppercase tracking-widest opacity-50">Limpieza Semanal</p>
               <p id="dash-limpieza" class="font-extrabold text-sm mt-1 leading-tight">Cargando...</p>
             </div>
           </div>
+
           <div class="activity-slide absolute inset-0 opacity-0 pointer-events-none">
             <div class="border-l-4 p-4 rounded-2xl bg-slate-500/5" style="border-left-color: #a855f7">
               <p class="text-[9px] font-black uppercase tracking-widest opacity-50">Próximo Discurso (Dom)</p>
@@ -190,25 +194,40 @@
         { date: "2026-02-15", title: "¿Qué lo ayudará a tener éxito en la vida?" },
         { date: "2026-02-22", title: "Consigamos que nuestro corazón sea sabio" },
       ];
-      const VISITA = { start: "2026-02-10", end: "2026-02-15" };
+
+      // ✅ Asamblea de Circuito (1 de Marzo 2026)
+      const ASAMBLEA = { date: "2026-03-01", label: "1 de marzo 2026" };
+
       const GRUPOS_LIMPIEZA = ["Grupos 1 y 2", "Grupos 3 y 4", "Grupos 1 y 2", "Grupos 3 y 4"];
       const INICIO_LIMPIEZA = new Date(2025, 11, 2);
 
-      function parseISO(iso) { const [y, m, d] = iso.split("-").map(Number); return new Date(y, m - 1, d); }
+      function parseISO(iso) {
+        const [y, m, d] = iso.split("-").map(Number);
+        const dt = new Date(y, m - 1, d);
+        dt.setHours(0, 0, 0, 0);
+        return dt;
+      }
 
       function updateDashboard() {
         const now = new Date();
         document.getElementById("today-date").textContent = now.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" });
 
-        const startV = parseISO(VISITA.start); startV.setHours(0,0,0,0);
-        const endV = parseISO(VISITA.end); endV.setHours(0,0,0,0);
-        const today = new Date(); today.setHours(0,0,0,0);
-        
-        let vText = "";
-        if (today < startV) vText = `Faltan ${Math.ceil((startV-today)/86400000)} días — ${startV.toLocaleDateString("es-AR", {day:'numeric', month:'short'})} al ${endV.toLocaleDateString("es-AR", {day:'numeric', month:'short'})}`;
-        else if (today > endV) vText = "Finalizada";
-        else vText = `EN CURSO (Día ${Math.floor((today-startV)/86400000)+1}/6)`;
-        document.getElementById("dash-visita").innerText = vText;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        // ✅ LÓGICA: ASAMBLEA (reemplaza “Semana de la visita”)
+        const asambleaDate = parseISO(ASAMBLEA.date);
+        const diffDays = Math.ceil((asambleaDate - today) / 86400000);
+
+        let aText = "";
+        if (diffDays > 0) {
+          aText = `Faltan ${diffDays} día${diffDays === 1 ? "" : "s"} — ${ASAMBLEA.label}`;
+        } else if (diffDays === 0) {
+          aText = `HOY — ${ASAMBLEA.label}`;
+        } else {
+          aText = `Realizada — ${ASAMBLEA.label}`;
+        }
+        document.getElementById("dash-asamblea").innerText = aText;
 
         const diffWeeks = Math.floor(Math.abs(today - INICIO_LIMPIEZA) / (1000 * 60 * 60 * 24 * 7));
         document.getElementById("dash-limpieza").innerText = GRUPOS_LIMPIEZA[diffWeeks % GRUPOS_LIMPIEZA.length];
@@ -219,14 +238,13 @@
         // LÓGICA DE SALIDAS INTELIGENTE
         if (window.SALIDAS_CAL) {
           const nowTime = now.getHours() * 60 + now.getMinutes();
-          
-          // Buscar hoy
+
           const entriesToday = window.SALIDAS_CAL.getEntriesForDate(now) || [];
           const nextToday = entriesToday
             .filter(e => e.h && e.h !== "–")
             .map(e => {
-                const [h, m] = e.h.split(':').map(Number);
-                return { ...e, totalMin: h * 60 + m };
+              const [h, m] = e.h.split(':').map(Number);
+              return { ...e, totalMin: h * 60 + m };
             })
             .filter(e => e.totalMin >= nowTime)
             .sort((a, b) => a.totalMin - b.totalMin);
@@ -235,7 +253,6 @@
             document.getElementById("label-salida").innerText = "Próxima Salida de Hoy";
             document.getElementById("dash-salida").innerText = `${nextToday[0].h} hs — ${nextToday[0].l}`;
           } else {
-            // No hay más hoy, buscar mañana
             const mañana = new Date(now);
             mañana.setDate(mañana.getDate() + 1);
             const entriesMañana = window.SALIDAS_CAL.getEntriesForDate(mañana) || [];
