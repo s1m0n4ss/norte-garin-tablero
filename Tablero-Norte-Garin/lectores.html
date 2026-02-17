@@ -147,6 +147,9 @@
       .card.biblico {
         border-left: 6px solid var(--brand-biblico);
       }
+      .card.special {
+        border-left: 6px solid #f59e0b;
+      }
       .card.is-current {
         border-left-width: 10px;
         transform: scale(1.02);
@@ -362,29 +365,8 @@
         overlay.classList.remove("show");
       };
 
+      // ✅ Programa (se eliminó ENERO; se dejó FEBRERO y se agregó MARZO)
       const programData = [
-        {
-          monthLabel: "Enero 2026",
-          year: 2026,
-          monthIdx: 0,
-          atalaya: [
-            { date: "03", dayOverride: "Sáb", name: "MARIO SEGOVIA" },
-            { date: "11", name: "LUCAS SEGOVIA" },
-            {
-              date: "18",
-              special: true,
-              title: "PROGRAMA ESPECIAL",
-              desc: "Visita de Pastoreo",
-            },
-            { date: "25", name: "DARIO CORTEZ" },
-          ],
-          biblico: [
-            { date: "08", name: "DARIO CORTEZ" },
-            { date: "15", name: "LEÓN SEGOVIA" },
-            { date: "22", name: "DIEGO SARRAUTE" },
-            { date: "29", name: "DANIEL ALBIS" },
-          ],
-        },
         {
           monthLabel: "Febrero 2026",
           year: 2026,
@@ -406,6 +388,32 @@
             { date: "26", name: "DIEGO SARRAUTE" },
           ],
         },
+        {
+          monthLabel: "Marzo 2026",
+          year: 2026,
+          monthIdx: 2,
+          atalaya: [
+            {
+              date: "01",
+              special: true,
+              title: "ASAMBLEA DE CIRCUITO",
+              desc: "Sin reunión en el salón",
+              dayOverride: "Dom",
+              typeOverride: "special",
+              typeLabelOverride: "Evento",
+            },
+            { date: "08", name: "ADOLFO GUTIERREZ" },
+            { date: "15", name: "LEON SEGOVIA" },
+            { date: "22", name: "LUCAS SEGOVIA" },
+            { date: "29", name: "DARIO CORTEZ" },
+          ],
+          biblico: [
+            { date: "05", name: "DARIO CORTEZ" },
+            { date: "12", name: "HORACIO SALGADO" },
+            { date: "19", name: "DANIEL ALBIS" },
+            { date: "26", name: "DIEGO SARRAUTE" },
+          ],
+        },
       ];
 
       function render() {
@@ -417,31 +425,37 @@
 
         programData.forEach((month) => {
           htmlOut += `<h2 class="month-title-header">${month.monthLabel}</h2>`;
-          let combined = [];
-          month.atalaya.forEach((s) =>
+
+          const combined = [];
+
+          (month.atalaya || []).forEach((s) =>
             combined.push({
               ...s,
-              type: "atalaya",
-              typeLabel: "La Atalaya",
+              type: s.typeOverride || "atalaya",
+              typeLabel: s.typeLabelOverride || "La Atalaya",
               day: s.dayOverride || "Dom",
             })
           );
-          month.biblico.forEach((s) =>
+
+          (month.biblico || []).forEach((s) =>
             combined.push({
               ...s,
-              type: "biblico",
-              typeLabel: "Estudio Bíblico",
-              day: "Jue",
+              type: s.typeOverride || "biblico",
+              typeLabel: s.typeLabelOverride || "Estudio Bíblico",
+              day: s.dayOverride || "Jue",
             })
           );
-          combined.sort((a, b) => parseInt(a.date) - parseInt(b.date));
+
+          combined.sort((a, b) => parseInt(a.date, 10) - parseInt(b.date, 10));
 
           combined.forEach((item) => {
             const itemDate = new Date(
               month.year,
               month.monthIdx,
-              parseInt(item.date)
+              parseInt(item.date, 10)
             );
+            itemDate.setHours(0, 0, 0, 0);
+
             const isPast = itemDate < now;
             let isNext = false;
             if (!isPast && !foundNext) {
@@ -468,7 +482,7 @@
                     item.special ? item.title : item.name
                   }</div>
                   ${
-                    item.special
+                    item.special && item.desc
                       ? `<div class="text-xs opacity-60 font-bold mt-1">${item.desc}</div>`
                       : ""
                   }
@@ -485,6 +499,7 @@
             nextItem.scrollIntoView({ behavior: "smooth", block: "center" });
         }, 450);
       }
+
       render();
     </script>
   </body>
