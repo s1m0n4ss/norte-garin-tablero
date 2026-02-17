@@ -291,7 +291,6 @@
 
           <div class="absolute inset-0 p-4 flex flex-col justify-between">
             <div class="flex justify-between items-center">
-              <!-- ✅ Botón menú (reemplaza el volver) -->
               <button id="btnMenu" class="btn-header" aria-label="Menú">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -316,14 +315,10 @@
             </div>
 
             <div class="text-white">
-              <h1
-                class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg"
-              >
+              <h1 class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg">
                 Lectores
               </h1>
-              <p
-                class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400 drop-shadow-md"
-              >
+              <p class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400 drop-shadow-md">
                 Programa 2026
               </p>
             </div>
@@ -345,10 +340,7 @@
       }
       function toggleTheme() {
         html.classList.toggle("dark");
-        localStorage.setItem(
-          "theme",
-          html.classList.contains("dark") ? "dark" : "light"
-        );
+        localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
         syncThemeIcon();
       }
       syncThemeIcon();
@@ -365,7 +357,7 @@
         overlay.classList.remove("show");
       };
 
-      // ✅ Programa (se eliminó ENERO; se dejó FEBRERO y se agregó MARZO)
+      // ✅ Programa (sin ENERO; FEBRERO + MARZO)
       const programData = [
         {
           monthLabel: "Febrero 2026",
@@ -374,18 +366,23 @@
           atalaya: [
             { date: "01", name: "MARIO SEGOVIA" },
             { date: "08", name: "HORACIO SALGADO" },
-            {
-              date: "15",
-              special: true,
-              title: "VISITA S.C.",
-              desc: "Mauricio Tierno",
-            },
+            { date: "15", special: true, title: "VISITA S.C.", desc: "Mauricio Tierno" },
             { date: "22", name: "DANIEL ALBIS" },
           ],
           biblico: [
             { date: "05", name: "LUCAS SEGOVIA" },
             { date: "19", name: "ADOLFO GUTIERREZ" },
-            { date: "26", name: "DIEGO SARRAUTE" },
+
+            /* ✅ 26/2 no hay reunión */
+            {
+              date: "26",
+              special: true,
+              title: "ASAMBLEA DE CIRCUITO",
+              desc: "Fin de semana próximo",
+              dayOverride: "Jue",
+              typeOverride: "special",
+              typeLabelOverride: "Evento",
+            },
           ],
         },
         {
@@ -393,11 +390,11 @@
           year: 2026,
           monthIdx: 2,
           atalaya: [
+            /* ✅ 1/3 solo texto, sin “sin reunión…” */
             {
               date: "01",
               special: true,
               title: "ASAMBLEA DE CIRCUITO",
-              desc: "Sin reunión en el salón",
               dayOverride: "Dom",
               typeOverride: "special",
               typeLabelOverride: "Evento",
@@ -408,10 +405,10 @@
             { date: "29", name: "DARIO CORTEZ" },
           ],
           biblico: [
-            { date: "05", name: "DARIO CORTEZ" },
+            { date: "05", name: "DIEGO SARRAUTE" },
             { date: "12", name: "HORACIO SALGADO" },
             { date: "19", name: "DANIEL ALBIS" },
-            { date: "26", name: "DIEGO SARRAUTE" },
+            { date: "26", name: "DARIO CORTEZ" },
           ],
         },
       ];
@@ -449,11 +446,7 @@
           combined.sort((a, b) => parseInt(a.date, 10) - parseInt(b.date, 10));
 
           combined.forEach((item) => {
-            const itemDate = new Date(
-              month.year,
-              month.monthIdx,
-              parseInt(item.date, 10)
-            );
+            const itemDate = new Date(month.year, month.monthIdx, parseInt(item.date, 10));
             itemDate.setHours(0, 0, 0, 0);
 
             const isPast = itemDate < now;
@@ -464,28 +457,17 @@
             }
 
             htmlOut += `
-              <div class="card ${item.type} ${
-              isNext ? "is-current" : ""
-            }" style="${isPast ? "opacity:0.35; filter:grayscale(1);" : ""}">
+              <div class="card ${item.type} ${isNext ? "is-current" : ""}"
+                   style="${isPast ? "opacity:0.35; filter:grayscale(1);" : ""}">
                 <div class="date-box">
                   <span class="date-day">${item.day}</span>
                   <span class="date-num">${item.date}</span>
                 </div>
                 <div class="info">
-                  ${
-                    isNext
-                      ? '<span class="next-label">Próxima asignación</span>'
-                      : ""
-                  }
+                  ${isNext ? '<span class="next-label">Próxima asignación</span>' : ""}
                   <span class="tag">${item.typeLabel}</span>
-                  <div class="name">${
-                    item.special ? item.title : item.name
-                  }</div>
-                  ${
-                    item.special && item.desc
-                      ? `<div class="text-xs opacity-60 font-bold mt-1">${item.desc}</div>`
-                      : ""
-                  }
+                  <div class="name">${item.special ? item.title : item.name}</div>
+                  ${item.special && item.desc ? `<div class="text-xs opacity-60 font-bold mt-1">${item.desc}</div>` : ""}
                 </div>
               </div>`;
           });
@@ -495,8 +477,7 @@
 
         setTimeout(() => {
           const nextItem = document.querySelector(".is-current");
-          if (nextItem)
-            nextItem.scrollIntoView({ behavior: "smooth", block: "center" });
+          if (nextItem) nextItem.scrollIntoView({ behavior: "smooth", block: "center" });
         }, 450);
       }
 
