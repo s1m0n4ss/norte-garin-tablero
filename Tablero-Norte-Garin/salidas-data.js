@@ -218,13 +218,13 @@
         {
           h: "09:30",
           l: "Golf Club Argentino y Jockey Club",
-          c: "Daniel Albis",
+          c: "Horacio Salgado",
           t: "49",
         },
         {
           h: "18:00",
           l: "Ambrosetti y Concordia",
-          c: "León Segovia",
+          c: "Lucas Segovia",
           t: "54",
         },
         {
