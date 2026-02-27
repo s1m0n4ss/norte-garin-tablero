@@ -282,12 +282,7 @@
           c: "Elvio Casco",
           t: "47",
         },
-        {
-          h: "18:00",
-          l: "Golf Club Argentino y Salta Polo Club",
-          c: "Horacio Salgado",
-          t: "48",
-        },
+       
         {
           h: "19:00",
           l: "Pred. pública Estación Garín",
