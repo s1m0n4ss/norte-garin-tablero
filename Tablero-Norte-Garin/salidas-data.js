@@ -51,10 +51,10 @@
 
       7: [
         { h: "09:30", l: "Predicación de Grupo" },
-        { h: "–", l: "Grupo 1 – Familia Segovia", c: "Daniel Albis", t: "18" },
-        { h: "–", l: "Grupo 2 – Hna. Fany Villantoy", c: "Horacio Salgado", t: "25" },
-        { h: "–", l: "Grupo 3 – Paso y Centenario", c: "Elvio Casco", t: "17" },
-        { h: "–", l: "Grupo 4 – Familia Durán", c: "Lucas Segovia", t: "20" },
+        { h: "09:30", l: "Grupo 1 – Familia Segovia", c: "Daniel Albis", t: "18" },
+        { h: "09:30", l: "Grupo 2 – Hna. Fany Villantoy", c: "Horacio Salgado", t: "25" },
+        { h: "09:30", l: "Grupo 3 – Familia Miño", c: "Elvio Casco", t: "17" },
+        { h: "09:30", l: "Grupo 4 – Familia Durán", c: "Lucas Segovia", t: "20" },
         { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
