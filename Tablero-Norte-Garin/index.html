@@ -159,6 +159,7 @@
     </main>
 
     <script src="salidas-data.js"></script>
+    <script src="conferencias-data.js"></script>
     <script>
       const html = document.documentElement;
       const themeIcon = document.getElementById("theme-icon");
@@ -183,22 +184,7 @@
         setTimeout(() => overlay.classList.add("hidden"), 300);
       };
 
-      const CONFERENCIAS = [
-        { date: "2026-01-11", title: "Tenga fe en Dios y sus promesas" },
-        { date: "2026-01-18", title: "Visita de Pastoreo a la sucursal" },
-        { date: "2026-01-25", title: "Joven, ¿cómo puedes ser feliz y tener éxito?" },
-        { date: "2026-02-01", title: "Actuemos con sabiduría en este mundo insensato" },
-        { date: "2026-02-08", title: "¿Dónde encontrará una esperanza segura?" },
-        { date: "2026-02-15", title: "¿Qué lo ayudará a tener éxito en la vida?" },
-        { date: "2026-02-22", title: "Consigamos que nuestro corazón sea sabio" },
-        { date: "2026-03-08", title: "Discurso programado para el 8 de marzo" },
-        { date: "2026-03-15", title: "Discurso programado para el 15 de marzo" },
-        { date: "2026-03-22", title: "Discurso programado para el 22 de marzo" },
-        { date: "2026-03-29", title: "Discurso programado para el 29 de marzo" }
-      ];
-
       const ASAMBLEA = { date: "2026-03-01", label: "1 de marzo 2026" };
-
       const GRUPOS_LIMPIEZA = ["Grupos 1 y 2", "Grupos 3 y 4", "Grupos 1 y 2", "Grupos 3 y 4"];
       const INICIO_LIMPIEZA = new Date(2025, 11, 2);
 
@@ -209,9 +195,43 @@
         return dt;
       }
 
+      function getProximoDiscurso(today) {
+        if (!window.CONFERENCIAS_DATA || !Array.isArray(window.CONFERENCIAS_DATA)) {
+          return null;
+        }
+
+        const items = [];
+
+        window.CONFERENCIAS_DATA.forEach((mes) => {
+          if (!mes || !Array.isArray(mes.vienen)) return;
+
+          mes.vienen.forEach((conf) => {
+            if (!conf || conf.special) return;
+            if (!conf.date || !conf.title) return;
+
+            const day = Number(conf.date);
+            const dt = new Date(mes.year, mes.monthIdx, day);
+            dt.setHours(0, 0, 0, 0);
+
+            items.push({
+              dateObj: dt,
+              title: conf.title
+            });
+          });
+        });
+
+        items.sort((a, b) => a.dateObj - b.dateObj);
+
+        return items.find((item) => item.dateObj >= today) || null;
+      }
+
       function updateDashboard() {
         const now = new Date();
-        document.getElementById("today-date").textContent = now.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" });
+        document.getElementById("today-date").textContent = now.toLocaleDateString("es-AR", {
+          weekday: "long",
+          day: "numeric",
+          month: "long"
+        });
 
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -232,7 +252,7 @@
         const diffWeeks = Math.floor(Math.abs(today - INICIO_LIMPIEZA) / (1000 * 60 * 60 * 24 * 7));
         document.getElementById("dash-limpieza").innerText = GRUPOS_LIMPIEZA[diffWeeks % GRUPOS_LIMPIEZA.length];
 
-        const proximo = CONFERENCIAS.find(c => parseISO(c.date) >= today);
+        const proximo = getProximoDiscurso(today);
         document.getElementById("dash-discurso").innerText = proximo ? proximo.title : "Consulte el programa";
 
         if (window.SALIDAS_CAL) {
@@ -240,12 +260,12 @@
 
           const entriesToday = window.SALIDAS_CAL.getEntriesForDate(now) || [];
           const nextToday = entriesToday
-            .filter(e => e.h && e.h !== "–")
-            .map(e => {
-              const [h, m] = e.h.split(':').map(Number);
+            .filter((e) => e.h && e.h !== "–")
+            .map((e) => {
+              const [h, m] = e.h.split(":").map(Number);
               return { ...e, totalMin: h * 60 + m };
             })
-            .filter(e => e.totalMin >= nowTime)
+            .filter((e) => e.totalMin >= nowTime)
             .sort((a, b) => a.totalMin - b.totalMin);
 
           if (nextToday.length > 0) {
@@ -255,7 +275,9 @@
             const mañana = new Date(now);
             mañana.setDate(mañana.getDate() + 1);
             const entriesMañana = window.SALIDAS_CAL.getEntriesForDate(mañana) || [];
-            const nextMañana = entriesMañana.filter(e => e.h && e.h !== "–").sort((a, b) => a.h.localeCompare(b.h));
+            const nextMañana = entriesMañana
+              .filter((e) => e.h && e.h !== "–")
+              .sort((a, b) => a.h.localeCompare(b.h));
 
             if (nextMañana.length > 0) {
               document.getElementById("label-salida").innerText = "Próxima Salida: Mañana";
@@ -269,20 +291,20 @@
       }
 
       let currentSlide = 0;
-      const slides = document.querySelectorAll('.activity-slide');
-      const dots = document.querySelectorAll('#carousel-dots div');
+      const slides = document.querySelectorAll(".activity-slide");
+      const dots = document.querySelectorAll("#carousel-dots div");
 
       function nextSlide() {
-        slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
-        slides[currentSlide].classList.add('pointer-events-none');
+        slides[currentSlide].classList.replace("opacity-100", "opacity-0");
+        slides[currentSlide].classList.add("pointer-events-none");
         dots[currentSlide].className = "h-1 w-1 rounded-full bg-gray-300 transition-all";
         currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.replace('opacity-0', 'opacity-100');
-        slides[currentSlide].classList.remove('pointer-events-none');
+        slides[currentSlide].classList.replace("opacity-0", "opacity-100");
+        slides[currentSlide].classList.remove("pointer-events-none");
         dots[currentSlide].className = "h-1 w-3 rounded-full bg-emerald-500 transition-all";
       }
-      setInterval(nextSlide, 3500);
 
+      setInterval(nextSlide, 3500);
       window.onload = updateDashboard;
     </script>
   </body>
