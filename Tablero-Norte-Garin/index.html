@@ -19,27 +19,86 @@
 
     <style>
       :root {
-        --bg-main: #f1f5f9; --bg-card: #ffffff; --text-primary: #0f172a; --text-muted: #64748b;
-        --border: rgba(0, 0, 0, 0.08); --accent: #3b82f6; --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
+        --bg-main: #f1f5f9;
+        --bg-card: #ffffff;
+        --text-primary: #0f172a;
+        --text-muted: #64748b;
+        --border: rgba(0, 0, 0, 0.08);
+        --accent: #3b82f6;
+        --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
         --btn-bg: rgba(255, 255, 255, 0.85);
       }
+
       html.dark {
-        --bg-main: #0a0f1d; --bg-card: #121a2a; --text-primary: #f8fafc; --text-muted: #94a3b8;
-        --border: rgba(255, 255, 255, 0.06); --accent: #3b82f6; --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+        --bg-main: #0a0f1d;
+        --bg-card: #121a2a;
+        --text-primary: #f8fafc;
+        --text-muted: #94a3b8;
+        --border: rgba(255, 255, 255, 0.06);
+        --accent: #3b82f6;
+        --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
         --btn-bg: rgba(18, 26, 42, 0.82);
       }
-      body { font-family: "Inter", sans-serif; background-color: var(--bg-main); color: var(--text-primary); margin: 0; padding-bottom: 60px; }
-      .page-bg { min-height: 100vh; background-image: radial-gradient(900px 500px at 50% -10%, rgba(59, 130, 246, 0.16), transparent 60%); }
 
-      .btn-surface { background: var(--btn-bg); border: 1px solid var(--border); color: var(--text-primary); box-shadow: 0 10px 25px rgba(2, 6, 23, 0.12); backdrop-filter: blur(8px); transition: all 0.15s ease; }
-      .btn-surface:active { transform: scale(0.95); }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        margin: 0;
+        padding-bottom: 60px;
+      }
 
-      #sidebar { transition: transform 0.3s ease-in-out; background: var(--bg-card); z-index: 100; }
-      .nav-link { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 18px; color: var(--text-muted); transition: all 0.2s ease; }
-      .nav-link.active { background: rgba(59, 130, 246, 0.12); color: var(--accent); font-weight: 800; border: 1px solid rgba(59, 130, 246, 0.2); }
+      .page-bg {
+        min-height: 100vh;
+        background-image: radial-gradient(900px 500px at 50% -10%, rgba(59, 130, 246, 0.16), transparent 60%);
+      }
 
-      .card { background-color: var(--bg-card); border: 1px solid var(--border); box-shadow: var(--shadow); position: relative; }
-      .activity-slide { transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+      .btn-surface {
+        background: var(--btn-bg);
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        box-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
+        backdrop-filter: blur(8px);
+        transition: all 0.15s ease;
+      }
+
+      .btn-surface:active {
+        transform: scale(0.95);
+      }
+
+      #sidebar {
+        transition: transform 0.3s ease-in-out;
+        background: var(--bg-card);
+        z-index: 100;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        border-radius: 18px;
+        color: var(--text-muted);
+        transition: all 0.2s ease;
+      }
+
+      .nav-link.active {
+        background: rgba(59, 130, 246, 0.12);
+        color: var(--accent);
+        font-weight: 800;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+      }
+
+      .card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        position: relative;
+      }
+
+      .activity-slide {
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      }
     </style>
   </head>
 
@@ -49,13 +108,17 @@
     <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 transform -translate-x-full shadow-2xl p-8">
       <div class="flex items-center gap-3 mb-10">
         <div class="h-10 w-10 rounded-2xl bg-blue-500/20 flex items-center justify-center font-black text-blue-500">✦</div>
-        <div><h2 class="font-extrabold leading-tight">Norte Garín</h2><p class="text-[10px] opacity-60 uppercase font-bold tracking-widest">Digital Board</p></div>
+        <div>
+          <h2 class="font-extrabold leading-tight">Norte Garín</h2>
+          <p class="text-[10px] opacity-60 uppercase font-bold tracking-widest">Tablero Digital</p>
+        </div>
       </div>
+
       <nav class="space-y-2">
         <a href="index.html" class="nav-link active font-bold">Inicio</a>
         <a href="salidas.html" class="nav-link">Salidas</a>
         <a href="vida-ministerio.html" class="nav-link">Vida y Ministerio</a>
-        <a href="conferencias.html" class="nav-link">Discursos</a>
+        <a href="conferencias.html" class="nav-link">Conferencias</a>
         <a href="multimedia.html" class="nav-link">Multimedia</a>
         <a href="lectores.html" class="nav-link">Lectores</a>
         <a href="limpieza.html" class="nav-link">Limpieza</a>
@@ -64,70 +127,74 @@
       </nav>
     </aside>
 
-   <header class="relative overflow-hidden rounded-b-3xl bg-emerald-700 text-white shadow-lg">
-  <div class="absolute inset-0 bg-gradient-to-br from-emerald-800 via-emerald-700 to-emerald-600 opacity-95"></div>
+    <header class="relative overflow-hidden rounded-b-3xl bg-emerald-700 text-white shadow-lg">
+      <div class="absolute inset-0 bg-gradient-to-br from-emerald-800 via-emerald-700 to-emerald-600 opacity-95"></div>
 
-  <div class="relative mx-auto max-w-6xl px-4 pb-5 pt-5 sm:px-6">
-    <div class="flex items-start justify-between gap-3">
-      <div>
-        <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-emerald-100/90">
-          Tablero Digital
-        </p>
-        <h1 class="mt-1 text-2xl font-extrabold leading-tight sm:text-3xl">
-          Norte Garín
-        </h1>
-        <p class="mt-1 text-sm text-emerald-50/90 sm:text-base">
-          Información útil de la congregación en un solo lugar
-        </p>
-      </div>
+      <div class="relative mx-auto max-w-6xl px-4 pb-5 pt-5 sm:px-6">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-emerald-100/90">
+              Tablero Digital
+            </p>
+            <h1 class="mt-1 text-2xl font-extrabold leading-tight sm:text-3xl">
+              Norte Garín
+            </h1>
+            <p class="mt-1 text-sm text-emerald-50/90 sm:text-base">
+              Información útil de la congregación en un solo lugar
+            </p>
+          </div>
 
-      <div class="shrink-0 rounded-2xl bg-white/10 px-3 py-2 text-right backdrop-blur-sm">
-        <p class="text-[11px] uppercase tracking-wider text-emerald-100/80">Acceso rápido</p>
-        <p class="text-sm font-semibold">Actualizado y simple</p>
-      </div>
-    </div>
+          <div class="shrink-0 rounded-2xl bg-white/10 px-3 py-2 text-right backdrop-blur-sm">
+            <p class="text-[11px] uppercase tracking-wider text-emerald-100/80">Acceso rápido</p>
+            <p class="text-sm font-semibold">Actualizado y simple</p>
+          </div>
+        </div>
 
-    <nav class="mt-5 overflow-x-auto pb-1">
-      <div class="flex min-w-max gap-2">
-        <a href="index.html" class="rounded-full bg-white text-emerald-800 px-4 py-2 text-sm font-semibold shadow-sm">
-          Inicio
-        </a>
-        <a href="salidas.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
-          Salidas
-        </a>
-        <a href="vida-ministerio.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
-          Vida y Ministerio
-        </a>
-        <a href="conferencias.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
-          Conferencias
-        </a>
-        <a href="multimedia.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
-          Multimedia
-        </a>
-        <a href="lectores.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
-          Lectores
-        </a>
-        <a href="limpieza.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
-          Limpieza
-        </a>
-        <a href="grupos.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
-          Grupos
-        </a>
-        <a href="proximos-eventos.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
-          Próximos eventos
-        </a>
+        <nav class="mt-5 overflow-x-auto pb-1">
+          <div class="flex min-w-max gap-2">
+            <a href="index.html" class="rounded-full bg-white text-emerald-800 px-4 py-2 text-sm font-semibold shadow-sm">
+              Inicio
+            </a>
+            <a href="salidas.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+              Salidas
+            </a>
+            <a href="vida-ministerio.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+              Vida y Ministerio
+            </a>
+            <a href="conferencias.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+              Conferencias
+            </a>
+            <a href="multimedia.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+              Multimedia
+            </a>
+            <a href="lectores.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+              Lectores
+            </a>
+            <a href="limpieza.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+              Limpieza
+            </a>
+            <a href="grupos.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+              Grupos
+            </a>
+            <a href="proximos-eventos.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+              Próximos eventos
+            </a>
+          </div>
+        </nav>
       </div>
-    </nav>
-  </div>
-</header>
+    </header>
 
     <main class="max-w-lg mx-auto px-6">
-      <section class="card rounded-[35px] p-6 mb-8 border-t-4 shadow-xl -mt-14 relative z-10 overflow-hidden" style="border-top-color: var(--accent)">
+      <section class="card rounded-[35px] p-6 mb-8 border-t-4 shadow-xl -mt-10 relative z-10 overflow-hidden" style="border-top-color: var(--accent)">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-[10px] font-black uppercase tracking-[0.15em] flex items-center gap-2" style="color: var(--accent)">
-            <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background: var(--accent)"></span><span class="relative inline-flex rounded-full h-2 w-2" style="background: var(--accent)"></span></span>
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background: var(--accent)"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2" style="background: var(--accent)"></span>
+            </span>
             Resumen de Actividades
           </h3>
+
           <div id="carousel-dots" class="flex gap-1.5">
             <div class="h-1 w-3 rounded-full bg-blue-500 transition-all"></div>
             <div class="h-1 w-1 rounded-full bg-gray-300 transition-all"></div>
@@ -144,7 +211,6 @@
             </div>
           </div>
 
-          <!-- ✅ REEMPLAZO: "Semana de la visita" -> "Asamblea de Circuito" -->
           <div class="activity-slide absolute inset-0 opacity-0 pointer-events-none">
             <div class="border-l-4 p-4 rounded-2xl bg-slate-500/5" style="border-left-color: #22c55e">
               <p class="text-[9px] font-black uppercase tracking-widest opacity-50">Asamblea de Circuito</p>
@@ -168,32 +234,88 @@
         </div>
       </section>
 
-      <a href="https://jworg.zoom.us/my/norte.garin?pwd=ZXVVZWhZTmdTNFpuUkI3c014RFlMQT09" target="_blank" class="rounded-[30px] p-5 flex items-center justify-between bg-blue-600 text-white shadow-xl active:scale-95 transition mb-8">
+      <a
+        href="https://jworg.zoom.us/my/norte.garin?pwd=ZXVVZWhZTmdTNFpuUkI3c014RFlMQT09"
+        target="_blank"
+        class="rounded-[30px] p-5 flex items-center justify-between bg-blue-600 text-white shadow-xl active:scale-95 transition mb-8"
+      >
         <div class="flex items-center gap-4">
-          <div class="bg-white/20 p-3 rounded-2xl"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z" /><rect width="14" height="12" x="2" y="6" rx="2" ry="2" /></svg></div>
-          <div><h3 class="text-lg font-extrabold leading-tight">Reunión por Zoom</h3><p class="text-[10px] font-bold opacity-90 uppercase tracking-widest">Tocar para conectar</p></div>
+          <div class="bg-white/20 p-3 rounded-2xl">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m22 8-6 4 6 4V8Z" />
+              <rect width="14" height="12" x="2" y="6" rx="2" ry="2" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-extrabold leading-tight">Reunión por Zoom</h3>
+            <p class="text-[10px] font-bold opacity-90 uppercase tracking-widest">Tocar para conectar</p>
+          </div>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7" /></svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14m-7-7 7 7-7 7" />
+        </svg>
       </a>
 
       <section class="grid grid-cols-2 gap-4">
         <a href="salidas.html" class="card rounded-[26px] p-4 shadow-lg active:scale-95 transition">
-          <div class="flex items-center gap-3"><div class="h-10 w-10 rounded-2xl bg-blue-500/10 flex items-center justify-center">📌</div><div><p class="text-[10px] font-bold opacity-50 uppercase leading-none">Programa</p><p class="font-extrabold mt-1">Salidas</p></div></div>
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-blue-500/10 flex items-center justify-center">📌</div>
+            <div>
+              <p class="text-[10px] font-bold opacity-50 uppercase leading-none">Programa</p>
+              <p class="font-extrabold mt-1">Salidas</p>
+            </div>
+          </div>
         </a>
+
         <a href="vida-ministerio.html" class="card rounded-[26px] p-4 shadow-lg active:scale-95 transition">
-          <div class="flex items-center gap-3"><div class="h-10 w-10 rounded-2xl bg-indigo-500/10 flex items-center justify-center">📖</div><div><p class="text-[10px] font-bold opacity-50 uppercase leading-none">Reunión</p><p class="font-extrabold mt-1">Vida y Min.</p></div></div>
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-indigo-500/10 flex items-center justify-center">📖</div>
+            <div>
+              <p class="text-[10px] font-bold opacity-50 uppercase leading-none">Reunión</p>
+              <p class="font-extrabold mt-1">Vida y Min.</p>
+            </div>
+          </div>
         </a>
+
         <a href="conferencias.html" class="card rounded-[26px] p-4 shadow-lg active:scale-95 transition">
-          <div class="flex items-center gap-3"><div class="h-10 w-10 rounded-2xl bg-emerald-500/10 flex items-center justify-center">🎙️</div><div><p class="text-[10px] font-bold opacity-50 uppercase leading-none">Domingo</p><p class="font-extrabold mt-1">Discursos</p></div></div>
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-emerald-500/10 flex items-center justify-center">🎙️</div>
+            <div>
+              <p class="text-[10px] font-bold opacity-50 uppercase leading-none">Domingo</p>
+              <p class="font-extrabold mt-1">Discursos</p>
+            </div>
+          </div>
         </a>
+
         <a href="multimedia.html" class="card rounded-[26px] p-4 shadow-lg active:scale-95 transition">
-          <div class="flex items-center gap-3"><div class="h-10 w-10 rounded-2xl bg-teal-500/10 flex items-center justify-center">🔊</div><div><p class="text-[10px] font-bold opacity-50 uppercase leading-none">Encargados</p><p class="font-extrabold mt-1 text-sm leading-tight">Multimedia</p></div></div>
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-teal-500/10 flex items-center justify-center">🔊</div>
+            <div>
+              <p class="text-[10px] font-bold opacity-50 uppercase leading-none">Encargados</p>
+              <p class="font-extrabold mt-1 text-sm leading-tight">Multimedia</p>
+            </div>
+          </div>
         </a>
+
         <a href="lectores.html" class="card rounded-[26px] p-4 shadow-lg active:scale-95 transition">
-          <div class="flex items-center gap-3"><div class="h-10 w-10 rounded-2xl bg-sky-500/10 flex items-center justify-center">📰</div><div><p class="text-[10px] font-bold opacity-50 uppercase leading-none">Atalaya</p><p class="font-extrabold mt-1">Lectores</p></div></div>
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-sky-500/10 flex items-center justify-center">📰</div>
+            <div>
+              <p class="text-[10px] font-bold opacity-50 uppercase leading-none">Atalaya</p>
+              <p class="font-extrabold mt-1">Lectores</p>
+            </div>
+          </div>
         </a>
+
         <a href="limpieza.html" class="card rounded-[26px] p-4 shadow-lg active:scale-95 transition">
-          <div class="flex items-center gap-3"><div class="h-10 w-10 rounded-2xl bg-green-500/10 flex items-center justify-center">🧼</div><div><p class="text-[10px] font-bold opacity-50 uppercase leading-none">Salón</p><p class="font-extrabold mt-1">Limpieza</p></div></div>
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-green-500/10 flex items-center justify-center">🧼</div>
+            <div>
+              <p class="text-[10px] font-bold opacity-50 uppercase leading-none">Salón</p>
+              <p class="font-extrabold mt-1">Limpieza</p>
+            </div>
+          </div>
         </a>
       </section>
     </main>
@@ -208,22 +330,29 @@
       function toggleTheme() {
         html.classList.toggle("dark");
         localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
-        themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
+        if (themeIcon) {
+          themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
+        }
       }
-      document.getElementById("btnTheme").onclick = toggleTheme;
 
-      document.getElementById("btnMenu").onclick = () => {
-        sidebar.classList.replace("-translate-x-full", "translate-x-0");
-        overlay.classList.remove("hidden");
-        setTimeout(() => overlay.classList.add("opacity-100"), 10);
-      };
+      const btnTheme = document.getElementById("btnTheme");
+      if (btnTheme) btnTheme.onclick = toggleTheme;
+
+      const btnMenu = document.getElementById("btnMenu");
+      if (btnMenu) {
+        btnMenu.onclick = () => {
+          sidebar.classList.replace("-translate-x-full", "translate-x-0");
+          overlay.classList.remove("hidden");
+          setTimeout(() => overlay.classList.add("opacity-100"), 10);
+        };
+      }
+
       overlay.onclick = () => {
         sidebar.classList.replace("translate-x-0", "-translate-x-full");
         overlay.classList.remove("opacity-100");
         setTimeout(() => overlay.classList.add("hidden"), 300);
       };
 
-      // DATOS DASHBOARD
       const CONFERENCIAS = [
         { date: "2026-01-11", title: "Tenga fe en Dios y sus promesas" },
         { date: "2026-01-18", title: "Visita de Pastoreo a la sucursal" },
@@ -231,10 +360,9 @@
         { date: "2026-02-01", title: "Actuemos con sabiduría en este mundo insensato" },
         { date: "2026-02-08", title: "¿Dónde encontrará una esperanza segura?" },
         { date: "2026-02-15", title: "¿Qué lo ayudará a tener éxito en la vida?" },
-        { date: "2026-02-22", title: "Consigamos que nuestro corazón sea sabio" },
+        { date: "2026-02-22", title: "Consigamos que nuestro corazón sea sabio" }
       ];
 
-      // ✅ Asamblea de Circuito (1 de Marzo 2026)
       const ASAMBLEA = { date: "2026-03-01", label: "1 de marzo 2026" };
 
       const GRUPOS_LIMPIEZA = ["Grupos 1 y 2", "Grupos 3 y 4", "Grupos 1 y 2", "Grupos 3 y 4"];
@@ -249,12 +377,18 @@
 
       function updateDashboard() {
         const now = new Date();
-        document.getElementById("today-date").textContent = now.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" });
+        const todayDate = document.getElementById("today-date");
+        if (todayDate) {
+          todayDate.textContent = now.toLocaleDateString("es-AR", {
+            weekday: "long",
+            day: "numeric",
+            month: "long"
+          });
+        }
 
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
-        // ✅ LÓGICA: ASAMBLEA (reemplaza “Semana de la visita”)
         const asambleaDate = parseISO(ASAMBLEA.date);
         const diffDays = Math.ceil((asambleaDate - today) / 86400000);
 
@@ -274,7 +408,6 @@
         const proximo = CONFERENCIAS.find(c => parseISO(c.date) >= today);
         document.getElementById("dash-discurso").innerText = proximo ? proximo.title : "Consulte el programa";
 
-        // LÓGICA DE SALIDAS INTELIGENTE
         if (window.SALIDAS_CAL) {
           const nowTime = now.getHours() * 60 + now.getMinutes();
 
@@ -282,7 +415,7 @@
           const nextToday = entriesToday
             .filter(e => e.h && e.h !== "–")
             .map(e => {
-              const [h, m] = e.h.split(':').map(Number);
+              const [h, m] = e.h.split(":").map(Number);
               return { ...e, totalMin: h * 60 + m };
             })
             .filter(e => e.totalMin >= nowTime)
@@ -292,14 +425,17 @@
             document.getElementById("label-salida").innerText = "Próxima Salida de Hoy";
             document.getElementById("dash-salida").innerText = `${nextToday[0].h} hs — ${nextToday[0].l}`;
           } else {
-            const mañana = new Date(now);
-            mañana.setDate(mañana.getDate() + 1);
-            const entriesMañana = window.SALIDAS_CAL.getEntriesForDate(mañana) || [];
-            const nextMañana = entriesMañana.filter(e => e.h && e.h !== "–").sort((a, b) => a.h.localeCompare(b.h));
+            const manana = new Date(now);
+            manana.setDate(manana.getDate() + 1);
 
-            if (nextMañana.length > 0) {
+            const entriesManana = window.SALIDAS_CAL.getEntriesForDate(manana) || [];
+            const nextManana = entriesManana
+              .filter(e => e.h && e.h !== "–")
+              .sort((a, b) => a.h.localeCompare(b.h));
+
+            if (nextManana.length > 0) {
               document.getElementById("label-salida").innerText = "Próxima Salida: Mañana";
-              document.getElementById("dash-salida").innerText = `${nextMañana[0].h} hs — ${nextMañana[0].l}`;
+              document.getElementById("dash-salida").innerText = `${nextManana[0].h} hs — ${nextManana[0].l}`;
             } else {
               document.getElementById("label-salida").innerText = "Próxima Salida";
               document.getElementById("dash-salida").innerText = "No hay salidas programadas próximamente";
@@ -308,22 +444,23 @@
         }
       }
 
-      // CARRUSEL
       let currentSlide = 0;
-      const slides = document.querySelectorAll('.activity-slide');
-      const dots = document.querySelectorAll('#carousel-dots div');
+      const slides = document.querySelectorAll(".activity-slide");
+      const dots = document.querySelectorAll("#carousel-dots div");
 
       function nextSlide() {
-        slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
-        slides[currentSlide].classList.add('pointer-events-none');
+        slides[currentSlide].classList.replace("opacity-100", "opacity-0");
+        slides[currentSlide].classList.add("pointer-events-none");
         dots[currentSlide].className = "h-1 w-1 rounded-full bg-gray-300 transition-all";
+
         currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.replace('opacity-0', 'opacity-100');
-        slides[currentSlide].classList.remove('pointer-events-none');
+
+        slides[currentSlide].classList.replace("opacity-0", "opacity-100");
+        slides[currentSlide].classList.remove("pointer-events-none");
         dots[currentSlide].className = "h-1 w-3 rounded-full bg-blue-500 transition-all";
       }
-      setInterval(nextSlide, 3500);
 
+      setInterval(nextSlide, 3500);
       window.onload = updateDashboard;
     </script>
   </body>
