@@ -70,7 +70,13 @@
         <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80"></div>
 
         <div class="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
-          <button id="btnMenu" class="btn-surface p-3 rounded-2xl active:scale-90"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button>
+          <button id="btnMenu" class="btn-surface p-3 rounded-2xl active:scale-90">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" x2="20" y1="12" y2="12"/>
+              <line x1="4" x2="20" y1="6" y2="6"/>
+              <line x1="4" x2="20" y1="18" y2="18"/>
+            </svg>
+          </button>
           <button id="btnTheme" class="btn-surface p-3 rounded-2xl active:scale-90"><span id="theme-icon">🌙</span></button>
         </div>
 
@@ -86,7 +92,10 @@
       <section class="card rounded-[35px] p-6 mb-8 border-t-4 shadow-xl -mt-14 relative z-10 overflow-hidden" style="border-top-color: var(--accent)">
         <div class="flex items-center justify-between mb-4">
           <h3 class="text-[10px] font-black uppercase tracking-[0.15em] flex items-center gap-2" style="color: var(--accent)">
-            <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background: var(--accent)"></span><span class="relative inline-flex rounded-full h-2 w-2" style="background: var(--accent)"></span></span>
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background: var(--accent)"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2" style="background: var(--accent)"></span>
+            </span>
             Resumen de Actividades
           </h3>
           <div id="carousel-dots" class="flex gap-1.5">
@@ -107,8 +116,8 @@
 
           <div class="activity-slide absolute inset-0 opacity-0 pointer-events-none">
             <div class="border-l-4 p-4 rounded-2xl bg-slate-500/5" style="border-left-color: #22c55e">
-              <p class="text-[9px] font-black uppercase tracking-widest opacity-50">Asamblea de Circuito</p>
-              <p id="dash-asamblea" class="font-extrabold text-sm mt-1 leading-tight text-emerald-500">Cargando...</p>
+              <p class="text-[9px] font-black uppercase tracking-widest opacity-50">Próximo Evento</p>
+              <p id="dash-evento" class="font-extrabold text-sm mt-1 leading-tight text-emerald-500">Cargando...</p>
             </div>
           </div>
 
@@ -130,7 +139,12 @@
 
       <a href="https://jworg.zoom.us/my/norte.garin?pwd=ZXVVZWhZTmdTNFpuUkI3c014RFlMQT09" target="_blank" class="rounded-[30px] p-5 flex items-center justify-between bg-emerald-600 text-white shadow-xl active:scale-95 transition mb-8">
         <div class="flex items-center gap-4">
-          <div class="bg-white/20 p-3 rounded-2xl"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z" /><rect width="14" height="12" x="2" y="6" rx="2" ry="2" /></svg></div>
+          <div class="bg-white/20 p-3 rounded-2xl">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m22 8-6 4 6 4V8Z" />
+              <rect width="14" height="12" x="2" y="6" rx="2" ry="2" />
+            </svg>
+          </div>
           <div><h3 class="text-lg font-extrabold leading-tight">Reunión por Zoom</h3><p class="text-[10px] font-bold opacity-90 uppercase tracking-widest">Tocar para conectar</p></div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7" /></svg>
@@ -160,6 +174,7 @@
 
     <script src="salidas-data.js"></script>
     <script src="conferencias-data.js"></script>
+    <script src="eventos-data.js"></script>
     <script>
       const html = document.documentElement;
       const themeIcon = document.getElementById("theme-icon");
@@ -184,21 +199,38 @@
         setTimeout(() => overlay.classList.add("hidden"), 300);
       };
 
-      const ASAMBLEA = { date: "2026-03-01", label: "1 de marzo 2026" };
       const GRUPOS_LIMPIEZA = ["Grupos 1 y 2", "Grupos 3 y 4", "Grupos 1 y 2", "Grupos 3 y 4"];
       const INICIO_LIMPIEZA = new Date(2025, 11, 2);
 
-      function parseISO(iso) {
-        const [y, m, d] = iso.split("-").map(Number);
-        const dt = new Date(y, m - 1, d);
-        dt.setHours(0, 0, 0, 0);
-        return dt;
+      function getDateOnly(date) {
+        const d = new Date(date);
+        d.setHours(0, 0, 0, 0);
+        return d;
+      }
+
+      function formatFechaLarga(dateStr) {
+        const d = getDateOnly(dateStr);
+        return d.toLocaleDateString("es-AR", {
+          day: "numeric",
+          month: "long"
+        });
+      }
+
+      function getProximoEvento(today) {
+        if (!window.EVENTOS_DATA || !Array.isArray(window.EVENTOS_DATA)) return null;
+
+        const items = window.EVENTOS_DATA
+          .map((item) => ({
+            ...item,
+            dateObj: getDateOnly(item.date)
+          }))
+          .sort((a, b) => a.dateObj - b.dateObj);
+
+        return items.find((item) => item.dateObj >= today) || null;
       }
 
       function getProximoDiscurso(today) {
-        if (!window.CONFERENCIAS_DATA || !Array.isArray(window.CONFERENCIAS_DATA)) {
-          return null;
-        }
+        if (!window.CONFERENCIAS_DATA || !Array.isArray(window.CONFERENCIAS_DATA)) return null;
 
         const items = [];
 
@@ -221,7 +253,6 @@
         });
 
         items.sort((a, b) => a.dateObj - b.dateObj);
-
         return items.find((item) => item.dateObj >= today) || null;
       }
 
@@ -236,24 +267,18 @@
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
-        const asambleaDate = parseISO(ASAMBLEA.date);
-        const diffDays = Math.ceil((asambleaDate - today) / 86400000);
-
-        let aText = "";
-        if (diffDays > 0) {
-          aText = `Faltan ${diffDays} día${diffDays === 1 ? "" : "s"} — ${ASAMBLEA.label}`;
-        } else if (diffDays === 0) {
-          aText = `HOY — ${ASAMBLEA.label}`;
-        } else {
-          aText = `Realizada — ${ASAMBLEA.label}`;
-        }
-        document.getElementById("dash-asamblea").innerText = aText;
-
         const diffWeeks = Math.floor(Math.abs(today - INICIO_LIMPIEZA) / (1000 * 60 * 60 * 24 * 7));
         document.getElementById("dash-limpieza").innerText = GRUPOS_LIMPIEZA[diffWeeks % GRUPOS_LIMPIEZA.length];
 
-        const proximo = getProximoDiscurso(today);
-        document.getElementById("dash-discurso").innerText = proximo ? proximo.title : "Consulte el programa";
+        const proximoEvento = getProximoEvento(today);
+        document.getElementById("dash-evento").innerText = proximoEvento
+          ? `${proximoEvento.title} — ${formatFechaLarga(proximoEvento.date)}`
+          : "Sin eventos próximos";
+
+        const proximoDiscurso = getProximoDiscurso(today);
+        document.getElementById("dash-discurso").innerText = proximoDiscurso
+          ? proximoDiscurso.title
+          : "Consulte el programa";
 
         if (window.SALIDAS_CAL) {
           const nowTime = now.getHours() * 60 + now.getMinutes();
@@ -272,16 +297,16 @@
             document.getElementById("label-salida").innerText = "Próxima Salida de Hoy";
             document.getElementById("dash-salida").innerText = `${nextToday[0].h} hs — ${nextToday[0].l}`;
           } else {
-            const mañana = new Date(now);
-            mañana.setDate(mañana.getDate() + 1);
-            const entriesMañana = window.SALIDAS_CAL.getEntriesForDate(mañana) || [];
-            const nextMañana = entriesMañana
+            const manana = new Date(now);
+            manana.setDate(manana.getDate() + 1);
+            const entriesManana = window.SALIDAS_CAL.getEntriesForDate(manana) || [];
+            const nextManana = entriesManana
               .filter((e) => e.h && e.h !== "–")
               .sort((a, b) => a.h.localeCompare(b.h));
 
-            if (nextMañana.length > 0) {
+            if (nextManana.length > 0) {
               document.getElementById("label-salida").innerText = "Próxima Salida: Mañana";
-              document.getElementById("dash-salida").innerText = `${nextMañana[0].h} hs — ${nextMañana[0].l}`;
+              document.getElementById("dash-salida").innerText = `${nextManana[0].h} hs — ${nextManana[0].l}`;
             } else {
               document.getElementById("label-salida").innerText = "Próxima Salida";
               document.getElementById("dash-salida").innerText = "No hay salidas programadas próximamente";
