@@ -64,23 +64,62 @@
       </nav>
     </aside>
 
-    <header class="p-6 max-w-lg mx-auto">
-      <div class="relative w-full h-64 rounded-[40px] overflow-hidden shadow-2xl group">
-        <img src="img/image_4.png.jpg" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-700" alt="Hero" />
-        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80"></div>
+   <header class="relative overflow-hidden rounded-b-3xl bg-emerald-700 text-white shadow-lg">
+  <div class="absolute inset-0 bg-gradient-to-br from-emerald-800 via-emerald-700 to-emerald-600 opacity-95"></div>
 
-        <div class="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
-          <button id="btnMenu" class="btn-surface p-3 rounded-2xl active:scale-90"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button>
-          <button id="btnTheme" class="btn-surface p-3 rounded-2xl active:scale-90"><span id="theme-icon">🌙</span></button>
-        </div>
-
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6 mt-6">
-          <div class="mb-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/90 text-[10px] font-black tracking-widest uppercase">Actividad de la Congregación</div>
-          <h2 class="text-4xl font-black tracking-tighter leading-none text-white drop-shadow-lg uppercase">Norte<br />Garín</h2>
-          <p id="today-date" class="text-white/70 text-[11px] font-bold mt-2 uppercase tracking-tighter"></p>
-        </div>
+  <div class="relative mx-auto max-w-6xl px-4 pb-5 pt-5 sm:px-6">
+    <div class="flex items-start justify-between gap-3">
+      <div>
+        <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-emerald-100/90">
+          Tablero Digital
+        </p>
+        <h1 class="mt-1 text-2xl font-extrabold leading-tight sm:text-3xl">
+          Norte Garín
+        </h1>
+        <p class="mt-1 text-sm text-emerald-50/90 sm:text-base">
+          Información útil de la congregación en un solo lugar
+        </p>
       </div>
-    </header>
+
+      <div class="shrink-0 rounded-2xl bg-white/10 px-3 py-2 text-right backdrop-blur-sm">
+        <p class="text-[11px] uppercase tracking-wider text-emerald-100/80">Acceso rápido</p>
+        <p class="text-sm font-semibold">Actualizado y simple</p>
+      </div>
+    </div>
+
+    <nav class="mt-5 overflow-x-auto pb-1">
+      <div class="flex min-w-max gap-2">
+        <a href="index.html" class="rounded-full bg-white text-emerald-800 px-4 py-2 text-sm font-semibold shadow-sm">
+          Inicio
+        </a>
+        <a href="salidas.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+          Salidas
+        </a>
+        <a href="vida-ministerio.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+          Vida y Ministerio
+        </a>
+        <a href="conferencias.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+          Conferencias
+        </a>
+        <a href="multimedia.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+          Multimedia
+        </a>
+        <a href="lectores.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+          Lectores
+        </a>
+        <a href="limpieza.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+          Limpieza
+        </a>
+        <a href="grupos.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+          Grupos
+        </a>
+        <a href="proximos-eventos.html" class="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
+          Próximos eventos
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
 
     <main class="max-w-lg mx-auto px-6">
       <section class="card rounded-[35px] p-6 mb-8 border-t-4 shadow-xl -mt-14 relative z-10 overflow-hidden" style="border-top-color: var(--accent)">
