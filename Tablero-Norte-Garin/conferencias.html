@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Discursos | Norte Garín</title>
+
+    <script>
+      (function () {
+        const saved = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (saved ? saved === "dark" : prefersDark) document.documentElement.classList.add("dark");
+      })();
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --bg: #f7f5f0;
+        --bg-card: #ffffff;
+        --bg-card2: #f0ede8;
+        --text: #1a1714;
+        --text-muted: #8a8075;
+        --accent: #2d6a4f;
+        --accent-light: #52b788;
+        --accent-warm: #d4a853;
+        --border: rgba(26,23,20,0.09);
+        --shadow-sm: 0 2px 12px rgba(26,23,20,0.07);
+        --shadow-md: 0 8px 32px rgba(26,23,20,0.10);
+        --shadow-lg: 0 24px 64px rgba(26,23,20,0.13);
+      }
+      html.dark {
+        --bg: #1e2023; --bg-card: #272b2f; --bg-card2: #2f3338;
+        --text: #eceae6; --text-muted: #8a8d92;
+        --accent: #4caf80; --accent-light: #6fcf97; --accent-warm: #d4a853;
+        --border: rgba(255,255,255,0.08);
+        --shadow-sm: 0 2px 12px rgba(0,0,0,0.15);
+        --shadow-md: 0 8px 32px rgba(0,0,0,0.20);
+        --shadow-lg: 0 24px 64px rgba(0,0,0,0.28);
+      }
+
+      * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg); color: var(--text);
+        margin: 0; padding-bottom: env(safe-area-inset-bottom, 48px);
+        overflow-x: hidden;
+      }
+      body::before {
+        content: ''; position: fixed; inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none; z-index: 0; opacity: 0.6;
+      }
+      .syne { font-family: "Syne", sans-serif; }
+
+      /* ── SIDEBAR ── */
+      #sidebar {
+        position: fixed; top: 0; left: 0; height: 100%; width: 300px;
+        background: var(--bg-card); border-right: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+        transform: translateX(-100%);
+        transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+        z-index: 200; overflow-y: auto;
+      }
+      #sidebar.open { transform: translateX(0); }
+      .sidebar-header { padding: 32px 28px 24px; border-bottom: 1px solid var(--border); }
+      .sidebar-logo { display: flex; align-items: center; gap: 14px; }
+      .logo-mark { width: 44px; height: 44px; background: var(--accent); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .sidebar-nav { padding: 20px 16px; }
+      .nav-section-label {
+        font-family: "Syne", sans-serif; font-size: 9px; font-weight: 700;
+        letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted);
+        padding: 0 12px; margin-bottom: 8px; margin-top: 16px;
+      }
+      .nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 13px 16px; border-radius: 14px;
+        color: var(--text-muted); text-decoration: none;
+        font-size: 14.5px; font-weight: 500;
+        transition: all 0.18s ease; margin-bottom: 2px;
+      }
+      .nav-item:hover { background: var(--bg-card2); color: var(--text); }
+      .nav-item.active { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-weight: 700; }
+      .nav-item .icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--bg-card2); }
+      .nav-item.active .icon { background: color-mix(in srgb, var(--accent) 15%, transparent); }
+
+      /* ── OVERLAY ── */
+      #overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+        backdrop-filter: blur(4px); z-index: 199;
+        opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+      }
+      #overlay.visible { opacity: 1; pointer-events: all; }
+
+      /* ── HERO ── */
+      .hero-wrap { position: relative; width: 100%; height: 220px; overflow: hidden; }
+      .hero-img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
+      .hero-wrap:hover .hero-img { transform: scale(1.04); }
+      .hero-gradient { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.02) 40%, rgba(0,0,0,0.55) 100%); }
+      .hero-top-bar {
+        position: absolute; top: 0; left: 0; right: 0;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 16px 20px; padding-top: max(16px, env(safe-area-inset-top));
+      }
+      .hero-content { position: absolute; bottom: 20px; left: 24px; right: 24px; }
+      .hero-title { font-family: "Syne", sans-serif; font-size: 32px; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; color: #fff; text-transform: uppercase; }
+      .hero-sub { color: rgba(255,255,255,0.6); font-size: 11px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
+      .icon-btn {
+        width: 42px; height: 42px; border-radius: 13px;
+        background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25);
+        backdrop-filter: blur(10px); color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; transition: all 0.15s ease; flex-shrink: 0;
+      }
+      .icon-btn:active { transform: scale(0.92); }
+
+      /* ── MAIN ── */
+      .main-wrap { max-width: 480px; margin: 0 auto; padding: 20px 16px 48px; position: relative; z-index: 1; }
+
+      /* ── MONTH DIVIDER ── */
+      .month-divider { display: flex; align-items: center; gap: 12px; margin: 28px 0 16px; }
+      .month-divider-line { flex: 1; height: 1px; background: var(--border); }
+      .month-divider-label { font-family: "Syne", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+
+      /* ── CONFERENCE CARD ── */
+      .conf-card {
+        background: var(--bg-card); border: 1px solid var(--border);
+        border-radius: 20px; overflow: hidden;
+        box-shadow: var(--shadow-sm); margin-bottom: 10px;
+        transition: all 0.2s ease;
+        animation: fadeUp 0.4s ease both;
+      }
+      @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+      .conf-card.is-next {
+        border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+        box-shadow: 0 4px 24px color-mix(in srgb, var(--accent) 14%, transparent);
+      }
+      .conf-card.is-past { opacity: 0.45; filter: grayscale(0.6); }
+
+      .conf-card-inner { display: flex; gap: 0; }
+
+      /* Fecha lateral */
+      .conf-date {
+        width: 58px; flex-shrink: 0;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        background: color-mix(in srgb, var(--accent) 10%, transparent);
+        padding: 16px 0; gap: 2px;
+      }
+      .conf-card.is-next .conf-date { background: var(--accent); }
+      .conf-date .day-num {
+        font-family: "Syne", sans-serif; font-size: 24px; font-weight: 700;
+        color: var(--accent); line-height: 1;
+      }
+      .conf-card.is-next .conf-date .day-num { color: #fff; }
+      .conf-date .day-dow {
+        font-size: 9px; font-weight: 600; text-transform: uppercase;
+        letter-spacing: 0.08em; color: var(--accent); opacity: 0.7;
+      }
+      .conf-card.is-next .conf-date .day-dow { color: rgba(255,255,255,0.75); opacity: 1; }
+
+      /* Contenido */
+      .conf-body { flex: 1; padding: 14px 16px; }
+      .conf-next-badge {
+        display: inline-block; font-family: "Syne", sans-serif;
+        font-size: 8px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+        background: var(--accent); color: #fff;
+        padding: 3px 8px; border-radius: 6px; margin-bottom: 6px;
+      }
+      .conf-title {
+        font-family: "Syne", sans-serif; font-size: 14px; font-weight: 700;
+        line-height: 1.25; color: var(--text); margin-bottom: 8px;
+      }
+      .conf-meta { display: flex; flex-direction: column; gap: 3px; }
+      .conf-meta-row { display: flex; align-items: baseline; gap: 6px; font-size: 12px; }
+      .conf-meta-label {
+        font-family: "Syne", sans-serif; font-size: 8px; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.1em;
+        color: var(--accent); flex-shrink: 0; min-width: 60px;
+      }
+      .conf-meta-value { color: var(--text-muted); font-weight: 500; }
+      .conf-time { font-family: "Syne", sans-serif; font-size: 11px; font-weight: 600; color: var(--accent-warm); margin-top: 6px; }
+
+      /* ── SPECIAL CARD (Asamblea) ── */
+      .conf-card.special .conf-date { background: color-mix(in srgb, var(--accent-warm) 15%, transparent); }
+      .conf-card.special .conf-date .day-num { color: var(--accent-warm); }
+      .conf-card.special .conf-date .day-dow { color: var(--accent-warm); }
+      .conf-card.special.is-next .conf-date { background: var(--accent-warm); }
+      .conf-card.special.is-next .conf-date .day-num { color: #fff; }
+      .conf-card.special.is-next .conf-date .day-dow { color: rgba(255,255,255,0.75); }
+      .conf-card.special .conf-title { color: var(--accent-warm); }
+      .conf-card.special.is-next { border-color: color-mix(in srgb, var(--accent-warm) 40%, transparent); box-shadow: 0 4px 24px color-mix(in srgb, var(--accent-warm) 14%, transparent); }
+      .conf-card.special.is-next .conf-next-badge { background: var(--accent-warm); }
+
+      /* ── SALEN SECTION ── */
+      .salen-wrap {
+        margin-top: 8px;
+        background: var(--bg-card2); border: 1px solid var(--border);
+        border-radius: 18px; overflow: hidden;
+      }
+      .salen-header {
+        padding: 12px 16px; border-bottom: 1px solid var(--border);
+        font-family: "Syne", sans-serif; font-size: 10px; font-weight: 700;
+        letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);
+      }
+      .salen-item { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 13px; }
+      .salen-item:last-child { border-bottom: none; }
+      .salen-date { font-family: "Syne", sans-serif; font-size: 11px; font-weight: 700; color: var(--accent); margin-bottom: 2px; }
+      .salen-name { font-weight: 500; color: var(--text); }
+      .salen-extra { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+    </style>
+  </head>
+
+  <body>
+    <div id="overlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <div class="logo-mark">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <div class="syne" style="font-size:15px;font-weight:700;line-height:1.1">Norte Garín</div>
+            <div style="font-size:10px;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:0.12em;margin-top:2px">Tablero Digital</div>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Principal</div>
+        <a href="index.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div> Inicio
+        </a>
+        <a href="proximos-eventos.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div> Próximos Eventos
+        </a>
+        <div class="nav-section-label" style="margin-top:20px">Ministerio</div>
+        <a href="salidas.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div> Salidas
+        </a>
+        <a href="grupos.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div> Grupos
+        </a>
+        <div class="nav-section-label" style="margin-top:20px">Reunión</div>
+        <a href="vida-ministerio.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div> Vida y Ministerio
+        </a>
+        <a href="conferencias.html" class="nav-item active">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div> Discursos
+        </a>
+        <a href="lectores.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div> Lectores
+        </a>
+        <div class="nav-section-label" style="margin-top:20px">Organización</div>
+        <a href="multimedia.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div> Multimedia
+        </a>
+        <a href="limpieza.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg></div> Limpieza
+        </a>
+      </nav>
+    </aside>
+
+    <!-- HERO -->
+    <header>
+      <div class="hero-wrap">
+        <img src="img/discursos.png" class="hero-img" alt="Discursos" />
+        <div class="hero-gradient"></div>
+        <div class="hero-top-bar">
+          <button class="icon-btn" id="btnMenu" aria-label="Menú">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="14" y1="16" y2="16"/></svg>
+          </button>
+          <button class="icon-btn" id="btnTheme" aria-label="Cambiar tema">
+            <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
+        </div>
+        <div class="hero-content">
+          <div class="hero-title">Discursos</div>
+          <div class="hero-sub">Programa 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-wrap" id="mainContainer"></main>
+
+    <script src="conferencias-data.js"></script>
+    <script>
+      // ── THEME ──
+      const html = document.documentElement;
+      const iconMoon = document.getElementById("theme-icon-moon");
+      const iconSun  = document.getElementById("theme-icon-sun");
+      function applyThemeIcons() {
+        const dark = html.classList.contains("dark");
+        iconMoon.style.display = dark ? "none"  : "block";
+        iconSun.style.display  = dark ? "block" : "none";
+      }
+      applyThemeIcons();
+      document.getElementById("btnTheme").onclick = () => {
+        html.classList.toggle("dark");
+        localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
+        applyThemeIcons();
+      };
+
+      // ── SIDEBAR ──
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      document.getElementById("btnMenu").onclick = () => { sidebar.classList.add("open"); overlay.classList.add("visible"); };
+      overlay.onclick = () => { sidebar.classList.remove("open"); overlay.classList.remove("visible"); };
+
+      // ── HELPERS ──
+      function esc(s) {
+        return String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+      }
+      function parseDate(y, mIdx, dStr) {
+        const dt = new Date(y, mIdx, parseInt(dStr, 10));
+        dt.setHours(0,0,0,0); return dt;
+      }
+
+      // ── RENDER ──
+      function render() {
+        const data = window.CONFERENCIAS_DATA || [];
+        const container = document.getElementById("mainContainer");
+        if (!Array.isArray(data) || !data.length) {
+          container.innerHTML = `<p style="color:var(--text-muted);text-align:center;padding:48px 0">No se pudieron cargar los datos.</p>`;
+          return;
+        }
+
+        const now = new Date(); now.setHours(0,0,0,0);
+        let foundNext = false;
+        let html = "";
+
+        data.forEach(m => {
+          html += `<div class="month-divider">
+            <div class="month-divider-line"></div>
+            <div class="month-divider-label">${esc(m.month ?? "")}</div>
+            <div class="month-divider-line"></div>
+          </div>`;
+
+          (m.vienen || []).forEach(v => {
+            const date   = parseDate(m.year, m.monthIdx, v.date);
+            const isPast = date < now;
+            const isNext = !isPast && !foundNext ? (foundNext = true) : false;
+            const isSpecial = v.special || v.type === "ASAMBLEA";
+
+            const dateNum = esc(v.date ?? "--");
+            const dow = date.toLocaleDateString("es-AR", { weekday: "short" });
+
+            const nextBadge = isNext ? `<div class="conf-next-badge">Próximo domingo</div>` : "";
+
+            let bodyHtml = "";
+            if (isSpecial) {
+              bodyHtml = `
+                <div class="conf-body">
+                  ${nextBadge}
+                  <div class="conf-title">${esc(v.title || "Asamblea de Circuito")}</div>
+                  ${v.subtitle ? `<div class="salen-extra" style="margin-top:4px">${esc(v.subtitle)}</div>` : ""}
+                </div>`;
+            } else {
+              bodyHtml = `
+                <div class="conf-body">
+                  ${nextBadge}
+                  <div class="conf-title">${esc(v.title ?? "")}</div>
+                  <div class="conf-meta">
+                    ${v.speaker      ? `<div class="conf-meta-row"><span class="conf-meta-label">Orador</span><span class="conf-meta-value">${esc(v.speaker)}</span></div>` : ""}
+                    ${v.congregation ? `<div class="conf-meta-row"><span class="conf-meta-label">Congreg.</span><span class="conf-meta-value">${esc(v.congregation)}</span></div>` : ""}
+                    ${v.chairman     ? `<div class="conf-meta-row"><span class="conf-meta-label">Preside</span><span class="conf-meta-value">${esc(v.chairman)}</span></div>` : ""}
+                  </div>
+                  ${v.time ? `<div class="conf-time">${esc(v.day ?? "")}${v.day && v.time ? " · " : ""}${esc(v.time)}</div>` : ""}
+                </div>`;
+            }
+
+            html += `<div class="conf-card ${isSpecial ? "special" : ""} ${isNext ? "is-next" : ""} ${isPast ? "is-past" : ""}">
+              <div class="conf-card-inner">
+                <div class="conf-date">
+                  <span class="day-num">${dateNum}</span>
+                  <span class="day-dow">${dow}</span>
+                </div>
+                ${bodyHtml}
+              </div>
+            </div>`;
+          });
+
+          // Salen
+          if ((m.salen || []).length) {
+            html += `<div class="salen-wrap" style="margin-bottom:10px">
+              <div class="salen-header">Discursantes que salen</div>
+              ${m.salen.map(s => `
+                <div class="salen-item">
+                  <div class="salen-date">${esc(s.day ?? "")} ${esc(s.date ?? "")}</div>
+                  <div class="salen-name">${esc(s.name ?? "")}</div>
+                  ${s.extra ? `<div class="salen-extra">${esc(s.extra)}</div>` : ""}
+                </div>`).join("")}
+            </div>`;
+          }
+        });
+
+        container.innerHTML = html;
+
+        // Scroll al próximo
+        setTimeout(() => {
+          const next = container.querySelector(".is-next");
+          if (next) next.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 350);
+      }
+
+      document.addEventListener("DOMContentLoaded", render);
+    </script>
+  </body>
+</html>
