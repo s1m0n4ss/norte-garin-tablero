@@ -1,500 +1,515 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Salidas a Predicar | Marzo 2026</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Salidas | Norte Garín</title>
 
     <script>
       (function () {
         const saved = localStorage.getItem("theme");
-        const prefersDark =
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const useDark = saved ? saved === "dark" : prefersDark;
-        if (useDark) document.documentElement.classList.add("dark");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (saved ? saved === "dark" : prefersDark) document.documentElement.classList.add("dark");
       })();
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 
     <style>
       :root {
-        --bg-main: #f1f5f9;
+        --bg: #f7f5f0;
         --bg-card: #ffffff;
-        --text-primary: #0f172a;
-        --text-muted: #64748b;
-        --border: rgba(0, 0, 0, 0.08);
-        --accent: #3b82f6;
-        --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
-        --btn-bg: rgba(255, 255, 255, 0.85);
+        --bg-card2: #f0ede8;
+        --text: #1a1714;
+        --text-muted: #8a8075;
+        --accent: #2d6a4f;
+        --accent-light: #52b788;
+        --accent-warm: #d4a853;
+        --border: rgba(26,23,20,0.09);
+        --shadow-sm: 0 2px 12px rgba(26,23,20,0.07);
+        --shadow-md: 0 8px 32px rgba(26,23,20,0.10);
+        --shadow-lg: 0 24px 64px rgba(26,23,20,0.13);
       }
       html.dark {
-        --bg-main: #0a0f1d;
-        --bg-card: #121a2a;
-        --text-primary: #f8fafc;
-        --text-muted: #94a3b8;
-        --border: rgba(255, 255, 255, 0.06);
-        --accent: #3b82f6;
-        --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
-        --btn-bg: rgba(18, 26, 42, 0.82);
+        --bg: #1e2023;
+        --bg-card: #272b2f;
+        --bg-card2: #2f3338;
+        --text: #eceae6;
+        --text-muted: #8a8d92;
+        --accent: #4caf80;
+        --accent-light: #6fcf97;
+        --accent-warm: #d4a853;
+        --border: rgba(255,255,255,0.08);
+        --shadow-sm: 0 2px 12px rgba(0,0,0,0.15);
+        --shadow-md: 0 8px 32px rgba(0,0,0,0.20);
+        --shadow-lg: 0 24px 64px rgba(0,0,0,0.28);
       }
+
+      * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
       body {
-        font-family: "Inter", sans-serif;
-        color: var(--text-primary);
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
         margin: 0;
-        background-color: var(--bg-main);
-        padding-bottom: 60px;
-      }
-      .page-bg {
-        min-height: 100vh;
-        background-image: radial-gradient(
-          900px 520px at 50% -10%,
-          rgba(59, 130, 246, 0.16),
-          transparent 60%
-        );
+        padding-bottom: env(safe-area-inset-bottom, 48px);
+        overflow-x: hidden;
       }
 
-      .btn-surface {
-        background: var(--btn-bg);
-        border: 1px solid var(--border);
-        color: var(--text-primary);
-        box-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
-        backdrop-filter: blur(8px);
-        transition: all 0.15s ease;
-      }
-      .btn-surface:active {
-        transform: scale(0.95);
+      body::before {
+        content: '';
+        position: fixed; inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none; z-index: 0; opacity: 0.6;
       }
 
-      /* ====== MENÚ (idéntico a index) ====== */
+      h1, h2, h3, .syne { font-family: "Syne", sans-serif; }
+
+      /* ── SIDEBAR ── */
       #sidebar {
-        transition: transform 0.3s ease-in-out;
+        position: fixed; top: 0; left: 0; height: 100%; width: 300px;
         background: var(--bg-card);
-        z-index: 100;
+        border-right: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+        transform: translateX(-100%);
+        transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 200; overflow-y: auto;
       }
-      .nav-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 18px;
-        border-radius: 18px;
-        color: var(--text-muted);
-        transition: all 0.2s ease;
+      #sidebar.open { transform: translateX(0); }
+      .sidebar-header { padding: 32px 28px 24px; border-bottom: 1px solid var(--border); }
+      .sidebar-logo { display: flex; align-items: center; gap: 14px; }
+      .logo-mark {
+        width: 44px; height: 44px; background: var(--accent);
+        border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      }
+      .sidebar-nav { padding: 20px 16px; }
+      .nav-section-label {
+        font-family: "Syne", sans-serif;
+        font-size: 9px; font-weight: 700; letter-spacing: 0.15em;
+        text-transform: uppercase; color: var(--text-muted);
+        padding: 0 12px; margin-bottom: 8px; margin-top: 16px;
+      }
+      .nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 13px 16px; border-radius: 14px;
+        color: var(--text-muted); text-decoration: none;
+        font-size: 14.5px; font-weight: 500;
+        transition: all 0.18s ease; margin-bottom: 2px;
+      }
+      .nav-item:hover { background: var(--bg-card2); color: var(--text); }
+      .nav-item.active { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-weight: 700; }
+      .nav-item .icon {
+        width: 36px; height: 36px; border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 17px; flex-shrink: 0; background: var(--bg-card2);
+      }
+      .nav-item.active .icon { background: color-mix(in srgb, var(--accent) 15%, transparent); }
+
+      /* ── OVERLAY ── */
+      #overlay {
+        position: fixed; inset: 0;
+        background: rgba(0,0,0,0.45); backdrop-filter: blur(4px);
+        z-index: 199; opacity: 0; pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      #overlay.visible { opacity: 1; pointer-events: all; }
+
+      /* ── HERO ── */
+      .hero-wrap { position: relative; width: 100%; height: 220px; overflow: hidden; }
+      .hero-img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
+      .hero-wrap:hover .hero-img { transform: scale(1.04); }
+      .hero-gradient {
+        position: absolute; inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.02) 40%, rgba(0,0,0,0.55) 100%);
+      }
+      .hero-top-bar {
+        position: absolute; top: 0; left: 0; right: 0;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 16px 20px;
+        padding-top: max(16px, env(safe-area-inset-top));
+      }
+      .hero-content { position: absolute; bottom: 20px; left: 24px; right: 24px; display: flex; align-items: flex-end; justify-content: space-between; }
+      .hero-title { font-family: "Syne", sans-serif; font-size: 32px; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; color: #fff; text-transform: uppercase; }
+      .hero-sub { color: rgba(255,255,255,0.6); font-size: 11px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
+
+      /* ── ICON BUTTON ── */
+      .icon-btn {
+        width: 42px; height: 42px; border-radius: 13px;
+        background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25);
+        backdrop-filter: blur(10px); color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; transition: all 0.15s ease; flex-shrink: 0;
         text-decoration: none;
       }
-      .nav-link.active {
-        background: rgba(59, 130, 246, 0.12);
-        color: var(--accent);
-        font-weight: 800;
-        border: 1px solid rgba(59, 130, 246, 0.2);
+      .icon-btn:active { transform: scale(0.92); }
+
+      /* ── MAPA BUTTON ── */
+      .map-btn {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 8px 14px; border-radius: 12px;
+        background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.28);
+        backdrop-filter: blur(10px); color: #fff;
+        font-family: "Syne", sans-serif;
+        font-size: 10px; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.08em;
+        text-decoration: none; transition: all 0.15s ease;
+      }
+      .map-btn:active { transform: scale(0.95); }
+
+      /* ── MAIN ── */
+      .main-wrap { max-width: 480px; margin: 0 auto; padding: 0 16px 48px; position: relative; z-index: 1; }
+
+      /* ── MONTH DIVIDER ── */
+      .month-divider {
+        display: flex; align-items: center; gap: 12px;
+        margin: 28px 0 16px;
+      }
+      .month-divider-line { flex: 1; height: 1px; background: var(--border); }
+      .month-divider-label {
+        font-family: "Syne", sans-serif;
+        font-size: 10px; font-weight: 700;
+        letter-spacing: 0.15em; text-transform: uppercase;
+        color: var(--text-muted);
       }
 
-      /* ====== UI de salidas ====== */
-      .hero {
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
+      /* ── DAY CARD ── */
+      .day-card {
+        display: flex; gap: 12px;
+        margin-bottom: 12px;
+        animation: fadeUp 0.4s ease both;
       }
-      .timeline {
-        position: relative;
-        max-width: 600px;
-        margin: auto;
-        padding-right: 1rem;
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
       }
-      .line {
-        position: absolute;
-        right: 2.2rem;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: var(--border);
-      }
-      .day {
-        position: relative;
-        display: flex;
-        flex-direction: row-reverse;
-        padding: 1.2rem 0;
-        align-items: flex-start;
-      }
-      .circle {
-        position: absolute;
-        right: 0.2rem;
-        top: 1.25rem;
-        width: 4rem;
-        height: 4rem;
-        border-radius: 22px;
+
+      .day-badge {
+        width: 52px; flex-shrink: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
         background: var(--bg-card);
         border: 1px solid var(--border);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
-        z-index: 10;
+        border-radius: 16px;
+        padding: 10px 0;
+        box-shadow: var(--shadow-sm);
+        align-self: flex-start;
+        min-height: 60px;
       }
-      .is-today .circle {
+      .day-badge.today {
         background: var(--accent);
-        color: white;
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.45);
+        border-color: transparent;
+        box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 35%, transparent);
       }
-      .card {
-        width: calc(100% - 5rem);
+      .day-badge .dow {
+        font-size: 9px; font-weight: 600; text-transform: uppercase;
+        letter-spacing: 0.08em; color: var(--text-muted);
+        line-height: 1;
+      }
+      .day-badge.today .dow { color: rgba(255,255,255,0.75); }
+      .day-badge .dom {
+        font-family: "Syne", sans-serif;
+        font-size: 22px; font-weight: 700;
+        color: var(--text); line-height: 1.1; margin-top: 2px;
+      }
+      .day-badge.today .dom { color: #fff; }
+
+      .day-content {
+        flex: 1;
         background: var(--bg-card);
-        border-radius: 28px;
-        padding: 1.25rem;
-        margin-right: 1rem;
         border: 1px solid var(--border);
-        box-shadow: var(--shadow);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
       }
-      .item {
-        padding: 0.8rem 0;
+      .day-card.today-row .day-content {
+        border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+        box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 12%, transparent);
+      }
+
+      /* ── ENTRY ── */
+      .entry {
+        padding: 14px 16px;
         border-bottom: 1px solid var(--border);
       }
-      .time {
-        font-weight: 900;
+      .entry:last-child { border-bottom: none; }
+      .entry-time {
+        font-family: "Syne", sans-serif;
+        font-size: 11px; font-weight: 700;
+        color: var(--accent); letter-spacing: 0.05em;
+      }
+      .entry-place {
+        font-size: 15px; font-weight: 600; margin-top: 2px; line-height: 1.2;
+      }
+      .entry-meta {
+        font-size: 12px; color: var(--text-muted); margin-top: 4px;
+      }
+      .entry-meta strong { color: var(--text); font-weight: 600; }
+      .terr-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+      .terr-chip {
+        display: inline-flex; align-items: center; gap: 4px;
+        font-size: 11px; font-weight: 600;
+        padding: 4px 10px; border-radius: 8px;
+        background: color-mix(in srgb, var(--accent) 10%, transparent);
         color: var(--accent);
-        font-size: 0.9rem;
+        border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+        text-decoration: none; transition: all 0.15s ease;
       }
-      .place {
-        font-size: 1.1rem;
-        font-weight: 900;
-      }
-      .meta {
+      .terr-chip:active { transform: scale(0.95); }
+      .map-chip {
+        display: inline-flex; align-items: center; gap: 4px;
+        font-size: 11px; font-weight: 600;
+        padding: 4px 10px; border-radius: 8px;
+        background: var(--bg-card2);
         color: var(--text-muted);
-        font-size: 0.85rem;
-        margin-top: 0.3rem;
-      }
-      .terr-wrap {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 0.6rem;
-      }
-      .btn-map {
-        font-size: 0.7rem;
-        font-weight: 900;
-        padding: 0.4rem 0.8rem;
-        border-radius: 10px;
-        background: rgba(59, 130, 246, 0.1);
-        color: #60a5fa;
-        border: 1px solid rgba(59, 130, 246, 0.22);
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-      }
-      .special {
-        text-align: center;
-        font-weight: 900;
-        padding: 0.6rem 0;
-        border-radius: 15px;
         border: 1px solid var(--border);
-        background: rgba(2, 6, 23, 0.03);
+        text-decoration: none; transition: all 0.15s ease;
+        margin-top: 6px;
       }
-      .feriado {
-        background: rgba(59, 130, 246, 0.12);
-        color: #3b82f6;
-        border-color: rgba(59, 130, 246, 0.25);
-      }
-      .reunion {
-        background: rgba(16, 185, 129, 0.1);
-        color: #10b981;
-        border-color: rgba(16, 185, 129, 0.25);
-      }
-      .divider-card {
+      .map-chip:active { transform: scale(0.95); }
+
+      /* ── SPECIAL ENTRIES ── */
+      .special-entry {
+        padding: 14px 16px;
+        font-family: "Syne", sans-serif;
+        font-size: 13px; font-weight: 600;
         text-align: center;
-        font-weight: 900;
-        color: var(--accent);
-        border: 1px dashed var(--accent);
+      }
+      .special-entry.feriado { color: #60a5fa; }
+      .special-entry.reunion { color: var(--accent-light); }
+
+      /* ── DIVIDER CARD (cambio de mes en timeline) ── */
+      .divider-card {
+        flex: 1;
+        background: var(--bg-card2);
+        border: 1px dashed var(--border);
+        border-radius: 18px;
+        padding: 14px 16px;
+        font-family: "Syne", sans-serif;
+        font-size: 12px; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.1em;
+        color: var(--text-muted); text-align: center;
       }
     </style>
   </head>
 
-  <body class="page-bg">
-    <!-- Overlay (idéntico a index) -->
-    <div
-      id="overlay"
-      class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity duration-300"
-    ></div>
+  <body>
+    <div id="overlay"></div>
 
-    <!-- Sidebar (idéntico a index, con Salidas activo) -->
-    <aside
-      id="sidebar"
-      class="fixed top-0 left-0 h-full w-72 transform -translate-x-full shadow-2xl p-8"
-    >
-      <div class="flex items-center gap-3 mb-10">
-        <div
-          class="h-10 w-10 rounded-2xl bg-blue-500/20 flex items-center justify-center font-black text-blue-500"
-        >
-          ✦
-        </div>
-        <div>
-          <h2 class="font-extrabold leading-tight">Norte Garín</h2>
-          <p class="text-[10px] opacity-60 uppercase font-bold tracking-widest">
-            Digital Board
-          </p>
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <div class="logo-mark">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div>
+            <div class="syne" style="font-size:15px; font-weight:700; line-height:1.1">Norte Garín</div>
+            <div style="font-size:10px; color:var(--text-muted); font-weight:500; text-transform:uppercase; letter-spacing:0.12em; margin-top:2px">Tablero Digital</div>
+          </div>
         </div>
       </div>
-
-      <nav class="space-y-2">
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="salidas.html" class="nav-link active font-bold">Salidas</a>
-        <a href="vida-ministerio.html" class="nav-link">Vida y Ministerio</a>
-        <a href="conferencias.html" class="nav-link">Discursos</a>
-        <a href="multimedia.html" class="nav-link">Multimedia</a>
-        <a href="lectores.html" class="nav-link">Lectores</a>
-        <a href="limpieza.html" class="nav-link">Limpieza</a>
-        <a href="grupos.html" class="nav-link">Grupos</a>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Principal</div>
+        <a href="index.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div> Inicio
+        </a>
+        <a href="proximos-eventos.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div> Próximos Eventos
+        </a>
+        <div class="nav-section-label" style="margin-top:20px">Ministerio</div>
+        <a href="salidas.html" class="nav-item active">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div> Salidas
+        </a>
+        <a href="grupos.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div> Grupos
+        </a>
+        <div class="nav-section-label" style="margin-top:20px">Reunión</div>
+        <a href="vida-ministerio.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div> Vida y Ministerio
+        </a>
+        <a href="conferencias.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div> Discursos
+        </a>
+        <a href="lectores.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div> Lectores
+        </a>
+        <div class="nav-section-label" style="margin-top:20px">Organización</div>
+        <a href="multimedia.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div> Multimedia
+        </a>
+        <a href="limpieza.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg></div> Limpieza
+        </a>
       </nav>
     </aside>
 
-    <!-- Header de Salidas -->
-    <header class="p-2">
-      <div
-        class="relative w-full h-48 sm:h-56 rounded-[30px] overflow-hidden hero max-w-5xl mx-auto group"
-      >
-        <img
-          src="img/salidas.png"
-          class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
-          alt="Banner"
-        />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60"
-        ></div>
-
-        <div class="absolute inset-0 p-5 flex flex-col justify-between">
-          <div class="flex items-center justify-between">
-            <!-- Menú (idéntico a index) -->
-            <button
-              id="btnMenu"
-              class="btn-surface p-3 rounded-2xl active:scale-90"
-              aria-label="Menú"
-              title="Menú"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <line x1="4" x2="20" y1="12" y2="12" />
-                <line x1="4" x2="20" y1="6" y2="6" />
-                <line x1="4" x2="20" y1="18" y2="18" />
-              </svg>
-            </button>
-
-            <!-- ✅ MAPA: corregido para /img/ -->
-            <a
-              href="img/TERRITORIOGARIN.png"
-              target="_blank"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600/90 text-white shadow-lg active:scale-95 transition border border-white/10"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
-                <line x1="9" y1="3" x2="9" y2="18" />
-                <line x1="15" y1="6" x2="15" y2="21" />
-              </svg>
-              <span class="text-[10px] font-black uppercase tracking-wider">Mapa</span>
-            </a>
-
-            <!-- Tema (idéntico a index) -->
-            <button
-              id="btnTheme"
-              class="btn-surface p-3 rounded-2xl active:scale-90"
-              aria-label="Tema"
-              title="Tema"
-            >
-              <span id="theme-icon">🌙</span>
-            </button>
+    <!-- HERO -->
+    <header>
+      <div class="hero-wrap">
+        <img src="img/salidas.png" class="hero-img" alt="Salidas" />
+        <div class="hero-gradient"></div>
+        <div class="hero-top-bar">
+          <button class="icon-btn" id="btnMenu" aria-label="Menú">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="14" y1="16" y2="16"/>
+            </svg>
+          </button>
+          <button class="icon-btn" id="btnTheme" aria-label="Cambiar tema">
+            <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
+        </div>
+        <div class="hero-content">
+          <div>
+            <div class="hero-title">Salidas</div>
+            <div class="hero-sub" id="hero-mes">Cargando…</div>
           </div>
-
-          <div class="text-white">
-            <h1
-              class="text-3xl font-black tracking-tighter uppercase leading-none drop-shadow-md"
-            >
-              Salidas
-            </h1>
-            <p
-              class="font-bold text-[10px] uppercase tracking-[0.2em] mt-1 text-blue-300 drop-shadow-md"
-            >
-              Marzo 2026
-            </p>
-          </div>
+          <a href="img/TERRITORIOGARIN.png" target="_blank" class="map-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
+              <line x1="9" y1="3" x2="9" y2="18"/>
+              <line x1="15" y1="6" x2="15" y2="21"/>
+            </svg>
+            Mapa
+          </a>
         </div>
       </div>
     </header>
 
-    <main class="timeline px-4 mt-4">
-      <div class="line"></div>
-      <div id="grid"></div>
+    <main class="main-wrap">
+      <div id="grid" style="margin-top: 20px;"></div>
     </main>
 
     <script src="salidas-data.js"></script>
     <script>
-      // ===== Tema (idéntico a index) =====
+      // ── THEME ──
       const html = document.documentElement;
-      const themeIcon = document.getElementById("theme-icon");
+      const iconMoon = document.getElementById("theme-icon-moon");
+      const iconSun  = document.getElementById("theme-icon-sun");
+      function applyThemeIcons() {
+        const dark = html.classList.contains("dark");
+        iconMoon.style.display = dark ? "none"  : "block";
+        iconSun.style.display  = dark ? "block" : "none";
+      }
+      applyThemeIcons();
+      document.getElementById("btnTheme").onclick = () => {
+        html.classList.toggle("dark");
+        localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
+        applyThemeIcons();
+      };
+
+      // ── SIDEBAR ──
       const sidebar = document.getElementById("sidebar");
       const overlay = document.getElementById("overlay");
-
-      function toggleTheme() {
-        html.classList.toggle("dark");
-        localStorage.setItem(
-          "theme",
-          html.classList.contains("dark") ? "dark" : "light"
-        );
-        themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
-      }
-      document.getElementById("btnTheme").onclick = toggleTheme;
-
-      // ===== Menú (idéntico a index) =====
       document.getElementById("btnMenu").onclick = () => {
-        sidebar.classList.replace("-translate-x-full", "translate-x-0");
-        overlay.classList.remove("hidden");
-        setTimeout(() => overlay.classList.add("opacity-100"), 10);
+        sidebar.classList.add("open");
+        overlay.classList.add("visible");
       };
       overlay.onclick = () => {
-        sidebar.classList.replace("translate-x-0", "-translate-x-full");
-        overlay.classList.remove("opacity-100");
-        setTimeout(() => overlay.classList.add("hidden"), 300);
+        sidebar.classList.remove("open");
+        overlay.classList.remove("visible");
       };
 
-      // ===== Render Salidas =====
+      // ── HELPERS ──
+      const MESES = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+      const MESES_CORTO = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
+
       function terrHtml(t) {
         const arr = window.SALIDAS_CAL.parseTerr(t);
         if (!arr.length) return "";
-        return `<div class="terr-wrap">${arr
-          .map(
-            (n) =>
-              `<a class="btn-map" href="${window.SALIDAS_CAL.territoryUrl(
-                n
-              )}" target="_blank" rel="noopener">🗺️ T-${n}</a>`
-          )
-          .join("")}</div>`;
+        return `<div class="terr-wrap">${arr.map(n =>
+          `<a class="terr-chip" href="${window.SALIDAS_CAL.territoryUrl(n)}" target="_blank" rel="noopener">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+            T-${n}
+          </a>`
+        ).join("")}</div>`;
       }
 
-      function item(e) {
+      function entryHtml(e) {
         if (e.type) {
           const cls = e.type === "feriado" ? "feriado" : "reunion";
-          return `<div class="special ${cls}">${e.l}</div>`;
+          return `<div class="special-entry ${cls}">${e.l}</div>`;
         }
-
         const mapaBtn = e.maps
-          ? `<a class="btn-map" href="${e.maps}" target="_blank" rel="noopener">📍 Ver ubicación</a>`
+          ? `<a class="map-chip" href="${e.maps}" target="_blank" rel="noopener">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Ver ubicación
+            </a>`
           : "";
-
-        return `<div class="item">
-          <div class="time">${e.h} hs</div>
-          <div class="place">${e.l}</div>
-          <div class="meta">
-            Conduce: <span style="color: var(--text-primary); font-weight: 900;">${
-              e.c || ""
-            }</span>
-            ${mapaBtn ? `<span class="ml-2">${mapaBtn}</span>` : ""}
-          </div>
+        return `<div class="entry">
+          <div class="entry-time">${e.h} hs</div>
+          <div class="entry-place">${e.l}</div>
+          <div class="entry-meta">Conduce: <strong>${e.c || "—"}</strong></div>
+          ${mapaBtn}
           ${terrHtml(e.t)}
         </div>`;
       }
 
-      function dividerMonth(y, m) {
-        const meses = [
-          "ENE",
-          "FEB",
-          "MAR",
-          "ABR",
-          "MAY",
-          "JUN",
-          "JUL",
-          "AGO",
-          "SEP",
-          "OCT",
-          "NOV",
-          "DIC",
-        ];
-        return `<div class="day">
-          <div class="card divider-card uppercase tracking-widest text-xs py-2">${meses[m - 1]} ${y}</div>
-          <div class="circle"><span class="text-xs font-black">${
-            meses[m - 1]
-          }</span></div>
-        </div>`;
-      }
-
-      function block(monthNum, dayNum, L, arr) {
-        return `<div class="day" data-m="${monthNum}" data-d="${dayNum}">
-          <div class="card">${arr.map(item).join("")}</div>
-          <div class="circle">
-            <span class="text-[10px] font-black uppercase opacity-60 leading-none mb-1">${L.w}</span>
-            <span class="text-xl font-black leading-none">${dayNum}</span>
+      function dayCardHtml(y, m, d, entries, isToday) {
+        const label = window.SALIDAS_CAL.label(y, m, d);
+        return `<div class="day-card ${isToday ? 'today-row' : ''}" data-m="${m}" data-d="${d}">
+          <div class="day-badge ${isToday ? 'today' : ''}">
+            <span class="dow">${label.w}</span>
+            <span class="dom">${d}</span>
+          </div>
+          <div class="day-content">
+            ${entries.map(entryHtml).join("")}
           </div>
         </div>`;
       }
 
-      function markToday() {
-        const now = new Date();
-        const m = now.getMonth() + 1;
-        const d = now.getDate();
-        const el = document.querySelector(`.day[data-m="${m}"][data-d="${d}"]`);
-        if (el) {
-          el.classList.add("is-today");
-          setTimeout(() => {
-            el.scrollIntoView({ behavior: "smooth", block: "center" });
-          }, 450);
-        }
+      function monthDividerHtml(y, m) {
+        return `<div class="month-divider">
+          <div class="month-divider-line"></div>
+          <div class="month-divider-label">${MESES[m-1]} ${y}</div>
+          <div class="month-divider-line"></div>
+        </div>`;
       }
 
+      // ── RENDER ──
       function render() {
         const g = document.getElementById("grid");
         if (!window.SALIDAS_CAL || !Array.isArray(window.SALIDAS_CAL.CALENDARIO)) {
-          g.innerHTML = '<div class="card">No se pudo cargar el calendario.</div>';
+          g.innerHTML = '<p style="color:var(--text-muted); text-align:center; padding:32px">No se pudo cargar el calendario.</p>';
           return;
         }
 
-        const months = [...window.SALIDAS_CAL.CALENDARIO].sort(
-          (a, b) => a.y - b.y || a.m - b.m
-        );
+        const now = new Date();
+        const todayM = now.getMonth() + 1;
+        const todayD = now.getDate();
+
+        const months = [...window.SALIDAS_CAL.CALENDARIO].sort((a, b) => a.y - b.y || a.m - b.m);
+
+        // Título del hero con el mes más relevante
+        const currentMonth = months.find(M => M.m === todayM) || months[0];
+        if (currentMonth) {
+          document.getElementById("hero-mes").textContent = `${MESES[currentMonth.m - 1]} ${currentMonth.y}`;
+        }
 
         let htmlOut = "";
         let lastYM = "";
 
-        months.forEach((M) => {
+        months.forEach(M => {
           const ym = `${M.y}-${M.m}`;
-          if (ym !== lastYM) htmlOut += dividerMonth(M.y, M.m);
-          lastYM = ym;
+          if (ym !== lastYM) { htmlOut += monthDividerHtml(M.y, M.m); lastYM = ym; }
 
-          Object.keys(M.d || {})
-            .sort((a, b) => a - b)
-            .forEach((d) => {
-              htmlOut += block(
-                M.m,
-                d,
-                window.SALIDAS_CAL.label(M.y, M.m, d),
-                M.d[d]
-              );
-            });
+          Object.keys(M.d || {}).sort((a, b) => a - b).forEach(d => {
+            const isToday = M.m === todayM && Number(d) === todayD;
+            htmlOut += dayCardHtml(M.y, M.m, d, M.d[d], isToday);
+          });
         });
 
         g.innerHTML = htmlOut;
-        markToday();
+
+        // Scroll al día de hoy
+        const todayEl = document.querySelector(".day-card.today-row");
+        if (todayEl) setTimeout(() => todayEl.scrollIntoView({ behavior: "smooth", block: "center" }), 400);
       }
 
       document.addEventListener("DOMContentLoaded", render);
