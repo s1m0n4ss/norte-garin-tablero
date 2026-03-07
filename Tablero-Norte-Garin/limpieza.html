@@ -1,400 +1,471 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1, viewport-fit=cover"
-    />
-    <title>Programa de Limpieza | Norte Garín</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Limpieza | Norte Garín</title>
 
     <script>
       (function () {
         const saved = localStorage.getItem("theme");
-        const prefersDark =
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const useDark = saved ? saved === "dark" : prefersDark;
-        if (useDark) document.documentElement.classList.add("dark");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (saved ? saved === "dark" : prefersDark) document.documentElement.classList.add("dark");
       })();
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
     <style>
       :root {
-        --bg-main: #f1f5f9;
-        --bg-card: #ffffff;
-        --border: rgba(0, 0, 0, 0.08);
-        --brand: #10b981;
-        --accent-blue: #0ea5e9;
-        --text-primary: #0f172a;
-        --text-muted: #64748b;
-        --header-bg: rgba(241, 245, 249, 0.78);
-        --btn-bg: rgba(255, 255, 255, 0.85);
-        --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
-        --btn-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
-        --soft: rgba(2, 6, 23, 0.03);
+        --bg:#f7f5f0; --bg-card:#ffffff; --bg-card2:#f0ede8;
+        --text:#1a1714; --text-muted:#8a8075;
+        --accent:#2d6a4f; --accent-light:#52b788; --accent-warm:#d4a853;
+        --border:rgba(26,23,20,0.09);
+        --shadow-sm:0 2px 12px rgba(26,23,20,0.07);
+        --shadow-md:0 8px 32px rgba(26,23,20,0.10);
+        --shadow-lg:0 24px 64px rgba(26,23,20,0.13);
       }
       html.dark {
-        --bg-main: #0a0f1d;
-        --bg-card: #1a2235;
-        --border: rgba(255, 255, 255, 0.06);
-        --brand: #34d399;
-        --accent-blue: #38bdf8;
-        --text-primary: #f8fafc;
-        --text-muted: #94a3b8;
-        --header-bg: rgba(10, 15, 29, 0.75);
-        --btn-bg: rgba(18, 26, 42, 0.78);
-        --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
-        --btn-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-        --soft: rgba(255, 255, 255, 0.03);
-      }
-      body {
-        font-family: "Inter", sans-serif;
-        color: var(--text-primary);
-        margin: 0;
-        background-color: var(--bg-main);
-        padding-bottom: 50px;
-      }
-      .page-bg {
-        min-height: 100vh;
-        background-image: radial-gradient(
-          900px 520px at 50% -10%,
-          rgba(16, 185, 129, 0.18),
-          transparent 60%
-        );
+        --bg:#1e2023; --bg-card:#272b2f; --bg-card2:#2f3338;
+        --text:#eceae6; --text-muted:#8a8d92;
+        --accent:#4caf80; --accent-light:#6fcf97; --accent-warm:#d4a853;
+        --border:rgba(255,255,255,0.08);
+        --shadow-sm:0 2px 12px rgba(0,0,0,0.15);
+        --shadow-md:0 8px 32px rgba(0,0,0,0.20);
+        --shadow-lg:0 24px 64px rgba(0,0,0,0.28);
       }
 
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: var(--header-bg);
-        backdrop-filter: blur(14px);
-        border-bottom: 1px solid var(--border);
-        padding: 8px;
+      *,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+      body{
+        font-family:"DM Sans",sans-serif; background:var(--bg); color:var(--text);
+        margin:0; padding-bottom:max(48px,env(safe-area-inset-bottom,48px));
+        overflow-x:hidden; min-height:100vh;
+      }
+      body::before{
+        content:''; position:fixed; inset:0;
+        background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events:none; z-index:0; opacity:0.6;
+      }
+      .syne{font-family:"Syne",sans-serif;}
+
+      /* SIDEBAR */
+      #sidebar{
+        position:fixed; top:0; left:0; height:100%; width:300px;
+        background:var(--bg-card); border-right:1px solid var(--border);
+        box-shadow:var(--shadow-lg); transform:translateX(-100%);
+        transition:transform 0.38s cubic-bezier(0.4,0,0.2,1);
+        z-index:200; overflow-y:auto;
+      }
+      #sidebar.open{transform:translateX(0);}
+      .sidebar-header{padding:32px 28px 24px; border-bottom:1px solid var(--border);}
+      .sidebar-logo{display:flex; align-items:center; gap:14px;}
+      .logo-mark{width:44px; height:44px; background:var(--accent); border-radius:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+      .sidebar-nav{padding:20px 16px;}
+      .nav-section-label{
+        font-family:"Syne",sans-serif; font-size:9px; font-weight:700;
+        letter-spacing:0.15em; text-transform:uppercase; color:var(--text-muted);
+        padding:0 12px; margin-bottom:8px; margin-top:16px;
+      }
+      .nav-item{
+        display:flex; align-items:center; gap:12px; padding:13px 16px; border-radius:14px;
+        color:var(--text-muted); text-decoration:none; font-size:14.5px; font-weight:500;
+        transition:all 0.18s ease; margin-bottom:2px;
+      }
+      .nav-item:hover{background:var(--bg-card2); color:var(--text);}
+      .nav-item.active{background:color-mix(in srgb,var(--accent) 12%,transparent); color:var(--accent); font-weight:700;}
+      .nav-item .icon{width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; background:var(--bg-card2);}
+      .nav-item.active .icon{background:color-mix(in srgb,var(--accent) 15%,transparent);}
+
+      /* OVERLAY */
+      #overlay{
+        position:fixed; inset:0; background:rgba(0,0,0,0.45);
+        backdrop-filter:blur(4px); z-index:199;
+        opacity:0; pointer-events:none; transition:opacity 0.3s ease;
+      }
+      #overlay.visible{opacity:1; pointer-events:all;}
+
+      /* HERO */
+      .hero-wrap{position:relative; width:100%; height:250px; overflow:hidden;}
+      .hero-img{width:100%; height:100%; object-fit:cover; transition:transform 8s ease;}
+      .hero-wrap:hover .hero-img{transform:scale(1.04);}
+      .hero-gradient{position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.04) 38%,rgba(0,0,0,0.72) 100%);}
+      .hero-top-bar{
+        position:absolute; top:0; left:0; right:0;
+        display:flex; align-items:center; justify-content:space-between;
+        padding:16px 20px; padding-top:max(16px,env(safe-area-inset-top));
+      }
+      .hero-bottom{position:absolute; bottom:0; left:0; right:0; padding:0 24px 22px;}
+      .hero-eyebrow{
+        display:inline-flex; align-items:center; gap:7px;
+        background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.18);
+        backdrop-filter:blur(10px); color:rgba(255,255,255,0.9);
+        font-family:"Syne",sans-serif; font-size:9px; font-weight:700;
+        letter-spacing:0.14em; text-transform:uppercase;
+        padding:6px 12px; border-radius:99px; margin-bottom:10px;
+      }
+      .hero-title{font-family:"Syne",sans-serif; font-size:30px; font-weight:700; color:#fff; text-transform:uppercase; line-height:1; letter-spacing:-0.01em;}
+      .hero-chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+      .hero-chip{
+        background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.16);
+        backdrop-filter:blur(8px); color:#fff;
+        font-family:"Syne",sans-serif; font-size:9px; font-weight:700;
+        letter-spacing:0.1em; text-transform:uppercase;
+        padding:6px 12px; border-radius:99px;
+      }
+      .icon-btn{
+        width:42px; height:42px; border-radius:13px;
+        background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);
+        backdrop-filter:blur(10px); color:#fff;
+        display:flex; align-items:center; justify-content:center;
+        cursor:pointer; transition:all 0.15s ease;
+      }
+      .icon-btn:active{transform:scale(0.92);}
+
+      /* MAIN */
+      .main-wrap{max-width:480px; margin:0 auto; padding:16px 16px 48px; position:relative; z-index:1;}
+
+      @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+      /* SUMMARY */
+      .summary-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px;}
+      .summary-card{
+        background:var(--bg-card); border:1px solid var(--border);
+        border-radius:18px; padding:16px; box-shadow:var(--shadow-sm);
+        animation:fadeUp 0.4s ease both;
+      }
+      .summary-label{
+        font-family:"Syne",sans-serif; font-size:8px; font-weight:700;
+        letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px;
+      }
+      .summary-value{font-family:"Syne",sans-serif; font-size:20px; font-weight:700; line-height:1; color:var(--text);}
+      .summary-value.accent{color:var(--accent);}
+
+      /* MONTH */
+      .month-block{margin-bottom:14px; animation:fadeUp 0.4s ease both;}
+      .month-card{
+        background:var(--bg-card); border:1px solid var(--border);
+        border-radius:22px; overflow:hidden; box-shadow:var(--shadow-sm);
+      }
+      .month-header{
+        display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+        padding:16px 18px 14px; border-bottom:1px solid var(--border);
+        background:var(--bg-card2);
+      }
+      .month-title{font-family:"Syne",sans-serif; font-size:16px; font-weight:700; text-transform:uppercase; letter-spacing:-0.01em;}
+      .month-sub{font-size:11px; color:var(--text-muted); font-weight:500; margin-top:3px;}
+      .month-count{
+        font-family:"Syne",sans-serif; font-size:10px; font-weight:700;
+        color:var(--text-muted); background:var(--bg-card); border:1px solid var(--border);
+        padding:4px 10px; border-radius:7px; white-space:nowrap;
+      }
+      .month-body{padding:14px; display:grid; gap:8px;}
+
+      /* DEEP CLEAN */
+      .deep-banner{
+        border-radius:16px; padding:15px 16px;
+        background:linear-gradient(135deg,
+          color-mix(in srgb,var(--accent) 85%,#000) 0%,
+          var(--accent) 100%);
+        box-shadow:0 8px 24px color-mix(in srgb,var(--accent) 28%,transparent);
+        display:grid; gap:3px;
+      }
+      .deep-banner-eyebrow{
+        font-family:"Syne",sans-serif; font-size:8px; font-weight:700;
+        letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.72);
+      }
+      .deep-banner-title{font-family:"Syne",sans-serif; font-size:15px; font-weight:700; color:#fff;}
+      .deep-banner-text{font-size:12px; color:rgba(255,255,255,0.85); margin-top:3px; line-height:1.4;}
+
+      /* WEEK ROW */
+      .week-row{
+        display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px;
+        padding:13px 14px; border-radius:16px;
+        background:var(--bg-card2); border:1px solid var(--border);
+        transition:border-color 0.18s ease, background 0.18s ease;
+      }
+      .week-row.current{
+        border-color:color-mix(in srgb,var(--accent) 40%,transparent);
+        background:color-mix(in srgb,var(--accent) 6%,var(--bg-card));
+        box-shadow:0 2px 16px color-mix(in srgb,var(--accent) 10%,transparent);
       }
 
-      .btn-header {
-        background: var(--btn-bg);
-        border: 1px solid var(--border);
-        color: var(--text-primary);
-        border-radius: 14px;
-        padding: 10px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: var(--btn-shadow);
-        transition: transform 0.1s ease;
+      /* date pills */
+      .date-stack{display:flex; flex-direction:column; gap:6px;}
+      .date-pill{
+        display:flex; flex-direction:column; align-items:center; justify-content:center;
+        width:52px; padding:8px 6px; border-radius:12px;
+        background:var(--bg-card); border:1px solid var(--border);
       }
-      .btn-header:active {
-        transform: scale(0.95);
+      .week-row.current .date-pill{background:color-mix(in srgb,var(--accent) 10%,var(--bg-card));}
+      .date-pill-dow{
+        font-family:"Syne",sans-serif; font-size:7.5px; font-weight:700;
+        letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:3px;
+      }
+      .date-pill-num{font-family:"Syne",sans-serif; font-size:18px; font-weight:700; line-height:1; color:var(--text);}
+      .week-row.current .date-pill-num{color:var(--accent);}
+
+      /* week info */
+      .week-info{min-width:0;}
+      .week-current-badge{
+        font-family:"Syne",sans-serif; font-size:8px; font-weight:700;
+        letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);
+        margin-bottom:4px; display:block;
+      }
+      .week-range{font-family:"Syne",sans-serif; font-size:13px; font-weight:700; line-height:1.2; color:var(--text);}
+      .week-note{font-size:11px; color:var(--text-muted); margin-top:3px;}
+
+      /* group tag */
+      .group-tag{
+        font-family:"Syne",sans-serif; font-size:10px; font-weight:700;
+        letter-spacing:0.06em; text-transform:uppercase; text-align:center;
+        color:var(--accent); background:color-mix(in srgb,var(--accent) 10%,transparent);
+        border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);
+        padding:10px 10px; border-radius:12px; min-width:72px; line-height:1.3;
       }
 
-      .hero-banner {
-        position: relative;
-        width: 100%;
-        height: 160px;
-        border-radius: 26px;
-        overflow: hidden;
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
-      }
-      .hero-banner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .hero-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.8) 0%,
-          rgba(0, 0, 0, 0.2) 50%,
-          rgba(0, 0, 0, 0.6) 100%
-        );
-      }
-
-      .month-article {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 35px;
-        margin-bottom: 2rem;
-        padding: 1.5rem;
-        box-shadow: var(--shadow);
-      }
-      .row-week {
-        background: var(--soft);
-        border: 1px solid var(--border);
-        border-radius: 22px;
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        transition: all 0.2s ease;
-        margin-bottom: 0.8rem;
-      }
-      .is-current {
-        border: 2px solid var(--brand);
-        background: rgba(16, 185, 129, 0.06);
-        transform: scale(1.01);
-      }
-
-      .deep-cleaning-banner {
-        background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-        color: white;
-        padding: 1.2rem;
-        border-radius: 22px;
-        margin-bottom: 1.5rem;
-        text-align: center;
-        box-shadow: 0 12px 30px rgba(14, 165, 233, 0.25);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-      }
-      .day-box {
-        text-align: center;
-      }
-      .day-label {
-        font-size: 0.6rem;
-        text-transform: uppercase;
-        font-weight: 900;
-        color: var(--text-muted);
-      }
-      .day-number {
-        font-size: 1.3rem;
-        font-weight: 900;
-        line-height: 1;
-      }
-      .divider-vert {
-        border-left: 1px solid var(--border);
-        padding-left: 1rem;
-        margin-left: 1rem;
-      }
-      .group-chip {
-        background: rgba(16, 185, 129, 0.12);
-        color: var(--brand);
-        font-weight: 900;
-        font-size: 0.75rem;
-        padding: 0.4rem 0.8rem;
-        border-radius: 10px;
-        border: 1px solid rgba(16, 185, 129, 0.22);
-        text-transform: uppercase;
-      }
-      .today-badge {
-        color: var(--brand);
-        font-size: 0.6rem;
-        font-weight: 900;
-        text-transform: uppercase;
-        margin-bottom: 4px;
-        display: block;
+      @media(max-width:360px){
+        .week-row{grid-template-columns:1fr;}
+        .date-stack{flex-direction:row;}
+        .group-tag{width:100%;}
       }
     </style>
   </head>
 
-  <body class="page-bg pb-10">
+  <body>
+    <div id="overlay"></div>
+
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <div class="logo-mark">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <div class="syne" style="font-size:15px;font-weight:700;line-height:1.1">Norte Garín</div>
+            <div style="font-size:10px;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:0.12em;margin-top:2px">Tablero Digital</div>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Principal</div>
+        <a href="index.html" class="nav-item"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div> Inicio</a>
+        <a href="proximos-eventos.html" class="nav-item"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div> Próximos Eventos</a>
+        <div class="nav-section-label" style="margin-top:20px">Ministerio</div>
+        <a href="salidas.html" class="nav-item"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div> Salidas</a>
+        <a href="grupos.html" class="nav-item"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div> Grupos</a>
+        <div class="nav-section-label" style="margin-top:20px">Reunión</div>
+        <a href="vida-ministerio.html" class="nav-item"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div> Vida y Ministerio</a>
+        <a href="conferencias.html" class="nav-item"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div> Discursos</a>
+        <a href="lectores.html" class="nav-item"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div> Lectores</a>
+        <div class="nav-section-label" style="margin-top:20px">Organización</div>
+        <a href="multimedia.html" class="nav-item"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div> Multimedia</a>
+        <a href="limpieza.html" class="nav-item active"><div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg></div> Limpieza</a>
+      </nav>
+    </aside>
+
     <header>
-      <div class="max-w-md mx-auto">
-        <div class="hero-banner group">
-          <img src="img/limpieza.jpg" alt="Limpieza" />
-          <div class="hero-overlay"></div>
-
-          <div class="absolute inset-0 p-4 flex flex-col justify-between">
-            <div class="flex justify-between items-center">
-              <a href="index.html" class="btn-header" aria-label="Volver">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="m15 18-6-6 6-6" />
-                </svg>
-              </a>
-              <button onclick="toggleTheme()" class="btn-header">
-                <span id="theme-icon">🌙</span>
-              </button>
-            </div>
-
-            <div class="text-white">
-              <h1
-                class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg"
-              >
-                Limpieza
-              </h1>
-              <p
-                class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400 drop-shadow-md"
-              >
-                Enero / Febrero 2026
-              </p>
-            </div>
+      <div class="hero-wrap">
+        <img src="img/limpieza.jpg" class="hero-img" alt="Limpieza" />
+        <div class="hero-gradient"></div>
+        <div class="hero-top-bar">
+          <button class="icon-btn" id="btnMenu" aria-label="Menú">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="14" y1="16" y2="16"/></svg>
+          </button>
+          <button class="icon-btn" id="btnTheme" aria-label="Cambiar tema">
+            <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
+        </div>
+        <div class="hero-bottom">
+          <div class="hero-title">Programa de<br>Limpieza</div>
+          <div class="hero-chips">
+            <div class="hero-chip" id="hero-chip-periodo">2026</div>
           </div>
         </div>
       </div>
     </header>
 
-    <main
-      class="max-w-md mx-auto px-4 mt-6 space-y-8"
-      id="programa-container"
-    ></main>
+    <main class="main-wrap">
+      <div class="summary-grid">
+        <div class="summary-card" style="animation-delay:0.05s">
+          <div class="summary-label">Semanas visibles</div>
+          <div class="summary-value" id="summary-weeks">—</div>
+        </div>
+        <div class="summary-card" style="animation-delay:0.10s">
+          <div class="summary-label">Semana actual</div>
+          <div class="summary-value accent" id="summary-current">—</div>
+        </div>
+      </div>
+      <div id="programa-container"></div>
+    </main>
 
     <script>
+      // THEME
       const html = document.documentElement;
-      const themeIcon = document.getElementById("theme-icon");
-      function syncThemeIcon() {
-        themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
+      const iconMoon = document.getElementById("theme-icon-moon");
+      const iconSun  = document.getElementById("theme-icon-sun");
+      function applyThemeIcons() {
+        const dark = html.classList.contains("dark");
+        iconMoon.style.display = dark ? "none" : "block";
+        iconSun.style.display  = dark ? "block" : "none";
       }
-      function toggleTheme() {
+      applyThemeIcons();
+      document.getElementById("btnTheme").onclick = () => {
         html.classList.toggle("dark");
-        localStorage.setItem(
-          "theme",
-          html.classList.contains("dark") ? "dark" : "light"
-        );
-        syncThemeIcon();
-      }
-      syncThemeIcon();
+        localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
+        applyThemeIcons();
+      };
 
-      const SECUENCIA_4 = [
-        "Grupos 1 y 2",
-        "Grupos 3 y 4",
-        "Grupos 1 y 2",
-        "Grupos 3 y 4",
-      ];
+      // SIDEBAR
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      document.getElementById("btnMenu").onclick = () => { sidebar.classList.add("open"); overlay.classList.add("visible"); };
+      overlay.onclick = () => { sidebar.classList.remove("open"); overlay.classList.remove("visible"); };
+
+      // CONSTANTES
+      const SECUENCIA_4 = ["Grupos 1 y 2","Grupos 3 y 4","Grupos 1 y 2","Grupos 3 y 4"];
       const INICIO_REFERENCIA = new Date(2025, 11, 2);
       const FECHA_CAMBIO_DIAS = new Date(2026, 0, 8);
-      const LIMPIEZA_PROFUNDA_MESES = [0, 3, 6, 9];
 
-      function startOfDay(d) {
-        const x = new Date(d);
-        x.setHours(0, 0, 0, 0);
-        return x;
-      }
-      function endOfDay(d) {
-        const x = new Date(d);
-        x.setHours(23, 59, 59, 999);
-        return x;
+      // Limpieza profunda: cada 3 meses, primera en ABRIL 2026
+      function esLimpiezaProfunda(y, m) {
+        const refTotal  = 2026 * 12 + 3; // abril 2026
+        const curTotal  = y * 12 + m;
+        const diff = curTotal - refTotal;
+        return diff >= 0 && diff % 3 === 0;
       }
 
-      function obtenerDiasInicioMes(y, m, dow) {
-        let dias = [];
-        let d = new Date(y, m, 1);
-        while (d.getDay() !== dow) d.setDate(d.getDate() + 1);
-        while (d.getMonth() === m) {
-          dias.push(new Date(d));
-          d.setDate(d.getDate() + 7);
-        }
+      const MESES_ES = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+
+      function startOfDay(d) { const x=new Date(d); x.setHours(0,0,0,0); return x; }
+      function endOfDay(d)   { const x=new Date(d); x.setHours(23,59,59,999); return x; }
+
+      function diasDelMesPorDow(y, m, dow) {
+        const dias=[]; let d=new Date(y,m,1);
+        while(d.getDay()!==dow) d.setDate(d.getDate()+1);
+        while(d.getMonth()===m){ dias.push(new Date(d)); d.setDate(d.getDate()+7); }
         return dias;
       }
 
-      function obtenerLunesDelMes(y, m) {
-        let d = new Date(y, m, 1);
-        let lunes = [];
-        while (d.getDay() !== 1) d.setDate(d.getDate() + 1);
-        while (d.getMonth() === m) {
-          lunes.push(new Date(d));
-          d.setDate(d.getDate() + 7);
-        }
-        return lunes;
-      }
-
       function calcularAsignacion(fechaBase) {
-        const diffWeeks = Math.floor(
-          Math.abs(startOfDay(fechaBase) - startOfDay(INICIO_REFERENCIA)) /
-            (1000 * 60 * 60 * 24 * 7)
-        );
-        return SECUENCIA_4[diffWeeks % SECUENCIA_4.length];
+        const diff = Math.floor(Math.abs(startOfDay(fechaBase)-startOfDay(INICIO_REFERENCIA))/(1000*60*60*24*7));
+        return SECUENCIA_4[diff % 4];
       }
 
-      function esSemanaActual(d1, d2) {
-        const hoy = new Date();
-        return hoy >= startOfDay(d1) && hoy <= endOfDay(d2);
+      function esSemanaActual(d1,d2){
+        const hoy=new Date();
+        return hoy>=startOfDay(d1)&&hoy<=endOfDay(d2);
       }
 
-      function renderMes(y, m) {
-        const fechaMes = new Date(y, m, 1);
-        const nombreMes = fechaMes
-          .toLocaleDateString("es-ES", { month: "long" })
-          .toUpperCase();
-        const iniciosMartes = obtenerDiasInicioMes(y, m, 2).filter((base) => {
-          const d2 = new Date(base);
-          d2.setDate(d2.getDate() + 4);
-          return endOfDay(d2) < startOfDay(FECHA_CAMBIO_DIAS);
+      function rangoTexto(d1,d2){
+        const m1=d1.toLocaleDateString("es-ES",{month:"short"});
+        const m2=d2.toLocaleDateString("es-ES",{month:"short"});
+        return m1===m2?`${d1.getDate()} al ${d2.getDate()} de ${m2}`:`${d1.getDate()} ${m1} al ${d2.getDate()} ${m2}`;
+      }
+
+      function semanasMes(y,m){
+        const martes = diasDelMesPorDow(y,m,2).filter(base=>{
+          const d2=new Date(base); d2.setDate(d2.getDate()+4);
+          return endOfDay(d2)<startOfDay(FECHA_CAMBIO_DIAS);
         });
-        const iniciosJueves = obtenerDiasInicioMes(y, m, 4).filter(
-          (base) => startOfDay(base) >= startOfDay(FECHA_CAMBIO_DIAS)
+        const jueves = diasDelMesPorDow(y,m,4).filter(
+          base=>startOfDay(base)>=startOfDay(FECHA_CAMBIO_DIAS)
         );
-        const semanas = [
-          ...iniciosMartes.map((d) => ({ base: d, mode: "OLD" })),
-          ...iniciosJueves.map((d) => ({ base: d, mode: "NEW" })),
-        ].sort((a, b) => a.base - b.base);
+        return [...martes.map(d=>({base:d,mode:"OLD"})),...jueves.map(d=>({base:d,mode:"NEW"}))]
+          .sort((a,b)=>a.base-b.base);
+      }
 
-        let htmlLimpieza = "";
-        if (LIMPIEZA_PROFUNDA_MESES.includes(m)) {
-          const lunes = obtenerLunesDelMes(y, m);
-          htmlLimpieza = `
-            <div class="deep-cleaning-banner">
-              <div class="text-[10px] uppercase font-black tracking-widest opacity-90 mb-1">¡Atención Grupos!</div>
-              <div class="text-lg font-black">LIMPIEZA PROFUNDA</div>
-              <div class="text-xs mt-1 font-bold opacity-90">Lunes: ${lunes
-                .map((l) => l.getDate())
-                .join(", ")} de ${nombreMes.toLowerCase()}</div>
-            </div>`;
+      function renderMes(y,m,idx){
+        const semanas=semanasMes(y,m);
+        const delay=idx*0.07;
+
+        let deepBanner="";
+        if(esLimpiezaProfunda(y,m)){
+          const lunes=diasDelMesPorDow(y,m,1);
+          const dias=lunes.map(l=>l.getDate()).join(", ");
+          deepBanner=`<div class="deep-banner">
+            <div class="deep-banner-eyebrow">Limpieza profunda · ${MESES_ES[m]} ${y}</div>
+            <div class="deep-banner-title">¡Atención grupos!</div>
+            <div class="deep-banner-text">Los lunes ${dias} de ${MESES_ES[m].toLowerCase()} corresponde la limpieza profunda del Salón.</div>
+          </div>`;
         }
 
-        const filas = semanas
-          .map(({ base, mode }) => {
-            const isNew = mode === "NEW";
-            const d1 = new Date(base);
-            const d2 = new Date(d1);
-            d2.setDate(d1.getDate() + (isNew ? 3 : 4));
-            const actual = esSemanaActual(d1, d2);
-            return `
-            <div class="row-week ${actual ? "is-current" : ""}">
-              <div class="flex gap-4">
-                <div class="day-box"><div class="day-label">${
-                  isNew ? "Jue" : "Mar"
-                }</div><div class="day-number">${String(d1.getDate()).padStart(
-              2,
-              "0"
-            )}</div></div>
-                <div class="day-box divider-vert"><div class="day-label">${
-                  isNew ? "Dom" : "Sáb"
-                }</div><div class="day-number">${String(d2.getDate()).padStart(
-              2,
-              "0"
-            )}</div></div>
+        const filas=semanas.map(({base,mode},i)=>{
+          const isNew=mode==="NEW";
+          const d1=new Date(base);
+          const d2=new Date(base); d2.setDate(d1.getDate()+(isNew?3:4));
+          const actual=esSemanaActual(d1,d2);
+          const asig=calcularAsignacion(d1);
+          const rd=(idx*6+i)*0.04;
+          return `<div class="week-row ${actual?"current":""}" style="animation-delay:${rd}s">
+            <div class="date-stack">
+              <div class="date-pill">
+                <div class="date-pill-dow">${isNew?"Jue":"Mar"}</div>
+                <div class="date-pill-num">${String(d1.getDate()).padStart(2,"0")}</div>
               </div>
-              <div class="flex flex-col items-end">
-                ${actual ? '<span class="today-badge">Esta semana</span>' : ""}
-                <div class="group-chip">${calcularAsignacion(d1)}</div>
+              <div class="date-pill">
+                <div class="date-pill-dow">${isNew?"Dom":"Sáb"}</div>
+                <div class="date-pill-num">${String(d2.getDate()).padStart(2,"0")}</div>
               </div>
-            </div>`;
-          })
-          .join("");
+            </div>
+            <div class="week-info">
+              ${actual?`<span class="week-current-badge">● Semana actual</span>`:""}
+              <div class="week-range">${rangoTexto(d1,d2)}</div>
+              <div class="week-note">${isNew?"Jue → Dom":"Mar → Sáb"}</div>
+            </div>
+            <div class="group-tag">${asig.replace(" y ","\ny ")}</div>
+          </div>`;
+        }).join("");
 
-        return `<article class="month-article">
-          <div class="text-center mb-6"><h2 class="text-xl font-black uppercase tracking-widest">${nombreMes} 2026</h2><div class="w-10 h-1 mx-auto mt-2 rounded-full bg-[var(--brand)]"></div></div>
-          ${htmlLimpieza}<div class="space-y-2">${filas}</div>
-        </article>`;
+        return `<div class="month-block" style="animation-delay:${delay}s">
+          <div class="month-card">
+            <div class="month-header">
+              <div>
+                <div class="month-title">${MESES_ES[m]} ${y}</div>
+                <div class="month-sub">Asignación semanal del Salón</div>
+              </div>
+              <div class="month-count">${semanas.length} semana${semanas.length!==1?"s":""}</div>
+            </div>
+            <div class="month-body">
+              ${deepBanner}
+              ${filas||`<div style="padding:8px;text-align:center;font-size:13px;color:var(--text-muted)">Sin semanas</div>`}
+            </div>
+          </div>
+        </div>`;
       }
 
-      function iniciar() {
-        const cont = document.getElementById("programa-container");
-        cont.innerHTML = renderMes(2026, 0) + renderMes(2026, 1);
-        setTimeout(() => {
-          const current = document.querySelector(".is-current");
-          if (current)
-            current.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 450);
+      function iniciar(){
+        const hoy=new Date();
+        const meses=[];
+        for(let i=0;i<3;i++){
+          const d=new Date(hoy.getFullYear(),hoy.getMonth()+i,1);
+          meses.push({y:d.getFullYear(),m:d.getMonth()});
+        }
+
+        const p0=meses[0], p1=meses[meses.length-1];
+        document.getElementById("hero-chip-periodo").textContent=
+          p0.m===p1.m&&p0.y===p1.y
+            ? `${MESES_ES[p0.m]} ${p0.y}`
+            : `${MESES_ES[p0.m]} – ${MESES_ES[p1.m]} ${p1.y}`;
+
+        document.getElementById("programa-container").innerHTML=
+          meses.map(({y,m},i)=>renderMes(y,m,i)).join("");
+
+        // summary
+        const total=document.querySelectorAll(".week-row").length;
+        const curTag=document.querySelector(".week-row.current .group-tag");
+        document.getElementById("summary-weeks").textContent=total;
+        document.getElementById("summary-current").textContent=curTag
+          ? curTag.textContent.replace("\n"," ") : "Sin curso";
+
+        setTimeout(()=>{
+          const cur=document.querySelector(".week-row.current");
+          if(cur) cur.scrollIntoView({behavior:"smooth",block:"center"});
+        },450);
       }
+
       iniciar();
     </script>
   </body>
