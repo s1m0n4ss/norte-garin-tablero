@@ -1,410 +1,351 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Grupos para el Servicio del Campo | Norte Garín</title>
+    <title>Grupos | Norte Garín</title>
 
     <script>
       (function () {
         const saved = localStorage.getItem("theme");
-        const prefersDark =
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const useDark = saved ? saved === "dark" : prefersDark;
-        if (useDark) document.documentElement.classList.add("dark");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (saved ? saved === "dark" : prefersDark) document.documentElement.classList.add("dark");
       })();
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-            },
-            colors: {
-              brand: {
-                50: "#ecfdf5",
-                100: "#d1fae5",
-                200: "#a7f3d0",
-                300: "#6ee7b7",
-                400: "#34d399",
-                500: "#10b981",
-                600: "#059669",
-                700: "#047857",
-                800: "#065f46",
-                900: "#064e3b",
-              },
-            },
-            boxShadow: {
-              soft: "0 10px 30px rgba(15, 23, 42, 0.08)",
-            },
-          },
-        },
-      };
-    </script>
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 
     <style>
       :root {
-        --bg-main: #f8fafc;
-        --bg-card: rgba(255, 255, 255, 0.92);
-        --text-main: #0f172a;
-        --text-muted: #64748b;
-        --border: rgba(148, 163, 184, 0.2);
-        --btn-bg: rgba(255, 255, 255, 0.85);
+        --bg: #f7f5f0; --bg-card: #ffffff; --bg-card2: #f0ede8;
+        --text: #1a1714; --text-muted: #8a8075;
+        --accent: #2d6a4f; --accent-light: #52b788; --accent-warm: #d4a853;
+        --border: rgba(26,23,20,0.09);
+        --shadow-sm: 0 2px 12px rgba(26,23,20,0.07);
+        --shadow-md: 0 8px 32px rgba(26,23,20,0.10);
+        --shadow-lg: 0 24px 64px rgba(26,23,20,0.13);
+      }
+      html.dark {
+        --bg: #1e2023; --bg-card: #272b2f; --bg-card2: #2f3338;
+        --text: #eceae6; --text-muted: #8a8d92;
+        --accent: #4caf80; --accent-light: #6fcf97; --accent-warm: #d4a853;
+        --border: rgba(255,255,255,0.08);
+        --shadow-sm: 0 2px 12px rgba(0,0,0,0.15);
+        --shadow-md: 0 8px 32px rgba(0,0,0,0.20);
+        --shadow-lg: 0 24px 64px rgba(0,0,0,0.28);
       }
 
-      .dark:root {
-        --bg-main: #020617;
-        --bg-card: rgba(15, 23, 42, 0.88);
-        --text-main: #e5e7eb;
-        --text-muted: #94a3b8;
-        --border: rgba(148, 163, 184, 0.16);
-        --btn-bg: rgba(15, 23, 42, 0.82);
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
+      * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
       body {
-        font-family: "Inter", sans-serif;
-        background:
-          radial-gradient(circle at top, rgba(16, 185, 129, 0.10), transparent 30%),
-          var(--bg-main);
-        color: var(--text-main);
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg); color: var(--text);
+        margin: 0; padding-bottom: env(safe-area-inset-bottom, 48px);
+        overflow-x: hidden;
       }
-
-      .card-surface {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+      body::before {
+        content: ''; position: fixed; inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none; z-index: 0; opacity: 0.6;
       }
+      .syne { font-family: "Syne", sans-serif; }
 
-      .section-title-balance {
-        text-wrap: balance;
-      }
-
-      details summary::-webkit-details-marker {
-        display: none;
-      }
-
-      .btn-surface {
-        background: var(--btn-bg);
-        border: 1px solid var(--border);
-        color: var(--text-main);
-        box-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
-        backdrop-filter: blur(8px);
-        transition: all 0.15s ease;
-      }
-
-      .btn-surface:active {
-        transform: scale(0.95);
-      }
-
+      /* ── SIDEBAR ── */
       #sidebar {
-        transition: transform 0.3s ease-in-out;
-        background: rgba(255, 255, 255, 0.96);
-        z-index: 100;
+        position: fixed; top: 0; left: 0; height: 100%; width: 300px;
+        background: var(--bg-card); border-right: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+        transform: translateX(-100%);
+        transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+        z-index: 200; overflow-y: auto;
+      }
+      #sidebar.open { transform: translateX(0); }
+      .sidebar-header { padding: 32px 28px 24px; border-bottom: 1px solid var(--border); }
+      .sidebar-logo { display: flex; align-items: center; gap: 14px; }
+      .logo-mark { width: 44px; height: 44px; background: var(--accent); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .sidebar-nav { padding: 20px 16px; }
+      .nav-section-label {
+        font-family: "Syne", sans-serif; font-size: 9px; font-weight: 700;
+        letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted);
+        padding: 0 12px; margin-bottom: 8px; margin-top: 16px;
+      }
+      .nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 13px 16px; border-radius: 14px;
+        color: var(--text-muted); text-decoration: none;
+        font-size: 14.5px; font-weight: 500;
+        transition: all 0.18s ease; margin-bottom: 2px;
+      }
+      .nav-item:hover { background: var(--bg-card2); color: var(--text); }
+      .nav-item.active { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-weight: 700; }
+      .nav-item .icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--bg-card2); }
+      .nav-item.active .icon { background: color-mix(in srgb, var(--accent) 15%, transparent); }
+
+      /* ── OVERLAY ── */
+      #overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+        backdrop-filter: blur(4px); z-index: 199;
+        opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+      }
+      #overlay.visible { opacity: 1; pointer-events: all; }
+
+      /* ── HERO ── */
+      .hero-wrap { position: relative; width: 100%; height: 220px; overflow: hidden; }
+      .hero-img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
+      .hero-wrap:hover .hero-img { transform: scale(1.04); }
+      .hero-gradient { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.02) 40%, rgba(0,0,0,0.55) 100%); }
+      .hero-top-bar {
+        position: absolute; top: 0; left: 0; right: 0;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 16px 20px; padding-top: max(16px, env(safe-area-inset-top));
+      }
+      .hero-content { position: absolute; bottom: 20px; left: 24px; right: 24px; }
+      .hero-title { font-family: "Syne", sans-serif; font-size: 32px; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; color: #fff; text-transform: uppercase; }
+      .hero-sub { color: rgba(255,255,255,0.6); font-size: 11px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
+      .icon-btn {
+        width: 42px; height: 42px; border-radius: 13px;
+        background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25);
+        backdrop-filter: blur(10px); color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; transition: all 0.15s ease;
+      }
+      .icon-btn:active { transform: scale(0.92); }
+
+      /* ── MAIN ── */
+      .main-wrap { max-width: 480px; margin: 0 auto; padding: 20px 16px 48px; position: relative; z-index: 1; }
+
+      /* ── GRUPO CARD ── */
+      .grupo-card {
+        background: var(--bg-card); border: 1px solid var(--border);
+        border-radius: 22px; overflow: hidden;
+        box-shadow: var(--shadow-sm); margin-bottom: 12px;
+        animation: fadeUp 0.4s ease both;
+      }
+      @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+      .grupo-header {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 18px 18px 14px;
+        border-bottom: 1px solid var(--border);
+      }
+      .grupo-name-wrap { display: flex; align-items: center; gap: 12px; }
+      .grupo-badge {
+        width: 42px; height: 42px; border-radius: 13px; flex-shrink: 0;
+        background: color-mix(in srgb, var(--accent) 12%, transparent);
+        display: flex; align-items: center; justify-content: center;
+      }
+      .grupo-name { font-family: "Syne", sans-serif; font-size: 16px; font-weight: 700; }
+      .grupo-count {
+        font-family: "Syne", sans-serif; font-size: 11px; font-weight: 700;
+        color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent);
+        border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+        padding: 4px 10px; border-radius: 8px;
       }
 
-      .dark #sidebar {
-        background: rgba(15, 23, 42, 0.98);
+      /* ── ROLES ── */
+      .roles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 14px 18px; }
+      .role-item {
+        background: var(--bg-card2); border: 1px solid var(--border);
+        border-radius: 14px; padding: 12px 14px;
       }
-
-      .nav-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 18px;
-        border-radius: 18px;
-        color: var(--text-muted);
-        transition: all 0.2s ease;
+      .role-label {
+        font-family: "Syne", sans-serif; font-size: 8px; font-weight: 700;
+        letter-spacing: 0.12em; text-transform: uppercase;
+        color: var(--accent); margin-bottom: 4px;
       }
+      .role-name { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.2; }
 
-      .nav-link.active {
-        background: rgba(16, 185, 129, 0.12);
-        color: #10b981;
-        font-weight: 800;
-        border: 1px solid rgba(16, 185, 129, 0.2);
+      /* ── INTEGRANTES (details) ── */
+      details { border-top: 1px solid var(--border); }
+      details summary {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 13px 18px; cursor: pointer; list-style: none;
+        font-family: "Syne", sans-serif; font-size: 11px; font-weight: 700;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--text-muted); transition: color 0.15s ease;
+        user-select: none;
+      }
+      details summary::-webkit-details-marker { display: none; }
+      details summary:hover { color: var(--text); }
+      details[open] summary { color: var(--accent); }
+      .chevron { transition: transform 0.25s ease; flex-shrink: 0; }
+      details[open] .chevron { transform: rotate(180deg); }
+
+      .integrantes-list {
+        padding: 0 18px 16px;
+        display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+      }
+      .integrante-item {
+        display: flex; align-items: center; gap: 8px;
+        font-size: 12.5px; font-weight: 500; color: var(--text-muted);
+        padding: 8px 10px; border-radius: 10px;
+        background: var(--bg-card2);
+      }
+      .integrante-dot {
+        width: 5px; height: 5px; border-radius: 50%;
+        background: var(--accent); flex-shrink: 0; opacity: 0.6;
       }
     </style>
   </head>
 
-  <body class="min-h-full">
-    <div
-      id="overlay"
-      class="fixed inset-0 z-[90] hidden bg-black/40 opacity-0 backdrop-blur-sm transition-opacity duration-300"
-    ></div>
+  <body>
+    <div id="overlay"></div>
 
-    <aside
-      id="sidebar"
-      class="fixed top-0 left-0 h-full w-72 -translate-x-full border-r border-slate-200/70 p-8 shadow-2xl dark:border-slate-800"
-    >
-      <div class="mb-10 flex items-center gap-3">
-        <div
-          class="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-500/20 font-black text-emerald-500"
-        >
-          ✦
-        </div>
-        <div>
-          <h2 class="leading-tight font-extrabold">Norte Garín</h2>
-          <p class="text-[10px] font-bold uppercase tracking-widest opacity-60">
-            Digital Board
-          </p>
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <div class="logo-mark">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <div class="syne" style="font-size:15px;font-weight:700;line-height:1.1">Norte Garín</div>
+            <div style="font-size:10px;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:0.12em;margin-top:2px">Tablero Digital</div>
+          </div>
         </div>
       </div>
-
-      <nav class="space-y-2">
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="salidas.html" class="nav-link">Salidas</a>
-        <a href="vida-ministerio.html" class="nav-link">Vida y Ministerio</a>
-        <a href="conferencias.html" class="nav-link">Discursos</a>
-        <a href="multimedia.html" class="nav-link">Multimedia</a>
-        <a href="lectores.html" class="nav-link">Lectores</a>
-        <a href="limpieza.html" class="nav-link">Limpieza</a>
-        <a href="grupos.html" class="nav-link active">Grupos</a>
-        <a href="proximos-eventos.html" class="nav-link">Próximos eventos</a>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Principal</div>
+        <a href="index.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div> Inicio
+        </a>
+        <a href="proximos-eventos.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div> Próximos Eventos
+        </a>
+        <div class="nav-section-label" style="margin-top:20px">Ministerio</div>
+        <a href="salidas.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div> Salidas
+        </a>
+        <a href="grupos.html" class="nav-item active">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div> Grupos
+        </a>
+        <div class="nav-section-label" style="margin-top:20px">Reunión</div>
+        <a href="vida-ministerio.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div> Vida y Ministerio
+        </a>
+        <a href="conferencias.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div> Discursos
+        </a>
+        <a href="lectores.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div> Lectores
+        </a>
+        <div class="nav-section-label" style="margin-top:20px">Organización</div>
+        <a href="multimedia.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div> Multimedia
+        </a>
+        <a href="limpieza.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg></div> Limpieza
+        </a>
       </nav>
     </aside>
 
-    <div class="mx-auto w-full max-w-6xl px-4 pb-16 pt-5 sm:px-6 lg:px-8">
-      <header class="mb-6">
-        <div class="relative overflow-hidden rounded-3xl shadow-soft">
-          <img
-            src="img/grupos.jpg"
-            alt="Grupos para el servicio del campo"
-            class="absolute inset-0 h-full w-full object-cover"
-          />
-          <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-black/20 to-black/75"></div>
-
-          <div class="relative px-5 py-5 sm:px-7 sm:py-7">
-            <div class="mb-8 flex items-center justify-between">
-              <button
-                id="btnMenu"
-                class="btn-surface rounded-2xl p-3 active:scale-90"
-                type="button"
-                aria-label="Abrir menú"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="4" x2="20" y1="12" y2="12"></line>
-                  <line x1="4" x2="20" y1="6" y2="6"></line>
-                  <line x1="4" x2="20" y1="18" y2="18"></line>
-                </svg>
-              </button>
-
-              <button
-                id="btnTheme"
-                class="btn-surface rounded-2xl p-3 active:scale-90"
-                type="button"
-                aria-label="Cambiar tema"
-              >
-                <span id="theme-icon">🌙</span>
-              </button>
-            </div>
-
-            <div class="flex items-end gap-4 sm:gap-5">
-              <div
-                class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-white shadow-sm backdrop-blur-md sm:h-20 sm:w-20"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-9 w-9 sm:h-11 sm:w-11"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M17 20a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4m18 0a4 4 0 0 0-3-3.87M15 7a3 3 0 1 1 0 6m-6-6a3 3 0 1 1 0 6m12 7v0m-9-13a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"
-                  />
-                </svg>
-              </div>
-
-              <div class="min-w-0">
-                <p class="mb-2 inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-200 backdrop-blur-md">
-                  Organización
-                </p>
-
-                <h1 class="section-title-balance text-3xl font-black tracking-tight text-white sm:text-4xl">
-                  Grupos para el Servicio del Campo
-                </h1>
-
-                <p class="mt-1 text-sm font-medium text-white/85 sm:text-base">
-                  Congregación Norte Garín
-                </p>
-              </div>
-            </div>
-          </div>
+    <!-- HERO -->
+    <header>
+      <div class="hero-wrap">
+        <img src="img/grupos.jpg" class="hero-img" alt="Grupos" />
+        <div class="hero-gradient"></div>
+        <div class="hero-top-bar">
+          <button class="icon-btn" id="btnMenu" aria-label="Menú">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="14" y1="16" y2="16"/></svg>
+          </button>
+          <button class="icon-btn" id="btnTheme" aria-label="Cambiar tema">
+            <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
         </div>
-      </header>
+        <div class="hero-content">
+          <div class="hero-title">Grupos</div>
+          <div class="hero-sub">Servicio del Campo</div>
+        </div>
+      </div>
+    </header>
 
-      <main id="grupos-container" class="grid grid-cols-1 gap-4 lg:grid-cols-2"></main>
-    </div>
+    <main class="main-wrap" id="grupos-container"></main>
 
     <script src="grupos-data.js"></script>
     <script>
+      // ── THEME ──
       const html = document.documentElement;
-      const themeIcon = document.getElementById("theme-icon");
-      const sidebar = document.getElementById("sidebar");
-      const overlay = document.getElementById("overlay");
-      const gruposContainer = document.getElementById("grupos-container");
-
-      function escapeHtml(text) {
-        return String(text)
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#039;");
+      const iconMoon = document.getElementById("theme-icon-moon");
+      const iconSun  = document.getElementById("theme-icon-sun");
+      function applyThemeIcons() {
+        const dark = html.classList.contains("dark");
+        iconMoon.style.display = dark ? "none"  : "block";
+        iconSun.style.display  = dark ? "block" : "none";
       }
-
-      function syncThemeIcon() {
-        themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
-      }
-
-      function toggleTheme() {
+      applyThemeIcons();
+      document.getElementById("btnTheme").onclick = () => {
         html.classList.toggle("dark");
         localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
-        syncThemeIcon();
+        applyThemeIcons();
+      };
+
+      // ── SIDEBAR ──
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      document.getElementById("btnMenu").onclick = () => { sidebar.classList.add("open"); overlay.classList.add("visible"); };
+      overlay.onclick = () => { sidebar.classList.remove("open"); overlay.classList.remove("visible"); };
+      document.addEventListener("keydown", e => { if (e.key === "Escape") { sidebar.classList.remove("open"); overlay.classList.remove("visible"); } });
+
+      // ── HELPERS ──
+      function esc(s) {
+        return String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
       }
 
-      function renderGrupos() {
+      // ── RENDER ──
+      function render() {
+        const container = document.getElementById("grupos-container");
         if (!window.GRUPOS_DATA || !Array.isArray(window.GRUPOS_DATA)) {
-          gruposContainer.innerHTML = `
-            <section class="card-surface rounded-3xl p-6 shadow-soft">
-              <p class="text-lg font-bold text-slate-900 dark:text-white">No se pudieron cargar los grupos.</p>
-            </section>
-          `;
+          container.innerHTML = `<p style="color:var(--text-muted);text-align:center;padding:48px 0">No se pudieron cargar los grupos.</p>`;
           return;
         }
 
-        gruposContainer.innerHTML = window.GRUPOS_DATA.map((grupo) => {
-          const integrantes = Array.isArray(grupo.integrantes) ? grupo.integrantes : [];
-
+        container.innerHTML = window.GRUPOS_DATA.map((g, i) => {
+          const integrantes = Array.isArray(g.integrantes) ? g.integrantes : [];
           return `
-            <article class="card-surface rounded-3xl p-5 shadow-soft sm:p-6">
-              <div class="mb-5 flex items-start justify-between gap-3">
-                <div class="flex items-center gap-3">
-                  <div
-                    class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-100 text-brand-700 dark:bg-brand-500/15 dark:text-brand-300"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-7 w-7"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="1.9"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M17 20a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4m18 0a4 4 0 0 0-3-3.87M15 7a3 3 0 1 1 0 6m-6-6a3 3 0 1 1 0 6"
-                      />
-                    </svg>
+            <article class="grupo-card" style="animation-delay:${i * 0.06}s">
+              <div class="grupo-header">
+                <div class="grupo-name-wrap">
+                  <div class="grupo-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                   </div>
-
-                  <div>
-                    <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                      ${escapeHtml(grupo.nombre)}
-                    </h2>
-                    <p class="text-sm text-slate-500 dark:text-slate-400">
-                      Servicio del campo
-                    </p>
-                  </div>
+                  <div class="grupo-name">${esc(g.nombre)}</div>
                 </div>
-
-                <span class="rounded-full bg-brand-100 px-3 py-1 text-xs font-bold text-brand-700 dark:bg-brand-500/15 dark:text-brand-300">
-                  ${escapeHtml(grupo.publicadores)} publicadores
-                </span>
+                <div class="grupo-count">${esc(g.publicadores)} pub.</div>
               </div>
 
-              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div class="rounded-2xl border border-slate-200/70 bg-white/70 p-4 dark:border-slate-700/60 dark:bg-slate-900/40">
-                  <div class="mb-2 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-600 dark:text-brand-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.5a6.5 6.5 0 0 0 6.5-6.5V8A6.5 6.5 0 0 0 5.5 8v4a6.5 6.5 0 0 0 6.5 6.5Zm0 0v3m-3-0.5h6" />
-                    </svg>
-                    <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-                      Superintendente
-                    </p>
-                  </div>
-                  <p class="text-lg font-bold text-slate-900 dark:text-white">${escapeHtml(grupo.superintendente)}</p>
+              <div class="roles-grid">
+                <div class="role-item">
+                  <div class="role-label">Superintendente</div>
+                  <div class="role-name">${esc(g.superintendente)}</div>
                 </div>
-
-                <div class="rounded-2xl border border-slate-200/70 bg-white/70 p-4 dark:border-slate-700/60 dark:bg-slate-900/40">
-                  <div class="mb-2 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-600 dark:text-brand-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 12.75 11 15.5l4.75-4.75M7 4.75h10A2.25 2.25 0 0 1 19.25 7v10A2.25 2.25 0 0 1 17 19.25H7A2.25 2.25 0 0 1 4.75 17V7A2.25 2.25 0 0 1 7 4.75Z" />
-                    </svg>
-                    <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-                      Auxiliar
-                    </p>
-                  </div>
-                  <p class="text-lg font-bold text-slate-900 dark:text-white">${escapeHtml(grupo.auxiliar)}</p>
+                <div class="role-item">
+                  <div class="role-label">Auxiliar</div>
+                  <div class="role-name">${esc(g.auxiliar)}</div>
                 </div>
               </div>
 
-              <details class="mt-4 group">
-                <summary class="flex cursor-pointer items-center justify-between rounded-2xl border border-slate-200/70 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700/60 dark:text-slate-200 dark:hover:bg-slate-800/50">
-                  <span>Ver integrantes</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 transition duration-200 group-open:rotate-180"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="1.9"
-                  >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m19 9-7 7-7-7" />
-                  </svg>
+              ${integrantes.length ? `
+              <details>
+                <summary>
+                  <span>Integrantes (${integrantes.length})</span>
+                  <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                 </summary>
-
-                <div class="mt-3 rounded-2xl border border-slate-200/70 bg-white/70 p-4 dark:border-slate-700/60 dark:bg-slate-900/40">
-                  <div class="grid grid-cols-1 gap-2 text-sm text-slate-700 dark:text-slate-300 sm:grid-cols-2">
-                    ${integrantes.map((nombre) => `<p>• ${escapeHtml(nombre)}</p>`).join("")}
-                  </div>
+                <div class="integrantes-list">
+                  ${integrantes.map(n => `
+                    <div class="integrante-item">
+                      <div class="integrante-dot"></div>
+                      ${esc(n)}
+                    </div>`).join("")}
                 </div>
-              </details>
-            </article>
-          `;
+              </details>` : ""}
+            </article>`;
         }).join("");
       }
 
-      document.getElementById("btnTheme").onclick = toggleTheme;
-      syncThemeIcon();
-      renderGrupos();
-
-      document.getElementById("btnMenu").onclick = () => {
-        sidebar.classList.replace("-translate-x-full", "translate-x-0");
-        overlay.classList.remove("hidden");
-        setTimeout(() => overlay.classList.add("opacity-100"), 10);
-      };
-
-      function closeMenu() {
-        sidebar.classList.replace("translate-x-0", "-translate-x-full");
-        overlay.classList.remove("opacity-100");
-        setTimeout(() => overlay.classList.add("hidden"), 300);
-      }
-
-      overlay.onclick = closeMenu;
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeMenu();
-      });
+      render();
     </script>
   </body>
 </html>
