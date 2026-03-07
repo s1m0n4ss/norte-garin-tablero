@@ -1,489 +1,404 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <title>Audio & Video | Norte Garín</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Multimedia | Norte Garín</title>
 
     <script>
       (function () {
         const saved = localStorage.getItem("theme");
-        const prefersDark =
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const useDark = saved ? saved === "dark" : prefersDark;
-        if (useDark) document.documentElement.classList.add("dark");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (saved ? saved === "dark" : prefersDark) document.documentElement.classList.add("dark");
       })();
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
     <style>
       :root {
-        --bg-main: #f1f5f9;
-        --bg-card: #ffffff;
-        --border: rgba(0, 0, 0, 0.08);
-        --brand: #10b981;
-        --text-primary: #0f172a;
-        --text-muted: #64748b;
-        --header-bg: rgba(241, 245, 249, 0.78);
-        --btn-bg: rgba(255, 255, 255, 0.85);
-        --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
-        --btn-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
-        --soft: rgba(2, 6, 23, 0.03);
+        --bg: #f7f5f0; --bg-card: #ffffff; --bg-card2: #f0ede8;
+        --text: #1a1714; --text-muted: #8a8075;
+        --accent: #2d6a4f; --accent-light: #52b788; --accent-warm: #d4a853;
+        --border: rgba(26,23,20,0.09);
+        --shadow-sm: 0 2px 12px rgba(26,23,20,0.07);
+        --shadow-md: 0 8px 32px rgba(26,23,20,0.10);
+        --shadow-lg: 0 24px 64px rgba(26,23,20,0.13);
       }
       html.dark {
-        --bg-main: #0a0f1d;
-        --bg-card: #1a2235;
-        --border: rgba(255, 255, 255, 0.06);
-        --brand: #34d399;
-        --text-primary: #f8fafc;
-        --text-muted: #94a3b8;
-        --header-bg: rgba(10, 15, 29, 0.75);
-        --btn-bg: rgba(18, 26, 42, 0.78);
-        --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
-        --btn-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-        --soft: rgba(255, 255, 255, 0.03);
+        --bg: #1e2023; --bg-card: #272b2f; --bg-card2: #2f3338;
+        --text: #eceae6; --text-muted: #8a8d92;
+        --accent: #4caf80; --accent-light: #6fcf97; --accent-warm: #d4a853;
+        --border: rgba(255,255,255,0.08);
+        --shadow-sm: 0 2px 12px rgba(0,0,0,0.15);
+        --shadow-md: 0 8px 32px rgba(0,0,0,0.20);
+        --shadow-lg: 0 24px 64px rgba(0,0,0,0.28);
       }
+
+      * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
       body {
-        font-family: "Inter", sans-serif;
-        color: var(--text-primary);
-        margin: 0;
-        background-color: var(--bg-main);
-        padding-bottom: 40px;
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg); color: var(--text);
+        margin: 0; padding-bottom: env(safe-area-inset-bottom, 48px);
+        overflow-x: hidden;
       }
-      .page-bg {
-        min-height: 100vh;
-        background-image: radial-gradient(
-          900px 520px at 50% -10%,
-          rgba(16, 185, 129, 0.18),
-          transparent 60%
-        );
+      body::before {
+        content: ''; position: fixed; inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none; z-index: 0; opacity: 0.6;
       }
+      .syne { font-family: "Syne", sans-serif; }
 
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: var(--header-bg);
-        backdrop-filter: blur(14px);
-        border-bottom: 1px solid var(--border);
-        padding: 8px;
-      }
-
-      .btn-header {
-        background: var(--btn-bg);
-        border: 1px solid var(--border);
-        color: var(--text-primary);
-        border-radius: 14px;
-        padding: 10px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: var(--btn-shadow);
-        transition: transform 0.1s ease;
-        user-select: none;
-        -webkit-tap-highlight-color: transparent;
-      }
-      .btn-header:active {
-        transform: scale(0.95);
-      }
-
-      .hero-banner {
-        position: relative;
-        width: 100%;
-        height: 160px;
-        border-radius: 26px;
-        overflow: hidden;
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
-      }
-      .hero-banner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .hero-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.8) 0%,
-          rgba(0, 0, 0, 0.2) 50%,
-          rgba(0, 0, 0, 0.6) 100%
-        );
-      }
-
-      /* ===== SIDEBAR ===== */
-      #overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(8px);
-        z-index: 90;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.25s ease;
-      }
-      #overlay.show {
-        opacity: 1;
-        pointer-events: auto;
-      }
+      /* ── SIDEBAR ── */
       #sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 18rem;
-        z-index: 100;
-        transform: translateX(-110%);
-        transition: transform 0.28s ease;
-        background: var(--bg-card);
-        border-right: 1px solid var(--border);
-        box-shadow: var(--shadow);
-        padding: 26px;
+        position: fixed; top: 0; left: 0; height: 100%; width: 300px;
+        background: var(--bg-card); border-right: 1px solid var(--border);
+        box-shadow: var(--shadow-lg); transform: translateX(-100%);
+        transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+        z-index: 200; overflow-y: auto;
       }
-      #sidebar.open {
-        transform: translateX(0);
+      #sidebar.open { transform: translateX(0); }
+      .sidebar-header { padding: 32px 28px 24px; border-bottom: 1px solid var(--border); }
+      .sidebar-logo { display: flex; align-items: center; gap: 14px; }
+      .logo-mark { width: 44px; height: 44px; background: var(--accent); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+      .sidebar-nav { padding: 20px 16px; }
+      .nav-section-label {
+        font-family: "Syne", sans-serif; font-size: 9px; font-weight: 700;
+        letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted);
+        padding: 0 12px; margin-bottom: 8px; margin-top: 16px;
+      }
+      .nav-item {
+        display: flex; align-items: center; gap: 12px; padding: 13px 16px; border-radius: 14px;
+        color: var(--text-muted); text-decoration: none; font-size: 14.5px; font-weight: 500;
+        transition: all 0.18s ease; margin-bottom: 2px;
+      }
+      .nav-item:hover { background: var(--bg-card2); color: var(--text); }
+      .nav-item.active { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-weight: 700; }
+      .nav-item .icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--bg-card2); }
+      .nav-item.active .icon { background: color-mix(in srgb, var(--accent) 15%, transparent); }
+
+      /* ── OVERLAY ── */
+      #overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+        backdrop-filter: blur(4px); z-index: 199;
+        opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+      }
+      #overlay.visible { opacity: 1; pointer-events: all; }
+
+      /* ── HERO ── */
+      .hero-wrap { position: relative; width: 100%; height: 220px; overflow: hidden; }
+      .hero-img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
+      .hero-wrap:hover .hero-img { transform: scale(1.04); }
+      .hero-gradient { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.02) 40%, rgba(0,0,0,0.55) 100%); }
+      .hero-top-bar {
+        position: absolute; top: 0; left: 0; right: 0;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 16px 20px; padding-top: max(16px, env(safe-area-inset-top));
+      }
+      .hero-content { position: absolute; bottom: 20px; left: 24px; }
+      .hero-title { font-family: "Syne", sans-serif; font-size: 32px; font-weight: 700; line-height: 1.05; color: #fff; text-transform: uppercase; }
+      .hero-sub { color: rgba(255,255,255,0.6); font-size: 11px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
+      .icon-btn {
+        width: 42px; height: 42px; border-radius: 13px;
+        background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25);
+        backdrop-filter: blur(10px); color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; transition: all 0.15s ease;
+      }
+      .icon-btn:active { transform: scale(0.92); }
+
+      /* ── MAIN ── */
+      .main-wrap { max-width: 480px; margin: 0 auto; padding: 20px 16px 48px; position: relative; z-index: 1; }
+
+      /* ── WEEK CARD ── */
+      .week-card {
+        background: var(--bg-card); border: 1px solid var(--border);
+        border-radius: 22px; overflow: hidden;
+        box-shadow: var(--shadow-sm); margin-bottom: 12px;
+        animation: fadeUp 0.4s ease both;
+      }
+      @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+      .week-card.is-current {
+        border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+        box-shadow: 0 4px 28px color-mix(in srgb, var(--accent) 13%, transparent);
       }
 
-      .nav-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 18px;
-        border-radius: 18px;
-        color: var(--text-muted);
-        transition: all 0.2s ease;
-        font-weight: 700;
+      /* card header strip */
+      .week-card-header {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 14px 18px; border-bottom: 1px solid var(--border);
+        background: var(--bg-card2);
       }
-      .nav-link:hover {
-        background: rgba(2, 6, 23, 0.04);
+      .week-label {
+        font-family: "Syne", sans-serif; font-size: 13px; font-weight: 700; line-height: 1.2;
       }
-      html.dark .nav-link:hover {
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      .nav-link.active {
-        background: rgba(16, 185, 129, 0.14);
-        color: var(--brand);
-        font-weight: 900;
-        border: 1px solid rgba(16, 185, 129, 0.22);
+      .current-chip {
+        font-family: "Syne", sans-serif; font-size: 8px; font-weight: 700;
+        letter-spacing: 0.12em; text-transform: uppercase;
+        color: #fff; background: var(--accent);
+        padding: 4px 10px; border-radius: 7px;
       }
 
-      /* ===== CONTENIDO ===== */
-      .week-entry {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 35px;
-        margin-bottom: 24px;
-        padding: 24px;
-        position: relative;
-        box-shadow: var(--shadow);
+      /* two-column sections grid */
+      .sections-grid {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+        background: var(--border);
       }
-      .week-current {
-        border: 2px solid var(--brand);
-        box-shadow:
-          0 0 25px rgba(16, 185, 129, 0.18),
-          var(--shadow);
+      .section-panel {
+        background: var(--bg-card); padding: 14px 16px;
       }
-      .current-badge {
-        position: absolute;
-        top: -12px;
-        right: 30px;
-        background: var(--brand);
-        color: white;
-        padding: 4px 14px;
-        border-radius: 12px;
-        font-size: 0.7rem;
-        font-weight: 900;
-        text-transform: uppercase;
-        box-shadow: 0 8px 15px rgba(16, 185, 129, 0.35);
+      .section-panel:first-child { border-radius: 0; }
+
+      .section-heading {
+        display: flex; align-items: center; gap: 7px; margin-bottom: 12px;
+      }
+      .section-heading-icon {
+        width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+        background: color-mix(in srgb, var(--accent) 12%, transparent);
+        display: flex; align-items: center; justify-content: center;
+      }
+      .section-heading-label {
+        font-family: "Syne", sans-serif; font-size: 9px; font-weight: 700;
+        letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
       }
 
-      .week-header {
-        font-size: 1.15rem;
-        font-weight: 900;
-        margin-bottom: 1.2rem;
-        text-align: center;
-        letter-spacing: -0.02em;
+      .role-row { margin-bottom: 10px; }
+      .role-row:last-child { margin-bottom: 0; }
+      .role-label {
+        font-family: "Syne", sans-serif; font-size: 8px; font-weight: 700;
+        letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);
+        margin-bottom: 4px;
       }
-      .assignment-section {
-        background: var(--soft);
-        border: 1px solid var(--border);
-        border-radius: 22px;
-        padding: 16px;
-        margin-bottom: 12px;
-      }
-      .section-title {
-        font-size: 0.8rem;
-        font-weight: 900;
-        color: var(--brand);
-        margin-bottom: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        display: flex;
-        align-items: center;
-        gap: 6px;
+      .role-name {
+        font-size: 12.5px; font-weight: 600; color: var(--text); line-height: 1.3;
+        background: var(--bg-card2); border: 1px solid var(--border);
+        border-radius: 10px; padding: 8px 10px;
       }
 
-      .role-title {
-        font-weight: 800;
-        color: var(--text-muted);
+      /* asamblea */
+      .asamblea-card {
+        background: color-mix(in srgb, var(--accent-warm) 8%, var(--bg-card));
+        border: 1px solid color-mix(in srgb, var(--accent-warm) 22%, transparent);
+        border-radius: 22px; padding: 32px 20px; text-align: center;
+        box-shadow: var(--shadow-sm); margin-bottom: 12px;
+        animation: fadeUp 0.4s ease both;
+      }
+      .asamblea-title {
+        font-family: "Syne", sans-serif; font-size: 18px; font-weight: 700;
+        color: var(--accent-warm); text-transform: uppercase; letter-spacing: 0.06em;
         margin-bottom: 6px;
-        display: block;
-        font-size: 0.7rem;
-        text-transform: uppercase;
       }
-      .person-name {
-        display: block;
-        background: var(--bg-card);
-        color: var(--text-primary);
-        padding: 12px 16px;
-        border-radius: 14px;
-        font-size: 1rem;
-        font-weight: 700;
-        border: 1px solid var(--border);
-      }
-
-      .asamblea-row {
-        background: var(--soft);
-        border: 2px dashed var(--brand);
-        border-radius: 22px;
-        padding: 30px 20px;
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: 900;
-        color: var(--brand);
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-      }
+      .asamblea-sub { font-size: 13px; color: var(--text-muted); }
     </style>
   </head>
 
-  <body class="page-bg pb-10">
-    <!-- Overlay + Sidebar -->
+  <body>
     <div id="overlay"></div>
 
-    <aside id="sidebar" aria-label="Menú">
-      <div class="flex items-center gap-3 mb-10">
-        <div
-          class="h-10 w-10 rounded-2xl flex items-center justify-center font-black"
-          style="background: rgba(16,185,129,0.18); color: var(--brand);"
-        >
-          ✦
-        </div>
-        <div>
-          <h2 class="font-extrabold leading-tight">Norte Garín</h2>
-          <p class="text-[10px] opacity-60 uppercase font-bold tracking-widest">
-            Digital Board
-          </p>
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <div class="logo-mark">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <div class="syne" style="font-size:15px;font-weight:700;line-height:1.1">Norte Garín</div>
+            <div style="font-size:10px;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:0.12em;margin-top:2px">Tablero Digital</div>
+          </div>
         </div>
       </div>
-
-      <nav class="space-y-2">
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="salidas.html" class="nav-link">Salidas</a>
-        <a href="vida-ministerio.html" class="nav-link">Vida y Ministerio</a>
-        <a href="conferencias.html" class="nav-link">Discursos</a>
-        <a href="multimedia.html" class="nav-link active">Multimedia</a>
-        <a href="lectores.html" class="nav-link">Lectores</a>
-        <a href="limpieza.html" class="nav-link">Limpieza</a>
-        <a href="grupos.html" class="nav-link">Grupos</a>
-        <a href="proximos-eventos.html" class="nav-link">Próximos eventos</a>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Principal</div>
+        <a href="index.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div> Inicio
+        </a>
+        <a href="proximos-eventos.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div> Próximos Eventos
+        </a>
+        <div class="nav-section-label" style="margin-top:20px">Ministerio</div>
+        <a href="salidas.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div> Salidas
+        </a>
+        <a href="grupos.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div> Grupos
+        </a>
+        <div class="nav-section-label" style="margin-top:20px">Reunión</div>
+        <a href="vida-ministerio.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div> Vida y Ministerio
+        </a>
+        <a href="conferencias.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div> Discursos
+        </a>
+        <a href="lectores.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div> Lectores
+        </a>
+        <div class="nav-section-label" style="margin-top:20px">Organización</div>
+        <a href="multimedia.html" class="nav-item active">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div> Multimedia
+        </a>
+        <a href="limpieza.html" class="nav-item">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg></div> Limpieza
+        </a>
       </nav>
     </aside>
 
+    <!-- HERO -->
     <header>
-      <div class="max-w-md mx-auto">
-        <div class="hero-banner group">
-          <img src="img/audio-video.png" alt="Multimedia" />
-          <div class="hero-overlay"></div>
-
-          <div class="absolute inset-0 p-4 flex flex-col justify-between">
-            <div class="flex justify-between items-center">
-              <!-- ✅ MENÚ (en vez de volver) -->
-              <button id="btnMenu" class="btn-header" type="button" aria-label="Abrir menú">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <line x1="4" x2="20" y1="12" y2="12" />
-                  <line x1="4" x2="20" y1="6" y2="6" />
-                  <line x1="4" x2="20" y1="18" y2="18" />
-                </svg>
-              </button>
-
-              <!-- ✅ Tema -->
-              <button id="btnTheme" class="btn-header" type="button" aria-label="Cambiar tema">
-                <span id="theme-icon">🌙</span>
-              </button>
-            </div>
-
-            <div class="text-white">
-              <h1 class="text-2xl font-black uppercase tracking-tighter drop-shadow-lg">
-                Audio &amp; Video
-              </h1>
-              <p
-                class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400 drop-shadow-md"
-              >
-                Acomodadores y Multimedia
-              </p>
-            </div>
-          </div>
+      <div class="hero-wrap">
+        <img src="img/audio-video.png" class="hero-img" alt="Multimedia" />
+        <div class="hero-gradient"></div>
+        <div class="hero-top-bar">
+          <button class="icon-btn" id="btnMenu" aria-label="Menú">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="14" y1="16" y2="16"/></svg>
+          </button>
+          <button class="icon-btn" id="btnTheme" aria-label="Cambiar tema">
+            <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
+        </div>
+        <div class="hero-content">
+          <div class="hero-title">Audio &amp;<br>Video</div>
+          <div class="hero-sub">Acomodadores y Multimedia</div>
         </div>
       </div>
     </header>
 
-    <main class="max-w-md mx-auto px-6 mt-6" id="app-container"></main>
+    <main class="main-wrap" id="app-container"></main>
 
     <script>
+      // ── THEME ──
       const html = document.documentElement;
-      const themeIcon = document.getElementById("theme-icon");
-
-      function syncThemeIcon() {
-        themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
+      const iconMoon = document.getElementById("theme-icon-moon");
+      const iconSun  = document.getElementById("theme-icon-sun");
+      function applyThemeIcons() {
+        const dark = html.classList.contains("dark");
+        iconMoon.style.display = dark ? "none" : "block";
+        iconSun.style.display  = dark ? "block" : "none";
       }
-      function toggleTheme() {
+      applyThemeIcons();
+      document.getElementById("btnTheme").onclick = () => {
         html.classList.toggle("dark");
-        localStorage.setItem(
-          "theme",
-          html.classList.contains("dark") ? "dark" : "light",
-        );
-        syncThemeIcon();
-      }
-      syncThemeIcon();
+        localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
+        applyThemeIcons();
+      };
 
-      // Sidebar
+      // ── SIDEBAR ──
       const sidebar = document.getElementById("sidebar");
       const overlay = document.getElementById("overlay");
-      const btnMenu = document.getElementById("btnMenu");
-      const btnTheme = document.getElementById("btnTheme");
+      document.getElementById("btnMenu").onclick = () => { sidebar.classList.add("open"); overlay.classList.add("visible"); document.body.style.overflow = "hidden"; };
+      overlay.onclick = () => { sidebar.classList.remove("open"); overlay.classList.remove("visible"); document.body.style.overflow = ""; };
+      document.addEventListener("keydown", e => { if (e.key === "Escape") { sidebar.classList.remove("open"); overlay.classList.remove("visible"); document.body.style.overflow = ""; } });
 
-      function openMenu() {
-        sidebar.classList.add("open");
-        overlay.classList.add("show");
-        document.body.style.overflow = "hidden";
-      }
-      function closeMenu() {
-        sidebar.classList.remove("open");
-        overlay.classList.remove("show");
-        document.body.style.overflow = "";
-      }
-
-      btnMenu.addEventListener("click", openMenu);
-      overlay.addEventListener("click", closeMenu);
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeMenu();
-      });
-
-      btnTheme.addEventListener("click", toggleTheme);
-
-      const ROLES = [
-        { group: "Audio y Video", key: "audio_video", title: "🎧 Audio y Video" },
-        { group: "Audio y Video", key: "microfonistas", title: "🎤 Microfonistas" },
-        { group: "Audio y Video", key: "plataforma", title: "📖 Plataforma" },
-        { group: "Acomodadores", key: "entrada", title: "🤝 Entrada" },
-        { group: "Acomodadores", key: "auditorio", title: "🪑 Auditorio" },
-      ];
-
-      // PROGRAMA MENSUAL: FEBRERO 2026
+      // ── DATA ──
       const PROGRAM_DATA = [
         {
-          label: "02 Feb al 08 Feb",
-          start: new Date(2026, 1, 2),
-          end: new Date(2026, 1, 8, 23, 59),
-          audio_video: "Mario Segovia - Caetano Ferrari",
-          microfonistas: "Samuel Duran - Sebastian Meza",
-          plataforma: "Daniel Albiz",
-          entrada: "Adolfo Gutierrez",
+          label: "02–08 Feb",
+          start: new Date(2026, 1, 2), end: new Date(2026, 1, 8, 23, 59),
+          audio_video: "Mario Segovia / Caetano Ferrari",
+          microfonistas: "Samuel Durán / Sebastián Meza",
+          plataforma: "Daniel Albis",
+          entrada: "Adolfo Gutiérrez",
           auditorio: "Francisco Araoz",
         },
         {
-          label: "09 Feb al 15 Feb",
-          start: new Date(2026, 1, 9),
-          end: new Date(2026, 1, 15, 23, 59),
-          audio_video: "Lucas Segovia - Dario Cortez",
-          microfonistas: "Samuel Duran - Elias Coria",
+          label: "09–15 Feb",
+          start: new Date(2026, 1, 9), end: new Date(2026, 1, 15, 23, 59),
+          audio_video: "Lucas Segovia / Darío Cortez",
+          microfonistas: "Samuel Durán / Elías Coria",
           plataforma: "Diego Sarraute",
           entrada: "León Segovia",
           auditorio: "Pablo Zuñiga",
         },
         {
-          label: "16 Feb al 22 Feb",
-          start: new Date(2026, 1, 16),
-          end: new Date(2026, 1, 22, 23, 59),
-          audio_video: "Caetano Ferrari - Cristian Segovia",
-          microfonistas: "Elvio Casco - Daniel Albiz",
+          label: "16–22 Feb",
+          start: new Date(2026, 1, 16), end: new Date(2026, 1, 22, 23, 59),
+          audio_video: "Caetano Ferrari / Cristian Segovia",
+          microfonistas: "Elvio Casco / Daniel Albis",
           plataforma: "Lucas Segovia",
           entrada: "Diego Sarraute",
-          auditorio: "Adolfo Gutierrez",
+          auditorio: "Adolfo Gutiérrez",
         },
         {
-          label: "23 Feb al 01 Mar",
-          start: new Date(2026, 1, 23),
-          end: new Date(2026, 2, 1, 23, 59),
+          label: "23 Feb – 1 Mar",
+          start: new Date(2026, 1, 23), end: new Date(2026, 2, 1, 23, 59),
           isAsamblea: true,
         },
+      ];
+
+      // SVG icons inline
+      const SVG_AV = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
+      const SVG_PEOPLE = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
+
+      const ROLES_AV = [
+        { key: "audio_video",   label: "Audio y Video" },
+        { key: "microfonistas", label: "Microfonistas" },
+        { key: "plataforma",    label: "Plataforma" },
+      ];
+      const ROLES_ACOD = [
+        { key: "entrada",   label: "Entrada" },
+        { key: "auditorio", label: "Auditorio" },
       ];
 
       function render() {
         const container = document.getElementById("app-container");
         const now = new Date();
-        container.innerHTML = "";
+        let out = "";
 
-        PROGRAM_DATA.forEach((week) => {
+        PROGRAM_DATA.forEach((week, i) => {
           const isCurrent = now >= week.start && now <= week.end;
-          const card = document.createElement("div");
-          card.className = `week-entry ${isCurrent ? "week-current" : ""}`;
-
-          let htmlBlock = isCurrent ? `<span class="current-badge">Esta Semana</span>` : "";
-          htmlBlock += `<div class="week-header">Semana del ${week.label}</div>`;
 
           if (week.isAsamblea) {
-            htmlBlock += `<div class="asamblea-row">ASAMBLEA</div>`;
-          } else {
-            ["Audio y Video", "Acomodadores"].forEach((gName) => {
-              htmlBlock += `<div class="assignment-section">
-                <h2 class="section-title">
-                  ${gName === "Audio y Video" ? "🔊" : "👥"} ${gName}
-                </h2>`;
-
-              ROLES.filter((r) => r.group === gName).forEach((role) => {
-                const val = week[role.key] || "Sin asignar";
-                htmlBlock += `<div class="mb-4 last:mb-0">
-                  <label class="role-title">${role.title}</label>
-                  <div class="person-name">${val}</div>
-                </div>`;
-              });
-              htmlBlock += `</div>`;
-            });
+            out += `<div class="asamblea-card" style="animation-delay:${i*0.06}s">
+              <div class="asamblea-title">Asamblea de Circuito</div>
+              <div class="asamblea-sub">Semana del ${week.label} — sin reunión en el Salón</div>
+            </div>`;
+            return;
           }
 
-          card.innerHTML = htmlBlock;
-          container.appendChild(card);
+          out += `<div class="week-card ${isCurrent ? "is-current" : ""}" style="animation-delay:${i*0.06}s">
+            <div class="week-card-header">
+              <div class="week-label">Semana del ${week.label}</div>
+              ${isCurrent ? `<div class="current-chip">Esta semana</div>` : ""}
+            </div>
+            <div class="sections-grid">
+              <div class="section-panel">
+                <div class="section-heading">
+                  <div class="section-heading-icon">${SVG_AV}</div>
+                  <div class="section-heading-label">Audio y Video</div>
+                </div>
+                ${ROLES_AV.map(r => `
+                  <div class="role-row">
+                    <div class="role-label">${r.label}</div>
+                    <div class="role-name">${week[r.key] || "Sin asignar"}</div>
+                  </div>`).join("")}
+              </div>
+              <div class="section-panel">
+                <div class="section-heading">
+                  <div class="section-heading-icon">${SVG_PEOPLE}</div>
+                  <div class="section-heading-label">Acomodadores</div>
+                </div>
+                ${ROLES_ACOD.map(r => `
+                  <div class="role-row">
+                    <div class="role-label">${r.label}</div>
+                    <div class="role-name">${week[r.key] || "Sin asignar"}</div>
+                  </div>`).join("")}
+              </div>
+            </div>
+          </div>`;
         });
 
+        container.innerHTML = out;
+
         setTimeout(() => {
-          const current = document.querySelector(".week-current");
-          if (current) current.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 350);
+          const cur = container.querySelector(".is-current");
+          if (cur) cur.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 400);
       }
 
-      window.onload = render;
+      render();
     </script>
   </body>
 </html>
