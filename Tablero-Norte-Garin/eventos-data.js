@@ -26,4 +26,11 @@ window.EVENTOS_DATA = [
     description: "Conmemoración de la muerte de Cristo.",
     type: "conmemoracion",
   },
+{
+  type: "asamblea",
+  title: "Asamblea Regional",
+  date: "2026-08-21,22,23",
+  description: "Asamblea Regional",
+  location: "Salón de Asambleas (Ezeiza)"
+}
 ];
