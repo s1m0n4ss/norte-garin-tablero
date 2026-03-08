@@ -69,7 +69,7 @@
 
       11: [
         { h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" },
-        { h: "–", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
+        { h: "19:00", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
       ],
 
       12: [{ h: "09:00", l: "Beliera y Fructuoso Díaz", c: "León Segovia", t: "32" }],
@@ -123,7 +123,7 @@
 
       25: [
         { h: "09:00", l: "Familia Flores", c: "Francisco Araoz", t: "27" },
-        { h: "–", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
+        { h: "19:00", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
       ],
 
       26: [{ h: "09:00", l: "Maipú y Fructuoso Díaz", c: "León Segovia", t: "35" }],
@@ -132,16 +132,16 @@
 
       28: [
         { h: "09:30", l: "Predicación de Grupo" },
-        { h: "–", l: "Grupo 1 – Plaza Barrio Salas", c: "—", t: "52" },
+        { h: "09:30", l: "Grupo 1 – Plaza Barrio Salas", c: "León Segovia", t: "52" },
         { h: "–", l: "Grupo 2 – Plaza Barrio Salas", c: "Horacio Salgado", t: "52" },
-        { h: "–", l: "Grupo 3 – Plaza Barrio Salas", c: "—", t: "52" },
-        { h: "–", l: "Grupo 4 – Plaza Barrio Salas", c: "—", t: "52" },
+        { h: "–", l: "Grupo 3 – Plaza Barrio Salas", c: "Darío Cortez", t: "52" },
+        { h: "–", l: "Grupo 4 – Plaza Barrio Salas", c: "Lucas Segovia", t: "52" },
         { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
       29: [{ type: "reunion", l: "Reunión por la mañana" }],
 
-      30: [{ h: "09:00", l: "Hna. Carmen Casas", c: "Diego Sarraute", t: "11" }],
+      30: [{ h: "09:00", l: "Hna. Carmen Casas", c: "León Segovia", t: "11" }],
 
       31: [
         { h: "09:00", l: "Colón y Centenario", c: "Diego Sarraute", t: "13" },
