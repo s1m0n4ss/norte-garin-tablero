@@ -13,7 +13,7 @@ window.EVENTOS_DATA = [
   {
     date: "2026-04-02",
     title: "Conmemoración",
-    time: "7:30 pm",
+    time: "20:00 pm",
     location: "Salón del Reino Norte Garín",
     description: "Conmemoración de la muerte de Cristo.",
     type: "conmemoracion",
