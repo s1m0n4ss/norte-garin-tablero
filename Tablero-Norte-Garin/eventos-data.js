@@ -18,18 +18,18 @@ window.EVENTOS_DATA = [
     description: "Conmemoración de la muerte de Cristo.",
     type: "conmemoracion",
   },
-{
-  type: "asamblea",
-  title: "Asamblea de circuito",
-  date: "2026-05-10",
-  description: "Con representante de la sucursal",
-  location: "Salón de Asambleas de Ezeiza"
-}
-{
-  type: "asamblea",
-  title: "Asamblea regional",
-  date: "2026-08-22",
-  description: "Del 22 al 23 de Agosto",
-  location: "Salón de Asambleas (Ezeiza)"
-}
+  {
+    type: "asamblea",
+    title: "Asamblea de circuito",
+    date: "2026-05-10",
+    description: "Con representante de la sucursal",
+    location: "Salón de Asambleas de Ezeiza",
+  },
+  {
+    type: "asamblea",
+    title: "Asamblea regional",
+    date: "2026-08-22",
+    description: "Del 22 al 23 de Agosto",
+    location: "Salón de Asambleas (Ezeiza)",
+  }
 ];
