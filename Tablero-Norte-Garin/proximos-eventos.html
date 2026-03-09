@@ -30,6 +30,7 @@
         --shadow-md:0 8px 32px rgba(26,23,20,0.10);
         --shadow-lg:0 24px 64px rgba(26,23,20,0.13);
       }
+
       html.dark {
         --bg:#1e2023; --bg-card:#272b2f; --bg-card2:#2f3338;
         --text:#eceae6; --text-muted:#8a8d92;
@@ -40,171 +41,217 @@
         --shadow-lg:0 24px 64px rgba(0,0,0,0.28);
       }
 
-      *,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-      body{
-        font-family:"DM Sans",sans-serif; background:var(--bg); color:var(--text);
-        margin:0; padding-bottom:max(48px,env(safe-area-inset-bottom,48px));
-        overflow-x:hidden; min-height:100vh;
+      *, *::before, *::after {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
       }
 
-      body::before{
-        content:''; position:fixed; inset:0;
-        background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-        pointer-events:none; z-index:0; opacity:0.6;
+      body {
+        font-family:"DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding-bottom: max(48px, env(safe-area-inset-bottom, 48px));
+        overflow-x: hidden;
+        min-height: 100vh;
       }
 
-      .syne{font-family:"Syne",sans-serif;}
-
-      #sidebar{
-        position:fixed; top:0; left:0; height:100%; width:300px;
-        background:var(--bg-card); border-right:1px solid var(--border);
-        box-shadow:var(--shadow-lg); transform:translateX(-100%);
-        transition:transform 0.38s cubic-bezier(0.4,0,0.2,1);
-        z-index:200; overflow-y:auto;
+      body::before {
+        content:'';
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.6;
       }
 
-      #sidebar.open{transform:translateX(0);}
+      .syne { font-family:"Syne", sans-serif; }
 
-      .hero-wrap{position:relative; width:100%; height:250px; overflow:hidden;}
-      .hero-img{width:100%; height:100%; object-fit:cover; transition:transform 8s ease;}
-      .hero-wrap:hover .hero-img{transform:scale(1.04);}
-
-      .hero-gradient{
-        position:absolute; inset:0;
-        background:linear-gradient(180deg,rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.04) 38%,rgba(0,0,0,0.72) 100%);
+      .hero-wrap {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
       }
 
-      .hero-top-bar{
-        position:absolute; top:0; left:0; right:0;
-        display:flex; align-items:center; justify-content:space-between;
-        padding:16px 20px;
+      .hero-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 8s ease;
       }
 
-      .hero-bottom{position:absolute; bottom:0; left:0; right:0; padding:0 24px 22px;}
-
-      .hero-title{
-        font-family:"Syne",sans-serif;
-        font-size:30px;
-        font-weight:700;
-        color:#fff;
-        text-transform:uppercase;
-        line-height:1;
+      .hero-wrap:hover .hero-img {
+        transform: scale(1.04);
       }
 
-      .hero-chip{
-        background:rgba(255,255,255,0.14);
-        border:1px solid rgba(255,255,255,0.16);
-        backdrop-filter:blur(8px);
-        color:#fff;
-        font-family:"Syne",sans-serif;
-        font-size:9px;
-        font-weight:700;
-        letter-spacing:0.1em;
-        text-transform:uppercase;
-        padding:6px 12px;
-        border-radius:99px;
+      .hero-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.04) 38%, rgba(0,0,0,0.72) 100%);
       }
 
-      .icon-btn{
-        width:42px;
-        height:42px;
-        border-radius:13px;
-        background:rgba(255,255,255,0.18);
-        border:1px solid rgba(255,255,255,0.25);
-        backdrop-filter:blur(10px);
-        color:#fff;
-        display:flex;
-        align-items:center;
-        justify-content:center;
+      .hero-top-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        padding-top: max(16px, env(safe-area-inset-top));
       }
 
-      .main-wrap{
-        max-width:480px;
-        margin:0 auto;
-        padding:16px 16px 48px;
-        position:relative;
-        z-index:1;
+      .hero-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0 24px 22px;
       }
 
-      .summary-grid{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-        margin-bottom:20px;
+      .hero-title {
+        font-family:"Syne", sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        line-height: 1;
       }
 
-      .summary-card{
-        background:var(--bg-card);
-        border:1px solid var(--border);
-        border-radius:18px;
-        padding:16px;
-        box-shadow:var(--shadow-sm);
+      .hero-chip {
+        display: inline-block;
+        margin-top: 10px;
+        background: rgba(255,255,255,0.14);
+        border: 1px solid rgba(255,255,255,0.16);
+        backdrop-filter: blur(8px);
+        color: #fff;
+        font-family:"Syne", sans-serif;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 6px 12px;
+        border-radius: 99px;
       }
 
-      .summary-label{
-        font-family:"Syne",sans-serif;
-        font-size:8px;
-        font-weight:700;
-        letter-spacing:0.12em;
-        text-transform:uppercase;
-        color:var(--text-muted);
-        margin-bottom:8px;
+      .icon-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 13px;
+        background: rgba(255,255,255,0.18);
+        border: 1px solid rgba(255,255,255,0.25);
+        backdrop-filter: blur(10px);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .summary-value{
-        font-family:"Syne",sans-serif;
-        font-size:20px;
-        font-weight:700;
+      .main-wrap {
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 16px 16px 48px;
+        position: relative;
+        z-index: 1;
       }
 
-      .summary-value.accent{color:var(--accent);}
-
-      .events-list{display:grid; gap:12px;}
-
-      .event-card{
-        background:var(--bg-card);
-        border:1px solid var(--border);
-        border-radius:22px;
-        overflow:hidden;
-        box-shadow:var(--shadow-sm);
+      .summary-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
       }
 
-      .event-card-inner{padding:16px;}
-
-      .event-type{
-        font-family:"Syne",sans-serif;
-        font-size:9px;
-        font-weight:700;
-        letter-spacing:0.14em;
-        text-transform:uppercase;
-        color:var(--accent);
+      .summary-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: var(--shadow-sm);
       }
 
-      .event-title{
-        font-family:"Syne",sans-serif;
-        font-size:20px;
-        font-weight:700;
-        margin-top:8px;
+      .summary-label {
+        font-family:"Syne", sans-serif;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 8px;
       }
 
-      .event-meta{margin-top:14px; display:grid; gap:8px;}
+      .summary-value {
+        font-family:"Syne", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+      }
 
-      .event-line{font-size:13px;}
+      .summary-value.accent {
+        color: var(--accent);
+      }
+
+      .events-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .event-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .event-card-inner {
+        padding: 16px;
+      }
+
+      .event-type {
+        font-family:"Syne", sans-serif;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .event-title {
+        font-family:"Syne", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 8px;
+        line-height: 1.15;
+      }
+
+      .event-meta {
+        margin-top: 14px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .event-line {
+        font-size: 13px;
+        line-height: 1.45;
+      }
     </style>
   </head>
 
   <body>
-
     <header>
       <div class="hero-wrap">
-
         <img src="img/file_00000000174471f5b349ad702b47ce01.png" class="hero-img" alt="Próximos eventos" />
 
         <div class="hero-gradient"></div>
 
         <div class="hero-top-bar">
-          <button class="icon-btn">☰</button>
-          <button class="icon-btn" id="btnTheme">
+          <a href="index.html" class="icon-btn" aria-label="Volver al inicio" style="text-decoration:none;">
+            ←
+          </a>
+          <button class="icon-btn" id="btnTheme" aria-label="Cambiar tema">
             <span id="theme-icon">🌙</span>
           </button>
         </div>
@@ -213,12 +260,10 @@
           <div class="hero-title">Próximos<br>eventos</div>
           <div class="hero-chip">Agenda</div>
         </div>
-
       </div>
     </header>
 
     <main class="main-wrap">
-
       <div class="summary-grid">
         <div class="summary-card">
           <div class="summary-label">Eventos cargados</div>
@@ -232,7 +277,6 @@
       </div>
 
       <div id="eventos-lista" class="events-list"></div>
-
     </main>
 
     <script src="eventos-data.js"></script>
@@ -241,7 +285,7 @@
       const html = document.documentElement;
       const themeIcon = document.getElementById("theme-icon");
 
-      function syncThemeIcon(){
+      function syncThemeIcon() {
         themeIcon.textContent = html.classList.contains("dark") ? "☀️" : "🌙";
       }
 
@@ -253,40 +297,61 @@
 
       syncThemeIcon();
 
-      function getDateOnly(date){
-        const d = new Date(date);
-        d.setHours(0,0,0,0);
-        return d;
+      function getDateOnly(dateStr) {
+        const [year, month, day] = dateStr.split("-").map(Number);
+        return new Date(year, month - 1, day);
       }
 
-      function formatFecha(dateStr){
+      function formatFecha(dateStr) {
         const d = getDateOnly(dateStr);
-        return d.toLocaleDateString("es-AR",{
-          weekday:"long",
-          day:"numeric",
-          month:"long",
-          year:"numeric"
+        return d.toLocaleDateString("es-AR", {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric"
         });
       }
 
-      function renderEventos(){
+      function getTypeLabel(type) {
+        if (type === "asamblea") return "Asamblea";
+        if (type === "especial") return "Especial";
+        if (type === "conmemoracion") return "Conmemoración";
+        return "Evento";
+      }
 
+      function getMonthShort(dateStr) {
+        return getDateOnly(dateStr).toLocaleDateString("es-AR", { month: "short" });
+      }
+
+      function renderEventos() {
         const cont = document.getElementById("eventos-lista");
 
-        if(!window.EVENTOS_DATA || !EVENTOS_DATA.length){
-          cont.innerHTML = `<div class="event-card"><div class="event-card-inner">No hay eventos cargados</div></div>`;
+        if (!window.EVENTOS_DATA || !Array.isArray(window.EVENTOS_DATA) || window.EVENTOS_DATA.length === 0) {
+          document.getElementById("summary-total").textContent = "0";
+          document.getElementById("summary-next").textContent = "—";
+          cont.innerHTML = `
+            <div class="event-card">
+              <div class="event-card-inner">No hay eventos cargados</div>
+            </div>
+          `;
           return;
         }
 
-        const eventos = [...EVENTOS_DATA].sort((a,b)=>getDateOnly(a.date)-getDateOnly(b.date));
-
+        const eventos = [...window.EVENTOS_DATA].sort((a, b) => getDateOnly(a.date) - getDateOnly(b.date));
         document.getElementById("summary-total").textContent = eventos.length;
+
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+        const proximo = eventos.find(ev => getDateOnly(ev.date) >= hoy) || eventos[0];
+
+        document.getElementById("summary-next").textContent = proximo
+          ? `${getDateOnly(proximo.date).getDate()} ${getMonthShort(proximo.date)}`
+          : "—";
 
         cont.innerHTML = eventos.map(ev => `
           <section class="event-card">
             <div class="event-card-inner">
-
-              <div class="event-type">${ev.type || "Evento"}</div>
+              <div class="event-type">${getTypeLabel(ev.type)}</div>
               <div class="event-title">${ev.title}</div>
 
               <div class="event-meta">
@@ -295,7 +360,6 @@
                 ${ev.location ? `<div class="event-line"><b>Lugar:</b> ${ev.location}</div>` : ""}
                 ${ev.description ? `<div class="event-line"><b>Detalle:</b> ${ev.description}</div>` : ""}
               </div>
-
             </div>
           </section>
         `).join("");
@@ -303,6 +367,5 @@
 
       renderEventos();
     </script>
-
   </body>
 </html>
