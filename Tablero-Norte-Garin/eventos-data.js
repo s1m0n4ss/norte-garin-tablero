@@ -3,14 +3,6 @@
 
 window.EVENTOS_DATA = [
   {
-    date: "2026-03-01",
-    title: "Asamblea de Circuito",
-    time: "9:20 am",
-    location: "Salón de Asambleas",
-    description: "Programa especial de asamblea de circuito.",
-    type: "asamblea",
-  },
-  {
     date: "2026-03-29",
     title: "Discurso especial",
     time: "9:30 am",
@@ -19,7 +11,7 @@ window.EVENTOS_DATA = [
     type: "especial",
   },
   {
-    date: "2026-04-12",
+    date: "2026-04-02",
     title: "Conmemoración",
     time: "7:30 pm",
     location: "Salón del Reino Norte Garín",
@@ -28,9 +20,16 @@ window.EVENTOS_DATA = [
   },
 {
   type: "asamblea",
-  title: "Asamblea Regional",
-  date: "2026-08-21,22,23",
-  description: "Asamblea Regional",
+  title: "Asamblea de circuito",
+  date: "2026-05-10",
+  description: "Con representante de la sucursal",
+  location: "Salón de Asambleas de Ezeiza"
+}
+{
+  type: "asamblea",
+  title: "Asamblea regional",
+  date: "2026-08-22",
+  description: "Del 22 al 23 de Agosto",
   location: "Salón de Asambleas (Ezeiza)"
 }
 ];
