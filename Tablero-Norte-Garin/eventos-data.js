@@ -28,8 +28,8 @@ window.EVENTOS_DATA = [
   {
     type: "asamblea",
     title: "Asamblea regional",
-    date: "2026-08-22",
-    description: "Del 22 al 23 de Agosto",
-    location: "Salón de Asambleas (Ezeiza)",
+    date: "2026-08-21",
+    description: "Del viernes 21 al domingo 23 de agosto",
+    location: "Salón de Asambleas de Ezeiza",
   }
 ];
