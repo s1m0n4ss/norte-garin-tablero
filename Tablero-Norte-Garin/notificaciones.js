@@ -26,9 +26,11 @@
     const partes = asignado.split('/').map(s => normalizar(s.trim()));
     return partes.some(p => {
       if (p === u) return true;
-      // Coincidencia parcial: todos los apellidos del usuario aparecen en el asignado
+      // Coincidencia por palabras: todas las palabras del usuario aparecen en el asignado
+      // Usa matching exacto por token (no substring) para evitar falsos positivos
       const palabrasU = u.split(/\s+/).filter(w => w.length > 2);
-      if (palabrasU.length >= 1 && palabrasU.every(w => p.includes(w))) return true;
+      const palabrasP = p.split(/\s+/);
+      if (palabrasU.length >= 1 && palabrasU.every(w => palabrasP.includes(w))) return true;
       return false;
     });
   }
@@ -529,11 +531,12 @@
     style.id = 'notif-styles';
     style.textContent = `
       /* ── BANNER ── */
-      #notif-banner-container { max-width:480px; margin:0 auto; padding:12px 16px 0; position:relative; z-index:5; }
+      #notif-banner-container { max-width:480px; margin:0 auto; position:relative; z-index:5; }
       .notif-banner {
         background:var(--bg-card,#fff);
         border:1px solid color-mix(in srgb,var(--accent,#2d6a4f) 30%,transparent);
         border-radius:18px; padding:14px 16px;
+        margin-top:12px;
         box-shadow:0 4px 20px color-mix(in srgb,var(--accent,#2d6a4f) 10%,transparent);
         animation:notifSlideIn 0.35s ease both;
       }
