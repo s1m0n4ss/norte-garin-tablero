@@ -197,5 +197,48 @@ window.NOTIF_DATA = {
     secuencia: ["Grupos 1 y 2","Grupos 3 y 4","Grupos 1 y 2","Grupos 3 y 4"]
   },
 
+  // ── MULTIMEDIA (Audio/Video, Microfonistas, Plataforma, Acomodadores) ─────
+  // inicio / fin: "YYYY-MM-DD" (rango de la semana, igual que multimedia.html)
+  // Nombres normalizados (sin tildes, mayúsculas). Separador "/" para dos personas.
+  // null = sin asignar o "A confirmar" → no dispara notificación.
+  multimedia: [
+    {
+      label: "02–08 Mar",
+      inicio: "2026-03-02", fin: "2026-03-08",
+      audio_video:   "DARIO CORTEZ / CAETANO FERRARI",
+      microfonistas: "SAMUEL DURAN / SEBASTIAN MEZA",
+      plataforma:    "DANIEL ALBIS",
+      entrada:       null,
+      auditorio:     null,
+    },
+    {
+      label: "09–15 Mar",
+      inicio: "2026-03-09", fin: "2026-03-15",
+      audio_video:   "MARIO SEGOVIA / HORACIO SALGADO",
+      microfonistas: "DANIEL QUARANTA / ELIAS CORIA",
+      plataforma:    "DIEGO SARRAUTE",
+      entrada:       "PABLO ZUNIGA",
+      auditorio:     "ADOLFO GUTIERREZ",
+    },
+    {
+      label: "16–22 Mar",
+      inicio: "2026-03-16", fin: "2026-03-22",
+      audio_video:   "MARIO SEGOVIA / CAETANO FERRARI",
+      microfonistas: "ELVIO CASCO / ELIAS CORIA",
+      plataforma:    "DIEGO SARRAUTE",
+      entrada:       "HORACIO SALGADO",
+      auditorio:     "FRANCISCO ARAOZ",
+    },
+    {
+      label: "23–30 Mar",
+      inicio: "2026-03-23", fin: "2026-03-30",
+      audio_video:   "DARIO CORTEZ / HORACIO SALGADO",
+      microfonistas: "DANIEL QUARANTA / SAMUEL DURAN",
+      plataforma:    "CAETANO FERRARI",
+      entrada:       "CRISTIAN SEGOVIA",
+      auditorio:     "LEON SEGOVIA",
+    },
+  ],
+
   // La lista de hermanos se genera dinámicamente desde window.GRUPOS_DATA (grupos-data.js).
 };

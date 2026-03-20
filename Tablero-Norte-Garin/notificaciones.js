@@ -184,7 +184,36 @@
       }
     }
 
-    // 4. Limpieza del Salón
+    // 4. Multimedia (Audio/Video, Microfonistas, Plataforma, Acomodadores)
+    if (data.multimedia) {
+      const rolesMultimedia = [
+        { key: 'audio_video',   rol: 'Audio y Video',        icono: '🎧', color: '#0ea5e9' },
+        { key: 'microfonistas', rol: 'Microfonistas',         icono: '🎤', color: '#0ea5e9' },
+        { key: 'plataforma',    rol: 'Plataforma',            icono: '📺', color: '#0ea5e9' },
+        { key: 'entrada',       rol: 'Acomodador – Entrada',  icono: '🚪', color: '#64748b' },
+        { key: 'auditorio',     rol: 'Acomodador – Auditorio',icono: '🏛️', color: '#64748b' },
+      ];
+      for (const sem of data.multimedia) {
+        const ini = new Date(sem.inicio + 'T00:00:00');
+        const fin = new Date(sem.fin + 'T23:59:59');
+        if (hoy >= ini && hoy <= fin) {
+          for (const r of rolesMultimedia) {
+            if (sem[r.key] && coincideNombre(usuario, sem[r.key])) {
+              asignaciones.push({
+                tipo: 'multimedia-' + r.key,
+                rol: r.rol,
+                detalle: 'Semana ' + sem.label,
+                icono: r.icono,
+                color: r.color
+              });
+            }
+          }
+          break;
+        }
+      }
+    }
+
+    // 5. Limpieza del Salón
     const grupoHoy = grupoLimpieza(lunes);
     if (grupoHoy) {
       const grupoId = grupoDelUsuario(usuario);
