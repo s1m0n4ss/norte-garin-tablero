@@ -16,7 +16,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       :root {
@@ -28,11 +31,12 @@
         --accent: #2d6a4f;
         --accent-light: #52b788;
         --accent-warm: #d4a853;
-        --border: rgba(26,23,20,0.09);
-        --shadow-sm: 0 2px 12px rgba(26,23,20,0.07);
-        --shadow-md: 0 8px 32px rgba(26,23,20,0.10);
-        --shadow-lg: 0 24px 64px rgba(26,23,20,0.13);
+        --border: rgba(26, 23, 20, 0.09);
+        --shadow-sm: 0 2px 12px rgba(26, 23, 20, 0.07);
+        --shadow-md: 0 8px 32px rgba(26, 23, 20, 0.1);
+        --shadow-lg: 0 24px 64px rgba(26, 23, 20, 0.13);
       }
+
       html.dark {
         --bg: #1e2023;
         --bg-card: #272b2f;
@@ -42,14 +46,20 @@
         --accent: #4caf80;
         --accent-light: #6fcf97;
         --accent-warm: #d4a853;
-        --border: rgba(255,255,255,0.08);
-        --shadow-sm: 0 2px 12px rgba(0,0,0,0.15);
-        --shadow-md: 0 8px 32px rgba(0,0,0,0.20);
-        --shadow-lg: 0 24px 64px rgba(0,0,0,0.28);
+        --border: rgba(255, 255, 255, 0.08);
+        --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.15);
+        --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.2);
+        --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.28);
       }
 
-      * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-      html { scroll-behavior: smooth; }
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
 
       body {
         font-family: "DM Sans", sans-serif;
@@ -60,9 +70,8 @@
         overflow-x: hidden;
       }
 
-      /* Noise texture overlay */
       body::before {
-        content: '';
+        content: "";
         position: fixed;
         inset: 0;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
@@ -71,11 +80,21 @@
         opacity: 0.6;
       }
 
-      h1, h2, h3, h4, .syne { font-family: "Syne", sans-serif; }
+      h1,
+      h2,
+      h3,
+      h4,
+      .syne {
+        font-family: "Syne", sans-serif;
+      }
 
       /* ── SIDEBAR ── */
       #sidebar {
-        position: fixed; top: 0; left: 0; height: 100%; width: 300px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 300px;
         background: var(--bg-card);
         border-right: 1px solid var(--border);
         box-shadow: var(--shadow-lg);
@@ -85,138 +104,228 @@
         padding: 0;
         overflow-y: auto;
       }
-      #sidebar.open { transform: translateX(0); }
+
+      #sidebar.open {
+        transform: translateX(0);
+      }
+
       .sidebar-header {
         padding: 32px 28px 24px;
         border-bottom: 1px solid var(--border);
       }
+
       .sidebar-logo {
-        display: flex; align-items: center; gap: 14px; margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 6px;
       }
+
       .logo-mark {
-        width: 44px; height: 44px;
+        width: 44px;
+        height: 44px;
         background: var(--accent);
         border-radius: 14px;
-        display: flex; align-items: center; justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-shrink: 0;
       }
-      .sidebar-nav { padding: 20px 16px; }
+
+      .sidebar-nav {
+        padding: 20px 16px;
+      }
+
       .nav-section-label {
         font-family: "Syne", sans-serif;
-        font-size: 9px; font-weight: 700; letter-spacing: 0.15em;
-        text-transform: uppercase; color: var(--text-muted);
-        padding: 0 12px; margin-bottom: 8px; margin-top: 16px;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        padding: 0 12px;
+        margin-bottom: 8px;
+        margin-top: 16px;
       }
+
       .nav-item {
-        display: flex; align-items: center; gap: 12px;
-        padding: 13px 16px; border-radius: 14px;
-        color: var(--text-muted); text-decoration: none;
-        font-size: 14.5px; font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 13px 16px;
+        border-radius: 14px;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 14.5px;
+        font-weight: 500;
         transition: all 0.18s ease;
         margin-bottom: 2px;
       }
-      .nav-item:hover { background: var(--bg-card2); color: var(--text); }
+
+      .nav-item:hover {
+        background: var(--bg-card2);
+        color: var(--text);
+      }
+
       .nav-item.active {
         background: color-mix(in srgb, var(--accent) 12%, transparent);
         color: var(--accent);
         font-weight: 700;
       }
+
       .nav-item .icon {
-        width: 36px; height: 36px; border-radius: 10px;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 17px; flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+        flex-shrink: 0;
         background: var(--bg-card2);
       }
+
       .nav-item.active .icon {
         background: color-mix(in srgb, var(--accent) 15%, transparent);
       }
 
       /* ── OVERLAY ── */
       #overlay {
-        position: fixed; inset: 0;
-        background: rgba(0,0,0,0.45);
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
         backdrop-filter: blur(4px);
         z-index: 199;
-        opacity: 0; pointer-events: none;
+        opacity: 0;
+        pointer-events: none;
         transition: opacity 0.3s ease;
       }
-      #overlay.visible { opacity: 1; pointer-events: all; }
+
+      #overlay.visible {
+        opacity: 1;
+        pointer-events: all;
+      }
 
       /* ── HERO ── */
       .hero-wrap {
-        position: relative; width: 100%; height: 260px;
+        position: relative;
+        width: 100%;
+        height: 260px;
         overflow: hidden;
       }
+
       .hero-img {
-        width: 100%; height: 100%; object-fit: cover;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         transition: transform 8s ease;
       }
-      .hero-wrap:hover .hero-img { transform: scale(1.04); }
+
+      .hero-wrap:hover .hero-img {
+        transform: scale(1.04);
+      }
+
       .hero-gradient {
-        position: absolute; inset: 0;
+        position: absolute;
+        inset: 0;
         background: linear-gradient(
           to bottom,
-          rgba(0,0,0,0.30) 0%,
-          rgba(0,0,0,0.02) 40%,
-          rgba(0,0,0,0.45) 100%
+          rgba(0, 0, 0, 0.3) 0%,
+          rgba(0, 0, 0, 0.02) 40%,
+          rgba(0, 0, 0, 0.45) 100%
         );
       }
+
       .hero-top-bar {
-        position: absolute; top: 0; left: 0; right: 0;
-        display: flex; align-items: center; justify-content: space-between;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 16px 20px;
         padding-top: max(16px, env(safe-area-inset-top));
+        z-index: 3;
       }
+
       .hero-content {
-        position: absolute; bottom: 24px; left: 24px; right: 24px;
+        position: absolute;
+        left: 24px;
+        right: 24px;
+        bottom: 24px;
+        z-index: 2;
       }
+
       .hero-pill {
-        display: inline-flex; align-items: center; gap: 6px;
-        background: rgba(255,255,255,0.15);
-        border: 1px solid rgba(255,255,255,0.25);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(8px);
         border-radius: 100px;
         padding: 4px 12px;
         font-family: "Syne", sans-serif;
-        font-size: 9px; font-weight: 700;
-        letter-spacing: 0.12em; text-transform: uppercase;
-        color: rgba(255,255,255,0.9);
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.9);
         margin-bottom: 10px;
       }
+
       .hero-title {
         font-family: "Syne", sans-serif;
-        font-size: 32px; font-weight: 700;
-        line-height: 1.05; letter-spacing: -0.01em;
-        color: #fff; text-transform: uppercase;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+        color: #fff;
+        text-transform: uppercase;
       }
+
       .hero-date {
-        color: rgba(255,255,255,0.6);
-        font-size: 11px; font-weight: 500;
-        letter-spacing: 0.05em; text-transform: capitalize;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: capitalize;
         margin-top: 8px;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
       }
 
       /* ── ICON BUTTON ── */
       .icon-btn {
-        width: 42px; height: 42px; border-radius: 13px;
-        background: rgba(255,255,255,0.18);
-        border: 1px solid rgba(255,255,255,0.25);
+        width: 42px;
+        height: 42px;
+        border-radius: 13px;
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(10px);
         color: #fff;
-        display: flex; align-items: center; justify-content: center;
-        cursor: pointer; transition: all 0.15s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.15s ease;
         flex-shrink: 0;
       }
-      .icon-btn:active { transform: scale(0.92); }
+
+      .icon-btn:active {
+        transform: scale(0.92);
+      }
 
       /* ── MAIN LAYOUT ── */
       .main-wrap {
-        max-width: 480px; margin: 0 auto;
+        max-width: 480px;
+        margin: 0 auto;
         padding: 0 16px 48px;
-        position: relative; z-index: 1;
+        position: relative;
+        z-index: 1;
       }
 
-      /* ── ACTIVITY CARD (floating) ── */
+      /* ── ACTIVITY CARD ── */
       .activity-card {
         background: var(--bg-card);
         border: 1px solid var(--border);
@@ -224,64 +333,109 @@
         border-radius: 24px;
         padding: 20px 22px;
         margin-top: -44px;
-        position: relative; z-index: 10;
+        position: relative;
+        z-index: 10;
         overflow: hidden;
       }
+
       .activity-card::before {
-        content: '';
-        position: absolute; top: 0; left: 0; right: 0;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
         height: 3px;
         background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent-warm));
         border-radius: 28px 28px 0 0;
       }
+
       .activity-label {
         font-family: "Syne", sans-serif;
-        font-size: 9px; font-weight: 700;
-        letter-spacing: 0.15em; text-transform: uppercase;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
         color: var(--text-muted);
-        display: flex; align-items: center; gap-8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
       }
+
       .pulse-dot {
-        width: 7px; height: 7px; border-radius: 50%;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
         background: var(--accent-light);
         box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-light) 25%, transparent);
         animation: pulse-ring 2s infinite;
-        display: inline-block; margin-right: 7px;
+        display: inline-block;
+        margin-right: 7px;
         flex-shrink: 0;
       }
+
       @keyframes pulse-ring {
-        0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-light) 40%, transparent); }
-        70% { box-shadow: 0 0 0 6px transparent; }
-        100% { box-shadow: 0 0 0 0 transparent; }
+        0% {
+          box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-light) 40%, transparent);
+        }
+        70% {
+          box-shadow: 0 0 0 6px transparent;
+        }
+        100% {
+          box-shadow: 0 0 0 0 transparent;
+        }
       }
-      .slide-area { position: relative; height: 58px; margin-top: 12px; }
+
+      .slide-area {
+        position: relative;
+        height: 58px;
+        margin-top: 12px;
+      }
+
       .activity-slide {
-        position: absolute; inset: 0;
-        opacity: 0; pointer-events: none;
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        pointer-events: none;
         transition: opacity 0.6s ease, transform 0.6s ease;
         transform: translateY(6px);
       }
+
       .activity-slide.active {
-        opacity: 1; pointer-events: all; transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
       }
+
       .slide-sublabel {
-        font-size: 10px; font-weight: 500; color: var(--text-muted);
-        text-transform: uppercase; letter-spacing: 0.08em;
+        font-size: 10px;
+        font-weight: 500;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
       }
+
       .slide-value {
         font-family: "Syne", sans-serif;
-        font-size: 15px; font-weight: 600;
-        color: var(--text); margin-top: 2px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        margin-top: 2px;
         line-height: 1.3;
       }
+
       .carousel-dots {
-        display: flex; gap: 5px; margin-top: 14px;
+        display: flex;
+        gap: 5px;
+        margin-top: 14px;
       }
+
       .cdot {
-        height: 3px; border-radius: 3px;
+        height: 3px;
+        border-radius: 3px;
         background: var(--border);
         transition: all 0.3s ease;
       }
+
       .cdot.active {
         width: 20px !important;
         background: var(--accent);
@@ -289,48 +443,83 @@
 
       /* ── ZOOM BUTTON ── */
       .zoom-btn {
-        display: flex; align-items: center; justify-content: space-between;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         background: var(--accent);
-        border-radius: 22px; padding: 18px 22px;
-        text-decoration: none; color: #fff;
+        border-radius: 22px;
+        padding: 18px 22px;
+        text-decoration: none;
+        color: #fff;
         margin-top: 14px;
         transition: all 0.2s ease;
         box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 25%, transparent);
-        position: relative; overflow: hidden;
+        position: relative;
+        overflow: hidden;
       }
+
       .zoom-btn::before {
-        content: '';
-        position: absolute; top: -50%; right: -20%;
-        width: 120px; height: 120px; border-radius: 50%;
-        background: rgba(255,255,255,0.08);
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
       }
-      .zoom-btn:active { transform: scale(0.97); }
-      .zoom-left { display: flex; align-items: center; gap: 14px; }
+
+      .zoom-btn:active {
+        transform: scale(0.97);
+      }
+
+      .zoom-left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
       .zoom-icon-wrap {
-        width: 44px; height: 44px; border-radius: 14px;
-        background: rgba(255,255,255,0.2);
-        display: flex; align-items: center; justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-shrink: 0;
       }
+
       .zoom-title {
         font-family: "Syne", sans-serif;
-        font-size: 15px; font-weight: 700;
+        font-size: 15px;
+        font-weight: 700;
       }
+
       .zoom-sub {
-        font-size: 10px; font-weight: 500;
-        opacity: 0.75; text-transform: uppercase;
-        letter-spacing: 0.08em; margin-top: 1px;
+        font-size: 10px;
+        font-weight: 500;
+        opacity: 0.75;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: 1px;
       }
 
       /* ── SECTION HEADER ── */
       .section-header {
-        display: flex; align-items: center; justify-content: space-between;
-        margin-top: 30px; margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 30px;
+        margin-bottom: 14px;
       }
+
       .section-title {
         font-family: "Syne", sans-serif;
-        font-size: 13px; font-weight: 700;
-        text-transform: uppercase; letter-spacing: 0.1em;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
         color: var(--text-muted);
       }
 
@@ -340,47 +529,77 @@
         grid-template-columns: 1fr 1fr;
         gap: 12px;
       }
+
       .nav-card {
         background: var(--bg-card);
         border: 1px solid var(--border);
         border-radius: 18px;
         padding: 18px 16px;
-        text-decoration: none; color: var(--text);
+        text-decoration: none;
+        color: var(--text);
         box-shadow: var(--shadow-sm);
         transition: all 0.2s ease;
-        display: flex; flex-direction: column;
+        display: flex;
+        flex-direction: column;
         gap: 14px;
-        position: relative; overflow: hidden;
+        position: relative;
+        overflow: hidden;
       }
-      .nav-card:active { transform: scale(0.96); box-shadow: none; }
+
+      .nav-card:active {
+        transform: scale(0.96);
+        box-shadow: none;
+      }
+
       .card-icon-wrap {
-        width: 44px; height: 44px; border-radius: 14px;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 20px; flex-shrink: 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        flex-shrink: 0;
       }
+
       .card-label {
-        font-size: 10px; font-weight: 500;
+        font-size: 10px;
+        font-weight: 500;
         color: var(--text-muted);
-        text-transform: uppercase; letter-spacing: 0.07em;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
       }
+
       .card-title {
         font-family: "Syne", sans-serif;
-        font-size: 14px; font-weight: 600;
-        margin-top: 3px; line-height: 1.2;
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 3px;
+        line-height: 1.2;
       }
+
       .card-arrow {
-        position: absolute; bottom: 16px; right: 16px;
-        width: 28px; height: 28px; border-radius: 9px;
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        width: 28px;
+        height: 28px;
+        border-radius: 9px;
         background: var(--bg-card2);
-        display: flex; align-items: center; justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: var(--text-muted);
       }
 
-      /* Accent bar on left for first card */
       .nav-card.featured::after {
-        content: '';
-        position: absolute; left: 0; top: 20%; bottom: 20%;
-        width: 3px; border-radius: 0 3px 3px 0;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 20%;
+        bottom: 20%;
+        width: 3px;
+        border-radius: 0 3px 3px 0;
         background: var(--accent);
       }
 
@@ -388,32 +607,111 @@
       .anuncio-banner {
         background: color-mix(in srgb, var(--accent-warm) 12%, var(--bg-card));
         border: 1px solid color-mix(in srgb, var(--accent-warm) 30%, transparent);
-        border-radius: 22px; padding: 18px 20px;
-        display: flex; align-items: center; gap: 14px;
+        border-radius: 22px;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
         margin-top: 12px;
       }
+
       .anuncio-icon {
-        font-size: 22px; flex-shrink: 0;
+        font-size: 22px;
+        flex-shrink: 0;
       }
+
       .anuncio-title {
         font-family: "Syne", sans-serif;
-        font-size: 13px; font-weight: 700;
+        font-size: 13px;
+        font-weight: 700;
         color: color-mix(in srgb, var(--accent-warm) 80%, var(--text));
       }
+
       .anuncio-text {
-        font-size: 12.5px; color: var(--text-muted); margin-top: 2px;
+        font-size: 12.5px;
+        color: var(--text-muted);
+        margin-top: 2px;
       }
 
       /* ── ANIMATIONS ── */
       @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(18px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
-      .fade-up { animation: fadeUp 0.5s ease both; }
-      .delay-1 { animation-delay: 0.08s; }
-      .delay-2 { animation-delay: 0.16s; }
-      .delay-3 { animation-delay: 0.24s; }
-      .delay-4 { animation-delay: 0.32s; }
+
+      .fade-up {
+        animation: fadeUp 0.5s ease both;
+      }
+
+      .delay-1 {
+        animation-delay: 0.08s;
+      }
+
+      .delay-2 {
+        animation-delay: 0.16s;
+      }
+
+      .delay-3 {
+        animation-delay: 0.24s;
+      }
+
+      .delay-4 {
+        animation-delay: 0.32s;
+      }
+
+      /* ── FIX MOBILE: fecha visible ── */
+      @media (max-width: 640px) {
+        .hero-wrap {
+          height: 290px;
+        }
+
+        .hero-content {
+          left: 20px;
+          right: 20px;
+          bottom: 92px;
+        }
+
+        .hero-title {
+          font-size: 30px;
+          line-height: 1;
+        }
+
+        .hero-date {
+          font-size: 13px;
+          margin-top: 10px;
+          line-height: 1.25;
+          max-width: calc(100% - 4px);
+          display: block;
+        }
+
+        .activity-card {
+          margin-top: -22px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .hero-content {
+          bottom: 98px;
+        }
+
+        .hero-title {
+          font-size: 28px;
+        }
+
+        .hero-date {
+          font-size: 12px;
+        }
+
+        .activity-card {
+          margin-top: -18px;
+        }
+      }
     </style>
   </head>
 
@@ -426,48 +724,225 @@
       <div class="sidebar-header">
         <div class="sidebar-logo">
           <div class="logo-mark">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
           </div>
           <div>
-            <div class="syne" style="font-size:15px; font-weight:700; line-height:1.1">Norte Garín</div>
-            <div style="font-size:10px; color:var(--text-muted); font-weight:500; text-transform:uppercase; letter-spacing:0.12em; margin-top:2px">Tablero Digital</div>
+            <div class="syne" style="font-size: 15px; font-weight: 700; line-height: 1.1">Norte Garín</div>
+            <div
+              style="
+                font-size: 10px;
+                color: var(--text-muted);
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.12em;
+                margin-top: 2px;
+              "
+            >
+              Tablero Digital
+            </div>
           </div>
         </div>
       </div>
+
       <nav class="sidebar-nav">
         <div class="nav-section-label">Principal</div>
         <a href="index.html" class="nav-item active">
-          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div> Inicio
+          <div class="icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+          </div>
+          Inicio
         </a>
+
         <a href="proximos-eventos.html" class="nav-item">
-          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div> Próximos Eventos
+          <div class="icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+          </div>
+          Próximos Eventos
         </a>
-        <div class="nav-section-label" style="margin-top:20px">Ministerio</div>
+
+        <div class="nav-section-label" style="margin-top: 20px">Ministerio</div>
         <a href="salidas.html" class="nav-item">
-          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div> Salidas
+          <div class="icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          Salidas
         </a>
+
         <a href="grupos.html" class="nav-item">
-          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div> Grupos
+          <div class="icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          Grupos
         </a>
-        <div class="nav-section-label" style="margin-top:20px">Reunión</div>
+
+        <div class="nav-section-label" style="margin-top: 20px">Reunión</div>
         <a href="vida-ministerio.html" class="nav-item">
-          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div> Vida y Ministerio
+          <div class="icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+            </svg>
+          </div>
+          Vida y Ministerio
         </a>
+
         <a href="conferencias.html" class="nav-item">
-          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div> Discursos
+          <div class="icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+              <line x1="12" y1="19" x2="12" y2="23" />
+              <line x1="8" y1="23" x2="16" y2="23" />
+            </svg>
+          </div>
+          Discursos
         </a>
+
         <a href="lectores.html" class="nav-item">
-          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div> Lectores
+          <div class="icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg>
+          </div>
+          Lectores
         </a>
-        <div class="nav-section-label" style="margin-top:20px">Organización</div>
+
+        <div class="nav-section-label" style="margin-top: 20px">Organización</div>
         <a href="multimedia.html" class="nav-item">
-          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div> Multimedia
+          <div class="icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+            </svg>
+          </div>
+          Multimedia
         </a>
+
         <a href="limpieza.html" class="nav-item">
-          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></div> Limpieza
+          <div class="icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 6h18" />
+              <path d="M8 6V4h8v2" />
+              <path d="M19 6l-1 14H6L5 6" />
+              <path d="M10 11v6" />
+              <path d="M14 11v6" />
+            </svg>
+          </div>
+          Limpieza
         </a>
       </nav>
     </aside>
@@ -480,18 +955,62 @@
 
         <div class="hero-top-bar">
           <button class="icon-btn" id="btnMenu" aria-label="Menú">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="14" y1="16" y2="16"/>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="4" x2="20" y1="8" y2="8" />
+              <line x1="4" x2="14" y1="16" y2="16" />
             </svg>
           </button>
-      <button class="icon-btn" id="btnTheme" aria-label="Cambiar tema">
-            <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+
+          <button class="icon-btn" id="btnTheme" aria-label="Cambiar tema">
+            <svg
+              id="theme-icon-moon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg
+              id="theme-icon-sun"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="display: none"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
           </button>
         </div>
 
         <div class="hero-content">
-          <div class="hero-title">Norte<br/>Garín</div>
+          <div class="hero-title">Norte<br />Garín</div>
           <div class="hero-date" id="today-date"></div>
         </div>
       </div>
@@ -499,22 +1018,19 @@
 
     <!-- MAIN -->
     <main class="main-wrap">
-
-      <!-- Notificaciones de asignaciones -->
       <div id="notif-banner-container"></div>
 
-      <!-- Activity floating card -->
       <div class="activity-card fade-up">
-        <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div style="display: flex; align-items: center; justify-content: space-between">
           <div class="activity-label">
             <span class="pulse-dot"></span>
             Resumen del día
           </div>
           <div class="carousel-dots" id="cdots">
-            <div class="cdot active" style="width:20px"></div>
-            <div class="cdot" style="width:8px"></div>
-            <div class="cdot" style="width:8px"></div>
-            <div class="cdot" style="width:8px"></div>
+            <div class="cdot active" style="width: 20px"></div>
+            <div class="cdot" style="width: 8px"></div>
+            <div class="cdot" style="width: 8px"></div>
+            <div class="cdot" style="width: 8px"></div>
           </div>
         </div>
 
@@ -525,7 +1041,7 @@
           </div>
           <div class="activity-slide" id="slide-1">
             <div class="slide-sublabel">Próximo Evento</div>
-            <div class="slide-value" id="dash-evento" style="color:var(--accent)">Cargando…</div>
+            <div class="slide-value" id="dash-evento" style="color: var(--accent)">Cargando…</div>
           </div>
           <div class="activity-slide" id="slide-2">
             <div class="slide-sublabel">Limpieza Semanal</div>
@@ -538,12 +1054,26 @@
         </div>
       </div>
 
-      <!-- Zoom -->
-      <a href="https://jworg.zoom.us/my/norte.garin?pwd=ZXVVZWhZTmdTNFpuUkI3c014RFlMQT09" target="_blank" class="zoom-btn fade-up delay-1">
+      <a
+        href="https://jworg.zoom.us/my/norte.garin?pwd=ZXVVZWhZTmdTNFpuUkI3c014RFlMQT09"
+        target="_blank"
+        class="zoom-btn fade-up delay-1"
+      >
         <div class="zoom-left">
           <div class="zoom-icon-wrap">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m22 8-6 4 6 4V8Z" />
+              <rect width="14" height="12" x="2" y="6" rx="2" ry="2" />
             </svg>
           </div>
           <div>
@@ -551,81 +1081,206 @@
             <div class="zoom-sub">Tocar para conectar</div>
           </div>
         </div>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14m-7-7 7 7-7 7" />
+        </svg>
       </a>
 
-      <!-- Grid de navegación -->
       <div class="section-header fade-up delay-2">
         <span class="section-title">Secciones</span>
       </div>
 
       <div class="cards-grid fade-up delay-2">
         <a href="salidas.html" class="nav-card featured">
-          <div class="card-icon-wrap" style="background:color-mix(in srgb, var(--accent) 12%, transparent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div>
-            <div class="card-title">Salidas</div>
+          <div class="card-icon-wrap" style="background: color-mix(in srgb, var(--accent) 12%, transparent)">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
           </div>
+          <div><div class="card-title">Salidas</div></div>
           <div class="card-arrow">→</div>
         </a>
 
         <a href="vida-ministerio.html" class="nav-card">
-          <div class="card-icon-wrap" style="background:color-mix(in srgb, #6366f1 12%, transparent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-          <div>
-            <div class="card-title">Vida y Min.</div>
+          <div class="card-icon-wrap" style="background: color-mix(in srgb, #6366f1 12%, transparent)">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#6366f1"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+            </svg>
           </div>
+          <div><div class="card-title">Vida y Min.</div></div>
           <div class="card-arrow">→</div>
         </a>
 
         <a href="conferencias.html" class="nav-card">
-          <div class="card-icon-wrap" style="background:color-mix(in srgb, var(--accent) 12%, transparent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
-          <div>
-            <div class="card-title">Discursos</div>
+          <div class="card-icon-wrap" style="background: color-mix(in srgb, var(--accent) 12%, transparent)">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+              <line x1="12" y1="19" x2="12" y2="23" />
+              <line x1="8" y1="23" x2="16" y2="23" />
+            </svg>
           </div>
+          <div><div class="card-title">Discursos</div></div>
           <div class="card-arrow">→</div>
         </a>
 
         <a href="multimedia.html" class="nav-card">
-          <div class="card-icon-wrap" style="background:color-mix(in srgb, #0ea5e9 12%, transparent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>
-          <div>
-            <div class="card-title">Multimedia</div>
+          <div class="card-icon-wrap" style="background: color-mix(in srgb, #0ea5e9 12%, transparent)">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#0ea5e9"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+            </svg>
           </div>
+          <div><div class="card-title">Multimedia</div></div>
           <div class="card-arrow">→</div>
         </a>
 
         <a href="lectores.html" class="nav-card">
-          <div class="card-icon-wrap" style="background:color-mix(in srgb, #f59e0b 12%, transparent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <div>
-            <div class="card-title">Lectores</div>
+          <div class="card-icon-wrap" style="background: color-mix(in srgb, #f59e0b 12%, transparent)">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#f59e0b"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
           </div>
+          <div><div class="card-title">Lectores</div></div>
           <div class="card-arrow">→</div>
         </a>
 
         <a href="limpieza.html" class="nav-card">
-          <div class="card-icon-wrap" style="background:color-mix(in srgb, #10b981 12%, transparent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg></div>
-          <div>
-            <div class="card-title">Limpieza</div>
+          <div class="card-icon-wrap" style="background: color-mix(in srgb, #10b981 12%, transparent)">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#10b981"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 6h18" />
+              <path d="M8 6V4h8v2" />
+              <path d="M19 6l-1 14H6L5 6" />
+            </svg>
           </div>
+          <div><div class="card-title">Limpieza</div></div>
           <div class="card-arrow">→</div>
         </a>
       </div>
 
-      <a href="proximos-eventos.html" class="nav-card fade-up delay-3" style="margin-top:12px; flex-direction:row; align-items:center; gap:14px; padding:18px 20px;">
-        <div class="card-icon-wrap" style="background:color-mix(in srgb, var(--accent-warm) 15%, transparent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-        <div style="flex:1">
+      <a
+        href="proximos-eventos.html"
+        class="nav-card fade-up delay-3"
+        style="margin-top: 12px; flex-direction: row; align-items: center; gap: 14px; padding: 18px 20px"
+      >
+        <div class="card-icon-wrap" style="background: color-mix(in srgb, var(--accent-warm) 15%, transparent)">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--accent-warm)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+        </div>
+        <div style="flex: 1">
           <div class="card-title">Próximos Eventos</div>
         </div>
-        <div class="card-arrow" style="position:static">→</div>
+        <div class="card-arrow" style="position: static">→</div>
       </a>
 
-      <!-- Grupos -->
-      <a href="grupos.html" class="nav-card fade-up delay-3" style="margin-top:12px; flex-direction:row; align-items:center; gap:14px; padding:18px 20px;">
-        <div class="card-icon-wrap" style="background:color-mix(in srgb, #8b5cf6 12%, transparent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div style="flex:1">
+      <a
+        href="grupos.html"
+        class="nav-card fade-up delay-3"
+        style="margin-top: 12px; flex-direction: row; align-items: center; gap: 14px; padding: 18px 20px"
+      >
+        <div class="card-icon-wrap" style="background: color-mix(in srgb, #8b5cf6 12%, transparent)">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#8b5cf6"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
+        <div style="flex: 1">
           <div class="card-title">Grupos</div>
         </div>
-        <div class="card-arrow" style="position:static">→</div>
+        <div class="card-arrow" style="position: static">→</div>
       </a>
-
     </main>
 
     <!-- DATA SCRIPTS -->
@@ -673,43 +1328,50 @@
       const INICIO_LIMPIEZA = new Date(2025, 11, 2);
 
       function getDateOnly(date) {
-        const d = new Date(date); d.setHours(0,0,0,0); return d;
+        const d = new Date(date);
+        d.setHours(0, 0, 0, 0);
+        return d;
       }
+
       function formatFechaLarga(dateStr) {
-        return getDateOnly(dateStr).toLocaleDateString("es-AR", { day:"numeric", month:"long" });
+        return getDateOnly(dateStr).toLocaleDateString("es-AR", { day: "numeric", month: "long" });
       }
+
       function getProximoEvento(today) {
         if (!window.EVENTOS_DATA || !Array.isArray(window.EVENTOS_DATA)) return null;
         return [...window.EVENTOS_DATA]
-          .map(i => ({ ...i, dateObj: getDateOnly(i.date) }))
-          .sort((a,b) => a.dateObj - b.dateObj)
-          .find(i => i.dateObj >= today) || null;
+          .map((i) => ({ ...i, dateObj: getDateOnly(i.date) }))
+          .sort((a, b) => a.dateObj - b.dateObj)
+          .find((i) => i.dateObj >= today) || null;
       }
+
       function getProximoDiscurso(today) {
         if (!window.CONFERENCIAS_DATA || !Array.isArray(window.CONFERENCIAS_DATA)) return null;
         const items = [];
-        window.CONFERENCIAS_DATA.forEach(mes => {
+        window.CONFERENCIAS_DATA.forEach((mes) => {
           if (!mes || !Array.isArray(mes.vienen)) return;
-          mes.vienen.forEach(conf => {
+          mes.vienen.forEach((conf) => {
             if (!conf || conf.special || !conf.date || !conf.title) return;
             const dt = new Date(mes.year, mes.monthIdx, Number(conf.date));
-            dt.setHours(0,0,0,0);
+            dt.setHours(0, 0, 0, 0);
             items.push({ dateObj: dt, title: conf.title });
           });
         });
-        return items.sort((a,b) => a.dateObj - b.dateObj).find(i => i.dateObj >= today) || null;
+        return items.sort((a, b) => a.dateObj - b.dateObj).find((i) => i.dateObj >= today) || null;
       }
 
       // ── DASHBOARD ──
       function updateDashboard() {
         const now = new Date();
         document.getElementById("today-date").textContent = now.toLocaleDateString("es-AR", {
-          weekday:"long", day:"numeric", month:"long"
+          weekday: "long",
+          day: "numeric",
+          month: "long",
         });
 
         const today = getDateOnly(now);
 
-        const diffWeeks = Math.floor(Math.abs(today - INICIO_LIMPIEZA) / (7*24*3600*1000));
+        const diffWeeks = Math.floor(Math.abs(today - INICIO_LIMPIEZA) / (7 * 24 * 3600 * 1000));
         document.getElementById("dash-limpieza").innerText = GRUPOS_LIMPIEZA[diffWeeks % GRUPOS_LIMPIEZA.length];
 
         const ev = getProximoEvento(today);
@@ -724,19 +1386,24 @@
           const nowMin = now.getHours() * 60 + now.getMinutes();
           const entriesToday = window.SALIDAS_CAL.getEntriesForDate(now) || [];
           const nextToday = entriesToday
-            .filter(e => e.h && e.h !== "–")
-            .map(e => { const [h,m] = e.h.split(":").map(Number); return {...e, totalMin: h*60+m}; })
-            .filter(e => e.totalMin >= nowMin)
-            .sort((a,b) => a.totalMin - b.totalMin);
+            .filter((e) => e.h && e.h !== "–")
+            .map((e) => {
+              const [h, m] = e.h.split(":").map(Number);
+              return { ...e, totalMin: h * 60 + m };
+            })
+            .filter((e) => e.totalMin >= nowMin)
+            .sort((a, b) => a.totalMin - b.totalMin);
 
           if (nextToday.length > 0) {
             document.getElementById("label-salida").innerText = "Próxima Salida de Hoy";
             document.getElementById("dash-salida").innerText = `${nextToday[0].h} hs — ${nextToday[0].l}`;
           } else {
-            const manana = new Date(now); manana.setDate(manana.getDate()+1);
+            const manana = new Date(now);
+            manana.setDate(manana.getDate() + 1);
             const nextManana = (window.SALIDAS_CAL.getEntriesForDate(manana) || [])
-              .filter(e => e.h && e.h !== "–")
-              .sort((a,b) => a.h.localeCompare(b.h));
+              .filter((e) => e.h && e.h !== "–")
+              .sort((a, b) => a.h.localeCompare(b.h));
+
             if (nextManana.length > 0) {
               document.getElementById("label-salida").innerText = "Próxima Salida: Mañana";
               document.getElementById("dash-salida").innerText = `${nextManana[0].h} hs — ${nextManana[0].l}`;
@@ -762,8 +1429,8 @@
         dots[current].classList.add("active");
         dots[current].style.width = "20px";
       }
-      setInterval(() => goSlide(current + 1), 3500);
 
+      setInterval(() => goSlide(current + 1), 3500);
       window.onload = updateDashboard;
     </script>
   </body>
