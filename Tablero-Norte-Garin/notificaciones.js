@@ -312,17 +312,71 @@
 
   // ── MODAL DE CONFIGURACIÓN ────────────────────────────────────────────────
 
+  // Convierte "Apellido Nombre" → "Nombre Apellido" (formato de grupos-data.js)
+  function invertirNombre(apellidoNombre) {
+    const partes = apellidoNombre.trim().split(/\s+/);
+    if (partes.length < 2) return apellidoNombre;
+    // "Becerra Nely" → "Nely Becerra" | "Segovia León" → "León Segovia"
+    // "Sánchez Juan Carlos" → "Juan Carlos Sánchez"
+    return partes.slice(1).join(' ') + ' ' + partes[0];
+  }
+
+  // Genera el HTML de <optgroup> por grupo para el selector de hermanos
+  function buildOpcionesGrupos(usuarioActual) {
+    if (!window.GRUPOS_DATA) return '<option value="">— Sin datos de grupos —</option>';
+    const ua = normalizar(usuarioActual);
+
+    let html = '<option value="">— Seleccionar hermano/a —</option>';
+    for (const grupo of window.GRUPOS_DATA) {
+      html += `<optgroup label="${grupo.nombre} — ${grupo.superintendente.split(' ').reverse().join(' ')}">`;
+
+      // Reunir todos los miembros del grupo (superintendente, auxiliar, integrantes)
+      const miembros = new Map(); // valor → etiqueta display
+
+      // integrantes en "Apellido Nombre" → invertir
+      for (const integrante of grupo.integrantes) {
+        const nombreNorm = normalizar(invertirNombre(integrante));
+        const display = invertirNombre(integrante).split(' ')
+          .map(w => w[0].toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+        miembros.set(nombreNorm, display);
+      }
+
+      // Superintendente en "Apellido Nombre" → invertir
+      if (grupo.superintendente) {
+        const nombreNorm = normalizar(invertirNombre(grupo.superintendente));
+        const display = invertirNombre(grupo.superintendente).split(' ')
+          .map(w => w[0].toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+        miembros.set(nombreNorm, display);
+      }
+
+      // Auxiliar (puede estar en "Apellido Nombre" o "Nombre Apellido" → normalizar de igual forma)
+      if (grupo.auxiliar) {
+        const nombreNorm = normalizar(invertirNombre(grupo.auxiliar));
+        const display = invertirNombre(grupo.auxiliar).split(' ')
+          .map(w => w[0].toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+        miembros.set(nombreNorm, display);
+      }
+
+      // Ordenar alfabéticamente por display
+      const sorted = [...miembros.entries()].sort((a, b) =>
+        a[1].localeCompare(b[1], 'es'));
+
+      for (const [value, display] of sorted) {
+        html += `<option value="${value}" ${value === ua ? 'selected' : ''}>${display}</option>`;
+      }
+
+      html += '</optgroup>';
+    }
+    return html;
+  }
+
   function abrirModalConfig() {
     const usuario = localStorage.getItem('notif-usuario') || '';
     const notifHabilitadas = localStorage.getItem('notif-enabled') !== 'false';
     const permiso = ('Notification' in window) ? Notification.permission : 'unsupported';
 
-    // Construir lista de hermanos
-    const hermanos = (window.NOTIF_DATA && window.NOTIF_DATA.hermanos) || [];
-    const opciones = hermanos.map(h => {
-      const display = h.split(' ').map(w => w[0] + w.slice(1).toLowerCase()).join(' ');
-      return `<option value="${h}" ${h === usuario ? 'selected' : ''}>${display}</option>`;
-    }).join('');
+    // Construir lista de hermanos desde GRUPOS_DATA
+    const opciones = buildOpcionesGrupos(usuario);
 
     const modal = document.createElement('div');
     modal.id = 'notif-modal';
