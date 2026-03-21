@@ -4,120 +4,15 @@
 
 window.CONFERENCIAS_DATA = [
   {
-    month: "Enero 2026",
-    year: 2026,
-    monthIdx: 0,
-    vienen: [
-      {
-        date: "04",
-        day: "Domingo",
-        time: "9:30 am",
-        title: "Avancemos con la organización unida de Jehová",
-        speaker: "Enzo Módica",
-        congregation: "Sur, Benavídez",
-        chairman: "Lucas Segovia",
-      },
-      {
-        date: "11",
-        day: "Domingo",
-        time: "9:30 am",
-        title: "Tenga fe en Dios y sus promesas",
-        speaker: "Agustín Galindez",
-        congregation: "Sur, Benavídez",
-        chairman: "Caetano Ferrari",
-      },
-      {
-        date: "18",
-        day: "Domingo",
-        time: "9:30 am",
-        title: "Visita de Pastoreo a la sucursal",
-        speaker: "—",
-        congregation: "—",
-        chairman: "Elvio Casco",
-      },
-      {
-        date: "25",
-        day: "Domingo",
-        time: "9:30 am",
-        title: "Joven, ¿cómo puedes ser feliz y tener éxito?",
-        speaker: "Elvio Casco",
-        congregation: "Norte, Garín",
-        chairman: "León Segovia",
-      },
-    ],
-    salen: [
-      {
-        day: "Sábado",
-        date: "10",
-        name: "Horacio Salgado",
-        extra: "Bosquejo 103",
-      },
-      {
-        day: "Sábado",
-        date: "31",
-        name: "Adolfo Gutiérrez",
-        extra: "Bosquejo 138",
-      },
-    ],
-  },
-  {
-    month: "Febrero 2026",
-    year: 2026,
-    monthIdx: 1,
-    vienen: [
-      {
-        date: "01",
-        day: "Domingo",
-        time: "9:30 am",
-        title: "Actuemos con sabiduría en este mundo insensato",
-        speaker: "Daniel Albis",
-        congregation: "Norte, Garín",
-        chairman: "Horacio Salgado",
-      },
-      {
-        date: "08",
-        day: "Domingo",
-        time: "9:30 am",
-        title: "¿Dónde encontrará una esperanza segura?",
-        speaker: "Lucas Segovia",
-        congregation: "Norte, Garín",
-        chairman: "Adolfo Gutierrez",
-      },
-      {
-        date: "15",
-        day: "Domingo",
-        time: "9:30 am",
-        title: "¿Qué lo ayudará a tener éxito en la vida?",
-        speaker: "Mauricio Tierno",
-        congregation: "S. de Circuito",
-        chairman: "Horacio Salgado",
-      },
-      {
-        date: "22",
-        day: "Domingo",
-        time: "9:30 am",
-        title: "Consigamos que nuestro corazón sea sabio",
-        speaker: "Santiago Vega",
-        congregation: "Este, San Fernando",
-        chairman: "Mario Segovia",
-      },
-    ],
-    salen: [],
-  },
-
-  // ✅ NUEVO: Marzo 2026 (mismo esquema que Febrero)
-  {
     month: "Marzo 2026",
     year: 2026,
     monthIdx: 2,
     vienen: [
-    {
-  date: "01",
-  special: true,
-  title: "ASAMBLEA DE CIRCUITO",
-// subtitle: "Sin reunión en el Salón"  <-- sacalo
-
-},  
+      {
+        date: "01",
+        special: true,
+        title: "ASAMBLEA DE CIRCUITO"
+      },
       {
         date: "08",
         day: "Domingo",
@@ -125,7 +20,7 @@ window.CONFERENCIAS_DATA = [
         title: "La resurrección: una victoria sobre la muerte",
         speaker: "Hernán Carreras",
         congregation: "Este, Pilar, Buenos Aires",
-        chairman: "Dario Cortez",
+        chairman: "Dario Cortez"
       },
       {
         date: "15",
@@ -134,16 +29,16 @@ window.CONFERENCIAS_DATA = [
         title: "Unidos al feliz pueblo de Dios",
         speaker: "Adrián Perillo",
         congregation: "Este, Pilar, Buenos Aires",
-        chairman: "Caetano Ferrari",
+        chairman: "Caetano Ferrari"
       },
       {
         date: "22",
         day: "Domingo",
         time: "9:30 am",
-        title: "“Hagamos el bien a todos”",
+        title: "\u201cHagamos el bien a todos\u201d",
         speaker: "Mario Segovia",
         congregation: "Norte, Garín, Buenos Aires",
-        chairman: "Adolfo Gutiérrez",
+        chairman: "Adolfo Gutiérrez"
       },
       {
         date: "29",
@@ -152,31 +47,30 @@ window.CONFERENCIAS_DATA = [
         title: "Discurso especial: ¿Quién salvará el planeta?",
         speaker: "Julian Giacobbe",
         congregation: "Este, Ingeniero Maschwitz, Buenos Aires",
-        chairman: "Leon Segovia",
-      },
+        chairman: "Leon Segovia"
+      }
     ],
     salen: [
       {
         day: "Sábado",
         date: "07",
         name: "Lucas Segovia",
-        extra: "Bosquejo 175",
+        extra: "Bosquejo 175"
       },
       {
         day: "Domingo",
         date: "08",
         name: "Daniel Albis",
-        extra: "Bosquejo 166",
+        extra: "Bosquejo 166"
       },
       {
         day: "Sábado",
         date: "14",
         name: "Darío Cortez",
-        extra: "Bosquejo 192",
-      },
-    ],
+        extra: "Bosquejo 192"
+      }
+    ]
   },
-
   {
     month: "Abril 2026",
     year: 2026,
@@ -189,7 +83,7 @@ window.CONFERENCIAS_DATA = [
         title: "¿Le importamos a Dios?",
         speaker: "Enzo Compostella",
         congregation: "Este, Benavídez, Buenos Aires",
-        chairman: "Darío Cortez",
+        chairman: "Darío Cortez"
       },
       {
         date: "12",
@@ -198,7 +92,7 @@ window.CONFERENCIAS_DATA = [
         title: "Mostremos amor en un mundo egoísta",
         speaker: "Gonzalo Ros",
         congregation: "Este, San Fernando, Buenos Aires",
-        chairman: "Daniel Albis",
+        chairman: "Daniel Albis"
       },
       {
         date: "19",
@@ -207,7 +101,7 @@ window.CONFERENCIAS_DATA = [
         title: "Qué aprendemos del diluvio universal",
         speaker: "Sebastián Nicolini",
         congregation: "",
-        chairman: "Mario Segovia",
+        chairman: "Mario Segovia"
       },
       {
         date: "26",
@@ -216,34 +110,34 @@ window.CONFERENCIAS_DATA = [
         title: "Cómo tomar buenas decisiones",
         speaker: "Marcos Avilés",
         congregation: "Este, Benavídez, Buenos Aires",
-        chairman: "Diego Sarraute",
-      },
+        chairman: "Diego Sarraute"
+      }
     ],
     salen: [
       {
         day: "Sábado",
         date: "04",
         name: "Mario Segovia",
-        extra: "Bosquejo 7",
+        extra: "Bosquejo 7"
       },
       {
         day: "Sábado",
         date: "11",
         name: "Adolfo Gutiérrez",
-        extra: "Bosquejo 169",
+        extra: "Bosquejo 169"
       },
       {
         day: "Sábado",
         date: "18",
         name: "Horacio Salgado",
-        extra: "Bosquejo 103",
+        extra: "Bosquejo 103"
       },
       {
         day: "Sábado",
         date: "25",
         name: "Elvio Casco",
-        extra: "Bosquejo 113",
-      },
-    ],
-  },
+        extra: "Bosquejo 113"
+      }
+    ]
+  }
 ];
