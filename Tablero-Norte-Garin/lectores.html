@@ -53,7 +53,6 @@
       }
       .syne { font-family: "Syne", sans-serif; }
 
-      /* ── SIDEBAR ── */
       #sidebar {
         position: fixed; top: 0; left: 0; height: 100%; width: 300px;
         background: var(--bg-card); border-right: 1px solid var(--border);
@@ -82,7 +81,6 @@
       .nav-item .icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--bg-card2); }
       .nav-item.active .icon { background: color-mix(in srgb, var(--accent) 15%, transparent); }
 
-      /* ── OVERLAY ── */
       #overlay {
         position: fixed; inset: 0; background: rgba(0,0,0,0.45);
         backdrop-filter: blur(4px); z-index: 199;
@@ -90,7 +88,6 @@
       }
       #overlay.visible { opacity: 1; pointer-events: all; }
 
-      /* ── HERO ── */
       .hero-wrap { position: relative; width: 100%; height: 220px; overflow: hidden; }
       .hero-img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
       .hero-wrap:hover .hero-img { transform: scale(1.04); }
@@ -112,10 +109,8 @@
       }
       .icon-btn:active { transform: scale(0.92); }
 
-      /* ── MAIN ── */
       .main-wrap { max-width: 480px; margin: 0 auto; padding: 20px 16px 48px; position: relative; z-index: 1; }
 
-      /* ── MONTH SEPARATOR ── */
       .month-sep {
         display: flex; align-items: center; gap: 12px; margin: 24px 0 14px;
       }
@@ -125,7 +120,6 @@
         letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted);
       }
 
-      /* ── LECTOR CARD ── */
       .lector-card {
         display: flex; align-items: center; gap: 0;
         background: var(--bg-card); border: 1px solid var(--border);
@@ -141,7 +135,6 @@
       }
       .lector-card.is-past { opacity: 0.35; filter: grayscale(0.7); }
 
-      /* date column */
       .lector-date {
         width: 58px; flex-shrink: 0; padding: 14px 0;
         display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -155,7 +148,6 @@
         letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 2px;
       }
 
-      /* atalaya date = blue, biblico = green, special = warm */
       .lector-card.type-atalaya .lector-date { background: color-mix(in srgb, var(--atalaya) 8%, transparent); }
       .lector-card.type-atalaya .lector-date-num { color: var(--atalaya); }
       .lector-card.type-biblico .lector-date { background: color-mix(in srgb, var(--biblico) 8%, transparent); }
@@ -163,7 +155,6 @@
       .lector-card.type-special .lector-date { background: color-mix(in srgb, var(--accent-warm) 10%, transparent); }
       .lector-card.type-special .lector-date-num { color: var(--accent-warm); }
 
-      /* body */
       .lector-body { flex: 1; padding: 12px 16px; }
       .lector-next-badge {
         font-family: "Syne", sans-serif; font-size: 8px; font-weight: 700;
@@ -196,7 +187,6 @@
   <body>
     <div id="overlay"></div>
 
-    <!-- SIDEBAR -->
     <aside id="sidebar">
       <div class="sidebar-header">
         <div class="sidebar-logo">
@@ -244,7 +234,6 @@
       </nav>
     </aside>
 
-    <!-- HERO -->
     <header>
       <div class="hero-wrap">
         <img src="img/lectores.png" class="hero-img" alt="Lectores" />
@@ -268,74 +257,50 @@
     <div id="notif-banner-container" style="max-width:480px;margin:0 auto;padding:0 16px"></div>
     <main class="main-wrap" id="programList"></main>
 
+    <script src="lectores-data.js"></script>
     <script>
-      // ── THEME ──
       const html = document.documentElement;
       const iconMoon = document.getElementById("theme-icon-moon");
       const iconSun  = document.getElementById("theme-icon-sun");
+
       function applyThemeIcons() {
         const dark = html.classList.contains("dark");
         iconMoon.style.display = dark ? "none" : "block";
         iconSun.style.display  = dark ? "block" : "none";
       }
+
       applyThemeIcons();
+
       document.getElementById("btnTheme").onclick = () => {
         html.classList.toggle("dark");
         localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
         applyThemeIcons();
       };
 
-      // ── SIDEBAR ──
       const sidebar = document.getElementById("sidebar");
       const overlay = document.getElementById("overlay");
-      document.getElementById("btnMenu").onclick = () => { sidebar.classList.add("open"); overlay.classList.add("visible"); };
-      overlay.onclick = () => { sidebar.classList.remove("open"); overlay.classList.remove("visible"); };
 
-      // ── DATA ──
-      const programData = [
-        {
-          monthLabel: "Febrero 2026",
-          year: 2026, monthIdx: 1,
-          atalaya: [
-            { date: "01", name: "MARIO SEGOVIA" },
-            { date: "08", name: "HORACIO SALGADO" },
-            { date: "15", special: true, title: "VISITA S.C.", desc: "Mauricio Tierno" },
-            { date: "22", name: "DANIEL ALBIS" },
-          ],
-          biblico: [
-            { date: "05", name: "LUCAS SEGOVIA" },
-            { date: "19", name: "ADOLFO GUTIERREZ" },
-            { date: "26", special: true, title: "ASAMBLEA DE CIRCUITO", dayOverride: "Jue", typeOverride: "special", typeLabelOverride: "Evento" },
-          ],
-        },
-        {
-          monthLabel: "Marzo 2026",
-          year: 2026, monthIdx: 2,
-          atalaya: [
-            { date: "01", special: true, title: "ASAMBLEA DE CIRCUITO", dayOverride: "Dom", typeOverride: "special", typeLabelOverride: "Evento" },
-            { date: "08", name: "ADOLFO GUTIERREZ" },
-            { date: "15", name: "LEON SEGOVIA" },
-            { date: "22", name: "LUCAS SEGOVIA" },
-            { date: "29", name: "DARIO CORTEZ" },
-          ],
-          biblico: [
-            { date: "05", name: "DIEGO SARRAUTE" },
-            { date: "12", name: "HORACIO SALGADO" },
-            { date: "19", name: "DANIEL ALBIS" },
-            { date: "26", name: "DARIO CORTEZ" },
-          ],
-        },
-      ];
+      document.getElementById("btnMenu").onclick = () => {
+        sidebar.classList.add("open");
+        overlay.classList.add("visible");
+      };
 
-      // ── RENDER ──
+      overlay.onclick = () => {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("visible");
+      };
+
       function render() {
         const container = document.getElementById("programList");
-        const now = new Date(); now.setHours(0,0,0,0);
+        const now = new Date();
+        now.setHours(0,0,0,0);
+
+        const programData = Array.isArray(window.LECTORES_DATA) ? window.LECTORES_DATA : [];
         let foundNext = false;
-        let html = "";
+        let out = "";
 
         programData.forEach((month, mi) => {
-          html += `<div class="month-sep">
+          out += `<div class="month-sep">
             <div class="month-sep-line"></div>
             <div class="month-sep-label">${month.monthLabel}</div>
             <div class="month-sep-line"></div>
@@ -349,12 +314,17 @@
           combined.forEach((item, i) => {
             const itemDate = new Date(month.year, month.monthIdx, parseInt(item.date));
             itemDate.setHours(0,0,0,0);
+
             const isPast = itemDate < now;
             let isNext = false;
-            if (!isPast && !foundNext) { isNext = true; foundNext = true; }
+            if (!isPast && !foundNext) {
+              isNext = true;
+              foundNext = true;
+            }
 
             const delay = (mi * 10 + i) * 0.04;
-            html += `
+
+            out += `
               <div class="lector-card type-${item.type} ${isNext ? "is-next" : ""} ${isPast ? "is-past" : ""}" style="animation-delay:${delay}s">
                 <div class="lector-date">
                   <div class="lector-date-dow">${item.day}</div>
@@ -370,7 +340,7 @@
           });
         });
 
-        container.innerHTML = html;
+        container.innerHTML = out;
 
         setTimeout(() => {
           const next = document.querySelector(".is-next");
@@ -380,7 +350,7 @@
 
       render();
     </script>
-      <script src="grupos-data.js"></script>
+    <script src="grupos-data.js"></script>
     <script src="notificaciones-data.js"></script>
     <script src="notificaciones.js"></script>
   </body>
