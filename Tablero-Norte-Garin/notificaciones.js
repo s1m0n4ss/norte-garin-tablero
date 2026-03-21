@@ -1,39 +1,60 @@
 // notificaciones.js
 // Sistema de notificaciones de asignaciones para el Tablero Digital Norte Garín.
 // Muestra avisos al hermano cuando abre el sitio durante la semana en que tiene
-// una asignación (presidente de VyM, partes, lector, presidente del domingo, limpieza).
+// una asignación (presidente de VyM, partes, lector, presidente del domingo,
+// limpieza, multimedia y acomodadores).
 
 (function () {
-  'use strict';
+  "use strict";
 
   // ── UTILIDADES ─────────────────────────────────────────────────────────────
 
   function normalizar(str) {
-    if (!str) return '';
-    return str.toUpperCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
+    if (!str) return "";
+    return String(str)
+      .toUpperCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
       .trim();
   }
 
+  function capitalizarNombre(nombre) {
+    return String(nombre || "")
+      .split(" ")
+      .filter(Boolean)
+      .map((w) => w[0] + w.slice(1).toLowerCase())
+      .join(" ");
+  }
+
+  function partirNombres(valor) {
+    if (!valor) return [];
+    if (Array.isArray(valor)) return valor.flatMap((v) => partirNombres(v));
+
+    return String(valor)
+      .split("/")
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+
   // Verifica si el nombre del usuario coincide con un nombre asignado.
-  // Permite variantes como "DARIO CORTEZ" == "DARIO CORTES" (un carácter de diferencia)
-  // o "MARIO SEGOVIA" en "MARIO SEGOVIA / OTRO NOMBRE".
+  // Soporta string simple, strings separados por "/" y arrays.
   function coincideNombre(usuario, asignado) {
     if (!usuario || !asignado) return false;
+
     const u = normalizar(usuario);
-    // El campo asignado puede contener múltiples hermanos separados por " / "
-    const partes = asignado.split('/').map(s => normalizar(s.trim()));
-    return partes.some(p => {
+    const partes = partirNombres(asignado).map((s) => normalizar(s));
+
+    return partes.some((p) => {
+      if (!p) return false;
       if (p === u) return true;
-      // Coincidencia parcial: todos los apellidos del usuario aparecen en el asignado
-      const palabrasU = u.split(/\s+/).filter(w => w.length > 2);
-      if (palabrasU.length >= 1 && palabrasU.every(w => p.includes(w))) return true;
+
+      const palabrasU = u.split(/\s+/).filter((w) => w.length > 2);
+      if (palabrasU.length >= 1 && palabrasU.every((w) => p.includes(w))) return true;
+
       return false;
     });
   }
 
-  // Lunes de la semana de una fecha dada
   function lunesDe(fecha) {
     const d = new Date(fecha);
     d.setHours(0, 0, 0, 0);
@@ -43,143 +64,169 @@
     return d;
   }
 
-  // Devuelve el domingo de la semana dada (lunes como base)
   function domingoDe(lunes) {
     const d = new Date(lunes);
     d.setDate(d.getDate() + 6);
     return d;
   }
 
-  // Formatea fecha como "YYYY-MM-DD"
   function fmtFecha(d) {
-    return d.getFullYear() + '-' +
-      String(d.getMonth() + 1).padStart(2, '0') + '-' +
-      String(d.getDate()).padStart(2, '0');
+    return (
+      d.getFullYear() +
+      "-" +
+      String(d.getMonth() + 1).padStart(2, "0") +
+      "-" +
+      String(d.getDate()).padStart(2, "0")
+    );
   }
 
-  // Calcula qué grupos tienen limpieza la semana que contiene el lunes dado
   function grupoLimpieza(lunes) {
     const data = window.NOTIF_DATA && window.NOTIF_DATA.limpieza;
     if (!data) return null;
+
     const msWeek = 7 * 24 * 60 * 60 * 1000;
     const ref = new Date(data.inicioReferencia);
     ref.setHours(0, 0, 0, 0);
+
     const diff = Math.round((lunes - ref) / msWeek);
     if (diff < 0) return null;
+
     return data.secuencia[diff % data.secuencia.length];
   }
 
-  // Determina a cuál grupo pertenece el usuario buscando en GRUPOS_DATA
   function grupoDelUsuario(usuario) {
     if (!window.GRUPOS_DATA) return null;
+
     const u = normalizar(usuario);
+
     for (const g of window.GRUPOS_DATA) {
       for (const integrante of g.integrantes) {
-        // integrantes en formato "Apellido Nombre" → comparar tokens
         const tokens = normalizar(integrante).split(/\s+/);
-        const palabrasU = u.split(/\s+/).filter(w => w.length > 2);
-        if (palabrasU.length >= 1 && palabrasU.every(w => tokens.includes(w))) {
-          return g.id; // 1, 2, 3 ó 4
+        const palabrasU = u.split(/\s+/).filter((w) => w.length > 2);
+
+        if (palabrasU.length >= 1 && palabrasU.every((w) => tokens.includes(w))) {
+          return g.id;
         }
       }
-      // También revisar superintendente y auxiliar
+
       const roles = [g.superintendente, g.auxiliar];
       for (const r of roles) {
         if (!r) continue;
+
         const tokens = normalizar(r).split(/\s+/);
-        const palabrasU = u.split(/\s+/).filter(w => w.length > 2);
-        if (palabrasU.length >= 1 && palabrasU.every(w => tokens.includes(w))) {
+        const palabrasU = u.split(/\s+/).filter((w) => w.length > 2);
+
+        if (palabrasU.length >= 1 && palabrasU.every((w) => tokens.includes(w))) {
           return g.id;
         }
       }
     }
+
     return null;
+  }
+
+  function parseDateOnly(value) {
+    if (!value) return null;
+    const d = new Date(value + "T00:00:00");
+    if (isNaN(d.getTime())) return null;
+    d.setHours(0, 0, 0, 0);
+    return d;
   }
 
   // ── VERIFICACIÓN DE ASIGNACIONES ───────────────────────────────────────────
 
   function verificarAsignacionesSemana(usuario) {
     if (!window.NOTIF_DATA) return [];
+
     const data = window.NOTIF_DATA;
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
+
     const lunes = lunesDe(hoy);
     const domingo = domingoDe(lunes);
-    const lunes2 = new Date(lunes); lunes2.setDate(lunes.getDate() + 7); // próxima semana
 
     const asignaciones = [];
 
-    // 1. Vida y Ministerio (reunión del jueves de esta semana)
-    for (const sem of data.vidaMinisterio) {
-      const keyDate = new Date(sem.key + 'T00:00:00');
-      // La reunión es el jueves de esa semana (key + 3 días)
+    // 1. Vida y Ministerio
+    for (const sem of data.vidaMinisterio || []) {
+      const keyDate = new Date(sem.key + "T00:00:00");
+
       if (keyDate.getTime() === lunes.getTime()) {
         if (coincideNombre(usuario, sem.presidente)) {
           asignaciones.push({
-            tipo: 'vym-presidente',
-            rol: 'Presidente de Vida y Ministerio',
-            detalle: 'Semana ' + sem.titulo,
-            icono: '📖',
-            color: '#2d9e6b'
+            tipo: "vym-presidente",
+            rol: "Presidente de Vida y Ministerio",
+            detalle: "Semana " + sem.titulo,
+            icono: "📖",
+            color: "#2d9e6b"
           });
         }
-        for (const parte of sem.partes) {
+
+        for (const parte of sem.partes || []) {
           if (coincideNombre(usuario, parte)) {
             asignaciones.push({
-              tipo: 'vym-parte',
-              rol: 'Parte en Vida y Ministerio',
-              detalle: 'Semana ' + sem.titulo,
-              icono: '✋',
-              color: '#c4890a'
+              tipo: "vym-parte",
+              rol: "Parte en Vida y Ministerio",
+              detalle: "Semana " + sem.titulo,
+              icono: "✋",
+              color: "#c4890a"
             });
-            break; // una sola notificación aunque tenga varias partes
+            break;
           }
         }
+
         break;
       }
     }
 
-    // 2. Lectores – verificar si hay lectura esta semana (dom o jue)
-    for (const lec of data.lectores) {
-      const fechaLec = new Date(lec.fecha + 'T00:00:00');
+    // 2. Lectores
+    for (const lec of data.lectores || []) {
+      const fechaLec = new Date(lec.fecha + "T00:00:00");
+
       if (fechaLec >= lunes && fechaLec <= domingo) {
         if (coincideNombre(usuario, lec.nombre)) {
-          const esAtalaya = lec.tipo === 'atalaya';
+          const esAtalaya = lec.tipo === "atalaya";
+
           asignaciones.push({
-            tipo: 'lector',
-            rol: 'Lector – ' + (esAtalaya ? 'La Atalaya (Domingo)' : 'Est. Bíblico (Jueves)'),
-            detalle: 'El ' + (esAtalaya ? 'domingo' : 'jueves') + ' ' +
-              fechaLec.toLocaleDateString('es-AR', { day: 'numeric', month: 'long' }),
-            icono: '📰',
-            color: '#2563eb'
+            tipo: "lector",
+            rol: "Lector – " + (esAtalaya ? "La Atalaya (Domingo)" : "Est. Bíblico (Jueves)"),
+            detalle:
+              "El " +
+              (esAtalaya ? "domingo" : "jueves") +
+              " " +
+              fechaLec.toLocaleDateString("es-AR", { day: "numeric", month: "long" }),
+            icono: "📰",
+            color: "#2563eb"
           });
         }
       }
     }
 
-    // 3. Presidente del Discurso Dominical (domingo de esta semana)
+    // 3. Presidente del Discurso Dominical / Orador
     const fechaDomingo = fmtFecha(domingo);
-    for (const conf of data.conferencias) {
+
+    for (const conf of data.conferencias || []) {
       if (conf.fecha === fechaDomingo) {
         if (coincideNombre(usuario, conf.chairman)) {
           asignaciones.push({
-            tipo: 'presidente-domingo',
-            rol: 'Presidente de la Reunión del Domingo',
-            detalle: 'Domingo ' + domingo.toLocaleDateString('es-AR', { day: 'numeric', month: 'long' }),
-            icono: '🎙️',
-            color: '#7c3aed'
+            tipo: "presidente-domingo",
+            rol: "Presidente de la Reunión del Domingo",
+            detalle: "Domingo " + domingo.toLocaleDateString("es-AR", { day: "numeric", month: "long" }),
+            icono: "🎙️",
+            color: "#7c3aed"
           });
         }
-        // Si el hermano es orador local este domingo
+
         if (conf.esLocal && coincideNombre(usuario, conf.speaker)) {
           asignaciones.push({
-            tipo: 'orador',
-            rol: 'Discursante del Domingo',
-            detalle: 'Domingo ' + domingo.toLocaleDateString('es-AR', { day: 'numeric', month: 'long' }),
-            icono: '🗣️',
-            color: '#7c3aed'
+            tipo: "orador",
+            rol: "Discursante del Domingo",
+            detalle: "Domingo " + domingo.toLocaleDateString("es-AR", { day: "numeric", month: "long" }),
+            icono: "🗣️",
+            color: "#7c3aed"
           });
         }
+
         break;
       }
     }
@@ -188,18 +235,82 @@
     const grupoHoy = grupoLimpieza(lunes);
     if (grupoHoy) {
       const grupoId = grupoDelUsuario(usuario);
-      let grupo12 = grupoHoy.includes('1'); // "Grupos 1 y 2" → grupos 1 y 2
-      let usuarioEnGrupo12 = grupoId === 1 || grupoId === 2;
-      let usuarioEnGrupo34 = grupoId === 3 || grupoId === 4;
+      const grupo12 = grupoHoy.includes("1");
+      const usuarioEnGrupo12 = grupoId === 1 || grupoId === 2;
+      const usuarioEnGrupo34 = grupoId === 3 || grupoId === 4;
       const leCorresponde = (grupo12 && usuarioEnGrupo12) || (!grupo12 && usuarioEnGrupo34);
+
       if (leCorresponde) {
         asignaciones.push({
-          tipo: 'limpieza',
-          rol: 'Limpieza del Salón',
-          detalle: grupoHoy + ' – esta semana',
-          icono: '🧹',
-          color: '#b45309'
+          tipo: "limpieza",
+          rol: "Limpieza del Salón",
+          detalle: grupoHoy + " – esta semana",
+          icono: "🧹",
+          color: "#b45309"
         });
+      }
+    }
+
+    // 5. Multimedia y acomodadores
+    for (const sem of window.MULTIMEDIA_DATA || []) {
+      const inicio = parseDateOnly(sem.start || sem.key);
+      const fin = parseDateOnly(sem.end);
+
+      if (!inicio || !fin) continue;
+      if (sem.isAsamblea) continue;
+
+      if (inicio.getTime() === lunes.getTime()) {
+        const rolesMultimedia = [
+          {
+            key: "audio_video",
+            tipo: "multimedia-audio-video",
+            rol: "Audio y Video",
+            icono: "🔊",
+            color: "#0f766e"
+          },
+          {
+            key: "microfonistas",
+            tipo: "multimedia-microfonistas",
+            rol: "Microfonistas",
+            icono: "🎤",
+            color: "#0ea5e9"
+          },
+          {
+            key: "plataforma",
+            tipo: "multimedia-plataforma",
+            rol: "Plataforma",
+            icono: "🖥️",
+            color: "#2563eb"
+          },
+          {
+            key: "entrada",
+            tipo: "acomodador-entrada",
+            rol: "Acomodador de Entrada",
+            icono: "🚪",
+            color: "#9333ea"
+          },
+          {
+            key: "auditorio",
+            tipo: "acomodador-auditorio",
+            rol: "Acomodador de Auditorio",
+            icono: "🪑",
+            color: "#7c3aed"
+          }
+        ];
+
+        for (const item of rolesMultimedia) {
+          if (coincideNombre(usuario, sem[item.key])) {
+            asignaciones.push({
+              tipo: item.tipo,
+              rol: item.rol,
+              detalle: "Semana " + sem.label,
+              icono: item.icono,
+              color: item.color
+            });
+          }
+        }
+
+        break;
       }
     }
 
@@ -209,60 +320,70 @@
   // ── NOTIFICACIONES DEL NAVEGADOR ───────────────────────────────────────────
 
   async function pedirPermiso() {
-    if (!('Notification' in window)) return false;
-    if (Notification.permission === 'granted') return true;
-    if (Notification.permission === 'denied') return false;
+    if (!("Notification" in window)) return false;
+    if (Notification.permission === "granted") return true;
+    if (Notification.permission === "denied") return false;
+
     const result = await Notification.requestPermission();
-    return result === 'granted';
+    return result === "granted";
   }
 
   function mostrarBrowserNotification(asignaciones, usuario) {
-    if (!('Notification' in window) || Notification.permission !== 'granted') return;
+    if (!("Notification" in window) || Notification.permission !== "granted") return;
 
-    // Mostrar una sola notificación resumen
     const cantidad = asignaciones.length;
-    const titulo = 'Norte Garín – Asignaciones';
-    const cuerpo = cantidad === 1
-      ? `${usuario.split(' ')[0]}, tenés: ${asignaciones[0].rol}.`
-      : `${usuario.split(' ')[0]}, tenés ${cantidad} asignaciones esta semana.`;
+    const titulo = "Norte Garín – Asignaciones";
+    const cuerpo =
+      cantidad === 1
+        ? `${usuario.split(" ")[0]}, tenés: ${asignaciones[0].rol}.`
+        : `${usuario.split(" ")[0]}, tenés ${cantidad} asignaciones esta semana.`;
 
-    navigator.serviceWorker && navigator.serviceWorker.ready.then(reg => {
-      reg.showNotification(titulo, {
-        body: cuerpo,
-        icon: 'img/icon-192.png',
-        badge: 'img/icon-192.png',
-        tag: 'asignacion-semana',
-        renotify: false,
-        data: { url: 'index.html' }
-      });
-    }).catch(() => {
-      new Notification(titulo, { body: cuerpo });
-    });
+    navigator.serviceWorker &&
+      navigator.serviceWorker.ready
+        .then((reg) => {
+          reg.showNotification(titulo, {
+            body: cuerpo,
+            icon: "img/icon-192.png",
+            badge: "img/icon-192.png",
+            tag: "asignacion-semana",
+            renotify: false,
+            data: { url: "index.html" }
+          });
+        })
+        .catch(() => {
+          new Notification(titulo, { body: cuerpo });
+        });
   }
 
   // ── REGISTRO DEL SERVICE WORKER ────────────────────────────────────────────
 
   function registrarServiceWorker() {
-    if (!('serviceWorker' in navigator)) return;
-    navigator.serviceWorker.register('sw-notif.js').then(reg => {
-      // Intentar registrar sync periódico (Chrome Android)
-      if ('periodicSync' in reg) {
-        reg.periodicSync.register('check-assignments', {
-          minInterval: 24 * 60 * 60 * 1000 // cada 24 h
-        }).catch(() => {});
-      }
-    }).catch(() => {});
+    if (!("serviceWorker" in navigator)) return;
+
+    navigator.serviceWorker
+      .register("sw-notif.js")
+      .then((reg) => {
+        if ("periodicSync" in reg) {
+          reg.periodicSync
+            .register("check-assignments", {
+              minInterval: 24 * 60 * 60 * 1000
+            })
+            .catch(() => {});
+        }
+      })
+      .catch(() => {});
   }
 
   // ── BANNER EN PANTALLA ─────────────────────────────────────────────────────
 
   function mostrarBanner(asignaciones, usuario) {
-    let contenedor = document.getElementById('notif-banner-container');
+    let contenedor = document.getElementById("notif-banner-container");
+
     if (!contenedor) {
-      // Crear el contenedor antes de la primera <main> o al inicio del body
-      contenedor = document.createElement('div');
-      contenedor.id = 'notif-banner-container';
-      const mainEl = document.querySelector('main');
+      contenedor = document.createElement("div");
+      contenedor.id = "notif-banner-container";
+
+      const mainEl = document.querySelector("main");
       if (mainEl) {
         mainEl.parentNode.insertBefore(contenedor, mainEl);
       } else {
@@ -270,21 +391,21 @@
       }
     }
 
-    const primerNombre = usuario.split(' ').map(w => w[0] + w.slice(1).toLowerCase()).join(' ');
     const hoy = new Date();
-    const diasSemana = ['dom','lun','mar','mié','jue','vie','sáb'];
-    const diasLabel = hoy.getDay() >= 5
-      ? 'este fin de semana'
-      : 'esta semana';
+    const diasLabel = hoy.getDay() >= 5 ? "este fin de semana" : "esta semana";
 
-    const items = asignaciones.map(a => `
+    const items = asignaciones
+      .map(
+        (a) => `
       <div class="notif-item" style="border-left:3px solid ${a.color}">
         <span class="notif-item-icon">${a.icono}</span>
         <div class="notif-item-body">
           <div class="notif-item-rol">${a.rol}</div>
           <div class="notif-item-detalle">${a.detalle}</div>
         </div>
-      </div>`).join('');
+      </div>`
+      )
+      .join("");
 
     contenedor.innerHTML = `
       <div class="notif-banner" id="notif-banner">
@@ -298,34 +419,36 @@
         ${items}
       </div>`;
 
-    document.getElementById('notif-close').onclick = () => {
-      const banner = document.getElementById('notif-banner');
+    document.getElementById("notif-close").onclick = () => {
+      const banner = document.getElementById("notif-banner");
       if (banner) {
-        banner.style.opacity = '0';
-        banner.style.transform = 'translateY(-8px)';
-        setTimeout(() => { contenedor.innerHTML = ''; }, 300);
+        banner.style.opacity = "0";
+        banner.style.transform = "translateY(-8px)";
+        setTimeout(() => {
+          contenedor.innerHTML = "";
+        }, 300);
       }
-      // Recordar que fue cerrado hoy
-      localStorage.setItem('notif-dismissed', new Date().toDateString());
+
+      localStorage.setItem("notif-dismissed", new Date().toDateString());
     };
   }
 
   // ── MODAL DE CONFIGURACIÓN ────────────────────────────────────────────────
 
   function abrirModalConfig() {
-    const usuario = localStorage.getItem('notif-usuario') || '';
-    const notifHabilitadas = localStorage.getItem('notif-enabled') !== 'false';
-    const permiso = ('Notification' in window) ? Notification.permission : 'unsupported';
+    const usuario = localStorage.getItem("notif-usuario") || "";
+    const permiso = "Notification" in window ? Notification.permission : "unsupported";
 
-    // Construir lista de hermanos
     const hermanos = (window.NOTIF_DATA && window.NOTIF_DATA.hermanos) || [];
-    const opciones = hermanos.map(h => {
-      const display = h.split(' ').map(w => w[0] + w.slice(1).toLowerCase()).join(' ');
-      return `<option value="${h}" ${h === usuario ? 'selected' : ''}>${display}</option>`;
-    }).join('');
+    const opciones = hermanos
+      .map((h) => {
+        const display = capitalizarNombre(h);
+        return `<option value="${h}" ${h === usuario ? "selected" : ""}>${display}</option>`;
+      })
+      .join("");
 
-    const modal = document.createElement('div');
-    modal.id = 'notif-modal';
+    const modal = document.createElement("div");
+    modal.id = "notif-modal";
     modal.innerHTML = `
       <div class="notif-modal-overlay" id="notif-modal-overlay"></div>
       <div class="notif-modal-sheet">
@@ -349,10 +472,15 @@
             <label class="notif-form-label">Notificaciones del navegador</label>
             <p class="notif-form-hint">Recibí avisos del navegador cuando abrís el tablero.</p>
             <button class="notif-perm-btn" id="notif-perm-btn">
-              ${permiso === 'granted' ? '✅ Notificaciones activadas' :
-                permiso === 'denied' ? '🚫 Bloqueadas por el navegador' :
-                permiso === 'unsupported' ? '❌ No soportado' :
-                '🔔 Activar notificaciones'}
+              ${
+                permiso === "granted"
+                  ? "✅ Notificaciones activadas"
+                  : permiso === "denied"
+                  ? "🚫 Bloqueadas por el navegador"
+                  : permiso === "unsupported"
+                  ? "❌ No soportado"
+                  : "🔔 Activar notificaciones"
+              }
             </button>
           </div>
 
@@ -363,46 +491,50 @@
       </div>`;
 
     document.body.appendChild(modal);
-    requestAnimationFrame(() => modal.classList.add('visible'));
+    requestAnimationFrame(() => modal.classList.add("visible"));
 
-    // Eventos del modal
-    document.getElementById('notif-modal-close').onclick = cerrarModal;
-    document.getElementById('notif-modal-overlay').onclick = cerrarModal;
+    document.getElementById("notif-modal-close").onclick = cerrarModal;
+    document.getElementById("notif-modal-overlay").onclick = cerrarModal;
 
-    document.getElementById('notif-perm-btn').onclick = async () => {
+    document.getElementById("notif-perm-btn").onclick = async () => {
       const ok = await pedirPermiso();
-      document.getElementById('notif-perm-btn').textContent =
-        ok ? '✅ Notificaciones activadas' : '🚫 Bloqueadas por el navegador';
+      document.getElementById("notif-perm-btn").textContent = ok
+        ? "✅ Notificaciones activadas"
+        : "🚫 Bloqueadas por el navegador";
     };
 
-    document.getElementById('notif-save-btn').onclick = () => {
-      const nombre = document.getElementById('notif-select-nombre').value;
+    document.getElementById("notif-save-btn").onclick = () => {
+      const nombre = document.getElementById("notif-select-nombre").value;
+
       if (!nombre) {
-        document.getElementById('notif-select-nombre').style.borderColor = '#e74c3c';
+        document.getElementById("notif-select-nombre").style.borderColor = "#e74c3c";
         return;
       }
-      localStorage.setItem('notif-usuario', nombre);
-      localStorage.setItem('notif-enabled', 'true');
-      localStorage.removeItem('notif-dismissed');
 
-      // Mostrar preview de asignaciones
+      localStorage.setItem("notif-usuario", nombre);
+      localStorage.setItem("notif-enabled", "true");
+      localStorage.removeItem("notif-dismissed");
+
       const asig = verificarAsignacionesSemana(nombre);
-      const preview = document.getElementById('notif-preview-area');
+      const preview = document.getElementById("notif-preview-area");
+
       if (asig.length > 0) {
-        const primerNombre = nombre.split(' ').map(w => w[0] + w.slice(1).toLowerCase()).join(' ');
         preview.innerHTML = `
           <div class="notif-preview-title">Asignaciones esta semana:</div>
-          ${asig.map(a => `
+          ${asig
+            .map(
+              (a) => `
             <div class="notif-preview-item" style="border-color:${a.color}20;background:${a.color}10">
               <span>${a.icono}</span>
               <div>
                 <div style="font-weight:600;font-size:13px">${a.rol}</div>
                 <div style="color:var(--text-muted);font-size:11px">${a.detalle}</div>
               </div>
-            </div>`).join('')}`;
+            </div>`
+            )
+            .join("")}`;
 
-        // Disparar notificación del navegador
-        if (Notification.permission === 'granted') {
+        if (Notification.permission === "granted") {
           mostrarBrowserNotification(asig, nombre);
         }
       } else {
@@ -412,9 +544,9 @@
   }
 
   function cerrarModal() {
-    const modal = document.getElementById('notif-modal');
+    const modal = document.getElementById("notif-modal");
     if (modal) {
-      modal.classList.remove('visible');
+      modal.classList.remove("visible");
       setTimeout(() => modal.remove(), 300);
     }
   }
@@ -422,30 +554,32 @@
   // ── BOTÓN FLOTANTE ─────────────────────────────────────────────────────────
 
   function inyectarBotonFlotante() {
-    if (document.getElementById('notif-fab')) return;
+    if (document.getElementById("notif-fab")) return;
 
-    const fab = document.createElement('button');
-    fab.id = 'notif-fab';
-    fab.setAttribute('aria-label', 'Mis notificaciones');
+    const fab = document.createElement("button");
+    fab.id = "notif-fab";
+    fab.setAttribute("aria-label", "Mis notificaciones");
     fab.innerHTML = `
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
         <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
       </svg>`;
+
     fab.onclick = () => {
-      if (!document.getElementById('notif-modal')) abrirModalConfig();
+      if (!document.getElementById("notif-modal")) abrirModalConfig();
     };
+
     document.body.appendChild(fab);
   }
 
   // ── ESTILOS ────────────────────────────────────────────────────────────────
 
   function inyectarEstilos() {
-    if (document.getElementById('notif-styles')) return;
-    const style = document.createElement('style');
-    style.id = 'notif-styles';
+    if (document.getElementById("notif-styles")) return;
+
+    const style = document.createElement("style");
+    style.id = "notif-styles";
     style.textContent = `
-      /* ── BANNER ── */
       #notif-banner-container { max-width:480px; margin:0 auto; padding:12px 16px 0; position:relative; z-index:5; }
       .notif-banner {
         background:var(--bg-card,#fff);
@@ -479,7 +613,6 @@
       .notif-item-rol { font-size:13px; font-weight:600; line-height:1.3; }
       .notif-item-detalle { font-size:11px; color:var(--text-muted,#8a8075); margin-top:2px; }
 
-      /* ── FAB ── */
       #notif-fab {
         position:fixed; bottom:max(28px,env(safe-area-inset-bottom,28px)); right:18px;
         width:52px; height:52px; border-radius:16px;
@@ -499,7 +632,6 @@
         border:2px solid var(--bg,#f7f5f0);
       }
 
-      /* ── MODAL ── */
       #notif-modal { position:fixed; inset:0; z-index:300; display:flex; align-items:flex-end; }
       #notif-modal.visible .notif-modal-sheet { transform:translateY(0); }
       #notif-modal.visible .notif-modal-overlay { opacity:1; }
@@ -576,6 +708,7 @@
         font-size:13px; padding:12px 0;
       }
     `;
+
     document.head.appendChild(style);
   }
 
@@ -586,17 +719,16 @@
     inyectarBotonFlotante();
     registrarServiceWorker();
 
-    const usuario = localStorage.getItem('notif-usuario');
-    const habilitadas = localStorage.getItem('notif-enabled') !== 'false';
-    const dismissedHoy = localStorage.getItem('notif-dismissed') === new Date().toDateString();
+    const usuario = localStorage.getItem("notif-usuario");
+    const habilitadas = localStorage.getItem("notif-enabled") !== "false";
+    const dismissedHoy = localStorage.getItem("notif-dismissed") === new Date().toDateString();
 
     if (!usuario) {
-      // Primera visita: mostrar badge en FAB para invitar a configurar
-      const fab = document.getElementById('notif-fab');
+      const fab = document.getElementById("notif-fab");
       if (fab) {
-        const badge = document.createElement('div');
-        badge.className = 'notif-badge';
-        badge.textContent = '!';
+        const badge = document.createElement("div");
+        badge.className = "notif-badge";
+        badge.textContent = "!";
         fab.appendChild(badge);
       }
       return;
@@ -604,39 +736,34 @@
 
     if (!habilitadas || dismissedHoy) return;
 
-    // Verificar asignaciones y mostrar banner + notificación
     const asignaciones = verificarAsignacionesSemana(usuario);
+
     if (asignaciones.length > 0) {
       mostrarBanner(asignaciones, usuario);
 
-      // Badge en FAB
-      const fab = document.getElementById('notif-fab');
+      const fab = document.getElementById("notif-fab");
       if (fab) {
-        const badge = document.createElement('div');
-        badge.className = 'notif-badge';
+        const badge = document.createElement("div");
+        badge.className = "notif-badge";
         badge.textContent = asignaciones.length;
         fab.appendChild(badge);
       }
 
-      // Notificación del navegador (solo una vez al día)
-      const lastNotif = localStorage.getItem('notif-last-browser');
+      const lastNotif = localStorage.getItem("notif-last-browser");
       if (lastNotif !== new Date().toDateString()) {
-        if (Notification.permission === 'granted') {
+        if ("Notification" in window && Notification.permission === "granted") {
           mostrarBrowserNotification(asignaciones, usuario);
-          localStorage.setItem('notif-last-browser', new Date().toDateString());
+          localStorage.setItem("notif-last-browser", new Date().toDateString());
         }
       }
     }
   }
 
-  // Esperar a que los datos estén disponibles
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', iniciar);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciar);
   } else {
     iniciar();
   }
 
-  // Exponer globalmente para poder llamar desde otros scripts
   window.NOTIF = { abrir: abrirModalConfig };
-
 })();
