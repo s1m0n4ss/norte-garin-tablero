@@ -507,20 +507,22 @@
   // ── BOTÓN FLOTANTE ─────────────────────────────────────────────────────────
 
   function inyectarBotonFlotante() {
-    if (document.getElementById('notif-fab')) return;
-
-    const fab = document.createElement('button');
-    fab.id = 'notif-fab';
-    fab.setAttribute('aria-label', 'Mis notificaciones');
-    fab.innerHTML = `
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-      </svg>`;
+    let fab = document.getElementById('notif-fab');
+    if (!fab) {
+      // Fallback: crear FAB flotante fijo para páginas sin el botón en el hero
+      fab = document.createElement('button');
+      fab.id = 'notif-fab';
+      fab.setAttribute('aria-label', 'Mis notificaciones');
+      fab.innerHTML = `
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>`;
+      document.body.appendChild(fab);
+    }
     fab.onclick = () => {
       if (!document.getElementById('notif-modal')) abrirModalConfig();
     };
-    document.body.appendChild(fab);
   }
 
   // ── ESTILOS ────────────────────────────────────────────────────────────────
@@ -565,7 +567,7 @@
       .notif-item-rol { font-size:13px; font-weight:600; line-height:1.3; }
       .notif-item-detalle { font-size:11px; color:var(--text-muted,#8a8075); margin-top:2px; }
 
-      /* ── FAB ── */
+      /* ── FAB (fallback fijo para páginas sin hero button) ── */
       #notif-fab {
         position:fixed; bottom:max(28px,env(safe-area-inset-bottom,28px)); right:18px;
         width:52px; height:52px; border-radius:16px;
@@ -575,6 +577,15 @@
         box-shadow:0 6px 20px color-mix(in srgb,var(--accent,#2d6a4f) 35%,transparent);
         transition:transform 0.15s,box-shadow 0.15s;
       }
+      /* Cuando el botón está en el hero-top-bar, anula el posicionamiento fijo */
+      .hero-top-bar #notif-fab, .hero-top-right #notif-fab {
+        position:relative; bottom:auto; right:auto;
+        width:42px; height:42px; border-radius:13px;
+        background:rgba(255,255,255,0.18);
+        border:1px solid rgba(255,255,255,0.25);
+        backdrop-filter:blur(10px);
+        box-shadow:none; z-index:auto;
+      }
       #notif-fab:active { transform:scale(0.92); }
       #notif-fab .notif-badge {
         position:absolute; top:-5px; right:-5px;
@@ -582,7 +593,7 @@
         font-size:10px; font-weight:700; font-family:"Syne",sans-serif;
         width:18px; height:18px; border-radius:50%;
         display:flex; align-items:center; justify-content:center;
-        border:2px solid var(--bg,#f7f5f0);
+        border:2px solid rgba(0,0,0,0.25);
       }
 
       /* ── MODAL ── */
