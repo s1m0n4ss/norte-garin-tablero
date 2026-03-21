@@ -113,6 +113,31 @@ window.CONFERENCIAS_DATA = [
         chairman: "Diego Sarraute"
       }
     ],
-    salen: []
+    salen: [
+      {
+        day: "Sábado",
+        date: "04",
+        name: "Mario Segovia",
+        extra: "Bosquejo 7"
+      },
+      {
+        day: "Sábado",
+        date: "11",
+        name: "Adolfo Gutiérrez",
+        extra: "Bosquejo 169"
+      },
+      {
+        day: "Sábado",
+        date: "18",
+        name: "Horacio Salgado",
+        extra: "Bosquejo 103"
+      },
+      {
+        day: "Sábado",
+        date: "25",
+        name: "Elvio Casco",
+        extra: "Bosquejo 113"
+      }
+    ]
   }
 ];
