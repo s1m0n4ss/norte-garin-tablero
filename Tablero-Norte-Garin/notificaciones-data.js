@@ -153,20 +153,21 @@ window.NOTIF_DATA = {
   // nombre: normalizado (sin tildes, mayúsculas)
   lectores: [
     // Febrero 2026
-    { fecha: "2026-02-01", tipo: "atalaya",  nombre: "MARIO SEGOVIA" },
-    { fecha: "2026-02-05", tipo: "biblico",  nombre: "LUCAS SEGOVIA" },
-    { fecha: "2026-02-08", tipo: "atalaya",  nombre: "HORACIO SALGADO" },
-    { fecha: "2026-02-19", tipo: "biblico",  nombre: "ADOLFO GUTIERREZ" },
-    { fecha: "2026-02-22", tipo: "atalaya",  nombre: "DANIEL ALBIS" },
+    { fecha: "2026-02-01", tipo: "atalaya", nombre: "MARIO SEGOVIA" },
+    { fecha: "2026-02-05", tipo: "biblico", nombre: "LUCAS SEGOVIA" },
+    { fecha: "2026-02-08", tipo: "atalaya", nombre: "HORACIO SALGADO" },
+    { fecha: "2026-02-19", tipo: "biblico", nombre: "ADOLFO GUTIERREZ" },
+    { fecha: "2026-02-22", tipo: "atalaya", nombre: "DANIEL ALBIS" },
+
     // Marzo 2026
-    { fecha: "2026-03-05", tipo: "biblico",  nombre: "DIEGO SARRAUTE" },
-    { fecha: "2026-03-08", tipo: "atalaya",  nombre: "ADOLFO GUTIERREZ" },
-    { fecha: "2026-03-12", tipo: "biblico",  nombre: "HORACIO SALGADO" },
-    { fecha: "2026-03-15", tipo: "atalaya",  nombre: "LEON SEGOVIA" },
-    { fecha: "2026-03-19", tipo: "biblico",  nombre: "DANIEL ALBIS" },
-    { fecha: "2026-03-22", tipo: "atalaya",  nombre: "LUCAS SEGOVIA" },
-    { fecha: "2026-03-26", tipo: "biblico",  nombre: "DARIO CORTEZ" },
-    { fecha: "2026-03-29", tipo: "atalaya",  nombre: "DARIO CORTEZ" },
+    { fecha: "2026-03-05", tipo: "biblico", nombre: "DIEGO SARRAUTE" },
+    { fecha: "2026-03-08", tipo: "atalaya", nombre: "ADOLFO GUTIERREZ" },
+    { fecha: "2026-03-12", tipo: "biblico", nombre: "HORACIO SALGADO" },
+    { fecha: "2026-03-15", tipo: "atalaya", nombre: "LEON SEGOVIA" },
+    { fecha: "2026-03-19", tipo: "biblico", nombre: "DANIEL ALBIS" },
+    { fecha: "2026-03-22", tipo: "atalaya", nombre: "LUCAS SEGOVIA" },
+    { fecha: "2026-03-26", tipo: "biblico", nombre: "DARIO CORTEZ" },
+    { fecha: "2026-03-29", tipo: "atalaya", nombre: "DARIO CORTEZ" },
   ],
 
   // ── DISCURSOS DEL DOMINGO ─────────────────────────────────────────────────
@@ -174,19 +175,19 @@ window.NOTIF_DATA = {
   // chairman: quien preside la reunión (normalizado)
   // speaker: orador (si es de nuestra congregación, esLocal=true)
   conferencias: [
-    { fecha: "2026-01-04", chairman: "LUCAS SEGOVIA",    speaker: "ENZO MODICA",       esLocal: false },
-    { fecha: "2026-01-11", chairman: "CAETANO FERRARI",  speaker: "AGUSTIN GALINDEZ",  esLocal: false },
-    { fecha: "2026-01-18", chairman: "ELVIO CASCO",      speaker: null,                esLocal: false },
-    { fecha: "2026-01-25", chairman: "LEON SEGOVIA",     speaker: "ELVIO CASCO",       esLocal: true  },
-    { fecha: "2026-02-01", chairman: "HORACIO SALGADO",  speaker: "DANIEL ALBIS",      esLocal: true  },
-    { fecha: "2026-02-08", chairman: "ADOLFO GUTIERREZ", speaker: "LUCAS SEGOVIA",     esLocal: true  },
-    { fecha: "2026-02-15", chairman: "HORACIO SALGADO",  speaker: "MAURICIO TIERNO",   esLocal: false },
-    { fecha: "2026-02-22", chairman: "MARIO SEGOVIA",    speaker: "SANTIAGO VEGA",     esLocal: false },
+    { fecha: "2026-01-04", chairman: "LUCAS SEGOVIA", speaker: "ENZO MODICA", esLocal: false },
+    { fecha: "2026-01-11", chairman: "CAETANO FERRARI", speaker: "AGUSTIN GALINDEZ", esLocal: false },
+    { fecha: "2026-01-18", chairman: "ELVIO CASCO", speaker: null, esLocal: false },
+    { fecha: "2026-01-25", chairman: "LEON SEGOVIA", speaker: "ELVIO CASCO", esLocal: true },
+    { fecha: "2026-02-01", chairman: "HORACIO SALGADO", speaker: "DANIEL ALBIS", esLocal: true },
+    { fecha: "2026-02-08", chairman: "ADOLFO GUTIERREZ", speaker: "LUCAS SEGOVIA", esLocal: true },
+    { fecha: "2026-02-15", chairman: "HORACIO SALGADO", speaker: "MAURICIO TIERNO", esLocal: false },
+    { fecha: "2026-02-22", chairman: "MARIO SEGOVIA", speaker: "SANTIAGO VEGA", esLocal: false },
     // Mar 1: Asamblea de Circuito
-    { fecha: "2026-03-08", chairman: "DARIO CORTEZ",     speaker: "HERNAN CARRERAS",   esLocal: false },
-    { fecha: "2026-03-15", chairman: "CAETANO FERRARI",  speaker: "ADRIAN PERILLO",    esLocal: false },
-    { fecha: "2026-03-22", chairman: "ADOLFO GUTIERREZ", speaker: "MARIO SEGOVIA",     esLocal: true  },
-    { fecha: "2026-03-29", chairman: "LEON SEGOVIA",     speaker: "JULIAN GIACOBBE",   esLocal: false },
+    { fecha: "2026-03-08", chairman: "DARIO CORTEZ", speaker: "HERNAN CARRERAS", esLocal: false },
+    { fecha: "2026-03-15", chairman: "CAETANO FERRARI", speaker: "ADRIAN PERILLO", esLocal: false },
+    { fecha: "2026-03-22", chairman: "ADOLFO GUTIERREZ", speaker: "MARIO SEGOVIA", esLocal: true },
+    { fecha: "2026-03-29", chairman: "LEON SEGOVIA", speaker: "JULIAN GIACOBBE", esLocal: false },
   ],
 
   // ── LIMPIEZA ──────────────────────────────────────────────────────────────
@@ -194,12 +195,13 @@ window.NOTIF_DATA = {
   // Se usa: INICIO_REFERENCIA = 2 dic 2025, alternando "Grupos 1 y 2" / "Grupos 3 y 4".
   limpieza: {
     inicioReferencia: new Date(2025, 11, 2), // 2 dic 2025
-    secuencia: ["Grupos 1 y 2","Grupos 3 y 4","Grupos 1 y 2","Grupos 3 y 4"]
+    secuencia: ["Grupos 1 y 2", "Grupos 3 y 4", "Grupos 1 y 2", "Grupos 3 y 4"]
   },
 
   // ── LISTA DE HERMANOS ─────────────────────────────────────────────────────
   // Lista para el selector de nombre de usuario.
-  // Formato: como aparece en los datos (para poder hacer match).
+  // Incluye variantes ortográficas presentes en los distintos data.js
+  // para evitar que falten opciones en el modal.
   hermanos: [
     "ADOLFO GUTIERREZ",
     "ALICIA SANCHEZ",
@@ -211,21 +213,25 @@ window.NOTIF_DATA = {
     "CAETANO FERRARI",
     "CARMEN CASAS",
     "CECILIA LEAL",
+    "CECILIA LELA",
     "CINTIA CANSINO",
     "CRISTIAN SEGOVIA",
+    "CRISTIN SEGOVIA",
     "DANIEL ALBIS",
+    "DANIEL ALBIZ",
     "DANIEL COLLADO",
     "DANIEL QUARANTA",
     "DANTER HUAMACONDOR",
     "DARIO CORTEZ",
     "DIEGO SARRAUTE",
     "DORIS TALLARICO",
+    "ELIAS CORIA",
     "ELIDA BENITEZ",
     "ELVIO CASCO",
     "FANNY VILLANTOY",
     "FEDERICO PALLADINO",
     "FRANCISCO ARAOZ",
-    "FRANCO GALEANO",
+    "GIULIANA SEGOVIA",
     "GUSTAVO DUCOLI",
     "GUILLERMINA LEIVA",
     "GUILLERMO MINO",
@@ -236,30 +242,37 @@ window.NOTIF_DATA = {
     "LEON CANSINO",
     "LEON SEGOVIA",
     "LIDIA CANSINO",
-    "LUCAS GALEANO",
     "LUCAS SEGOVIA",
     "LUCINDA DURAN",
     "MABEL MINO",
+    "MABEL ZUNIGA",
+    "MAURICIO TIERNO",
     "MANUEL FERIL",
     "MARIO SEGOVIA",
     "MARTINA HUAMACONDOR",
+    "MELANIE PEREIRA",
+    "MELANY PEREIRA",
     "MELANY PEREYRA",
     "MICAELA SARRAUTE",
     "MIRTA SEGOVIA",
     "MONICA CASCO",
     "MORELIA HARLOS",
     "NELIDA BECERRA",
+    "NELLY BECERRA",
     "NORMA BARRERA",
     "PABLO ZUNIGA",
+    "PAULINA LAURENTE",
     "PAULINA LLORENTE",
     "ROXANA PALAVECINO",
     "SABRINA SEGOVIA",
     "SAMUEL DURAN",
+    "SEBASTIAN MESA",
     "SEBASTIAN MEZA",
     "SOFIA ZUNIGA",
+    "SUSANA ARAOZ",
     "TAMARA NATALE",
     "TEODORA DUCOLI",
     "TOMAS DURAN",
-    "YANINA GALEANO",
+    
   ]
 };
