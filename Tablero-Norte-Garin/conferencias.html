@@ -145,7 +145,6 @@
 
       .conf-card-inner { display: flex; gap: 0; }
 
-      /* Fecha lateral */
       .conf-date {
         width: 58px; flex-shrink: 0;
         display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -164,7 +163,6 @@
       }
       .conf-card.is-next .conf-date .day-dow { color: rgba(255,255,255,0.75); opacity: 1; }
 
-      /* Contenido */
       .conf-body { flex: 1; padding: 14px 16px; }
       .conf-next-badge {
         display: inline-block; font-family: "Syne", sans-serif;
@@ -186,7 +184,6 @@
       .conf-meta-value { color: var(--text-muted); font-weight: 500; }
       .conf-time { font-family: "Syne", sans-serif; font-size: 11px; font-weight: 600; color: var(--accent-warm); margin-top: 6px; }
 
-      /* ── SPECIAL CARD (Asamblea) ── */
       .conf-card.special .conf-date { background: color-mix(in srgb, var(--accent-warm) 15%, transparent); }
       .conf-card.special .conf-date .day-num { color: var(--accent-warm); }
       .conf-card.special .conf-date .day-dow { color: var(--accent-warm); }
@@ -197,7 +194,6 @@
       .conf-card.special.is-next { border-color: color-mix(in srgb, var(--accent-warm) 40%, transparent); box-shadow: 0 4px 24px color-mix(in srgb, var(--accent-warm) 14%, transparent); }
       .conf-card.special.is-next .conf-next-badge { background: var(--accent-warm); }
 
-      /* ── SALEN SECTION ── */
       .salen-wrap {
         margin-top: 8px;
         background: var(--bg-card2); border: 1px solid var(--border);
@@ -293,59 +289,70 @@
 
     <script src="conferencias-data.js"></script>
     <script>
-      // ── THEME ──
       const html = document.documentElement;
       const iconMoon = document.getElementById("theme-icon-moon");
       const iconSun  = document.getElementById("theme-icon-sun");
+
       function applyThemeIcons() {
         const dark = html.classList.contains("dark");
         iconMoon.style.display = dark ? "none"  : "block";
         iconSun.style.display  = dark ? "block" : "none";
       }
       applyThemeIcons();
+
       document.getElementById("btnTheme").onclick = () => {
         html.classList.toggle("dark");
         localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
         applyThemeIcons();
       };
 
-      // ── SIDEBAR ──
       const sidebar = document.getElementById("sidebar");
       const overlay = document.getElementById("overlay");
-      document.getElementById("btnMenu").onclick = () => { sidebar.classList.add("open"); overlay.classList.add("visible"); };
-      overlay.onclick = () => { sidebar.classList.remove("open"); overlay.classList.remove("visible"); };
 
-      // ── HELPERS ──
+      document.getElementById("btnMenu").onclick = () => {
+        sidebar.classList.add("open");
+        overlay.classList.add("visible");
+      };
+
+      overlay.onclick = () => {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("visible");
+      };
+
       function esc(s) {
         return String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
       }
+
       function parseDate(y, mIdx, dStr) {
         const dt = new Date(y, mIdx, parseInt(dStr, 10));
-        dt.setHours(0,0,0,0); return dt;
+        dt.setHours(0,0,0,0);
+        return dt;
       }
 
-      // ── RENDER ──
       function render() {
         const data = window.CONFERENCIAS_DATA || [];
         const container = document.getElementById("mainContainer");
+
         if (!Array.isArray(data) || !data.length) {
           container.innerHTML = `<p style="color:var(--text-muted);text-align:center;padding:48px 0">No se pudieron cargar los datos.</p>`;
           return;
         }
 
-        const now = new Date(); now.setHours(0,0,0,0);
+        const now = new Date();
+        now.setHours(0,0,0,0);
+
         let foundNext = false;
-        let html = "";
+        let out = "";
 
         data.forEach(m => {
-          html += `<div class="month-divider">
+          out += `<div class="month-divider">
             <div class="month-divider-line"></div>
             <div class="month-divider-label">${esc(m.month ?? "")}</div>
             <div class="month-divider-line"></div>
           </div>`;
 
           (m.vienen || []).forEach(v => {
-            const date   = parseDate(m.year, m.monthIdx, v.date);
+            const date = parseDate(m.year, m.monthIdx, v.date);
             const isPast = date < now;
             const isNext = !isPast && !foundNext ? (foundNext = true) : false;
             const isSpecial = v.special || v.type === "ASAMBLEA";
@@ -369,15 +376,15 @@
                   ${nextBadge}
                   <div class="conf-title">${esc(v.title ?? "")}</div>
                   <div class="conf-meta">
-                    ${v.speaker      ? `<div class="conf-meta-row"><span class="conf-meta-label">Orador</span><span class="conf-meta-value">${esc(v.speaker)}</span></div>` : ""}
+                    ${v.speaker ? `<div class="conf-meta-row"><span class="conf-meta-label">Orador</span><span class="conf-meta-value">${esc(v.speaker)}</span></div>` : ""}
                     ${v.congregation ? `<div class="conf-meta-row"><span class="conf-meta-label">Congreg.</span><span class="conf-meta-value">${esc(v.congregation)}</span></div>` : ""}
-                    ${v.chairman     ? `<div class="conf-meta-row"><span class="conf-meta-label">Preside</span><span class="conf-meta-value">${esc(v.chairman)}</span></div>` : ""}
+                    ${v.chairman ? `<div class="conf-meta-row"><span class="conf-meta-label">Preside</span><span class="conf-meta-value">${esc(v.chairman)}</span></div>` : ""}
                   </div>
                   ${v.time ? `<div class="conf-time">${esc(v.day ?? "")}${v.day && v.time ? " · " : ""}${esc(v.time)}</div>` : ""}
                 </div>`;
             }
 
-            html += `<div class="conf-card ${isSpecial ? "special" : ""} ${isNext ? "is-next" : ""} ${isPast ? "is-past" : ""}">
+            out += `<div class="conf-card ${isSpecial ? "special" : ""} ${isNext ? "is-next" : ""} ${isPast ? "is-past" : ""}">
               <div class="conf-card-inner">
                 <div class="conf-date">
                   <span class="day-num">${dateNum}</span>
@@ -388,9 +395,8 @@
             </div>`;
           });
 
-          // Salen
           if ((m.salen || []).length) {
-            html += `<div class="salen-wrap" style="margin-bottom:10px">
+            out += `<div class="salen-wrap" style="margin-bottom:10px">
               <div class="salen-header">Discursantes que salen</div>
               ${m.salen.map(s => `
                 <div class="salen-item">
@@ -402,9 +408,8 @@
           }
         });
 
-        container.innerHTML = html;
+        container.innerHTML = out;
 
-        // Scroll al próximo
         setTimeout(() => {
           const next = container.querySelector(".is-next");
           if (next) next.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -413,7 +418,7 @@
 
       document.addEventListener("DOMContentLoaded", render);
     </script>
-      <script src="grupos-data.js"></script>
+    <script src="grupos-data.js"></script>
     <script src="notificaciones-data.js"></script>
     <script src="notificaciones.js"></script>
   </body>
