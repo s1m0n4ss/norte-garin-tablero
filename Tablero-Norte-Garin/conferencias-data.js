@@ -176,4 +176,37 @@ window.CONFERENCIAS_DATA = [
       },
     ],
   },
+
+  {
+    month: "Abril 2026",
+    year: 2026,
+    monthIdx: 3,
+    vienen: [],
+    salen: [
+      {
+        day: "Sábado",
+        date: "04",
+        name: "Mario Segovia",
+        extra: "Bosquejo 7",
+      },
+      {
+        day: "Sábado",
+        date: "11",
+        name: "Adolfo Gutiérrez",
+        extra: "Bosquejo 169",
+      },
+      {
+        day: "Sábado",
+        date: "18",
+        name: "Horacio Salgado",
+        extra: "Bosquejo 103",
+      },
+      {
+        day: "Sábado",
+        date: "25",
+        name: "Elvio Casco",
+        extra: "Bosquejo 113",
+      },
+    ],
+  },
 ];
