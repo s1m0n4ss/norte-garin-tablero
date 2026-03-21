@@ -51,7 +51,6 @@
       }
       .syne { font-family: "Syne", sans-serif; }
 
-      /* ── SIDEBAR ── */
       #sidebar {
         position: fixed; top: 0; left: 0; height: 100%; width: 300px;
         background: var(--bg-card); border-right: 1px solid var(--border);
@@ -79,7 +78,6 @@
       .nav-item .icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--bg-card2); }
       .nav-item.active .icon { background: color-mix(in srgb, var(--accent) 15%, transparent); }
 
-      /* ── OVERLAY ── */
       #overlay {
         position: fixed; inset: 0; background: rgba(0,0,0,0.45);
         backdrop-filter: blur(4px); z-index: 199;
@@ -87,7 +85,6 @@
       }
       #overlay.visible { opacity: 1; pointer-events: all; }
 
-      /* ── HERO ── */
       .hero-wrap { position: relative; width: 100%; height: 220px; overflow: hidden; }
       .hero-img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
       .hero-wrap:hover .hero-img { transform: scale(1.04); }
@@ -109,10 +106,8 @@
       }
       .icon-btn:active { transform: scale(0.92); }
 
-      /* ── MAIN ── */
       .main-wrap { max-width: 480px; margin: 0 auto; padding: 20px 16px 48px; position: relative; z-index: 1; }
 
-      /* ── WEEK CARD ── */
       .week-card {
         background: var(--bg-card); border: 1px solid var(--border);
         border-radius: 22px; overflow: hidden;
@@ -125,7 +120,6 @@
         box-shadow: 0 4px 28px color-mix(in srgb, var(--accent) 13%, transparent);
       }
 
-      /* card header strip */
       .week-card-header {
         display: flex; align-items: center; justify-content: space-between;
         padding: 14px 18px; border-bottom: 1px solid var(--border);
@@ -141,7 +135,6 @@
         padding: 4px 10px; border-radius: 7px;
       }
 
-      /* two-column sections grid */
       .sections-grid {
         display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
         background: var(--border);
@@ -149,7 +142,6 @@
       .section-panel {
         background: var(--bg-card); padding: 14px 16px;
       }
-      .section-panel:first-child { border-radius: 0; }
 
       .section-heading {
         display: flex; align-items: center; gap: 7px; margin-bottom: 12px;
@@ -177,7 +169,6 @@
         border-radius: 10px; padding: 8px 10px;
       }
 
-      /* asamblea */
       .asamblea-card {
         background: color-mix(in srgb, var(--accent-warm) 8%, var(--bg-card));
         border: 1px solid color-mix(in srgb, var(--accent-warm) 22%, transparent);
@@ -197,7 +188,6 @@
   <body>
     <div id="overlay"></div>
 
-    <!-- SIDEBAR -->
     <aside id="sidebar">
       <div class="sidebar-header">
         <div class="sidebar-logo">
@@ -245,7 +235,6 @@
       </nav>
     </aside>
 
-    <!-- HERO -->
     <header>
       <div class="hero-wrap">
         <img src="img/audio-video.png" class="hero-img" alt="Multimedia" />
@@ -269,142 +258,147 @@
     <div id="notif-banner-container"></div>
     <main class="main-wrap" id="app-container"></main>
 
+    <script src="multimedia-data.js"></script>
+    <script src="grupos-data.js"></script>
+    <script src="notificaciones-data.js"></script>
+    <script src="notificaciones.js"></script>
+
     <script>
-      // ── THEME ──
       const html = document.documentElement;
       const iconMoon = document.getElementById("theme-icon-moon");
       const iconSun  = document.getElementById("theme-icon-sun");
+
       function applyThemeIcons() {
         const dark = html.classList.contains("dark");
         iconMoon.style.display = dark ? "none" : "block";
         iconSun.style.display  = dark ? "block" : "none";
       }
+
       applyThemeIcons();
+
       document.getElementById("btnTheme").onclick = () => {
         html.classList.toggle("dark");
         localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
         applyThemeIcons();
       };
 
-      // ── SIDEBAR ──
       const sidebar = document.getElementById("sidebar");
       const overlay = document.getElementById("overlay");
-      document.getElementById("btnMenu").onclick = () => { sidebar.classList.add("open"); overlay.classList.add("visible"); document.body.style.overflow = "hidden"; };
-      overlay.onclick = () => { sidebar.classList.remove("open"); overlay.classList.remove("visible"); document.body.style.overflow = ""; };
-      document.addEventListener("keydown", e => { if (e.key === "Escape") { sidebar.classList.remove("open"); overlay.classList.remove("visible"); document.body.style.overflow = ""; } });
 
-      // ── DATA ──
-     const PROGRAM_DATA = [
-  {
-    label: "02–08 Mar",
-    start: new Date(2026, 2, 2),
-    end: new Date(2026, 2, 8, 23, 59),
+      document.getElementById("btnMenu").onclick = () => {
+        sidebar.classList.add("open");
+        overlay.classList.add("visible");
+        document.body.style.overflow = "hidden";
+      };
 
-    audio_video: "Darío Cortez / Caetano Ferrari",
-    microfonistas: "Samuel Durán / Sebastián Meza",
-    plataforma: "Daniel Albiz",
+      overlay.onclick = () => {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("visible");
+        document.body.style.overflow = "";
+      };
 
-    entrada: "A confirmar",
-    auditorio: "A confirmar",
-  },
-  {
-    label: "09–15 Mar",
-    start: new Date(2026, 2, 9),
-    end: new Date(2026, 2, 15, 23, 59),
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape") {
+          sidebar.classList.remove("open");
+          overlay.classList.remove("visible");
+          document.body.style.overflow = "";
+        }
+      });
 
-    audio_video: "Mario Segovia / Horacio Salgado",
-    microfonistas: "Daniel Quaranta / Elías Coria",
-    plataforma: "Diego Sarraute",
-
-    entrada: "Pablo Zuñiga",
-    auditorio: "Adolfo Gutierrez",
-  },
-  {
-    label: "16–22 Mar",
-    start: new Date(2026, 2, 16),
-    end: new Date(2026, 2, 22, 23, 59),
-
-    audio_video: "Mario Segovia / Caetano Ferrari",
-    microfonistas: "Elvio Casco / Elias Coria",
-    plataforma: "Diego Sarraute",
-
-    entrada: "Horacio Salgado",
-    auditorio: "Francisco Araoz",
-  },
-  {
-    label: "23–30 Mar",
-    start: new Date(2026, 2, 23),
-    end: new Date(2026, 2, 30, 23, 59),
-
-    audio_video: "Dario Cortez / Horacio Salgado",
-    microfonistas: "Daniel Quaranta / Samuel Duran",
-    plataforma: "Caetano Ferrari",
-
-    entrada: "Cristin Segovia",
-    auditorio: "León Segovia",
-  }
-];
-
-      // SVG icons inline
       const SVG_AV = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
       const SVG_PEOPLE = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
 
       const ROLES_AV = [
-        { key: "audio_video",   label: "Audio y Video" },
+        { key: "audio_video", label: "Audio y Video" },
         { key: "microfonistas", label: "Microfonistas" },
-        { key: "plataforma",    label: "Plataforma" },
+        { key: "plataforma", label: "Plataforma" }
       ];
+
       const ROLES_ACOD = [
-        { key: "entrada",   label: "Entrada" },
-        { key: "auditorio", label: "Auditorio" },
+        { key: "entrada", label: "Entrada" },
+        { key: "auditorio", label: "Auditorio" }
       ];
+
+      function parseDateOnly(value) {
+        const date = new Date(value + "T00:00:00");
+        date.setHours(0, 0, 0, 0);
+        return date;
+      }
+
+      function formatNames(value) {
+        if (Array.isArray(value)) return value.join(" / ");
+        return value || "Sin asignar";
+      }
+
+      function getWeeks() {
+        if (!Array.isArray(window.MULTIMEDIA_DATA)) return [];
+
+        return window.MULTIMEDIA_DATA.map((week) => ({
+          ...week,
+          startDate: parseDateOnly(week.start),
+          endDate: parseDateOnly(week.end)
+        }));
+      }
 
       function render() {
         const container = document.getElementById("app-container");
         const now = new Date();
+        now.setHours(0, 0, 0, 0);
+
+        const weeks = getWeeks();
         let out = "";
 
-        PROGRAM_DATA.forEach((week, i) => {
-          const isCurrent = now >= week.start && now <= week.end;
+        weeks.forEach((week, i) => {
+          const isCurrent = now >= week.startDate && now <= week.endDate;
 
           if (week.isAsamblea) {
-            out += `<div class="asamblea-card" style="animation-delay:${i*0.06}s">
-              <div class="asamblea-title">Asamblea de Circuito</div>
-              <div class="asamblea-sub">Semana del ${week.label} — sin reunión en el Salón</div>
-            </div>`;
+            out += `
+              <div class="asamblea-card" style="animation-delay:${i * 0.06}s">
+                <div class="asamblea-title">Asamblea de Circuito</div>
+                <div class="asamblea-sub">Semana del ${week.label} — sin reunión en el Salón</div>
+              </div>
+            `;
             return;
           }
 
-          out += `<div class="week-card ${isCurrent ? "is-current" : ""}" style="animation-delay:${i*0.06}s">
-            <div class="week-card-header">
-              <div class="week-label">Semana del ${week.label}</div>
-              ${isCurrent ? `<div class="current-chip">Esta semana</div>` : ""}
-            </div>
-            <div class="sections-grid">
-              <div class="section-panel">
-                <div class="section-heading">
-                  <div class="section-heading-icon">${SVG_AV}</div>
-                  <div class="section-heading-label">Audio y Video</div>
-                </div>
-                ${ROLES_AV.map(r => `
-                  <div class="role-row">
-                    <div class="role-label">${r.label}</div>
-                    <div class="role-name">${week[r.key] || "Sin asignar"}</div>
-                  </div>`).join("")}
+          out += `
+            <div class="week-card ${isCurrent ? "is-current" : ""}" style="animation-delay:${i * 0.06}s">
+              <div class="week-card-header">
+                <div class="week-label">Semana del ${week.label}</div>
+                ${isCurrent ? `<div class="current-chip">Esta semana</div>` : ""}
               </div>
-              <div class="section-panel">
-                <div class="section-heading">
-                  <div class="section-heading-icon">${SVG_PEOPLE}</div>
-                  <div class="section-heading-label">Acomodadores</div>
+
+              <div class="sections-grid">
+                <div class="section-panel">
+                  <div class="section-heading">
+                    <div class="section-heading-icon">${SVG_AV}</div>
+                    <div class="section-heading-label">Audio y Video</div>
+                  </div>
+
+                  ${ROLES_AV.map((r) => `
+                    <div class="role-row">
+                      <div class="role-label">${r.label}</div>
+                      <div class="role-name">${formatNames(week[r.key])}</div>
+                    </div>
+                  `).join("")}
                 </div>
-                ${ROLES_ACOD.map(r => `
-                  <div class="role-row">
-                    <div class="role-label">${r.label}</div>
-                    <div class="role-name">${week[r.key] || "Sin asignar"}</div>
-                  </div>`).join("")}
+
+                <div class="section-panel">
+                  <div class="section-heading">
+                    <div class="section-heading-icon">${SVG_PEOPLE}</div>
+                    <div class="section-heading-label">Acomodadores</div>
+                  </div>
+
+                  ${ROLES_ACOD.map((r) => `
+                    <div class="role-row">
+                      <div class="role-label">${r.label}</div>
+                      <div class="role-name">${formatNames(week[r.key])}</div>
+                    </div>
+                  `).join("")}
+                </div>
               </div>
             </div>
-          </div>`;
+          `;
         });
 
         container.innerHTML = out;
@@ -417,8 +411,5 @@
 
       render();
     </script>
-      <script src="grupos-data.js"></script>
-    <script src="notificaciones-data.js"></script>
-    <script src="notificaciones.js"></script>
   </body>
 </html>
