@@ -531,7 +531,7 @@
     style.id = 'notif-styles';
     style.textContent = `
       /* ── BANNER ── */
-      #notif-banner-container { max-width:480px; margin:0 auto; position:relative; z-index:5; }
+      #notif-banner-container { max-width:480px; margin:0 auto; position:relative; z-index:15; padding-bottom:28px; }
       .notif-banner {
         background:var(--bg-card,#fff);
         border:1px solid color-mix(in srgb,var(--accent,#2d6a4f) 30%,transparent);
