@@ -716,10 +716,8 @@
   </head>
 
   <body>
-    <!-- OVERLAY -->
     <div id="overlay"></div>
 
-    <!-- SIDEBAR -->
     <aside id="sidebar">
       <div class="sidebar-header">
         <div class="sidebar-logo">
@@ -947,7 +945,6 @@
       </nav>
     </aside>
 
-    <!-- HERO -->
     <header>
       <div class="hero-wrap">
         <img src="img/image_4.png.jpg" class="hero-img" alt="Norte Garín" />
@@ -1016,7 +1013,6 @@
       </div>
     </header>
 
-    <!-- MAIN -->
     <main class="main-wrap">
       <div id="notif-banner-container"></div>
 
@@ -1285,8 +1281,10 @@
 
     <!-- DATA SCRIPTS -->
     <script src="salidas-data.js"></script>
-    <script src="conferencias-data.js"></script>
     <script src="eventos-data.js"></script>
+    <script src="conferencias-data.js"></script>
+    <script src="lectores-data.js"></script>
+    <script src="vida-ministerio-data.js"></script>
     <script src="grupos-data.js"></script>
     <script src="multimedia-data.js"></script>
     <script src="notificaciones-data.js"></script>
@@ -1432,7 +1430,7 @@
       }
 
       setInterval(() => goSlide(current + 1), 3500);
-      window.onload = updateDashboard;
+      document.addEventListener("DOMContentLoaded", updateDashboard);
     </script>
   </body>
 </html>
