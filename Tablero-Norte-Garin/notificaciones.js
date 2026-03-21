@@ -1,13 +1,15 @@
 // notificaciones.js
 // Sistema de notificaciones de asignaciones para el Tablero Digital Norte Garín.
-// Muestra avisos al hermano cuando abre el sitio durante la semana en que tiene
-// una asignación (presidente de VyM, partes, lector, presidente del domingo,
-// limpieza, multimedia y acomodadores).
+// Lee asignaciones desde:
+// - vida-ministerio-data.js
+// - lectores-data.js
+// - conferencias-data.js
+// - multimedia-data.js
+// - notificaciones-data.js -> limpieza, hermanos
+// - grupos-data.js
 
 (function () {
   "use strict";
-
-  // ── UTILIDADES ─────────────────────────────────────────────────────────────
 
   function normalizar(str) {
     if (!str) return "";
@@ -36,8 +38,6 @@
       .filter(Boolean);
   }
 
-  // Verifica si el nombre del usuario coincide con un nombre asignado.
-  // Soporta string simple, strings separados por "/" y arrays.
   function coincideNombre(usuario, asignado) {
     if (!usuario || !asignado) return false;
 
@@ -58,7 +58,7 @@
   function lunesDe(fecha) {
     const d = new Date(fecha);
     d.setHours(0, 0, 0, 0);
-    const dow = d.getDay(); // 0=Dom, 1=Lun
+    const dow = d.getDay();
     const diff = dow === 0 ? -6 : 1 - dow;
     d.setDate(d.getDate() + diff);
     return d;
@@ -78,6 +78,21 @@
       "-" +
       String(d.getDate()).padStart(2, "0")
     );
+  }
+
+  function parseDateOnly(value) {
+    if (!value) return null;
+    const d = new Date(value + "T00:00:00");
+    if (isNaN(d.getTime())) return null;
+    d.setHours(0, 0, 0, 0);
+    return d;
+  }
+
+  function parseMonthDay(year, monthIdx, dayStr) {
+    const d = new Date(year, monthIdx, parseInt(dayStr, 10));
+    if (isNaN(d.getTime())) return null;
+    d.setHours(0, 0, 0, 0);
+    return d;
   }
 
   function grupoLimpieza(lunes) {
@@ -100,7 +115,7 @@
     const u = normalizar(usuario);
 
     for (const g of window.GRUPOS_DATA) {
-      for (const integrante of g.integrantes) {
+      for (const integrante of g.integrantes || []) {
         const tokens = normalizar(integrante).split(/\s+/);
         const palabrasU = u.split(/\s+/).filter((w) => w.length > 2);
 
@@ -125,113 +140,193 @@
     return null;
   }
 
-  function parseDateOnly(value) {
-    if (!value) return null;
-    const d = new Date(value + "T00:00:00");
-    if (isNaN(d.getTime())) return null;
-    d.setHours(0, 0, 0, 0);
-    return d;
+  function getVidaMinisterioSemana(lunes) {
+    const html = window.VIDA_MINISTERIO_DATA || "";
+    if (!html) return null;
+
+    const tpl = document.createElement("template");
+    tpl.innerHTML = html;
+
+    const articles = Array.from(tpl.content.querySelectorAll("article.page"));
+    const targetKey = fmtFecha(lunes);
+
+    const week = articles.find((a) => a.dataset.key === targetKey);
+    if (!week) return null;
+
+    if (week.dataset.book === "ASAMBLEA" || week.dataset.book === "CONMEMORACIÓN") {
+      return {
+        key: week.dataset.key,
+        titulo: week.dataset.title || "",
+        presidente: "",
+        partes: []
+      };
+    }
+
+    const presidenteRaw = week.querySelector(".presidente-en-pagina");
+    let presidente = "";
+    if (presidenteRaw) {
+      const asig = presidenteRaw.querySelector(".asignado");
+      presidente = asig ? asig.textContent.trim() : presidenteRaw.textContent.replace("Presidente:", "").trim();
+    }
+
+    const partes = [];
+    week.querySelectorAll(".section .asignado").forEach((el) => {
+      const txt = el.textContent.trim();
+      if (txt) partes.push(txt);
+    });
+
+    const pieAsignado = week.querySelector(".pie .asignado");
+    if (pieAsignado && pieAsignado.textContent.trim()) {
+      partes.push(pieAsignado.textContent.trim());
+    }
+
+    return {
+      key: week.dataset.key,
+      titulo: week.dataset.title || "",
+      presidente,
+      partes
+    };
   }
 
-  // ── VERIFICACIÓN DE ASIGNACIONES ───────────────────────────────────────────
+  function getLectoresSemana(lunes, domingo) {
+    const months = Array.isArray(window.LECTORES_DATA) ? window.LECTORES_DATA : [];
+    const result = [];
+
+    months.forEach((month) => {
+      const year = month.year;
+      const monthIdx = month.monthIdx;
+
+      (month.atalaya || []).forEach((item) => {
+        if (item.special) return;
+        const fecha = parseMonthDay(year, monthIdx, item.date);
+        if (fecha && fecha >= lunes && fecha <= domingo) {
+          result.push({
+            fecha,
+            tipo: "atalaya",
+            nombre: item.name
+          });
+        }
+      });
+
+      (month.biblico || []).forEach((item) => {
+        if (item.special) return;
+        const fecha = parseMonthDay(year, monthIdx, item.date);
+        if (fecha && fecha >= lunes && fecha <= domingo) {
+          result.push({
+            fecha,
+            tipo: "biblico",
+            nombre: item.name
+          });
+        }
+      });
+    });
+
+    return result;
+  }
+
+  function getConferenciasSemana(fechaDomingo) {
+    const months = Array.isArray(window.CONFERENCIAS_DATA) ? window.CONFERENCIAS_DATA : [];
+    const result = [];
+
+    months.forEach((month) => {
+      (month.vienen || []).forEach((item) => {
+        if (item.special) return;
+        const fecha = parseMonthDay(month.year, month.monthIdx, item.date);
+        if (fecha && fmtFecha(fecha) === fechaDomingo) {
+          result.push({
+            fecha,
+            chairman: item.chairman,
+            speaker: item.speaker,
+            esLocal: normalizar(item.congregation).includes("NORTE, GARIN")
+          });
+        }
+      });
+    });
+
+    return result;
+  }
 
   function verificarAsignacionesSemana(usuario) {
-    if (!window.NOTIF_DATA) return [];
-
-    const data = window.NOTIF_DATA;
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
 
     const lunes = lunesDe(hoy);
     const domingo = domingoDe(lunes);
+    const fechaDomingo = fmtFecha(domingo);
 
     const asignaciones = [];
 
     // 1. Vida y Ministerio
-    for (const sem of data.vidaMinisterio || []) {
-      const keyDate = new Date(sem.key + "T00:00:00");
+    const semanaVyM = getVidaMinisterioSemana(lunes);
+    if (semanaVyM) {
+      if (coincideNombre(usuario, semanaVyM.presidente)) {
+        asignaciones.push({
+          tipo: "vym-presidente",
+          rol: "Presidente de Vida y Ministerio",
+          detalle: "Semana " + semanaVyM.titulo,
+          icono: "📖",
+          color: "#2d9e6b"
+        });
+      }
 
-      if (keyDate.getTime() === lunes.getTime()) {
-        if (coincideNombre(usuario, sem.presidente)) {
+      for (const parte of semanaVyM.partes || []) {
+        if (coincideNombre(usuario, parte)) {
           asignaciones.push({
-            tipo: "vym-presidente",
-            rol: "Presidente de Vida y Ministerio",
-            detalle: "Semana " + sem.titulo,
-            icono: "📖",
-            color: "#2d9e6b"
+            tipo: "vym-parte",
+            rol: "Parte en Vida y Ministerio",
+            detalle: "Semana " + semanaVyM.titulo,
+            icono: "✋",
+            color: "#c4890a"
           });
+          break;
         }
-
-        for (const parte of sem.partes || []) {
-          if (coincideNombre(usuario, parte)) {
-            asignaciones.push({
-              tipo: "vym-parte",
-              rol: "Parte en Vida y Ministerio",
-              detalle: "Semana " + sem.titulo,
-              icono: "✋",
-              color: "#c4890a"
-            });
-            break;
-          }
-        }
-
-        break;
       }
     }
 
     // 2. Lectores
-    for (const lec of data.lectores || []) {
-      const fechaLec = new Date(lec.fecha + "T00:00:00");
-
-      if (fechaLec >= lunes && fechaLec <= domingo) {
-        if (coincideNombre(usuario, lec.nombre)) {
-          const esAtalaya = lec.tipo === "atalaya";
-
-          asignaciones.push({
-            tipo: "lector",
-            rol: "Lector – " + (esAtalaya ? "La Atalaya (Domingo)" : "Est. Bíblico (Jueves)"),
-            detalle:
-              "El " +
-              (esAtalaya ? "domingo" : "jueves") +
-              " " +
-              fechaLec.toLocaleDateString("es-AR", { day: "numeric", month: "long" }),
-            icono: "📰",
-            color: "#2563eb"
-          });
-        }
+    const lectoresSemana = getLectoresSemana(lunes, domingo);
+    lectoresSemana.forEach((lec) => {
+      if (coincideNombre(usuario, lec.nombre)) {
+        const esAtalaya = lec.tipo === "atalaya";
+        asignaciones.push({
+          tipo: "lector",
+          rol: "Lector – " + (esAtalaya ? "La Atalaya (Domingo)" : "Est. Bíblico (Jueves)"),
+          detalle:
+            "El " +
+            (esAtalaya ? "domingo" : "jueves") +
+            " " +
+            lec.fecha.toLocaleDateString("es-AR", { day: "numeric", month: "long" }),
+          icono: "📰",
+          color: "#2563eb"
+        });
       }
-    }
+    });
 
-    // 3. Presidente del Discurso Dominical / Orador
-    const fechaDomingo = fmtFecha(domingo);
-
-    for (const conf of data.conferencias || []) {
-      if (conf.fecha === fechaDomingo) {
-        if (coincideNombre(usuario, conf.chairman)) {
-          asignaciones.push({
-            tipo: "presidente-domingo",
-            rol: "Presidente de la Reunión del Domingo",
-            detalle: "Domingo " + domingo.toLocaleDateString("es-AR", { day: "numeric", month: "long" }),
-            icono: "🎙️",
-            color: "#7c3aed"
-          });
-        }
-
-        if (conf.esLocal && coincideNombre(usuario, conf.speaker)) {
-          asignaciones.push({
-            tipo: "orador",
-            rol: "Discursante del Domingo",
-            detalle: "Domingo " + domingo.toLocaleDateString("es-AR", { day: "numeric", month: "long" }),
-            icono: "🗣️",
-            color: "#7c3aed"
-          });
-        }
-
-        break;
+    // 3. Discursos / Presidente del domingo
+    const conferenciasSemana = getConferenciasSemana(fechaDomingo);
+    conferenciasSemana.forEach((conf) => {
+      if (coincideNombre(usuario, conf.chairman)) {
+        asignaciones.push({
+          tipo: "presidente-domingo",
+          rol: "Presidente de la Reunión del Domingo",
+          detalle: "Domingo " + conf.fecha.toLocaleDateString("es-AR", { day: "numeric", month: "long" }),
+          icono: "🎙️",
+          color: "#7c3aed"
+        });
       }
-    }
 
-    // 4. Limpieza del Salón
+      if (conf.esLocal && coincideNombre(usuario, conf.speaker)) {
+        asignaciones.push({
+          tipo: "orador",
+          rol: "Discursante del Domingo",
+          detalle: "Domingo " + conf.fecha.toLocaleDateString("es-AR", { day: "numeric", month: "long" }),
+          icono: "🗣️",
+          color: "#7c3aed"
+        });
+      }
+    });
+
+    // 4. Limpieza
     const grupoHoy = grupoLimpieza(lunes);
     if (grupoHoy) {
       const grupoId = grupoDelUsuario(usuario);
@@ -251,51 +346,19 @@
       }
     }
 
-    // 5. Multimedia y acomodadores
+    // 5. Multimedia
     for (const sem of window.MULTIMEDIA_DATA || []) {
       const inicio = parseDateOnly(sem.start || sem.key);
-      const fin = parseDateOnly(sem.end);
-
-      if (!inicio || !fin) continue;
+      if (!inicio) continue;
       if (sem.isAsamblea) continue;
 
       if (inicio.getTime() === lunes.getTime()) {
         const rolesMultimedia = [
-          {
-            key: "audio_video",
-            tipo: "multimedia-audio-video",
-            rol: "Audio y Video",
-            icono: "🔊",
-            color: "#0f766e"
-          },
-          {
-            key: "microfonistas",
-            tipo: "multimedia-microfonistas",
-            rol: "Microfonistas",
-            icono: "🎤",
-            color: "#0ea5e9"
-          },
-          {
-            key: "plataforma",
-            tipo: "multimedia-plataforma",
-            rol: "Plataforma",
-            icono: "🖥️",
-            color: "#2563eb"
-          },
-          {
-            key: "entrada",
-            tipo: "acomodador-entrada",
-            rol: "Acomodador de Entrada",
-            icono: "🚪",
-            color: "#9333ea"
-          },
-          {
-            key: "auditorio",
-            tipo: "acomodador-auditorio",
-            rol: "Acomodador de Auditorio",
-            icono: "🪑",
-            color: "#7c3aed"
-          }
+          { key: "audio_video", tipo: "multimedia-audio-video", rol: "Audio y Video", icono: "🔊", color: "#0f766e" },
+          { key: "microfonistas", tipo: "multimedia-microfonistas", rol: "Microfonistas", icono: "🎤", color: "#0ea5e9" },
+          { key: "plataforma", tipo: "multimedia-plataforma", rol: "Plataforma", icono: "🖥️", color: "#2563eb" },
+          { key: "entrada", tipo: "acomodador-entrada", rol: "Acomodador de Entrada", icono: "🚪", color: "#9333ea" },
+          { key: "auditorio", tipo: "acomodador-auditorio", rol: "Acomodador de Auditorio", icono: "🪑", color: "#7c3aed" }
         ];
 
         for (const item of rolesMultimedia) {
@@ -316,8 +379,6 @@
 
     return asignaciones;
   }
-
-  // ── NOTIFICACIONES DEL NAVEGADOR ───────────────────────────────────────────
 
   async function pedirPermiso() {
     if (!("Notification" in window)) return false;
@@ -355,8 +416,6 @@
         });
   }
 
-  // ── REGISTRO DEL SERVICE WORKER ────────────────────────────────────────────
-
   function registrarServiceWorker() {
     if (!("serviceWorker" in navigator)) return;
 
@@ -374,9 +433,7 @@
       .catch(() => {});
   }
 
-  // ── BANNER EN PANTALLA ─────────────────────────────────────────────────────
-
-  function mostrarBanner(asignaciones, usuario) {
+  function mostrarBanner(asignaciones) {
     let contenedor = document.getElementById("notif-banner-container");
 
     if (!contenedor) {
@@ -432,8 +489,6 @@
       localStorage.setItem("notif-dismissed", new Date().toDateString());
     };
   }
-
-  // ── MODAL DE CONFIGURACIÓN ────────────────────────────────────────────────
 
   function abrirModalConfig() {
     const usuario = localStorage.getItem("notif-usuario") || "";
@@ -551,8 +606,6 @@
     }
   }
 
-  // ── BOTÓN FLOTANTE ─────────────────────────────────────────────────────────
-
   function inyectarBotonFlotante() {
     if (document.getElementById("notif-fab")) return;
 
@@ -571,8 +624,6 @@
 
     document.body.appendChild(fab);
   }
-
-  // ── ESTILOS ────────────────────────────────────────────────────────────────
 
   function inyectarEstilos() {
     if (document.getElementById("notif-styles")) return;
@@ -708,11 +759,8 @@
         font-size:13px; padding:12px 0;
       }
     `;
-
     document.head.appendChild(style);
   }
-
-  // ── INICIALIZACIÓN ─────────────────────────────────────────────────────────
 
   function iniciar() {
     inyectarEstilos();
@@ -739,7 +787,7 @@
     const asignaciones = verificarAsignacionesSemana(usuario);
 
     if (asignaciones.length > 0) {
-      mostrarBanner(asignaciones, usuario);
+      mostrarBanner(asignaciones);
 
       const fab = document.getElementById("notif-fab");
       if (fab) {
