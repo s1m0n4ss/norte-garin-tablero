@@ -153,11 +153,6 @@ window.NOTIF_DATA = {
   // nombre: normalizado (sin tildes, mayúsculas)
   lectores: [
     // Febrero 2026
-    { fecha: "2026-02-01", tipo: "atalaya", nombre: "MARIO SEGOVIA" },
-    { fecha: "2026-02-05", tipo: "biblico", nombre: "LUCAS SEGOVIA" },
-    { fecha: "2026-02-08", tipo: "atalaya", nombre: "HORACIO SALGADO" },
-    { fecha: "2026-02-19", tipo: "biblico", nombre: "ADOLFO GUTIERREZ" },
-    { fecha: "2026-02-22", tipo: "atalaya", nombre: "DANIEL ALBIS" },
 
     // Marzo 2026
     { fecha: "2026-03-05", tipo: "biblico", nombre: "DIEGO SARRAUTE" },
@@ -170,24 +165,32 @@ window.NOTIF_DATA = {
     { fecha: "2026-03-29", tipo: "atalaya", nombre: "DARIO CORTEZ" },
   ],
 
+// Abril 2026
+{ fecha: "2026-04-05", tipo: "atalaya",  nombre: "MARIO SEGOVIA" },
+{ fecha: "2026-04-09", tipo: "biblico",  nombre: "LUCAS SEGOVIA" },
+{ fecha: "2026-04-12", tipo: "atalaya",  nombre: "HORACIO SALGADO" },
+{ fecha: "2026-04-16", tipo: "biblico",  nombre: "ADOLFO GUTIERREZ" },
+{ fecha: "2026-04-19", tipo: "atalaya",  nombre: "ADOLFO GUTIERREZ" },
+{ fecha: "2026-04-23", tipo: "biblico",  nombre: "HORACIO SALGADO" },
+{ fecha: "2026-04-26", tipo: "atalaya",  nombre: "DANIEL ALBIS" },
+{ fecha: "2026-04-30", tipo: "biblico",  nombre: "DIEGO SARRAUTE" },
+
   // ── DISCURSOS DEL DOMINGO ─────────────────────────────────────────────────
   // fecha: "YYYY-MM-DD" (domingo)
   // chairman: quien preside la reunión (normalizado)
   // speaker: orador (si es de nuestra congregación, esLocal=true)
   conferencias: [
-    { fecha: "2026-01-04", chairman: "LUCAS SEGOVIA", speaker: "ENZO MODICA", esLocal: false },
-    { fecha: "2026-01-11", chairman: "CAETANO FERRARI", speaker: "AGUSTIN GALINDEZ", esLocal: false },
-    { fecha: "2026-01-18", chairman: "ELVIO CASCO", speaker: null, esLocal: false },
-    { fecha: "2026-01-25", chairman: "LEON SEGOVIA", speaker: "ELVIO CASCO", esLocal: true },
-    { fecha: "2026-02-01", chairman: "HORACIO SALGADO", speaker: "DANIEL ALBIS", esLocal: true },
-    { fecha: "2026-02-08", chairman: "ADOLFO GUTIERREZ", speaker: "LUCAS SEGOVIA", esLocal: true },
-    { fecha: "2026-02-15", chairman: "HORACIO SALGADO", speaker: "MAURICIO TIERNO", esLocal: false },
-    { fecha: "2026-02-22", chairman: "MARIO SEGOVIA", speaker: "SANTIAGO VEGA", esLocal: false },
+  
     // Mar 1: Asamblea de Circuito
     { fecha: "2026-03-08", chairman: "DARIO CORTEZ", speaker: "HERNAN CARRERAS", esLocal: false },
     { fecha: "2026-03-15", chairman: "CAETANO FERRARI", speaker: "ADRIAN PERILLO", esLocal: false },
     { fecha: "2026-03-22", chairman: "ADOLFO GUTIERREZ", speaker: "MARIO SEGOVIA", esLocal: true },
     { fecha: "2026-03-29", chairman: "LEON SEGOVIA", speaker: "JULIAN GIACOBBE", esLocal: false },
+// Abril 2026
+{ fecha: "2026-04-05", chairman: "DARIO CORTEZ",     speaker: "ENZO COMPOSTELLA",   esLocal: false },
+{ fecha: "2026-04-12", chairman: "DANIEL ALBIS",     speaker: "GONZALO ROS",        esLocal: false },
+{ fecha: "2026-04-19", chairman: "MARIO SEGOVIA",    speaker: "SEBASTIAN NICOLINI", esLocal: false },
+{ fecha: "2026-04-26", chairman: "DIEGO SARRAUTE",   speaker: "MARCOS AVILES",      esLocal: false },
   ],
 
   // ── LIMPIEZA ──────────────────────────────────────────────────────────────
