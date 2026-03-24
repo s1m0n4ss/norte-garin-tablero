@@ -104,12 +104,7 @@
       20: [{ h: "09:00", l: "Uruguay y Centenario", c: "Francisco Araoz", t: "21" }],
 
       21: [
-        { h: "09:30", l: "Predicación de Grupo" },
-        { h: "–", l: "Grupo 1 – Colón y Vicente Lopez", c: "Daniel Quaranta", t: "24" },
-        { h: "–", l: "Grupo 2 – Paso y San Martín", c: "Manuel Feril", t: "7" },
-        { h: "–", l: "Grupo 3 – Francia y Centenario", c: "Pablo Zuñiga", t: "14" },
-        { h: "–", l: "Grupo 4 – Francia y Alte Brown", c: "Caetano Ferrari", t: "22" },
-        { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" },
+        
       ],
 
       22: [{ type: "reunion", l: "Reunión por la mañana" }],
@@ -130,12 +125,12 @@
 
       27: [{ h: "09:00", l: "Colón y Beliera", c: "Francisco Araoz", t: "29" }],
 
-      28: [
-        { h: "09:30", l: "Predicación de Grupo" },
-        { h: "09:30", l: "Grupo 1 – Plaza Barrio Salas", c: "León Segovia", t: "52" },
-        { h: "–", l: "Grupo 2 – Plaza Barrio Salas", c: "Horacio Salgado", t: "52" },
-        { h: "–", l: "Grupo 3 – Plaza Barrio Salas", c: "Darío Cortez", t: "52" },
-        { h: "–", l: "Grupo 4 – Plaza Barrio Salas", c: "Lucas Segovia", t: "52" },
+      28: [{ h: "09:30", l: "Predicación de Grupo" },
+        { h: "–", l: "Grupo 1 – Colón y Vicente Lopez", c: "Daniel Quaranta", t: "24" },
+        { h: "–", l: "Grupo 2 – Paso y San Martín", c: "Manuel Feril", t: "7" },
+        { h: "–", l: "Grupo 3 – Francia y Centenario", c: "Pablo Zuñiga", t: "14" },
+        { h: "–", l: "Grupo 4 – Francia y Alte Brown", c: "Caetano Ferrari", t: "22" },
+        
         { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
