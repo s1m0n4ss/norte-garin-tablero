@@ -292,6 +292,53 @@
         text-transform: uppercase; letter-spacing: 0.1em;
         color: var(--text-muted); text-align: center;
       }
+
+      /* ── ZÓCALO / TICKER ── */
+      #zocalo {
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 300;
+        background: var(--accent);
+        color: #fff;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        box-shadow: 0 -2px 16px rgba(0,0,0,0.18);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      #zocalo-label {
+        flex-shrink: 0;
+        font-family: "Syne", sans-serif;
+        font-size: 10px; font-weight: 700;
+        letter-spacing: 0.12em; text-transform: uppercase;
+        padding: 0 14px 0 16px;
+        border-right: 1px solid rgba(255,255,255,0.3);
+        white-space: nowrap;
+        background: rgba(0,0,0,0.15);
+        height: 100%;
+        display: flex; align-items: center;
+      }
+      #zocalo-track {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+      }
+      #zocalo-text {
+        display: inline-block;
+        white-space: nowrap;
+        font-family: "DM Sans", sans-serif;
+        font-size: 13px; font-weight: 500;
+        animation: ticker-scroll 28s linear infinite;
+        padding-left: 100%;
+        line-height: 40px;
+      }
+      @keyframes ticker-scroll {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+      }
+      #zocalo-text:hover { animation-play-state: paused; }
     </style>
   </head>
 
@@ -382,10 +429,21 @@
       </div>
     </header>
 
-    <main class="main-wrap">
+    <main class="main-wrap" style="padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));">
       <div id="notif-banner-container"></div>
       <div id="grid" style="margin-top: 20px;"></div>
     </main>
+
+    <!-- ZÓCALO -->
+    <div id="zocalo">
+      <div id="zocalo-label">📢 A partir de Abril</div>
+      <div id="zocalo-track">
+        <span id="zocalo-text">
+          Nuevos horarios de salidas &nbsp;·&nbsp; Martes: 17:30 hs &nbsp;·&nbsp; Todos los días por la mañana: 9:30 hs &nbsp;·&nbsp; (excepto feriados) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          Nuevos horarios de salidas &nbsp;·&nbsp; Martes: 17:30 hs &nbsp;·&nbsp; Todos los días por la mañana: 9:30 hs &nbsp;·&nbsp; (excepto feriados) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+      </div>
+    </div>
 
     <script src="salidas-data.js"></script>
     <script>
@@ -482,13 +540,14 @@
         }
 
         const now = new Date();
+        const todayY = now.getFullYear();
         const todayM = now.getMonth() + 1;
         const todayD = now.getDate();
 
         const months = [...window.SALIDAS_CAL.CALENDARIO].sort((a, b) => a.y - b.y || a.m - b.m);
 
         // Título del hero con el mes más relevante
-        const currentMonth = months.find(M => M.m === todayM) || months[0];
+        const currentMonth = months.find(M => M.y === todayY && M.m === todayM) || months[0];
         if (currentMonth) {
           document.getElementById("hero-mes").textContent = `${MESES[currentMonth.m - 1]} ${currentMonth.y}`;
         }
@@ -497,11 +556,23 @@
         let lastYM = "";
 
         months.forEach(M => {
+          // Omitir meses completamente pasados
+          const isPastMonth = M.y < todayY || (M.y === todayY && M.m < todayM);
+          if (isPastMonth) return;
+
+          const isCurrentMonth = M.y === todayY && M.m === todayM;
           const ym = `${M.y}-${M.m}`;
+
+          // Filtrar días pasados del mes actual
+          const visibleDays = Object.keys(M.d || {}).sort((a, b) => a - b)
+            .filter(d => !isCurrentMonth || Number(d) >= todayD);
+
+          if (!visibleDays.length) return;
+
           if (ym !== lastYM) { htmlOut += monthDividerHtml(M.y, M.m); lastYM = ym; }
 
-          Object.keys(M.d || {}).sort((a, b) => a - b).forEach(d => {
-            const isToday = M.m === todayM && Number(d) === todayD;
+          visibleDays.forEach(d => {
+            const isToday = isCurrentMonth && Number(d) === todayD;
             htmlOut += dayCardHtml(M.y, M.m, d, M.d[d], isToday);
           });
         });
