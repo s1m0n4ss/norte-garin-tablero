@@ -160,11 +160,11 @@
       1: [{ h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "15" }],
 
       2: [
-        { type: "feriado", l: "Feriado (horario 10:00 hs)" },
+        { type: "feriado", l: "Feriado" },
         { h: "10:00", l: "Patricias Argentinas y Fructuoso Díaz", c: "Diego Sarraute", t: "36" },
       ],
 
-      3: [{ h: "09:30", l: "Francia y Alte Brown", c: "Francisco Araoz", t: "23" }],
+      3: [{ h: "10:00", l: "Francia y Alte Brown", c: "Francisco Araoz", t: "23" }],
 
       4: [
         { h: "09:30", l: "Predicación de Grupo" },
@@ -185,9 +185,9 @@
         { h: "19:00", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
       ],
 
-      9: [{ h: "09:30", l: "Magallanes y Fructuoso Díaz", c: "Diego Sarraute", t: "31" }],
+      9: [{ h: "10:00", l: "Magallanes y Fructuoso Díaz", c: "Diego Sarraute", t: "31" }],
 
-      10: [{ h: "09:30", l: "Francia y San Martín", c: "Francisco Araoz", t: "8" }],
+      10: [{ h: "10:00", l: "Francia y San Martín", c: "Francisco Araoz", t: "8" }],
 
       11: [
         { h: "09:30", l: "Predicación de Grupo" },
@@ -205,9 +205,9 @@
 
       15: [{ h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "27" }],
 
-      16: [{ h: "09:30", l: "Patricias Argentinas y Calle 3", c: "Diego Sarraute", t: "34" }],
+      16: [{ h: "10:00", l: "Patricias Argentinas y Calle 3", c: "Diego Sarraute", t: "34" }],
 
-      17: [{ h: "09:30", l: "Paso y San Martín", c: "Francisco Araoz", t: "12" }],
+      17: [{ h: "10:00", l: "Paso y San Martín", c: "Francisco Araoz", t: "12" }],
 
       18: [
         { h: "09:30", l: "Predicación de Grupo" },
@@ -225,13 +225,13 @@
 
       22: [{ h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "33" }],
 
-      23: [{ h: "09:30", l: "Fructuoso Díaz y Vicente López", c: "Diego Sarraute", t: "25" }],
+      23: [{ h: "10:00", l: "Fructuoso Díaz y Vicente López", c: "Diego Sarraute", t: "25" }],
 
-      24: [{ h: "09:30", l: "Ressio y Cigliutti", c: "Francisco Araoz", t: "3" }],
+      24: [{ h: "10:00", l: "Ressio y Cigliutti", c: "Francisco Araoz", t: "3" }],
 
       25: [
-        { type: "feriado", l: "Reunión para el servicio del campo: Salón del Reino (también por Zoom)" },
-        { h: "09:30", l: "Salón del Reino", c: "Mario Segovia", t: "—" },
+        { h: "09:30", l: "Predicación de Grupo" },
+        { h: "09:30", l: "Salón del Reino (también por Zoom)", c: "Mario Segovia", t: "—" },
         { h: "–", l: "Grupo 1", t: "49" },
         { h: "–", l: "Grupo 2", t: "50" },
         { h: "–", l: "Grupo 3", t: "51" },
@@ -249,7 +249,7 @@
         { h: "19:00", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
       ],
 
-      30: [{ h: "09:30", l: "Fructuoso Díaz y Storni", c: "Diego Sarraute", t: "4" }],
+      30: [{ h: "10:00", l: "Fructuoso Díaz y Storni", c: "Diego Sarraute", t: "4" }],
     },
   };
 
