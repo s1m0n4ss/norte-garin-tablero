@@ -145,7 +145,113 @@
     },
   };
 
-  const CALENDARIO = [MAR_2026];
+  // =========================
+  //   ABRIL 2026
+  // =========================
+  const ABR_2026 = {
+    y: 2026,
+    m: 4,
+    d: {
+      1: [{ h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "15" }],
+
+      2: [
+        { type: "feriado", l: "Feriado (horario 10:00 hs)" },
+        { h: "10:00", l: "Patricias Argentinas y Fructuoso Díaz", c: "Diego Sarraute", t: "36" },
+      ],
+
+      3: [
+        { type: "feriado", l: "Feriado (horario 10:00 hs)" },
+        { h: "10:00", l: "Francia y Alte Brown", c: "Francisco Araoz", t: "23" },
+      ],
+
+      4: [
+        { h: "09:30", l: "Predicación de Grupo" },
+        { h: "09:30", l: "Grupo 1 – Colón y Vicente López", c: "León Segovia", t: "24" },
+        { h: "09:30", l: "Grupo 2 – Paso y San Martín", c: "Mario Segovia", t: "7" },
+        { h: "09:30", l: "Grupo 3 – Francia y Centenario", c: "Pablo Zuñiga", t: "14" },
+        { h: "09:30", l: "Grupo 4 – Francia y Alte Brown", c: "Caetano Ferrari", t: "22" },
+      ],
+
+      5: [{ type: "reunion", l: "Reunión por la mañana" }],
+
+      6: [{ h: "09:30", l: "Hermana Carmen Casas", c: "Diego Sarraute", t: "16" }],
+
+      7: [{ h: "17:30", l: "Plaza De Vicenzo", c: "Mabel Zúñiga", t: "39" }],
+
+      8: [
+        { h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "9" },
+        { h: "19:00", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
+      ],
+
+      9: [{ h: "09:30", l: "Magallanes y Fructuoso Díaz", c: "Diego Sarraute", t: "31" }],
+
+      10: [{ h: "09:30", l: "Francia y San Martín", c: "Francisco Araoz", t: "8" }],
+
+      11: [
+        { h: "09:30", l: "Predicación de Grupo" },
+        { h: "09:30", l: "Grupo 1 – Golf Club Argentino y Jockey Club", c: "D. Albis", t: "57" },
+        { h: "09:30", l: "Grupo 2 – Puente 5", c: "Elias Coria", t: "55" },
+        { h: "09:30", l: "Grupo 3 – Argentino Golf Club y Salta Polo Club", c: "Darío Cortez", t: "48" },
+        { h: "09:30", l: "Grupo 4 – Ambrosetti y Concordia", c: "Adolfo Gutiérrez", t: "56" },
+      ],
+
+      12: [{ type: "reunion", l: "Reunión por la mañana" }],
+
+      13: [{ h: "09:30", l: "Hermana Carmen Casas", c: "Diego Sarraute", t: "11" }],
+
+      14: [{ h: "17:30", l: "Plaza de Vicenzo", c: "Mabel Zuñiga", t: "43" }],
+
+      15: [{ h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "27" }],
+
+      16: [{ h: "09:30", l: "Patricias Argentinas y Calle 3", c: "Diego Sarraute", t: "34" }],
+
+      17: [{ h: "09:30", l: "Paso y San Martín", c: "Francisco Araoz", t: "12" }],
+
+      18: [
+        { h: "09:30", l: "Predicación de Grupo" },
+        { h: "09:30", l: "Grupo 1 – Familia Segovia", c: "León Segovia", t: "18" },
+        { h: "09:30", l: "Grupo 2 – Hermano Manuel Feril", c: "Manuel Feril", t: "21" },
+        { h: "09:30", l: "Grupo 3 – Familia Miño", c: "Elvio Casco", t: "17" },
+        { h: "09:30", l: "Grupo 4 – Familia Durán", c: "Adolfo Gutiérrez", t: "20" },
+      ],
+
+      19: [{ type: "reunion", l: "Reunión por la mañana" }],
+
+      20: [{ h: "09:30", l: "Hermana Carmen Casas", c: "Diego Sarraute", t: "6" }],
+
+      21: [{ h: "17:30", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "44" }],
+
+      22: [{ h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "33" }],
+
+      23: [{ h: "09:30", l: "Fructuoso Díaz y Vicente López", c: "Diego Sarraute", t: "25" }],
+
+      24: [{ h: "09:30", l: "Ressio y Cigliutti", c: "Francisco Araoz", t: "3" }],
+
+      25: [
+        { h: "09:30", l: "Reunión para el servicio del campo: Salón del Reino" },
+        { h: "09:30", l: "Conduce: Mario Segovia – también por Zoom" },
+        { h: "–", l: "Grupo 1", c: "—", t: "49" },
+        { h: "–", l: "Grupo 2", c: "—", t: "50" },
+        { h: "–", l: "Grupo 3", c: "—", t: "51" },
+        { h: "–", l: "Grupo 4", c: "—", t: "54" },
+      ],
+
+      26: [{ type: "reunion", l: "Reunión por la mañana" }],
+
+      27: [{ h: "09:30", l: "Hermana Carmen Casas", c: "Diego Sarraute", t: "10" }],
+
+      28: [{ h: "17:30", l: "Plaza De Vicenzo", c: "Horacio Salgado", t: "46" }],
+
+      29: [
+        { h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "15" },
+        { h: "19:00", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
+      ],
+
+      30: [{ h: "09:30", l: "Fructuoso Díaz y Storni", c: "Diego Sarraute", t: "4" }],
+    },
+  };
+
+  const CALENDARIO = [MAR_2026, ABR_2026];
 
   function getEntriesForDate(date) {
     const d = startOfDay(date);
@@ -181,6 +287,7 @@
     territoryUrl,
     CALENDARIO,
     MAR_2026,
+    ABR_2026,
     getEntriesForDate,
     getTodayText,
     getDayText,

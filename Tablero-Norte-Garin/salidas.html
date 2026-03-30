@@ -292,6 +292,70 @@
         text-transform: uppercase; letter-spacing: 0.1em;
         color: var(--text-muted); text-align: center;
       }
+
+      /* ── ZÓCALO / TICKER ── */
+      .zocalo-wrap {
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 100;
+        background: var(--accent);
+        color: #fff;
+        overflow: hidden;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 -2px 16px rgba(0,0,0,0.18);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .zocalo-label {
+        flex-shrink: 0;
+        font-family: "Syne", sans-serif;
+        font-size: 9px; font-weight: 700;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        background: rgba(0,0,0,0.20);
+        padding: 0 14px;
+        height: 100%;
+        display: flex; align-items: center;
+        white-space: nowrap;
+        border-right: 1px solid rgba(255,255,255,0.25);
+      }
+      .zocalo-track {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+      }
+      .zocalo-inner {
+        display: inline-flex;
+        align-items: center;
+        height: 100%;
+        white-space: nowrap;
+        animation: tickerScroll 38s linear infinite;
+        will-change: transform;
+      }
+      .zocalo-inner:hover { animation-play-state: paused; }
+      @keyframes tickerScroll {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .zocalo-item {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-size: 12px; font-weight: 500;
+        padding: 0 28px;
+        border-right: 1px solid rgba(255,255,255,0.25);
+      }
+      .zocalo-item svg { flex-shrink: 0; opacity: 0.85; }
+      .zocalo-dot {
+        display: inline-block;
+        width: 5px; height: 5px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.55);
+        margin: 0 12px;
+        vertical-align: middle;
+      }
+
+      /* Compensar espacio del zócalo al fondo del contenido */
+      .main-wrap { padding-bottom: calc(48px + 40px + env(safe-area-inset-bottom, 0px)); }
     </style>
   </head>
 
@@ -498,10 +562,25 @@
 
         months.forEach(M => {
           const ym = `${M.y}-${M.m}`;
-          if (ym !== lastYM) { htmlOut += monthDividerHtml(M.y, M.m); lastYM = ym; }
+          let addedDivider = false;
 
           Object.keys(M.d || {}).sort((a, b) => a - b).forEach(d => {
-            const isToday = M.m === todayM && Number(d) === todayD;
+            const dayNum = Number(d);
+            // Ocultar días pasados: si el mes-año es anterior al actual,
+            // o si es el mes actual pero el día ya pasó.
+            const isPast =
+              M.y < now.getFullYear() ||
+              (M.y === now.getFullYear() && M.m < now.getMonth() + 1) ||
+              (M.y === now.getFullYear() && M.m === now.getMonth() + 1 && dayNum < todayD);
+
+            if (isPast) return; // no renderizar días pasados
+
+            if (!addedDivider) {
+              if (ym !== lastYM) { htmlOut += monthDividerHtml(M.y, M.m); lastYM = ym; }
+              addedDivider = true;
+            }
+
+            const isToday = M.m === todayM && dayNum === todayD;
             htmlOut += dayCardHtml(M.y, M.m, d, M.d[d], isToday);
           });
         });
@@ -515,7 +594,45 @@
 
       document.addEventListener("DOMContentLoaded", render);
     </script>
-      <script src="grupos-data.js"></script>
+      <!-- ZÓCALO -->
+    <div class="zocalo-wrap" id="zocalo" aria-live="polite" aria-label="Novedades Abril 2026">
+      <div class="zocalo-label">&#9670; Abril 2026</div>
+      <div class="zocalo-track">
+        <div class="zocalo-inner" id="zocalo-inner"></div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const items = [
+          "A partir de Abril los martes cambian su horario: 17:30 hs (antes 18:00 hs)",
+          "Lunes: 9:30 hs — Punto de encuentro Hermana Carmen Casas",
+          "Miércoles: 9:30 hs — Punto de encuentro Familia Flores (Conduce: Francisco Araoz)",
+          "Jueves: 9:30 hs — Conduce: Diego Sarraute",
+          "Viernes: 9:30 hs — Conduce: Francisco Araoz",
+          "Sábados: 9:30 hs — Predicación de Grupo (4 grupos)",
+          "Martes 7 Abr · 17:30 hs · Plaza De Vicenzo · Conduce Mabel Zúñiga · T-39",
+          "Martes 14 Abr · 17:30 hs · Plaza de Vicenzo · Conduce Mabel Zuñiga · T-43",
+          "Martes 21 Abr · 17:30 hs · Plaza de Vicenzo · Conduce Horacio Salgado · T-44",
+          "Martes 28 Abr · 17:30 hs · Plaza De Vicenzo · Conduce Horacio Salgado · T-46",
+          "Sáb 25 Abr · 9:30 hs · Reunión para el servicio del campo: Salón del Reino · Conduce Mario Segovia — también por Zoom",
+        ];
+
+        const dot = '<span class="zocalo-dot"></span>';
+        const html = items.map(t =>
+          `<span class="zocalo-item">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            ${t}
+          </span>${dot}`
+        ).join("");
+
+        // Duplicar para bucle continuo sin salto
+        const inner = document.getElementById("zocalo-inner");
+        inner.innerHTML = html + html;
+      })();
+    </script>
+
+    <script src="grupos-data.js"></script>
     <script src="notificaciones-data.js"></script>
     <script src="notificaciones.js"></script>
   </body>
