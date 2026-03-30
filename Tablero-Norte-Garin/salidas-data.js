@@ -185,9 +185,9 @@
         { h: "19:00", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
       ],
 
-      9: [{ h: "10:00", l: "Magallanes y Fructuoso Díaz", c: "Diego Sarraute", t: "31" }],
+      9: [{ h: "09:30", l: "Magallanes y Fructuoso Díaz", c: "Diego Sarraute", t: "31" }],
 
-      10: [{ h: "10:00", l: "Francia y San Martín", c: "Francisco Araoz", t: "8" }],
+      10: [{ h: "09:30", l: "Francia y San Martín", c: "Francisco Araoz", t: "8" }],
 
       11: [
         { h: "09:30", l: "Predicación de Grupo" },
@@ -205,9 +205,9 @@
 
       15: [{ h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "27" }],
 
-      16: [{ h: "10:00", l: "Patricias Argentinas y Calle 3", c: "Diego Sarraute", t: "34" }],
+      16: [{ h: "09:30", l: "Patricias Argentinas y Calle 3", c: "Diego Sarraute", t: "34" }],
 
-      17: [{ h: "10:00", l: "Paso y San Martín", c: "Francisco Araoz", t: "12" }],
+      17: [{ h: "09:30", l: "Paso y San Martín", c: "Francisco Araoz", t: "12" }],
 
       18: [
         { h: "09:30", l: "Predicación de Grupo" },
@@ -225,9 +225,9 @@
 
       22: [{ h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "33" }],
 
-      23: [{ h: "10:00", l: "Fructuoso Díaz y Vicente López", c: "Diego Sarraute", t: "25" }],
+      23: [{ h: "09:30", l: "Fructuoso Díaz y Vicente López", c: "Diego Sarraute", t: "25" }],
 
-      24: [{ h: "10:00", l: "Ressio y Cigliutti", c: "Francisco Araoz", t: "3" }],
+      24: [{ h: "09:30", l: "Ressio y Cigliutti", c: "Francisco Araoz", t: "3" }],
 
       25: [
         { h: "09:30", l: "Predicación de Grupo" },
@@ -249,7 +249,7 @@
         { h: "19:00", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
       ],
 
-      30: [{ h: "10:00", l: "Fructuoso Díaz y Storni", c: "Diego Sarraute", t: "4" }],
+      30: [{ h: "09:30", l: "Fructuoso Díaz y Storni", c: "Diego Sarraute", t: "4" }],
     },
   };
 
