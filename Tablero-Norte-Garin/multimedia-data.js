@@ -1,46 +1,57 @@
 window.MULTIMEDIA_DATA = [
   {
-    key: "2026-03-02",
-    label: "02–08 Mar",
-    start: "2026-03-02",
-    end: "2026-03-08",
-    audio_video: ["Darío Cortez", "Caetano Ferrari"],
-    microfonistas: ["Samuel Durán", "Sebastián Meza"],
-    plataforma: ["Daniel Albiz"],
+    key: "2026-03-30",
+    label: "30–05 Abr",
+    start: "2026-03-30",
+    end: "2026-04-05",
+    audio_video: ["Lucas Segovia", "Dario Cortez"],
+    microfonistas: ["Samuel Durán", "Elias Coria"],
+    plataforma: ["Diego Sarraute"],
     entrada: ["A confirmar"],
     auditorio: ["A confirmar"]
   },
   {
-    key: "2026-03-09",
-    label: "09–15 Mar",
-    start: "2026-03-09",
-    end: "2026-03-15",
-    audio_video: ["Mario Segovia", "Horacio Salgado"],
-    microfonistas: ["Daniel Quaranta", "Elías Coria"],
-    plataforma: ["Diego Sarraute"],
-    entrada: ["Pablo Zuñiga"],
-    auditorio: ["Adolfo Gutierrez"]
-  },
-  {
-    key: "2026-03-16",
-    label: "16–22 Mar",
-    start: "2026-03-16",
-    end: "2026-03-22",
-    audio_video: ["Mario Segovia", "Caetano Ferrari"],
-    microfonistas: ["Elvio Casco", "Elias Coria"],
-    plataforma: ["Diego Sarraute"],
-    entrada: ["Horacio Salgado"],
-    auditorio: ["Francisco Araoz"]
-  },
-  {
-    key: "2026-03-23",
-    label: "23–30 Mar",
-    start: "2026-03-23",
-    end: "2026-03-30",
-    audio_video: ["Dario Cortez", "Horacio Salgado"],
-    microfonistas: ["Daniel Quaranta", "Samuel Duran"],
+    key: "2026-04-06",
+    label: "06–12 Abr",
+    start: "2026-04-06",
+    end: "2026-04-12",
+    audio_video: ["Mario Segovia", "Dario Cortez"],
+    microfonistas: ["Daniel Quaranta", "Lucas Segovia"],
     plataforma: ["Caetano Ferrari"],
-    entrada: ["Cristin Segovia"],
-    auditorio: ["León Segovia"]
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
+  },
+  {
+    key: "2026-04-13",
+    label: "13–19 Abr",
+    start: "2026-04-13",
+    end: "2026-04-19",
+    audio_video: ["Lucas Segovia", "Cristian Segovia"],
+    microfonistas: ["Samuel Duran", "Elias Coria"],
+    plataforma: ["Diego Sarraute"],
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
+  },
+  {
+    key: "2026-04-20",
+    label: "20–26 Abr",
+    start: "2026-04-20",
+    end: "2026-04-26",
+    audio_video: ["Mario Segovia", "Dario Cortez"],
+    microfonistas: ["Daniel Quaranta", "Daniel Albis"],
+    plataforma: ["Caetano Ferrari"],
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
+  },
+  {
+    key: "2026-04-27",
+    label: "27–03 May",
+    start: "2026-04-24",
+    end: "2026-05-03",
+    audio_video: ["Caetano Ferrari", "Pablo Zuñiga"],
+    microfonistas: ["Samuel Duran", "Elias Coria"],
+    plataforma: ["Diego Sarraute"],
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
   }
 ];
