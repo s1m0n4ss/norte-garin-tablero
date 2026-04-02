@@ -167,12 +167,12 @@ window.VIDA_MINISTERIO_DATA = `
 
 <article class="page" data-key="2026-04-13" data-title="13–19 DE ABRIL" data-book="ISAÍAS 52, 53">
 <header>
-<div class="presidente-en-pagina">Presidente: <span class="asignado">ELVIO CASCO</span></div>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">DANIEL ALBIS</span></div>
 <div class="inicio-programa">Canción 88 y oración <span class="asignado">ADOLFO GUTIERREZ</span></div>
 </header>
 <section class="bloque verde">
 <h3>TESOROS DE LA BIBLIA</h3>
-<div class="section"><div class="sect-title"><h4>1. ¡Cuanto amor mostro Jesús</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>1. ¡Cuanto amor mostro Jesús</h4></div><span class="asignado">ADOLFO GUTIERREZ</span><div class="duration">(10 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(10 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Is 53:3-12)</h4></div><span class="asignado">TOMÁS DURAN</span><div class="duration">(4 mins.)</div></div>
 </section>
@@ -193,7 +193,7 @@ window.VIDA_MINISTERIO_DATA = `
 
 <article class="page" data-key="2026-04-20" data-title="20–26 DE ABRIL" data-book="ISAÍAS 54, 55">
 <header>
-<div class="presidente-en-pagina">Presidente: <span class="asignado">HORACIO SALGADO</span></div>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">ADOLFO GUTIERREZ</span></div>
 <div class="inicio-programa">Canción 86 y oración <span class="asignado">CAETANO FERRARI</span></div>
 </header>
 <section class="bloque verde">
