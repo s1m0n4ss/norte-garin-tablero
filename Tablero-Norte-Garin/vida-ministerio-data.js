@@ -267,10 +267,11 @@ window.VIDA_MINISTERIO_DATA = `
       </p>
 
       <p class="mt-2 font-medium">
-        Semana especial por Asamblea de Circuito.
+        “Oiga lo que el espíritu les dice a las congregaciones”
+        <br />
+        <strong>APOCALIPSIS 3:22</strong>
       </p>
     </div>
   </div>
-</article>
 </article>
 `;
