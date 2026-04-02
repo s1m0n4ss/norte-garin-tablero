@@ -274,4 +274,4 @@ window.VIDA_MINISTERIO_DATA = `
     </div>
   </div>
 </article>
-
+`;
