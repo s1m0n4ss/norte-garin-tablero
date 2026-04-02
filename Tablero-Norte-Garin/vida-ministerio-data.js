@@ -244,29 +244,33 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 28</strong> y Oración final: <span class="asignado">CRISTIAN SEGOVIA</span></div>
 </article>
 
-<article class="page" data-key="2026-05-04" data-title="04 - 10 DE MAYO" data-book="ISAÍAS 58, 59">
-<header>
-<div class="presidente-en-pagina">Presidente: <span class="asignado">MARIO SEGOVIA</span></div>
-<div class="inicio-programa"><strong>Canción 21</strong> y oración <span class="asignado">HORACIO SALGADO</span></div>
-</header>
-<section class="bloque verde">
-<h3>TESOROS DE LA BIBLIA</h3>
-<div class="section"><div class="sect-title"><h4>1. Disfrute al máximo de la bendición de Jehová</h4></div><span class="asignado">DANIEL ALBIS</span><div class="duration">(10 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(10 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Is 59:1-12)</h4></div><span class="asignado">DANIEL COLLADO</span><div class="duration">(4 mins.)</div></div>
-</section>
-<section class="bloque amarillo">
-<h3>SEAMOS MEJORES MAESTROS</h3>
-<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">LUCINDA DURAN / CARMEN CASAS</span><div class="duration">(3 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado">MABEL ZUÑIGA / ROXANA PALAVECINO</span><div class="duration">(4 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>6. Discurso </h4></div><span class="asignado">PABLO ZUÑIGA</span><div class="duration">(5 mins.)</div></div>
-</section>
-<section class="bloque rojo">
-<h3>NUESTRA VIDA CRISTIANA</h3>
-<div class="section"><div class="sect-title"><h4><strong>Canción 100</strong></h4></div></div>
-<div class="section"><div class="sect-title"><h4>7. Sean siempre hospitalarios</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(15 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciones 82, 83.)</h4></div><span class="asignado">DARIO CORTEZ</span><div class="duration">(30 mins.)</div></div>
-</section>
-<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 42</strong> y Oración final: <span class="asignado">LUCAS SEGOVIA</span></div>
+<article
+  class="page"
+  data-key="2026-05-04"
+  data-title="04 - 10 DE MAYO"
+  data-book="ASAMBLEA"
+>
+  <div class="flex flex-col items-center justify-center py-10 text-center">
+    <h2 class="text-3xl font-black text-blue-600 mb-4 uppercase">
+      Asamblea de circuito
+    </h2>
+
+    <p class="text-lg font-bold">
+      No habrá reunión de entre semana en el Salón del Reino.
+    </p>
+
+    <div
+      class="mt-6 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-3xl border border-blue-200 dark:border-blue-800"
+    >
+      <p class="text-sm font-black uppercase tracking-widest text-blue-500">
+        Recordatorio
+      </p>
+
+      <p class="mt-2 font-medium">
+        Semana especial por Asamblea de Circuito.
+      </p>
+    </div>
+  </div>
+</article>
 </article>
 `;
