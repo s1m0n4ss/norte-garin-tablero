@@ -4,7 +4,7 @@ window.MULTIMEDIA_DATA = [
     label: "30–05 Abr",
     start: "2026-03-30",
     end: "2026-04-05",
-    audio_video: ["Lucas Segovia", "Dario Cortez"],
+    audio_video: ["Lucas Segovia", "Caetano Ferrari"],
     microfonistas: ["Samuel Durán", "Elias Coria"],
     plataforma: ["Diego Sarraute"],
     entrada: ["A confirmar"],
