@@ -251,22 +251,26 @@ window.VIDA_MINISTERIO_DATA = `
   data-book="ASAMBLEA"
 >
   <div class="flex flex-col items-center justify-center py-10 text-center">
-    <h2 class="text-3xl font-black text-blue-600 mb-4 uppercase">
-      Asamblea de circuito
+    <h2 class=”text-3xl font-black text-blue-600 mb-2 uppercase”>
+      Asamblea de circuito de los testigos de Jehová
     </h2>
 
-    <p class="text-lg font-bold">
+    <p class=”text-sm font-bold uppercase tracking-widest text-blue-400 mb-4”>
+      Con representante de la Sucursal | 2025-2026
+    </p>
+
+    <p class=”text-lg font-bold”>
       No habrá reunión de entre semana en el Salón del Reino.
     </p>
 
     <div
-      class="mt-6 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-3xl border border-blue-200 dark:border-blue-800"
+      class=”mt-6 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-3xl border border-blue-200 dark:border-blue-800”
     >
-      <p class="text-sm font-black uppercase tracking-widest text-blue-500">
-        Recordatorio
+      <p class=”text-sm font-black uppercase tracking-widest text-blue-500”>
+        Tema
       </p>
 
-      <p class="mt-2 font-medium">
+      <p class=”mt-2 font-medium”>
         “Oiga lo que el espíritu les dice a las congregaciones”
         <br />
         <strong>APOCALIPSIS 3:22</strong>
