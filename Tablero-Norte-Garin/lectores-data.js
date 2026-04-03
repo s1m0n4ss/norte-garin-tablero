@@ -23,9 +23,9 @@ window.LECTORES_DATA = [
     monthIdx: 3,
     atalaya: [
       { date: "05", name: "MARIO SEGOVIA" },
-      { date: "12", name: "HORACIO SALGADO" },
-      { date: "19", name: "ADOLFO GUTIERREZ" },
-      { date: "26", name: "DANIEL ALBIS" }
+      { date: "12", name: "ADOLFO GUTIERREZ" },
+      { date: "19", name: "DANIEL ALBIS" },
+      { date: "26", name: "HORACIO SALGADO" }
     ],
     biblico: [
       { date: "09", name: "LUCAS SEGOVIA" },
