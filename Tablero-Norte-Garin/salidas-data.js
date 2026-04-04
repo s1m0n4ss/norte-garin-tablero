@@ -170,6 +170,7 @@
         { h: "09:30", l: "Grupo 2 – Paso y San Martin", c: "Mario Segovia", t: "7" },
         { h: "09:30", l: "Grupo 3 – Francia y Centenario", c: "Pablo Zuñiga", t: "14" },
         { h: "09:30", l: "Grupo 4 – Francia y Alte Brown", c: "Caetano Ferrari", t: "22" },
+         { h: "19:00", l: "VIA PUBLICA - Estaciòn Garin", c: "Adolfo Gutierrez", t: "--" },
       ],
 
       5: [{ type: "reunion", l: "Reunión por la mañana" }],
