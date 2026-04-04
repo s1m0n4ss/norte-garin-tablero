@@ -194,6 +194,7 @@
         { h: "09:30", l: "Grupo 2 – Puente 5", c: "Elias Coria", t: "55" },
         { h: "09:30", l: "Grupo 3 – Argentino Golf Club y Salta Polo Club", c: "Darío Cortez", t: "48" },
         { h: "09:30", l: "Grupo 4 – Ambrosetti y Concordia", c: "Adolfo Gutiérrez", t: "56" },
+         { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" }
       ],
 
       12: [{ type: "reunion", l: "Reunión por la mañana" }],
@@ -214,6 +215,7 @@
         { h: "09:30", l: "Grupo 2 – Hermano Manuel Feril", c: "Manuel Feril", t: "21" },
         { h: "09:30", l: "Grupo 3 – Familia Miño", c: "Elvio Casco", t: "17" },
         { h: "09:30", l: "Grupo 4 – Familia Duran", c: "Adolfo Gutiérrez", t: "20" },
+         { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" }
       ],
 
       19: [{ type: "reunion", l: "Reunión por la mañana" }],
@@ -234,6 +236,7 @@
         { h: "09:30", l: "Grupo 2", c: "—", t: "50" },
         { h: "09:30", l: "Grupo 3", c: "—", t: "51" },
         { h: "09:30", l: "Grupo 4", c: "—", t: "54" },
+         { h: "19:00", l: "Pred. pública Estación Garín", c: "Adolfo Gutiérrez" }
       ],
 
       26: [{ type: "reunion", l: "Reunión por la mañana" }],
