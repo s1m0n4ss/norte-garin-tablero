@@ -7,8 +7,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Lucas Segovia", "Caetano Ferrari"],
     microfonistas: ["Samuel Durán", "Elias Coria"],
     plataforma: ["Diego Sarraute"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Dario Cortez"],
+    auditorio: ["Francisco Araoz"]
   },
   {
     key: "2026-04-06",
@@ -18,8 +18,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Mario Segovia", "Dario Cortez"],
     microfonistas: ["Daniel Quaranta", "Lucas Segovia"],
     plataforma: ["Caetano Ferrari"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Diego Sarraute"],
+    auditorio: ["Elias Coria"]
   },
   {
     key: "2026-04-13",
@@ -29,8 +29,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Lucas Segovia", "Cristian Segovia"],
     microfonistas: ["Samuel Duran", "Elias Coria"],
     plataforma: ["Diego Sarraute"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Leòn Segovia"],
+    auditorio: ["Daniel Quaranta"]
   },
   {
     key: "2026-04-20",
@@ -40,8 +40,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Mario Segovia", "Dario Cortez"],
     microfonistas: ["Daniel Quaranta", "Daniel Albis"],
     plataforma: ["Caetano Ferrari"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Adolfo Gutierrez"],
+    auditorio: ["Diego Sarraute"]
   },
   {
     key: "2026-04-27",
@@ -51,7 +51,7 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Caetano Ferrari", "Pablo Zuñiga"],
     microfonistas: ["Samuel Duran", "Elias Coria"],
     plataforma: ["Diego Sarraute"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Daniel Albis"],
+    auditorio: ["Francisco Araoz"]
   }
 ];
