@@ -13,11 +13,11 @@ window.VIDA_MINISTERIO_DATA = `
 <article class="page" data-key="2026-04-06" data-title="6–12 DE ABRIL" data-book="ISAÍAS 50, 51">
 <header>
 <div class="presidente-en-pagina">Presidente: <span class="asignado">ADOLFO GUTIERREZ</span></div>
-<div class="inicio-programa">Canción 88 y oración <span class="asignado">LUCAS SEGOVIA</span></div>
+<div class="inicio-programa">Canción 88 y oración <span class="asignado">LEÒN SEGOVIA</span></div>
 </header>
 <section class="bloque verde">
 <h3>TESOROS DE LA BIBLIA</h3>
-<div class="section"><div class="sect-title"><h4>1. Escuchemos al que fue instruido por Dios</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>1. Escuchemos al que fue instruido por Dios</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(10 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(10 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Is 50:1-11</h4></div><span class="asignado">DANTER HUAMACONDOR</span><div class="duration">(4 mins.)</div></div>
 </section>
