@@ -13,7 +13,7 @@ window.VIDA_MINISTERIO_DATA = `
 <article class="page" data-key="2026-04-06" data-title="6–12 DE ABRIL" data-book="ISAÍAS 50, 51">
 <header>
 <div class="presidente-en-pagina">Presidente: <span class="asignado">ADOLFO GUTIERREZ</span></div>
-<div class="inicio-programa">Canción 88 y oración <span class="asignado">LEÓN SEGOVIA</span></div>
+<div class="inicio-programa">Canción 88 y oración <span class="asignado">LUCAS SEGOVIA</span></div>
 </header>
 <section class="bloque verde">
 <h3>TESOROS DE LA BIBLIA</h3>
