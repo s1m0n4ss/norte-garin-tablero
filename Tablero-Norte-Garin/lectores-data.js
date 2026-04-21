@@ -1,23 +1,5 @@
 window.LECTORES_DATA = [
   {
-    monthLabel: "Marzo 2026",
-    year: 2026,
-    monthIdx: 2,
-    atalaya: [
-      { date: "01", special: true, title: "ASAMBLEA DE CIRCUITO", dayOverride: "Dom", typeOverride: "special", typeLabelOverride: "Evento" },
-      { date: "08", name: "ADOLFO GUTIERREZ" },
-      { date: "15", name: "LEON SEGOVIA" },
-      { date: "22", name: "LUCAS SEGOVIA" },
-      { date: "29", name: "DARIO CORTEZ" }
-    ],
-    biblico: [
-      { date: "05", name: "DIEGO SARRAUTE" },
-      { date: "12", name: "HORACIO SALGADO" },
-      { date: "19", name: "DANIEL ALBIS" },
-      { date: "26", name: "DARIO CORTEZ" }
-    ]
-  },
-  {
     monthLabel: "Abril 2026",
     year: 2026,
     monthIdx: 3,
@@ -32,6 +14,24 @@ window.LECTORES_DATA = [
       { date: "16", name: "ADOLFO GUTIERREZ" },
       { date: "23", name: "HORACIO SALGADO" },
       { date: "30", name: "DIEGO SARRAUTE" }
+    ]
+  },
+  {
+    monthLabel: "Mayo 2026",
+    year: 2026,
+    monthIdx: 4,
+    atalaya: [
+      { date: "03", name: "DARIO CORTEZ" },
+      { date: "10", special: true, title: "ASAMBLEA DE CIRCUITO", dayOverride: "Dom", typeOverride: "special", typeLabelOverride: "Evento" },
+      { date: "17", name: "LUCAS SEGOVIA" },
+      { date: "24", name: "LEON SEGOVIA" },
+      { date: "31", name: "ADOLFO GUTIERREZ" }
+    ],
+    biblico: [
+      { date: "07", special: true, title: "ASAMBLEA DE CIRCUITO", dayOverride: "Jue", typeOverride: "special", typeLabelOverride: "Evento" },
+      { date: "14", name: "LEON SEGOVIA" },
+      { date: "21", name: "MARIO SEGOVIA" },
+      { date: "28", name: "DIEGO SARRAUTE" }
     ]
   }
 ];
