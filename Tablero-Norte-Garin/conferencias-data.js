@@ -4,74 +4,6 @@
 
 window.CONFERENCIAS_DATA = [
   {
-    month: "Marzo 2026",
-    year: 2026,
-    monthIdx: 2,
-    vienen: [
-      {
-        date: "01",
-        special: true,
-        title: "ASAMBLEA DE CIRCUITO"
-      },
-      {
-        date: "08",
-        day: "Domingo",
-        time: "9:30 am",
-        title: "La resurrección: una victoria sobre la muerte",
-        speaker: "Hernán Carreras",
-        congregation: "Este, Pilar, Buenos Aires",
-        chairman: "Dario Cortez"
-      },
-      {
-        date: "15",
-        day: "Domingo",
-        time: "9:30 am",
-        title: "Unidos al feliz pueblo de Dios",
-        speaker: "Adrián Perillo",
-        congregation: "Este, Pilar, Buenos Aires",
-        chairman: "Caetano Ferrari"
-      },
-      {
-        date: "22",
-        day: "Domingo",
-        time: "9:30 am",
-        title: "“Hagamos el bien a todos”",
-        speaker: "Mario Segovia",
-        congregation: "Norte, Garín, Buenos Aires",
-        chairman: "Adolfo Gutiérrez"
-      },
-      {
-        date: "29",
-        day: "Domingo",
-        time: "9:30 am",
-        title: "Discurso especial: ¿Quién salvará el planeta?",
-        speaker: "Julian Giacobbe",
-        congregation: "Este, Ingeniero Maschwitz, Buenos Aires",
-        chairman: "Leon Segovia"
-      }
-    ],
-    salen: [
-      {
-        day: "Sábado",
-        date: "07",
-        name: "Lucas Segovia",
-        extra: "Bosquejo 175"
-      },
-      {
-        day: "Domingo",
-        date: "08",
-        name: "Daniel Albis",
-        extra: "Bosquejo 166"
-      },
-      {
-        day: "Sábado",
-        date: "14",
-        name: "Darío Cortez",
-        extra: "Bosquejo 192"
-      }
-    ]
-  },
-  {
     month: "Abril 2026",
     year: 2026,
     monthIdx: 3,
@@ -137,6 +69,74 @@ window.CONFERENCIAS_DATA = [
         date: "25",
         name: "Elvio Casco",
         extra: "Bosquejo 113"
+      }
+    ]
+  },
+  {
+    month: "Mayo 2026",
+    year: 2026,
+    monthIdx: 4,
+    vienen: [
+      {
+        date: "03",
+        day: "Domingo",
+        time: "9:30 am",
+        title: "La resurrección: una victoria sobre la muerte",
+        speaker: "Marcos Lupidi",
+        congregation: "Capilla del Señor, Buenos Aires",
+        chairman: "Horacio Salgado"
+      },
+      {
+        date: "10",
+        special: true,
+        title: "ASAMBLEA DE CIRCUITO"
+      },
+      {
+        date: "17",
+        day: "Domingo",
+        time: "9:30 am",
+        title: "Sirva a Jehová con alegría",
+        speaker: "Facundo Delaloye",
+        congregation: "Delta del Paraná, Buenos Aires",
+        chairman: "Caetano Ferrari"
+      },
+      {
+        date: "24",
+        day: "Domingo",
+        time: "9:30 am",
+        title: "Haga amistades que duren para siempre",
+        speaker: "Nicolás Mandarino",
+        congregation: "Delta del Paraná, Buenos Aires",
+        chairman: "Adolfo Gutiérrez"
+      },
+      {
+        date: "31",
+        day: "Domingo",
+        time: "9:30 am",
+        title: "¿Cuál es su propósito en la vida?",
+        speaker: "Joel Paz",
+        congregation: "Delta del Paraná, Buenos Aires",
+        chairman: "Lucas Segovia"
+      }
+    ],
+    salen: [
+      {
+        day: "Domingo",
+        date: "17",
+        name: "León Segovia",
+        extra: "Delta del Paraná, Buenos Aires - SR: Navarro 1355 - 10 hs"
+      },
+      {
+        day: "Domingo",
+        date: "24",
+        name: "Darío Cortez",
+        extra: "Delta del Paraná, Buenos Aires - SR: Navarro 1355 - 10 hs"
+      },
+      {
+        day: "Domingo",
+        date: "31",
+        name: "Daniel Albis",
+        extra: "Delta del Paraná, Buenos Aires - SR: Navarro 1355 - 10 hs"
       }
     ]
   }
