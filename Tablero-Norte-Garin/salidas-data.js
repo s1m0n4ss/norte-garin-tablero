@@ -254,7 +254,114 @@
     },
   };
 
-  const CALENDARIO = [MAR_2026, ABR_2026];
+  // =========================
+  //   MAYO 2026
+  // =========================
+  const MAY_2026 = {
+    y: 2026,
+    m: 5,
+    d: {
+      1: [
+        { type: "feriado", l: "FERIADO (Día del Trabajador)" },
+        { h: "10:00", l: "Casa Doris Talarico", c: "—", t: "23" },
+      ],
+
+      2: [
+        { h: "09:30", l: "Grupo 1 – 1° de Mayo y Fructuoso Díaz", c: "León Segovia", t: "35" },
+        { h: "09:30", l: "Grupo 2 – Colón y San Martín", c: "Mario Segovia", t: "8" },
+        { h: "09:30", l: "Grupo 3 – Fructuoso Díaz y Magallanes", c: "Pablo Zúñiga", t: "31" },
+        { h: "09:30", l: "Grupo 4 – Fructuoso Díaz y Patricias Argentinas", c: "Adolfo Gutiérrez", t: "36" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      3: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      4: [{ h: "09:30", l: "Casa Carmen Casas", c: "—", t: "16" }],
+
+      5: [{ h: "17:30", l: "Plaza de Vicenzo", c: "—", t: "40" }],
+
+      6: [{ h: "09:30", l: "Familia Flores", c: "—", t: "9" }],
+
+      7: [{ h: "09:30", l: "Beliera y Fructuoso Díaz", c: "—", t: "32" }],
+
+      8: [{ h: "09:30", l: "Casa Doris Talarico", c: "—", t: "19" }],
+
+      9: [
+        { h: "09:30", l: "Uruguay y Oliveira César", c: "Horacio Salgado", t: "28" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      10: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      11: [{ h: "09:30", l: "Casa Carmen Casas", c: "—", t: "11" }],
+
+      12: [{ h: "17:30", l: "Plaza de Vicenzo", c: "—", t: "41" }],
+
+      13: [
+        { h: "09:30", l: "Familia Flores", c: "—", t: "27" },
+        { h: "–", l: "Predicación Telefónica (Zoom)", c: "Juan Carlos Sánchez" },
+      ],
+
+      14: [{ h: "09:30", l: "Colón y Oliveira César", c: "—", t: "29" }],
+
+      15: [{ h: "09:30", l: "Casa Doris Talarico", c: "—", t: "24" }],
+
+      16: [
+        { h: "09:30", l: "Grupo 1 – Familia Segovia", c: "Daniel Albis", t: "17" },
+        { h: "09:30", l: "Grupo 2 – Casa Carmen Casas", c: "Elías Coria", t: "3" },
+        { h: "09:30", l: "Grupo 3 – Familia Miño", c: "Darío Cortez", t: "12" },
+        { h: "09:30", l: "Grupo 4 – Familia Durán", c: "Samuel Durán", t: "20" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      17: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      18: [{ h: "09:30", l: "Casa Carmen Casas", c: "—", t: "6" }],
+
+      19: [{ h: "17:30", l: "Plaza de Vicenzo", c: "—", t: "45" }],
+
+      20: [{ h: "09:30", l: "Familia Flores", c: "—", t: "33" }],
+
+      21: [{ h: "09:30", l: "Colón y Paso", c: "—", t: "7" }],
+
+      22: [{ h: "09:30", l: "Casa Doris Talarico", c: "—", t: "18" }],
+
+      23: [
+        { h: "09:30", l: "Salón del Reino", c: "—", t: "52" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      24: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      25: [
+        { type: "feriado", l: "FERIADO (25 de Mayo)" },
+        { h: "10:00", l: "Casa Carmen Casas", c: "—", t: "10" },
+      ],
+
+      26: [{ h: "17:30", l: "Plaza de Vicenzo", c: "—", t: "46" }],
+
+      27: [
+        { h: "09:30", l: "Familia Flores", c: "—", t: "15" },
+        { h: "–", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
+      ],
+
+      28: [{ h: "09:30", l: "Uruguay y Centenario", c: "—", t: "14" }],
+
+      29: [{ h: "09:30", l: "Casa Doris Talarico", c: "—", t: "23" }],
+
+      30: [
+        { h: "09:30", l: "Grupo 1 – Francia y Alte Brown", c: "Diego Sarraute", t: "22" },
+        { h: "09:30", l: "Grupo 2 – Casa Fanny Villantoy", c: "Horacio Salgado", t: "25" },
+        { h: "09:30", l: "Grupo 3 – Uruguay y Oliveira César", c: "Cristian Segovia", t: "21" },
+        { h: "09:30", l: "Grupo 4 – Storni y Fructuoso Díaz", c: "Caetano Ferrari", t: "4" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      31: [{ type: "reunion", l: "Reunión de congregación" }],
+    },
+  };
+
+  const CALENDARIO = [MAR_2026, ABR_2026, MAY_2026];
 
   function getEntriesForDate(date) {
     const d = startOfDay(date);
@@ -291,6 +398,7 @@
     CALENDARIO,
     MAR_2026,
     ABR_2026,
+    MAY_2026,
     getEntriesForDate,
     getTodayText,
     getDayText,
