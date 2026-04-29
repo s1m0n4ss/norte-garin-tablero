@@ -563,9 +563,7 @@
           const isCurrentMonth = M.y === todayY && M.m === todayM;
           const ym = `${M.y}-${M.m}`;
 
-          // Filtrar días pasados del mes actual
-          const visibleDays = Object.keys(M.d || {}).sort((a, b) => a - b)
-            .filter(d => !isCurrentMonth || Number(d) >= todayD);
+          const visibleDays = Object.keys(M.d || {}).sort((a, b) => a - b);
 
           if (!visibleDays.length) return;
 
