@@ -146,6 +146,31 @@ window.VIDA_MINISTERIO_DATA = `
         <br />
         <strong>APOCALIPSIS 3:22</strong>
       </p>
+<article class="page" data-key="2026-05-11" data-title="11 DE MAYO – 17 DE MAYO" data-book="ISAÍAS 60, 61">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">DANIEL ALBIS</span></div>
+<div class="inicio-programa"><strong>Canción 146</strong> y oración <span class="asignado">DIEGO SARRAUTE</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. "Levántate, oh, mujer, despide luz”</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Is 61:1-9)</h4></div><span class="asignado">HECTOR PALAVECINO</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">ELIDA BENITEZ / PAULINA LAURENTE</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">ANGELA CESPEDES / TEODORA DUCOLI</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga discipulos</h4></div><span class="asignado">MICAELA SARRAUTE / MIRTA SEGOVIA</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 156</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Necesidades de la congregaciòn</h4></div><span class="asignado">DANIEL ALBIS</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciones 84, 85.)</h4></div><span class="asignado">ADOLFO GUTIERREZ</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 119</strong> y Oración final: <span class="asignado">CRISTIAN SEGOVIA</span></div>
+</article>
     </div>
   </div>
 </article>
