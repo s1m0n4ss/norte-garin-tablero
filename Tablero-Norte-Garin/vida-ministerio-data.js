@@ -221,7 +221,7 @@ window.VIDA_MINISTERIO_DATA = `
 <h3>NUESTRA VIDA CRISTIANA</h3>
 <div class="section"><div class="sect-title"><h4><strong>Canción 80</strong></h4></div></div>
 <div class="section"><div class="sect-title"><h4>8. ¿Tendras tù una vida llena de cosas buenas?</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(15 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciones 88 y 89)</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(30 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (lfb lecciones 88 y 89)</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 55</strong> y Oración final: <span class="asignado">ELVIO CASCO</span></div>
 </article>    
