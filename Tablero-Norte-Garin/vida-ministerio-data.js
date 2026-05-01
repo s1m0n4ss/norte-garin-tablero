@@ -196,7 +196,36 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciòn 86, Introd. secciòn 13 y lecciòn 87.)</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 151</strong> y Oración final: <span class="asignado">DANIEL QUARANTA</span></div>
-</article>    </div>
+</article>    
+
+</article>
+<article class="page" data-key="2026-05-25" data-title="25 DE MAYO – 31 DE MAYO" data-book="ISAÍAS 65,66">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">DARIO CORTEZ</span></div>
+<div class="inicio-programa"><strong>Canción 24</strong> y oración <span class="asignado">LEÒN SEGOVIA</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. ¡Cuànto amamos nuestro paraìso espiritual!</h4></div><span class="asignado">ADOLFO GUTIERREZ</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Is 65:17-25)</h4></div><span class="asignado">CRISTIAN SEGOVIA</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">LUCINDA DURAN / MORELIA HARLOS</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado">CANDELARIA GOMEZ / TAMARA NATALE</span><div class="duration">(2 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Empiece conversaciones</h4></div><span class="asignado">SUSANA ARAOZ / ALICIA SANCHEZ</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Escenificaciòn. Tema: ¿Quièn es el anticristo?</h4></div><span class="asignado">LIDIA CANCINO / FLORENCIA ARAOZ</span><div class="duration">(3 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 80</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>8. ¿Tendras tù una vida llena de cosas buenas?</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciones 88 y 89)</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 55</strong> y Oración final: <span class="asignado">ELVIO CASCO</span></div>
+</article>    
+</div>
   </div>
 </article>
 `;
