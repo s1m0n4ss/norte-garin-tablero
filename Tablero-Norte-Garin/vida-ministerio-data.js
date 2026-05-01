@@ -170,8 +170,33 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciones 84, 85.)</h4></div><span class="asignado">ADOLFO GUTIERREZ</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 119</strong> y Oración final: <span class="asignado">CRISTIAN SEGOVIA</span></div>
+
 </article>
-    </div>
+<article class="page" data-key="2026-05-18" data-title="18 DE MAYO – 24 DE MAYO" data-book="ISAÍAS 62,63, 64">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">LUCAS SEGOVIA</span></div>
+<div class="inicio-programa"><strong>Canción 44</strong> y oración <span class="asignado">CAETANO FERRARI</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. El Alfarero nos moldea con amor y compasión</h4></div><span class="asignado">DARIO CORTEZ</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Is 64:4-12)</h4></div><span class="asignado">SEBASTIAN MEZA</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">PAULINA LAURENTE / ALICIA VERA</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">MONICA CASCO / CARMEN CASAS</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga discipulos</h4></div><span class="asignado">MABEL MIÑO / SABRINA SALGADO</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 115</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Preparados para las situaciones de emergencia: Esté listo para lo imprevisto</h4></div><span class="asignado">ADOLFO GUTIERREZ</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciòn 86, Introd. secciòn 13 y lecciòn 87.)</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 151</strong> y Oración final: <span class="asignado">DANIEL QUARANTA</span></div>
+</article>    </div>
   </div>
 </article>
 `;
