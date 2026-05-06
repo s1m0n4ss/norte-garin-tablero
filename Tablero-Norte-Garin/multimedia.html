@@ -236,9 +236,24 @@
     </aside>
 
     <header>
-      <div class="hero-wrap">
-        <img src="img/audio-video.png" class="hero-img" alt="Multimedia" />
-        <div class="hero-gradient"></div>
+      <div class="hero-wrap" style="background:#080808">
+        <!-- SVG grid pattern -->
+        <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="sgrid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M 28 0 L 0 0 0 28" fill="none" stroke="#a8a29e" stroke-width="0.3" stroke-opacity="0.18"/></pattern></defs><rect width="100%" height="100%" fill="url(#sgrid)"/></svg>
+        <!-- Concentric rings -->
+        <div style="position:absolute;right:-27px;top:50%;transform:translateY(-50%);width:180px;height:180px;border-radius:50%;border:1px solid #a8a29e1a;pointer-events:none"></div>
+        <div style="position:absolute;right:-2px;top:50%;transform:translateY(-50%);width:130px;height:130px;border-radius:50%;border:1px solid #a8a29e26;pointer-events:none"></div>
+        <div style="position:absolute;right:23px;top:50%;transform:translateY(-50%);width:80px;height:80px;border-radius:50%;border:1px solid #a8a29e33;pointer-events:none"></div>
+        <!-- Section illustration -->
+        <svg viewBox="0 0 64 64" fill="none" stroke="#a8a29e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:22px;top:50%;transform:translateY(-50%);width:82px;height:82px;opacity:0.9;pointer-events:none">
+          <rect x="6" y="10" width="52" height="36" rx="3"/>
+          <polygon points="26,22 26,38 44,30"/>
+          <rect x="22" y="50" width="20" height="4" rx="1"/>
+          <line x1="16" y1="50" x2="48" y2="50"/>
+        </svg>
+        <!-- Accent bar -->
+        <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,transparent,#a8a29e80,transparent);pointer-events:none"></div>
+        <!-- Text gradient overlay -->
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 55%);pointer-events:none"></div>
         <div class="hero-top-bar">
           <button class="icon-btn" id="btnMenu" aria-label="Menú">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="14" y1="16" y2="16"/></svg>
