@@ -156,24 +156,24 @@
 </main>
 
 <!-- Firebase -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getDatabase, ref, onValue, push, remove, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script>
   // ── Firebase config ──────────────────────────────────────────────────────────
   const firebaseConfig = {
-    apiKey:            "REEMPLAZAR_API_KEY",
-    authDomain:        "REEMPLAZAR.firebaseapp.com",
-    databaseURL:       "https://REEMPLAZAR-default-rtdb.firebaseio.com",
-    projectId:         "REEMPLAZAR",
-    storageBucket:     "REEMPLAZAR.appspot.com",
-    messagingSenderId: "REEMPLAZAR",
-    appId:             "REEMPLAZAR"
+    apiKey:            "AIzaSyAiIdLMX-Et4vHIGNE-5bKd_8GN_hsRiYI",
+    authDomain:        "predicacion-publica-850aa.firebaseapp.com",
+    databaseURL:       "https://predicacion-publica-850aa-default-rtdb.firebaseio.com",
+    projectId:         "predicacion-publica-850aa",
+    storageBucket:     "predicacion-publica-850aa.firebasestorage.app",
+    messagingSenderId: "312049713615",
+    appId:             "1:312049713615:web:e07a898e7a0df4c87dd2ba",
+    measurementId:     "G-0WC3TV34T5"
   };
   // ─────────────────────────────────────────────────────────────────────────────
 
-  const app = initializeApp(firebaseConfig);
-  const db  = getDatabase(app);
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
 
   // ── Schedule definition ───────────────────────────────────────────────────────
   const UBICACIONES_SEMANA = ["Hospital Garín", "Estación Garín", "Puente 5"];
@@ -223,8 +223,8 @@
   });
 
   // ── Firebase listener ─────────────────────────────────────────────────────────
-  const turnosRef = ref(db, "predicacion/turnos");
-  onValue(turnosRef, snap => {
+  const turnosRef = db.ref("predicacion/turnos");
+  turnosRef.on("value", snap => {
     turnosData = snap.val() || {};
     document.getElementById("loadingState").style.display = "none";
     document.getElementById("appContent").style.display = "block";
@@ -236,8 +236,7 @@
     const turno = turnosData[tid] || {};
     const anotados = turno.anotados || {};
     if (Object.keys(anotados).length >= 4) return;
-    const turnoRef = ref(db, `predicacion/turnos/${tid}/anotados`);
-    await push(turnoRef, { nombre: myName, timestamp: Date.now() });
+    await db.ref(`predicacion/turnos/${tid}/anotados`).push({ nombre: myName, timestamp: Date.now() });
   };
 
   window.desanotarme = async function(tid) {
@@ -245,7 +244,7 @@
     const anotados = turno.anotados || {};
     for (const [pid, val] of Object.entries(anotados)) {
       if (val.nombre === myName) {
-        await remove(ref(db, `predicacion/turnos/${tid}/anotados/${pid}`));
+        await db.ref(`predicacion/turnos/${tid}/anotados/${pid}`).remove();
         return;
       }
     }
