@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="gF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <clipPath id="clip"><rect width="64" height="64" rx="14"/></clipPath>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#gF)"/>
+  <ellipse cx="19" cy="19" rx="29" ry="29" fill="white" opacity="0.07" clip-path="url(#clip)"/>
+  <rect x="6" y="6" width="52" height="52" rx="9"
+        fill="white" opacity="0.07"
+        stroke="white" stroke-opacity="0.12" stroke-width="0.5"/>
+  <text x="32" y="32"
+        font-family="Arial Black, Arial, sans-serif"
+        font-weight="900" font-size="25"
+        fill="white" text-anchor="middle" dominant-baseline="central"
+        letter-spacing="-0.5">NG</text>
+</svg>
