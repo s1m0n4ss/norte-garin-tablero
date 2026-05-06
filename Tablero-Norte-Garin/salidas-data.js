@@ -139,7 +139,7 @@
       30: [{ h: "09:00", l: "Hna. Carmen Casas", c: "León Segovia", t: "11" }],
 
       31: [
-        { h: "09:00", l: "Colón y Centenario", c: "Diego Sarraute", t: "13" },
+        { h: "09:00", l: "Colón y Centenario", c: "Diego Serraute", t: "13" },
         { h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "40" },
       ],
     },
@@ -156,7 +156,7 @@
 
       2: [
         { type: "feriado", l: "FERIADO" },
-        { h: "10:00", l: "Patricias Argentinas y Fructuoso Díaz", c: "Diego Sarraute", t: "36" },
+        { h: "10:00", l: "Patricias Argentinas y Fructuoso Díaz", c: "Diego Serraute", t: "36" },
       ],
 
       3: [
@@ -175,7 +175,7 @@
 
       5: [{ type: "reunion", l: "Reunión por la mañana" }],
 
-      6: [{ h: "09:30", l: "Carmen Casas", c: "Diego Sarraute", t: "16" }],
+      6: [{ h: "09:30", l: "Carmen Casas", c: "Diego Serraute", t: "16" }],
 
       7: [{ h: "17:30", l: "Plaza De Vicenzo", c: "Mabel Zúñiga", t: "39" }],
 
@@ -184,7 +184,7 @@
         { h: "–", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
       ],
 
-      9: [{ h: "09:30", l: "Magallanes y Fructuoso Díaz", c: "Diego Sarraute", t: "31" }],
+      9: [{ h: "09:30", l: "Magallanes y Fructuoso Díaz", c: "Diego Serraute", t: "31" }],
 
       10: [{ h: "09:30", l: "Francia y San Martín", c: "Francisco Araoz", t: "8" }],
 
@@ -199,13 +199,13 @@
 
       12: [{ type: "reunion", l: "Reunión por la mañana" }],
 
-      13: [{ h: "09:30", l: "Hermana Carmen Casas", c: "Diego Sarraute", t: "11" }],
+      13: [{ h: "09:30", l: "Hermana Carmen Casas", c: "Diego Serraute", t: "11" }],
 
       14: [{ h: "17:30", l: "Plaza de Vicenzo", c: "Mabel Zuñiga", t: "43" }],
 
       15: [{ h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "27" }],
 
-      16: [{ h: "09:30", l: "Patricias Argentinas y Calle 3", c: "Diego Sarraute", t: "34" }],
+      16: [{ h: "09:30", l: "Patricias Argentinas y Calle 3", c: "Diego Serraute", t: "34" }],
 
       17: [{ h: "09:30", l: "Paso y San Martin", c: "Francisco Araoz", t: "12" }],
 
@@ -220,13 +220,13 @@
 
       19: [{ type: "reunion", l: "Reunión por la mañana" }],
 
-      20: [{ h: "09:30", l: "Hermana Carmen Casas", c: "Diego Sarraute", t: "6" }],
+      20: [{ h: "09:30", l: "Hermana Carmen Casas", c: "Diego Serraute", t: "6" }],
 
       21: [{ h: "17:30", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "44" }],
 
       22: [{ h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "33" }],
 
-      23: [{ h: "09:30", l: "Fructuoso Díaz y Vicente López", c: "Diego Sarraute", t: "25" }],
+      23: [{ h: "09:30", l: "Fructuoso Díaz y Vicente López", c: "Diego Serraute", t: "25" }],
 
       24: [{ h: "09:30", l: "Ressio y Cigliutti", c: "Francisco Araoz", t: "3" }],
 
@@ -241,7 +241,7 @@
 
       26: [{ type: "reunion", l: "Reunión por la mañana" }],
 
-      27: [{ h: "09:30", l: "Hermana Carmen Casas", c: "Diego Sarraute", t: "10" }],
+      27: [{ h: "09:30", l: "Hermana Carmen Casas", c: "Diego Serraute", t: "10" }],
 
       28: [{ h: "17:30", l: "Plaza De Vicenzo", c: "Horacio Salgado", t: "46" }],
 
@@ -250,7 +250,7 @@
         { h: "19:00", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
       ],
 
-      30: [{ h: "09:30", l: "Fructuoso Díaz y Storni", c: "Diego Sarraute", t: "4" }],
+      30: [{ h: "09:30", l: "Fructuoso Díaz y Storni", c: "Diego Serraute", t: "4" }],
     },
   };
 
@@ -263,7 +263,7 @@
     d: {
       1: [
         { type: "feriado", l: "FERIADO (Día del Trabajador)" },
-        { h: "10:00", l: "Casa Doris Talarico", c: "Diego Sarraute", t: "23" },
+        { h: "10:00", l: "Casa Doris Talarico", c: "Diego Serraute", t: "23" },
       ],
 
       2: [
@@ -276,13 +276,13 @@
 
       3: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      4: [{ h: "09:30", l: "Casa Carmen Casas", c: "Diego Sarraute", t: "16" }],
+      4: [{ h: "09:30", l: "Casa Carmen Casas", c: "Diego Serraute", t: "16" }],
 
       5: [{ h: "17:30", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "40" }],
 
       6: [{ h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "9" }],
 
-      7: [{ h: "09:30", l: "Beliera y Fructuoso Díaz", c: "Diego Sarraute", t: "32" }],
+      7: [{ h: "09:30", l: "Beliera y Fructuoso Díaz", c: "Diego Serraute", t: "32" }],
 
       8: [{ h: "09:30", l: "Casa Doris Talarico", c: "León Segovia", t: "19" }],
 
@@ -293,7 +293,7 @@
 
       10: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      11: [{ h: "09:30", l: "Casa Carmen Casas", c: "Diego Sarraute", t: "11" }],
+      11: [{ h: "09:30", l: "Casa Carmen Casas", c: "Diego Serraute", t: "11" }],
 
       12: [{ h: "17:30", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "41" }],
 
@@ -302,7 +302,7 @@
         { h: "19:00", l: "Predicación Telefónica (Zoom)", c: "Juan Carlos Sánchez" },
       ],
 
-      14: [{ h: "09:30", l: "Colón y Oliveira César", c: "Diego Sarraute", t: "29" }],
+      14: [{ h: "09:30", l: "Colón y Oliveira César", c: "Diego Serraute", t: "29" }],
 
       15: [{ h: "09:30", l: "Casa Doris Talarico", c: "León Segovia", t: "24" }],
 
@@ -316,13 +316,13 @@
 
       17: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      18: [{ h: "09:30", l: "Casa Carmen Casas", c: "Diego Sarraute", t: "6" }],
+      18: [{ h: "09:30", l: "Casa Carmen Casas", c: "Diego Serraute", t: "6" }],
 
       19: [{ h: "17:30", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "45" }],
 
       20: [{ h: "09:30", l: "Familia Flores", c: "Francisco Araoz", t: "33" }],
 
-      21: [{ h: "09:30", l: "Colón y Paso", c: "Diego Sarraute", t: "7" }],
+      21: [{ h: "09:30", l: "Colón y Paso", c: "Diego Serraute", t: "7" }],
 
       22: [{ h: "09:30", l: "Casa Doris Talarico", c: "León Segovia", t: "18" }],
 
@@ -335,7 +335,7 @@
 
       25: [
         { type: "feriado", l: "FERIADO (25 de Mayo)" },
-        { h: "10:00", l: "Casa Carmen Casas", c: "Diego Sarraute", t: "10" },
+        { h: "10:00", l: "Casa Carmen Casas", c: "Diego Serraute", t: "10" },
       ],
 
       26: [{ h: "17:30", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "46" }],
@@ -345,12 +345,12 @@
         { h: "19:00", l: "Predicación Telefónica (Zoom)", c: "Mario Segovia" },
       ],
 
-      28: [{ h: "09:30", l: "Uruguay y Centenario", c: "Diego Sarraute", t: "14" }],
+      28: [{ h: "09:30", l: "Uruguay y Centenario", c: "Diego Serraute", t: "14" }],
 
       29: [{ h: "09:30", l: "Casa Doris Talarico", c: "León Segovia", t: "23" }],
 
       30: [
-        { h: "09:30", l: "Grupo 1 – Francia y Alte Brown", c: "Diego Sarraute", t: "22" },
+        { h: "09:30", l: "Grupo 1 – Francia y Alte Brown", c: "Diego Serraute", t: "22" },
         { h: "09:30", l: "Grupo 2 – Casa Fanny Villantoy", c: "Horacio Salgado", t: "25" },
         { h: "09:30", l: "Grupo 3 – Uruguay y Oliveira César", c: "Cristian Segovia", t: "21" },
         { h: "09:30", l: "Grupo 4 – Storni y Fructuoso Díaz", c: "Caetano Ferrari", t: "4" },
