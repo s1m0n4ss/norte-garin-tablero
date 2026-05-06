@@ -42,7 +42,7 @@ window.CONFERENCIAS_DATA = [
         title: "Cómo tomar buenas decisiones",
         speaker: "Marcos Avilés",
         congregation: "Este, Benavídez, Buenos Aires",
-        chairman: "Diego Sarraute"
+        chairman: "Diego Serraute"
       }
     ],
     salen: [
@@ -113,7 +113,7 @@ window.CONFERENCIAS_DATA = [
         date: "31",
         day: "Domingo",
         time: "9:30 am",
-        title: "¿Cuál es su propósito en la vida?",
+        title: "¿Le importa a Dios qué religión tengamos?",
         speaker: "Joel Paz",
         congregation: "Delta del Paraná, Buenos Aires",
         chairman: "Lucas Segovia"
