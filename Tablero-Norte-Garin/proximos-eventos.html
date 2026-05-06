@@ -344,7 +344,7 @@
         </a>
         <div class="nav-section-label" style="margin-top:20px">Organización</div>
         <a href="multimedia.html" class="nav-item">
-          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div> Multimedia
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div> Acomodadores y Multimedia
         </a>
         <a href="limpieza.html" class="nav-item">
           <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg></div> Limpieza
@@ -479,16 +479,26 @@
           return;
         }
 
-        const eventos = [...window.EVENTOS_DATA].sort((a, b) => getDateOnly(a.date) - getDateOnly(b.date));
+        const nowAR = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" }));
+        const hoy = new Date(nowAR.getFullYear(), nowAR.getMonth(), nowAR.getDate());
+
+        const eventos = [...window.EVENTOS_DATA]
+          .sort((a, b) => getDateOnly(a.date) - getDateOnly(b.date))
+          .filter(ev => getDateOnly(ev.date) >= hoy);
+
         document.getElementById("summary-total").textContent = eventos.length;
-
-        const hoy = new Date();
-        hoy.setHours(0, 0, 0, 0);
-        const proximo = eventos.find(ev => getDateOnly(ev.date) >= hoy) || eventos[0];
-
-        document.getElementById("summary-next").textContent = proximo
-          ? `${getDateOnly(proximo.date).getDate()} ${getMonthShort(proximo.date)}`
+        document.getElementById("summary-next").textContent = eventos[0]
+          ? `${getDateOnly(eventos[0].date).getDate()} ${getMonthShort(eventos[0].date)}`
           : "—";
+
+        if (eventos.length === 0) {
+          cont.innerHTML = `
+            <div class="event-card">
+              <div class="event-card-inner">No hay eventos próximos por el momento</div>
+            </div>
+          `;
+          return;
+        }
 
         cont.innerHTML = eventos.map(ev => `
           <section class="event-card">
