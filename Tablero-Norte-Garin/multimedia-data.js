@@ -54,4 +54,15 @@ window.MULTIMEDIA_DATA = [
     entrada: ["Daniel Albis"],
     auditorio: ["Francisco Araoz"]
   }
+  {
+    key: "2026-05-11",
+    label: "11–17 May",
+    start: "2026-05-11",
+    end: "2026-05-17",
+    audio_video: ["Horacio Salgado", "Pablo Zuñiga"],
+    microfonistas: ["Samuel Duran", "Elias Coria"],
+    plataforma: ["Diego Sarraute"],
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
+  }
 ];
