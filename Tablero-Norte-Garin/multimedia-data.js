@@ -53,7 +53,7 @@ window.MULTIMEDIA_DATA = [
     plataforma: ["Diego Sarraute"],
     entrada: ["Daniel Albis"],
     auditorio: ["Francisco Araoz"]
-  }
+  },
   {
     key: "2026-05-11",
     label: "11–17 May",
