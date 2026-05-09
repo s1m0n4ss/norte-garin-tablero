@@ -1,16 +1,5 @@
 window.MULTIMEDIA_DATA = [
   {
-    key: "2026-03-30",
-    label: "30–05 Abr",
-    start: "2026-03-30",
-    end: "2026-04-05",
-    audio_video: ["Lucas Segovia", "Caetano Ferrari"],
-    microfonistas: ["Samuel Durán", "Elias Coria"],
-    plataforma: ["Diego Sarraute"],
-    entrada: ["Dario Cortez"],
-    auditorio: ["Francisco Araoz"]
-  },
-  {
     key: "2026-04-06",
     label: "06–12 Abr",
     start: "2026-04-06",
