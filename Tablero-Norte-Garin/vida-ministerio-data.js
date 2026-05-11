@@ -8,6 +8,7 @@ window.VIDA_MINISTERIO_DATA = `
 <h3>EVENTO ESPECIAL</h3>
 <div class="section"><div class="sect-title"><h4>Discurso de la Conmemoración</h4></div><span class="asignado">Reunión especial de congregación</span></div>
 </section>
+<span class="lector-estudio"></span>
 </article>
 
 <article class="page" data-key="2026-04-06" data-title="6–12 DE ABRIL" data-book="ISAÍAS 50, 51">
@@ -34,6 +35,7 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb introducción a la sección 12 y lecciones 74, 75.)</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 13</strong> y Oración final: <span class="asignado">MARIO SEGOVIA</span></div>
+<span class="lector-estudio"></span>
 </article>
 
 <article class="page" data-key="2026-04-13" data-title="13–19 DE ABRIL" data-book="ISAÍAS 52, 53">
@@ -60,6 +62,7 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciones 76, 77)</h4></div><span class="asignado">MARIO SEGOVIA</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 57</strong> y Oración final: <span class="asignado">DIEGO SARRAUTE</span></div>
+<span class="lector-estudio"></span>
 </article>
 
 <article class="page" data-key="2026-04-20" data-title="20–26 DE ABRIL" data-book="ISAÍAS 54, 55">
@@ -87,6 +90,7 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (lfb lecciones 78, 79.)</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 70</strong> y Oración final: <span class="asignado">CRISTIAN SEGOVIA</span></div>
+<span class="lector-estudio"></span>
 </article>
 
 <article class="page" data-key="2026-04-27" data-title="27 DE ABRIL – 03 DE MAYO" data-book="ISAÍAS 56, 57">
@@ -113,6 +117,7 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciones 80, 81.)</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 28</strong> y Oración final: <span class="asignado">CRISTIAN SEGOVIA</span></div>
+<span class="lector-estudio"></span>
 </article>
 
 <article
@@ -153,7 +158,7 @@ window.VIDA_MINISTERIO_DATA = `
 </header>
 <section class="bloque verde">
 <h3>TESOROS DE LA BIBLIA</h3>
-<div class="section"><div class="sect-title"><h4>1. "Levántate, oh, mujer, despide luz”</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>1. "Levántate, oh, mujer, despide luz"</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(10 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(10 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Is 61:1-9)</h4></div><span class="asignado">HECTOR PALAVECINO</span><div class="duration">(4 mins.)</div></div>
 </section>
@@ -171,6 +176,7 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 119</strong> y Oración final: <span class="asignado">CRISTIAN SEGOVIA</span></div>
 
+<span class="lector-estudio"></span>
 </article>
 <article class="page" data-key="2026-05-18" data-title="18 DE MAYO – 24 DE MAYO" data-book="ISAÍAS 62,63, 64">
 <header>
@@ -196,8 +202,10 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciòn 86, Introd. secciòn 13 y lecciòn 87.)</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 151</strong> y Oración final: <span class="asignado">DANIEL QUARANTA</span></div>
+<span class="lector-estudio"></span>
 </article>    
 
+<span class="lector-estudio"></span>
 </article>
 <article class="page" data-key="2026-05-25" data-title="25 DE MAYO – 31 DE MAYO" data-book="ISAÍAS 65,66">
 <header>
@@ -224,8 +232,10 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (lfb lecciones 88 y 89)</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 55</strong> y Oración final: <span class="asignado">ELVIO CASCO</span></div>
+<span class="lector-estudio"></span>
 </article>    
 </div>
   </div>
+<span class="lector-estudio"></span>
 </article>
 `;
