@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Discursos | Norte Garín</title>
+    <title>Reunión del fin de semana | Norte Garín</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -266,10 +266,7 @@
           <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div> Vida y Ministerio
         </a>
         <a href="conferencias.html" class="nav-item active">
-          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div> Discursos
-        </a>
-        <a href="lectores.html" class="nav-item">
-          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div> Lectores
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div> Reunión del fin de semana
         </a>
         <div class="nav-section-label" style="margin-top:20px">Organización</div>
         <a href="multimedia.html" class="nav-item">
@@ -310,7 +307,7 @@
           </button>
         </div>
         <div class="hero-content">
-          <div class="hero-title">Discursos</div>
+          <div class="hero-title">Reunión del<br>fin de semana</div>
           <div class="hero-sub">Programa 2026</div>
         </div>
       </div>
@@ -412,6 +409,7 @@
                     ${v.congregation ? `<div class="conf-meta-row"><span class="conf-meta-label">Congreg.</span><span class="conf-meta-value">${esc(v.congregation)}</span></div>` : ""}
                     ${v.chairman ? `<div class="conf-meta-row"><span class="conf-meta-label">Preside</span><span class="conf-meta-value">${esc(v.chairman)}</span></div>` : ""}
                   </div>
+                  ${v.lector ? `<div style="margin-top:8px;padding:10px 12px;background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.2);border-radius:10px;"><div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#60a5fa;margin-bottom:3px;">Lector de La Atalaya</div><div style="font-size:14px;font-weight:700;color:var(--text);">${esc(v.lector)}</div></div>` : ""}
                   ${v.time ? `<div class="conf-time">${esc(v.day ?? "")}${v.day && v.time ? " · " : ""}${esc(v.time)}</div>` : ""}
                 </div>`;
             }
