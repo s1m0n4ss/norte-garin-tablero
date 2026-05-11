@@ -15,7 +15,8 @@ window.CONFERENCIAS_DATA = [
         title: "¿Le importamos a Dios?",
         speaker: "Enzo Compostella",
         congregation: "Este, Benavídez, Buenos Aires",
-        chairman: "Darío Cortez"
+        chairman: "Darío Cortez",
+        lector: ""
       },
       {
         date: "12",
@@ -24,7 +25,8 @@ window.CONFERENCIAS_DATA = [
         title: "Mostremos amor en un mundo egoísta",
         speaker: "Gonzalo Ros",
         congregation: "Este, San Fernando, Buenos Aires",
-        chairman: "Daniel Albis"
+        chairman: "Daniel Albis",
+        lector: ""
       },
       {
         date: "19",
@@ -33,7 +35,8 @@ window.CONFERENCIAS_DATA = [
         title: "Qué aprendemos del diluvio universal",
         speaker: "Sebastián Nicolini",
         congregation: "",
-        chairman: "Mario Segovia"
+        chairman: "Mario Segovia",
+        lector: ""
       },
       {
         date: "26",
@@ -42,7 +45,8 @@ window.CONFERENCIAS_DATA = [
         title: "Cómo tomar buenas decisiones",
         speaker: "Marcos Avilés",
         congregation: "Este, Benavídez, Buenos Aires",
-        chairman: "Diego Serraute"
+        chairman: "Diego Serraute",
+        lector: ""
       }
     ],
     salen: [
@@ -84,7 +88,8 @@ window.CONFERENCIAS_DATA = [
         title: "La resurrección: una victoria sobre la muerte",
         speaker: "Marcos Lupidi",
         congregation: "Capilla del Señor, Buenos Aires",
-        chairman: "Horacio Salgado"
+        chairman: "Horacio Salgado",
+        lector: ""
       },
       {
         date: "10",
@@ -98,7 +103,8 @@ window.CONFERENCIAS_DATA = [
         title: "Sirva a Jehová con alegría",
         speaker: "Facundo Delaloye",
         congregation: "Delta del Paraná, Buenos Aires",
-        chairman: "Caetano Ferrari"
+        chairman: "Caetano Ferrari",
+        lector: ""
       },
       {
         date: "24",
@@ -107,7 +113,8 @@ window.CONFERENCIAS_DATA = [
         title: "Haga amistades que duren para siempre",
         speaker: "Nicolás Mandarino",
         congregation: "Delta del Paraná, Buenos Aires",
-        chairman: "Adolfo Gutiérrez"
+        chairman: "Adolfo Gutiérrez",
+        lector: ""
       },
       {
         date: "31",
@@ -116,7 +123,8 @@ window.CONFERENCIAS_DATA = [
         title: "¿Le importa a Dios qué religión tengamos?",
         speaker: "Joel Paz",
         congregation: "Delta del Paraná, Buenos Aires",
-        chairman: "Lucas Segovia"
+        chairman: "Lucas Segovia",
+        lector: ""
       }
     ],
     salen: [
