@@ -147,5 +147,53 @@ window.CONFERENCIAS_DATA = [
         extra: "Delta del Paraná, Buenos Aires - SR: Navarro 1355 - 10 hs"
       }
     ]
+  },
+  {
+    month: "Junio 2026",
+    year: 2026,
+    monthIdx: 5,
+    vienen: [
+      {
+        date: "07",
+        day: "Dom",
+        time: "10:00",
+        title: "¿Cómo puede usted sobrevivir al fin del mundo?",
+        speaker: "León Segovia",
+        congregation: "Norte, Garín, Buenos Aires",
+        chairman: "Darío Cortez",
+        lector: "Daniel Albis"
+      },
+      {
+        date: "14",
+        day: "Dom",
+        time: "10:00",
+        title: "Hagamos el bien a todos",
+        speaker: "Jorge Sosa",
+        congregation: "Sur, Garín, Buenos Aires",
+        chairman: "Daniel Albis",
+        lector: "Horacio Salgado"
+      },
+      {
+        date: "21",
+        day: "Dom",
+        time: "10:00",
+        title: "¿Dónde encontrará una esperanza segura?",
+        speaker: "Lucas Dos Santos",
+        congregation: "Norte, Garín, Buenos Aires",
+        chairman: "Diego Sarraute",
+        lector: "Darío Cortez"
+      },
+      {
+        date: "28",
+        day: "Dom",
+        time: "10:00",
+        title: "¿Cuál es su propósito en la vida?",
+        speaker: "Diego Sarraute",
+        congregation: "Norte, Garín, Buenos Aires",
+        chairman: "León Segovia",
+        lector: "Lucas Segovia"
+      }
+    ],
+    salen: []
   }
 ];

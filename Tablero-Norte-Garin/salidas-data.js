@@ -310,7 +310,7 @@
         { h: "09:30", l: "Grupo 1 – Familia Segovia", c: "Horacio Salgado", t: "17" },
         { h: "09:30", l: "Grupo 2 – Casa Carmen Casas", c: "Elías Coria", t: "3" },
         { h: "09:30", l: "Grupo 3 – Familia Miño", c: "Darío Cortez", t: "12" },
-        { h: "09:30", l: "Grupo 4 – Familia Durán", c: "Samuel Durán", t: "20" },
+        { h: "09:30", l: "Grupo 4 – Francia y Almirante Brown", c: "Samuel Durán", t: "20" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
