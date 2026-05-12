@@ -84,7 +84,7 @@ window.CONFERENCIAS_DATA = [
       {
         date: "03",
         day: "Domingo",
-        time: "9:30 am",
+        time: "10:00",
         title: "La resurrección: una victoria sobre la muerte",
         speaker: "Marcos Lupidi",
         congregation: "Capilla del Señor, Buenos Aires",
@@ -99,7 +99,7 @@ window.CONFERENCIAS_DATA = [
       {
         date: "17",
         day: "Domingo",
-        time: "9:30 am",
+        time: "10:00",
         title: "Sirva a Jehová con alegría",
         speaker: "Facundo Delaloye",
         congregation: "Delta del Paraná, Buenos Aires",
@@ -109,7 +109,7 @@ window.CONFERENCIAS_DATA = [
       {
         date: "24",
         day: "Domingo",
-        time: "9:30 am",
+        time: "10:00",
         title: "Haga amistades que duren para siempre",
         speaker: "Nicolás Mandarino",
         congregation: "Delta del Paraná, Buenos Aires",
@@ -119,7 +119,7 @@ window.CONFERENCIAS_DATA = [
       {
         date: "31",
         day: "Domingo",
-        time: "9:30 am",
+        time: "10:00",
         title: "¿Le importa a Dios qué religión tengamos?",
         speaker: "Joel Paz",
         congregation: "Delta del Paraná, Buenos Aires",
@@ -147,7 +147,8 @@ window.CONFERENCIAS_DATA = [
         extra: "Delta del Paraná, Buenos Aires - SR: Navarro 1355 - 10 hs"
       }
     ]
-  },
+  }
+  ,
   {
     month: "Junio 2026",
     year: 2026,

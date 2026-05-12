@@ -408,8 +408,8 @@
                     ${v.speaker ? `<div class="conf-meta-row"><span class="conf-meta-label">Orador</span><span class="conf-meta-value">${esc(v.speaker)}</span></div>` : ""}
                     ${v.congregation ? `<div class="conf-meta-row"><span class="conf-meta-label">Congreg.</span><span class="conf-meta-value">${esc(v.congregation)}</span></div>` : ""}
                     ${v.chairman ? `<div class="conf-meta-row"><span class="conf-meta-label">Preside</span><span class="conf-meta-value">${esc(v.chairman)}</span></div>` : ""}
+                    ${v.lector ? `<div class="conf-meta-row"><span class="conf-meta-label">Lector Atalaya</span><span class="conf-meta-value">${esc(v.lector)}</span></div>` : ""}
                   </div>
-                  ${v.lector ? `<div style="margin-top:4px;font-size:12px;color:#64748b;">Lector: ${esc(v.lector)}</div>` : ""}
                   ${v.time ? `<div class="conf-time">${esc(v.day ?? "")}${v.day && v.time ? " · " : ""}${esc(v.time)}</div>` : ""}
                 </div>`;
             }
