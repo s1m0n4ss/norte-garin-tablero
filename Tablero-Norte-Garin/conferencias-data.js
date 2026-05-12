@@ -16,7 +16,7 @@ window.CONFERENCIAS_DATA = [
         speaker: "Enzo Compostella",
         congregation: "Este, Benavídez, Buenos Aires",
         chairman: "Darío Cortez",
-        lector: ""
+        lector: "MARIO SEGOVIA"
       },
       {
         date: "12",
@@ -26,7 +26,7 @@ window.CONFERENCIAS_DATA = [
         speaker: "Gonzalo Ros",
         congregation: "Este, San Fernando, Buenos Aires",
         chairman: "Daniel Albis",
-        lector: ""
+        lector: "ADOLFO GUTIERREZ"
       },
       {
         date: "19",
@@ -36,7 +36,7 @@ window.CONFERENCIAS_DATA = [
         speaker: "Sebastián Nicolini",
         congregation: "",
         chairman: "Mario Segovia",
-        lector: ""
+        lector: "DANIEL ALBIS"
       },
       {
         date: "26",
@@ -46,7 +46,7 @@ window.CONFERENCIAS_DATA = [
         speaker: "Marcos Avilés",
         congregation: "Este, Benavídez, Buenos Aires",
         chairman: "Diego Serraute",
-        lector: ""
+        lector: "HORACIO SALGADO"
       }
     ],
     salen: [
@@ -89,7 +89,7 @@ window.CONFERENCIAS_DATA = [
         speaker: "Marcos Lupidi",
         congregation: "Capilla del Señor, Buenos Aires",
         chairman: "Horacio Salgado",
-        lector: ""
+        lector: "DARIO CORTEZ"
       },
       {
         date: "10",
@@ -104,7 +104,7 @@ window.CONFERENCIAS_DATA = [
         speaker: "Facundo Delaloye",
         congregation: "Delta del Paraná, Buenos Aires",
         chairman: "Caetano Ferrari",
-        lector: ""
+        lector: "LUCAS SEGOVIA"
       },
       {
         date: "24",
@@ -114,7 +114,7 @@ window.CONFERENCIAS_DATA = [
         speaker: "Nicolás Mandarino",
         congregation: "Delta del Paraná, Buenos Aires",
         chairman: "Adolfo Gutiérrez",
-        lector: ""
+        lector: "LEON SEGOVIA"
       },
       {
         date: "31",
@@ -124,7 +124,7 @@ window.CONFERENCIAS_DATA = [
         speaker: "Joel Paz",
         congregation: "Delta del Paraná, Buenos Aires",
         chairman: "Lucas Segovia",
-        lector: ""
+        lector: "ADOLFO GUTIERREZ"
       }
     ],
     salen: [
