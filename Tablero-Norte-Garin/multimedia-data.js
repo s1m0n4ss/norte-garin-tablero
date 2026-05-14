@@ -7,8 +7,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Horacio Salgado", "Pablo Zuñiga"],
     microfonistas: ["Samuel Duran", "Elias Coria"],
     plataforma: ["Diego Sarraute"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Francisco Araoz"],
+    auditorio: ["Daniel Quaranta"]
   },
   {
     key: "2026-05-18",
@@ -18,8 +18,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Mario Segovia", "Caetano Ferrari"],
     microfonistas: ["Daniel Quaranta", "Daniel Albis"],
     plataforma: ["Horacio Salgado"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Diego Sarraute"],
+    auditorio: ["Horacio Salgado"]
   },
   {
     key: "2026-05-25",
@@ -29,7 +29,7 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Lucas Segovia", "Mario Segovia"],
     microfonistas: ["Samuel Duran", "Elias Coria"],
     plataforma: ["Diego Sarraute"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["León Segovia"],
+    auditorio: ["Pablo Zuñiga"]
   }
 ];
