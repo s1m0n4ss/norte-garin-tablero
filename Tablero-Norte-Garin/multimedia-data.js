@@ -19,7 +19,7 @@ window.MULTIMEDIA_DATA = [
     microfonistas: ["Daniel Quaranta", "Daniel Albis"],
     plataforma: ["Horacio Salgado"],
     entrada: ["Diego Sarraute"],
-    auditorio: ["Horacio Salgado"]
+    auditorio: ["Elias Coria"]
   },
   {
     key: "2026-05-25",
