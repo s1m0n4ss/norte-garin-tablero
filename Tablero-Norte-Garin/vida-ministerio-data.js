@@ -248,7 +248,7 @@ window.VIDA_MINISTERIO_DATA = `
 <h3>SEAMOS MEJORES MAESTROS</h3>
 <div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">BIBIANA PALACIOS / CARMEN CASAS</span><div class="duration">(4 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">ROXANA PALAVECINO / MABEL MIÑO</span><div class="duration">(4 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>6. Haga discipulos</h4></div><span class="asignado">MICAELA SARRAUTE / SUSANA ARAOZ</span><div class="duration">(5 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga discipulos</h4></div><span class="asignado">SABRINA SALGADO / SUSANA ARAOZ</span><div class="duration">(5 mins.)</div></div>
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
