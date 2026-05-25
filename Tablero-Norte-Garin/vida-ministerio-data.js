@@ -233,6 +233,35 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 55</strong> y Oración final: <span class="asignado">ELVIO CASCO</span></div>
 <span class="lector-estudio">DIEGO SARRAUTE</span>
+<article class="page" data-key="2026-06-01" data-title="01 DE JUNIO – 07 DE JUNIO" data-book="JEREMIAS 1,2, 3">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">ADOLFO GUTIERREZ</span></div>
+<div class="inicio-programa"><strong>Canción 84</strong> y oración <span class="asignado">CAETANO FERRARI</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. No te dejes intimidar [...], porque Yo estoy contigo</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 3:14-25)</h4></div><span class="asignado">SAMUEL DURAN</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">BIBIANA PALACIOS / CARMEN CASAS</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">ROXANA PALAVECINO / MABEL MIÑO</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga discipulos</h4></div><span class="asignado">MICAELA SARRAUTE / SUSANA ARAOZ</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 76</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. ¡Sea valiente como Jeremias!</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(6 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Listos para preparar una defensa [...] con apacibilidad y profundo respeto</h4></div><span class="asignado">DARIO CORTEZ</span><div class="duration">(9 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciòn 90, 91.)</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 18</strong> y Oración final: <span class="asignado">CRISTIAN SEGOVIA</span></div>
+<span class="lector-estudio">DANIEL ALBIS</span>
+</article>
+
+<span class="lector-estudio"></span>
 </article>
 </div>
   </div>
