@@ -255,11 +255,38 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4><strong>Canción 76</strong></h4></div></div>
 <div class="section"><div class="sect-title"><h4>7. ¡Sea valiente como Jeremias!</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(6 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>8. Listos para preparar una defensa [...] con apacibilidad y profundo respeto</h4></div><span class="asignado">DARIO CORTEZ</span><div class="duration">(9 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciòn 90, 91.)</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(30 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (lfb lecciòn 90, 91.)</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 18</strong> y Oración final: <span class="asignado">CRISTIAN SEGOVIA</span></div>
 <span class="lector-estudio">DANIEL ALBIS</span>
 </article>
+<article class="page" data-key="2026-06-01" data-title="08 DE JUNIO – 14 DE JUNIO" data-book="JEREMIAS 4-6">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">ELVIO CASCO</span></div>
+<div class="inicio-programa"><strong>Canción 56</strong> y oración <span class="asignado">DANIEL ALBIS</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. No nos enfermemos espiritualmente como les paso a los de Judá</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 5:1-11)</h4></div><span class="asignado">AXEL GOMEZ</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">SOFIA ZUÑIGA / ALICIA VERA</span><div class="duration">(2 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado">GUILLERMINA RASGUIDO/ MONICA CASCO</span><div class="duration">(2 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga revisitas</h4></div><span class="asignado">FANNY VILLANTOY / NORMA SCOTTI</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Haga revisitas</h4></div><span class="asignado">ALICIA SANCHEZ / ANGELES CESPEDES</span><div class="duration">(3 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 60</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>8. Proteja su corazón de la informacion falsa</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(8 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Repaso de la asamblea</h4></div><span class="asignado">ADOLFO GUTIERREZ</span><div class="duration">(7 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>10. Estudio biblico de congregación (lfb lecciòn 92, 93.)</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 68</strong> y Oración final: <span class="asignado">LEÓN SEGOVIA</span></div>
+<span class="lector-estudio">JUAN CARLOS SANCHEZ</span>
 
 <span class="lector-estudio"></span>
 </article>
