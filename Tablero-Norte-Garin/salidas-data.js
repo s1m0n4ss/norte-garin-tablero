@@ -353,7 +353,7 @@
         { h: "09:30", l: "Grupo 1 – Francia y Alte Brown", c: "Diego Serraute", t: "22" },
         { h: "09:30", l: "Grupo 2 – Casa Fanny Villantoy", c: "Horacio Salgado", t: "25" },
         { h: "09:30", l: "Grupo 3 – Uruguay y Oliveira César", c: "Cristian Segovia", t: "21" },
-        { h: "09:30", l: "Grupo 4 – Storni y Fructuoso Díaz", c: "Caetano Ferrari", t: "4" },
+        { h: "09:30", l: "Grupo 4 – San Martín y Colón", c: "Caetano Ferrari", t: "8" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
@@ -361,7 +361,95 @@
     },
   };
 
-  const CALENDARIO = [MAR_2026, ABR_2026, MAY_2026];
+  // =========================
+  //   JUNIO 2026
+  // =========================
+  const JUN_2026 = {
+    y: 2026,
+    m: 6,
+    d: {
+      1: [{ h: "10:00", l: "Casa Carmen Casas", c: "—", t: "16" }],
+
+      2: [{ h: "17:00", l: "Plaza de Vicenzo", c: "—", t: "40" }],
+
+      3: [{ h: "10:00", l: "Familia Flores", c: "—", t: "9" }],
+
+      4: [{ h: "10:00", l: "Fructuoso Díaz y 1° de Mayo", c: "Diego Sarraute", t: "35" }],
+
+      5: [{ h: "10:00", l: "Casa Doris Talarico", c: "—", t: "19" }],
+
+      6: [
+        { h: "10:00", l: "Salida congregacional · Plaza Barrio Salas", c: "Horacio Salgado", t: "52" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      7: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      8: [{ h: "10:00", l: "Casa Carmen Casas", c: "—", t: "11" }],
+
+      9: [{ h: "17:00", l: "Plaza de Vicenzo", c: "—", t: "39" }],
+
+      10: [{ h: "10:00", l: "Familia Flores", c: "—", t: "27" }],
+
+      11: [{ h: "10:00", l: "Fructuoso Díaz y Magallanes", c: "Diego Sarraute", t: "31" }],
+
+      12: [{ h: "10:00", l: "Casa Doris Talarico", c: "—", t: "24" }],
+
+      13: [
+        { h: "10:00", l: "Grupo 1 – Golf Club Argentino y Golf Club Santa Lucía", c: "Daniel Albis", t: "47" },
+        { h: "10:00", l: "Grupo 2 – Jockey Club y Golf Club Argentino", c: "Manuel Feril", t: "50" },
+        { h: "10:00", l: "Grupo 3 – Golf Club Argentino y Salta Polo Club", c: "Pablo Zúñiga", t: "48" },
+        { h: "10:00", l: "Grupo 4 – Puente 5", c: "Lucas Segovia", t: "51" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      14: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      15: [{ h: "10:00", l: "Casa Carmen Casas", c: "—", t: "6" }],
+
+      16: [{ h: "17:00", l: "Plaza de Vicenzo", c: "—", t: "43" }],
+
+      17: [{ h: "10:00", l: "Familia Flores", c: "—", t: "33" }],
+
+      18: [{ h: "10:00", l: "Ressio y Cigliutti", c: "Diego Sarraute", t: "3" }],
+
+      19: [{ h: "10:00", l: "Casa Doris Talarico", c: "—", t: "18" }],
+
+      20: [
+        { type: "feriado", l: "FERIADO (Día de la Bandera 🇦🇷)" },
+        { h: "10:00", l: "Salida congregacional · Casa Cintia Cancino", c: "León Segovia", t: "30, 32" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      21: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      22: [{ h: "10:00", l: "Casa Carmen Casas", c: "—", t: "10" }],
+
+      23: [{ h: "17:00", l: "Plaza de Vicenzo", c: "—", t: "44" }],
+
+      24: [{ h: "10:00", l: "Familia Flores", c: "—", t: "15" }],
+
+      25: [{ h: "10:00", l: "Colón y Beliera", c: "Diego Sarraute", t: "29" }],
+
+      26: [{ h: "10:00", l: "Casa Doris Talarico", c: "—", t: "23" }],
+
+      27: [
+        { h: "10:00", l: "Grupo 1 – Familia Segovia", c: "León Segovia", t: "25" },
+        { h: "10:00", l: "Grupo 2 – Casa Manuel Feril", c: "Horacio Salgado", t: "21" },
+        { h: "10:00", l: "Grupo 3 – Paso y Centenario", c: "Elvio Casco", t: "12" },
+        { h: "10:00", l: "Grupo 4 – Paso y San Martín", c: "Caetano Ferrari", t: "7" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      28: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      29: [{ h: "10:00", l: "Casa Carmen Casas", c: "—", t: "16" }],
+
+      30: [{ h: "17:00", l: "Plaza de Vicenzo", c: "—", t: "40" }],
+    },
+  };
+
+  const CALENDARIO = [MAR_2026, ABR_2026, MAY_2026, JUN_2026];
 
   function getEntriesForDate(date) {
     const d = startOfDay(date);
@@ -399,6 +487,7 @@
     MAR_2026,
     ABR_2026,
     MAY_2026,
+    JUN_2026,
     getEntriesForDate,
     getTodayText,
     getDayText,
