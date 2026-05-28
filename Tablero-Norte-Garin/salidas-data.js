@@ -368,15 +368,15 @@
     y: 2026,
     m: 6,
     d: {
-      1: [{ h: "10:00", l: "Casa Carmen Casas", c: "—", t: "16" }],
+      1: [{ h: "10:00", l: "Casa Carmen Casas", c: "Diego Serraute", t: "16" }],
 
-      2: [{ h: "17:00", l: "Plaza de Vicenzo", c: "—", t: "40" }],
+      2: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "40" }],
 
-      3: [{ h: "10:00", l: "Familia Flores", c: "—", t: "9" }],
+      3: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" }],
 
-      4: [{ h: "10:00", l: "Fructuoso Díaz y 1° de Mayo", c: "Diego Sarraute", t: "35" }],
+      4: [{ h: "10:00", l: "Fructuoso Díaz y 1° de Mayo", c: "Diego Serraute", t: "35" }],
 
-      5: [{ h: "10:00", l: "Casa Doris Talarico", c: "—", t: "19" }],
+      5: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "19" }],
 
       6: [
         { h: "10:00", l: "Salida congregacional · Plaza Barrio Salas", c: "Horacio Salgado", t: "52" },
@@ -385,15 +385,15 @@
 
       7: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      8: [{ h: "10:00", l: "Casa Carmen Casas", c: "—", t: "11" }],
+      8: [{ h: "10:00", l: "Casa Carmen Casas", c: "Diego Serraute", t: "11" }],
 
-      9: [{ h: "17:00", l: "Plaza de Vicenzo", c: "—", t: "39" }],
+      9: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "39" }],
 
-      10: [{ h: "10:00", l: "Familia Flores", c: "—", t: "27" }],
+      10: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "27" }],
 
-      11: [{ h: "10:00", l: "Fructuoso Díaz y Magallanes", c: "Diego Sarraute", t: "31" }],
+      11: [{ h: "10:00", l: "Fructuoso Díaz y Magallanes", c: "Diego Serraute", t: "31" }],
 
-      12: [{ h: "10:00", l: "Casa Doris Talarico", c: "—", t: "24" }],
+      12: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "24" }],
 
       13: [
         { h: "10:00", l: "Grupo 1 – Golf Club Argentino y Golf Club Santa Lucía", c: "Daniel Albis", t: "47" },
@@ -405,15 +405,15 @@
 
       14: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      15: [{ h: "10:00", l: "Casa Carmen Casas", c: "—", t: "6" }],
+      15: [{ h: "10:00", l: "Casa Carmen Casas", c: "Diego Serraute", t: "6" }],
 
-      16: [{ h: "17:00", l: "Plaza de Vicenzo", c: "—", t: "43" }],
+      16: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "43" }],
 
-      17: [{ h: "10:00", l: "Familia Flores", c: "—", t: "33" }],
+      17: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "33" }],
 
-      18: [{ h: "10:00", l: "Ressio y Cigliutti", c: "Diego Sarraute", t: "3" }],
+      18: [{ h: "10:00", l: "Ressio y Cigliutti", c: "Diego Serraute", t: "3" }],
 
-      19: [{ h: "10:00", l: "Casa Doris Talarico", c: "—", t: "18" }],
+      19: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "18" }],
 
       20: [
         { type: "feriado", l: "FERIADO (Día de la Bandera 🇦🇷)" },
@@ -423,15 +423,15 @@
 
       21: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      22: [{ h: "10:00", l: "Casa Carmen Casas", c: "—", t: "10" }],
+      22: [{ h: "10:00", l: "Casa Carmen Casas", c: "Diego Serraute", t: "10" }],
 
-      23: [{ h: "17:00", l: "Plaza de Vicenzo", c: "—", t: "44" }],
+      23: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "44" }],
 
-      24: [{ h: "10:00", l: "Familia Flores", c: "—", t: "15" }],
+      24: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" }],
 
-      25: [{ h: "10:00", l: "Colón y Beliera", c: "Diego Sarraute", t: "29" }],
+      25: [{ h: "10:00", l: "Colón y Beliera", c: "Diego Serraute", t: "29" }],
 
-      26: [{ h: "10:00", l: "Casa Doris Talarico", c: "—", t: "23" }],
+      26: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "23" }],
 
       27: [
         { h: "10:00", l: "Grupo 1 – Familia Segovia", c: "León Segovia", t: "25" },
@@ -443,9 +443,9 @@
 
       28: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      29: [{ h: "10:00", l: "Casa Carmen Casas", c: "—", t: "16" }],
+      29: [{ h: "10:00", l: "Casa Carmen Casas", c: "Diego Serraute", t: "16" }],
 
-      30: [{ h: "17:00", l: "Plaza de Vicenzo", c: "—", t: "40" }],
+      30: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "40" }],
     },
   };
 
