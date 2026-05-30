@@ -314,6 +314,32 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 71</strong> y Oración final: <span class="asignado">ELVIO CASCO</span></div>
 <span class="lector-estudio">DARIO CORTES</span>
 <span class="lector-estudio"></span>
+<article class="page" data-key="2026-06-01" data-title="22 DE JUNIO – 28 DE JUNIO" data-book="JEREMIAS 9,10">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">LEÓN SEGOVIA</span></div>
+<div class="inicio-programa"><strong>Canción 5</strong> y oración <span class="asignado">HORACIO SALGADO</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. ¿De qué presumira usted?</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">DANIEL ALBIS</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 9:13-24)</h4></div><span class="asignado">FRANCISCO ARAOZ</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">DANIEL QUARANTA / ELIAS CORIA</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado">HECTOR PALAVECINO / MANUEL FERIL</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga revisitas</h4></div><span class="asignado">LEÓN CANCINO / GUILLERMO MIÑO</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 48</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. No nos dejemos engañar, apoyemos el Reino de Dios</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(6 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciones 96 y 97.)</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 58</strong> y Oración final: <span class="asignado">JUAN CARLOS SANCHEZ</span></div>
+<span class="lector-estudio">HORACIO SALGADO</span>
+<span class="lector-estudio"></span>
 </article>
 </div>
   </div>
