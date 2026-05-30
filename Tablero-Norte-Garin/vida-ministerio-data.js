@@ -287,7 +287,32 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 68</strong> y Oración final: <span class="asignado">LEÓN SEGOVIA</span></div>
 <span class="lector-estudio">JUAN CARLOS SANCHEZ</span>
-
+<article class="page" data-key="2026-06-01" data-title="15 DE JUNIO – 21 DE JUNIO" data-book="JEREMIAS 7,8">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">HORACIO SALGADO</span></div>
+<div class="inicio-programa"><strong>Canción 152</strong> y oración <span class="asignado">DANIEL QUARANTA</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. No respetaron el templo de Jehová</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 8:4-13)</h4></div><span class="asignado">JOSÉ CANCINO</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">DORIS TALLARICO / LUCINDA DURAN</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">CINTIA CANSINO / ANDREA GUTIERREZ</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga discipulos</h4></div><span class="asignado">CECILIA LEAL / MORELIA HARLOS</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 91</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. ¿Cómo podemos demostrar que respetamos el salon del reino?</h4></div><span class="asignado">SEBASTIAN BRASCETTA</span><div class="duration">(6 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Cómo usamos las donaciones: Mantenemos nuestros Salones del Reino en buen estado</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(9 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (lfb introducción a la sección 14 y lecciòn 94 y 95.)</h4></div><span class="asignado">DANIEL ALBIS</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 71</strong> y Oración final: <span class="asignado">ELVIO CASCO</span></div>
+<span class="lector-estudio">DARIO CORTES</span>
 <span class="lector-estudio"></span>
 </article>
 </div>
