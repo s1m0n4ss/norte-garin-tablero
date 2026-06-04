@@ -1,16 +1,6 @@
 window.MULTIMEDIA_DATA = [
   
-  {
-    key: "2026-05-25",
-    label: "25–31 May",
-    start: "2026-05-25",
-    end: "2026-05-31",
-    audio_video: ["Lucas Segovia", "Mario Segovia"],
-    microfonistas: ["Samuel Duran", "Elias Coria"],
-    plataforma: ["Diego Sarraute"],
-    entrada: ["León Segovia"],
-    auditorio: ["Pablo Zuñiga"]
-  },
+  
 {
     key: "2026-06-01",
     label: "01–07 Jun",
