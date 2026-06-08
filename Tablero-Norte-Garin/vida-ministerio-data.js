@@ -281,7 +281,7 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">SOFIA ZUÑIGA / ALICIA VERA</span><div class="duration">(2 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado">GUILLERMINA RASGUIDO/ MONICA CASCO</span><div class="duration">(2 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>6. Haga revisitas</h4></div><span class="asignado">FANNY VILLANTOY / NORMA SCOTTI</span><div class="duration">(4 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>7. Haga revisitas</h4></div><span class="asignado">ALICIA SANCHEZ / ANGELES CESPEDES</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Explique sus creencias</h4></div><span class="asignado">ALICIA SANCHEZ / ANGELES CESPEDES</span><div class="duration">(3 mins.)</div></div>
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>

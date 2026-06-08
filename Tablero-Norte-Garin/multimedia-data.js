@@ -1,35 +1,57 @@
 window.MULTIMEDIA_DATA = [
-  {
-    key: "2026-05-11",
-    label: "11–17 May",
-    start: "2026-05-11",
-    end: "2026-05-17",
+{
+    key: "2026-06-01",
+    label: "01–07 Jun",
+    start: "2026-06-01",
+    end: "2026-06-07",
     audio_video: ["Horacio Salgado", "Pablo Zuñiga"],
-    microfonistas: ["Samuel Duran", "Elias Coria"],
+    microfonistas: ["Daniel Albis", "Elias Coria"],
     plataforma: ["Diego Sarraute"],
     entrada: ["Francisco Araoz"],
     auditorio: ["Daniel Quaranta"]
   },
-  {
-    key: "2026-05-18",
-    label: "18–24 May",
-    start: "2026-05-18",
-    end: "2026-05-24",
-    audio_video: ["Mario Segovia", "Caetano Ferrari"],
-    microfonistas: ["Daniel Quaranta", "Daniel Albis"],
+ {
+    key: "2026-06-08",
+    label: "08–14 Jun",
+    start: "2026-06-08",
+    end: "2026-06-14",
+    audio_video: ["Lucas Segovia", "Dario Cortez"],
+    microfonistas: ["Daniel Quaranta", "Samuel Duran"],
     plataforma: ["Horacio Salgado"],
-    entrada: ["Diego Sarraute"],
-    auditorio: ["Elias Coria"]
-  },
+    entrada: ["Elias Coria"],
+    auditorio: ["Diego Sarraute"]
+  }, 
   {
-    key: "2026-05-25",
-    label: "25–31 May",
-    start: "2026-05-25",
-    end: "2026-05-31",
-    audio_video: ["Lucas Segovia", "Mario Segovia"],
+    key: "2026-06-15",
+    label: "15–21 Jun",
+    start: "2026-06-15",
+    end: "2026-06-21",
+    audio_video: ["Caetano Ferrari", "Pablo Zuñiga"],
+    microfonistas: ["Elias Coria", "Samuel Duran"],
+    plataforma: ["Diego Sarraute"],
+    entrada: ["Dario Cortez"],
+    auditorio: ["Juan Carlos Sanchez"]
+  }, 
+    {
+    key: "2026-06-22",
+    label: "22–28 Jun",
+    start: "2026-06-22",
+    end: "2026-06-28",
+    audio_video: ["Dario Cortez", "Lucas Segovia"],
+    microfonistas: ["Daniel Quaranta", "Daniel Albiz"],
+    plataforma: ["Horacio Salgado"],
+    entrada: ["Pablo Zuñiga"],
+    auditorio: ["Adolfo Gutierrez"]
+  }, 
+  {
+    key: "2026-06-29",
+    label: "29–05 Jul",
+    start: "2026-06-29",
+    end: "2026-07-05",
+    audio_video: ["Horacio Salgado", "Pablo Zuñiga"],
     microfonistas: ["Samuel Duran", "Elias Coria"],
     plataforma: ["Diego Sarraute"],
-    entrada: ["León Segovia"],
-    auditorio: ["Pablo Zuñiga"]
-  }
+    entrada: ["Elvio Casco"],
+    auditorio: ["Daniel Quaranta"]
+  }, 
 ];
