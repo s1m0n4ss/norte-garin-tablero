@@ -151,6 +151,11 @@ window.VIDA_MINISTERIO_DATA = `
         <br />
         <strong>APOCALIPSIS 3:22</strong>
       </p>
+    </div>
+  </div>
+  <span class="lector-estudio"></span>
+</article>
+
 <article class="page" data-key="2026-05-11" data-title="11 DE MAYO – 17 DE MAYO" data-book="ISAÍAS 60, 61">
 <header>
 <div class="presidente-en-pagina">Presidente: <span class="asignado">DANIEL ALBIS</span></div>
@@ -205,8 +210,6 @@ window.VIDA_MINISTERIO_DATA = `
 <span class="lector-estudio">MARIO SEGOVIA</span>
 </article>
 
-<span class="lector-estudio"></span>
-</article>
 <article class="page" data-key="2026-05-25" data-title="25 DE MAYO – 31 DE MAYO" data-book="ISAÍAS 65,66">
 <header>
 <div class="presidente-en-pagina">Presidente: <span class="asignado">DARIO CORTEZ</span></div>
@@ -233,6 +236,8 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 55</strong> y Oración final: <span class="asignado">ELVIO CASCO</span></div>
 <span class="lector-estudio">DIEGO SARRAUTE</span>
+</article>
+
 <article class="page" data-key="2026-06-01" data-title="01 DE JUNIO – 07 DE JUNIO" data-book="JEREMIAS 1,2, 3">
 <header>
 <div class="presidente-en-pagina">Presidente: <span class="asignado">ADOLFO GUTIERREZ</span></div>
@@ -260,7 +265,7 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 18</strong> y Oración final: <span class="asignado">CRISTIAN SEGOVIA</span></div>
 <span class="lector-estudio">DANIEL ALBIS</span>
 </article>
-<article class="page" data-key="2026-06-01" data-title="08 DE JUNIO – 14 DE JUNIO" data-book="JEREMIAS 4-6">
+<article class="page" data-key="2026-06-08" data-title="08 DE JUNIO – 14 DE JUNIO" data-book="JEREMIAS 4-6">
 <header>
 <div class="presidente-en-pagina">Presidente: <span class="asignado">ELVIO CASCO</span></div>
 <div class="inicio-programa"><strong>Canción 56</strong> y oración <span class="asignado">DANIEL ALBIS</span></div>
@@ -287,7 +292,9 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 68</strong> y Oración final: <span class="asignado">LEÓN SEGOVIA</span></div>
 <span class="lector-estudio">JUAN CARLOS SANCHEZ</span>
-<article class="page" data-key="2026-06-01" data-title="15 DE JUNIO – 21 DE JUNIO" data-book="JEREMIAS 7,8">
+</article>
+
+<article class="page" data-key="2026-06-15" data-title="15 DE JUNIO – 21 DE JUNIO" data-book="JEREMIAS 7,8">
 <header>
 <div class="presidente-en-pagina">Presidente: <span class="asignado">HORACIO SALGADO</span></div>
 <div class="inicio-programa"><strong>Canción 152</strong> y oración <span class="asignado">DANIEL QUARANTA</span></div>
@@ -313,8 +320,9 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 71</strong> y Oración final: <span class="asignado">ELVIO CASCO</span></div>
 <span class="lector-estudio">DARIO CORTES</span>
-<span class="lector-estudio"></span>
-<article class="page" data-key="2026-06-01" data-title="22 DE JUNIO – 28 DE JUNIO" data-book="JEREMIAS 9,10">
+</article>
+
+<article class="page" data-key="2026-06-22" data-title="22 DE JUNIO – 28 DE JUNIO" data-book="JEREMIAS 9,10">
 <header>
 <div class="presidente-en-pagina">Presidente: <span class="asignado">LEÓN SEGOVIA</span></div>
 <div class="inicio-programa"><strong>Canción 5</strong> y oración <span class="asignado">HORACIO SALGADO</span></div>
@@ -339,9 +347,9 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 58</strong> y Oración final: <span class="asignado">JUAN CARLOS SANCHEZ</span></div>
 <span class="lector-estudio">HORACIO SALGADO</span>
-<span class="lector-estudio"></span>
+</article>
 
-<article class="page" data-key="2026-06-01" data-title="29 DE JUNIO – 05 DE JUlIO" data-book="JEREMIAS 11,12">
+<article class="page" data-key="2026-06-29" data-title="29 DE JUNIO – 05 DE JUlIO" data-book="JEREMIAS 11,12">
 <header>
 <div class="presidente-en-pagina">Presidente: <span class="asignado">LUCAS DOS SANTOS</span></div>
 <div class="inicio-programa"><strong>Canción 105</strong> y oración <span class="asignado">DARIO CORTES</span></div>
@@ -366,10 +374,5 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 69</strong> y Oración final: <span class="asignado">LUCAS SEGOVIA</span></div>
 <span class="lector-estudio">LUCAS SEGOVIA</span>
-<span class="lector-estudio"></span>
-</article>
-</div>
-  </div>
-<span class="lector-estudio"></span>
 </article>
 `;
