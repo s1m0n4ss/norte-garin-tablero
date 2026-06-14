@@ -35,7 +35,7 @@ window.GRUPOS_DATA = [
 {
   id: 2,
   nombre: "Grupo 2",
-  publicadores: 17,
+  publicadores: 18,
   superintendente: "Salgado Horacio",
   auxiliar: "Lucas Dos Santos",
   integrantes: [
