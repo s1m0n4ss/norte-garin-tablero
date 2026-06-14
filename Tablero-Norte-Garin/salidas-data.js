@@ -82,7 +82,7 @@
       19: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "18" }],
 
       20: [
-        { type: "feriado", l: "FERIADO (Día de la Bandera 🇦🇷)" },
+        { type: "feriado", l: "FERIADO" },
         { h: "10:00", l: "Salida congregacional · Casa Cintia Cancino", c: "León Segovia", t: "30, 32" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],

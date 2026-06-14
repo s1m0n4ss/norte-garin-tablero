@@ -35,7 +35,7 @@ window.GRUPOS_DATA = [
 {
   id: 2,
   nombre: "Grupo 2",
-  publicadores: 18,
+  publicadores: 17,
   superintendente: "Salgado Horacio",
   auxiliar: "Lucas Dos Santos",
   integrantes: [
@@ -72,12 +72,12 @@ window.GRUPOS_DATA = [
     "Casco Mónica",
     "Flores Calixto",
     "Flores Elvira",
-    "Godoy Cintia",
+    "Cansino Cintia",
     "Leal Cecilia",
     "Gómez Miriam",
     "Miño Guillermo",
     "Miño Mabel",
-    "Natalé Tamara",
+    "Natale Tamara",
     "Segovia Cintia",
     "Segovia Cristian",
     "Sánchez Juan Carlos",
@@ -94,7 +94,7 @@ window.GRUPOS_DATA = [
   superintendente: "Gutiérrez Adolfo",
   auxiliar: "Lucas Segovia",
   integrantes: [
-    "Araos Florencia",
+    "Araoz Florencia",
     "Araoz Francisco",
     "Araoz Susana",
     "Barrera Norma",

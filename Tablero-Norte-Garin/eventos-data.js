@@ -26,6 +26,13 @@ window.EVENTOS_DATA = [
     location: "Salón de Asambleas de Ezeiza",
   },
   {
+    type: "visita",
+    title: "Visita a la congregación del superintendente de circuito",
+    date: "2026-08-11",
+    description: "Martes 11 al domingo 16 de agosto",
+    location: "Salón del Reino Norte Garín",
+  },
+  {
     type: "asamblea",
     title: "Asamblea regional",
     date: "2026-08-21",
