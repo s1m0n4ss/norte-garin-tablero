@@ -396,11 +396,92 @@ window.VIDA_MINISTERIO_DATA = `
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
 <div class="section"><div class="sect-title"><h4><strong>Canción 49</strong></h4></div></div>
-<div class="section"><div class="sect-title"><h4>7. "Obedecer es mejor que ofrecer sacrificios"</h4></div><span class="asignado">DARIO CORTEZ</span><div class="duration">(6 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. "Obedecer es mejor que ofrecer sacrificios"</h4></div><span class="asignado">DARIO CORTEZ</span><div class="duration">(15 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciones 100 y 101.)</h4></div><span class="asignado">SEBASTIAN BRASCCETTA</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 61</strong> y Oración final: <span class="asignado">CRISTIAN SEGOVIA</span></div>
 <span class="lector-estudio">LUCAS SEGOVIA</span>
+</article>
+
+<article class="page" data-key="2026-07-13" data-title="13 DE JULIO – 19 DE JUlIO" data-book="JEREMIAS 16, 17">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">LUCAS SEGOVIA</span></div>
+<div class="inicio-programa"><strong>Canción 34</strong> y oración <span class="asignado">ELVIO CASCO</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. ¿Estamos confiando en la persona correcta?</h4></div><span class="asignado">DARIO CORTEZ</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">SEBASTIAN BRASCCETTA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 17:5-18)</h4></div><span class="asignado">BENJAMÍN DURAN</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">MELANY PEREIRA / ANGELA CESPEDES</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">ELIDA BENITEZ / TEODORA DUCOLÍ</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga discipulos</h4></div><span class="asignado">MORELIA HARLOS / BIBIANA PALACIOS</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 54</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Joven, confía en los consejos de la biblia</h4></div><span class="asignado">DARIO CORTEZ</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciones 102 y 103.)</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 22</strong> y Oración final: <span class="asignado">LUCAS DOS SANTOS</span></div>
+<span class="lector-estudio">DARIO CORTEZ</span>
+</article>
+
+<article class="page" data-key="2026-07-20" data-title="20 DE JULIO – 26 DE JUlIO" data-book="JEREMIAS 18, 19">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">DARIO CORTEZ</span></div>
+<div class="inicio-programa"><strong>Canción 44</strong> y oración <span class="asignado">DIEGO SARRAUTE</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. Recuperarnos en sentido espiritual es posible</h4></div><span class="asignado">SEBASTIAN BRASCCETTA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">ADOLFO GUTIERREZ</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 19:1-11)</h4></div><span class="asignado">ELÍAS CORIA</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">MIRTA SEGOVIA / MABEL MIÑO</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">CARMEN CASAS / LUCIANDA DURAN</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Explique sus creencias</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 38</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Pasos para recuperarnos en sentido espitirual</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (wcg "Carta del cuerpo gobernante" e introducción.)</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 153</strong> y Oración final: <span class="asignado">LEÓN SEGOVIA</span></div>
+<span class="lector-estudio">ADOLFO GUTIERREZ</span>
+</article>
+
+<article class="page" data-key="2026-07-27" data-title="27 DE JULIO – 02 DE AGOSTO" data-book="JEREMIAS 20, 21">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">SEBASTIAN BRASCCETTA</span></div>
+<div class="inicio-programa"><strong>Canción 73</strong> y oración <span class="asignado">DANIEL QUARANTA</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. Predico con valor</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 20:7-18)</h4></div><span class="asignado">JUAN CARLOS SANCHEZ</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">TEODORA DUCOLÍ / BIBIANA PALACIOS</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">MICAELA SARRAUTE / FANNY VILLANTOY</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Explique sus creencias</h4></div><span class="asignado">TOMAS DURAN / LUCINDA DURAN</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 57</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Seamos adaptables y mostremos interés por las personas</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (wcg introducción a la sección 1, linea de tiempo y cap. 1.)</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 31</strong> y Oración final: <span class="asignado">DARIO CORTEZ</span></div>
+<span class="lector-estudio">DIEGO SARRAUTE</span>
 </article>
 
 `;
