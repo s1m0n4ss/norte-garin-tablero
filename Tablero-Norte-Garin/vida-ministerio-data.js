@@ -536,4 +536,5 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 137</strong> y Oración final: <span class="asignado">LUCAS DOS SANTOS</span></div>
 </article>
+
 `;
