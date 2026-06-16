@@ -484,4 +484,56 @@ window.VIDA_MINISTERIO_DATA = `
 <span class="lector-estudio">DIEGO SARRAUTE</span>
 </article>
 
+<article class="page" data-key="2026-08-03" data-title="03 DE AGOSTO – 09 DE AGOSTO" data-book="JEREMIAS 22, 23">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">ELVIO CASCO</span></div>
+<div class="inicio-programa"><strong>Canción 40</strong> y oración <span class="asignado">DANIEL ALBIS</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. ¡Qué importante es tener buenos pastores!</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 23:25-36)</h4></div><span class="asignado">DANTER HUAMACONDOR</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">GUILLERMO MIÑO / JUAN CARLOS SANCHEZ</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">FRANCISCO ARAOZ / LEÓN CANSINO</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Discurso</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 103</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Del pasado al presente: El Cuerpo Gobernante promueve la unidad</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (wcg cap. 2.)</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 60</strong> y Oración final: <span class="asignado">CAETANO FERRARI</span></div>
+<span class="lector-estudio">JUAN CARLOS SANCHEZ</span>
+</article>
+
+<article class="page" data-key="2026-08-10" data-title="10 DE AGOSTO – 16 DE AGOSTO" data-book="JEREMIAS 24, 25">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">HORACIO SALGADO</span></div>
+<div class="inicio-programa"><strong>Canción 124</strong> y oración <span class="asignado">ADOLFO GUTIERREZ</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. ¿Qué hace que los "higos" sean buenos o malos?</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 24:1-10)</h4></div><span class="asignado">GUSTAVO DUCOLÍ</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">ANGELA CESPEDES / LIDIA CANSINO</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">CECILIA LEAL / MABEL ZUÑIGA</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga discipulos</h4></div><span class="asignado">DORIS TALLARICO / PAULINA LAURENTE</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 65</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Necesidades de la congregación</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Discurso</h4></div><span class="asignado">MAURICIO TIERNO</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 137</strong> y Oración final: <span class="asignado">LUCAS DOS SANTOS</span></div>
+</article>
 `;
