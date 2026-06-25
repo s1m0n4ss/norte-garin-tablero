@@ -45,7 +45,7 @@ window.MULTIMEDIA_DATA = [
   }, 
   {
     key: "2026-06-29",
-    label: "29–05 Jul",
+    label: "29–05 Jun",
     start: "2026-06-29",
     end: "2026-07-05",
     audio_video: ["Horacio Salgado", "Pablo Zuñiga"],
@@ -54,4 +54,50 @@ window.MULTIMEDIA_DATA = [
     entrada: ["Elvio Casco"],
     auditorio: ["Daniel Quaranta"]
   }, 
+    {
+    key: "2026-07-06",
+    label: "06–12 Jul",
+    start: "2026-07-06",
+    end: "2026-07-12",
+    audio_video: ["Lucas Dos Santos", "Cristian Segovia"],
+    microfonistas: ["Daniel Albis", "Elias Coria"],
+    plataforma: ["Diego Sarraute"],
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
+  }, 
+{
+    key: "2026-07-13",
+    label: "13–19 Jul",
+    start: "2026-07-13",
+    end: "2026-07-19",
+    audio_video: ["Lucas Segovia", "Caetano Ferrari"],
+    microfonistas: ["Benjamin Duran", "Samuel Duran"],
+    plataforma: ["Horacio Salgado"],
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
+  }, 
+
+{
+    key: "2026-07-20",
+    label: "20–26 Jul",
+    start: "2026-07-20",
+    end: "2026-07-26",
+    audio_video: ["Dario Cortez", "Pablo Zuñiga"],
+    microfonistas: ["Daniel Albis", "Tomas Duran"],
+    plataforma: ["Benjamin Duran"],
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
+  },
+
+{
+    key: "2026-07-27",
+    label: "27–02 Jul",
+    start: "2026-07-27",
+    end: "2026-08-02",
+    audio_video: ["Lucas Dos Santos", "Lucas Segovia"],
+    microfonistas: ["Daniel Quaranta", "Elias Coria"],
+    plataforma: ["Horacio Salgado"],
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
+  },    
 ];
