@@ -337,7 +337,7 @@ window.VIDA_MINISTERIO_DATA = `
 <h3>SEAMOS MEJORES MAESTROS</h3>
 <div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">DANIEL QUARANTA / ELIAS CORIA</span><div class="duration">(4 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado">HECTOR PALAVECINO / MANUEL FERIL</span><div class="duration">(4 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>6. Haga revisitas</h4></div><span class="asignado">LEÓN CANCINO / GUILLERMO MIÑO</span><div class="duration">(5 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga revisitas</h4></div><span class="asignado">LEÓN CANCINO / GUILLERMO MIÑO</span><div class="duration">(4 mins.)</div></div>
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
@@ -445,7 +445,7 @@ window.VIDA_MINISTERIO_DATA = `
 <h3>SEAMOS MEJORES MAESTROS</h3>
 <div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">MIRTA SEGOVIA / MABEL MIÑO</span><div class="duration">(4 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">CARMEN CASAS / LUCIANDA DURAN</span><div class="duration">(4 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>6. Explique sus creencias</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(5 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Explique sus creencias</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(4 mins.)</div></div>
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
@@ -472,7 +472,7 @@ window.VIDA_MINISTERIO_DATA = `
 <h3>SEAMOS MEJORES MAESTROS</h3>
 <div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">TEODORA DUCOLÍ / BIBIANA PALACIOS</span><div class="duration">(4 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">MICAELA SARRAUTE / FANNY VILLANTOY</span><div class="duration">(4 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>6. Explique sus creencias</h4></div><span class="asignado">TOMAS DURAN / LUCINDA DURAN</span><div class="duration">(5 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Explique sus creencias</h4></div><span class="asignado">TOMAS DURAN / LUCINDA DURAN</span><div class="duration">(4 mins.)</div></div>
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
@@ -499,7 +499,7 @@ window.VIDA_MINISTERIO_DATA = `
 <h3>SEAMOS MEJORES MAESTROS</h3>
 <div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">GUILLERMO MIÑO / JUAN CARLOS SANCHEZ</span><div class="duration">(4 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">FRANCISCO ARAOZ / LEÓN CANSINO</span><div class="duration">(4 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>6. Discurso</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(5 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Discurso</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(4 mins.)</div></div>
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
@@ -526,7 +526,7 @@ window.VIDA_MINISTERIO_DATA = `
 <h3>SEAMOS MEJORES MAESTROS</h3>
 <div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">ANGELA CESPEDES / LIDIA CANSINO</span><div class="duration">(4 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">CECILIA LEAL / MABEL ZUÑIGA</span><div class="duration">(4 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>6. Haga discipulos</h4></div><span class="asignado">DORIS TALLARICO / PAULINA LAURENTE</span><div class="duration">(5 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga discipulos</h4></div><span class="asignado">DORIS TALLARICO / PAULINA LAURENTE</span><div class="duration">(4 mins.)</div></div>
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
