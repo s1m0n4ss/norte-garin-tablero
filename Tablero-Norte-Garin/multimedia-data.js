@@ -45,7 +45,7 @@ window.MULTIMEDIA_DATA = [
   }, 
   {
     key: "2026-06-29",
-    label: "29–05 Jun",
+    label: "29–05 Jul",
     start: "2026-06-29",
     end: "2026-07-05",
     audio_video: ["Horacio Salgado", "Pablo Zuñiga"],
