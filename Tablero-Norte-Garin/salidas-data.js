@@ -143,7 +143,7 @@
 
       9: [
         { type: "feriado", l: "FERIADO" },
-        { h: "10:00", l: "Cigliutti y Storni", c: "Juan Carlos Sánchez", t: "4" },
+        { h: "10:00", l: "Fructuoso Díaz y Beliera", c: "Juan Carlos Sánchez", t: "26" },
       ],
 
       10: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "24" }],
