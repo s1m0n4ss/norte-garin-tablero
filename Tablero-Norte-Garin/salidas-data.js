@@ -169,7 +169,7 @@
       17: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "18" }],
 
       18: [
-        { h: "10:00", l: "Salida congregacional · Beliera y Uruguay", c: "Elvio Casco", t: "28" },
+        { h: "10:00", l: "Salida congregacional · Puente 5", c: "Elvio Casco", t: "55" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
