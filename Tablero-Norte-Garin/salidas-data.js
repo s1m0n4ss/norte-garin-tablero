@@ -115,7 +115,99 @@
     },
   };
 
-  const CALENDARIO = [JUN_2026];
+  // =========================
+  //   JULIO 2026
+  // =========================
+  const JUL_2026 = {
+    y: 2026,
+    m: 7,
+    d: {
+      1: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" }],
+
+      2: [{ h: "10:00", l: "Calle 3 y Patricias Argentinas", c: "Juan Carlos Sánchez", t: "34" }],
+
+      3: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "19" }],
+
+      4: [
+        { h: "10:00", l: "Salida congregacional · Jockey Golf Club y Golf Club Argentino", c: "Lucas Segovia", t: "50, 51" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      5: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      6: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "16" }],
+
+      7: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "41" }],
+
+      8: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "27" }],
+
+      9: [
+        { type: "feriado", l: "FERIADO" },
+        { h: "10:00", l: "Cigliutti y Storni", c: "Juan Carlos Sánchez", t: "4" },
+      ],
+
+      10: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "24" }],
+
+      11: [
+        { h: "10:00", l: "Grupo 1 – Golf Club Concordia y Ravignani", c: "León Segovia", t: "53" },
+        { h: "10:00", l: "Grupo 2 – Puente 5", c: "Manuel Feril", t: "54" },
+        { h: "10:00", l: "Grupo 3 – Golf Club Argentino y Salta Polo Club", c: "Elvio Casco", t: "49" },
+        { h: "10:00", l: "Grupo 4 – Golf Club Argentino y Golf Club Santa Lucía", c: "Lucas Segovia", t: "47" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      12: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      13: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "11" }],
+
+      14: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "45" }],
+
+      15: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "33" }],
+
+      16: [{ h: "10:00", l: "Fructuoso Díaz y Patricias Argentinas", c: "Juan Carlos Sánchez", t: "36" }],
+
+      17: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "18" }],
+
+      18: [
+        { h: "10:00", l: "Salida congregacional · Beliera y Uruguay", c: "Elvio Casco", t: "28" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      19: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      20: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "6" }],
+
+      21: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "46" }],
+
+      22: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" }],
+
+      23: [{ h: "10:00", l: "Fructuoso Díaz y 1° de Mayo", c: "Juan Carlos Sánchez", t: "35" }],
+
+      24: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "23" }],
+
+      25: [
+        { h: "10:00", l: "Grupo 1 – Almirante Brown y Francia", c: "Daniel Albis", t: "20" },
+        { h: "10:00", l: "Grupo 2 – Hermana Fanny Villantoy", c: "Horacio Salgado", t: "17" },
+        { h: "10:00", l: "Grupo 3 – Colón y Olivera César", c: "Pablo Zúñiga", t: "29" },
+        { h: "10:00", l: "Grupo 4 – Colón y San Martín", c: "Caetano Ferrari", t: "7" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      26: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      27: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "10" }],
+
+      28: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "39" }],
+
+      29: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" }],
+
+      30: [{ h: "10:00", l: "Colón y Magallanes", c: "Juan Carlos Sánchez", t: "30" }],
+
+      31: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "19" }],
+    },
+  };
+
+  const CALENDARIO = [JUN_2026, JUL_2026];
 
   function getEntriesForDate(date) {
     const d = startOfDay(date);
@@ -151,6 +243,7 @@
     territoryUrl,
     CALENDARIO,
     JUN_2026,
+    JUL_2026,
     getEntriesForDate,
     getTodayText,
     getDayText,
