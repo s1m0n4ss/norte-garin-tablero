@@ -226,7 +226,7 @@ window.CONFERENCIAS_DATA = [
         date: "19",
         day: "Dom",
         time: "10:00",
-        title: "105. Cómo obtener consuelo en toda tribulación",
+        title: "Cómo obtener consuelo en toda tribulación",
         speaker: "Marcelo Breno",
         congregation: "Norte, Escobar, Buenos Aires",
         chairman: "Darío Cortez",
