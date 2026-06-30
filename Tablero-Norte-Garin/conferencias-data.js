@@ -196,5 +196,78 @@ window.CONFERENCIAS_DATA = [
       }
     ],
     salen: []
+  },
+  {
+    month: "Julio 2026",
+    year: 2026,
+    monthIdx: 6,
+    vienen: [
+      {
+        date: "05",
+        day: "Dom",
+        time: "10:00",
+        title: "¿Cómo pueden los jóvenes hacer frente a la crisis actual?",
+        speaker: "Juan Díaz",
+        congregation: "Norte, Escobar, Buenos Aires",
+        chairman: "Horacio Salgado",
+        lector: "Sebastián Brasccetta"
+      },
+      {
+        date: "12",
+        day: "Dom",
+        time: "10:00",
+        title: "Ayuda práctica para las familias",
+        speaker: "Mario Bucci",
+        congregation: "Norte, Escobar, Buenos Aires",
+        chairman: "Caetano Ferrari",
+        lector: "Lucas Dos Santos"
+      },
+      {
+        date: "19",
+        day: "Dom",
+        time: "10:00",
+        title: "105. Cómo obtener consuelo en toda tribulación",
+        speaker: "Marcelo Breno",
+        congregation: "Norte, Escobar, Buenos Aires",
+        chairman: "Darío Cortez",
+        lector: "Adolfo Gutiérrez"
+      },
+      {
+        date: "26",
+        day: "Dom",
+        time: "10:00",
+        title: "Consigamos que nuestro corazón sea sabio",
+        speaker: "Ezequiel Corbelleri",
+        congregation: "Norte, Escobar, Buenos Aires",
+        chairman: "Sebastián Brasccetta",
+        lector: "Daniel Albis"
+      }
+    ],
+    salen: [
+      {
+        day: "Dom",
+        date: "05",
+        name: "León Segovia",
+        extra: "Ayuda práctica para las familias"
+      },
+      {
+        day: "Dom",
+        date: "12",
+        name: "Horacio Salgado",
+        extra: "Cómo ser verdaderamente felices"
+      },
+      {
+        day: "Dom",
+        date: "19",
+        name: "Adolfo Gutiérrez",
+        extra: "Vivamos con buen juicio en un mundo perverso"
+      },
+      {
+        day: "Dom",
+        date: "26",
+        name: "Diego Sarraute",
+        extra: "¿Cuál es su propósito en la vida?"
+      }
+    ]
   }
 ];
