@@ -62,8 +62,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Lucas Dos Santos", "Cristian Segovia"],
     microfonistas: ["Daniel Albis", "Elias Coria"],
     plataforma: ["Diego Sarraute"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Adolfo Gutierrez"],
+    auditorio: ["Dario Cortez"]
   }, 
 {
     key: "2026-07-13",
@@ -73,8 +73,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Lucas Segovia", "Caetano Ferrari"],
     microfonistas: ["Benjamin Duran", "Samuel Duran"],
     plataforma: ["Horacio Salgado"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Francisco Araoz"],
+    auditorio: ["León Segovia"]
   }, 
 
 {
@@ -85,8 +85,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Dario Cortez", "Pablo Zuñiga"],
     microfonistas: ["Daniel Albis", "Tomas Duran"],
     plataforma: ["Benjamin Duran"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Elias Coria"],
+    auditorio: ["Horacio Salgado"]
   },
 
 {
@@ -97,7 +97,7 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Lucas Dos Santos", "Lucas Segovia"],
     microfonistas: ["Daniel Quaranta", "Elias Coria"],
     plataforma: ["Horacio Salgado"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Juan Carlos Sanchez"],
+    auditorio: ["Daniel Alvis"]
   },    
 ];
