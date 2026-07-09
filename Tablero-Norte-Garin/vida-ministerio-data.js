@@ -427,7 +427,7 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciones 102 y 103.)</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 22</strong> y Oración final: <span class="asignado">LUCAS DOS SANTOS</span></div>
-<span class="lector-estudio">DARIO CORTEZ</span>
+<span class="lector-estudio">PABLO ZUÑIGA</span>
 </article>
 
 <article class="page" data-key="2026-07-20" data-title="20 DE JULIO – 26 DE JUlIO" data-book="JEREMIAS 18, 19">
