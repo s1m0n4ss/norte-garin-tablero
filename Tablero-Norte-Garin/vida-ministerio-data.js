@@ -410,7 +410,7 @@ window.VIDA_MINISTERIO_DATA = `
 </header>
 <section class="bloque verde">
 <h3>TESOROS DE LA BIBLIA</h3>
-<div class="section"><div class="sect-title"><h4>1. ¿Estamos confiando en la persona correcta?</h4></div><span class="asignado">DARIO CORTEZ</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>1. ¿Estamos confiando en la persona correcta?</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(10 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">SEBASTIAN BRASCCETTA</span><div class="duration">(10 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 17:5-18)</h4></div><span class="asignado">BENJAMÍN DURAN</span><div class="duration">(4 mins.)</div></div>
 </section>
@@ -423,7 +423,7 @@ window.VIDA_MINISTERIO_DATA = `
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
 <div class="section"><div class="sect-title"><h4><strong>Canción 54</strong></h4></div></div>
-<div class="section"><div class="sect-title"><h4>7. Joven, confía en los consejos de la biblia</h4></div><span class="asignado">DARIO CORTEZ</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Joven, confía en los consejos de la biblia</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(15 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (lfb lecciones 102 y 103.)</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 22</strong> y Oración final: <span class="asignado">LUCAS DOS SANTOS</span></div>
