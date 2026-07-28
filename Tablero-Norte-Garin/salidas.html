@@ -461,6 +461,20 @@
 
     <main class="main-wrap">
       <div id="notif-banner-container"></div>
+      <div id="bannerCampana2026" style="display:none;background:#eff6ff;border-left:4px solid #2563eb;border-radius:10px;padding:12px 16px;margin:12px 0;align-items:center;gap:10px;">
+        <span style="flex-shrink:0;font-size:18px">📣</span>
+        <div>
+          <div style="font-weight:700;color:#1e40af;font-size:14px;font-family:Inter,sans-serif">Hoy comienza la Campaña de Invitación</div>
+          <div style="font-style:italic;color:#2563eb;font-size:13px;font-family:Inter,sans-serif">Asamblea Regional «Felices para siempre»</div>
+        </div>
+      </div>
+      <script>
+        (function(){
+          var hoy = new Date();
+          var es31julio = hoy.getFullYear() === 2026 && hoy.getMonth() === 6 && hoy.getDate() === 31;
+          if (es31julio) document.getElementById('bannerCampana2026').style.display = 'flex';
+        })();
+      </script>
       <div id="grid" style="margin-top: 20px;"></div>
     </main>
 
