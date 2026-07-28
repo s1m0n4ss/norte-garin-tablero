@@ -477,8 +477,9 @@ window.VIDA_MINISTERIO_DATA = `
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
 <div class="section"><div class="sect-title"><h4><strong>Canción 57</strong></h4></div></div>
-<div class="section"><div class="sect-title"><h4>7. Seamos adaptables y mostremos interés por las personas</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(15 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (wcg introducción a la sección 1, linea de tiempo y cap. 1.)</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(30 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Seamos adaptables y mostremos interés por las personas</h4></div><span class="asignado">DANIEL ALBIS</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Campaña de invitaciones y recordatorios para la Asamblea Regional "Felices para siempre"</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg introducción a la sección 1, linea de tiempo y cap. 1.)</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 31</strong> y Oración final: <span class="asignado">DARIO CORTEZ</span></div>
 <span class="lector-estudio">DIEGO SARRAUTE</span>
