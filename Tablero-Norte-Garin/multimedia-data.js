@@ -98,6 +98,6 @@ window.MULTIMEDIA_DATA = [
     microfonistas: ["Daniel Quaranta", "Elias Coria"],
     plataforma: ["Horacio Salgado"],
     entrada: ["Juan Carlos Sanchez"],
-    auditorio: ["Daniel Alvis"]
+    auditorio: ["Daniel Albis"]
   },    
 ];
