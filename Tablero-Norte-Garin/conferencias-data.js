@@ -269,5 +269,67 @@ window.CONFERENCIAS_DATA = [
         extra: "¿Cuál es su propósito en la vida?"
       }
     ]
+  },
+  {
+    month: "Agosto 2026",
+    monthIdx: 7,
+    year: 2026,
+    vienen: [
+      {
+        date: "2",
+        day: "Dom",
+        time: "10:00",
+        title: "La familia feliz es la que pone a Dios en primer lugar",
+        speaker: "Jorge Barrios",
+        congregation: "Centro Del Viso",
+        chairman: "Daniel Albis",
+        lector: "Pablo Zúñiga"
+      },
+      {
+        date: "9",
+        day: "Dom",
+        time: "10:00",
+        title: "¿Faltará menos de lo que usted cree?",
+        speaker: "Rubén Bartley",
+        congregation: "Centro Del Viso",
+        chairman: "Diego Sarraute",
+        lector: "Lucas Segovia"
+      },
+      {
+        date: "16",
+        day: "Dom",
+        time: "10:00",
+        special: true,
+        type: "VISITA VIAJANTE",
+        title: "Visita del Superintendente de Circuito",
+        speaker: "Mauricio y Maricel",
+        congregation: "",
+        chairman: "Sebastián Brasccetta",
+        lector: ""
+      },
+      {
+        date: "23",
+        day: "Dom",
+        time: "10:00",
+        special: true,
+        type: "ASAMBLEA",
+        title: "Asamblea Regional «Felices para siempre»",
+        speaker: "",
+        congregation: "",
+        chairman: "",
+        lector: ""
+      },
+      {
+        date: "30",
+        day: "Dom",
+        time: "10:00",
+        title: "¿Será usted un buen trabajador en la cosecha?",
+        speaker: "Osvaldo Medina",
+        congregation: "Centro Del Viso",
+        chairman: "León Segovia",
+        lector: "Adolfo Gutiérrez"
+      }
+    ],
+    salen: []
   }
 ];
