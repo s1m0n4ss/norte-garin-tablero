@@ -246,7 +246,7 @@
 
       10: [{ h: "10:00", l: "Colón y San Martín", c: "León Segovia", t: "8" }],
 
-      11: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "41" }],
+      11: [{ type: "reunion", l: "Reunión de congregación" }],
 
       12: [
         { h: "10:00", l: "Familia Flores", c: "Mauricio Tierno", t: "27, 15" },
