@@ -289,8 +289,8 @@ window.CONFERENCIAS_DATA = [
         date: "9",
         day: "Dom",
         time: "10:00",
-        title: "¿Faltará menos de lo que usted cree?",
-        speaker: "Rubén Bartley",
+        title: "Haga amistades que duren para siempre",
+        speaker: "Rodolfo Moriello",
         congregation: "Centro Del Viso",
         chairman: "Diego Sarraute",
         lector: "Lucas Segovia"
@@ -323,8 +323,8 @@ window.CONFERENCIAS_DATA = [
         date: "30",
         day: "Dom",
         time: "10:00",
-        title: "¿Será usted un buen trabajador en la cosecha?",
-        speaker: "Osvaldo Medina",
+        title: "Rechace las fantasías mundanales; busque las realidades del Reino",
+        speaker: "Nicolás Cuello",
         congregation: "Centro Del Viso",
         chairman: "León Segovia",
         lector: "Adolfo Gutiérrez"
