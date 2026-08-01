@@ -215,7 +215,7 @@
     m: 8,
     d: {
       1: [
-        { h: "10:00", l: "Salida congregacional · Puente 5", c: "Lucas Segovia", t: "55" },
+        { h: "10:00", l: "Salida congregacional · Puente 5", c: "", t: "55" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
@@ -225,61 +225,73 @@
 
       4: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "40" }],
 
-      5: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" }],
+      5: [
+        { h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" },
+        { h: "19:00", l: "📞 Por Zoom", c: "Juan Carlos Sánchez" },
+      ],
 
       6: [{ h: "10:00", l: "Calle 3 y Patricias Argentinas", c: "Juan Carlos Sánchez", t: "34" }],
 
       7: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "23" }],
 
       8: [
-        { h: "10:00", l: "Grupo 1 – Golf Club Argentino y Salta Polo Club", c: "León Segovia", t: "42" },
-        { h: "10:00", l: "Grupo 2 – Golf Club Argentino y Golf Club Santa Lucía", c: "Horacio Salgado", t: "48" },
-        { h: "10:00", l: "Grupo 3 – Golf Club Concordia y Ravignani", c: "Elvio Casco", t: "56" },
-        { h: "10:00", l: "Grupo 4 – Puente 5", c: "Lucas Segovia", t: "57" },
+        { h: "10:00", l: "Grupo 1 – Golf Club San Antonio de Areco y Necochea", c: "León Segovia", t: "42" },
+        { h: "10:00", l: "Grupo 2 – Golf Argentino y Golf Club Santa Lucía", c: "Manuel Feril", t: "48" },
+        { h: "10:00", l: "Grupo 3 – Concordia y Ravignani", c: "Pablo Zuñiga", t: "56" },
+        { h: "10:00", l: "Grupo 4 – Puente 5", c: "Adolfo Gutiérrez", t: "57" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
       9: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      10: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "11" }],
+      10: [{ h: "10:00", l: "Colón y San Martín", c: "León Segovia", t: "8" }],
 
       11: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "41" }],
 
       12: [
         { h: "10:00", l: "Familia Flores", c: "Mauricio Tierno", t: "27, 15" },
-        { h: "17:00", l: "Familia Miño", c: "Mauricio Tierno", t: "12, 17" },
+        { h: "16:30", l: "Familia Miño", c: "Mauricio Tierno", t: "12, 17" },
       ],
 
-      13: [{ h: "10:00", l: "Familia Segovia", c: "Mauricio Tierno", t: "24, 25" }],
+      13: [{ h: "10:00", l: "Familia Segovia", c: "", t: "25, 24" }],
 
       14: [
         { h: "10:00", l: "Casa Doris Talarico", c: "Mauricio Tierno", t: "19, 22" },
-        { h: "17:00", l: "Familia Godoy", c: "Mauricio Tierno", t: "32, 31" },
+        { h: "16:30", l: "Cintia Cancino", c: "", t: "31, 32" },
       ],
 
       15: [
         { h: "10:00", l: "Salida congregacional · Salón del Reino", c: "Mauricio Tierno", t: "3, 4, 6, 10, 11" },
-        { h: "17:00", l: "Casa Manuel Feril", c: "Mauricio Tierno", t: "21, 28" },
+        { h: "16:30", l: "Casa Manuel Feril", c: "Mauricio Tierno", t: "21, 28" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
       16: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      17: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "6" }],
+      17: [{ h: "10:00", l: "Paso y San Martín", c: "León Segovia", t: "7" }],
 
       18: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "45" }],
 
-      19: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "33" }],
+      19: [
+        { h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "33" },
+        { h: "19:00", l: "📞 Por Zoom", c: "Juan Carlos Sánchez" },
+      ],
 
       20: [{ h: "10:00", l: "Calle 3 y Patricias Argentinas", c: "Juan Carlos Sánchez", t: "36" }],
 
-      21: [{ type: "asamblea", l: "Asamblea Regional «Felices para siempre»" }],
+      21: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "" }],
 
-      22: [{ type: "asamblea", l: "Asamblea Regional «Felices para siempre»" }],
+      22: [
+        { h: "10:00", l: "Grupo 1 –", c: "", t: "" },
+        { h: "10:00", l: "Grupo 2 –", c: "", t: "" },
+        { h: "10:00", l: "Grupo 3 –", c: "", t: "" },
+        { h: "10:00", l: "Grupo 4 –", c: "", t: "" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
 
-      23: [{ type: "asamblea", l: "Asamblea Regional «Felices para siempre»" }],
+      23: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      24: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "10" }],
+      24: [{ h: "10:00", l: "Colón y Beliera", c: "León Segovia", t: "29" }],
 
       25: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "46" }],
 
@@ -290,7 +302,7 @@
       28: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "18" }],
 
       29: [
-        { h: "10:00", l: "Salida congregacional · Barrio Salas", c: "Daniel Albis", t: "52" },
+        { h: "10:00", l: "Salida congregacional · Plaza Barrio Salas", c: "Daniel Albis", t: "52" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
