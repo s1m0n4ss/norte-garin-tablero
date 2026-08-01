@@ -207,7 +207,106 @@
     },
   };
 
-  const CALENDARIO = [JUN_2026, JUL_2026];
+  // =========================
+  //   AGOSTO 2026
+  // =========================
+  const AGO_2026 = {
+    y: 2026,
+    m: 8,
+    d: {
+      1: [
+        { h: "10:00", l: "Salida congregacional · Puente 5", c: "Lucas Segovia", t: "55" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      2: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      3: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "16" }],
+
+      4: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "40" }],
+
+      5: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" }],
+
+      6: [{ h: "10:00", l: "Calle 3 y Patricias Argentinas", c: "Juan Carlos Sánchez", t: "34" }],
+
+      7: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "23" }],
+
+      8: [
+        { h: "10:00", l: "Grupo 1 – Golf Club Argentino y Salta Polo Club", c: "León Segovia", t: "42" },
+        { h: "10:00", l: "Grupo 2 – Golf Club Argentino y Golf Club Santa Lucía", c: "Horacio Salgado", t: "48" },
+        { h: "10:00", l: "Grupo 3 – Golf Club Concordia y Ravignani", c: "Elvio Casco", t: "56" },
+        { h: "10:00", l: "Grupo 4 – Puente 5", c: "Lucas Segovia", t: "57" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      9: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      10: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "11" }],
+
+      11: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "41" }],
+
+      12: [
+        { h: "10:00", l: "Familia Flores", c: "Mauricio Tierno", t: "27, 15" },
+        { h: "17:00", l: "Familia Miño", c: "Mauricio Tierno", t: "12, 17" },
+      ],
+
+      13: [{ h: "10:00", l: "Familia Segovia", c: "Mauricio Tierno", t: "24, 25" }],
+
+      14: [
+        { h: "10:00", l: "Casa Doris Talarico", c: "Mauricio Tierno", t: "19, 22" },
+        { h: "17:00", l: "Familia Godoy", c: "Mauricio Tierno", t: "32, 31" },
+      ],
+
+      15: [
+        { h: "10:00", l: "Salida congregacional · Salón del Reino", c: "Mauricio Tierno", t: "3, 4, 6, 10, 11" },
+        { h: "17:00", l: "Casa Manuel Feril", c: "Mauricio Tierno", t: "21, 28" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      16: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      17: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "6" }],
+
+      18: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "45" }],
+
+      19: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "33" }],
+
+      20: [{ h: "10:00", l: "Calle 3 y Patricias Argentinas", c: "Juan Carlos Sánchez", t: "36" }],
+
+      21: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "24" }],
+
+      22: [
+        { h: "10:00", l: "Grupo 1 –", c: "", t: "" },
+        { h: "10:00", l: "Grupo 2 –", c: "", t: "" },
+        { h: "10:00", l: "Grupo 3 –", c: "", t: "" },
+        { h: "10:00", l: "Grupo 4 –", c: "", t: "" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      23: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      24: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "10" }],
+
+      25: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "46" }],
+
+      26: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" }],
+
+      27: [{ h: "10:00", l: "Pellegrini y Maipú", c: "Juan Carlos Sánchez", t: "35" }],
+
+      28: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "18" }],
+
+      29: [
+        { h: "10:00", l: "Salida congregacional · Barrio Salas", c: "Daniel Albis", t: "52" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      30: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      31: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "16" }],
+    },
+  };
+
+  const CALENDARIO = [JUN_2026, JUL_2026, AGO_2026];
 
   function getEntriesForDate(date) {
     const d = startOfDay(date);
@@ -244,6 +343,7 @@
     CALENDARIO,
     JUN_2026,
     JUL_2026,
+    AGO_2026,
     getEntriesForDate,
     getTodayText,
     getDayText,
