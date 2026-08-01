@@ -273,17 +273,11 @@
 
       20: [{ h: "10:00", l: "Calle 3 y Patricias Argentinas", c: "Juan Carlos Sánchez", t: "36" }],
 
-      21: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "24" }],
+      21: [{ type: "asamblea", l: "Asamblea Regional «Felices para siempre»" }],
 
-      22: [
-        { h: "10:00", l: "Grupo 1 –", c: "", t: "" },
-        { h: "10:00", l: "Grupo 2 –", c: "", t: "" },
-        { h: "10:00", l: "Grupo 3 –", c: "", t: "" },
-        { h: "10:00", l: "Grupo 4 –", c: "", t: "" },
-        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
-      ],
+      22: [{ type: "asamblea", l: "Asamblea Regional «Felices para siempre»" }],
 
-      23: [{ type: "reunion", l: "Reunión de congregación" }],
+      23: [{ type: "asamblea", l: "Asamblea Regional «Felices para siempre»" }],
 
       24: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "10" }],
 
