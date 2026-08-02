@@ -128,12 +128,10 @@ window.VIDA_MINISTERIO_DATA = `
 >
   <div class="flex flex-col items-center justify-center py-10 text-center">
     <h2 class="text-3xl font-black text-blue-600 mb-2 uppercase">
-      Asamblea de circuito de los testigos de Jehová
+      Asamblea regional de los testigos de Jehová
     </h2>
 
-    <p class="text-sm font-bold uppercase tracking-widest text-blue-400 mb-4">
-      Con representante de la Sucursal | 2025-2026
-    </p>
+  
 
     <p class="text-lg font-bold">
       No habrá reunión de entre semana en el Salón del Reino.
@@ -147,7 +145,7 @@ window.VIDA_MINISTERIO_DATA = `
       </p>
 
       <p class="mt-2 font-medium">
-        "Oiga lo que el espíritu les dice a las congregaciones"
+        "Felices para siempre"
         <br />
         <strong>APOCALIPSIS 3:22</strong>
       </p>
