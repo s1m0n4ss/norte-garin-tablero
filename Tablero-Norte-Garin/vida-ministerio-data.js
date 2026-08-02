@@ -538,4 +538,34 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 137</strong> y Oración final: <span class="asignado">LUCAS DOS SANTOS</span></div>
 </article>
 
+<article
+  class="page"
+  data-key="2026-08-17"
+  data-title="17 - 23 DE AGOSTO"
+  data-book="ASAMBLEA"
+>
+  <div class="flex flex-col items-center justify-center py-10 text-center">
+    <h2 class="text-3xl font-black text-blue-600 mb-2 uppercase">
+      Asamblea REGIONAL de los testigos de Jehová
+    </h2>
+
+    <p class="text-lg font-bold">
+      No habrá reunión de entre semana en el Salón del Reino.
+    </p>
+
+    <div
+      class="mt-6 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-3xl border border-blue-200 dark:border-blue-800"
+    >
+      <p class="text-sm font-black uppercase tracking-widest text-blue-500">
+        Tema
+      </p>
+
+      <p class="mt-2 font-medium">
+        "Felices para siempre"
+        <br />
+       
+      </p>
+    </div>
+  </div>
+  <span class="lector-estudio"></span>
 `;
