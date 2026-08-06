@@ -34,8 +34,8 @@ window.CONFERENCIAS_DATA = [
         time: "10:00",
         special: true,
         type: "VISITA VIAJANTE",
-        title: "Visita del Superintendente de Circuito",
-        speaker: "Mauricio y Maricel",
+        title: "Como cosechar vida eterna",
+        speaker: "Mauricio Tierno",
         congregation: "",
         chairman: "Sebastián Brasccetta",
         lector: ""
