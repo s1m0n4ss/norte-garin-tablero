@@ -279,17 +279,11 @@
 
       20: [{ h: "10:00", l: "Calle 3 y Patricias Argentinas", c: "Juan Carlos Sánchez", t: "36" }],
 
-      21: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "" }],
+      21: [{ type: "asamblea", l: "Asamblea Regional" }],
 
-      22: [
-        { h: "10:00", l: "Grupo 1 –", c: "", t: "" },
-        { h: "10:00", l: "Grupo 2 –", c: "", t: "" },
-        { h: "10:00", l: "Grupo 3 –", c: "", t: "" },
-        { h: "10:00", l: "Grupo 4 –", c: "", t: "" },
-        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
-      ],
+      22: [{ type: "asamblea", l: "Asamblea Regional" }],
 
-      23: [{ type: "reunion", l: "Reunión de congregación" }],
+      23: [{ type: "asamblea", l: "Asamblea Regional" }],
 
       24: [{ h: "10:00", l: "Colón y Beliera", c: "León Segovia", t: "29" }],
 

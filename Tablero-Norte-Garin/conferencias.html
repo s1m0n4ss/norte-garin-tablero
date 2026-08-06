@@ -394,7 +394,7 @@
             const nextBadge = isNext ? `<div class="conf-next-badge">Próximo domingo</div>` : "";
 
             let bodyHtml = "";
-            if (isSpecial) {
+            if (isSpecial && v.type !== "VISITA VIAJANTE") {
               bodyHtml = `
                 <div class="conf-body">
                   ${nextBadge}
