@@ -46,7 +46,7 @@ window.CONFERENCIAS_DATA = [
         time: "10:00",
         special: true,
         type: "ASAMBLEA",
-        title: "Asamblea Regional "Felices para siempre"",
+        title: "Asamblea Regional \"Felices para siempre\"",
         speaker: "",
         congregation: "",
         chairman: "",
