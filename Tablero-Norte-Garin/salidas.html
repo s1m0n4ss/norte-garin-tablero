@@ -637,5 +637,38 @@
       });
     }
   </script>
+  <script>
+    (function () {
+      var hoy = new Date();
+      var año = hoy.getFullYear();
+      var mes = hoy.getMonth();
+      var diaKey = 'modal_precursor_2026_' + año + '_' + mes + '_' + hoy.getDate();
+      var mostrar = año === 2026 && (mes === 7 || mes === 8) && !localStorage.getItem(diaKey);
+      if (!mostrar) return;
+
+      var overlay = document.createElement('div');
+      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px';
+
+      overlay.innerHTML =
+        '<div style="background:#fff;border-radius:16px;padding:28px 24px;max-width:320px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,0.18);text-align:center">' +
+          '<div style="font-size:40px">⭐</div>' +
+          '<div style="font-family:Poppins,Inter,sans-serif;font-weight:700;font-size:20px;color:#0f172a;margin-top:12px">Oportunidad especial</div>' +
+          '<p style="font-family:Inter,sans-serif;font-size:14px;color:#475569;text-align:center;line-height:1.6;margin-top:10px">' +
+            'Durante agosto y septiembre podés tomar el <strong>Precursorado Auxiliar</strong> de <strong>15 o 30 horas</strong>.' +
+            '<br>¡Pedile una solicitud a tu superintendente de grupo!' +
+          '</p>' +
+          '<button id="modalPrecursorBtn" style="background:#2563eb;color:#fff;border:none;border-radius:12px;padding:12px;width:100%;font-family:Inter,sans-serif;font-weight:700;font-size:15px;margin-top:20px;cursor:pointer">Entendido</button>' +
+        '</div>';
+
+      function cerrar() {
+        localStorage.setItem(diaKey, 'true');
+        document.body.removeChild(overlay);
+      }
+
+      overlay.addEventListener('click', function (e) { if (e.target === overlay) cerrar(); });
+      document.body.appendChild(overlay);
+      document.getElementById('modalPrecursorBtn').addEventListener('click', cerrar);
+    })();
+  </script>
   </body>
 </html>
