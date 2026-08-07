@@ -530,7 +530,7 @@ window.VIDA_MINISTERIO_DATA = `
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
 <div class="section"><div class="sect-title"><h4><strong>Canción 65</strong></h4></div></div>
-<div class="section"><div class="sect-title"><h4>7. Informe 5 del Cuerpo Gobernante del año 2026</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Informe 5 del Cuerpo Gobernante del año 2026</h4></div><div class="duration">(15 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>8. ¿Qué estás dispuesto a hacer "por las buenas noticias"?</h4><span style="font-size:11px;font-weight:700;color:#7c3aed;letter-spacing:.5px">✦ VISITA DEL SUPERINTENDENTE DE CIRCUITO</span></div><span class="asignado">MAURICIO TIERNO</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 84</strong> y Oración final: <span class="asignado">LUCAS DOS SANTOS</span></div>
