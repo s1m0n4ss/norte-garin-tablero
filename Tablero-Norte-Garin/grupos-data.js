@@ -7,14 +7,14 @@ window.GRUPOS_DATA = [
 {
   id: 1,
   nombre: "Grupo 1",
-  publicadores: 20,
-  superintendente: "Segovia León",
+  publicadores: 19,
+  superintendente: "León Segovia",
   auxiliar: "Daniel Albis",
   integrantes: [
     "Becerra Nely",
     "Benítez Elida",
-    "Cha Elena",
     "Céspedes Angela",
+    "Cha Elena",
     "Collado Daniel",
     "Di Marino Alicia",
     "Ducoli Gustavo",
@@ -27,8 +27,7 @@ window.GRUPOS_DATA = [
     "Ramírez Julio",
     "Sarraute Diego",
     "Sarraute Micaela",
-    "Segovia Mirta",
-    "Suárez Roxana"
+    "Segovia Mirta"
   ]
 },
 
@@ -36,7 +35,7 @@ window.GRUPOS_DATA = [
   id: 2,
   nombre: "Grupo 2",
   publicadores: 18,
-  superintendente: "Salgado Horacio",
+  superintendente: "Horacio Salgado",
   auxiliar: "Lucas Dos Santos",
   integrantes: [
     "Casas Carmen",
@@ -61,26 +60,25 @@ window.GRUPOS_DATA = [
 {
   id: 3,
   nombre: "Grupo 3",
-  publicadores: 21,
-  superintendente: "Casco Elvio",
-  auxiliar: "Cortez Darío",
+  publicadores: 20,
+  superintendente: "Elvio Casco",
+  auxiliar: "Sebastián Brasccetta",
   integrantes: [
-    "Brasccetta Sebastián",
+    "Cansino Cintia",
     "Cansino León",
     "Cansino Lidia",
     "Cansino Silvia",
     "Casco Mónica",
     "Flores Calixto",
     "Flores Elvira",
-    "Cansino Cintia",
-    "Leal Cecilia",
     "Gómez Miriam",
+    "Leal Cecilia",
     "Miño Guillermo",
     "Miño Mabel",
     "Natale Tamara",
+    "Sánchez Juan Carlos",
     "Segovia Cintia",
     "Segovia Cristian",
-    "Sánchez Juan Carlos",
     "Zúñiga Mabel",
     "Zúñiga Pablo",
     "Zúñiga Sofía"
@@ -90,10 +88,11 @@ window.GRUPOS_DATA = [
 {
   id: 4,
   nombre: "Grupo 4",
-  publicadores: 19,
-  superintendente: "Gutiérrez Adolfo",
+  publicadores: 20,
+  superintendente: "Adolfo Gutiérrez",
   auxiliar: "Lucas Segovia",
   integrantes: [
+    "Araos Daniel",
     "Araoz Florencia",
     "Araoz Francisco",
     "Araoz Susana",
