@@ -1,4 +1,4 @@
-const CACHE = "norte-garin-v1";
+const CACHE = "norte-garin-v2";
 
 const PRECACHE = [
   "/",
@@ -33,7 +33,9 @@ self.addEventListener("fetch", e => {
   if (e.request.method !== "GET") return;
   const url = new URL(e.request.url);
   if (url.hostname.includes("firebaseio.com") ||
-      url.hostname.includes("googleapis.com")) return;
+      url.hostname.includes("googleapis.com") ||
+      url.hostname.includes("gstatic.com") ||
+      url.hostname.includes("tailwindcss.com")) return;
 
   e.respondWith(
     fetch(e.request)
