@@ -268,7 +268,10 @@
 
       16: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      17: [{ h: "10:00", l: "Paso y San Martín", c: "León Segovia", t: "7" }],
+      17: [
+        { h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "11" },
+        { h: "16:30", l: "Familia Miño", c: "", t: "12" },
+      ],
 
       18: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "45" }],
 
