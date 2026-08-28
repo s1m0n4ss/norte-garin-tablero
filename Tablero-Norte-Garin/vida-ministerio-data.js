@@ -615,8 +615,9 @@ window.VIDA_MINISTERIO_DATA = `
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
 <div class="section"><div class="sect-title"><h4><strong>Canción 67</strong></h4></div></div>
-<div class="section"><div class="sect-title"><h4>7. Seamos adaptables y usemos JW.ORG</h4></div><span class="asignado">ADOLFO GUTIERREZ</span><div class="duration">(15 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (wcg cap. 6.)</h4></div><span class="asignado">SEBASTIAN BRASCCETTA</span><div class="duration">(30 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Seamos adaptables y usemos JW.ORG</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Notificacion del proyecto de construcción</h4></div><span class="asignado">SEBASTIAN BRASCCETTA</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 6.)</h4></div><span class="asignado">ADOLFO GUTIERREZ</span><div class="duration">(20 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 132</strong> y Oración final: <span class="asignado">LEÓN SEGOVIA</span></div>
 <span class="lector-estudio">LUCAS SEGOVIA</span>
@@ -641,8 +642,9 @@ window.VIDA_MINISTERIO_DATA = `
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
 <div class="section"><div class="sect-title"><h4><strong>Canción 128</strong></h4></div></div>
-<div class="section"><div class="sect-title"><h4>7. En esta campaña, ni un golpe al aire</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(15 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (wcg cap. 7.)</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(30 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. En esta campaña, ni un golpe al aire</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Repaso de la asamblea</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 7.)</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(20 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 143</strong> y Oración final: <span class="asignado">LEÓN SEGOVIA</span></div>
 <span class="lector-estudio">HORACIO SALGADO</span>
