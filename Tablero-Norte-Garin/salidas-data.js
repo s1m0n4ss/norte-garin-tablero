@@ -309,7 +309,104 @@
     },
   };
 
-  const CALENDARIO = [JUN_2026, JUL_2026, AGO_2026];
+  // =========================
+  //   SEPTIEMBRE 2026
+  // =========================
+  const SEP_2026 = {
+    y: 2026,
+    m: 9,
+    d: {
+      1: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "40" }],
+
+      2: [
+        { h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" },
+        { h: "19:00", l: "📞 Por Zoom", c: "Juan Carlos Sánchez" },
+      ],
+
+      3: [{ h: "10:00", l: "Colón y Storni", c: "Juan Carlos Sánchez", t: "8" }],
+
+      4: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "23" }],
+
+      5: [
+        { h: "10:00", l: "Salida congregacional · Casa Manuel Feril", c: "Lucas Segovia", t: "28" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      6: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      7: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "16" }],
+
+      8: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "41" }],
+
+      9: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "27" }],
+
+      10: [{ h: "10:00", l: "Uruguay y Centenario", c: "Juan Carlos Sánchez", t: "21" }],
+
+      11: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "19" }],
+
+      12: [
+        { h: "10:00", l: "Grupo 1 – G.C. Argentino y G.C. Santa Lucía", c: "Diego Sarraute", t: "47" },
+        { h: "10:00", l: "Grupo 2 – G.C. Argentino y G.C. Villa María", c: "Manuel Feril", t: "49" },
+        { h: "10:00", l: "Grupo 3 – G.C. Argentino y G.C. Miramar", c: "Pablo Zúñiga", t: "50" },
+        { h: "10:00", l: "Grupo 4 – G.C. Argentino y Jockey Club", c: "Lucas Segovia", t: "51" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      13: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      14: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "11" }],
+
+      15: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "45" }],
+
+      16: [
+        { h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "33" },
+        { h: "19:00", l: "📞 Por Zoom", c: "Juan Carlos Sánchez" },
+      ],
+
+      17: [{ h: "10:00", l: "Pellegrini y Sarmiento", c: "Juan Carlos Sánchez", t: "31" }],
+
+      18: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "24" }],
+
+      19: [
+        { h: "10:00", l: "Salida congregacional · Puente 5", c: "Horacio Salgado", t: "54" },
+        { h: "16:30", l: "Puente 5", c: "Horacio Salgado", t: "55" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      20: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      21: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "6" }],
+
+      22: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "46" }],
+
+      23: [{ h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" }],
+
+      24: [{ h: "10:00", l: "Beliera y F. Díaz", c: "Juan Carlos Sánchez", t: "32" }],
+
+      25: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "18" }],
+
+      26: [
+        { h: "10:00", l: "Grupo 1 – Familia Segovia", c: "León Segovia", t: "17" },
+        { h: "10:00", l: "Grupo 2 – Familia Salgado", c: "Horacio Salgado", t: "3" },
+        { h: "10:00", l: "Grupo 3 – Familia Miño", c: "Elvio Casco", t: "12" },
+        { h: "10:00", l: "Grupo 4 – Familia Durán", c: "Adolfo Gutiérrez", t: "22" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      27: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      28: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "10" }],
+
+      29: [{ h: "17:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "43" }],
+
+      30: [
+        { h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" },
+        { h: "19:00", l: "📞 Por Zoom", c: "Juan Carlos Sánchez" },
+      ],
+    },
+  };
+
+  const CALENDARIO = [JUN_2026, JUL_2026, AGO_2026, SEP_2026];
 
   function getEntriesForDate(date) {
     const d = startOfDay(date);
@@ -347,6 +444,7 @@
     JUN_2026,
     JUL_2026,
     AGO_2026,
+    SEP_2026,
     getEntriesForDate,
     getTodayText,
     getDayText,
