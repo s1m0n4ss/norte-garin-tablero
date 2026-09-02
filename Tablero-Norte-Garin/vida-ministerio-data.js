@@ -649,4 +649,84 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 143</strong> y Oración final: <span class="asignado">LEÓN SEGOVIA</span></div>
 <span class="lector-estudio">HORACIO SALGADO</span>
 </article>
+<article class="page" data-key="2026-09-14" data-title="14 DE SEPTIEMBRE – 20 DE SEPTIEMBRE" data-book="JEREMIAS 34, 35">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">ADOLFO GUTIERREZ</span></div>
+<div class="inicio-programa"><strong>Canción 161</strong> y oración <span class="asignado">DANIEL ALBIS</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. Jehová recompensa a los que siempre le obedecen</h4></div><span class="asignado">SEBASTIAN BRASCCETTA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 35:1-14)</h4></div><span class="asignado">AXEL GOMEZ</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">CANDELA GOMEZ / MELANIE PEREYRA</span><div class="duration">(2 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado">SOFIA ZUÑIGA / FLORENCIA ARAOZ</span><div class="duration">(2 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga revisitas</h4></div><span class="asignado">MARTINA HUAMACONDOR / MABEL MIÑO</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Haga discipulos</h4></div><span class="asignado">ANGELA CESPEDES / MIRTA ITATI SEGOVIA</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 121</strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>8. El autocontrol nos ayuda a obedecer</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(6 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Logros de la organización para el mes de septiembre</h4></div><span class="asignado">ADOLFO GUTIERREZ</span><div class="duration">(9 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>10. Estudio biblico de congregación (wcg cap. 8.)</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(20 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 28</strong> y Oración final: <span class="asignado">LEÓN SEGOVIA</span></div>
+<span class="lector-estudio">DIEGO SARRAUTE</span>
+</article>
+<article class="page" data-key="2026-09-21" data-title="21 DE SEPTIEMBRE – 27 DE SEPTIEMBRE" data-book="JEREMIAS 36, 37">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">SEBASTIAN BRASCCETTA</span></div>
+<div class="inicio-programa"><strong>Canción 74</strong> y oración <span class="asignado">CAETANO FERRARI</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. Jehová ayuda a quienes apoyan su reino</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 36:1-13)</h4></div><span class="asignado">FRANCISCO ARAOZ</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Predicación pública</h4></div><span class="asignado">DANIEL COLLADO / CRISTIAN SEGOVIA</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. De casa en casa</h4></div><span class="asignado">DANTER HUAMACONDOR / LEÓN CANSINO</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. ¿Qué diría?</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(6 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 142/strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Seamos siempre neutrales en nuestro corazon</h4></div><span class="asignado">KEVIN GONZALEZ</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (wcg cap. 9.)</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(20 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 134</strong> y Oración final: <span class="asignado">CRISTIAN SEGOVIA</span></div>
+<span class="lector-estudio">LUCAS DOS SANTOS</span>
+</article>
+<article class="page" data-key="2026-09-07" data-title="28 DE SEPTIEMBRE – 04 DE OCTUBRE" data-book="JEREMIAS 38, 39">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">ELVIO CASCO</span></div>
+<div class="inicio-programa"><strong>Canción 102</strong> y oración <span class="asignado">LUCAS SEGOVIA</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. No dejemos de ayudarnos unos a otros</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 38:1-13)</h4></div><span class="asignado">GUSTAVO DUCOLI</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">GUILLERMINA LEIVA / MARIA MABEL ZUÑIGA</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Predicación informal</h4></div><span class="asignado">MONICA CASCO / CINTIA CANSINO</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. ¿Qué diría?</h4></div><span class="asignado">KEVIN GONZALEZ</span><div class="duration">(6 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 90/strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. "Quién me toco?"</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Estudio biblico de congregación (wcg cap. 10.)</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(20 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 56</strong> y Oración final: <span class="asignado">ADOLFO GUTIERREZ</span></div>
+<span class="lector-estudio">DANIEL ALBIS</span>
+</article>
 `;
