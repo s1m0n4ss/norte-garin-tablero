@@ -389,7 +389,7 @@
         { h: "10:00", l: "Grupo 1 – Familia Segovia", c: "León Segovia", t: "17" },
         { h: "10:00", l: "Grupo 2 – Familia Salgado", c: "Horacio Salgado", t: "3" },
         { h: "10:00", l: "Grupo 3 – Familia Miño", c: "Elvio Casco", t: "12" },
-        { h: "10:00", l: "Grupo 4 – Familia Durán", c: "Adolfo Gutiérrez", t: "22" },
+        { h: "10:00", l: "Grupo 4 – Uruguay y Almirante Brown", c: "Adolfo Gutiérrez", t: "22" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
