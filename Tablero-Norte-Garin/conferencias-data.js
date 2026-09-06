@@ -4,63 +4,51 @@
 
 window.CONFERENCIAS_DATA = [
   {
-    month: "Agosto 2026",
-    monthIdx: 7,
+    month: "Septiembre 2026",
+    monthIdx: 8,
     year: 2026,
     vienen: [
       {
-        date: "2",
+        date: "6",
         day: "Dom",
         time: "10:00",
-        title: "La familia feliz es la que pone a Dios en primer lugar",
-        speaker: "Jorge Barrios",
-        congregation: "Centro Del Viso",
-        chairman: "Daniel Albis",
-        lector: "Pablo Zúñiga"
+        title: "Estense quietos y vean cómo los salva Jehová",
+        speaker: "Horacio Salgado",
+        congregation: "Local",
+        chairman: "Adolfo Gutiérrez",
+        lector: "León Segovia"
       },
       {
-        date: "9",
+        date: "13",
         day: "Dom",
         time: "10:00",
-        title: "Haga amistades que duren para siempre",
-        speaker: "Rodolfo Moriello",
-        congregation: "Centro Del Viso",
-        chairman: "Diego Sarraute",
-        lector: "Lucas Segovia"
-      },
-      {
-        date: "16",
-        day: "Dom",
-        time: "10:00",
-        special: true,
-        type: "VISITA VIAJANTE",
-        title: "Como cosechar vida eterna",
-        speaker: "Mauricio Tierno",
-        congregation: "",
-        chairman: "Sebastián Brasccetta",
-        lector: ""
-      },
-      {
-        date: "23",
-        day: "Dom",
-        time: "10:00",
-        special: true,
-        type: "ASAMBLEA",
-        title: "Asamblea Regional \"Felices para siempre\"",
+        title: "",
         speaker: "",
         congregation: "",
-        chairman: "",
-        lector: ""
+        chairman: "Lucas Segovia",
+        lector: "Lucas Dos Santos",
+        pendiente: true
       },
       {
-        date: "30",
+        date: "20",
         day: "Dom",
         time: "10:00",
-        title: "Rechace las fantasías mundanales; busque las realidades del Reino",
-        speaker: "Nicolás Cuello",
-        congregation: "Centro Del Viso",
-        chairman: "León Segovia",
-        lector: "Adolfo Gutiérrez"
+        title: "",
+        speaker: "",
+        congregation: "",
+        chairman: "Caetano Ferrari",
+        lector: "Horacio Salgado",
+        pendiente: true
+      },
+      {
+        date: "27",
+        day: "Dom",
+        time: "10:00",
+        title: "¿Cómo puede ayudarle la Biblia?",
+        speaker: "Sebastián Brasccetta",
+        congregation: "Local",
+        chairman: "Horacio Salgado",
+        lector: "Pablo Zúñiga"
       }
     ],
     salen: []

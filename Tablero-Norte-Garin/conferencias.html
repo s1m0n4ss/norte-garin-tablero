@@ -313,7 +313,7 @@
       </div>
     </header>
     <div id="bannerAgosto2026" style="background:#fef3c7;border-bottom:2px solid #fbbf24;padding:10px 16px;display:flex;align-items:center;gap:10px;"><span style="flex-shrink:0">⭐</span><span style="color:#92400e;font-size:13px;font-family:Inter,sans-serif;line-height:1.5;flex:1">Agosto especial — Visita del Superintendente de Circuito Mauricio y Maricel · Asamblea Regional · Campaña de invitación · ¿Podrías ser precursor auxiliar este mes? (15 o 30 horas)</span><button onclick="document.getElementById('bannerAgosto2026').style.display='none';localStorage.setItem('banner_agosto_2026_cerrado','true')" style="background:transparent;border:none;color:#b45309;font-size:18px;cursor:pointer;flex-shrink:0;padding:0;line-height:1">✕</button></div>
-    <script>(function(){if(localStorage.getItem('banner_agosto_2026_cerrado')==='true'||new Date()>new Date('2026-09-01')){document.getElementById('bannerAgosto2026').style.display='none';}})();</script>
+    <script>(function(){if(localStorage.getItem('banner_agosto_2026_cerrado')==='true'||new Date()>new Date('2026-09-01')){document.getElementById('bannerAgosto2026').style.display='none';}})()</u003c/script>
 
     <div id="notif-banner-container"></div>
     <main class="main-wrap" id="mainContainer"></main>
@@ -394,7 +394,16 @@
             const nextBadge = isNext ? `<div class="conf-next-badge">Próximo domingo</div>` : "";
 
             let bodyHtml = "";
-            if (isSpecial && v.type !== "VISITA VIAJANTE") {
+            if (v.pendiente) {
+              bodyHtml = `
+                <div class="conf-body">
+                  <div class="conf-meta">
+                    ${v.chairman ? `<div class="conf-meta-row"><span class="conf-meta-label">Presidente</span><span class="conf-meta-value">${esc(v.chairman)}</span></div>` : ""}
+                    ${v.lector ? `<div class="conf-meta-row"><span class="conf-meta-label">Lector de La Atalaya</span><span class="conf-meta-value">${esc(v.lector)}</span></div>` : ""}
+                  </div>
+                  ${v.time ? `<div class="conf-time">${esc(v.day ?? "")}${v.day && v.time ? " · " : ""}${esc(v.time)}</div>` : ""}
+                </div>`;
+            } else if (isSpecial && v.type !== "VISITA VIAJANTE") {
               bodyHtml = `
                 <div class="conf-body">
                   ${nextBadge}
