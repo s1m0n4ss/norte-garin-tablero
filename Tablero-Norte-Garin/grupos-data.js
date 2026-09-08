@@ -34,7 +34,7 @@ window.GRUPOS_DATA = [
 {
   id: 2,
   nombre: "Grupo 2",
-  publicadores: 18,
+  publicadores: 19,
   superintendente: "Horacio Salgado",
   auxiliar: "Lucas Dos Santos",
   integrantes: [
@@ -42,6 +42,7 @@ window.GRUPOS_DATA = [
     "Coria Elías",
     "Coria Sara",
     "Feril Manuel",
+    "González Kevin",
     "Humancondor Danter",
     "Humancondor Martina",
     "Laurente Paulina",
@@ -60,7 +61,7 @@ window.GRUPOS_DATA = [
 {
   id: 3,
   nombre: "Grupo 3",
-  publicadores: 20,
+  publicadores: 21,
   superintendente: "Elvio Casco",
   auxiliar: "Sebastián Brasccetta",
   integrantes: [
@@ -76,6 +77,7 @@ window.GRUPOS_DATA = [
     "Miño Guillermo",
     "Miño Mabel",
     "Natale Tamara",
+    "Sánchez Johana",
     "Sánchez Juan Carlos",
     "Segovia Cintia",
     "Segovia Cristian",
