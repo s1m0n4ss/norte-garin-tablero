@@ -61,10 +61,11 @@ window.GRUPOS_DATA = [
 {
   id: 3,
   nombre: "Grupo 3",
-  publicadores: 21,
+  publicadores: 22,
   superintendente: "Elvio Casco",
   auxiliar: "Sebastián Brasccetta",
   integrantes: [
+    "Cancino Axel",
     "Cansino Cintia",
     "Cansino León",
     "Cansino Lidia",
