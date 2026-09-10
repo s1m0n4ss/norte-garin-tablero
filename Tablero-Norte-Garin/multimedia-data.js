@@ -1,36 +1,46 @@
 window.MULTIMEDIA_DATA = [
 {
-    key: "2026-08-03",
-    label: "03–09 Ago",
-    start: "2026-08-03",
-    end: "2026-08-09",
-    audio_video: ["Lucas Segovia", "Pablo Zuñiga"],
-    microfonistas: ["Samuel Duran", "Manuel Feril"],
+    key: "2026-09-07",
+    label: "07–13 Sep",
+    start: "2026-09-07",
+    end: "2026-09-13",
+    audio_video: ["Caetano Ferrari", "Pablo Zuñiga"],
+    microfonistas: ["Daniel Albis", "Elias Coria"],
     plataforma: ["Diego Sarraute"],
-    entrada: ["Francisco Araoz"],
-    auditorio: ["León Segovia"]
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
   },
  {
-    key: "2026-08-10",
-    label: "10–16 Ago",
-    start: "2026-08-10",
-    end: "2026-08-16",
-    audio_video: ["Sebastian Brascetta", "Caetano Ferrari"],
-    microfonistas: ["Daniel Albis", "Elias Coria"],
+    key: "2026-09-14",
+    label: "14–20 Sep",
+    start: "2026-09-14",
+    end: "2026-09-20",
+    audio_video: ["Lucas Segovia", "Kevin Gonzalez"],
+    microfonistas: ["Benjamin Duran", "Samuel Duran"],
     plataforma: ["Horacio Salgado"],
-    entrada: ["Adolfo Gutierrez"],
-    auditorio: ["Pablo Zuñiga"]
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
   }, 
   {
-    key: "2026-08-24",
-    label: "24–30 Ago",
-    start: "2026-08-24",
-    end: "2026-08-30",
-    audio_video: ["Lucas Dos Santos", "Sebastian Brascetta"],
-    microfonistas: ["Tomas Duran", "Samuel Duran"],
-    plataforma: ["Caetano Ferrari"],
-    entrada: ["Elias Coria"],
-    auditorio: ["Diego Sarraute"]
+    key: "2026-09-21",
+    label: "21–27 Sep",
+    start: "2026-09-21",
+    end: "2026-08-27",
+    audio_video: ["Lucas Dos Santos", "Pablo Zuñiga"],
+    microfonistas: ["Tomas Duran", "Daniel Albis"],
+    plataforma: ["Benjamin Duran"],
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
   }, 
- 
+ {
+    key: "2026-09-28",
+    label: "28–04 Sep",
+    start: "2026-09-28",
+    end: "2026-10-04",
+    audio_video: ["Caetano Ferrari", "Lucas Segovia"],
+    microfonistas: ["Manuel Feril", "Elias Coria"],
+    plataforma: ["Lucas Dos Santos"],
+    entrada: ["A confirmar"],
+    auditorio: ["A confirmar"]
+  }, 
 ];
