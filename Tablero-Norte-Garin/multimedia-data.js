@@ -34,7 +34,7 @@ window.MULTIMEDIA_DATA = [
   }, 
  {
     key: "2026-09-28",
-    label: "28–04 Sep",
+    label: "28 Sep – 04 Oct",
     start: "2026-09-28",
     end: "2026-10-04",
     audio_video: ["Caetano Ferrari", "Lucas Segovia"],
