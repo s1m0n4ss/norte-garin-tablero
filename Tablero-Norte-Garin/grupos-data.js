@@ -7,10 +7,12 @@ window.GRUPOS_DATA = [
 {
   id: 1,
   nombre: "Grupo 1",
-  publicadores: 19,
+  publicadores: 21,
   superintendente: "León Segovia",
   auxiliar: "Daniel Albis",
   integrantes: [
+    "Arrichetta Jeremías",
+    "Arrichetta Priscila",
     "Becerra Nely",
     "Benítez Elida",
     "Céspedes Angela",

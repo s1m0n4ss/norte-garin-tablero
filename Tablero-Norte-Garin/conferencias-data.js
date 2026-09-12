@@ -22,23 +22,21 @@ window.CONFERENCIAS_DATA = [
         date: "13",
         day: "Dom",
         time: "10:00",
-        title: "",
-        speaker: "",
-        congregation: "",
-        chairman: "Lucas Segovia",
-        lector: "Lucas Dos Santos",
-        pendiente: true
+        title: "Confíe en el poder salvador de Jehová",
+        speaker: "Jeremías Arrichetta",
+        congregation: "Local",
+        chairman: "Caetano Ferrari",
+        lector: "Lucas Dos Santos"
       },
       {
         date: "20",
         day: "Dom",
         time: "10:00",
-        title: "",
-        speaker: "",
-        congregation: "",
-        chairman: "Caetano Ferrari",
-        lector: "Horacio Salgado",
-        pendiente: true
+        title: "Sirva a Jehová con alegría",
+        speaker: "Tomás Gona",
+        congregation: "Villa Urquiza",
+        chairman: "Lucas Segovia",
+        lector: "Horacio Salgado"
       },
       {
         date: "27",
