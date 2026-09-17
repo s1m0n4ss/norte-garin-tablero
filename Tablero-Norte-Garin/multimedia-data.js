@@ -18,8 +18,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Lucas Segovia", "Kevin Gonzalez"],
     microfonistas: ["Benjamin Duran", "Samuel Duran"],
     plataforma: ["Horacio Salgado"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["León Segovia"],
+    auditorio: ["Juan Carlos Sanchez"]
   }, 
   {
     key: "2026-09-21",
@@ -29,8 +29,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Lucas Dos Santos", "Pablo Zuñiga"],
     microfonistas: ["Tomas Duran", "Daniel Albis"],
     plataforma: ["Benjamin Duran"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Adolfo Gutierrez"],
+    auditorio: ["Manuel Feril"]
   }, 
  {
     key: "2026-09-28",
@@ -40,7 +40,7 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Caetano Ferrari", "Lucas Segovia"],
     microfonistas: ["Manuel Feril", "Elias Coria"],
     plataforma: ["Lucas Dos Santos"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Francisco Araoz"],
+    auditorio: ["Pablo Zuñiga"]
   }, 
 ];
