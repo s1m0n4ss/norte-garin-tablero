@@ -756,6 +756,34 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 11.)</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(20 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 38</strong> y Oración final: <span class="asignado"></span></div>
-<span class="lector-estudio">DANIEL ALBIS</span>
+<span class="lector-estudio"></span>
+</article>
+
+<article class="page" data-key="2026-10-05" data-title="12 DE OCTUBRE – 18 DE OCTUBRE" data-book="JEREMIAS 42-44">
+<header>
+<div class="presidente-en-pagina">Presidente: <span class="asignado"></span></div>
+<div class="inicio-programa"><strong>Canción 103</strong> y oración <span class="asignado"></span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. Pidieron guía y luego la rechazaron</h4></div><span class="asignado"></span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado"></span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 43:1-13)</h4></div><span class="asignado"></span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado"></span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado"></span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. ¿Qué diría?</h4></div><span class="asignado"></span><div class="duration">(6 mins.)</div></div>
+
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 47/strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Necesidades de la congregación</h4></div><span class="asignado"></span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 12.)</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(20 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 129</strong> y Oración final: <span class="asignado"></span></div>
+<span class="lector-estudio"></span>
 </article>
 `;
