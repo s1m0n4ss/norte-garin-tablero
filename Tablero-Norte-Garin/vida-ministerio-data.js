@@ -703,7 +703,8 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 134</strong> y Oración final: <span class="asignado">CRISTIAN SEGOVIA</span></div>
 <span class="lector-estudio">LUCAS DOS SANTOS</span>
 </article>
-<article class="page" data-key="2026-09-07" data-title="28 DE SEPTIEMBRE – 04 DE OCTUBRE" data-book="JEREMIAS 38, 39">
+
+<article class="page" data-key="2026-09-28" data-title="28 DE SEPTIEMBRE – 04 DE OCTUBRE" data-book="JEREMIAS 38, 39">
 <header>
 <div class="presidente-en-pagina">Presidente: <span class="asignado">ELVIO CASCO</span></div>
 <div class="inicio-programa"><strong>Canción 102</strong> y oración <span class="asignado">LUCAS SEGOVIA</span></div>
