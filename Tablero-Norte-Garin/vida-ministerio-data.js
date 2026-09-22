@@ -733,84 +733,85 @@ window.VIDA_MINISTERIO_DATA = `
 
 <article class="page" data-key="2026-10-05" data-title="05 DE OCTUBRE – 11 DE OCTUBRE" data-book="JEREMIAS 40, 41">
 <header>
-<div class="presidente-en-pagina">Presidente: <span class="asignado"></span></div>
-<div class="inicio-programa"><strong>Canción 33</strong> y oración <span class="asignado"></span></div>
+<div class="presidente-en-pagina">Presidente: <span class="asignado">HORACIO SALGADO</span></div>
+<div class="inicio-programa"><strong>Canción 33</strong> y oración <span class="asignado">ADOLFO GUTIERREZ</span></div>
 </header>
 <section class="bloque verde">
 <h3>TESOROS DE LA BIBLIA</h3>
-<div class="section"><div class="sect-title"><h4>1. Tengamos un punto de vista equilibrado de la protección de Jehová</h4></div><span class="asignado"></span><div class="duration">(10 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado"></span><div class="duration">(10 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 40:1-10)</h4></div><span class="asignado"></span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>1. Tengamos un punto de vista equilibrado de la protección de Jehová</h4></div><span class="asignado">JEREMIAS ARRICHETTA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 40:1-10)</h4></div><span class="asignado">GUSTAVO DUCOLÍ</span><div class="duration">(4 mins.)</div></div>
 </section>
 <section class="bloque amarillo">
 <h3>SEAMOS MEJORES MAESTROS</h3>
-<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado"></span><div class="duration">(2 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado"></span><div class="duration">(2 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>6. Empiece conversaciones</h4></div><span class="asignado"></span><div class="duration">(4 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>7. Explique sus creencias</h4></div><span class="asignado"></span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">ELIDA BENITEZ / PRISCILLA ARRICHETTA</span><div class="duration">(2 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado">ANGELA CESPEDES / MARTINA HUAMACONDOR</span><div class="duration">(2 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Empiece conversaciones</h4></div><span class="asignado">TEODORA DUCOLÍ / PAULINA LAURENTE</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Explique sus creencias</h4></div><span class="asignado">MORELIA HARLOS / BIBIANA PALACIOS</span><div class="duration">(3 mins.)</div></div>
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
 <div class="section"><div class="sect-title"><h4><strong>Canción 17/strong></h4></div></div>
-<div class="section"><div class="sect-title"><h4>8. Jehová protege a las viudas</h4></div><span class="asignado"></span><div class="duration">(15 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 11.)</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(20 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. Jehová protege a las viudas</h4></div><span class="asignado">DANIEL ALBIS</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Informe 6</h4></div><span class="asignado">DANIEL ALBIS</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 11.)</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(20 mins.)</div></div>
 </section>
-<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 38</strong> y Oración final: <span class="asignado"></span></div>
-<span class="lector-estudio"></span>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 38</strong> y Oración final: <span class="asignado">ELVIO CASCO</span></div>
+<span class="lector-estudio">ADOLFO GUTIERREZ</span>
 </article>
 
 <article class="page" data-key="2026-10-05" data-title="12 DE OCTUBRE – 18 DE OCTUBRE" data-book="JEREMIAS 42-44">
 <header>
-<div class="presidente-en-pagina">Presidente: <span class="asignado"></span></div>
-<div class="inicio-programa"><strong>Canción 103</strong> y oración <span class="asignado"></span></div>
+<div class="presidente-en-pagina">Presidente: JEREMIAS ARRICHETTA<span class="asignado"></span></div>
+<div class="inicio-programa"><strong>Canción 103</strong> y oración <span class="asignado">HORACIO SALGADO</span></div>
 </header>
 <section class="bloque verde">
 <h3>TESOROS DE LA BIBLIA</h3>
-<div class="section"><div class="sect-title"><h4>1. Pidieron guía y luego la rechazaron</h4></div><span class="asignado"></span><div class="duration">(10 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado"></span><div class="duration">(10 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 43:1-13)</h4></div><span class="asignado"></span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>1. Pidieron guía y luego la rechazaron</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 43:1-13)</h4></div><span class="asignado">ELIAS CORIA</span><div class="duration">(4 mins.)</div></div>
 </section>
 <section class="bloque amarillo">
 <h3>SEAMOS MEJORES MAESTROS</h3>
-<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado"></span><div class="duration">(3 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado"></span><div class="duration">(4 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>6. ¿Qué diría?</h4></div><span class="asignado"></span><div class="duration">(6 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">ALICIA VERA / ROXANA PALAVECINO</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">CARMEN CASAS / NORMA SCOTTI</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. ¿Qué diría?</h4></div><span class="asignado">KEVIN GONZALEZ</span><div class="duration">(6 mins.)</div></div>
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
 <div class="section"><div class="sect-title"><h4><strong>Canción 47/strong></h4></div></div>
-<div class="section"><div class="sect-title"><h4>7. Necesidades de la congregación</h4></div><span class="asignado"></span><div class="duration">(15 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 12.)</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(20 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Necesidades de la congregación "¿Comó estudiamos?"</h4></div><span class="asignado">DANIEL ALBIS</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 12.)</h4></div><span class="asignado">ADOLFO GUTIERREZ</span><div class="duration">(20 mins.)</div></div>
 </section>
-<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 129</strong> y Oración final: <span class="asignado"></span></div>
-<span class="lector-estudio"></span>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 129</strong> y Oración final: <span class="asignado">KEVIN GONZALEZ</span></div>
+<span class="lector-estudio">JUAN CARLOS SANCHEZ</span>
 </article>
 
 <article class="page" data-key="2026-10-05" data-title="19 DE OCTUBRE – 25 DE OCTUBRE" data-book="JEREMIAS 45-46">
 <header>
-<div class="presidente-en-pagina">Presidente: <span class="asignado"></span></div>
-<div class="inicio-programa"><strong>Canción 103</strong> y oración <span class="asignado"></span></div>
+<div class="presidente-en-pagina">Presidente: LUCAS DOS SANTOS<span class="asignado"></span></div>
+<div class="inicio-programa"><strong>Canción 103</strong> y oración <span class="asignado">JEREMIAS ARRICHETTA</span></div>
 </header>
 <section class="bloque verde">
 <h3>TESOROS DE LA BIBLIA</h3>
-<div class="section"><div class="sect-title"><h4>1. La esperanza es clave para estar contentos</h4></div><span class="asignado"></span><div class="duration">(10 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado"></span><div class="duration">(10 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 46:13-24)</h4></div><span class="asignado"></span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>1. La esperanza es clave para estar contentos</h4></div><span class="asignado">DANIEL ALBIS</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 46:13-24)</h4></div><span class="asignado">HECTOR PALAVECINO</span><div class="duration">(4 mins.)</div></div>
 </section>
 <section class="bloque amarillo">
 <h3>SEAMOS MEJORES MAESTROS</h3>
-<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado"></span><div class="duration">(3 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado"></span><div class="duration">(4 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>6. De casa en casa</h4></div><span class="asignado"></span><div class="duration">(6 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>7. Discurso "Jesús no es Dios</h4></div><span class="asignado"></span><div class="duration">(6 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">MIRTA GLADYS SEGOVIA / SABRINA SEGOVIA</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado">MARA ARAOZ / ALICIA SANCHEZ</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. De casa en casa</h4></div><span class="asignado">SARA CORIA / DORIS TALLARICO</span><div class="duration">(6 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Discurso "Jesús no es Dios</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(6 mins.)</div></div>
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
 <div class="section"><div class="sect-title"><h4><strong>Canción 117/strong></h4></div></div>
-<div class="section"><div class="sect-title"><h4>8. "No se olviden (...) de compartir lo que tienen"</h4></div><span class="asignado"></span><div class="duration">(15 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 13.)</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(20 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>8. "No se olviden (...) de compartir lo que tienen"</h4></div><span class="asignado">KEVIN GONZALEZ</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 13.)</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(20 mins.)</div></div>
 </section>
-<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 87</strong> y Oración final: <span class="asignado"></span></div>
-<span class="lector-estudio"></span>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 87</strong> y Oración final: <span class="asignado">LEON SEGOVIA</span></div>
+<span class="lector-estudio">JEREMIAS ARRICHETTA</span>
 </article>
 `;
