@@ -183,7 +183,7 @@
 
       23: [{ h: "10:00", l: "Fructuoso Díaz y 1° de Mayo", c: "Juan Carlos Sánchez", t: "35" }],
 
-      24: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "23" }],
+      24: [{ h: "10:00", l: "Casa Familia Sánchez", c: "León Segovia", t: "23" }],
 
       25: [
         { h: "10:00", l: "Grupo 1 – Almirante Brown y Francia", c: "Daniel Albis", t: "20" },
