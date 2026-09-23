@@ -383,7 +383,7 @@
 
       24: [{ h: "10:00", l: "Beliera y F. Díaz", c: "Juan Carlos Sánchez", t: "32" }],
 
-      25: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "18" }],
+      25: [{ h: "10:00", l: "Casa Familia Sánchez", c: "León Segovia", t: "18" }],
 
       26: [
         { h: "10:00", l: "Grupo 1 – Familia Segovia", c: "León Segovia", t: "17" },
