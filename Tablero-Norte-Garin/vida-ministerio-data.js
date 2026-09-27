@@ -760,7 +760,7 @@ window.VIDA_MINISTERIO_DATA = `
 <span class="lector-estudio">ADOLFO GUTIERREZ</span>
 </article>
 
-<article class="page" data-key="2026-10-05" data-title="12 DE OCTUBRE – 18 DE OCTUBRE" data-book="JEREMIAS 42-44">
+<article class="page" data-key="2026-10-12" data-title="12 DE OCTUBRE – 18 DE OCTUBRE" data-book="JEREMIAS 42-44">
 <header>
 <div class="presidente-en-pagina">Presidente: JEREMIAS ARRICHETTA<span class="asignado"></span></div>
 <div class="inicio-programa"><strong>Canción 103</strong> y oración <span class="asignado">HORACIO SALGADO</span></div>
@@ -787,7 +787,7 @@ window.VIDA_MINISTERIO_DATA = `
 <span class="lector-estudio">JUAN CARLOS SANCHEZ</span>
 </article>
 
-<article class="page" data-key="2026-10-05" data-title="19 DE OCTUBRE – 25 DE OCTUBRE" data-book="JEREMIAS 45-46">
+<article class="page" data-key="2026-10-19" data-title="19 DE OCTUBRE – 25 DE OCTUBRE" data-book="JEREMIAS 45-46">
 <header>
 <div class="presidente-en-pagina">Presidente: LUCAS DOS SANTOS<span class="asignado"></span></div>
 <div class="inicio-programa"><strong>Canción 103</strong> y oración <span class="asignado">JEREMIAS ARRICHETTA</span></div>
@@ -813,5 +813,31 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 87</strong> y Oración final: <span class="asignado">LEON SEGOVIA</span></div>
 <span class="lector-estudio">JEREMIAS ARRICHETTA</span>
+
+<article class="page" data-key="2026-10-26" data-title="26 DE OCTUBRE – 01 DE NOVIEMBRE" data-book="JEREMIAS 47-48">
+<header>
+<div class="presidente-en-pagina">Presidente: DANIEL ALBIS<span class="asignado"></span></div>
+<div class="inicio-programa"><strong>Canción 125</strong> y oración <span class="asignado">CRISTIAN SEGOVIA</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. Jehová es un juez justo y misericordioso</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 48:1-13)</h4></div><span class="asignado">LÉON CANSINO</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">GUILLERMO MINIO / DANTER HUAMACONDOR</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Haga revisitas</h4></div><span class="asignado">PABLO ZUÑIGA / AXEL GOMEZ</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Haga discipulos</h4></div><span class="asignado">JOSÉ CANSINO / MANUEL FERIL</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 158/strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. "Necesidades de la congregación"</h4></div><span class="asignado"></span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 14.)</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(20 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 54</strong> y Oración final: <span class="asignado">LEON SEGOVIA</span></div>
+<span class="lector-estudio">KEVIN GONZALEZ</span>
 </article>
 `;
