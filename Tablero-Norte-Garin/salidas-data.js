@@ -465,7 +465,7 @@
       ],
 
       17: [
-        { h: "10:00", l: "Salida congregacional · Salón del Reino", c: "Sebastián Brasccetta", t: "52" },
+        { h: "10:00", l: "Salida congregacional · Plaza Barrio Salas", c: "Elvio Casco", t: "52" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
