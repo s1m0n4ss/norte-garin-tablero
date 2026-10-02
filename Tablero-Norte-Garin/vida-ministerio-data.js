@@ -747,7 +747,7 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">ELIDA BENITEZ / PRISCILLA ARRICHETTA</span><div class="duration">(2 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado">ANGELA CESPEDES / MARTINA HUAMACONDOR</span><div class="duration">(2 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>6. Empiece conversaciones</h4></div><span class="asignado">TEODORA DUCOLÍ / PAULINA LAURENTE</span><div class="duration">(4 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>7. Explique sus creencias</h4></div><span class="asignado">MORELIA HARLOS / BIBIANA PALACIOS</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Explique sus creencias</h4></div><span class="asignado">MIRTA GLADYS SEGOVIA / BIBIANA PALACIOS</span><div class="duration">(3 mins.)</div></div>
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
@@ -800,8 +800,8 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <section class="bloque amarillo">
 <h3>SEAMOS MEJORES MAESTROS</h3>
-<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">MIRTA GLADYS SEGOVIA / SABRINA SEGOVIA</span><div class="duration">(3 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado">MARA ARAOZ / ALICIA SANCHEZ</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>4. Empiece conversaciones</h4></div><span class="asignado">MIRTA GLADYS SEGOVIA / SABRINA SALGADO</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Empiece conversaciones</h4></div><span class="asignado">TAMARA NATALE / ALICIA SANCHEZ</span><div class="duration">(4 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>6. De casa en casa</h4></div><span class="asignado">SARA CORIA / DORIS TALLARICO</span><div class="duration">(6 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>7. Discurso "Jesús no es Dios</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(6 mins.)</div></div>
 </section>
