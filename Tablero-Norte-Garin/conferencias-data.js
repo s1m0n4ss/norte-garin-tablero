@@ -63,8 +63,8 @@ window.CONFERENCIAS_DATA = [
         title: "Muestre respeto y amor en su matrimonio",
         speaker: "Adolfo Gutiérrez",
         congregation: "Local",
-        chairman: "Kevin Gonzalez",
-        lector: "Sebastián Brasccetta"
+        chairman: "Lucas Dos Santos",
+        lector: "León Segovia"
       }
     ],
     salen: []
