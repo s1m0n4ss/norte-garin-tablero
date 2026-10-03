@@ -50,5 +50,23 @@ window.CONFERENCIAS_DATA = [
       }
     ],
     salen: []
+  },
+  {
+    month: "Octubre 2026",
+    monthIdx: 9,
+    year: 2026,
+    vienen: [
+      {
+        date: "4",
+        day: "Dom",
+        time: "10:00",
+        title: "Muestre respeto y amor en su matrimonio",
+        speaker: "Adolfo Gutiérrez",
+        congregation: "Local",
+        chairman: "Kevin Gonzalez",
+        lector: "Sebastián Brasccetta"
+      }
+    ],
+    salen: []
   }
 ];
