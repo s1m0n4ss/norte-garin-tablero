@@ -7,8 +7,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Kevin Gonzalez", "Manuel Feril"],
     microfonistas: ["Daniel Albis", "Benjamin Duran"],
     plataforma: ["Caetano Ferrari"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Juan Carlos Sanchez"],
+    auditorio: ["Pablo zuñiga"]
   },
  {
     key: "2026-10-12",
@@ -18,8 +18,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Lucas Segovia", "Horacio Salgado"],
     microfonistas: ["Tomas Duran", "Samuel Duran"],
     plataforma: ["Diego Sarraute"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Manuel Feril"],
+    auditorio: ["Elvio Casco"]
   }, 
   {
     key: "2026-10-19",
@@ -29,8 +29,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Lucas Dos Santos", "Kevin Gonzalez"],
     microfonistas: ["Daniel Albis", "Elias Coria"],
     plataforma: ["Manuel Feril"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Horacio Salgado"],
+    auditorio: ["Francisco Araoz"]
   }, 
  {
     key: "2026-10-26",
@@ -40,7 +40,7 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Horacio Salgado", "Manuel Feril"],
     microfonistas: ["Samuel Duran", "Benjamin Duran"],
     plataforma: ["Lucas Dos Santos"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["León Segovia"],
+    auditorio: ["Adolfo Gutierrez"]
   }, 
 ];
