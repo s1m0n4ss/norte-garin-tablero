@@ -65,6 +65,16 @@ window.CONFERENCIAS_DATA = [
         congregation: "Local",
         chairman: "Lucas Dos Santos",
         lector: "León Segovia"
+      },
+      {
+        date: "11",
+        day: "Dom",
+        time: "10:00",
+        title: "¿A quién prefiere como amigo?",
+        speaker: "Kevin González",
+        congregation: "Local",
+        chairman: "",
+        lector: ""
       }
     ],
     salen: []
