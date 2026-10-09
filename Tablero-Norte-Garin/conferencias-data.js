@@ -73,8 +73,8 @@ window.CONFERENCIAS_DATA = [
         title: "¿A quién prefiere como amigo?",
         speaker: "Kevin González",
         congregation: "Local",
-        chairman: "",
-        lector: ""
+        chairman: "Daniel Albis",
+        lector: "Lucas Segovia"
       }
     ],
     salen: []
