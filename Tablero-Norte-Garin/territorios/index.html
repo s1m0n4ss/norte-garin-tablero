@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Territorios · Congregación Norte Garín</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#21262d;
+    --txt:#e6edf3; --muted:#8b949e; --line:#30363d;
+    --accent:#2f9e6f; --accent2:#3fb950; --gold:#d4a373;
+    --plaza:#166534;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--txt);overflow:hidden}
+  #map{position:absolute;top:0;left:0;right:340px;bottom:0;background:#0b1220}
+  .leaflet-container{background:#0b1220;font-family:'Outfit',sans-serif}
+  .leaflet-control-zoom a{background:var(--panel)!important;color:var(--txt)!important;border-color:var(--line)!important}
+
+  /* ===== Encabezado flotante sobre el mapa ===== */
+  .topbar{
+    position:absolute;top:0;left:0;right:340px;z-index:1000;
+    display:flex;align-items:center;gap:14px;padding:16px 20px;
+    background:linear-gradient(180deg,rgba(13,17,23,.92),rgba(13,17,23,0));
+    pointer-events:none;
+  }
+  .crest{
+    width:44px;height:44px;border-radius:11px;flex:none;pointer-events:auto;
+    background:linear-gradient(135deg,var(--accent),#1c6e4b);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 14px rgba(47,158,111,.4);
+    font-size:22px;
+  }
+  .topbar h1{font-family:'Fraunces',serif;font-size:21px;font-weight:600;letter-spacing:.2px;line-height:1.1}
+  .topbar .sub{font-size:12px;color:var(--muted);font-weight:500;margin-top:2px;letter-spacing:.3px}
+
+  /* ===== Panel lateral ===== */
+  .side{
+    position:absolute;top:0;right:0;bottom:0;width:340px;z-index:1200;
+    background:var(--panel);border-left:1px solid var(--line);
+    display:flex;flex-direction:column;overflow:hidden;
+    box-shadow:-4px 0 24px rgba(0,0,0,.3)
+  }
+  .side-head{padding:20px 20px 16px;border-bottom:1px solid var(--line)}
+  .side-head .title{font-family:'Fraunces',serif;font-size:19px;font-weight:600}
+  .side-head .meta{display:flex;gap:8px;margin-top:12px}
+  .chip{flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;text-align:center}
+  .chip .num{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--accent2);line-height:1}
+  .chip .lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-top:4px}
+
+  .search{padding:14px 20px;border-bottom:1px solid var(--line)}
+  .search input{
+    width:100%;background:var(--bg);border:1px solid var(--line);color:var(--txt);
+    padding:11px 14px;border-radius:10px;font-size:14px;font-family:inherit;outline:none;transition:.15s
+  }
+  .search input:focus{border-color:var(--accent)}
+  .search input::placeholder{color:var(--muted)}
+
+  .list{flex:1;overflow-y:auto;padding:10px 14px}
+  .list::-webkit-scrollbar{width:8px}
+  .list::-webkit-scrollbar-thumb{background:var(--panel2);border-radius:4px}
+  .titem{
+    display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;
+    cursor:pointer;transition:.12s;margin-bottom:3px;border:1px solid transparent
+  }
+  .titem:hover{background:var(--panel2);border-color:var(--line)}
+  .titem.sel{background:rgba(47,158,111,.14);border-color:var(--accent)}
+  .titem .sw{width:30px;height:30px;border-radius:8px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#0d1117}
+  .titem .nm{font-size:14px;font-weight:500}
+  .titem .nm small{display:block;color:var(--muted);font-size:11px;font-weight:400}
+  .titem.plaza .sw{background:var(--plaza)!important;color:#fff;font-size:15px}
+
+  /* ===== Ficha inferior (bottom sheet) ===== */
+  .sheet{
+    position:absolute;left:0;right:340px;bottom:0;z-index:1100;
+    background:linear-gradient(180deg,var(--panel),var(--panel));
+    border-radius:20px 20px 0 0;border-top:1px solid var(--line);
+    transform:translateY(120%);transition:transform .3s cubic-bezier(.34,1.2,.5,1);
+    box-shadow:0 -10px 40px rgba(0,0,0,.55);max-height:60vh;overflow-y:auto;padding:0 22px 26px
+  }
+  .sheet.open{transform:translateY(0)}
+  .grip{width:44px;height:5px;background:var(--line);border-radius:3px;margin:11px auto 16px}
+  .sheet-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .terr-num{width:52px;height:52px;border-radius:14px;flex:none;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:23px;font-weight:700;color:#0d1117;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+  .sheet-head h2{font-family:'Fraunces',serif;font-size:22px;font-weight:600}
+  .sheet-head .tag{font-size:12px;color:var(--muted);margin-top:2px}
+  .close-x{margin-left:auto;background:var(--panel2);border:1px solid var(--line);color:var(--txt);width:36px;height:36px;border-radius:10px;font-size:16px;cursor:pointer;transition:.15s}
+  .close-x:hover{background:var(--line)}
+
+  .limits{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:6px 16px;margin-bottom:16px}
+  .lrow{display:flex;gap:10px;font-size:14px;padding:11px 0;border-bottom:1px solid var(--panel2);align-items:center}
+  .lrow:last-child{border-bottom:none}
+  .lk{color:var(--accent2);font-weight:600;width:58px;flex:none;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+  .lv{color:var(--txt)}
+
+  .nav-btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;
+    background:linear-gradient(135deg,var(--accent2),var(--accent));color:#04231a;border:none;
+    padding:15px;border-radius:13px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;
+    box-shadow:0 4px 14px rgba(47,158,111,.35);transition:.15s;font-family:inherit}
+  .nav-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(47,158,111,.45)}
+  .nav-btn2{background:var(--panel2);color:var(--txt);box-shadow:none;border:1px solid var(--line);margin-top:9px;width:100%;font-family:inherit}
+  .nav-btn2:hover{background:var(--line);transform:none;box-shadow:none}
+  /* Aviso modo revisita */
+  .revisita-hint{
+    display:none;position:absolute;top:74px;left:50%;transform:translateX(-50%);z-index:1500;
+    background:#d4a373;color:#1a1205;border:none;border-radius:24px;padding:12px 20px;
+    font-size:14px;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.45);font-family:inherit;
+    align-items:center;gap:10px;max-width:90vw
+  }
+  .revisita-hint.show{display:flex}
+  .revisita-hint button{background:rgba(0,0,0,.18);border:none;color:#1a1205;border-radius:50%;width:24px;height:24px;font-size:13px;cursor:pointer;flex:none}
+
+  /* Menú de opciones al tocar un punto */
+  .pm-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.55);align-items:flex-end;justify-content:center;padding:0}
+  .pm-overlay.show{display:flex}
+  .pm-box{background:var(--panel);border:1px solid var(--line);border-radius:20px 20px 0 0;width:100%;max-width:520px;padding:22px 18px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px rgba(0,0,0,.5);animation:pmUp .25s ease}
+  @keyframes pmUp{from{transform:translateY(30px);opacity:.6}to{transform:translateY(0);opacity:1}}
+  .pm-title{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:16px;text-align:center}
+  .pm-opt{display:flex;align-items:center;gap:13px;width:100%;background:var(--bg);border:1px solid var(--line);color:var(--txt);
+    padding:15px 16px;border-radius:13px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;margin-bottom:10px;text-align:left;transition:.15s}
+  .pm-opt:hover{background:var(--panel2)}
+  .pm-opt span{font-size:22px;flex:none}
+  .pm-opt small{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:2px}
+  .pm-opt.nv{border-color:rgba(240,168,104,.4)}
+  .pm-opt.nv span{filter:none}
+  .pm-cancel{width:100%;background:none;border:none;color:var(--muted);padding:13px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:2px}
+
+  .novisitar{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:16px}
+  .nv-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .nv-head span{font-size:13px;font-weight:600;color:#f0a868}
+  .nv-add{background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:6px 11px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+  .nv-add:hover{background:var(--line)}
+  .nv-lista{display:flex;flex-direction:column;gap:7px}
+  .nv-empty{font-size:12px;color:var(--muted);font-style:italic;padding:4px 0}
+  .nv-item{display:flex;align-items:center;gap:9px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:9px 11px}
+  .nv-item .ic{color:#f0a868;flex:none}
+  .nv-item .tx{flex:1;font-size:13px}
+  .nv-item .rm{background:none;border:none;color:#f85149;cursor:pointer;font-size:15px;flex:none;padding:0 2px}
+
+  /* Etiquetas en el mapa */
+  .terr-label{font-weight:700;font-size:15px;color:#0d1117;font-family:'Outfit',sans-serif;
+    background:rgba(255,255,255,.88);border:1.5px solid rgba(13,17,23,.3);border-radius:8px;
+    width:28px!important;height:28px!important;text-align:center;line-height:26px;
+    box-shadow:0 1px 4px rgba(0,0,0,.3)}
+  .terr-label span{display:block;width:100%;height:100%}
+  .clabel{background:#1d4ed8;color:#fff;border:2px solid rgba(255,255,255,.25);box-shadow:0 2px 8px rgba(0,0,0,.5);font-weight:700;font-size:11px;padding:3px 9px;border-radius:6px;font-family:'Outfit',sans-serif}
+  .mz-letra{background:#7c3aed;color:#fff;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;border:1.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);font-family:'Outfit',sans-serif}
+  .plaza-label{background:var(--plaza);color:#fff;border:none;box-shadow:0 2px 8px rgba(0,0,0,.5);font-weight:600;font-size:10px;padding:3px 8px;border-radius:6px;font-family:'Outfit',sans-serif}
+
+  /* Pin del Salón del Reino */
+  .salon-pin{position:relative;width:34px;height:42px}
+  .salon-dot{width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+    background:linear-gradient(135deg,#d4a373,#b3814f);border:2px solid #fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 3px 10px rgba(0,0,0,.5)}
+  .salon-dot::before{content:"✦";transform:rotate(45deg);color:#fff;font-size:16px;font-weight:700}
+
+  /* Leyenda mini */
+  .legend{position:absolute;left:16px;bottom:20px;z-index:1000;background:rgba(22,27,34,.92);border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-size:12px;display:flex;flex-direction:column;gap:7px;backdrop-filter:blur(8px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+  .legend .row{display:flex;align-items:center;gap:8px;color:var(--muted)}
+  .legend .ln{width:18px;height:4px;border-radius:2px;display:inline-block}
+  .legend .sq{width:13px;height:13px;border-radius:4px;display:inline-block}
+
+  /* Botón flotante para abrir lista (solo móvil) */
+  .fab-list{display:none}
+
+  /* Botón Ver todos (aparece cuando hay un territorio resaltado) */
+  .fab-clear{
+    display:none;position:absolute;top:74px;right:16px;z-index:1160;
+    background:rgba(22,27,34,.95);color:var(--txt);border:1px solid var(--line);
+    border-radius:24px;padding:10px 16px;font-size:13px;font-weight:600;
+    cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.4);backdrop-filter:blur(6px)
+  }
+  .fab-clear.show{display:block}
+
+  @media(max-width:820px){
+    #map{right:0;bottom:0}
+    .topbar{right:0;padding:12px 16px;background:linear-gradient(180deg,rgba(13,17,23,.96),rgba(13,17,23,.55) 70%,rgba(13,17,23,0))}
+    .topbar h1{font-size:18px}
+    .crest{width:38px;height:38px;font-size:19px}
+
+    /* Panel lateral -> hoja deslizable desde abajo */
+    .side{
+      top:auto;bottom:0;left:0;right:0;width:100%;height:72vh;
+      border-left:none;border-top:1px solid var(--line);
+      border-radius:20px 20px 0 0;
+      transform:translateY(calc(100% - 0px));
+      transition:transform .32s cubic-bezier(.34,1.1,.5,1);
+      z-index:1300
+    }
+    .side.open{transform:translateY(0)}
+    .side-head{padding-top:8px;position:relative}
+    .side-head::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:44px;height:5px;background:var(--line);border-radius:3px}
+    .side-head .title{margin-top:10px}
+    .side-close{position:absolute;top:14px;right:18px;background:var(--panel2);border:1px solid var(--line);color:var(--txt);width:34px;height:34px;border-radius:9px;font-size:15px;cursor:pointer}
+
+    /* Botón flotante */
+    .fab-list{
+      display:flex;align-items:center;gap:9px;
+      position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:1150;
+      background:linear-gradient(135deg,var(--accent2),var(--accent));color:#04231a;
+      border:none;border-radius:30px;padding:14px 22px;font-size:15px;font-weight:700;
+      box-shadow:0 6px 20px rgba(47,158,111,.5);cursor:pointer;font-family:inherit
+    }
+    .legend{bottom:88px;left:12px;font-size:11px;padding:9px 11px}
+
+    /* Ficha de territorio a pantalla completa de ancho */
+    .sheet{right:0;max-height:78vh;z-index:1400}
+    .terr-num{width:48px;height:48px;font-size:21px}
+    .sheet-head h2{font-size:20px}
+
+    /* Toques más grandes en la lista */
+    .titem{padding:13px 12px}
+    .titem .sw{width:36px;height:36px;font-size:15px}
+    .titem .nm{font-size:15px}
+    .nav-btn{padding:17px;font-size:16px}
+    .nv-add{padding:9px 14px;font-size:13px}
+    .list{padding:8px 12px 30px}
+  }
+
+  /* Ocultar botón cerrar del panel en escritorio */
+  .side-close{display:none}
+  @media(max-width:820px){ .side-close{display:block} }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div class="revisita-hint" id="revisitaHint">
+  <span>👆 Tocá el punto exacto en el mapa</span>
+  <button onclick="cancelarRevisita()">✕</button>
+</div>
+
+<div class="pm-overlay" id="puntoMenu">
+  <div class="pm-box">
+    <div class="pm-title">¿Qué querés hacer con este punto?</div>
+    <button class="pm-opt" onclick="pmComoLlegar()"><span>📍</span> Cómo llegar (Google Maps)</button>
+    <button class="pm-opt" onclick="pmMiRevisita()"><span>📌</span> Guardar mi revisita<small>Se abre en tu Google Maps, privado</small></button>
+    <button class="pm-opt nv" onclick="pmNoVisitar()"><span>🚫</span> Enviar "No visitar" al encargado<small>Abre WhatsApp con la ubicación</small></button>
+    <button class="pm-cancel" onclick="cerrarMenuPunto()">Cancelar</button>
+  </div>
+</div>
+<button class="fab-list" onclick="abrirLista()">☰ Ver territorios</button>
+<button id="verTodos" class="fab-clear" onclick="verTodos()">↺ Ver todos</button>
+
+<div class="topbar">
+  <a class="crest" href="/" title="Volver al tablero" style="color:inherit;text-decoration:none">✦</a>
+  <div>
+    <h1>Mapa de Territorios</h1>
+    <div class="sub">CONGREGACIÓN NORTE GARÍN</div>
+  </div>
+</div>
+
+
+
+<div class="side">
+  <div class="side-head">
+    <button class="side-close" onclick="cerrarLista()">✕</button>
+    <div class="title">Territorios</div>
+  </div>
+  <div class="search"><input id="buscar" type="text" placeholder="Buscar territorio por número…" inputmode="numeric"></div>
+  <div class="list" id="lista"></div>
+</div>
+
+<div class="sheet" id="sheet">
+  <div class="grip"></div>
+  <div class="sheet-head">
+    <div class="terr-num" id="shNum">0</div>
+    <div>
+      <h2 id="shTitle">Territorio</h2>
+      <div class="tag" id="shTag">Zona de predicación</div>
+    </div>
+    <button class="close-x" onclick="closeSheet()">✕</button>
+  </div>
+  <div class="novisitar">
+    <div class="nv-head">
+      <span>🚫 Direcciones a no visitar</span>
+      <button class="nv-add" onclick="agregarNoVisitar()">+ Agregar</button>
+    </div>
+    <div id="nvLista" class="nv-lista"></div>
+  </div>
+  <a class="nav-btn" id="navBtn" target="_blank" rel="noopener">📍 Cómo llegar (Google Maps)</a>
+  <button class="nav-btn nav-btn2" id="revisitaBtn" onclick="activarRevisita()">📌 Marcar un punto en el territorio</button>
+</div>
+
+<script>
+if(typeof L==='undefined'){
+  document.getElementById('map').innerHTML='<div style="display:flex;height:100%;align-items:center;justify-content:center;text-align:center;padding:30px;color:#8b949e">No se pudo cargar el mapa.<br><br><b style="color:#e6edf3">Descargá el archivo y abrilo en tu navegador.</b></div>';
+  throw new Error('Leaflet bloqueado');
+}
+
+const PALETA=['#e6194b','#3cb44b','#ffe119','#4363d8','#f58231','#911eb4','#42d4f4','#f032e6',
+'#bfef45','#fabed4','#469990','#dcbeff','#9a6324','#d9c08a','#e07a5f','#aaffc3',
+'#a8a832','#ffd8b1','#6a8caf','#a9a9a9','#c9a0dc','#1b9e77','#d95f02','#7570b3',
+'#e7298a','#66a61e','#e6ab02','#a6761d','#888888','#1f78b4','#33a02c','#fb9a99',
+'#fdbf6f','#cab2d6','#6a3d9a','#b15928','#8dd3c7','#bebada','#fb8072','#80b1d3',
+'#fdb462','#b3de69','#e6a0c4','#bc80bd','#9fd9b4','#dcd06f','#bdb76b','#fa8174',
+'#81b1d2','#c9b458','#bfbbd9','#cd853f','#9acd32','#ba80bd','#d4c95f','#7ba05b',
+'#ff69b4','#5f9ea0','#daa520'];
+function colorTerr(num){ return PALETA[(num-1)%PALETA.length]; }
+
+const PLAZAS={99:'Plaza De Vicenzo',100:'Plaza Barrio Salas'};
+function esPlaza(t){ return PLAZAS.hasOwnProperty(t.num); }
+
+const CONTORNO=[[-34.441919, -58.775481], [-34.442695, -58.771343], [-34.443459, -58.766957], [-34.444655, -58.761088], [-34.445761, -58.756878], [-34.447396, -58.751568], [-34.448326, -58.748547], [-34.446465, -58.745081], [-34.439539, -58.750437], [-34.434832, -58.754131], [-34.432661, -58.750175], [-34.432888, -58.749956], [-34.431301, -58.74699], [-34.430199, -58.744886], [-34.428695, -58.742094], [-34.426014, -58.73708], [-34.42438, -58.734072], [-34.423073, -58.735135], [-34.422861, -58.73501], [-34.423087, -58.734469], [-34.423115, -58.734332], [-34.422711, -58.734065], [-34.418301, -58.744671], [-34.414254, -58.754376], [-34.414756, -58.754691], [-34.415202, -58.755231], [-34.415332, -58.755591], [-34.415332, -58.755917], [-34.415087, -58.756704], [-34.415093, -58.756881], [-34.415181, -58.757098], [-34.415609, -58.758025], [-34.416059, -58.758849], [-34.41622, -58.759114], [-34.416367, -58.759347], [-34.418246, -58.760686], [-34.418744, -58.761941], [-34.418854, -58.762144], [-34.419027, -58.762397], [-34.419261, -58.762931], [-34.419412, -58.763336], [-34.419686, -58.76405], [-34.420096, -58.76504], [-34.420254, -58.765213], [-34.420472, -58.765393], [-34.420733, -58.765499], [-34.420912, -58.765536], [-34.421119, -58.765775], [-34.421401, -58.766118], [-34.42158, -58.766379], [-34.421851, -58.766677], [-34.42196, -58.766787], [-34.422191, -58.766925], [-34.422494, -58.767013], [-34.422892, -58.767053], [-34.423158, -58.767048], [-34.423569, -58.767068], [-34.42371, -58.767109], [-34.423972, -58.767154], [-34.424375, -58.767235], [-34.424587, -58.76726], [-34.424736, -58.767275], [-34.425014, -58.767184], [-34.425185, -58.767144], [-34.425447, -58.76718], [-34.42577, -58.767444], [-34.425948, -58.767611], [-34.426231, -58.767955], [-34.426323, -58.768179], [-34.426771, -58.768402], [-34.42691, -58.768378], [-34.427047, -58.768291], [-34.427147, -58.768299], [-34.427272, -58.768317], [-34.427442, -58.768465], [-34.427509, -58.768568], [-34.427673, -58.768616], [-34.42788, -58.768667], [-34.428093, -58.768892], [-34.42823, -58.76897], [-34.428404, -58.769125], [-34.42855, -58.769391], [-34.428666, -58.76959], [-34.428863, -58.76977], [-34.42905, -58.769892], [-34.429175, -58.769994], [-34.429334, -58.770115], [-34.429439, -58.770245], [-34.429509, -58.770367], [-34.429623, -58.770533], [-34.429716, -58.770675], [-34.429902, -58.770951], [-34.429968, -58.771033], [-34.430133, -58.771138], [-34.430345, -58.771251], [-34.430552, -58.771389], [-34.430862, -58.771708], [-34.431116, -58.77205], [-34.431282, -58.772268], [-34.431387, -58.772449], [-34.431451, -58.772576], [-34.431586, -58.772865], [-34.431705, -58.773016], [-34.431936, -58.773194], [-34.432052, -58.773347], [-34.432273, -58.773606], [-34.432457, -58.773757], [-34.432678, -58.773915], [-34.432867, -58.774125], [-34.43302, -58.77432], [-34.433141, -58.774516], [-34.433269, -58.774731], [-34.433527, -58.774887], [-34.433745, -58.774975], [-34.433825, -58.775121], [-34.434027, -58.775268], [-34.434349, -58.775356], [-34.434648, -58.77551], [-34.434951, -58.775207], [-34.435283, -58.774934], [-34.435414, -58.774745], [-34.435627, -58.774715], [-34.435959, -58.774735], [-34.436098, -58.77472], [-34.436254, -58.774591], [-34.436282, -58.774506], [-34.436573, -58.774318], [-34.436979, -58.774174], [-34.437319, -58.77397], [-34.437714, -58.773705], [-34.437918, -58.773614], [-34.43813, -58.773464], [-34.438339, -58.773301], [-34.438747, -58.772972], [-34.439064, -58.772631], [-34.439173, -58.772581], [-34.439273, -58.772531], [-34.439441, -58.772496], [-34.43955, -58.772565], [-34.439743, -58.7729], [-34.440869, -58.774902], [-34.441619, -58.775241], [-34.441919, -58.775481]];
+
+const TERRITORIOS = [
+  {
+    num:1, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.423409,-58.736553],
+    poly:[[-34.42154,-58.739047],[-34.421416,-58.738779],[-34.422948,-58.735056],[-34.423063,-58.735152],[-34.4244,-58.734058],[-34.425401,-58.736032]]
+  },
+  {
+    num:2, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.425534,-58.738239],
+    poly:[[-34.423913,-58.737207],[-34.425436,-58.736016],[-34.427154,-58.739224],[-34.425631,-58.740463]]
+  },
+  {
+    num:3, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.423967,-58.739444],
+    poly:[[-34.422329,-58.738446],[-34.423914,-58.737202],[-34.425605,-58.740463],[-34.424064,-58.741686]]
+  },
+  {
+    num:4, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.422139,-58.740217],
+    poly:[[-34.421904,-58.741987],[-34.422484,-58.741552],[-34.423081,-58.740892],[-34.423467,-58.740592],[-34.422315,-58.738446],[-34.421536,-58.739047],[-34.421395,-58.738779],[-34.42081,-58.740093]]
+  },
+  {
+    num:5, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.420082,-58.742346],
+    poly:[[-34.418266,-58.744894],[-34.420329,-58.739798],[-34.420799,-58.740088],[-34.421897,-58.741997]]
+  },
+  {
+    num:6, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.422846,-58.742545],
+    poly:[[-34.422204,-58.744497],[-34.421123,-58.742609],[-34.422496,-58.741536],[-34.422602,-58.741423],[-34.422708,-58.741311],[-34.42308,-58.740892],[-34.423479,-58.740592],[-34.424568,-58.742652]]
+  },
+  {
+    num:7, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.420485,-58.744497],
+    poly:[[-34.41878,-58.744508],[-34.421118,-58.74263],[-34.422189,-58.744519],[-34.419816,-58.746364]]
+  },
+  {
+    num:8, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.418482,-58.746372],
+    poly:[[-34.418778,-58.744513],[-34.418283,-58.744851],[-34.417155,-58.747705],[-34.417447,-58.748231],[-34.419809,-58.74638]]
+  },
+  {
+    num:9, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.427154,-58.741257],
+    poly:[[-34.425613,-58.740474],[-34.427145,-58.739229],[-34.428695,-58.742105],[-34.427163,-58.743285]]
+  },
+  {
+    num:10, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.425605,-58.742496],
+    poly:[[-34.424055,-58.741697],[-34.425614,-58.740463],[-34.427155,-58.743296],[-34.425578,-58.744529]]
+  },
+  {
+    num:11, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.423896,-58.744497],
+    poly:[[-34.425587,-58.744562],[-34.423223,-58.746364],[-34.422204,-58.744497],[-34.424569,-58.74263]]
+  },
+  {
+    num:12, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.421511,-58.746386],
+    poly:[[-34.419824,-58.746375],[-34.420851,-58.748274],[-34.423198,-58.746375],[-34.422171,-58.744497]]
+  },
+  {
+    num:13, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.41915,-58.748258],
+    poly:[[-34.417458,-58.748242],[-34.418512,-58.750141],[-34.420841,-58.748285],[-34.419805,-58.746375]]
+  },
+  {
+    num:14, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.416716,-58.750452],
+    poly:[[-34.418514,-58.750151],[-34.415267,-58.75271],[-34.415037,-58.753188],[-34.414917,-58.753027],[-34.417165,-58.747716]]
+  },
+  {
+    num:15, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.427996,-58.743865],
+    poly:[[-34.428695,-58.742105],[-34.429625,-58.743854],[-34.427305,-58.745624],[-34.426367,-58.743918]]
+  },
+  {
+    num:16, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.425657,-58.745753],
+    poly:[[-34.424028,-58.745753],[-34.425042,-58.747576],[-34.425599,-58.747169],[-34.425701,-58.746847],[-34.42575,-58.746793],[-34.427286,-58.745629],[-34.426365,-58.743929]]
+  },
+  {
+    num:17, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.423984,-58.747813],
+    poly:[[-34.423975,-58.745795],[-34.42243,-58.747013],[-34.42402,-58.74983],[-34.425538,-58.748596]]
+  },
+  {
+    num:18, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.422442,-58.749033],
+    poly:[[-34.420859,-58.748263],[-34.422435,-58.751053],[-34.424024,-58.749835],[-34.42243,-58.747013]]
+  },
+  {
+    num:19, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.420221,-58.750135],
+    poly:[[-34.418503,-58.750151],[-34.419566,-58.751986],[-34.421939,-58.750141],[-34.42085,-58.748285]]
+  },
+  {
+    num:20, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.417875,-58.752008],
+    poly:[[-34.419567,-58.751991],[-34.417227,-58.753864],[-34.416183,-58.751991],[-34.418527,-58.750151]]
+  },
+  {
+    num:21, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.416216,-58.754866],
+    poly:[[-34.418198,-58.755607],[-34.415464,-58.757742],[-34.415106,-58.756894],[-34.415088,-58.756793],[-34.415106,-58.756626],[-34.415336,-58.755891],[-34.415331,-58.755596],[-34.415203,-58.755248],[-34.414739,-58.754674],[-34.414234,-58.754379],[-34.414876,-58.752898],[-34.415044,-58.753209],[-34.415278,-58.752694],[-34.416176,-58.751991]]
+  },
+  {
+    num:22, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.418934,-58.753861],
+    poly:[[-34.417222,-58.753874],[-34.418293,-58.755752],[-34.420646,-58.753869],[-34.419598,-58.75197]]
+  },
+  {
+    num:23, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.421296,-58.752029],
+    poly:[[-34.419602,-58.751975],[-34.421933,-58.750168],[-34.42299,-58.752024],[-34.420624,-58.75389]]
+  },
+  {
+    num:24, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.423918,-58.75168],
+    poly:[[-34.422437,-58.751069],[-34.424029,-58.749851],[-34.4254,-58.752297],[-34.423843,-58.75351]]
+  },
+  {
+    num:25, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.425469,-58.750452],
+    poly:[[-34.424016,-58.74984],[-34.425542,-58.748601],[-34.426922,-58.751085],[-34.425405,-58.752303]]
+  },
+  {
+    num:26, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.428094,-58.749036],
+    poly:[[-34.428337,-58.75352],[-34.425029,-58.747598],[-34.425604,-58.747201],[-34.425737,-58.746793],[-34.428744,-58.744551],[-34.430416,-58.747684],[-34.429664,-58.74822],[-34.431159,-58.751299]]
+  },
+  {
+    num:27, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.430031,-58.745785],
+    poly:[[-34.428744,-58.74453],[-34.430452,-58.7477],[-34.431319,-58.747045],[-34.429629,-58.74387]]
+  },
+  {
+    num:28, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.418537,-58.756594],
+    poly:[[-34.415627,-58.757844],[-34.420634,-58.753917],[-34.421448,-58.755419],[-34.416414,-58.759271]]
+  },
+  {
+    num:29, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.42254,-58.754134],
+    poly:[[-34.424458,-58.75462],[-34.422998,-58.752018],[-34.420623,-58.753885],[-34.421441,-58.755425],[-34.421804,-58.755146],[-34.422344,-58.756251]]
+  },
+  {
+    num:30, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.422949,-58.757358],
+    poly:[[-34.423854,-58.755097],[-34.422341,-58.756256],[-34.420943,-58.757383],[-34.422018,-58.75962],[-34.423252,-58.758708],[-34.423203,-58.758649],[-34.423168,-58.758574],[-34.42315,-58.758509],[-34.42315,-58.758445],[-34.42315,-58.758386],[-34.423164,-58.758316],[-34.423195,-58.758246],[-34.423226,-58.758182],[-34.423257,-58.758128],[-34.42331,-58.758096],[-34.423354,-58.758085],[-34.423398,-58.758085],[-34.423451,-58.758085],[-34.423504,-58.758091],[-34.423557,-58.758123],[-34.423602,-58.75816],[-34.423646,-58.758203],[-34.423681,-58.758268],[-34.424955,-58.757297]]
+  },
+  {
+    num:31, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.425695,-58.75319],
+    poly:[[-34.426924,-58.751079],[-34.427548,-58.75219],[-34.426513,-58.752973],[-34.426867,-58.753687],[-34.424819,-58.755301],[-34.423841,-58.753515]]
+  },
+  {
+    num:32, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.426084,-58.754362],
+    poly:[[-34.427543,-58.752217],[-34.428326,-58.753585],[-34.424549,-58.756508],[-34.423841,-58.755097],[-34.424443,-58.754641],[-34.424814,-58.755323],[-34.426867,-58.753687],[-34.426522,-58.752968]]
+  },
+  {
+    num:33, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.426818,-58.755758],
+    poly:[[-34.424562,-58.756508],[-34.42527,-58.757941],[-34.429074,-58.754947],[-34.42833,-58.753574]]
+  },
+  {
+    num:34, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.427539,-58.757085],
+    poly:[[-34.429074,-58.754953],[-34.42527,-58.757951],[-34.42584,-58.759148],[-34.42588,-58.759217],[-34.429808,-58.756197]]
+  },
+  {
+    num:35, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.42921,-58.757632],
+    poly:[[-34.427878,-58.757699],[-34.429808,-58.756213],[-34.430543,-58.757533],[-34.428551,-58.759051]]
+  },
+  {
+    num:36, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.426099,-58.759566],
+    poly:[[-34.427905,-58.757726],[-34.42586,-58.759239],[-34.424939,-58.757383],[-34.423752,-58.758316],[-34.423743,-58.758456],[-34.423726,-58.758616],[-34.423637,-58.758799],[-34.425098,-58.761749],[-34.42856,-58.759067]]
+  },
+  {
+    num:37, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.431274,-58.74917],
+    poly:[[-34.431332,-58.747051],[-34.432875,-58.749996],[-34.43119,-58.751289],[-34.429673,-58.748193]]
+  },
+  {
+    num:38, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.433207,-58.752606],
+    poly:[[-34.434853,-58.754169],[-34.43269,-58.750162],[-34.431562,-58.751037],[-34.433694,-58.755049]]
+  },
+  {
+    num:39, estado:'—',
+    limites:{N:'—', E:'—', S:'—', O:'—'},
+    inicio:[-34.432334,-58.753281],
+    poly:[[-34.431558,-58.751042],[-34.430992,-58.751476],[-34.431722,-58.752898],[-34.430974,-58.753456],[-34.43162,-58.754668],[-34.432381,-58.754116],[-34.433124,-58.755521],[-34.433694,-58.755065]]
+  }
+];
+
+const CALLES = [
+  {nombre:'Martín H. Falco', linea:[[-34.424419,-58.734026],[-34.432919,-58.750012]]},
+  {nombre:'Martín H. Falco', linea:[[-34.432719,-58.750157],[-34.434857,-58.754148]]},
+  {nombre:'Fructuoso Díaz', linea:[[-34.420794,-58.740077],[-34.430587,-58.757586]]},
+  {nombre:'Avenida Patricias Argentinas', linea:[[-34.420493,-58.765376],[-34.432358,-58.756127]]},
+  {nombre:'Avenida Patricias Argentinas', linea:[[-34.432323,-58.756149],[-34.444718,-58.74645]]},
+  {nombre:'Avenida Patricias Argentinas', linea:[[-34.444712,-58.74645],[-34.446483,-58.745077]]},
+  {nombre:'Alejandro Korn', linea:[[-34.426603,-58.760655],[-34.428091,-58.763767],[-34.428135,-58.763917],[-34.432049,-58.771289]]},
+  {nombre:'Mar del Plata Golf Club', linea:[[-34.436407,-58.752956],[-34.438049,-58.756035],[-34.438165,-58.755944],[-34.438218,-58.755934],[-34.438262,-58.755998],[-34.439338,-58.757999]]},
+  {nombre:'Santa Teresita', linea:[[-34.439338,-58.757999],[-34.43936,-58.758074],[-34.439369,-58.758139],[-34.439214,-58.759024]]},
+  {nombre:'Los Lagartos', linea:[[-34.439214,-58.75903],[-34.44032,-58.759309]]},
+  {nombre:'Hindu Club', linea:[[-34.440311,-58.759314],[-34.439904,-58.761568]]},
+  {nombre:'Jockey Club', linea:[[-34.439909,-58.761562],[-34.44225,-58.765994]]}
+];
+
+const LETRAS = [
+  {letra:'A', lat:-34.4218, lng:-58.738409},
+  {letra:'B', lat:-34.422419, lng:-58.737502},
+  {letra:'C', lat:-34.423375, lng:-58.736982},
+  {letra:'D', lat:-34.422968, lng:-58.736054},
+  {letra:'E', lat:-34.424556, lng:-58.736097},
+  {letra:'F', lat:-34.424034, lng:-58.735061},
+  {letra:'A', lat:-34.42464, lng:-58.737481},
+  {letra:'B', lat:-34.425303, lng:-58.736928},
+  {letra:'C', lat:-34.42514, lng:-58.738607},
+  {letra:'D', lat:-34.4259, lng:-58.738022},
+  {letra:'E', lat:-34.42575, lng:-58.739643},
+  {letra:'F', lat:-34.426356, lng:-58.739031},
+  {letra:'A', lat:-34.423043, lng:-58.73872},
+  {letra:'B', lat:-34.423777, lng:-58.738098},
+  {letra:'C', lat:-34.423538, lng:-58.739744},
+  {letra:'D', lat:-34.424317, lng:-58.739192},
+  {letra:'E', lat:-34.424166, lng:-58.740823},
+  {letra:'F', lat:-34.424941, lng:-58.740276},
+  {letra:'A', lat:-34.421251, lng:-58.740238},
+  {letra:'B', lat:-34.421636, lng:-58.739728},
+  {letra:'C', lat:-34.422229, lng:-58.739347},
+  {letra:'D', lat:-34.421711, lng:-58.741005},
+  {letra:'E', lat:-34.422207, lng:-58.740764},
+  {letra:'F', lat:-34.422786, lng:-58.740259},
+  {letra:'A', lat:-34.419009, lng:-58.743939},
+  {letra:'B', lat:-34.419792, lng:-58.743387},
+  {letra:'C', lat:-34.420517, lng:-58.742743},
+  {letra:'D', lat:-34.421371, lng:-58.742105},
+  {letra:'E', lat:-34.419168, lng:-58.743204},
+  {letra:'F', lat:-34.419708, lng:-58.742652},
+  {letra:'G', lat:-34.420159, lng:-58.741987},
+  {letra:'H', lat:-34.421048, lng:-58.741434},
+  {letra:'I', lat:-34.420561, lng:-58.740742},
+  {letra:'A', lat:-34.422291, lng:-58.743752},
+  {letra:'B', lat:-34.423184, lng:-58.743027},
+  {letra:'C', lat:-34.423901, lng:-58.742437},
+  {letra:'D', lat:-34.421773, lng:-58.742738},
+  {letra:'E', lat:-34.422601, lng:-58.742185},
+  {letra:'F', lat:-34.423397, lng:-58.741472},
+  {letra:'A', lat:-34.419969, lng:-58.745592},
+  {letra:'B', lat:-34.420721, lng:-58.744975},
+  {letra:'C', lat:-34.421522, lng:-58.744272},
+  {letra:'D', lat:-34.419394, lng:-58.744631},
+  {letra:'E', lat:-34.420208, lng:-58.744079},
+  {letra:'F', lat:-34.420991, lng:-58.743494},
+  {letra:'A', lat:-34.417593, lng:-58.74748},
+  {letra:'B', lat:-34.418416, lng:-58.746815},
+  {letra:'C', lat:-34.419097, lng:-58.746219},
+  {letra:'D', lat:-34.418057, lng:-58.746021},
+  {letra:'E', lat:-34.41861, lng:-58.745334},
+  {letra:'A', lat:-34.426318, lng:-58.740608},
+  {letra:'B', lat:-34.426773, lng:-58.74159},
+  {letra:'C', lat:-34.427273, lng:-58.742502},
+  {letra:'D', lat:-34.42703, lng:-58.740077},
+  {letra:'E', lat:-34.427516, lng:-58.740989},
+  {letra:'F', lat:-34.428003, lng:-58.741955},
+  {letra:'A', lat:-34.424818, lng:-58.741826},
+  {letra:'B', lat:-34.425234, lng:-58.742749},
+  {letra:'C', lat:-34.425751, lng:-58.743736},
+  {letra:'D', lat:-34.425482, lng:-58.741263},
+  {letra:'E', lat:-34.42599, lng:-58.742309},
+  {letra:'F', lat:-34.42645, lng:-58.743167},
+  {letra:'A', lat:-34.423327, lng:-58.745704},
+  {letra:'B', lat:-34.424123, lng:-58.744969},
+  {letra:'C', lat:-34.425079, lng:-58.74431},
+  {letra:'D', lat:-34.422836, lng:-58.744648},
+  {letra:'E', lat:-34.423637, lng:-58.744052},
+  {letra:'F', lat:-34.424433, lng:-58.743371},
+  {letra:'A', lat:-34.421045, lng:-58.747308},
+  {letra:'B', lat:-34.421774, lng:-58.746847},
+  {letra:'C', lat:-34.422606, lng:-58.746219},
+  {letra:'D', lat:-34.420562, lng:-58.746471},
+  {letra:'E', lat:-34.421328, lng:-58.74594},
+  {letra:'F', lat:-34.422111, lng:-58.745334},
+  {letra:'A', lat:-34.418634, lng:-58.749315},
+  {letra:'B', lat:-34.419496, lng:-58.748719},
+  {letra:'C', lat:-34.420186, lng:-58.748113},
+  {letra:'D', lat:-34.418151, lng:-58.748376},
+  {letra:'E', lat:-34.418908, lng:-58.747791},
+  {letra:'F', lat:-34.419691, lng:-58.74718},
+  {letra:'G', lat:-34.417519, lng:-58.745677},
+  {letra:'A', lat:-34.41565, lng:-58.751986},
+  {letra:'B', lat:-34.416261, lng:-58.751219},
+  {letra:'C', lat:-34.417039, lng:-58.750564},
+  {letra:'D', lat:-34.417853, lng:-58.749835},
+  {letra:'E', lat:-34.416672, lng:-58.749776},
+  {letra:'F', lat:-34.417433, lng:-58.7491},
+  {letra:'G', lat:-34.417097, lng:-58.74815},
+  {letra:'A', lat:-34.427407, lng:-58.744959},
+  {letra:'B', lat:-34.428252, lng:-58.744336},
+  {letra:'C', lat:-34.428973, lng:-58.743725},
+  {letra:'D', lat:-34.427053, lng:-58.744025},
+  {letra:'E', lat:-34.427801, lng:-58.743403},
+  {letra:'F', lat:-34.428526, lng:-58.74284},
+  {letra:'A', lat:-34.425129, lng:-58.746804},
+  {letra:'B', lat:-34.42589, lng:-58.746155},
+  {letra:'C', lat:-34.426642, lng:-58.745565},
+  {letra:'D', lat:-34.424634, lng:-58.74586},
+  {letra:'E', lat:-34.425417, lng:-58.745275},
+  {letra:'F', lat:-34.426213, lng:-58.744739},
+  {letra:'A', lat:-34.423121, lng:-58.747126},
+  {letra:'B', lat:-34.423559, lng:-58.748086},
+  {letra:'C', lat:-34.424209, lng:-58.749003},
+  {letra:'D', lat:-34.423851, lng:-58.746525},
+  {letra:'E', lat:-34.424382, lng:-58.747512},
+  {letra:'F', lat:-34.42489, lng:-58.748429},
+  {letra:'A', lat:-34.421568, lng:-58.748403},
+  {letra:'B', lat:-34.422059, lng:-58.749374},
+  {letra:'C', lat:-34.422555, lng:-58.750302},
+  {letra:'D', lat:-34.422311, lng:-58.747732},
+  {letra:'E', lat:-34.422816, lng:-58.748778},
+  {letra:'F', lat:-34.423298, lng:-58.749733},
+  {letra:'A', lat:-34.419733, lng:-58.751181},
+  {letra:'B', lat:-34.420502, lng:-58.750629},
+  {letra:'C', lat:-34.42125, lng:-58.749942},
+  {letra:'D', lat:-34.419233, lng:-58.750259},
+  {letra:'E', lat:-34.419954, lng:-58.749583},
+  {letra:'F', lat:-34.420737, lng:-58.748987},
+  {letra:'A', lat:-34.417335, lng:-58.753043},
+  {letra:'B', lat:-34.418153, lng:-58.752351},
+  {letra:'C', lat:-34.418901, lng:-58.75182},
+  {letra:'D', lat:-34.416808, lng:-58.752115},
+  {letra:'E', lat:-34.417649, lng:-58.751487},
+  {letra:'F', lat:-34.418401, lng:-58.750913},
+  {letra:'A', lat:-34.416729, lng:-58.756176},
+  {letra:'B', lat:-34.416362, lng:-58.755156},
+  {letra:'C', lat:-34.416012, lng:-58.754202},
+  {letra:'D', lat:-34.415601, lng:-58.753182},
+  {letra:'A', lat:-34.418866, lng:-58.754534},
+  {letra:'B', lat:-34.41994, lng:-58.753703},
+  {letra:'C', lat:-34.417928, lng:-58.753955},
+  {letra:'D', lat:-34.418671, lng:-58.753413},
+  {letra:'E', lat:-34.419454, lng:-58.752775},
+  {letra:'A', lat:-34.420768, lng:-58.753102},
+  {letra:'B', lat:-34.421613, lng:-58.752437},
+  {letra:'C', lat:-34.42232, lng:-58.751895},
+  {letra:'D', lat:-34.420255, lng:-58.752061},
+  {letra:'E', lat:-34.42106, lng:-58.751525},
+  {letra:'F', lat:-34.421745, lng:-58.750978},
+  {letra:'A', lat:-34.423125, lng:-58.751235},
+  {letra:'B', lat:-34.423608, lng:-58.752115},
+  {letra:'C', lat:-34.423992, lng:-58.752866},
+  {letra:'D', lat:-34.423864, lng:-58.750666},
+  {letra:'E', lat:-34.424293, lng:-58.751525},
+  {letra:'F', lat:-34.424727, lng:-58.752227},
+  {letra:'A', lat:-34.424669, lng:-58.74998},
+  {letra:'B', lat:-34.425125, lng:-58.750849},
+  {letra:'C', lat:-34.425527, lng:-58.751632},
+  {letra:'D', lat:-34.42535, lng:-58.749352},
+  {letra:'E', lat:-34.425899, lng:-58.750248},
+  {letra:'F', lat:-34.426306, lng:-58.75094},
+  {letra:'A', lat:-34.426841, lng:-58.750066},
+  {letra:'B', lat:-34.4285, lng:-58.748446},
+  {letra:'C', lat:-34.426191, lng:-58.748682},
+  {letra:'D', lat:-34.427872, lng:-58.74719},
+  {letra:'A', lat:-34.429497, lng:-58.744751},
+  {letra:'B', lat:-34.430144, lng:-58.745717},
+  {letra:'C', lat:-34.430595, lng:-58.746404},
+  {letra:'D', lat:-34.430516, lng:-58.747102},
+  {letra:'A', lat:-34.4311, lng:-58.747864},
+  {letra:'B', lat:-34.431498, lng:-58.748636},
+  {letra:'C', lat:-34.431888, lng:-58.749323},
+  {letra:'D', lat:-34.432207, lng:-58.750031},
+  {letra:'E', lat:-34.431215, lng:-58.750021},
+  {letra:'A', lat:-34.43226, lng:-58.751544},
+  {letra:'B', lat:-34.433003, lng:-58.752982},
+  {letra:'C', lat:-34.433623, lng:-58.754292},
+  {letra:'D', lat:-34.432897, lng:-58.751298},
+  {letra:'E', lat:-34.433526, lng:-58.752489},
+  {letra:'F', lat:-34.434243, lng:-58.753819},
+  {letra:'A', lat:-34.43172, lng:-58.752049},
+  {letra:'B', lat:-34.432357, lng:-58.75339},
+  {letra:'C', lat:-34.433092, lng:-58.754742},
+  {letra:'D', lat:-34.431472, lng:-58.75398},
+  {letra:'E', lat:-34.431861, lng:-58.753734},
+  {letra:'A', lat:-34.425178, lng:-58.754561},
+  {letra:'B', lat:-34.426161, lng:-58.753842},
+  {letra:'C', lat:-34.424708, lng:-58.753617},
+  {letra:'D', lat:-34.4257, lng:-58.752834},
+  {letra:'E', lat:-34.426736, lng:-58.752093},
+  {letra:'A', lat:-34.427382, lng:-58.753349},
+  {letra:'B', lat:-34.426577, lng:-58.754539},
+  {letra:'C', lat:-34.425452, lng:-58.755333},
+  {letra:'D', lat:-34.424691, lng:-58.755902},
+  {letra:'E', lat:-34.424345, lng:-58.755151},
+  {letra:'A', lat:-34.427861, lng:-58.754389},
+  {letra:'B', lat:-34.428631, lng:-58.75484},
+  {letra:'C', lat:-34.427985, lng:-58.755409},
+  {letra:'D', lat:-34.427126, lng:-58.755537},
+  {letra:'E', lat:-34.425983, lng:-58.756385},
+  {letra:'A', lat:-34.429118, lng:-58.755956},
+  {letra:'B', lat:-34.427967, lng:-58.756599},
+  {letra:'C', lat:-34.426833, lng:-58.75764},
+  {letra:'A', lat:-34.423018, lng:-58.75307},
+  {letra:'B', lat:-34.422274, lng:-58.753788},
+  {letra:'C', lat:-34.421503, lng:-58.754539},
+  {letra:'D', lat:-34.423877, lng:-58.754357},
+  {letra:'E', lat:-34.423204, lng:-58.754979},
+  {letra:'F', lat:-34.422398, lng:-58.755451},
+  {letra:'A', lat:-34.420131, lng:-58.755076},
+  {letra:'B', lat:-34.419051, lng:-58.756149},
+  {letra:'C', lat:-34.418112, lng:-58.756996},
+  {letra:'D', lat:-34.417032, lng:-58.75779},
+  {letra:'A', lat:-34.429662, lng:-58.757581},
+  {letra:'B', lat:-34.4289, lng:-58.758504},
+  {letra:'C', lat:-34.428608, lng:-58.758096},
+  {letra:'D', lat:-34.428391, lng:-58.757517},
+  {letra:'A', lat:-34.427852, lng:-58.758831},
+  {letra:'B', lat:-34.427241, lng:-58.759861},
+  {letra:'C', lat:-34.42578, lng:-58.760161},
+  {letra:'D', lat:-34.424886, lng:-58.758144},
+  {letra:'E', lat:-34.424257, lng:-58.758702}
+];
+
+const map=L.map('map',{zoomControl:true,attributionControl:false}).setView([-34.429068,-58.76558],14);
+// Fondo base SIN etiquetas (debajo de los territorios)
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:20}).addTo(map);
+
+// Panes ordenados de abajo hacia arriba
+map.createPane('terrPane');   map.getPane('terrPane').style.zIndex=350;   // territorios (relleno tenue)
+map.createPane('gridPane');   map.getPane('gridPane').style.zIndex=400;   // calles internas resaltadas (encima del color)
+map.getPane('gridPane').style.pointerEvents='none';
+map.getPane('gridPane').style.mixBlendMode='multiply';
+map.createPane('callePane');  map.getPane('callePane').style.zIndex=500;  // avenidas azules + contorno
+map.createPane('labelsPane'); map.getPane('labelsPane').style.zIndex=640; map.getPane('labelsPane').style.pointerEvents='none';
+
+// Calles resaltadas ENCIMA de los territorios (multiply oscurece las líneas sobre el color)
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:20,pane:'gridPane',opacity:.85}).addTo(map);
+// Nombres de calle por encima de todo
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:20,pane:'labelsPane'}).addTo(map);
+
+const limiteGral=L.polygon(CONTORNO,{color:'#2f9e6f',weight:2.5,fill:false,dashArray:'10,7',opacity:.8,pane:'callePane'}).addTo(map);
+
+// Pin del Salón del Reino
+map.createPane('salonPane'); map.getPane('salonPane').style.zIndex=660;
+const salonIcon=L.divIcon({
+  className:'',
+  html:'<div class="salon-pin"><div class="salon-dot"></div></div>',
+  iconSize:[34,42], iconAnchor:[17,42]
+});
+L.marker([-34.4241,-58.7415],{icon:salonIcon,pane:'salonPane',zIndexOffset:1000}).addTo(map)
+  .bindTooltip('Salón del Reino',{direction:'top',offset:[0,-40]});
+
+// Calles clave
+if(typeof CALLES!=='undefined' && Array.isArray(CALLES)){
+  CALLES.forEach(c=>{
+    L.polyline(c.linea,{color:'#1d4ed8',weight:6,opacity:.92,pane:'callePane'}).addTo(map)
+      .bindTooltip(c.nombre,{permanent:true,direction:'center',className:'clabel'});
+  });
+}
+
+// Letras de manzana: se guardan y se muestran SOLO al seleccionar un territorio
+let LETRAS_DATA=(typeof LETRAS!=='undefined' && Array.isArray(LETRAS))?LETRAS:[];
+const letraLayers=[]; // capas activas mostradas al seleccionar
+
+function puntoEnPolo(lat,lng,poly){
+  // ray casting: poly es array [lat,lng]
+  let dentro=false;
+  for(let i=0,j=poly.length-1;i<poly.length;j=i++){
+    const yi=poly[i][0], xi=poly[i][1], yj=poly[j][0], xj=poly[j][1];
+    const inter=((yi>lat)!==(yj>lat)) && (lng < (xj-xi)*(lat-yi)/(yj-yi)+xi);
+    if(inter) dentro=!dentro;
+  }
+  return dentro;
+}
+function mostrarLetrasDe(t){
+  ocultarLetras();
+  LETRAS_DATA.forEach(l=>{
+    if(puntoEnPolo(l.lat,l.lng,t.poly)){
+      const m=L.marker([l.lat,l.lng],{icon:L.divIcon({className:'',html:'<div class="mz-letra">'+l.letra+'</div>',iconSize:[20,20],iconAnchor:[10,10]}),interactive:false,zIndexOffset:500}).addTo(map);
+      letraLayers.push(m);
+    }
+  });
+}
+function ocultarLetras(){
+  letraLayers.forEach(m=>map.removeLayer(m));
+  letraLayers.length=0;
+}
+
+function styleFor(t){
+  if(esPlaza(t)) return {color:'#0f3d22',weight:1.5,fillColor:'#166534',fillOpacity:.5,pane:'terrPane'};
+  const col=colorTerr(t.num);
+  return {color:col,weight:1.5,opacity:.7,fillColor:col,fillOpacity:.22,pane:'terrPane'};
+}
+
+const layers={}; let current=null; let modoRevisita=false;
+let nTerr=0,nPlaza=0;
+const lista=document.getElementById('lista');
+
+const ordenados=TERRITORIOS.slice().sort((a,b)=>a.num-b.num);
+ordenados.forEach(t=>{
+  const pg=L.polygon(t.poly,styleFor(t)).addTo(map);
+  const c=pg.getBounds().getCenter();
+  if(esPlaza(t)){
+    nPlaza++;
+    pg.bindTooltip(PLAZAS[t.num],{permanent:true,direction:'center',className:'plaza-label'});
+    layers['p'+t.num]=pg;
+    addItem(t,true);
+    return;
+  }
+  nTerr++;
+  pg.on('click',(e)=>{ if(modoRevisita){ if(e.originalEvent) L.DomEvent.stop(e); abrirMenuPunto(e.latlng.lat,e.latlng.lng); cancelarRevisita(); return; } if(e.originalEvent) L.DomEvent.stop(e); openSheet(t); });
+  L.marker(c,{icon:L.divIcon({className:'terr-label',html:'<span>'+t.num+'</span>',iconSize:[28,28],iconAnchor:[14,14]})})
+    .addTo(map).on('click',(e)=>{ if(e.originalEvent) L.DomEvent.stop(e); openSheet(t); });
+  layers[t.num]=pg;
+  addItem(t,false);
+});
+if(Object.keys(layers).length){
+  map.fitBounds(L.featureGroup(Object.values(layers)).getBounds(),{padding:[50,50]});
+}
+
+function addItem(t,plaza){
+  const d=document.createElement('div');
+  d.className='titem'+(plaza?' plaza':'');
+  d.dataset.num=t.num;
+  const col=plaza?'#166534':colorTerr(t.num);
+  const label=plaza?'▦':t.num;
+  const name=plaza?PLAZAS[t.num]:('Territorio '+t.num);
+  const sub=plaza?'Espacio verde':'Zona de predicación';
+  d.innerHTML='<span class="sw" style="background:'+col+'">'+label+'</span>'+
+    '<span class="nm">'+name+'<small>'+sub+'</small></span>';
+  if(!plaza) d.onclick=()=>{ cerrarLista(); openSheet(t); flyTo(t); };
+  else d.onclick=()=>{ cerrarLista(); flyTo(t); };
+  lista.appendChild(d);
+}
+
+function flyTo(t){
+  const lay=layers[t.num]||layers['p'+t.num];
+  if(lay) map.flyToBounds(lay.getBounds(),{padding:[80,80],maxZoom:17,duration:.6});
+}
+
+const sheet=document.getElementById('sheet');
+let prevSel=null;
+
+function atenuarTodos(exceptoNum){
+  ordenados.forEach(t=>{
+    const lay=layers[t.num]||layers['p'+t.num];
+    if(!lay) return;
+    if(t.num===exceptoNum){
+      const col=esPlaza(t)?'#166534':colorTerr(t.num);
+      lay.setStyle({color:'#0d1117',weight:3,opacity:1,fillColor:col,fillOpacity:.62,pane:'terrPane'});
+      lay.bringToFront();
+    }else{
+      lay.setStyle({color:'#9ca3af',weight:.8,opacity:.4,fillColor:'#9ca3af',fillOpacity:.12,pane:'terrPane'});
+    }
+  });
+  document.getElementById('verTodos').classList.add('show');
+}
+function restaurarTodos(){
+  ordenados.forEach(t=>{
+    const lay=layers[t.num]||layers['p'+t.num];
+    if(lay) lay.setStyle(styleFor(t));
+  });
+}
+function verTodos(){
+  restaurarTodos();
+  ocultarLetras();
+  prevSel=null;
+  document.getElementById('verTodos').classList.remove('show');
+  document.querySelectorAll('.titem').forEach(el=>el.classList.remove('sel'));
+}
+
+function openSheet(t){
+  current=t;
+  const col=colorTerr(t.num);
+  atenuarTodos(t.num);
+  prevSel=t.num;
+  document.getElementById('shNum').textContent=t.num;
+  document.getElementById('shNum').style.background=col;
+  document.getElementById('shTitle').textContent='Territorio '+t.num;
+  document.getElementById('navBtn').href='https://www.google.com/maps/dir/?api=1&destination='+t.inicio[0]+','+t.inicio[1];
+  // No visitar
+  cargarNoVisitar(t.num);
+  // Letras de manzana de este territorio
+  mostrarLetrasDe(t);
+  sheet.classList.add('open');
+  document.querySelector('.fab-list').style.display='none';
+  document.querySelectorAll('.titem').forEach(el=>el.classList.toggle('sel',el.dataset.num==t.num));
+}
+function closeSheet(){ sheet.classList.remove('open'); current=null; document.querySelector('.fab-list').style.display=''; }
+
+/* ===== Marcar punto: abre menú con opciones ===== */
+const WHATSAPP_ENCARGADO='5491144465019';
+let puntoActual=null;
+
+function activarRevisita(){
+  modoRevisita=true;
+  sheet.classList.remove('open');
+  document.getElementById('revisitaHint').classList.add('show');
+  document.querySelector('.fab-list').style.display='none';
+  if(map.getContainer()) map.getContainer().style.cursor='crosshair';
+}
+function cancelarRevisita(){
+  modoRevisita=false;
+  document.getElementById('revisitaHint').classList.remove('show');
+  document.querySelector('.fab-list').style.display='';
+  if(map.getContainer()) map.getContainer().style.cursor='';
+}
+map.on('click',function(e){
+  if(!modoRevisita) return;
+  abrirMenuPunto(e.latlng.lat, e.latlng.lng);
+  cancelarRevisita();
+});
+
+function abrirMenuPunto(lat,lng){
+  puntoActual={lat:lat.toFixed(6),lng:lng.toFixed(6)};
+  document.getElementById('puntoMenu').classList.add('show');
+}
+function cerrarMenuPunto(){
+  document.getElementById('puntoMenu').classList.remove('show');
+  puntoActual=null;
+}
+function pmComoLlegar(){
+  window.open('https://www.google.com/maps/dir/?api=1&destination='+puntoActual.lat+','+puntoActual.lng,'_blank');
+  cerrarMenuPunto();
+}
+function pmMiRevisita(){
+  window.open('https://www.google.com/maps/search/?api=1&query='+puntoActual.lat+','+puntoActual.lng,'_blank');
+  cerrarMenuPunto();
+}
+function pmNoVisitar(){
+  const link='https://www.google.com/maps/search/?api=1&query='+puntoActual.lat+','+puntoActual.lng;
+  const texto='🚫 *No visitar*\n\nUbicación: '+link+'\n\nComentario: ';
+  window.open('https://wa.me/'+WHATSAPP_ENCARGADO+'?text='+encodeURIComponent(texto),'_blank');
+  cerrarMenuPunto();
+}
+
+/* ===== No visitar (guardado local por territorio) ===== */
+const STORE_NV='garin_novisitar_v1';
+let _nvMem=null;
+function getNV(){
+  if(_nvMem!==null) return _nvMem;
+  try{ return JSON.parse(localStorage.getItem(STORE_NV))||{}; }catch(e){ _nvMem={}; return _nvMem; }
+}
+function setNV(obj){
+  _nvMem=obj;
+  try{ localStorage.setItem(STORE_NV,JSON.stringify(obj)); }catch(e){}
+}
+
+function cargarNoVisitar(num){
+  const data=getNV();
+  const lista=data[num]||[];
+  const cont=document.getElementById('nvLista');
+  if(!lista.length){ cont.innerHTML='<div class="nv-empty">Sin direcciones marcadas.</div>'; return; }
+  cont.innerHTML='';
+  lista.forEach((dir,i)=>{
+    const d=document.createElement('div');
+    d.className='nv-item';
+    d.innerHTML='<span class="ic">⚠</span><span class="tx"></span><button class="rm" title="Quitar">✕</button>';
+    d.querySelector('.tx').textContent=dir;
+    d.querySelector('.rm').onclick=()=>{ quitarNoVisitar(num,i); };
+    cont.appendChild(d);
+  });
+}
+function agregarNoVisitar(){
+  if(!current) return;
+  const dir=prompt('Dirección a NO visitar (ej: Falco 1234, casa de rejas verdes):');
+  if(!dir||!dir.trim()) return;
+  const data=getNV();
+  if(!data[current.num]) data[current.num]=[];
+  data[current.num].push(dir.trim());
+  setNV(data);
+  cargarNoVisitar(current.num);
+}
+function quitarNoVisitar(num,i){
+  const data=getNV();
+  if(data[num]){ data[num].splice(i,1); if(!data[num].length) delete data[num]; setNV(data); }
+  cargarNoVisitar(num);
+}
+
+// Buscador
+document.getElementById('buscar').addEventListener('input',function(){
+  const q=this.value.trim().toLowerCase();
+  document.querySelectorAll('.titem').forEach(el=>{
+    const txt=el.textContent.toLowerCase();
+    el.style.display = (!q || txt.includes(q)) ? '' : 'none';
+  });
+});
+
+// Panel de lista en móvil
+const sideEl=document.querySelector('.side');
+function abrirLista(){ sideEl.classList.add('open'); }
+function cerrarLista(){ sideEl.classList.remove('open'); }
+</script>
+</body>
+</html>
