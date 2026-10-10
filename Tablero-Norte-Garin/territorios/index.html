@@ -234,10 +234,19 @@
 <body>
 <div id="map"></div>
 <div class="revisita-hint" id="revisitaHint">
-  <span>👆 Tocá la dirección a NO visitar</span>
+  <span>👆 Tocá el punto exacto en el mapa</span>
   <button onclick="cancelarRevisita()">✕</button>
 </div>
 
+<div class="pm-overlay" id="puntoMenu">
+  <div class="pm-box">
+    <div class="pm-title">¿Qué querés hacer con este punto?</div>
+    <button class="pm-opt" onclick="pmComoLlegar()"><span>📍</span> Cómo llegar (Google Maps)</button>
+    <button class="pm-opt" onclick="pmMiRevisita()"><span>📌</span> Guardar mi revisita<small>Se abre en tu Google Maps, privado</small></button>
+    <button class="pm-opt nv" onclick="pmNoVisitar()"><span>🚫</span> Enviar "No visitar" al encargado<small>Abre WhatsApp con la ubicación</small></button>
+    <button class="pm-cancel" onclick="cerrarMenuPunto()">Cancelar</button>
+  </div>
+</div>
 <button class="fab-list" onclick="abrirLista()">☰ Ver territorios</button>
 <button id="verTodos" class="fab-clear" onclick="verTodos()">↺ Ver todos</button>
 
@@ -270,7 +279,7 @@
     </div>
     <button class="close-x" onclick="closeSheet()">✕</button>
   </div>
-  <button class="nav-btn" id="revisitaBtn" onclick="activarRevisita()">🚫 Marcar "No visitar" (enviar al encargado)</button>
+  <button class="nav-btn" id="revisitaBtn" onclick="activarRevisita()">📌 Marcar un punto en el territorio</button>
 </div>
 
 <script>
@@ -1179,12 +1188,28 @@ map.on('click',function(e){
   cancelarRevisita();
 });
 
-// Al marcar un punto: va DIRECTO a WhatsApp con la ubicación (sin menú intermedio)
+// Al marcar un punto: menú con las tres opciones
 function abrirMenuPunto(lat,lng){
-  const la=lat.toFixed(6), ln=lng.toFixed(6);
-  const link='https://www.google.com/maps/search/?api=1&query='+la+','+ln;
+  puntoActual={lat:lat.toFixed(6),lng:lng.toFixed(6)};
+  document.getElementById('puntoMenu').classList.add('show');
+}
+function cerrarMenuPunto(){
+  document.getElementById('puntoMenu').classList.remove('show');
+  puntoActual=null;
+}
+function pmComoLlegar(){
+  window.open('https://www.google.com/maps/dir/?api=1&destination='+puntoActual.lat+','+puntoActual.lng,'_blank');
+  cerrarMenuPunto();
+}
+function pmMiRevisita(){
+  window.open('https://www.google.com/maps/search/?api=1&query='+puntoActual.lat+','+puntoActual.lng,'_blank');
+  cerrarMenuPunto();
+}
+function pmNoVisitar(){
+  const link='https://www.google.com/maps/search/?api=1&query='+puntoActual.lat+','+puntoActual.lng;
   const texto='🚫 *No visitar*\n\nUbicación: '+link+'\n\nComentario: ';
   window.open('https://wa.me/'+WHATSAPP_ENCARGADO+'?text='+encodeURIComponent(texto),'_blank');
+  cerrarMenuPunto();
 }
 
 /* ===== No visitar (guardado local por territorio) ===== */
