@@ -75,6 +75,16 @@ window.CONFERENCIAS_DATA = [
         congregation: "Local",
         chairman: "Daniel Albis",
         lector: "Lucas Segovia"
+      },
+      {
+        date: "18",
+        day: "Dom",
+        time: "10:00",
+        title: "Imitemos a Jesús, y no seamos parte del mundo",
+        speaker: "Pablo Rojas",
+        congregation: "Norte, Pacheco",
+        chairman: "Jeremías Arrichetta",
+        lector: "Lucas Segovia"
       }
     ],
     salen: []
