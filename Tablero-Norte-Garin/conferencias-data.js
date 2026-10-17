@@ -74,7 +74,7 @@ window.CONFERENCIAS_DATA = [
         speaker: "Kevin González",
         congregation: "Local",
         chairman: "Daniel Albis",
-        lector: "Lucas Segovia"
+        lector: "Lucas Dos Santos"
       },
       {
         date: "18",
