@@ -38,5 +38,17 @@ window.EVENTOS_DATA = [
     date: "2026-08-21",
     description: "Del viernes 21 al domingo 23 de agosto",
     location: "Salón de Asambleas de Ezeiza",
+  },
+  {
+    type: "asamblea",
+    title: "Asamblea de circuito",
+    date: "2027-03-06",
+    description: "Con el superintendente de circuito",
+  },
+  {
+    type: "conmemoracion",
+    title: "Conmemoración",
+    date: "2027-03-22",
+    description: "Conmemoración de la muerte de Cristo.",
   }
 ];
