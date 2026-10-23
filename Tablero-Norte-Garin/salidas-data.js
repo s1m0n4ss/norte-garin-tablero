@@ -486,9 +486,9 @@
 
       24: [
         { h: "10:00", l: "Grupo 1 – Familia Sarraute", c: "León Segovia", t: "28" },
-        { h: "10:00", l: "Grupo 2 – Casa Paulina Laurente", c: "Lucas Dos Santos", t: "21" },
+        { h: "10:00", l: "Grupo 2 – Casa Manuel Feril", c: "Lucas Dos Santos", t: "21" },
         { h: "10:00", l: "Grupo 3 – Familia Sánchez", c: "Elvio Casco", t: "12" },
-        { h: "10:00", l: "Grupo 4 – Casa Norma Barrera", c: "Horacio Salgado", t: "37" },
+        { h: "10:00", l: "Grupo 4 – Casa Norma Barrera · Visita del superintendente de servicio", c: "Horacio Salgado", t: "37" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
