@@ -63,7 +63,7 @@ window.GRUPOS_DATA = [
 {
   id: 3,
   nombre: "Grupo 3",
-  publicadores: 22,
+  publicadores: 23,
   superintendente: "Elvio Casco",
   auxiliar: "Sebastián Brasccetta",
   integrantes: [
@@ -76,6 +76,7 @@ window.GRUPOS_DATA = [
     "Flores Calixto",
     "Flores Elvira",
     "Gómez Miriam",
+    "Kunigk Ezequiel",
     "Leal Cecilia",
     "Miño Guillermo",
     "Miño Mabel",
@@ -104,14 +105,14 @@ window.GRUPOS_DATA = [
     "Barrera Norma",
     "Cansino José",
     "Cansino Lola",
-    "Dubs Abigail",
     "Durán Benjamín",
     "Durán Lucinda",
     "Durán Samuel",
     "Durán Tomás",
     "Ferrari Caetano",
-    "Gualmes Rocio",
     "Gutiérrez Andrea",
+    "Gutiérrez Malvina",
+    "Gutiérrez Pablina",
     "Palladino Federico",
     "Pereyra Melany",
     "Scotti Norma"
