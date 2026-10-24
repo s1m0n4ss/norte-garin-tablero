@@ -85,6 +85,16 @@ window.CONFERENCIAS_DATA = [
         congregation: "Norte, Pacheco",
         chairman: "Jeremías Arrichetta",
         lector: "Lucas Segovia"
+      },
+      {
+        date: "25",
+        day: "Dom",
+        time: "10:00",
+        title: "¿Cuál es su propósito en la vida?",
+        speaker: "Matías Canal",
+        congregation: "Este, General Pacheco",
+        chairman: "Kevin González",
+        lector: "Adolfo Gutiérrez"
       }
     ],
     salen: []
