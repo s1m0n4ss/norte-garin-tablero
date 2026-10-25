@@ -814,6 +814,8 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 87</strong> y Oración final: <span class="asignado">LEON SEGOVIA</span></div>
 <span class="lector-estudio">JEREMIAS ARRICHETTA</span>
 
+</article>
+
 <article class="page" data-key="2026-10-26" data-title="26 DE OCTUBRE – 01 DE NOVIEMBRE" data-book="JEREMIAS 47-48">
 <header>
 <div class="presidente-en-pagina">Presidente: DANIEL ALBIS<span class="asignado"></span></div>
