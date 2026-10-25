@@ -840,6 +840,8 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 54</strong> y Oración final: <span class="asignado">LEON SEGOVIA</span></div>
 <span class="lector-estudio">KEVIN GONZALEZ</span>
 
+</article>
+
 <article class="page" data-key="2026-11-02" data-title="02 DE NOVIEMBRE – 08 DE NOVIEMBRE" data-book="JEREMIAS 49, 50">
 <header>
 <div class="presidente-en-pagina">Presidente: LUCAS SEGOVIA<span class="asignado"></span></div>
@@ -865,6 +867,8 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 33</strong> y Oración final: <span class="asignado">LUCAS DOS SANTOS</span></div>
 <span class="lector-estudio">DIEGO SARRAUTE</span>
+
+</article>
 
 <article class="page" data-key="2026-11-09" data-title="09 DE NOVIEMBRE – 11 DE NOVIEMBRE" data-book="JEREMIAS 51, 52">
 <header>
@@ -892,6 +896,8 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 150</strong> y Oración final: <span class="asignado">LUCAS SEGOVIA</span></div>
 <span class="lector-estudio">LUCAS DOS SANTOS</span>
 
+</article>
+
 <article class="page" data-key="2026-11-16" data-title="16 DE NOVIEMBRE – 22 DE NOVIEMBRE" data-book="LAMENTACIONES 1, 2">
 <header>
 <div class="presidente-en-pagina">Presidente: ELVIO CASCO<span class="asignado"></span></div>
@@ -918,6 +924,8 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 75</strong> y Oración final: <span class="asignado">ADOLFO GUTIERREZ</span></div>
 <span class="lector-estudio">HORACIO SALGADO</span>
 
+</article>
+
 <article class="page" data-key="2026-11-23" data-title="23 DE NOVIEMBRE – 29 DE NOVIEMBRE" data-book="LAMENTACIONES 3-5">
 <header>
 <div class="presidente-en-pagina">Presidente: HORACIO SALGADO<span class="asignado"></span></div>
@@ -943,6 +951,8 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 74</strong> y Oración final: <span class="asignado">KEVIN GONZALEZ<</span></div>
 <span class="lector-estudio">SEBASTIAN BRASCCETTA</span>
+
+</article>
 
 <article class="page" data-key="2026-11-30" data-title="30 DE NOVIEMBRE – 06 DE DICIEMBRE" data-book="EZEQUIEL 1, 2">
 <header>
