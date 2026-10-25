@@ -822,7 +822,7 @@ window.VIDA_MINISTERIO_DATA = `
 <section class="bloque verde">
 <h3>TESOROS DE LA BIBLIA</h3>
 <div class="section"><div class="sect-title"><h4>1. Jehová es un juez justo y misericordioso</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(10 mins.)</div></div>
-<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LUCAS SEGOVIA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(10 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 48:1-13)</h4></div><span class="asignado">LÉON CANSINO</span><div class="duration">(4 mins.)</div></div>
 </section>
 <section class="bloque amarillo">
