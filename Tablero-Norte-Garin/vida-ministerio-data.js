@@ -833,7 +833,7 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
-<div class="section"><div class="sect-title"><h4><strong>Canción 158/strong></h4></div></div>
+<div class="section"><div class="sect-title"><h4><strong>Canción 158></h4></div></div>
 <div class="section"><div class="sect-title"><h4>7. "Necesidades de la congregación"</h4></div><span class="asignado"></span><div class="duration">(15 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 14.)</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(20 mins.)</div></div>
 </section>
