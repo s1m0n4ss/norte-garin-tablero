@@ -839,5 +839,31 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 54</strong> y Oración final: <span class="asignado">LEON SEGOVIA</span></div>
 <span class="lector-estudio">KEVIN GONZALEZ</span>
+
+<article class="page" data-key="2026-10-26" data-title="02 DE NOVIEMBRE – 08 DE NOVIEMBRE" data-book="JEREMIAS 49, 50">
+<header>
+<div class="presidente-en-pagina">Presidente: LUCAS SEGOVIA<span class="asignado"></span></div>
+<div class="inicio-programa"><strong>Canción 1</strong> y oración <span class="asignado">JEREMIAS ARRICHETTA</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. Ayudamos a otros a beneficiarse de la misericordia de Jehová</h4></div><span class="asignado">ADOLFO GUTIERREZ</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">KEVIN GONZALEZ</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 50:24-40)</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empecemos conversaciones</h4></div><span class="asignado">MARTINA HUAMACONDOR / FANNY VILLANTOY</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Hagamos revisitas</h4></div><span class="asignado">PAULINA LAURENTE / CARMEN CASAS</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Hagamos discipulos</h4></div><span class="asignado">BIBIANA PALACIOS / MONICA CASCO</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 44></h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Nunca olviden lo que Jehová recuerda</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 15.)</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 33</strong> y Oración final: <span class="asignado">LUCAS DOS SANTOS</span></div>
+<span class="lector-estudio">DIEGO SARRAUTE</span>
 </article>
 `;
