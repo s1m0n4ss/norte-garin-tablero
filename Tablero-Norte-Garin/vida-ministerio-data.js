@@ -859,7 +859,7 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
-<div class="section"><div class="sect-title"><h4><strong>Canción 44></h4></div></div>
+<div class="section"><div class="sect-title"><h4><strong>Canción 44</h4></div></div>
 <div class="section"><div class="sect-title"><h4>7. Nunca olviden lo que Jehová recuerda</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(15 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 15.)</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(30 mins.)</div></div>
 </section>
