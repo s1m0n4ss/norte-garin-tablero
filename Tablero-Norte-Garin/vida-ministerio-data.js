@@ -840,7 +840,7 @@ window.VIDA_MINISTERIO_DATA = `
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 54</strong> y Oración final: <span class="asignado">LEON SEGOVIA</span></div>
 <span class="lector-estudio">KEVIN GONZALEZ</span>
 
-<article class="page" data-key="2026-10-26" data-title="02 DE NOVIEMBRE – 08 DE NOVIEMBRE" data-book="JEREMIAS 49, 50">
+<article class="page" data-key="2026-11-02" data-title="02 DE NOVIEMBRE – 08 DE NOVIEMBRE" data-book="JEREMIAS 49, 50">
 <header>
 <div class="presidente-en-pagina">Presidente: LUCAS SEGOVIA<span class="asignado"></span></div>
 <div class="inicio-programa"><strong>Canción 1</strong> y oración <span class="asignado">JEREMIAS ARRICHETTA</span></div>
@@ -865,5 +865,110 @@ window.VIDA_MINISTERIO_DATA = `
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 33</strong> y Oración final: <span class="asignado">LUCAS DOS SANTOS</span></div>
 <span class="lector-estudio">DIEGO SARRAUTE</span>
+
+<article class="page" data-key="2026-11-09" data-title="09 DE NOVIEMBRE – 11 DE NOVIEMBRE" data-book="JEREMIAS 51, 52">
+<header>
+<div class="presidente-en-pagina">Presidente: ADOLFO GUTIERREZ<span class="asignado"></span></div>
+<div class="inicio-programa"><strong>Canción 98</strong> y oración <span class="asignado">DANIEL ALBIS</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. No seamos como Sedequías</h4></div><span class="asignado">ELVIO CASCO</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Jer 52:6-20)</h4></div><span class="asignado">KEVIN GONZALEZ</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empecemos conversaciones</h4></div><span class="asignado">LUCINDA DURAN / PRISCILLA ARRICHETTA</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Hagamos revisitas</h4></div><span class="asignado">ANDREA GUTIERREZ / ELIDA BENITEZ</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Discurso "El reino de Dios es un gobierno real que está en el cielo"</h4></div><span class="asignado">BENJAMIN DURAN</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 10</h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Nuestras donaciones le dan gloria al gran nombre de Jehová</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 16.)</h4></div><span class="asignado">JEREMÍAS ARRICHETTA</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 150</strong> y Oración final: <span class="asignado">LUCAS SEGOVIA</span></div>
+<span class="lector-estudio">LUCAS DOS SANTOS</span>
+
+<article class="page" data-key="2026-11-16" data-title="16 DE NOVIEMBRE – 22 DE NOVIEMBRE" data-book="LAMENTACIONES 1, 2">
+<header>
+<div class="presidente-en-pagina">Presidente: ELVIO CASCO<span class="asignado"></span></div>
+<div class="inicio-programa"><strong>Canción 28</strong> y oración <span class="asignado">EZEQUIEL KUNIGK</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. Una reacción natural ante una situación devastadora</h4></div><span class="asignado">HORACIO SALGADO</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Lam 1:8-18)</h4></div><span class="asignado">EZEQUIEL KUNIGK</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empecemos conversaciones</h4></div><span class="asignado">CANDELA GOMEZ / FLORENCIA ARAOZ</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Hagamos revisitas</h4></div><span class="asignado">MABEL MIÑO / JOHANA SANCHEZ</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. ¿Qué dirías?</h4></div><span class="asignado">KEVIN GONZALEZ</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 90</h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. No nos olvidemos de nuestros hermanos inactivos</h4></div><span class="asignado">JEREMIAS ARRICHETTA</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 17.)</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 75</strong> y Oración final: <span class="asignado">ADOLFO GUTIERREZ</span></div>
+<span class="lector-estudio">HORACIO SALGADO</span>
+
+<article class="page" data-key="2026-11-23" data-title="23 DE NOVIEMBRE – 29 DE NOVIEMBRE" data-book="LAMENTACIONES 3-5">
+<header>
+<div class="presidente-en-pagina">Presidente: HORACIO SALGADO<span class="asignado"></span></div>
+<div class="inicio-programa"><strong>Canción 158</strong> y oración <span class="asignado">JUAN CARLOS SANCHEZ</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. Cuando tengamos problemas, no nos rindamos</h4></div><span class="asignado">DIEGO SARRAUTE</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Lam 3:19-42)</h4></div><span class="asignado">GUILLERMO MIÑO</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empecemos conversaciones</h4></div><span class="asignado">DANTER HUAMACONDOR / ELIAS CORIA</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Empecemos conversaciones</h4></div><span class="asignado">MANUEL FERIL / JOSÉ CANCINO</span><div class="duration">(4 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Discurso</h4></div><span class="asignado">TOMAS DURÁN</span><div class="duration">(5 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 109</h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Ayudemos a los cuidadores a no rendirse</h4></div><span class="asignado">DANIEL ALBIS</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 18.)</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 74</strong> y Oración final: <span class="asignado">KEVIN GONZALEZ<</span></div>
+<span class="lector-estudio">SEBASTIAN BRASCCETTA</span>
+
+<article class="page" data-key="2026-11-30" data-title="30 DE NOVIEMBRE – 06 DE DICIEMBRE" data-book="EZEQUIEL 1, 2">
+<header>
+<div class="presidente-en-pagina">Presidente: JEREMÍAS ARRICHETTA<span class="asignado"></span></div>
+<div class="inicio-programa"><strong>Canción 65</strong> y oración <span class="asignado">SEBASTIAN BRASCCETTA</span></div>
+</header>
+<section class="bloque verde">
+<h3>TESOROS DE LA BIBLIA</h3>
+<div class="section"><div class="sect-title"><h4>1. Avancemos al ritmo del carro celestial de Jehová</h4></div><span class="asignado">LUCAS DOS SANTOS</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>2. Busquemos perlas escondidas</h4></div><span class="asignado">CAETANO FERRARI</span><div class="duration">(10 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>3. Lectura de la biblia (Eze 2:1-10)</h4></div><span class="asignado">JOSÉ CANCINO</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque amarillo">
+<h3>SEAMOS MEJORES MAESTROS</h3>
+<div class="section"><div class="sect-title"><h4>4. Empecemos conversaciones</h4></div><span class="asignado">CECILIA LEAL / ANGELA CESPEDES</span><div class="duration">(3 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>5. Hagamos discípulos</h4></div><span class="asignado">NORMA BARREDA / TEODORA DUCOLÍ</span><div class="duration">(5 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>6. Discurso</h4></div><span class="asignado">KEVIN GONZALEZ</span><div class="duration">(4 mins.)</div></div>
+</section>
+<section class="bloque rojo">
+<h3>NUESTRA VIDA CRISTIANA</h3>
+<div class="section"><div class="sect-title"><h4><strong>Canción 63</h4></div></div>
+<div class="section"><div class="sect-title"><h4>7. Necesidades de la congregación</h4></div><span class="asignado">A CONFIRMAR</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 19.)</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(30 mins.)</div></div>
+</section>
+<div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 134</strong> y Oración final: <span class="asignado">LUCAS SEGOVIA<</span></div>
+<span class="lector-estudio">ADOLFO GUTIERREZ</span>
+
 </article>
 `;
