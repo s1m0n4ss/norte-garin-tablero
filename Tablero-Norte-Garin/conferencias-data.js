@@ -114,6 +114,50 @@ window.CONFERENCIAS_DATA = [
         congregation: "",
         chairman: "Adolfo Gutiérrez",
         lector: "Daniel Albis"
+      },
+      {
+        date: "8",
+        day: "Dom",
+        time: "10:00",
+        pendiente: true,
+        title: "",
+        speaker: "",
+        congregation: "",
+        chairman: "Diego Sarraute",
+        lector: "Sebastián Brasccetta"
+      },
+      {
+        date: "15",
+        day: "Dom",
+        time: "10:00",
+        pendiente: true,
+        title: "",
+        speaker: "",
+        congregation: "",
+        chairman: "León Segovia",
+        lector: "Horacio Salgado"
+      },
+      {
+        date: "22",
+        day: "Dom",
+        time: "10:00",
+        pendiente: true,
+        title: "",
+        speaker: "",
+        congregation: "",
+        chairman: "Sebastián Brasccetta",
+        lector: "Pablo Zúñiga"
+      },
+      {
+        date: "29",
+        day: "Dom",
+        time: "10:00",
+        pendiente: true,
+        title: "",
+        speaker: "",
+        congregation: "",
+        chairman: "Caetano Ferrari",
+        lector: "León Segovia"
       }
     ],
     salen: []
