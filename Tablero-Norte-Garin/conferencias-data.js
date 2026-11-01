@@ -98,5 +98,24 @@ window.CONFERENCIAS_DATA = [
       }
     ],
     salen: []
+  },
+  {
+    month: "Noviembre 2026",
+    monthIdx: 10,
+    year: 2026,
+    vienen: [
+      {
+        date: "1",
+        day: "Dom",
+        time: "10:00",
+        pendiente: true,
+        title: "",
+        speaker: "",
+        congregation: "",
+        chairman: "Adolfo Gutiérrez",
+        lector: "Daniel Albis"
+      }
+    ],
+    salen: []
   }
 ];
