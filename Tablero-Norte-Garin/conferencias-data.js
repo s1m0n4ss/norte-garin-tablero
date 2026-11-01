@@ -123,7 +123,7 @@ window.CONFERENCIAS_DATA = [
         title: "",
         speaker: "",
         congregation: "",
-        chairman: "Diego Sarraute",
+        chairman: "Ezequiel Kunigk",
         lector: "Sebastián Brasccetta"
       },
       {
@@ -158,6 +158,58 @@ window.CONFERENCIAS_DATA = [
         congregation: "",
         chairman: "Caetano Ferrari",
         lector: "León Segovia"
+      }
+    ],
+    salen: []
+  },
+  {
+    month: "Diciembre 2026",
+    monthIdx: 11,
+    year: 2026,
+    vienen: [
+      {
+        date: "6",
+        day: "Dom",
+        time: "10:00",
+        pendiente: true,
+        title: "",
+        speaker: "",
+        congregation: "",
+        chairman: "Lucas Segovia",
+        lector: "Jeremías Arrichetta"
+      },
+      {
+        date: "13",
+        day: "Dom",
+        time: "10:00",
+        pendiente: true,
+        title: "",
+        speaker: "",
+        congregation: "",
+        chairman: "Horacio Salgado",
+        lector: "Kevin González"
+      },
+      {
+        date: "20",
+        day: "Dom",
+        time: "10:00",
+        pendiente: true,
+        title: "",
+        speaker: "",
+        congregation: "",
+        chairman: "Lucas Dos Santos",
+        lector: "Lucas Segovia"
+      },
+      {
+        date: "27",
+        day: "Dom",
+        time: "10:00",
+        pendiente: true,
+        title: "",
+        speaker: "",
+        congregation: "",
+        chairman: "Daniel Albis",
+        lector: "Lucas Dos Santos"
       }
     ],
     salen: []
