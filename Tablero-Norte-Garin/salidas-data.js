@@ -518,7 +518,114 @@
     },
   };
 
-  const CALENDARIO = [JUN_2026, JUL_2026, AGO_2026, SEP_2026, OCT_2026];
+  // =========================
+  //   NOVIEMBRE 2026
+  // =========================
+  const NOV_2026 = {
+    y: 2026,
+    m: 11,
+    d: {
+      1: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      2: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "16" }],
+
+      3: [{ h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "40" }],
+
+      4: [
+        { h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "9" },
+        { h: "16:30", l: "Cigliutti y Storni", c: "Adolfo Gutiérrez", t: "4" },
+      ],
+
+      5: [{ h: "10:00", l: "Francia y Alte. Brown", c: "Juan Carlos Sánchez", t: "22" }],
+
+      6: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "23" }],
+
+      7: [
+        { h: "10:00", l: "Salida congregacional · Colón y Magallanes", c: "Daniel Albis", t: "30" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      8: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      9: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "11" }],
+
+      10: [{ h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "41" }],
+
+      11: [
+        { h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "27" },
+        { h: "16:30", l: "Colón y San Martín", c: "Adolfo Gutiérrez", t: "8" },
+        { h: "19:00", l: "📞 Por Zoom", c: "Juan Carlos Sánchez" },
+      ],
+
+      12: [{ h: "10:00", l: "Pellegrini y Sarmiento", c: "Juan Carlos Sánchez", t: "31" }],
+
+      13: [
+        { h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "19" },
+        { h: "18:00", l: "Familia Segovia", c: "Lucas Segovia", t: "12" },
+      ],
+
+      14: [
+        { h: "10:00", l: "Grupo 1 – Salta Polo Club y Golf Club Argentino", c: "Daniel Albis", t: "49" },
+        { h: "10:00", l: "Grupo 2 – Golf Club Villa Maria y Golf Club Argentino", c: "Manuel Feril", t: "50" },
+        { h: "10:00", l: "Grupo 3 – Jockey Club y Golf Club Argentino", c: "Pablo Zúñiga", t: "51" },
+        { h: "10:00", l: "Grupo 4 – Ambrosetti y Concordia", c: "Caetano Ferrari", t: "54" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      15: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      16: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "6" }],
+
+      17: [{ h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "45" }],
+
+      18: [
+        { h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "33" },
+        { h: "16:30", l: "Andes y Fournier", c: "Adolfo Gutiérrez", t: "3" },
+      ],
+
+      19: [{ h: "10:00", l: "Beliera y F. Diaz", c: "Juan Carlos Sánchez", t: "32" }],
+
+      20: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "24" }],
+
+      21: [
+        { h: "10:00", l: "Salida congregacional · Beliera y Fructuoso Díaz", c: "Lucas Segovia", t: "26" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      22: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      23: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "10" }],
+
+      24: [{ h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "46" }],
+
+      25: [
+        { h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" },
+        { h: "16:30", l: "Colón y San Martín", c: "Adolfo Gutiérrez", t: "7" },
+        { h: "19:00", l: "📞 Por Zoom", c: "Juan Carlos Sánchez" },
+      ],
+
+      26: [{ h: "10:00", l: "Francia y Alte. Brown", c: "Juan Carlos Sánchez", t: "20" }],
+
+      27: [
+        { h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "18" },
+        { h: "18:00", l: "Familia Segovia", c: "Lucas Segovia" },
+      ],
+
+      28: [
+        { h: "10:00", l: "Grupo 1 – Familia Sarraute", c: "León Segovia", t: "21" },
+        { h: "10:00", l: "Grupo 2 – Hermana Fanny Villantoy", c: "Lucas Dos Santos", t: "25" },
+        { h: "10:00", l: "Grupo 3 – Familia Miño · Visita del superintendente de servicio", c: "Horacio Salgado", t: "17" },
+        { h: "10:00", l: "Grupo 4 – Hermana Norma Barrera", c: "Adolfo Gutiérrez", t: "37" },
+        { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
+      ],
+
+      29: [{ type: "reunion", l: "Reunión de congregación" }],
+
+      30: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "16" }],
+    },
+  };
+
+  const CALENDARIO = [JUN_2026, JUL_2026, AGO_2026, SEP_2026, OCT_2026, NOV_2026];
 
   function getEntriesForDate(date) {
     const d = startOfDay(date);
@@ -558,6 +665,7 @@
     AGO_2026,
     SEP_2026,
     OCT_2026,
+    NOV_2026,
     getEntriesForDate,
     getTodayText,
     getDayText,
