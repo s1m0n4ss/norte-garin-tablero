@@ -608,7 +608,7 @@
 
       27: [
         { h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "18" },
-        { h: "18:00", l: "Familia Segovia", c: "Lucas Segovia" },
+        { h: "18:00", l: "Familia Segovia", c: "Lucas Segovia", t: "23" },
       ],
 
       28: [
