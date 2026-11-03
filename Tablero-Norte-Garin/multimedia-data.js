@@ -7,8 +7,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Lucas Dos Santos", "Manuel Feril"],
     microfonistas: ["Daniel Albis", "Benjamin Duran"],
     plataforma: ["Diego Sarraute"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["León Segovia"],
+    auditorio: ["Pablo Zuñiga"]
   },
  {
     key: "2026-11-09",
@@ -18,8 +18,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Lucas Segovia", "Caetano Ferrari"],
     microfonistas: ["Tomas Duran", "Samuel Duran"],
     plataforma: ["Lucas Dos Santos"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Daniel Albis"],
+    auditorio: ["Francisco Araoz"]
   }, 
   {
     key: "2026-11-16",
@@ -29,8 +29,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Manuel Feril", "Lucas Segovia"],
     microfonistas: ["Daniel Albis", "Elias Coria"],
     plataforma: ["Diego Sarraute"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Juan Carlos Sanchez"],
+    auditorio: ["Ezequiel Kunigk"]
   }, 
  {
     key: "2026-11-23",
@@ -40,8 +40,8 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Horacio Salgado", "Lucas Dos Santos"],
     microfonistas: ["Samuel Duran", "Benjamin Duran"],
     plataforma: ["Juan Carlos Sanchez"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["Horacio Salgado"],
+    auditorio: ["Kevin Gonzalez"]
   }, 
     {
     key: "2026-11-30",
@@ -51,7 +51,7 @@ window.MULTIMEDIA_DATA = [
     audio_video: ["Sebastian Brascetta", "Lucas Segovia"],
     microfonistas: ["Daniel Albis", "Elias Coria"],
     plataforma: ["Diego Sarraute"],
-    entrada: ["A confirmar"],
-    auditorio: ["A confirmar"]
+    entrada: ["León Segovia"],
+    auditorio: ["Pablo Zuñiga"]
   }, 
 ];
