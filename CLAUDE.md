@@ -19,7 +19,7 @@ El panel de **Configuración** (botón de engranaje arriba a la derecha: tamaño
 - Niveles de letra: Muy chica (0.85), Chica (0.94), Normal (1), Grande (1.15), Muy grande (1.3), Enorme (1.5). "Muy chica" baja de 16px a pedido de la congregación, y solo se usa si cada persona la elige.
 - Títulos claramente más grandes y en negrita. Interlineado de 1.5 a 1.6.
 - Nada de bloques largos en MAYÚSCULAS. En etiquetas cortas en mayúsculas, `letter-spacing` de 0.03em como máximo. Nada de cursivas finas.
-- Fechas completas: "Sábado 14 de noviembre" y "9:30 h", no "14/11 9:30".
+- Fechas completas: "Sábado 14 de noviembre" y "9:30 hs", no "14/11 9:30".
 - Nombres de personas en formato "Lucas Segovia", no "LUCAS SEGOVIA" (se convierte al mostrar; los datos pueden seguir en mayúsculas).
 
 ### Colores: paleta B "Verde bosque"
@@ -42,6 +42,14 @@ Definida una sola vez en `estilos.css` (bloques `:root` y `html.dark`). Para cam
 - La información nunca depende solo del color: siempre lleva también texto o forma.
 - No hay modo de alto contraste (se descartó). Sí hay modo claro/oscuro, en el panel de Configuración.
 - Fuente única: **Inter**.
+
+### Estilo (aspecto fino y despejado)
+- **Pocos bordes.** Las tarjetas van sin borde, con la sombra suave `--shadow-card`. Para separar se usan líneas finas (`--hairline`, 1px). Un borde de 2px verde se reserva para lo seleccionado (semana abierta, día elegido).
+- **Botones:** el principal va relleno de `--accent`; los secundarios con fondo beige (`--bg-card2`), texto verde y sin contorno.
+- **Pesos de letra:** títulos 700, lugar y hora 600, nombres 500, el resto 400. No usar 800.
+- **Espacios y esquinas** siempre con los tokens: `--s-1` (0.5rem), `--s-2` (1rem), `--s-3` (1.5rem, entre secciones), `--r-card` (12px), `--r-btn` (10px).
+- La tarjeta de HOY es clara, con una franja verde de 4px a la izquierda, etiquetas chicas "HOY" / "PRÓXIMA SALIDA" y la hora grande en verde.
+- Horarios escritos "10:00 hs".
 
 ### Íconos
 - Pocos y serios. Nada de emojis decorativos. Un ícono va acompañado de su texto, salvo que sea puramente decorativo (`aria-hidden="true"`).

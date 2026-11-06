@@ -499,7 +499,7 @@
       const iso = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
       const fromIso = t => { const [y, m, d] = t.split("-").map(Number); return new Date(y, m - 1, d); };
       const fechaCompleta = d => { const w = DIAS_L[d.getDay()]; return w.charAt(0).toUpperCase() + w.slice(1) + " " + d.getDate() + " de " + MESES_L[d.getMonth()]; };
-      const horaTxt = h => String(h).replace(/^0(\d)/, "$1") + " h";
+      const horaTxt = h => String(h).replace(/^0(\d)/, "$1") + " hs";
       const aMin = h => { const [hh, mm] = String(h).split(":").map(Number); return hh * 60 + (mm || 0); };
       const conHora = e => !e.type && e.h && e.h !== "–";
       const conduce = e => e.c && e.c !== "—" ? e.c : "Sin asignar";

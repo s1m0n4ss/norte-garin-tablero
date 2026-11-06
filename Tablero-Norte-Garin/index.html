@@ -1153,7 +1153,7 @@
       const DIAS_L = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
       const MESES_L = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
       function fechaCompleta(d) { const w = DIAS_L[d.getDay()]; return w.charAt(0).toUpperCase() + w.slice(1) + " " + d.getDate() + " de " + MESES_L[d.getMonth()]; }
-      function horaTxt(h) { return String(h).replace(/^0(\d)/, "$1") + " h"; }
+      function horaTxt(h) { return String(h).replace(/^0(\d)/, "$1") + " hs"; }
       function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
       function aMin(h) { const [hh, mm] = String(h).split(":").map(Number); return hh * 60 + (mm || 0); }
       function conConHora(e) { return !e.type && e.h && e.h !== "–"; }
