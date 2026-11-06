@@ -306,3 +306,38 @@ details.ng-vm > summary { align-items: flex-start; }
 .conf-meta-row { flex-wrap: wrap; column-gap: .4rem !important; }
 .conf-meta-value { color: var(--text) !important; min-width: 0; overflow-wrap: anywhere; }
 .conf-card { min-width: 0; }
+
+/* ── Encabezado simple: Menú · Norte Garín · Configuración ── */
+.ng-row { flex-wrap: nowrap; }
+.ng-brand { margin-right: auto; font-weight: 800; font-size: 1.15rem; color: var(--text); text-decoration: none; min-height: 48px; display: inline-flex; align-items: center; white-space: nowrap; }
+.ng-gear {
+  width: 48px; height: 48px; flex-shrink: 0; border-radius: 12px; cursor: pointer;
+  display: grid; place-items: center; background: var(--bg-card2); color: var(--text); border: 2px solid var(--border);
+}
+.ng-gear svg { width: 1.45rem; height: 1.45rem; }
+.ng-gear[aria-expanded="true"] { border-color: var(--border-strong); }
+
+/* ── Panel de configuración ── */
+.ng-settings {
+  position: fixed; z-index: 160;
+  top: calc(env(safe-area-inset-top, 0px) + 4.4rem);
+  right: max(12px, env(safe-area-inset-right, 0px));
+  width: min(22rem, calc(100vw - 24px)); max-height: calc(100vh - 6rem); overflow-y: auto;
+  background: var(--bg-card); color: var(--text); border: 2px solid var(--border-strong); border-radius: 16px;
+  box-shadow: var(--shadow-lg); padding: 1rem; display: grid; gap: 1.1rem;
+}
+.ng-settings-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.ng-settings h2 { font-size: 1.25rem; font-weight: 800; margin: 0; }
+.ng-settings h3 { font-size: 1.05rem; font-weight: 800; margin: 0 0 .5rem; }
+.ng-settings-close, .ng-settings-size button {
+  min-height: 48px; padding: .3rem .9rem; border-radius: 10px; cursor: pointer; font: inherit; font-weight: 700;
+  background: var(--bg-card2); color: var(--text); border: 2px solid var(--border);
+}
+.ng-settings-now { margin: 0 0 .6rem; color: var(--text-muted); }
+.ng-settings-now strong { color: var(--text); }
+.ng-settings-size { display: grid; gap: .5rem; }
+.ng-settings-size button { display: flex; align-items: center; gap: .75rem; text-align: left; }
+.ng-settings-size button .a { min-width: 2.2rem; font-weight: 800; }
+.ng-settings-size button[aria-pressed="true"] { border-color: var(--border-strong); }
+.ng-settings-size button:disabled { opacity: .55; cursor: default; }
+.ng-settings .ng-theme-btn { margin-top: 0; }

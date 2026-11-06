@@ -11,11 +11,12 @@ Lo usan personas mayores y de todas las edades, sobre todo desde el celular.
 
 ## Reglas de diseño (obligatorias)
 Todo lo visual compartido está en **`Tablero-Norte-Garin/estilos.css`**, que cada página carga después de su propio `<style>`.
-El tamaño de letra (A− / A / A+) y el botón "Volver arriba" están en **`accesibilidad.js`**.
+El panel de **Configuración** (botón de engranaje arriba a la derecha: tamaño de letra y modo claro/oscuro) y el botón "Volver arriba" están en **`accesibilidad.js`**.
 
 ### Tamaños
-- La base es **18px** (`html { font-size: calc(112.5% * var(--scale)) }`). Escribir los tamaños en **rem**, nunca en px, para que A−/A/A+ los agranden.
-- **Ningún texto puede medir menos de 16px**, notas y fechas incluidas. El mínimo permitido en CSS es `0.95rem`, que con A− todavía da 16px.
+- La base es **18px** (`html { font-size: calc(112.5% * var(--scale)) }`). Escribir los tamaños en **rem**, nunca en px, para que el ajuste de letra los cambie.
+- **Con la letra "Normal" (la que viene por defecto) ningún texto mide menos de 16px.** El mínimo permitido en CSS es `0.95rem`.
+- Niveles de letra: Muy chica (0.85), Chica (0.94), Normal (1), Grande (1.15), Muy grande (1.3), Enorme (1.5). "Muy chica" baja de 16px a pedido de la congregación, y solo se usa si cada persona la elige.
 - Títulos claramente más grandes y en negrita. Interlineado de 1.5 a 1.6.
 - Nada de bloques largos en MAYÚSCULAS. En etiquetas cortas en mayúsculas, `letter-spacing` de 0.03em como máximo. Nada de cursivas finas.
 - Fechas completas: "Sábado 14 de noviembre" y "9:30 h", no "14/11 9:30".
@@ -39,12 +40,12 @@ Definida una sola vez en `estilos.css` (bloques `:root` y `html.dark`). Para cam
 - Sobre un fondo `var(--accent)`, el texto va siempre en `var(--on-accent)`, nunca en `#fff` fijo (en modo oscuro el acento es claro).
 - No usar `opacity` para "apagar" texto: baja el contraste. Lo pasado se marca con borde punteado y texto.
 - La información nunca depende solo del color: siempre lleva también texto o forma.
-- No hay modo de alto contraste (se descartó). Sí hay modo claro/oscuro, en el menú.
+- No hay modo de alto contraste (se descartó). Sí hay modo claro/oscuro, en el panel de Configuración.
 - Fuente única: **Inter**.
 
 ### Íconos
 - Pocos y serios. Nada de emojis decorativos. Un ícono va acompañado de su texto, salvo que sea puramente decorativo (`aria-hidden="true"`).
-- Excepciones que se mantienen: el ícono de cámara del botón de Zoom y los íconos de sección de Vida y Ministerio.
+- Excepciones que se mantienen: el ícono de cámara del botón de Zoom, los íconos de sección de Vida y Ministerio y el engranaje de Configuración (solo ícono, con `aria-label`).
 
 ### Vida y Ministerio
 Sigue el formato de la guía oficial (wol.jw.org):
@@ -56,10 +57,10 @@ Sigue el formato de la guía oficial (wol.jw.org):
 
 ### Tocar y navegar
 - Botones y enlaces de **48×48px como mínimo**. El botón "Volver arriba" mide 56px.
-- Encabezado fijo en todas las páginas: Menú, A−/A/A+ y pestañas Inicio / Salidas / Reunión.
+- Encabezado fijo y simple en todas las páginas: **Menú · Norte Garín · engranaje de Configuración**. No poner más botones ni pestañas ahí: la pantalla tiene que verse despejada.
 - Foco visible al navegar con teclado (`:focus-visible`). Respetar `prefers-reduced-motion`.
 - Todo debe verse bien a **360px de ancho sin scroll horizontal**. En celular, las grillas de dos columnas pasan a una.
-- Salidas: arriba va HOY y la PRÓXIMA SALIDA. Por defecto se ve por pestañas de días, con un selector para ver por semanas plegables.
+- Salidas: arriba va HOY y la PRÓXIMA SALIDA. Por defecto se ve por pestañas de días, con un selector "Ver por: Días / Semanas" (semanas plegables). Sin botones extra de salto.
 
 ## Cómo revisar un cambio
 Servir la carpeta (`python3 -m http.server` dentro de `Tablero-Norte-Garin/`) y abrir cada página a 360px de ancho, en modo claro y oscuro. Comprobar:
