@@ -25,7 +25,7 @@ window.CONFERENCIAS_DATA = [
         time: "10:00",
         title: "¿Confía usted en la ciencia o en la Biblia?",
         speaker: "Esteban Stieb",
-        congregation: "",
+        congregation: "Norte Rincón",
         chairman: "Ezequiel Kunigk",
         lector: "Sebastián Brasccetta"
       },
@@ -35,7 +35,7 @@ window.CONFERENCIAS_DATA = [
         time: "10:00",
         title: "¿Qué sucederá en el futuro cercano?",
         speaker: "Juan Genga",
-        congregation: "",
+        congregation: "Norte Rincón",
         chairman: "León Segovia",
         lector: "Horacio Salgado"
       },
@@ -45,7 +45,7 @@ window.CONFERENCIAS_DATA = [
         time: "10:00",
         title: "Escuchemos y pongamos en práctica la Palabra de Dios",
         speaker: "Abel Fernández",
-        congregation: "",
+        congregation: "Norte Rincón",
         chairman: "Sebastián Brasccetta",
         lector: "Pablo Zúñiga"
       },
@@ -55,7 +55,7 @@ window.CONFERENCIAS_DATA = [
         time: "10:00",
         title: "Consigamos que nuestro corazón sea sabio",
         speaker: "Santiago Vega",
-        congregation: "",
+        congregation: "Norte Rincón",
         chairman: "Caetano Ferrari",
         lector: "León Segovia"
       }
