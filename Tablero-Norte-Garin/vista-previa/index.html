@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-palette="a">
+<html lang="es" data-palette="b">
 <head>
 <meta charset="UTF-8">
 <title>Rediseño Norte Garín</title>
@@ -8,14 +8,13 @@
 <meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <script>
   // Aplica preferencias guardadas antes de pintar (evita parpadeo)
   (function () {
     var r = document.documentElement;
     function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
-    var p = get("ng-prev-paleta"); if (p) r.setAttribute("data-palette", p);
-    var f = get("ng-prev-fuente"); if (f) r.setAttribute("data-font", f);
+    if (get("ng-alto-contraste") === "1") r.setAttribute("data-palette", "c");
     var t = get("ng-prev-tema"); if (t === "dark" || t === "light") r.setAttribute("data-theme", t);
     var s = get("ng-tamano-letra"); if (s) r.style.setProperty("--scale", s);
   })();
@@ -47,9 +46,13 @@
   --hoy-text: #ffffff;
   --hoy-chip: #dcebf8;
   --hoy-chip-text: #0f1b2d;
-  --vm-tesoros: #2b6650;
-  --vm-maestros: #7a5100;
-  --vm-vida: #9a2b21;
+  --vm-tesoros: #2a6b77;   /* colores de la guía oficial */
+  --vm-maestros: #8a5f10;
+  --vm-vida: #942926;
+  --vm-tesoros-ico: #3c7f8b;
+  --vm-maestros-ico: #d68f00;
+  --vm-vida-ico: #bf2f13;
+  --subdued: #5a5a5a;
   --preview: #fde68a;
   --preview-text: #1c1300;
   color-scheme: light;
@@ -61,7 +64,7 @@
   --primary: #0f4c3a; --on-primary: #ffffff; --primary-soft: #dcebe2;
   --border: #cbbd9f; --border-strong: #0f4c3a; --focus: #8a3b12;
   --hoy-bg: #0f4c3a; --hoy-text: #ffffff; --hoy-chip: #f1e7d2; --hoy-chip-text: #1b211c;
-  --vm-tesoros: #1f6347; --vm-maestros: #7a4a14; --vm-vida: #8f2f1d;
+  --vm-tesoros: #2a6b77; --vm-maestros: #84590d; --vm-vida: #942926; --subdued: #55554c;
 }
 /* ── Paleta C · Alto contraste (claro) ── */
 :root[data-palette="c"] {
@@ -70,7 +73,7 @@
   --primary: #0033cc; --on-primary: #ffffff; --primary-soft: #fff3a6;
   --border: #000000; --border-strong: #000000; --focus: #0033cc;
   --hoy-bg: #ffd500; --hoy-text: #000000; --hoy-chip: #ffffff; --hoy-chip-text: #000000;
-  --vm-tesoros: #00552a; --vm-maestros: #5c3b00; --vm-vida: #8b0000;
+  --vm-tesoros: #0b4a55; --vm-maestros: #5c3b00; --vm-vida: #7a0f0c; --vm-tesoros-ico: #0b4a55; --vm-maestros-ico: #8a5300; --vm-vida-ico: #8b1200; --subdued: #1a1a1a;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -79,7 +82,7 @@
     --primary: #9fcdf3; --on-primary: #0b1422; --primary-soft: #1f3a5e;
     --border: #36507a; --border-strong: #9fcdf3; --focus: #fdba74;
     --hoy-bg: #9fcdf3; --hoy-text: #0b1422; --hoy-chip: #0b1422; --hoy-chip-text: #f3f6fa;
-    --vm-tesoros: #86d0ad; --vm-maestros: #f2c463; --vm-vida: #f4a196;
+    --vm-tesoros: #8fd0db; --vm-maestros: #f2c463; --vm-vida: #f4a196; --subdued: #c4ccd6;
     --preview: #fde68a; --preview-text: #1c1300;
     color-scheme: dark;
   }
@@ -89,7 +92,7 @@
     --primary: #86d6b3; --on-primary: #0e1a14; --primary-soft: #23443a;
     --border: #3d5446; --border-strong: #86d6b3; --focus: #f0b08a;
     --hoy-bg: #86d6b3; --hoy-text: #0e1a14; --hoy-chip: #0e1a14; --hoy-chip-text: #f5f0e5;
-    --vm-tesoros: #86d6b3; --vm-maestros: #ecc27e; --vm-vida: #f0a08c;
+    --vm-tesoros: #8fd0db; --vm-maestros: #ecc27e; --vm-vida: #f0a08c; --subdued: #cfc8b6;
   }
   :root:not([data-theme="light"])[data-palette="c"] {
     --bg: #000000; --surface: #000000; --surface-2: #141414;
@@ -97,7 +100,7 @@
     --primary: #ffd500; --on-primary: #000000; --primary-soft: #333000;
     --border: #ffffff; --border-strong: #ffffff; --focus: #ffd500;
     --hoy-bg: #ffd500; --hoy-text: #000000; --hoy-chip: #000000; --hoy-chip-text: #ffffff;
-    --vm-tesoros: #7dffb3; --vm-maestros: #ffd500; --vm-vida: #ff9d9d;
+    --vm-tesoros: #9ff0ff; --vm-maestros: #ffd500; --vm-vida: #ffb0b0; --vm-tesoros-ico: #0b4a55; --vm-maestros-ico: #8a5300; --vm-vida-ico: #8b1200; --subdued: #f2f2f2;
   }
 }
 :root[data-theme="dark"] {
@@ -106,7 +109,7 @@
   --primary: #9fcdf3; --on-primary: #0b1422; --primary-soft: #1f3a5e;
   --border: #36507a; --border-strong: #9fcdf3; --focus: #fdba74;
   --hoy-bg: #9fcdf3; --hoy-text: #0b1422; --hoy-chip: #0b1422; --hoy-chip-text: #f3f6fa;
-  --vm-tesoros: #86d0ad; --vm-maestros: #f2c463; --vm-vida: #f4a196;
+  --vm-tesoros: #8fd0db; --vm-maestros: #f2c463; --vm-vida: #f4a196; --subdued: #c4ccd6;
   color-scheme: dark;
 }
 :root[data-theme="dark"][data-palette="b"] {
@@ -115,7 +118,7 @@
   --primary: #86d6b3; --on-primary: #0e1a14; --primary-soft: #23443a;
   --border: #3d5446; --border-strong: #86d6b3; --focus: #f0b08a;
   --hoy-bg: #86d6b3; --hoy-text: #0e1a14; --hoy-chip: #0e1a14; --hoy-chip-text: #f5f0e5;
-  --vm-tesoros: #86d6b3; --vm-maestros: #ecc27e; --vm-vida: #f0a08c;
+  --vm-tesoros: #8fd0db; --vm-maestros: #ecc27e; --vm-vida: #f0a08c; --subdued: #cfc8b6;
 }
 :root[data-theme="dark"][data-palette="c"] {
   --bg: #000000; --surface: #000000; --surface-2: #141414;
@@ -123,9 +126,8 @@
   --primary: #ffd500; --on-primary: #000000; --primary-soft: #333000;
   --border: #ffffff; --border-strong: #ffffff; --focus: #ffd500;
   --hoy-bg: #ffd500; --hoy-text: #000000; --hoy-chip: #000000; --hoy-chip-text: #ffffff;
-  --vm-tesoros: #7dffb3; --vm-maestros: #ffd500; --vm-vida: #ff9d9d;
+  --vm-tesoros: #9ff0ff; --vm-maestros: #ffd500; --vm-vida: #ffb0b0; --vm-tesoros-ico: #0b4a55; --vm-maestros-ico: #8a5300; --vm-vida-ico: #8b1200; --subdued: #f2f2f2;
 }
-:root[data-font="atkinson"] { --font-body: "Atkinson Hyperlegible", "Inter", system-ui, sans-serif; --lh: 1.6; }
 
 /* ── Base ── */
 * { box-sizing: border-box; }
@@ -231,7 +233,7 @@ main { padding-block: 1.25rem 7rem; }
 .hoy .item .time { font-size: 1.6rem; font-weight: 800; font-variant-numeric: tabular-nums; }
 .hoy .item .place { font-size: 1.2rem; font-weight: 700; }
 .hoy .item .chip { border-color: currentColor; color: inherit; background: transparent; }
-.hoy .item.past { opacity: .75; }
+.hoy .item.past { border: 2px dashed currentColor; }
 .hoy .empty { font-size: 1.15rem; }
 
 /* ── Salidas ── */
@@ -269,33 +271,43 @@ details[open] > summary .toggle-txt .closed-t { display: none; }
 }
 .daytabs button .n { font-size: 1.25rem; font-weight: 800; }
 .daytabs button[aria-selected="true"] { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
-.daytabs button.has-none { opacity: .75; }
+.daytabs button.has-none { border-style: dashed; background: var(--surface-2); }
 .weeknav { display: flex; justify-content: space-between; gap: .5rem; }
 .weeknav .btn { flex: 1; font-size: 1rem; min-height: var(--tap); }
 
-/* ── Vida y Ministerio ── */
+/* ── Vida y Ministerio: sigue el formato de la guía oficial (wol.jw.org) ── */
 details.vm { background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius); overflow: clip; }
 details.vm[open] { border-color: var(--border-strong); }
-details.vm > summary { list-style: none; cursor: pointer; padding: 1rem; display: grid; gap: .3rem; min-height: 64px; }
+details.vm > summary { list-style: none; cursor: pointer; padding: 1rem; display: grid; gap: .2rem; min-height: 64px; }
 details.vm > summary::-webkit-details-marker { display: none; }
 .vm-top { display: flex; justify-content: space-between; align-items: flex-start; gap: .75rem; }
-.vm-title { font-weight: 800; font-size: 1.2rem; }
-.vm-book { font-weight: 600; color: var(--text-2); }
-.vm-body { border-top: 2px solid var(--border); padding: 1rem; display: grid; gap: 1.1rem; }
-.vm-intro { display: grid; gap: .3rem; }
-.vm-bloque { display: grid; gap: .6rem; }
-.vm-bloque h4 { font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; gap: .5rem; padding: .5rem .75rem; border-radius: 10px; border-left: 8px solid currentColor; background: var(--surface-2); }
-.vm-bloque.tesoros h4 { color: var(--vm-tesoros); }
-.vm-bloque.maestros h4 { color: var(--vm-maestros); }
-.vm-bloque.vida h4 { color: var(--vm-vida); }
-.vm-bloque h4 span.t { color: var(--text); }
-.vm-item { display: grid; gap: .2rem; padding: .7rem .2rem .7rem .9rem; border-bottom: 1px solid var(--border); }
-.vm-item:last-child { border-bottom: none; }
-.vm-item .ti { font-weight: 700; }
-.vm-item .who { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem .75rem; }
-.vm-item .who .name { color: var(--text); }
-.vm-item .who .dur { color: var(--text-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.vm-song { font-weight: 700; padding-left: .9rem; }
+.vm-date { font-size: 1.3rem; font-weight: 700; color: var(--subdued); letter-spacing: .01em; }
+.vm-book { font-weight: 800; }
+.vm-pres { color: var(--text); }
+.vm-body { padding: 0 1rem 1.1rem; display: grid; }
+.vm-open, .vm-close { display: flex; gap: .6rem; align-items: flex-start; font-weight: 700; border-top: 2px solid var(--border); padding-top: 1rem; }
+.vm-close { margin-top: 1.5rem; }
+.vm-open .sub, .vm-close .sub { display: block; font-weight: 400; color: var(--subdued); margin-top: .15rem; }
+.vm-open .sub strong, .vm-close .sub strong { color: var(--text); font-weight: 600; }
+.vm-music { width: 1.35rem; height: 1.35rem; flex-shrink: 0; margin-top: .15rem; color: var(--text); }
+.vm-sec { display: flex; align-items: center; gap: .75rem; margin-top: 1.6rem; padding-bottom: .5rem; }
+.vm-sec.maestros, .vm-sec.vida { border-bottom: 1px solid var(--border); }
+.vm-sec h4 { font-size: 1.05rem; font-weight: 800; letter-spacing: .02em; }
+.vm-ico { width: 2.1rem; height: 2.1rem; border-radius: 4px; display: grid; place-items: center; flex-shrink: 0; color: #fff; }
+.vm-ico svg { width: 1.25rem; height: 1.25rem; }
+.vm-sec.tesoros h4, .vm-part.tesoros .ti { color: var(--vm-tesoros); }
+.vm-sec.maestros h4, .vm-part.maestros .ti { color: var(--vm-maestros); }
+.vm-sec.vida h4, .vm-part.vida .ti { color: var(--vm-vida); }
+.vm-sec.tesoros .vm-ico { background: var(--vm-tesoros-ico); }
+.vm-sec.maestros .vm-ico { background: var(--vm-maestros-ico); }
+.vm-sec.vida .vm-ico { background: var(--vm-vida-ico); }
+.vm-part { margin-top: 1rem; }
+.vm-part .ti { font-weight: 800; }
+.vm-part .det { margin-left: 1.1rem; margin-top: .15rem; display: grid; gap: .1rem; }
+.vm-part .dur { color: var(--subdued); font-variant-numeric: tabular-nums; }
+.vm-part .name { font-weight: 600; }
+.vm-part .name .label { font-weight: 400; color: var(--subdued); }
+.vm-song { display: flex; gap: .6rem; align-items: flex-start; font-weight: 700; margin-top: 1rem; }
 .label { font-weight: 600; color: var(--text-2); }
 
 /* ── Inicio ── */
@@ -338,25 +350,18 @@ details.vm > summary::-webkit-details-marker { display: none; }
 </div>
 
 <details class="lab" id="lab">
-  <summary class="wrap"><span>🎨 Opciones de la muestra (paleta, letra, antes/después)</span> <span class="chev" aria-hidden="true">▾</span></summary>
+  <summary class="wrap"><span>Opciones de la muestra: contraste, modo, antes/después</span> <span class="chev" aria-hidden="true">▾</span></summary>
   <div class="wrap lab-body">
-    <div class="lab-row"><span id="lbl-pal">Paleta de colores</span>
-      <div class="seg" role="group" aria-labelledby="lbl-pal">
-        <button type="button" id="pal-a" data-pal="a"><span class="swatch" style="background:#14335e"></span>A · Azul sereno</button>
-        <button type="button" id="pal-b" data-pal="b"><span class="swatch" style="background:#0f4c3a"></span>B · Verde bosque</button>
-        <button type="button" id="pal-c" data-pal="c"><span class="swatch" style="background:#ffd500"></span>C · Alto contraste</button>
-      </div>
-    </div>
-    <div class="lab-row"><span id="lbl-font">Tipo de letra</span>
-      <div class="seg" role="group" aria-labelledby="lbl-font">
-        <button type="button" id="font-inter" data-font="inter">Inter</button>
-        <button type="button" id="font-atk" data-font="atkinson" style="font-family:'Atkinson Hyperlegible',sans-serif">Atkinson Hyperlegible</button>
+    <div class="lab-row"><span id="lbl-hc">Alto contraste (en el sitio irá en el menú, junto a Claro/Oscuro)</span>
+      <div class="seg" role="group" aria-labelledby="lbl-hc">
+        <button type="button" id="hc-off" data-hc="0">Normal (verde bosque)</button>
+        <button type="button" id="hc-on" data-hc="1">Alto contraste</button>
       </div>
     </div>
     <div class="lab-row"><span id="lbl-theme">Modo</span>
       <div class="seg" role="group" aria-labelledby="lbl-theme">
-        <button type="button" id="th-light" data-theme-set="light">☀️ Claro</button>
-        <button type="button" id="th-dark" data-theme-set="dark">🌙 Oscuro</button>
+        <button type="button" id="th-light" data-theme-set="light">Claro</button>
+        <button type="button" id="th-dark" data-theme-set="dark">Oscuro</button>
       </div>
     </div>
     <div class="lab-row"><span id="lbl-cmp">Comparar con el sitio actual</span>
@@ -371,7 +376,7 @@ details.vm > summary::-webkit-details-marker { display: none; }
 <header class="topbar">
   <div class="wrap">
     <div class="topbar-row">
-      <div class="brand"><span class="brand-mark" aria-hidden="true">⌂</span> Norte Garín</div>
+      <div class="brand">Norte Garín</div>
       <div class="size-ctrl" role="group" aria-label="Tamaño de letra">
         <span aria-hidden="true">Letra</span>
         <button type="button" id="sz-down" aria-label="Letra más chica">A−</button>
@@ -380,9 +385,9 @@ details.vm > summary::-webkit-details-marker { display: none; }
       </div>
     </div>
     <nav class="tabs" aria-label="Secciones principales">
-      <a href="#inicio" id="tab-inicio"><span aria-hidden="true">🏠</span> Inicio</a>
-      <a href="#salidas" id="tab-salidas"><span aria-hidden="true">🚶</span> Salidas</a>
-      <a href="#ministerio" id="tab-ministerio"><span aria-hidden="true">📖</span> Reunión</a>
+      <a href="#inicio" id="tab-inicio">Inicio</a>
+      <a href="#salidas" id="tab-salidas">Salidas</a>
+      <a href="#ministerio" id="tab-ministerio">Reunión</a>
     </nav>
   </div>
 </header>
@@ -396,7 +401,7 @@ details.vm > summary::-webkit-details-marker { display: none; }
     </div>
     <div id="inicio-hoy"></div>
     <a class="btn zoom" href="https://jworg.zoom.us/my/norte.garin?pwd=ZXVVZWhZTmdTNFpuUkI3c014RFlMQT09" target="_blank" rel="noopener">
-      <span aria-hidden="true">🎥</span> Entrar a la reunión por Zoom
+      Entrar a la reunión por Zoom
     </a>
     <div class="card">
       <h2 class="h2">Resumen de la semana</h2>
@@ -405,14 +410,14 @@ details.vm > summary::-webkit-details-marker { display: none; }
     <div>
       <h2 class="h2" style="margin-bottom:.75rem">Todas las secciones</h2>
       <div class="nav-list">
-        <a href="#salidas"><span class="ico" aria-hidden="true">🚶</span> Salidas a predicar <span class="go" aria-hidden="true">→</span></a>
-        <a href="#ministerio"><span class="ico" aria-hidden="true">📖</span> Reunión Vida y Ministerio <span class="go" aria-hidden="true">→</span></a>
-        <button type="button" data-soon><span class="ico" aria-hidden="true">🎤</span> Reunión del fin de semana <span class="go" aria-hidden="true">→</span></button>
-        <button type="button" data-soon><span class="ico" aria-hidden="true">📅</span> Próximos eventos <span class="go" aria-hidden="true">→</span></button>
-        <button type="button" data-soon><span class="ico" aria-hidden="true">👥</span> Grupos <span class="go" aria-hidden="true">→</span></button>
-        <button type="button" data-soon><span class="ico" aria-hidden="true">🔊</span> Acomodadores y multimedia <span class="go" aria-hidden="true">→</span></button>
-        <button type="button" data-soon><span class="ico" aria-hidden="true">🧹</span> Limpieza del Salón <span class="go" aria-hidden="true">→</span></button>
-        <button type="button" data-soon><span class="ico" aria-hidden="true">🗺️</span> Mapa de territorios <span class="go" aria-hidden="true">→</span></button>
+        <a href="#salidas">Salidas a predicar <span class="go" aria-hidden="true">›</span></a>
+        <a href="#ministerio">Reunión Vida y Ministerio <span class="go" aria-hidden="true">›</span></a>
+        <button type="button" data-soon>Reunión del fin de semana <span class="go" aria-hidden="true">›</span></button>
+        <button type="button" data-soon>Próximos eventos <span class="go" aria-hidden="true">›</span></button>
+        <button type="button" data-soon>Grupos <span class="go" aria-hidden="true">›</span></button>
+        <button type="button" data-soon>Acomodadores y multimedia <span class="go" aria-hidden="true">›</span></button>
+        <button type="button" data-soon>Limpieza del Salón <span class="go" aria-hidden="true">›</span></button>
+        <button type="button" data-soon>Mapa de territorios <span class="go" aria-hidden="true">›</span></button>
       </div>
     </div>
   </section>
@@ -434,21 +439,21 @@ details.vm > summary::-webkit-details-marker { display: none; }
       <div class="viewmode" role="group" aria-label="Forma de ver el programa">
         <span class="label">Ver por:</span>
         <div class="seg">
-          <button type="button" id="vm-weeks" aria-pressed="true">Semanas</button>
-          <button type="button" id="vm-days" aria-pressed="false">Días (pestañas)</button>
+          <button type="button" id="vm-days" aria-pressed="true">Días (pestañas)</button>
+          <button type="button" id="vm-weeks" aria-pressed="false">Semanas</button>
         </div>
       </div>
     </div>
-    <div id="salidas-lista" style="display:grid;gap:.9rem"></div>
-    <div id="salidas-dias" hidden style="display:grid;gap:.9rem"></div>
-    <a class="chip" href="#" id="mapa-link" style="justify-self:start" data-soon><span aria-hidden="true">🗺️</span> Ver el mapa de territorios</a>
+    <div id="salidas-dias" style="display:grid;gap:.9rem"></div>
+    <div id="salidas-lista" hidden style="display:grid;gap:.9rem"></div>
+    <a class="chip" href="#" id="mapa-link" style="justify-self:start" data-soon>Ver el mapa de territorios</a>
   </section>
 
   <!-- MINISTERIO -->
   <section class="view" id="view-ministerio" aria-labelledby="t-min" hidden>
     <div>
       <h1 class="page-title" id="t-min">Reunión Vida y Ministerio</h1>
-      <p class="page-sub">Tocá una semana para ver el programa completo.</p>
+      <p class="page-sub">Mismo orden y colores que la guía de actividades. Tocá una semana para ver su programa.</p>
     </div>
     <div id="vm-lista" style="display:grid;gap:.9rem"></div>
   </section>
@@ -565,15 +570,14 @@ details.vm > summary::-webkit-details-marker { display: none; }
   function terrChips(e) {
     var arr = CAL.parseTerr(e.t);
     return arr.map(function (n) {
-      return '<a class="chip" href="' + esc(CAL.territoryUrl(n)) + '" target="_blank" rel="noopener"><span aria-hidden="true">🗺️</span> Territorio ' + esc(n) + "</a>";
+      return '<a class="chip" href="' + esc(CAL.territoryUrl(n)) + '" target="_blank" rel="noopener">Territorio ' + esc(n) + "</a>";
     }).join("");
   }
   function entryHtml(e) {
     if (e.type) {
-      var ico = e.type === "feriado" ? "🎌" : "🏛️";
-      return '<div class="special"><span aria-hidden="true">' + ico + "</span> " + esc(e.l) + "</div>";
+      return '<div class="special">' + esc(e.l) + "</div>";
     }
-    var acts = terrChips(e) + (e.maps ? '<a class="chip" href="' + esc(e.maps) + '" target="_blank" rel="noopener"><span aria-hidden="true">📍</span> Cómo llegar</a>' : "");
+    var acts = terrChips(e) + (e.maps ? '<a class="chip" href="' + esc(e.maps) + '" target="_blank" rel="noopener">Cómo llegar</a>' : "");
     return '<div class="entry"><div class="time">' + esc(hora(e.h)) + '</div><div class="place">' + esc(e.l) + '</div>' +
       '<div><span class="label">Conduce:</span> ' + esc(e.c && e.c !== "—" ? e.c : "Sin asignar") + "</div>" +
       (acts ? '<div class="actions">' + acts + "</div>" : "") + "</div>";
@@ -599,7 +603,7 @@ details.vm > summary::-webkit-details-marker { display: none; }
   function hoyCardHtml(compact) {
     var now = new Date(), nowMin = now.getHours() * 60 + now.getMinutes();
     var hoy = entriesOf(TODAY);
-    var out = '<section class="hoy" aria-labelledby="hoy-t"><div class="eyebrow" id="hoy-t"><span aria-hidden="true">📍</span> HOY · ' + esc(fechaLarga(TODAY)) + "</div>";
+    var out = '<section class="hoy" aria-labelledby="hoy-t"><div class="eyebrow" id="hoy-t">HOY · ' + esc(fechaLarga(TODAY)) + "</div>";
     if (!hoy.length) out += '<p class="empty">Hoy no hay salidas programadas.</p>';
     else out += hoy.map(function (e) {
       if (e.type) return '<div class="item"><div class="place">' + esc(e.l) + "</div></div>";
@@ -611,10 +615,10 @@ details.vm > summary::-webkit-details-marker { display: none; }
     var nx = nextSalida();
     if (nx && +nx.d !== +TODAY) {
       var manana = +nx.d === +addDays(TODAY, 1);
-      out += '<div class="eyebrow" style="margin-top:.25rem"><span aria-hidden="true">➡️</span> PRÓXIMA SALIDA · ' + (manana ? "MAÑANA, " : "") + esc(fechaLarga(nx.d).toUpperCase()) + "</div>" +
+      out += '<div class="eyebrow" style="margin-top:.25rem">PRÓXIMA SALIDA · ' + (manana ? "MAÑANA, " : "") + esc(fechaLarga(nx.d).toUpperCase()) + "</div>" +
         '<div class="item"><div class="time">' + esc(hora(nx.e.h)) + '</div><div class="place">' + esc(nx.e.l) + "</div><div>Conduce: <strong>" + esc(nx.e.c && nx.e.c !== "—" ? nx.e.c : "Sin asignar") + "</strong></div></div>";
     } else if (nx) {
-      out += '<div class="eyebrow" style="margin-top:.25rem"><span aria-hidden="true">➡️</span> PRÓXIMA: ' + esc(hora(nx.e.h)) + " · " + esc(nx.e.l) + "</div>";
+      out += '<div class="eyebrow" style="margin-top:.25rem">PRÓXIMA: ' + esc(hora(nx.e.h)) + " · " + esc(nx.e.l) + "</div>";
     }
     return out + "</section>";
   }
@@ -661,6 +665,7 @@ details.vm > summary::-webkit-details-marker { display: none; }
         pastDays.reverse().map(function (p) { return dayHtml(p[0], p[1]); }).join("") + "</div></details>";
     }
     $("salidas-lista").innerHTML = html || '<p class="note">No hay salidas cargadas para estas fechas.</p>';
+    if (weekendOnly) setViewMode(false);
     renderDias();
   }
 
@@ -702,62 +707,88 @@ details.vm > summary::-webkit-details-marker { display: none; }
   $("j-prox").onclick = function () { openWeek(addDays(mondayOf(TODAY), 7)); };
   $("j-finde").onclick = function () {
     weekendOnly = !weekendOnly; this.setAttribute("aria-pressed", String(weekendOnly));
-    setViewMode(false); renderSalidas();
+    renderSalidas();
     toast(weekendOnly ? "Mostrando solo sábados y domingos." : "Mostrando todos los días.");
   };
 
-  /* ───────── Vida y Ministerio ───────── */
+  /* ───────── Vida y Ministerio (formato de la guía oficial) ───────── */
+  var SVG = {
+    music: '<svg class="vm-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
+    gem: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 12L2 9Z"/><path d="M11 3 8 9l4 12 4-12-3-6"/><path d="M2 9h20"/></svg>',
+    wheat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V9"/><path d="M12 9c-2.5 0-4-1.8-4-4.5C10.5 4.5 12 6.3 12 9Z"/><path d="M12 9c2.5 0 4-1.8 4-4.5C13.5 4.5 12 6.3 12 9Z"/><path d="M12 14c-2.5 0-4-1.8-4-4.5 2.5 0 4 1.8 4 4.5Z"/><path d="M12 14c2.5 0 4-1.8 4-4.5-2.5 0-4 1.8-4 4.5Z"/><path d="M12 19c-2.5 0-4-1.8-4-4.5 2.5 0 4 1.8 4 4.5Z"/><path d="M12 19c2.5 0 4-1.8 4-4.5-2.5 0-4 1.8-4 4.5Z"/><path d="M12 9V2"/></svg>',
+    sheep: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.5 6.5a3 3 0 0 1 4.4-.6 3 3 0 0 1 4.2 1.4 2.8 2.8 0 0 1 1.9 4.2 2.8 2.8 0 0 1-1.6 4 3 3 0 0 1-4.3 1.2 3 3 0 0 1-4.2-.3 3 3 0 0 1-3.4-2.9 2.8 2.8 0 0 1 .4-5.3 3 3 0 0 1 2.6-1.7Z"/><ellipse cx="5" cy="10.6" rx="2.3" ry="1.7" transform="rotate(-20 5 10.6)"/><rect x="9" y="16" width="1.7" height="5" rx=".8"/><rect x="14.6" y="16" width="1.7" height="5" rx=".8"/></svg>'
+  };
+  function vmDate(mon) { // "2-8 DE NOVIEMBRE" como en la guía oficial
+    var sun = addDays(mon, 6);
+    return (mon.getMonth() === sun.getMonth()
+      ? mon.getDate() + "-" + sun.getDate() + " DE " + MESES[sun.getMonth()]
+      : mon.getDate() + " DE " + MESES[mon.getMonth()] + " A " + sun.getDate() + " DE " + MESES[sun.getMonth()]).toUpperCase();
+  }
   function renderVM() {
     var tpl = document.createElement("template"); tpl.innerHTML = VM_HTML;
     var weeks = Array.from(tpl.content.querySelectorAll("article.page"));
     var thisMon = mondayOf(TODAY);
     var upcoming = weeks.filter(function (w) { var k = w.dataset.key; return !k || addDays(parseISO(k), 6) >= TODAY; });
-    var html = upcoming.map(function (w, idx) {
+    var hasThis = upcoming.some(function (x) { return x.dataset.key && +mondayOf(parseISO(x.dataset.key)) === +thisMon; });
+    $("vm-lista").innerHTML = upcoming.map(function (w, idx) {
       var k = w.dataset.key ? parseISO(w.dataset.key) : null;
       var isThis = k && +mondayOf(k) === +thisMon;
-      var title = k ? "Semana del " + weekLabel(mondayOf(k)) : nombre(w.dataset.title || "");
       var pres = w.querySelector(".presidente-en-pagina");
       var presTxt = pres ? pres.textContent.replace(/^\s*Presidente:\s*/i, "").trim() : "";
-      return '<details class="vm"' + (isThis || (idx === 0 && !upcoming.some(function (x) { return x.dataset.key && +mondayOf(parseISO(x.dataset.key)) === +thisMon; })) ? " open" : "") + ">" +
-        '<summary><div class="vm-top"><div class="vm-title">' + (isThis ? '<span class="pill">ESTA SEMANA</span><br>' : "") + esc(title) + "</div>" +
+      return '<details class="vm"' + (isThis || (idx === 0 && !hasThis) ? " open" : "") + ">" +
+        '<summary><div class="vm-top"><div>' + (isThis ? '<span class="pill">ESTA SEMANA</span>' : "") +
+        '<div class="vm-date">' + esc(k ? vmDate(mondayOf(k)) : (w.dataset.title || "")) + "</div></div>" +
         '<span class="toggle-txt"><span class="closed-t">Ver ▾</span><span class="open-t">Cerrar ▴</span></span></div>' +
-        '<div class="vm-book"><span aria-hidden="true">📖</span> Lectura: ' + esc(nombre(w.dataset.book || "")) + "</div>" +
-        (presTxt && !/semana/i.test(presTxt) ? '<div><span class="label">Presidente:</span> ' + esc(nombre(presTxt)) + "</div>" : "") +
+        '<div class="vm-book">' + esc((w.dataset.book || "").toLocaleUpperCase("es")) + "</div>" +
+        (presTxt && !/semana/i.test(presTxt) ? '<div class="vm-pres"><span class="label">Presidente:</span> ' + esc(nombre(presTxt)) + "</div>" : "") +
         '</summary><div class="vm-body">' + vmBody(w) + "</div></details>";
-    }).join("");
-    $("vm-lista").innerHTML = html || '<p class="note">Todavía no hay programas cargados.</p>';
+    }).join("") || '<p class="note">Todavía no hay programas cargados.</p>';
+  }
+  function splitAsignado(el) { // separa el texto del renglón y el nombre asignado
+    var c = el.cloneNode(true), names = [];
+    c.querySelectorAll(".asignado").forEach(function (a) { var t = a.textContent.trim(); if (t) names.push(nombre(t)); a.remove(); });
+    return { text: c.textContent.replace(/\s+/g, " ").replace(/[\s:]+$/, "").trim(), names: names };
   }
   function vmBody(w) {
-    if (w.dataset.book === "ASAMBLEA") return '<p class="note"><strong>Asamblea regional.</strong> No habrá reunión en el Salón del Reino.</p>';
+    if (w.dataset.book === "ASAMBLEA") return '<p class="note" style="margin-top:1rem"><strong>Asamblea regional.</strong> No habrá reunión en el Salón del Reino.</p>';
     var out = "", inicio = w.querySelector(".inicio-programa"), pres = w.querySelector(".presidente-en-pagina");
-    if (pres && /semana/i.test(pres.textContent)) out += '<p class="note">' + esc(pres.textContent.trim()) + "</p>";
-    if (inicio) out += '<div class="vm-intro"><div><span aria-hidden="true">♪</span> ' + fixNames(inicio) + "</div></div>";
-    var lectorEl = w.querySelector(".lector-estudio"), lector = lectorEl ? lectorEl.textContent.trim() : "";
+    if (pres && /semana/i.test(pres.textContent)) out += '<p class="note" style="margin-top:1rem">' + esc(pres.textContent.trim()) + "</p>";
+    if (inicio) {
+      var i0 = splitAsignado(inicio), line = i0.text.replace(/\s+y oraci[oó]n/i, " y oración");
+      if (!/introducci/i.test(line) && /canci[oó]n/i.test(line)) line += " | Palabras de introducción (1 min.)";
+      out += '<div class="vm-open">' + SVG.music + "<div>" + esc(line) +
+        (i0.names.length ? '<span class="sub">Oración: <strong>' + esc(i0.names.join(", ")) + "</strong></span>" : "") + "</div></div>";
+    }
+    var lectorEl = w.querySelector(".lector-estudio"), lector = lectorEl ? lectorEl.textContent.trim() : "", lectorUsed = false;
     w.querySelectorAll(".bloque").forEach(function (b) {
       var cls = b.classList.contains("verde") ? "tesoros" : b.classList.contains("amarillo") ? "maestros" : "vida";
-      var ico = cls === "tesoros" ? "💎" : cls === "maestros" ? "🗣️" : "❤️";
+      var ico = cls === "tesoros" ? SVG.gem : cls === "maestros" ? SVG.wheat : SVG.sheep;
       var h3 = b.querySelector("h3");
-      out += '<div class="vm-bloque ' + cls + '"><h4><span aria-hidden="true">' + ico + '</span> <span class="t">' + esc(h3 ? cap(h3.textContent.trim().toLocaleLowerCase("es")).replace(/\bbiblia\b/, "Biblia") : "") + "</span></h4>";
-      b.querySelectorAll(".section").forEach(function (s) {
-        var h4 = s.querySelector("h4"), t = h4 ? h4.textContent.trim() : "";
-        if (/^Canci[oó]n\s+\d+/i.test(t)) { out += '<div class="vm-song"><span aria-hidden="true">♪</span> ' + esc(t) + "</div>"; return; }
-        var a = s.querySelector(".asignado"), du = s.querySelector(".duration");
-        var dur = du ? du.textContent.replace(/[()]/g, "").replace(/mins?\.?/i, "min").trim() : "";
-        out += '<div class="vm-item"><div class="ti">' + esc(t) + '</div><div class="who"><span class="name">' + esc(a ? nombre(a.textContent.trim()) : "") + "</span>" +
-          (dur ? '<span class="dur"><span aria-hidden="true">⏱</span> ' + esc(dur) + "</span>" : "") + "</div></div>";
+      out += '<div class="vm-sec ' + cls + '"><span class="vm-ico">' + ico + "</span><h4>" + esc(h3 ? h3.textContent.trim().toLocaleUpperCase("es") : "") + "</h4></div>";
+      b.querySelectorAll(".section").forEach(function (sec) {
+        var h4 = sec.querySelector("h4"), t = h4 ? h4.textContent.trim() : "";
+        if (/^Canci[oó]n\s+\d+/i.test(t)) { out += '<div class="vm-song">' + SVG.music + "<div>" + esc(t) + "</div></div>"; return; }
+        var a = sec.querySelector(".asignado"), du = sec.querySelector(".duration");
+        var dur = du ? du.textContent.trim() : "";
+        var who = a && a.textContent.trim() ? nombre(a.textContent.trim()) : "";
+        var isEstudio = /estudio b[ií]blico/i.test(t);
+        out += '<div class="vm-part ' + cls + '"><div class="ti">' + esc(t) + '</div><div class="det">' +
+          (dur ? '<div class="dur">' + esc(dur) + "</div>" : "") +
+          (who ? '<div class="name">' + (isEstudio ? '<span class="label">Conductor:</span> ' : "") + esc(who) + "</div>" : "") +
+          (isEstudio && lector ? '<div class="name"><span class="label">Lector:</span> ' + esc(nombre(lector)) + "</div>" : "") +
+          "</div></div>";
+        if (isEstudio) lectorUsed = true;
       });
-      if (cls === "vida" && lector) out += '<div class="vm-item"><div class="who"><span><span class="label">Lector del estudio:</span> ' + esc(nombre(lector)) + "</span></div></div>";
-      out += "</div>";
+      if (cls === "vida" && lector && !lectorUsed) out += '<div class="vm-part vida"><div class="det"><div class="name"><span class="label">Lector del estudio:</span> ' + esc(nombre(lector)) + "</div></div></div>";
     });
     var pie = w.querySelector(".pie");
-    if (pie) out += '<div class="note">' + fixNames(pie) + "</div>";
+    if (pie) {
+      var p0 = splitAsignado(pie);
+      var line2 = p0.text.replace(/\(3 mins\)/i, "(3 mins.)").replace(/\s*y oraci[oó]n final$/i, " y oración");
+      out += '<div class="vm-close">' + SVG.music + "<div>" + esc(line2) +
+        (p0.names.length ? '<span class="sub">Oración: <strong>' + esc(p0.names.join(", ")) + "</strong></span>" : "") + "</div></div>";
+    }
     return out;
-  }
-  function fixNames(el) {
-    var c = el.cloneNode(true);
-    c.querySelectorAll(".asignado").forEach(function (a) { a.textContent = nombre(a.textContent); a.style.fontWeight = "700"; });
-    c.querySelectorAll("script,style").forEach(function (x) { x.remove(); });
-    return c.innerHTML;
   }
 
   /* ───────── Inicio ───────── */
@@ -772,24 +803,21 @@ details.vm > summary::-webkit-details-marker { display: none; }
     } else disc = { d: addDays(mondayOf(TODAY), 6), t: "Un discurso de ejemplo para la vista previa" };
     var wk = Math.floor(Math.abs(TODAY - INICIO_LIMPIEZA) / (7 * 864e5));
     var rows = [
-      ["🎤 Próximo discurso", disc ? "“" + disc.t + "” — " + fechaLarga(disc.d) : "Consultá el programa"],
-      ["📅 Próximo evento", ev ? ev.title + " — " + fechaLarga(ev.d) : "No hay eventos próximos"],
-      ["🧹 Limpieza esta semana", GRUPOS_LIMPIEZA[wk % GRUPOS_LIMPIEZA.length]]
+      ["Próximo discurso", disc ? "“" + disc.t + "” — " + fechaLarga(disc.d) : "Consultá el programa"],
+      ["Próximo evento", ev ? ev.title + " — " + fechaLarga(ev.d) : "No hay eventos próximos"],
+      ["Limpieza esta semana", GRUPOS_LIMPIEZA[wk % GRUPOS_LIMPIEZA.length]]
     ];
     $("inicio-resumen").innerHTML = rows.map(function (r) { return '<div class="row"><div class="k">' + esc(r[0]) + '</div><div class="v">' + esc(r[1]) + "</div></div>"; }).join("");
   }
 
   /* ───────── Controles: paleta, fuente, tema, letra ───────── */
   function pressGroup(sel, attr, val) { document.querySelectorAll(sel).forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute(attr) === val)); }); }
-  function setPal(p) { root.setAttribute("data-palette", p); store("ng-prev-paleta", p); pressGroup("[data-pal]", "data-pal", p); }
-  function setFont(f) { if (f === "inter") root.removeAttribute("data-font"); else root.setAttribute("data-font", f); store("ng-prev-fuente", f); pressGroup("[data-font]", "data-font", f); }
+  function setHC(on) { root.setAttribute("data-palette", on ? "c" : "b"); store("ng-alto-contraste", on ? "1" : "0"); pressGroup("[data-hc]", "data-hc", on ? "1" : "0"); }
   function effTheme() { var t = root.getAttribute("data-theme"); if (t) return t; return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
   function setTheme(t) { root.setAttribute("data-theme", t); store("ng-prev-tema", t); pressGroup("[data-theme-set]", "data-theme-set", t); }
-  document.querySelectorAll("[data-pal]").forEach(function (b) { b.onclick = function () { setPal(b.dataset.pal); }; });
-  document.querySelectorAll("button[data-font]").forEach(function (b) { b.onclick = function () { setFont(b.dataset.font); }; });
+  document.querySelectorAll("[data-hc]").forEach(function (b) { b.onclick = function () { setHC(b.dataset.hc === "1"); }; });
   document.querySelectorAll("[data-theme-set]").forEach(function (b) { b.onclick = function () { setTheme(b.dataset.themeSet); }; });
-  pressGroup("[data-pal]", "data-pal", root.getAttribute("data-palette") || "a");
-  pressGroup("button[data-font]", "data-font", root.getAttribute("data-font") || "inter");
+  pressGroup("[data-hc]", "data-hc", root.getAttribute("data-palette") === "c" ? "1" : "0");
   pressGroup("[data-theme-set]", "data-theme-set", effTheme());
 
   var SIZES = [0.9, 1, 1.15, 1.3, 1.5];
