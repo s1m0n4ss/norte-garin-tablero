@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#04091a">
+    <meta name="theme-color" content="#0f4c3a">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -33,7 +33,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <style>
       :root {
@@ -105,7 +105,7 @@
       .sidebar-nav { padding: 20px 16px; }
       .nav-section-label {
         font-family: "Syne", sans-serif;
-        font-size: 9px; font-weight: 700; letter-spacing: 0.15em;
+        font-size: 0.95rem; font-weight: 700; letter-spacing: 0.03em;
         text-transform: uppercase; color: var(--text-muted);
         padding: 0 12px; margin-bottom: 8px; margin-top: 16px;
       }
@@ -113,7 +113,7 @@
         display: flex; align-items: center; gap: 12px;
         padding: 13px 16px; border-radius: 14px;
         color: var(--text-muted); text-decoration: none;
-        font-size: 14.5px; font-weight: 500;
+        font-size: 1rem; font-weight: 500;
         transition: all 0.18s ease; margin-bottom: 2px;
       }
       .nav-item:hover { background: var(--bg-card2); color: var(--text); }
@@ -121,7 +121,7 @@
       .nav-item .icon {
         width: 36px; height: 36px; border-radius: 10px;
         display: flex; align-items: center; justify-content: center;
-        font-size: 17px; flex-shrink: 0; background: var(--bg-card2);
+        font-size: 1rem; flex-shrink: 0; background: var(--bg-card2);
       }
       .nav-item.active .icon { background: color-mix(in srgb, var(--accent) 15%, transparent); }
 
@@ -149,8 +149,8 @@
         padding-top: max(16px, env(safe-area-inset-top));
       }
       .hero-content { position: absolute; bottom: 20px; left: 24px; right: 24px; display: flex; align-items: flex-end; justify-content: space-between; }
-      .hero-title { font-family: "Syne", sans-serif; font-size: 32px; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; color: #fff; text-transform: uppercase; }
-      .hero-sub { color: rgba(255,255,255,0.6); font-size: 11px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
+      .hero-title { font-family: "Syne", sans-serif; font-size: 1.778rem; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; color: #fff; text-transform: uppercase; }
+      .hero-sub { color: rgba(255,255,255,0.6); font-size: 0.95rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
 
       /* ── ICON BUTTON ── */
       .icon-btn {
@@ -170,8 +170,8 @@
         background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.28);
         backdrop-filter: blur(10px); color: #fff;
         font-family: "Syne", sans-serif;
-        font-size: 10px; font-weight: 700;
-        text-transform: uppercase; letter-spacing: 0.08em;
+        font-size: 0.95rem; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.03em;
         text-decoration: none; transition: all 0.15s ease;
       }
       .map-btn:active { transform: scale(0.95); }
@@ -187,8 +187,8 @@
       .month-divider-line { flex: 1; height: 1px; background: var(--border); }
       .month-divider-label {
         font-family: "Syne", sans-serif;
-        font-size: 10px; font-weight: 700;
-        letter-spacing: 0.15em; text-transform: uppercase;
+        font-size: 0.95rem; font-weight: 700;
+        letter-spacing: 0.03em; text-transform: uppercase;
         color: var(--text-muted);
       }
 
@@ -221,14 +221,14 @@
         box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 35%, transparent);
       }
       .day-badge .dow {
-        font-size: 9px; font-weight: 600; text-transform: uppercase;
-        letter-spacing: 0.08em; color: var(--text-muted);
+        font-size: 0.95rem; font-weight: 600; text-transform: uppercase;
+        letter-spacing: 0.03em; color: var(--text-muted);
         line-height: 1;
       }
       .day-badge.today .dow { color: rgba(255,255,255,0.75); }
       .day-badge .dom {
         font-family: "Syne", sans-serif;
-        font-size: 22px; font-weight: 700;
+        font-size: 1.222rem; font-weight: 700;
         color: var(--text); line-height: 1.1; margin-top: 2px;
       }
       .day-badge.today .dom { color: #fff; }
@@ -254,20 +254,20 @@
       .entry:last-child { border-bottom: none; }
       .entry-time {
         font-family: "Syne", sans-serif;
-        font-size: 11px; font-weight: 700;
+        font-size: 0.95rem; font-weight: 700;
         color: var(--accent); letter-spacing: 0.05em;
       }
       .entry-place {
-        font-size: 15px; font-weight: 600; margin-top: 2px; line-height: 1.2;
+        font-size: 1rem; font-weight: 600; margin-top: 2px; line-height: 1.2;
       }
       .entry-meta {
-        font-size: 12px; color: var(--text-muted); margin-top: 4px;
+        font-size: 0.95rem; color: var(--text-muted); margin-top: 4px;
       }
       .entry-meta strong { color: var(--text); font-weight: 600; }
       .terr-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
       .terr-chip {
         display: inline-flex; align-items: center; gap: 4px;
-        font-size: 11px; font-weight: 600;
+        font-size: 0.95rem; font-weight: 600;
         padding: 4px 10px; border-radius: 8px;
         background: color-mix(in srgb, var(--accent) 10%, transparent);
         color: var(--accent);
@@ -277,7 +277,7 @@
       .terr-chip:active { transform: scale(0.95); }
       .map-chip {
         display: inline-flex; align-items: center; gap: 4px;
-        font-size: 11px; font-weight: 600;
+        font-size: 0.95rem; font-weight: 600;
         padding: 4px 10px; border-radius: 8px;
         background: var(--bg-card2);
         color: var(--text-muted);
@@ -291,7 +291,7 @@
       .special-entry {
         padding: 14px 16px;
         font-family: "Syne", sans-serif;
-        font-size: 13px; font-weight: 600;
+        font-size: 1rem; font-weight: 600;
         text-align: center;
       }
       .special-entry.feriado { color: #60a5fa; }
@@ -305,7 +305,7 @@
         border-radius: 18px;
         padding: 14px 16px;
         font-family: "Syne", sans-serif;
-        font-size: 12px; font-weight: 700;
+        font-size: 0.95rem; font-weight: 700;
         text-transform: uppercase; letter-spacing: 0.1em;
         color: var(--text-muted); text-align: center;
       }
@@ -327,8 +327,8 @@
       #zocalo-label {
         flex-shrink: 0;
         font-family: "Syne", sans-serif;
-        font-size: 11px; font-weight: 700;
-        letter-spacing: 0.12em; text-transform: uppercase;
+        font-size: 0.95rem; font-weight: 700;
+        letter-spacing: 0.03em; text-transform: uppercase;
         padding: 0 16px 0 18px;
         border-right: 1px solid rgba(255,255,255,0.3);
         white-space: nowrap;
@@ -346,7 +346,7 @@
         display: inline-block;
         white-space: nowrap;
         font-family: "DM Sans", sans-serif;
-        font-size: 15px; font-weight: 500;
+        font-size: 1rem; font-weight: 500;
         animation: ticker-scroll 28s linear infinite;
         padding-left: 100%;
         line-height: 52px;
@@ -358,6 +358,8 @@
       #zocalo-text:hover { animation-play-state: paused; }
     </style>
     <style>html { background-color: #04091a; }</style>
+    <link rel="stylesheet" href="estilos.css">
+    <script>try{var ngS=parseFloat(localStorage.getItem("ng-tamano-letra"));if(ngS)document.documentElement.style.setProperty("--scale",ngS)}catch(e){}</script>
   </head>
 
   <body>
@@ -374,12 +376,12 @@
             </svg>
           </div>
           <div>
-            <div class="syne" style="font-size:15px; font-weight:700; line-height:1.1">Norte Garín</div>
-            <div style="font-size:10px; color:var(--text-muted); font-weight:500; text-transform:uppercase; letter-spacing:0.12em; margin-top:2px">Tablero Digital</div>
+            <div class="syne" style="font-size:1rem; font-weight:700; line-height:1.1">Norte Garín</div>
+            <div style="font-size:0.95rem; color:var(--text-muted); font-weight:500; text-transform:uppercase; letter-spacing: 0.03em; margin-top:2px">Tablero Digital</div>
           </div>
         </div>
       </div>
-      <nav class="sidebar-nav">
+      <nav class="sidebar-nav"><button type="button" class="ng-theme-btn" id="btnTheme"><svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><span class="t-light">Cambiar a modo oscuro</span><span class="t-dark">Cambiar a modo claro</span></button>
         <div class="nav-section-label">Principal</div>
         <a href="index.html" class="nav-item">
           <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div> Inicio
@@ -412,37 +414,20 @@
     </aside>
 
     <!-- HERO -->
-    <header>
-      <div class="hero-wrap" style="background:#021a0d">
-        <!-- SVG grid pattern -->
-        <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="sgrid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M 28 0 L 0 0 0 28" fill="none" stroke="#34d399" stroke-width="0.3" stroke-opacity="0.18"/></pattern></defs><rect width="100%" height="100%" fill="url(#sgrid)"/></svg>
-        <!-- Concentric rings -->
-        <div style="position:absolute;right:-27px;top:50%;transform:translateY(-50%);width:180px;height:180px;border-radius:50%;border:1px solid #34d3991a;pointer-events:none"></div>
-        <div style="position:absolute;right:-2px;top:50%;transform:translateY(-50%);width:130px;height:130px;border-radius:50%;border:1px solid #34d39926;pointer-events:none"></div>
-        <div style="position:absolute;right:23px;top:50%;transform:translateY(-50%);width:80px;height:80px;border-radius:50%;border:1px solid #34d39933;pointer-events:none"></div>
-        <!-- Section illustration -->
-        <svg viewBox="0 0 64 64" fill="none" stroke="#34d399" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:22px;top:50%;transform:translateY(-50%);width:82px;height:82px;opacity:0.9;pointer-events:none">
-          <path d="M32 6C20 6 12 16 12 26c0 16 20 32 20 32s20-16 20-32C52 16 44 6 32 6z"/>
-          <circle cx="32" cy="26" r="7"/>
-        </svg>
-        <!-- Accent bar -->
-        <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,transparent,#34d39980,transparent);pointer-events:none"></div>
-        <!-- Text gradient overlay -->
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 55%);pointer-events:none"></div>
-        <div class="hero-top-bar">
-          <button class="icon-btn" id="btnMenu" aria-label="Menú">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <header class="ng-topbar">
+      <div class="ng-wrap">
+        <div class="ng-row">
+          <button type="button" class="ng-menu-btn" id="btnMenu" aria-label="Abrir menú de secciones"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="14" y1="16" y2="16"/>
-            </svg>
-          </button>
-          <button class="icon-btn" id="btnTheme" aria-label="Cambiar tema">
-            <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          </button>
+            </svg><span>Menú</span></button>
+          <div class="ng-size" role="group" aria-label="Tamaño de letra"><span aria-hidden="true">Letra</span><button type="button" id="ngSizeDown" aria-label="Letra más chica">A−</button><button type="button" id="ngSizeReset" aria-label="Letra normal">A</button><button type="button" id="ngSizeUp" aria-label="Letra más grande">A+</button></div>
         </div>
-        <div class="hero-content">
+        <nav class="ng-tabs" aria-label="Secciones principales"><a href="index.html">Inicio</a><a href="salidas.html" aria-current="page">Salidas</a><a href="vida-ministerio.html">Reunión</a></nav>
+      </div>
+    </header>
+    <div class="main-wrap ng-page-head"><div class="ng-eyebrow">Norte Garín</div><div class="hero-content">
           <div>
-            <div class="hero-title">Salidas</div>
+            <h1 class="hero-title">Salidas</h1>
             <div class="hero-sub" id="hero-mes">Cargando…</div>
           </div>
           <a href="img/TERRITORIOGARIN.png" target="_blank" class="map-btn">
@@ -453,13 +438,28 @@
             </svg>
             Mapa
           </a>
-        </div>
-      </div>
-    </header>
+        </div></div>
 
     <main class="main-wrap">
       <div id="notif-banner-container"></div>
-      <div id="grid" style="margin-top: 20px;"></div>
+      <div class="ng-stack" style="margin-top: 1rem;">
+        <div id="ng-hoy"></div>
+        <section class="ng-card ng-stack" style="gap:.75rem" aria-labelledby="t-ir">
+          <h2 class="ng-h2" id="t-ir" style="font-size:1.15rem">Ir directo a</h2>
+          <div class="ng-seg">
+            <button type="button" class="ng-chip" id="jEsta">Esta semana</button>
+            <button type="button" class="ng-chip" id="jProx">Próxima semana</button>
+            <button type="button" class="ng-chip" id="jFinde" aria-pressed="false">Solo fines de semana</button>
+          </div>
+          <div class="ng-row-wrap" role="group" aria-label="Forma de ver el programa">
+            <span class="ng-label">Ver por:</span>
+            <button type="button" class="ng-chip" id="vDias" aria-pressed="true">Días</button>
+            <button type="button" class="ng-chip" id="vSemanas" aria-pressed="false">Semanas</button>
+          </div>
+        </section>
+        <div id="ng-dias" class="ng-stack"></div>
+        <div id="grid" class="ng-stack" hidden></div>
+      </div>
     </main>
 
 
@@ -497,103 +497,165 @@
       const MESES = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
       const MESES_CORTO = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
 
+      // ── RENDER ──
+      const DIAS_L = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+      const DIAS_C = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+      const MESES_L = MESES.map(m => m.toLowerCase());
+      const sod = d => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+      const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+      const lunesDe = d => addDays(sod(d), -((d.getDay() + 6) % 7));
+      const iso = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+      const fromIso = t => { const [y, m, d] = t.split("-").map(Number); return new Date(y, m - 1, d); };
+      const fechaCompleta = d => { const w = DIAS_L[d.getDay()]; return w.charAt(0).toUpperCase() + w.slice(1) + " " + d.getDate() + " de " + MESES_L[d.getMonth()]; };
+      const horaTxt = h => String(h).replace(/^0(\d)/, "$1") + " h";
+      const aMin = h => { const [hh, mm] = String(h).split(":").map(Number); return hh * 60 + (mm || 0); };
+      const conHora = e => !e.type && e.h && e.h !== "–";
+      const conduce = e => e.c && e.c !== "—" ? e.c : "Sin asignar";
+      const entradas = d => window.SALIDAS_CAL.getEntriesForDate(d) || [];
+      const finde = d => d.getDay() === 0 || d.getDay() === 6;
+      function semanaTxt(lun) {
+        const dom = addDays(lun, 6);
+        return "lunes " + lun.getDate() + (lun.getMonth() !== dom.getMonth() ? " de " + MESES_L[lun.getMonth()] : "") + " al domingo " + dom.getDate() + " de " + MESES_L[dom.getMonth()];
+      }
+
       function terrHtml(t) {
         const arr = window.SALIDAS_CAL.parseTerr(t);
-        if (!arr.length) return "";
-        return `<div class="terr-wrap">${arr.map(n =>
-          `<a class="terr-chip" href="${window.SALIDAS_CAL.territoryUrl(n)}" target="_blank" rel="noopener">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
-            T-${n}
-          </a>`
-        ).join("")}</div>`;
+        return arr.map(n => `<a class="ng-chip" href="${window.SALIDAS_CAL.territoryUrl(n)}" target="_blank" rel="noopener">Territorio ${n}</a>`).join("");
       }
-
       function entryHtml(e) {
-        if (e.type) {
-          const cls = e.type === "feriado" ? "feriado" : "reunion";
-          return `<div class="special-entry ${cls}">${e.l}</div>`;
+        if (e.type) return `<div class="ng-special">${e.l}</div>`;
+        const mapa = e.maps ? `<a class="ng-chip" href="${e.maps}" target="_blank" rel="noopener">Ver ubicación</a>` : "";
+        const acciones = mapa + terrHtml(e.t);
+        return `<div class="ng-entry">
+          <div class="time">${horaTxt(e.h)}</div>
+          <div class="place">${e.l}</div>
+          <div><span class="ng-label">Conduce:</span> ${conduce(e)}</div>
+          ${acciones ? `<div class="actions">${acciones}</div>` : ""}
+        </div>`;
+      }
+      function dayHtml(d, lista, hoy) {
+        const esHoy = +d === +hoy;
+        return `<div class="ng-day${esHoy ? " is-today" : ""}" data-m="${d.getMonth() + 1}" data-d="${d.getDate()}">
+          <h3 class="ng-day-h">${esHoy ? '<span class="ng-pill">HOY</span>' : ""}${fechaCompleta(d)}</h3>
+          ${lista.length ? lista.map(entryHtml).join("") : '<p class="ng-muted" style="margin:0">No hay salidas programadas.</p>'}
+        </div>`;
+      }
+      const toggle = '<span class="ng-toggle"><span class="c">Ver ▾</span><span class="o">Cerrar ▴</span></span>';
+
+      function hoyHtml(now, hoy) {
+        const nowMin = now.getHours() * 60 + now.getMinutes();
+        const lista = entradas(hoy);
+        let out = `<section class="ng-hoy" aria-labelledby="t-hoy"><div class="eyebrow" id="t-hoy">HOY · ${fechaCompleta(hoy)}</div>`;
+        if (!lista.length) out += '<p class="empty" style="margin:0">Hoy no hay salidas programadas.</p>';
+        lista.forEach(e => {
+          if (e.type) { out += `<div class="item"><div class="place">${e.l}</div></div>`; return; }
+          const paso = conHora(e) && aMin(e.h) < nowMin - 60;
+          const acc = (e.maps ? `<a class="ng-chip" href="${e.maps}" target="_blank" rel="noopener">Ver ubicación</a>` : "") + terrHtml(e.t);
+          out += `<div class="item${paso ? " past" : ""}"><div class="time">${horaTxt(e.h)}${paso ? ' <span style="font-size:1rem;font-weight:700">(ya empezó)</span>' : ""}</div>
+            <div class="place">${e.l}</div><div><span class="ng-label">Conduce:</span> <strong>${conduce(e)}</strong></div>
+            ${acc ? `<div class="ng-row-wrap" style="margin-top:.3rem">${acc}</div>` : ""}</div>`;
+        });
+        let prox = null;
+        for (let i = 0; i < 21 && !prox; i++) {
+          const d = addDays(hoy, i);
+          const e = entradas(d).filter(conHora).sort((a, b) => aMin(a.h) - aMin(b.h)).find(x => i > 0 || aMin(x.h) >= nowMin);
+          if (e) prox = { d, e, i };
         }
-        const mapaBtn = e.maps
-          ? `<a class="map-chip" href="${e.maps}" target="_blank" rel="noopener">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Ver ubicación
-            </a>`
-          : "";
-        return `<div class="entry">
-          <div class="entry-time">${e.h} hs</div>
-          <div class="entry-place">${e.l}</div>
-          <div class="entry-meta">Conduce: <strong>${e.c || "—"}</strong></div>
-          ${mapaBtn}
-          ${terrHtml(e.t)}
-        </div>`;
+        if (prox && prox.i > 0) {
+          out += `<div class="eyebrow">PRÓXIMA SALIDA · ${prox.i === 1 ? "MAÑANA, " : ""}${fechaCompleta(prox.d).toUpperCase()}</div>
+            <div class="item"><div class="time">${horaTxt(prox.e.h)}</div><div class="place">${prox.e.l}</div>
+            <div><span class="ng-label">Conduce:</span> <strong>${conduce(prox.e)}</strong></div></div>`;
+        }
+        return out + "</section>";
       }
 
-      function dayCardHtml(y, m, d, entries, isToday) {
-        const label = window.SALIDAS_CAL.label(y, m, d);
-        return `<div class="day-card ${isToday ? 'today-row' : ''}" data-m="${m}" data-d="${d}">
-          <div class="day-badge ${isToday ? 'today' : ''}">
-            <span class="dow">${label.w}</span>
-            <span class="dom">${d}</span>
-          </div>
-          <div class="day-content">
-            ${entries.map(entryHtml).join("")}
-          </div>
-        </div>`;
+      let soloFinde = false, vistaDias = true, tabLunes = null, tabDia = null;
+
+      function renderDias(hoy) {
+        const box = document.getElementById("ng-dias");
+        let tabs = "";
+        for (let i = 0; i < 7; i++) {
+          const d = addDays(tabLunes, i), n = entradas(d).filter(conHora).length;
+          tabs += `<button type="button" role="tab" data-d="${iso(d)}" aria-selected="${+d === +tabDia}" aria-label="${fechaCompleta(d)}, ${n} ${n === 1 ? "salida" : "salidas"}"${entradas(d).length ? "" : ' class="none"'}><span>${DIAS_C[d.getDay()]}</span><span class="n">${d.getDate()}</span></button>`;
+        }
+        box.innerHTML = `<div class="ng-weeknav"><button type="button" class="ng-btn secondary" id="wkPrev">← Semana anterior</button><button type="button" class="ng-btn secondary" id="wkNext">Semana siguiente →</button></div>
+          <p class="ng-week-h" style="text-align:center;margin:0">Semana del ${semanaTxt(tabLunes)}</p>
+          <div class="ng-daytabs" role="tablist" aria-label="Días de la semana">${tabs}</div>
+          <div class="ng-card" role="tabpanel" style="padding:0;overflow:hidden">${dayHtml(tabDia, entradas(tabDia), hoy)}</div>`;
+        box.querySelectorAll("[role=tab]").forEach(b => b.onclick = () => {
+          tabDia = fromIso(b.dataset.d); renderDias(hoy);
+          const t = box.querySelector('[aria-selected="true"]'); if (t) t.focus();
+        });
+        document.getElementById("wkPrev").onclick = () => { tabLunes = addDays(tabLunes, -7); tabDia = tabLunes; renderDias(hoy); };
+        document.getElementById("wkNext").onclick = () => { tabLunes = addDays(tabLunes, 7); tabDia = tabLunes; renderDias(hoy); };
       }
 
-      function monthDividerHtml(y, m) {
-        return `<div class="month-divider">
-          <div class="month-divider-line"></div>
-          <div class="month-divider-label">${MESES[m-1]} ${y}</div>
-          <div class="month-divider-line"></div>
-        </div>`;
+      function setVista(dias) {
+        vistaDias = dias;
+        document.getElementById("vDias").setAttribute("aria-pressed", String(dias));
+        document.getElementById("vSemanas").setAttribute("aria-pressed", String(!dias));
+        document.getElementById("ng-dias").hidden = !dias;
+        document.getElementById("grid").hidden = dias;
       }
 
-      // ── RENDER ──
       function render() {
         const g = document.getElementById("grid");
         if (!window.SALIDAS_CAL || !Array.isArray(window.SALIDAS_CAL.CALENDARIO)) {
-          g.innerHTML = '<p style="color:var(--text-muted); text-align:center; padding:32px">No se pudo cargar el calendario.</p>';
+          g.hidden = false;
+          g.innerHTML = '<p class="ng-note">No se pudo cargar el calendario.</p>';
           return;
         }
 
         const now = new Date();
+        const hoy = sod(now);
         const todayY = now.getFullYear();
         const todayM = now.getMonth() + 1;
-        const todayD = now.getDate();
 
         const months = [...window.SALIDAS_CAL.CALENDARIO].sort((a, b) => a.y - b.y || a.m - b.m);
 
-        // Título del hero con el mes más relevante
+        // Título con el mes más relevante
         const currentMonth = months.find(M => M.y === todayY && M.m === todayM) || months[0];
         if (currentMonth) {
           document.getElementById("hero-mes").textContent = `${MESES[currentMonth.m - 1]} ${currentMonth.y}`;
         }
 
+        document.getElementById("ng-hoy").innerHTML = hoyHtml(now, hoy);
+        if (!tabLunes) { tabLunes = lunesDe(hoy); tabDia = hoy; }
+        renderDias(hoy);
+
+        // Igual que antes: se omiten los meses ya pasados
+        const visibles = months.filter(M => !(M.y < todayY || (M.y === todayY && M.m < todayM)) && Object.keys(M.d || {}).length);
         let htmlOut = "";
-        let lastYM = "";
-
-        months.forEach(M => {
-          // Omitir meses completamente pasados
-          const isPastMonth = M.y < todayY || (M.y === todayY && M.m < todayM);
-          if (isPastMonth) return;
-
-          const isCurrentMonth = M.y === todayY && M.m === todayM;
-          const ym = `${M.y}-${M.m}`;
-
-          const visibleDays = Object.keys(M.d || {}).sort((a, b) => a - b);
-
-          if (!visibleDays.length) return;
-
-          if (ym !== lastYM) { htmlOut += monthDividerHtml(M.y, M.m); lastYM = ym; }
-
-          visibleDays.forEach(d => {
-            const isToday = isCurrentMonth && Number(d) === todayD;
-            htmlOut += dayCardHtml(M.y, M.m, d, M.d[d], isToday);
-          });
-        });
-
-        g.innerHTML = htmlOut;
+        if (visibles.length) {
+          const primero = new Date(visibles[0].y, visibles[0].m - 1, 1);
+          const ult = visibles[visibles.length - 1];
+          const fin = new Date(ult.y, ult.m, 0);
+          const lunHoy = lunesDe(hoy), pasados = [];
+          for (let lun = lunesDe(primero); lun <= fin; lun = addDays(lun, 7)) {
+            const dias = []; let cuenta = 0;
+            for (let i = 0; i < 7; i++) {
+              const d = addDays(lun, i);
+              if (d < primero || d > fin) continue;
+              if (soloFinde && !finde(d)) continue;
+              const lista = entradas(d);
+              if (d < hoy) { if (lista.length && !soloFinde) pasados.push([d, lista]); continue; }
+              cuenta += lista.filter(conHora).length;
+              dias.push(dayHtml(d, lista, hoy));
+            }
+            if (!dias.length) continue;
+            const esta = +lun === +lunHoy, prox = +lun === +addDays(lunHoy, 7);
+            const tag = esta ? '<span class="ng-pill">ESTA SEMANA</span> ' : prox ? '<span class="ng-pill alt">PRÓXIMA</span> ' : "";
+            htmlOut += `<details class="ng-week" id="w-${iso(lun)}"${esta || (soloFinde && prox) ? " open" : ""}>
+              <summary><div><div class="ng-week-h">${tag}Semana del ${semanaTxt(lun)}</div><div class="ng-muted">${cuenta} ${cuenta === 1 ? "salida" : "salidas"}</div></div>${toggle}</summary>
+              <div class="ng-days">${dias.join("")}</div></details>`;
+          }
+          if (pasados.length) {
+            htmlOut += `<details class="ng-week"><summary><div><div class="ng-week-h">Días anteriores</div><div class="ng-muted">${pasados.length} días ya pasados este mes</div></div>${toggle}</summary>
+              <div class="ng-days">${pasados.reverse().map(p => dayHtml(p[0], p[1], hoy)).join("")}</div></details>`;
+          }
+        }
+        g.innerHTML = htmlOut || '<p class="ng-note">No hay salidas cargadas para estas fechas.</p>';
+        setVista(vistaDias);
 
         // Banner campaña de invitación — insertar antes de la tarjeta del 31/julio
         (function(){
@@ -608,20 +670,36 @@
           banner.id = 'bannerCampana2026';
           banner.style.cssText = 'background:#eff6ff;border-left:4px solid #2563eb;border-radius:10px;padding:12px 16px;margin-bottom:12px;display:flex;align-items:center;gap:10px;';
           banner.innerHTML =
-            '<span style="flex-shrink:0;font-size:18px">' + (esElDia ? '🎉' : '📣') + '</span>' +
+            '<span style="flex-shrink:0;font-size:1rem">' + (esElDia ? '🎉' : '📣') + '</span>' +
             '<div>' +
-              '<div style="font-weight:700;color:#1e40af;font-size:14px;font-family:Inter,sans-serif">' +
+              '<div style="font-weight:700;color:#1e40af;font-size:1rem;font-family:Inter,sans-serif">' +
                 (esElDia ? '¡Hoy comienza la Campaña de Invitación!' : 'Este viernes comienza la Campaña de Invitación') +
               '</div>' +
-              '<div style="font-style:italic;color:#2563eb;font-size:13px;font-family:Inter,sans-serif">Asamblea Regional "Felices para siempre"</div>' +
+              '<div style="font-style:italic;color:#2563eb;font-size:1rem;font-family:Inter,sans-serif">Asamblea Regional "Felices para siempre"</div>' +
             '</div>';
           target.parentNode.insertBefore(banner, target);
         })();
 
-        // Scroll al día de hoy
-        const todayEl = document.querySelector(".day-card.today-row");
-        if (todayEl) setTimeout(() => todayEl.scrollIntoView({ behavior: "smooth", block: "center" }), 400);
       }
+
+      function abrirSemana(lun) {
+        setVista(false);
+        const el = document.getElementById("w-" + iso(lun));
+        if (!el) return;
+        el.open = true;
+        el.scrollIntoView({ block: "start" });
+        el.querySelector("summary").focus({ preventScroll: true });
+      }
+      document.getElementById("vDias").onclick = () => setVista(true);
+      document.getElementById("vSemanas").onclick = () => setVista(false);
+      document.getElementById("jEsta").onclick = () => abrirSemana(lunesDe(new Date()));
+      document.getElementById("jProx").onclick = () => abrirSemana(addDays(lunesDe(new Date()), 7));
+      document.getElementById("jFinde").onclick = function () {
+        soloFinde = !soloFinde;
+        this.setAttribute("aria-pressed", String(soloFinde));
+        vistaDias = false;
+        render();
+      };
 
       document.addEventListener("DOMContentLoaded", render);
     </script>
@@ -635,5 +713,6 @@
       });
     }
   </script>
+    <script src="accesibilidad.js"></script>
   </body>
 </html>

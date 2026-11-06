@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#04091a">
+    <meta name="theme-color" content="#0f4c3a">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -32,7 +32,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <style>
       :root {
@@ -83,15 +83,15 @@
       .logo-mark { width: 44px; height: 44px; background: var(--accent); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
       .sidebar-nav { padding: 20px 16px; }
       .nav-section-label {
-        font-family: "Syne", sans-serif; font-size: 9px; font-weight: 700;
-        letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted);
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
+        letter-spacing: 0.03em; text-transform: uppercase; color: var(--text-muted);
         padding: 0 12px; margin-bottom: 8px; margin-top: 16px;
       }
       .nav-item {
         display: flex; align-items: center; gap: 12px;
         padding: 13px 16px; border-radius: 14px;
         color: var(--text-muted); text-decoration: none;
-        font-size: 14.5px; font-weight: 500; transition: all 0.18s ease; margin-bottom: 2px;
+        font-size: 1rem; font-weight: 500; transition: all 0.18s ease; margin-bottom: 2px;
       }
       .nav-item:hover { background: var(--bg-card2); color: var(--text); }
       .nav-item.active { background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); font-weight: 700; }
@@ -115,8 +115,8 @@
         padding: 16px 20px; padding-top: max(16px, env(safe-area-inset-top));
       }
       .hero-content { position: absolute; bottom: 20px; left: 24px; }
-      .hero-title { font-family: "Syne", sans-serif; font-size: 32px; font-weight: 700; line-height: 1.05; color: #fff; text-transform: uppercase; }
-      .hero-sub { color: rgba(255,255,255,0.6); font-size: 11px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
+      .hero-title { font-family: "Syne", sans-serif; font-size: 1.778rem; font-weight: 700; line-height: 1.05; color: #fff; text-transform: uppercase; }
+      .hero-sub { color: rgba(255,255,255,0.6); font-size: 0.95rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
       .icon-btn {
         width: 42px; height: 42px; border-radius: 13px;
         background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25);
@@ -133,8 +133,8 @@
       }
       .month-sep-line { flex: 1; height: 1px; background: var(--border); }
       .month-sep-label {
-        font-family: "Syne", sans-serif; font-size: 9px; font-weight: 700;
-        letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted);
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
+        letter-spacing: 0.03em; text-transform: uppercase; color: var(--text-muted);
       }
 
       .lector-card {
@@ -158,10 +158,10 @@
         border-right: 1px solid var(--border);
       }
       .lector-date-num {
-        font-family: "Syne", sans-serif; font-size: 22px; font-weight: 700; line-height: 1;
+        font-family: "Syne", sans-serif; font-size: 1.222rem; font-weight: 700; line-height: 1;
       }
       .lector-date-dow {
-        font-family: "Syne", sans-serif; font-size: 8px; font-weight: 700;
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
         letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 2px;
       }
 
@@ -174,12 +174,12 @@
 
       .lector-body { flex: 1; padding: 12px 16px; }
       .lector-next-badge {
-        font-family: "Syne", sans-serif; font-size: 8px; font-weight: 700;
-        letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
+        letter-spacing: 0.03em; text-transform: uppercase; color: var(--accent);
         margin-bottom: 4px; display: block;
       }
       .lector-type-badge {
-        font-family: "Syne", sans-serif; font-size: 9px; font-weight: 700;
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
         letter-spacing: 0.1em; text-transform: uppercase;
         padding: 3px 8px; border-radius: 6px;
         display: inline-block; margin-bottom: 5px;
@@ -196,10 +196,12 @@
         color: var(--accent-warm); background: color-mix(in srgb, var(--accent-warm) 10%, transparent);
         border: 1px solid color-mix(in srgb, var(--accent-warm) 18%, transparent);
       }
-      .lector-name { font-family: "Syne", sans-serif; font-size: 14px; font-weight: 700; line-height: 1.2; }
-      .lector-desc { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+      .lector-name { font-family: "Syne", sans-serif; font-size: 1rem; font-weight: 700; line-height: 1.2; }
+      .lector-desc { font-size: 0.95rem; color: var(--text-muted); margin-top: 3px; }
     </style>
     <style>html { background-color: #04091a; }</style>
+    <link rel="stylesheet" href="estilos.css">
+    <script>try{var ngS=parseFloat(localStorage.getItem("ng-tamano-letra"));if(ngS)document.documentElement.style.setProperty("--scale",ngS)}catch(e){}</script>
   </head>
 
   <body>
@@ -212,12 +214,12 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
           <div>
-            <div class="syne" style="font-size:15px;font-weight:700;line-height:1.1">Norte Garín</div>
-            <div style="font-size:10px;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:0.12em;margin-top:2px">Tablero Digital</div>
+            <div class="syne" style="font-size:1rem;font-weight:700;line-height:1.1">Norte Garín</div>
+            <div style="font-size:0.95rem;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing: 0.03em;margin-top:2px">Tablero Digital</div>
           </div>
         </div>
       </div>
-      <nav class="sidebar-nav">
+      <nav class="sidebar-nav"><button type="button" class="ng-theme-btn" id="btnTheme"><svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><span class="t-light">Cambiar a modo oscuro</span><span class="t-dark">Cambiar a modo claro</span></button>
         <div class="nav-section-label">Principal</div>
         <a href="index.html" class="nav-item">
           <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div> Inicio
@@ -252,43 +254,19 @@
       </nav>
     </aside>
 
-    <header>
-      <div class="hero-wrap" style="background:#160208">
-        <!-- SVG grid pattern -->
-        <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="sgrid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M 28 0 L 0 0 0 28" fill="none" stroke="#fb7185" stroke-width="0.3" stroke-opacity="0.18"/></pattern></defs><rect width="100%" height="100%" fill="url(#sgrid)"/></svg>
-        <!-- Concentric rings -->
-        <div style="position:absolute;right:-27px;top:50%;transform:translateY(-50%);width:180px;height:180px;border-radius:50%;border:1px solid #fb71851a;pointer-events:none"></div>
-        <div style="position:absolute;right:-2px;top:50%;transform:translateY(-50%);width:130px;height:130px;border-radius:50%;border:1px solid #fb718526;pointer-events:none"></div>
-        <div style="position:absolute;right:23px;top:50%;transform:translateY(-50%);width:80px;height:80px;border-radius:50%;border:1px solid #fb718533;pointer-events:none"></div>
-        <!-- Section illustration -->
-        <svg viewBox="0 0 64 64" fill="none" stroke="#fb7185" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:22px;top:50%;transform:translateY(-50%);width:82px;height:82px;opacity:0.9;pointer-events:none">
-          <circle cx="32" cy="14" r="8"/>
-          <rect x="16" y="30" width="32" height="22" rx="2"/>
-          <line x1="32" y1="30" x2="32" y2="52"/>
-          <line x1="20" y1="38" x2="29" y2="38"/>
-          <line x1="20" y1="44" x2="29" y2="44"/>
-          <line x1="35" y1="38" x2="44" y2="38"/>
-          <line x1="35" y1="44" x2="44" y2="44"/>
-        </svg>
-        <!-- Accent bar -->
-        <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,transparent,#fb718580,transparent);pointer-events:none"></div>
-        <!-- Text gradient overlay -->
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 55%);pointer-events:none"></div>
-        <div class="hero-top-bar">
-          <button class="icon-btn" id="btnMenu" aria-label="Menú">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="14" y1="16" y2="16"/></svg>
-          </button>
-          <button class="icon-btn" id="btnTheme" aria-label="Cambiar tema">
-            <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          </button>
+    <header class="ng-topbar">
+      <div class="ng-wrap">
+        <div class="ng-row">
+          <button type="button" class="ng-menu-btn" id="btnMenu" aria-label="Abrir menú de secciones"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="14" y1="16" y2="16"/></svg><span>Menú</span></button>
+          <div class="ng-size" role="group" aria-label="Tamaño de letra"><span aria-hidden="true">Letra</span><button type="button" id="ngSizeDown" aria-label="Letra más chica">A−</button><button type="button" id="ngSizeReset" aria-label="Letra normal">A</button><button type="button" id="ngSizeUp" aria-label="Letra más grande">A+</button></div>
         </div>
-        <div class="hero-content">
-          <div class="hero-title">Lectores</div>
-          <div class="hero-sub">Programa 2026</div>
-        </div>
+        <nav class="ng-tabs" aria-label="Secciones principales"><a href="index.html">Inicio</a><a href="salidas.html">Salidas</a><a href="vida-ministerio.html">Reunión</a></nav>
       </div>
     </header>
+    <div class="main-wrap ng-page-head"><div class="ng-eyebrow">Norte Garín</div><div class="hero-content">
+          <h1 class="hero-title">Lectores</h1>
+          <div class="hero-sub">Programa 2026</div>
+        </div></div>
 
     <div id="notif-banner-container" style="max-width:480px;margin:0 auto;padding:0 16px"></div>
     <main class="main-wrap" id="programList"></main>
@@ -396,5 +374,6 @@
       });
     }
   </script>
+    <script src="accesibilidad.js"></script>
   </body>
 </html>

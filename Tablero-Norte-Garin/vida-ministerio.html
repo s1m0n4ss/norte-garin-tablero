@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#04091a">
+    <meta name="theme-color" content="#0f4c3a">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -33,7 +33,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <style>
       :root {
@@ -85,15 +85,15 @@
       .logo-mark { width: 44px; height: 44px; background: var(--accent); border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
       .sidebar-nav { padding: 20px 16px; }
       .nav-section-label {
-        font-family: "Syne", sans-serif; font-size: 9px; font-weight: 700;
-        letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted);
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
+        letter-spacing: 0.03em; text-transform: uppercase; color: var(--text-muted);
         padding: 0 12px; margin-bottom: 8px; margin-top: 16px;
       }
       .nav-item {
         display: flex; align-items: center; gap: 12px;
         padding: 13px 16px; border-radius: 14px;
         color: var(--text-muted); text-decoration: none;
-        font-size: 14.5px; font-weight: 500;
+        font-size: 1rem; font-weight: 500;
         transition: all 0.18s ease; margin-bottom: 2px;
       }
       .nav-item:hover { background: var(--bg-card2); color: var(--text); }
@@ -118,8 +118,8 @@
         padding: 16px 20px; padding-top: max(16px, env(safe-area-inset-top));
       }
       .hero-content { position: absolute; bottom: 20px; left: 24px; }
-      .hero-title { font-family: "Syne", sans-serif; font-size: 32px; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; color: #fff; text-transform: uppercase; }
-      .hero-sub { color: rgba(255,255,255,0.6); font-size: 11px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
+      .hero-title { font-family: "Syne", sans-serif; font-size: 1.778rem; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; color: #fff; text-transform: uppercase; }
+      .hero-sub { color: rgba(255,255,255,0.6); font-size: 0.95rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
       .icon-btn {
         width: 42px; height: 42px; border-radius: 13px;
         background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25);
@@ -158,28 +158,28 @@
 
       .week-card-inner { padding-left: 10px; }
       .current-badge {
-        font-family: "Syne", sans-serif; font-size: 8px; font-weight: 700;
-        letter-spacing: 0.14em; text-transform: uppercase;
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
+        letter-spacing: 0.03em; text-transform: uppercase;
         color: var(--accent); margin-bottom: 5px; display: block;
       }
       .week-title {
-        font-family: "Syne", sans-serif; font-size: 15px; font-weight: 700;
+        font-family: "Syne", sans-serif; font-size: 1rem; font-weight: 700;
         margin: 0 0 4px; line-height: 1.2;
       }
       .week-book {
         display: inline-block; font-family: "Syne", sans-serif;
-        font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+        font-size: 0.95rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
         color: var(--text-muted); background: var(--bg-card2);
         border: 1px solid var(--border); padding: 3px 8px; border-radius: 6px;
         margin-bottom: 6px;
       }
       .week-sub {
-        font-size: 12px; color: var(--text-muted); margin: 0;
+        font-size: 0.95rem; color: var(--text-muted); margin: 0;
       }
       .week-cta {
         display: flex; align-items: center; gap: 4px;
-        font-family: "Syne", sans-serif; font-size: 10px; font-weight: 700;
-        letter-spacing: 0.08em; text-transform: uppercase;
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
+        letter-spacing: 0.03em; text-transform: uppercase;
         color: var(--accent); margin-top: 10px;
       }
 
@@ -208,9 +208,9 @@
         border-radius: 26px 26px 0 0; padding: 18px 18px 14px; flex-shrink: 0;
       }
       .viewer-head-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
-      .viewer-week-title { font-family: "Syne", sans-serif; font-size: 15px; font-weight: 700; line-height: 1.2; }
+      .viewer-week-title { font-family: "Syne", sans-serif; font-size: 1rem; font-weight: 700; line-height: 1.2; }
       .viewer-week-book {
-        font-family: "Syne", sans-serif; font-size: 9px; font-weight: 700;
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
         letter-spacing: 0.1em; text-transform: uppercase;
         color: var(--accent); margin-top: 3px;
       }
@@ -225,8 +225,8 @@
       .viewer-nav-btn {
         flex: 1; padding: 9px; border-radius: 11px;
         background: var(--bg-card2); border: 1px solid var(--border);
-        font-family: "Syne", sans-serif; font-size: 10px; font-weight: 700;
-        letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
+        letter-spacing: 0.03em; text-transform: uppercase; color: var(--text-muted);
         cursor: pointer; transition: all 0.15s ease; display: flex; align-items: center; justify-content: center; gap: 6px;
       }
       .viewer-nav-btn:active { transform: scale(0.97); }
@@ -235,11 +235,11 @@
       .prog-intro {
         background: var(--bg-card); border: 1px solid var(--border);
         border-radius: 16px; padding: 14px 16px; margin-bottom: 12px;
-        font-size: 13px; color: var(--text-muted); line-height: 1.5; text-align: center;
+        font-size: 1rem; color: var(--text-muted); line-height: 1.5; text-align: center;
       }
       .prog-intro strong { color: var(--text); font-weight: 700; }
       .prog-presidente {
-        font-family: "Syne", sans-serif; font-size: 10px; font-weight: 700;
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
         letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
         margin-bottom: 6px;
       }
@@ -248,8 +248,8 @@
       .prog-bloque-header {
         display: flex; align-items: center; gap: 8px;
         padding: 9px 12px; border-radius: 10px;
-        font-family: "Syne", sans-serif; font-size: 9px; font-weight: 700;
-        letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px;
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
+        letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 6px;
       }
       .bloque-verde .prog-bloque-header { background: color-mix(in srgb, var(--verde) 12%, transparent); color: var(--verde); }
       .bloque-amarillo .prog-bloque-header { background: color-mix(in srgb, var(--amarillo) 12%, transparent); color: var(--amarillo); }
@@ -259,17 +259,17 @@
         background: var(--bg-card); border: 1px solid var(--border);
         border-radius: 14px; padding: 12px 14px; margin-bottom: 6px;
       }
-      .prog-item-title { font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--text); }
+      .prog-item-title { font-size: 1rem; font-weight: 600; line-height: 1.3; color: var(--text); }
       .prog-item-meta {
         display: flex; align-items: center; justify-content: space-between;
         margin-top: 6px; gap: 8px;
       }
       .prog-item-assigned {
-        font-family: "Syne", sans-serif; font-size: 10px; font-weight: 700;
-        letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted);
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
+        letter-spacing: 0.03em; text-transform: uppercase; color: var(--text-muted);
       }
       .prog-item-time {
-        font-family: "Syne", sans-serif; font-size: 10px; font-weight: 700;
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
         color: var(--text-muted); background: var(--bg-card2);
         border: 1px solid var(--border); padding: 2px 8px; border-radius: 6px;
         white-space: nowrap; flex-shrink: 0;
@@ -279,14 +279,14 @@
         background: color-mix(in srgb, var(--rojo) 8%, transparent);
         border: 1px solid color-mix(in srgb, var(--rojo) 15%, transparent);
         border-radius: 12px; padding: 10px 14px; margin-bottom: 6px;
-        font-family: "Syne", sans-serif; font-size: 12px; font-weight: 700;
+        font-family: "Syne", sans-serif; font-size: 0.95rem; font-weight: 700;
         color: var(--rojo);
       }
 
       .prog-pie {
         background: var(--bg-card2); border: 1px solid var(--border);
         border-radius: 14px; padding: 12px 16px; margin-top: 4px;
-        font-size: 12px; color: var(--text-muted); text-align: center; line-height: 1.5;
+        font-size: 0.95rem; color: var(--text-muted); text-align: center; line-height: 1.5;
       }
       .prog-pie strong { color: var(--text); font-weight: 700; }
 
@@ -296,18 +296,20 @@
         border-radius: 18px; padding: 28px 20px; text-align: center;
       }
       .prog-asamblea-title {
-        font-family: "Syne", sans-serif; font-size: 22px; font-weight: 700;
+        font-family: "Syne", sans-serif; font-size: 1.222rem; font-weight: 700;
         color: var(--accent-warm); text-transform: uppercase; margin-bottom: 8px;
       }
-      .prog-asamblea-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+      .prog-asamblea-sub { font-size: 1rem; color: var(--text-muted); margin-bottom: 16px; }
       .prog-asamblea-note {
         background: color-mix(in srgb, var(--accent-warm) 10%, transparent);
         border: 1px solid color-mix(in srgb, var(--accent-warm) 20%, transparent);
         border-radius: 14px; padding: 14px 16px;
-        font-size: 13px; color: var(--text); line-height: 1.5;
+        font-size: 1rem; color: var(--text); line-height: 1.5;
       }
     </style>
     <style>html { background-color: #04091a; }</style>
+    <link rel="stylesheet" href="estilos.css">
+    <script>try{var ngS=parseFloat(localStorage.getItem("ng-tamano-letra"));if(ngS)document.documentElement.style.setProperty("--scale",ngS)}catch(e){}</script>
   </head>
 
   <body>
@@ -320,12 +322,12 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
           <div>
-            <div class="syne" style="font-size:15px;font-weight:700;line-height:1.1">Norte Garín</div>
-            <div style="font-size:10px;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:0.12em;margin-top:2px">Tablero Digital</div>
+            <div class="syne" style="font-size:1rem;font-weight:700;line-height:1.1">Norte Garín</div>
+            <div style="font-size:0.95rem;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing: 0.03em;margin-top:2px">Tablero Digital</div>
           </div>
         </div>
       </div>
-      <nav class="sidebar-nav">
+      <nav class="sidebar-nav"><button type="button" class="ng-theme-btn" id="btnTheme"><svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><span class="t-light">Cambiar a modo oscuro</span><span class="t-dark">Cambiar a modo claro</span></button>
         <div class="nav-section-label">Principal</div>
         <a href="index.html" class="nav-item">
           <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div> Inicio
@@ -357,48 +359,22 @@
       </nav>
     </aside>
 
-    <header>
-      <div class="hero-wrap" style="background:#12102e">
-        <!-- SVG grid pattern -->
-        <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="sgrid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M 28 0 L 0 0 0 28" fill="none" stroke="#a78bfa" stroke-width="0.3" stroke-opacity="0.18"/></pattern></defs><rect width="100%" height="100%" fill="url(#sgrid)"/></svg>
-        <!-- Concentric rings -->
-        <div style="position:absolute;right:-27px;top:50%;transform:translateY(-50%);width:180px;height:180px;border-radius:50%;border:1px solid #a78bfa1a;pointer-events:none"></div>
-        <div style="position:absolute;right:-2px;top:50%;transform:translateY(-50%);width:130px;height:130px;border-radius:50%;border:1px solid #a78bfa26;pointer-events:none"></div>
-        <div style="position:absolute;right:23px;top:50%;transform:translateY(-50%);width:80px;height:80px;border-radius:50%;border:1px solid #a78bfa33;pointer-events:none"></div>
-        <!-- Section illustration -->
-        <svg viewBox="0 0 64 64" fill="none" stroke="#a78bfa" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:22px;top:50%;transform:translateY(-50%);width:82px;height:82px;opacity:0.9;pointer-events:none">
-          <path d="M32 16C32 16 20 14 10 16V50C20 48 32 50 32 50"/>
-          <path d="M32 16C32 16 44 14 54 16V50C44 48 32 50 32 50"/>
-          <line x1="14" y1="24" x2="28" y2="24"/>
-          <line x1="14" y1="30" x2="28" y2="30"/>
-          <line x1="14" y1="36" x2="28" y2="36"/>
-          <line x1="36" y1="24" x2="50" y2="24"/>
-          <line x1="36" y1="30" x2="50" y2="30"/>
-          <line x1="36" y1="36" x2="50" y2="36"/>
-        </svg>
-        <!-- Accent bar -->
-        <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,transparent,#a78bfa80,transparent);pointer-events:none"></div>
-        <!-- Text gradient overlay -->
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 55%);pointer-events:none"></div>
-        <div class="hero-top-bar">
-          <button class="icon-btn" id="btnMenu" aria-label="Menú">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="14" y1="16" y2="16"/></svg>
-          </button>
-          <button class="icon-btn" id="btnTheme" aria-label="Cambiar tema">
-            <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          </button>
+    <header class="ng-topbar">
+      <div class="ng-wrap">
+        <div class="ng-row">
+          <button type="button" class="ng-menu-btn" id="btnMenu" aria-label="Abrir menú de secciones"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="8" y2="8"/><line x1="4" x2="14" y1="16" y2="16"/></svg><span>Menú</span></button>
+          <div class="ng-size" role="group" aria-label="Tamaño de letra"><span aria-hidden="true">Letra</span><button type="button" id="ngSizeDown" aria-label="Letra más chica">A−</button><button type="button" id="ngSizeReset" aria-label="Letra normal">A</button><button type="button" id="ngSizeUp" aria-label="Letra más grande">A+</button></div>
         </div>
-        <div class="hero-content">
-          <div class="hero-title">Vida y<br>Ministerio</div>
-          <div class="hero-sub">Norte Garín</div>
-        </div>
+        <nav class="ng-tabs" aria-label="Secciones principales"><a href="index.html">Inicio</a><a href="salidas.html">Salidas</a><a href="vida-ministerio.html" aria-current="page">Reunión</a></nav>
       </div>
     </header>
+    <div class="main-wrap ng-page-head"><div class="ng-eyebrow">Norte Garín</div><div class="hero-content">
+          <h1 class="hero-title">Vida y Ministerio</h1>
+        </div></div>
 
     <main class="main-wrap">
       <div id="notif-banner-container"></div>
-      <div id="thumbs"></div>
+      <div id="thumbs" class="ng-stack"></div>
     </main>
 
     <div id="viewer-overlay"></div>
@@ -565,57 +541,105 @@
         return out;
       }
 
+      // ── Programa con el formato de la guía oficial (mismo orden, colores e íconos de sección) ──
+      const NG_MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+      const NG_SVG = {
+        music: '<svg class="vm-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
+        gem: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 12L2 9Z"/><path d="M11 3 8 9l4 12 4-12-3-6"/><path d="M2 9h20"/></svg>',
+        wheat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V9"/><path d="M12 9c-2.5 0-4-1.8-4-4.5C10.5 4.5 12 6.3 12 9Z"/><path d="M12 9c2.5 0 4-1.8 4-4.5C13.5 4.5 12 6.3 12 9Z"/><path d="M12 14c-2.5 0-4-1.8-4-4.5 2.5 0 4 1.8 4 4.5Z"/><path d="M12 14c2.5 0 4-1.8 4-4.5-2.5 0-4 1.8-4 4.5Z"/><path d="M12 19c-2.5 0-4-1.8-4-4.5 2.5 0 4 1.8 4 4.5Z"/><path d="M12 19c2.5 0 4-1.8 4-4.5-2.5 0-4 1.8-4 4.5Z"/><path d="M12 9V2"/></svg>',
+        sheep: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.5 6.5a3 3 0 0 1 4.4-.6 3 3 0 0 1 4.2 1.4 2.8 2.8 0 0 1 1.9 4.2 2.8 2.8 0 0 1-1.6 4 3 3 0 0 1-4.3 1.2 3 3 0 0 1-4.2-.3 3 3 0 0 1-3.4-2.9 2.8 2.8 0 0 1 .4-5.3 3 3 0 0 1 2.6-1.7Z"/><ellipse cx="5" cy="10.6" rx="2.3" ry="1.7" transform="rotate(-20 5 10.6)"/><rect x="9" y="16" width="1.7" height="5" rx=".8"/><rect x="14.6" y="16" width="1.7" height="5" rx=".8"/></svg>'
+      };
+      const ngEsc = t => String(t == null ? "" : t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+      // "LUCAS SEGOVIA" → "Lucas Segovia" (solo cambia cómo se ve)
+      const ngNombre = t => String(t || "").toLocaleLowerCase("es").replace(/(^|[\s\/(\-])(\p{L})/gu, (m, a, b) => a + b.toLocaleUpperCase("es"));
+      function ngFechaSemana(lun) { // "2-8 DE NOVIEMBRE"
+        const dom = new Date(lun); dom.setDate(dom.getDate() + 6);
+        return (lun.getMonth() === dom.getMonth()
+          ? lun.getDate() + "-" + dom.getDate() + " DE " + NG_MESES[dom.getMonth()]
+          : lun.getDate() + " DE " + NG_MESES[lun.getMonth()] + " A " + dom.getDate() + " DE " + NG_MESES[dom.getMonth()]).toUpperCase();
+      }
+      function ngSeparar(el) {
+        const c = el.cloneNode(true), nombres = [];
+        c.querySelectorAll(".asignado").forEach(a => { const t = a.textContent.trim(); if (t) nombres.push(ngNombre(t)); a.remove(); });
+        return { texto: c.textContent.replace(/\s+/g, " ").replace(/[\s:]+$/, "").trim(), nombres };
+      }
+      function ngPrograma(w) {
+        if (w.dataset.book === "ASAMBLEA") {
+          return `<div class="ng-note" style="margin-top:1rem"><strong>Asamblea regional de los Testigos de Jehová.</strong><br>No habrá reunión en el Salón del Reino.<br>Tema: <strong>"Felices para siempre"</strong></div>`;
+        }
+        let out = "";
+        const pres = w.querySelector(".presidente-en-pagina");
+        if (pres && !/^\s*Presidente:/i.test(pres.textContent)) out += `<p class="ng-note" style="margin-top:1rem">${ngEsc(pres.textContent.trim())}</p>`;
+        const inicio = w.querySelector(".inicio-programa");
+        if (inicio) {
+          const p = ngSeparar(inicio);
+          let linea = p.texto;
+          if (/canci[oó]n/i.test(linea) && !/introducci/i.test(linea)) linea += " | Palabras de introducción (1 min.)";
+          out += `<div class="vm-open">${NG_SVG.music}<div>${ngEsc(linea)}${p.nombres.length ? `<span class="sub">Oración: <strong>${ngEsc(p.nombres.join(", "))}</strong></span>` : ""}</div></div>`;
+        }
+        const lectorEl = w.querySelector(".lector-estudio");
+        const lector = lectorEl ? lectorEl.textContent.trim() : "";
+        let lectorPuesto = false;
+        w.querySelectorAll(".bloque").forEach(bloque => {
+          const cls = bloque.classList.contains("verde") ? "tesoros" : bloque.classList.contains("amarillo") ? "maestros" : "vida";
+          const ico = cls === "tesoros" ? NG_SVG.gem : cls === "maestros" ? NG_SVG.wheat : NG_SVG.sheep;
+          const h3 = bloque.querySelector("h3");
+          out += `<div class="vm-sec ${cls}"><span class="vm-ico">${ico}</span><h4>${ngEsc(h3 ? h3.textContent.trim().toLocaleUpperCase("es") : "")}</h4></div>`;
+          bloque.querySelectorAll(".section").forEach(sec => {
+            const h4 = sec.querySelector("h4");
+            const titulo = h4 ? h4.textContent.trim() : "";
+            if (/^Canci[oó]n\s+\d+/i.test(titulo)) { out += `<div class="vm-song">${NG_SVG.music}<div>${ngEsc(titulo)}</div></div>`; return; }
+            const a = sec.querySelector(".asignado"), du = sec.querySelector(".duration");
+            const quien = a && a.textContent.trim() ? ngNombre(a.textContent.trim()) : "";
+            const estudio = /estudio b[ií]blico/i.test(titulo);
+            out += `<div class="vm-part ${cls}"><div class="ti">${ngEsc(titulo)}</div><div class="det">
+              ${du ? `<div class="dur">${ngEsc(du.textContent.trim())}</div>` : ""}
+              ${quien ? `<div class="name">${estudio ? '<span class="ng-label">Conductor:</span> ' : ""}${ngEsc(quien)}</div>` : ""}
+              ${estudio && lector ? `<div class="name"><span class="ng-label">Lector:</span> ${ngEsc(ngNombre(lector))}</div>` : ""}
+            </div></div>`;
+            if (estudio) lectorPuesto = true;
+          });
+          if (cls === "vida" && lector && !lectorPuesto) out += `<div class="vm-part vida"><div class="det"><div class="name"><span class="ng-label">Lector del estudio:</span> ${ngEsc(ngNombre(lector))}</div></div></div>`;
+        });
+        const pie = w.querySelector(".pie");
+        if (pie) {
+          const p = ngSeparar(pie);
+          const linea = p.texto.replace(/\(3 mins\)/i, "(3 mins.)").replace(/\s*y oraci[oó]n final$/i, " y oración");
+          out += `<div class="vm-close">${NG_SVG.music}<div>${ngEsc(linea)}${p.nombres.length ? `<span class="sub">Oración: <strong>${ngEsc(p.nombres.join(", "))}</strong></span>` : ""}</div></div>`;
+        }
+        return out;
+      }
+
       function render() {
         hydrateTemplateFromData();
-
         const thumbs = document.getElementById("thumbs");
         const tmpl = document.getElementById("weeksTmpl");
         const allWeeks = Array.from(tmpl.content.querySelectorAll("article.page"));
-
         const hoy = new Date();
         hoy.setHours(0,0,0,0);
         const diaS = hoy.getDay();
         const diff = hoy.getDate() - diaS + (diaS === 0 ? -6 : 1);
         const lunesActual = new Date(new Date().setDate(diff));
         lunesActual.setHours(0,0,0,0);
-
         filteredWeeks = allWeeks.filter(w => new Date(w.dataset.key + "T00:00:00") >= lunesActual);
-
-        const accents = ["accent-verde", "accent-amarillo", "accent-rojo"];
-
-        thumbs.innerHTML = "";
-        filteredWeeks.forEach((w, i) => {
-          const fechaSemana = new Date(w.dataset.key + "T00:00:00");
-          const isCurrent = fechaSemana.getTime() === lunesActual.getTime();
-          const isAsamblea = w.dataset.book === "ASAMBLEA";
-
+        const hayActual = filteredWeeks.some(w => new Date(w.dataset.key + "T00:00:00").getTime() === lunesActual.getTime());
+        thumbs.innerHTML = filteredWeeks.map((w, i) => {
+          const lunes = new Date(w.dataset.key + "T00:00:00");
+          const isCurrent = lunes.getTime() === lunesActual.getTime();
           const pres = w.querySelector(".presidente-en-pagina");
-          const sub = pres ? pres.textContent.replace("Presidente:", "").trim() : "";
-
-          const card = document.createElement("div");
-          card.className = `week-card ${isCurrent ? "current" : ""}`;
-          card.style.animationDelay = `${i * 0.05}s`;
-
-          const accentClass = isAsamblea ? "accent-special" : accents[i % 3];
-
-          card.innerHTML = `
-            <div class="week-card-accent ${accentClass}"></div>
-            <div class="week-card-inner">
-              ${isCurrent ? `<span class="current-badge">● Semana actual</span>` : ""}
-              <div class="week-title">${w.dataset.title}</div>
-              <div class="week-book">${w.dataset.book}</div>
-              ${sub ? `<div class="week-sub">Preside: ${sub}</div>` : ""}
-              <div class="week-cta">
-                Ver programa
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-              </div>
-            </div>`;
-
-          card.onclick = () => openViewer(i);
-          thumbs.appendChild(card);
-        });
+          const sub = pres && /^\s*Presidente:/i.test(pres.textContent) ? pres.textContent.replace(/Presidente:/i, "").trim() : "";
+          const abierta = isCurrent || (!hayActual && i === 0);
+          return `<details class="ng-vm"${abierta ? " open" : ""}>
+            <summary><div>
+              ${isCurrent ? '<span class="ng-pill">ESTA SEMANA</span>' : ""}
+              <div class="vm-date">${ngEsc(ngFechaSemana(lunes))}</div>
+              <div class="vm-book">${ngEsc((w.dataset.book || "").toLocaleUpperCase("es"))}</div>
+              ${sub ? `<div><span class="ng-label">Presidente:</span> ${ngEsc(ngNombre(sub))}</div>` : ""}
+            </div><span class="ng-toggle"><span class="c">Ver ▾</span><span class="o">Cerrar ▴</span></span></summary>
+            <div class="vm-body">${ngPrograma(w)}</div>
+          </details>`;
+        }).join("") || '<p class="ng-note">Todavía no hay programas cargados.</p>';
       }
-
       render();
     </script>
     <script src="grupos-data.js"></script>
@@ -628,5 +652,6 @@
       });
     }
   </script>
+    <script src="accesibilidad.js"></script>
   </body>
 </html>

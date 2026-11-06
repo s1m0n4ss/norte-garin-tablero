@@ -582,8 +582,8 @@
             <div class="notif-preview-item" style="border-color:${a.color}20;background:${a.color}10">
               <span>${a.icono}</span>
               <div>
-                <div style="font-weight:600;font-size:13px">${a.rol}</div>
-                <div style="color:var(--text-muted);font-size:11px">${a.detalle}</div>
+                <div style="font-weight:600;font-size:1rem">${a.rol}</div>
+                <div style="color:var(--text-muted);font-size:0.95rem">${a.detalle}</div>
               </div>
             </div>`
             )
@@ -643,14 +643,14 @@
       .notif-banner { transition:opacity 0.25s,transform 0.25s; }
       .notif-banner-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
       .notif-banner-title {
-        font-family:"Syne",sans-serif; font-size:11px; font-weight:700;
+        font-family:"Syne",sans-serif; font-size:0.95rem; font-weight:700;
         letter-spacing:0.1em; text-transform:uppercase;
         color:var(--accent,#2d6a4f);
         display:flex; align-items:center; gap:6px;
       }
       .notif-banner-close {
         background:var(--bg-card2,#f0ede8); border:none; cursor:pointer;
-        width:26px; height:26px; border-radius:8px; font-size:11px;
+        width:26px; height:26px; border-radius:8px; font-size:0.95rem;
         color:var(--text-muted,#8a8075); display:flex; align-items:center; justify-content:center;
       }
       .notif-item {
@@ -660,14 +660,14 @@
         padding-left:12px;
       }
       .notif-item:last-child { margin-bottom:0; }
-      .notif-item-icon { font-size:16px; flex-shrink:0; margin-top:1px; }
-      .notif-item-rol { font-size:13px; font-weight:600; line-height:1.3; }
-      .notif-item-detalle { font-size:11px; color:var(--text-muted,#8a8075); margin-top:2px; }
+      .notif-item-icon { font-size:1rem; flex-shrink:0; margin-top:1px; }
+      .notif-item-rol { font-size:1rem; font-weight:600; line-height:1.3; }
+      .notif-item-detalle { font-size:0.95rem; color:var(--text-muted,#8a8075); margin-top:2px; }
 
       #notif-fab {
         position:fixed; bottom:max(28px,env(safe-area-inset-bottom,28px)); right:18px;
         width:52px; height:52px; border-radius:16px;
-        background:var(--accent,#2d6a4f); color:#fff;
+        background:var(--accent,#2d6a4f); color:var(--on-accent,#fff);
         border:none; cursor:pointer; z-index:150;
         display:flex; align-items:center; justify-content:center;
         box-shadow:0 6px 20px color-mix(in srgb,var(--accent,#2d6a4f) 35%,transparent);
@@ -677,7 +677,7 @@
       #notif-fab .notif-badge {
         position:absolute; top:-5px; right:-5px;
         background:#e74c3c; color:#fff;
-        font-size:10px; font-weight:700; font-family:"Syne",sans-serif;
+        font-size:0.95rem; font-weight:700; font-family:"Syne",sans-serif;
         width:18px; height:18px; border-radius:50%;
         display:flex; align-items:center; justify-content:center;
         border:2px solid var(--bg,#f7f5f0);
@@ -705,25 +705,25 @@
         display:flex; align-items:center; justify-content:space-between;
         padding:0 20px 14px; border-bottom:1px solid var(--border,rgba(26,23,20,0.09));
       }
-      .notif-modal-title { font-family:"Syne",sans-serif; font-size:17px; font-weight:700; }
+      .notif-modal-title { font-family:"Syne",sans-serif; font-size:1rem; font-weight:700; }
       .notif-modal-close-btn {
         background:var(--bg-card2,#f0ede8); border:none; cursor:pointer;
-        width:32px; height:32px; border-radius:10px; font-size:13px;
+        width:32px; height:32px; border-radius:10px; font-size:1rem;
         color:var(--text-muted,#8a8075); display:flex; align-items:center; justify-content:center;
       }
       .notif-modal-body { padding:16px 20px; }
       .notif-form-group { margin-bottom:18px; }
       .notif-form-label {
-        font-family:"Syne",sans-serif; font-size:11px; font-weight:700;
+        font-family:"Syne",sans-serif; font-size:0.95rem; font-weight:700;
         text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted,#8a8075);
         display:block; margin-bottom:4px;
       }
-      .notif-form-hint { font-size:12.5px; color:var(--text-muted,#8a8075); margin:0 0 8px; }
+      .notif-form-hint { font-size:1rem; color:var(--text-muted,#8a8075); margin:0 0 8px; }
       .notif-form-select {
         width:100%; padding:12px 14px; border-radius:12px;
         border:1px solid var(--border,rgba(26,23,20,0.12));
         background:var(--bg-card2,#f0ede8); color:var(--text,#1a1714);
-        font-family:"DM Sans",sans-serif; font-size:14px;
+        font-family:"DM Sans",sans-serif; font-size:1rem;
         appearance:none; -webkit-appearance:none;
         background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8075' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
         background-repeat:no-repeat; background-position:right 14px center;
@@ -733,30 +733,30 @@
         width:100%; padding:12px 16px; border-radius:12px;
         border:1px solid var(--border,rgba(26,23,20,0.12));
         background:var(--bg-card2,#f0ede8); color:var(--text,#1a1714);
-        font-family:"DM Sans",sans-serif; font-size:14px; font-weight:500;
+        font-family:"DM Sans",sans-serif; font-size:1rem; font-weight:500;
         cursor:pointer; text-align:left;
       }
       .notif-save-btn {
         width:100%; padding:15px; border-radius:14px; border:none;
-        background:var(--accent,#2d6a4f); color:#fff;
-        font-family:"Syne",sans-serif; font-size:14px; font-weight:700;
+        background:var(--accent,#2d6a4f); color:var(--on-accent,#fff);
+        font-family:"Syne",sans-serif; font-size:1rem; font-weight:700;
         cursor:pointer; margin-top:4px; margin-bottom:16px;
         transition:opacity 0.15s;
       }
       .notif-save-btn:active { opacity:0.85; }
       .notif-preview-title {
-        font-family:"Syne",sans-serif; font-size:11px; font-weight:700;
+        font-family:"Syne",sans-serif; font-size:0.95rem; font-weight:700;
         text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted,#8a8075);
         margin-bottom:8px;
       }
       .notif-preview-item {
         display:flex; align-items:flex-start; gap:10px;
         padding:10px 12px; border-radius:12px;
-        border:1px solid transparent; margin-bottom:6px; font-size:13px;
+        border:1px solid transparent; margin-bottom:6px; font-size:1rem;
       }
       .notif-preview-empty {
         text-align:center; color:var(--text-muted,#8a8075);
-        font-size:13px; padding:12px 0;
+        font-size:1rem; padding:12px 0;
       }
     `;
     document.head.appendChild(style);

@@ -7,21 +7,23 @@
 <title>Territorios · Congregación Norte Garín</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://unpkg.com/leaflet-rotate@0.2.8/dist/leaflet-rotate-src.js"></script>
 <style>
   :root{
-    --bg:#0d1117; --panel:#161b22; --panel2:#21262d;
-    --txt:#e6edf3; --muted:#8b949e; --line:#30363d;
-    --accent:#2f9e6f; --accent2:#3fb950; --gold:#d4a373;
+    /* Paleta B · Verde bosque (misma que el resto del tablero, ver estilos.css) */
+    --bg:#f6f0e4; --panel:#fffdf8; --panel2:#ede3cf;
+    --txt:#1b211c; --muted:#46463c; --line:#cbbd9f;
+    --accent:#0f4c3a; --accent2:#1f6b52; --gold:#d4a373;
     --plaza:#166534;
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-  html,body{height:100%;font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--txt);overflow:hidden}
-  #map{position:absolute;top:0;left:0;right:340px;bottom:0;background:#0b1220}
-  .leaflet-container{background:#0b1220;font-family:'Outfit',sans-serif}
+  html{font-size:112.5%}
+  html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--txt);overflow:hidden}
+  #map{position:absolute;top:0;left:0;right:340px;bottom:0;background:#e9e3d6}
+  .leaflet-container{background:#e9e3d6;font-family:'Inter',system-ui,sans-serif}
   .leaflet-top.leaflet-left{top:72px}
   .leaflet-control-zoom a{background:var(--panel)!important;color:var(--txt)!important;border-color:var(--line)!important}
 
@@ -29,7 +31,7 @@
   .topbar{
     position:absolute;top:0;left:0;right:340px;z-index:1000;
     display:flex;align-items:center;gap:14px;padding:16px 20px;
-    background:linear-gradient(180deg,rgba(13,17,23,.92),rgba(13,17,23,0));
+    background:linear-gradient(180deg,rgba(246,240,228,.96),rgba(246,240,228,0));
     pointer-events:none;
   }
   .crest{
@@ -37,10 +39,10 @@
     background:linear-gradient(135deg,var(--accent),#1c6e4b);
     display:flex;align-items:center;justify-content:center;
     box-shadow:0 4px 14px rgba(47,158,111,.4);
-    font-size:22px;
+    font-size:1.222rem;
   }
-  .topbar h1{font-family:'Fraunces',serif;font-size:21px;font-weight:600;letter-spacing:.2px;line-height:1.1}
-  .topbar .sub{font-size:12px;color:var(--muted);font-weight:500;margin-top:2px;letter-spacing:.3px}
+  .topbar h1{font-family:'Inter',system-ui,sans-serif;font-size:1.167rem;font-weight:600;letter-spacing:.2px;line-height:1.1}
+  .topbar .sub{font-size:0.95rem;color:var(--muted);font-weight:500;margin-top:2px;letter-spacing:.2px}
 
   /* ===== Panel lateral ===== */
   .side{
@@ -50,16 +52,16 @@
     box-shadow:-4px 0 24px rgba(0,0,0,.3)
   }
   .side-head{padding:20px 20px 16px;border-bottom:1px solid var(--line)}
-  .side-head .title{font-family:'Fraunces',serif;font-size:19px;font-weight:600}
+  .side-head .title{font-family:'Inter',system-ui,sans-serif;font-size:1.056rem;font-weight:600}
   .side-head .meta{display:flex;gap:8px;margin-top:12px}
   .chip{flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;text-align:center}
-  .chip .num{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--accent2);line-height:1}
-  .chip .lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-top:4px}
+  .chip .num{font-family:'Inter',system-ui,sans-serif;font-size:1.222rem;font-weight:700;color:var(--accent2);line-height:1}
+  .chip .lbl{font-size:0.95rem;color:var(--muted);text-transform:uppercase;letter-spacing:.2px;margin-top:4px}
 
   .search{padding:14px 20px;border-bottom:1px solid var(--line)}
   .search input{
     width:100%;background:var(--bg);border:1px solid var(--line);color:var(--txt);
-    padding:11px 14px;border-radius:10px;font-size:14px;font-family:inherit;outline:none;transition:.15s
+    padding:11px 14px;border-radius:10px;font-size:1rem;font-family:inherit;outline:none;transition:.15s
   }
   .search input:focus{border-color:var(--accent)}
   .search input::placeholder{color:var(--muted)}
@@ -73,10 +75,10 @@
   }
   .titem:hover{background:var(--panel2);border-color:var(--line)}
   .titem.sel{background:rgba(47,158,111,.14);border-color:var(--accent)}
-  .titem .sw{width:30px;height:30px;border-radius:8px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#0d1117}
-  .titem .nm{font-size:14px;font-weight:500}
-  .titem .nm small{display:block;color:var(--muted);font-size:11px;font-weight:400}
-  .titem.plaza .sw{background:var(--plaza)!important;color:#fff;font-size:15px}
+  .titem .sw{width:30px;height:30px;border-radius:8px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;color:#0d1117}
+  .titem .nm{font-size:1rem;font-weight:500}
+  .titem .nm small{display:block;color:var(--muted);font-size:0.95rem;font-weight:400}
+  .titem.plaza .sw{background:var(--plaza)!important;color:#fff;font-size:1rem}
 
   /* ===== Ficha inferior (bottom sheet) ===== */
   .sheet{
@@ -89,21 +91,21 @@
   .sheet.open{transform:translateY(0)}
   .grip{width:44px;height:5px;background:var(--line);border-radius:3px;margin:11px auto 16px}
   .sheet-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
-  .terr-num{width:52px;height:52px;border-radius:14px;flex:none;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:23px;font-weight:700;color:#0d1117;box-shadow:0 4px 12px rgba(0,0,0,.3)}
-  .sheet-head h2{font-family:'Fraunces',serif;font-size:22px;font-weight:600}
-  .sheet-head .tag{font-size:12px;color:var(--muted);margin-top:2px}
-  .close-x{margin-left:auto;background:var(--panel2);border:1px solid var(--line);color:var(--txt);width:36px;height:36px;border-radius:10px;font-size:16px;cursor:pointer;transition:.15s}
+  .terr-num{width:52px;height:52px;border-radius:14px;flex:none;display:flex;align-items:center;justify-content:center;font-family:'Inter',system-ui,sans-serif;font-size:1.278rem;font-weight:700;color:#0d1117;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+  .sheet-head h2{font-family:'Inter',system-ui,sans-serif;font-size:1.222rem;font-weight:600}
+  .sheet-head .tag{font-size:0.95rem;color:var(--muted);margin-top:2px}
+  .close-x{margin-left:auto;background:var(--panel2);border:1px solid var(--line);color:var(--txt);width:36px;height:36px;border-radius:10px;font-size:1rem;cursor:pointer;transition:.15s}
   .close-x:hover{background:var(--line)}
 
   .limits{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:6px 16px;margin-bottom:16px}
-  .lrow{display:flex;gap:10px;font-size:14px;padding:11px 0;border-bottom:1px solid var(--panel2);align-items:center}
+  .lrow{display:flex;gap:10px;font-size:1rem;padding:11px 0;border-bottom:1px solid var(--panel2);align-items:center}
   .lrow:last-child{border-bottom:none}
-  .lk{color:var(--accent2);font-weight:600;width:58px;flex:none;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+  .lk{color:var(--accent2);font-weight:600;width:58px;flex:none;font-size:0.95rem;text-transform:uppercase;letter-spacing:.2px}
   .lv{color:var(--txt)}
 
   .nav-btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;
     background:linear-gradient(135deg,var(--accent2),var(--accent));color:#04231a;border:none;
-    padding:15px;border-radius:13px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;
+    padding:15px;border-radius:13px;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;
     box-shadow:0 4px 14px rgba(47,158,111,.35);transition:.15s;font-family:inherit}
   .nav-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(47,158,111,.45)}
   .nav-btn2{background:var(--panel2);color:var(--txt);box-shadow:none;border:1px solid var(--line);margin-top:9px;width:100%;font-family:inherit}
@@ -112,48 +114,48 @@
   .revisita-hint{
     display:none;position:absolute;top:74px;left:50%;transform:translateX(-50%);z-index:1500;
     background:#d4a373;color:#1a1205;border:none;border-radius:24px;padding:12px 20px;
-    font-size:14px;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.45);font-family:inherit;
+    font-size:1rem;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.45);font-family:inherit;
     align-items:center;gap:10px;max-width:90vw
   }
   .revisita-hint.show{display:flex}
-  .revisita-hint button{background:rgba(0,0,0,.18);border:none;color:#1a1205;border-radius:50%;width:24px;height:24px;font-size:13px;cursor:pointer;flex:none}
+  .revisita-hint button{background:rgba(0,0,0,.18);border:none;color:#1a1205;border-radius:50%;width:24px;height:24px;font-size:1rem;cursor:pointer;flex:none}
 
   /* Menú de opciones al tocar un punto */
   .pm-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.55);align-items:flex-end;justify-content:center;padding:0}
   .pm-overlay.show{display:flex}
   .pm-box{background:var(--panel);border:1px solid var(--line);border-radius:20px 20px 0 0;width:100%;max-width:520px;padding:22px 18px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px rgba(0,0,0,.5);animation:pmUp .25s ease}
   @keyframes pmUp{from{transform:translateY(30px);opacity:.6}to{transform:translateY(0);opacity:1}}
-  .pm-title{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:16px;text-align:center}
+  .pm-title{font-family:'Inter',system-ui,sans-serif;font-size:1rem;font-weight:600;margin-bottom:16px;text-align:center}
   .pm-opt{display:flex;align-items:center;gap:13px;width:100%;background:var(--bg);border:1px solid var(--line);color:var(--txt);
-    padding:15px 16px;border-radius:13px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;margin-bottom:10px;text-align:left;transition:.15s}
+    padding:15px 16px;border-radius:13px;font-size:1rem;font-weight:600;cursor:pointer;font-family:inherit;margin-bottom:10px;text-align:left;transition:.15s}
   .pm-opt:hover{background:var(--panel2)}
-  .pm-opt span{font-size:22px;flex:none}
-  .pm-opt small{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:2px}
+  .pm-opt span{font-size:1.222rem;flex:none}
+  .pm-opt small{display:block;font-size:0.95rem;color:var(--muted);font-weight:400;margin-top:2px}
   .pm-opt.nv{border-color:rgba(240,168,104,.4)}
   .pm-opt.nv span{filter:none}
-  .pm-cancel{width:100%;background:none;border:none;color:var(--muted);padding:13px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:2px}
+  .pm-cancel{width:100%;background:none;border:none;color:var(--muted);padding:13px;font-size:1rem;font-weight:600;cursor:pointer;font-family:inherit;margin-top:2px}
 
   .novisitar{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:16px}
   .nv-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-  .nv-head span{font-size:13px;font-weight:600;color:#f0a868}
-  .nv-add{background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:6px 11px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+  .nv-head span{font-size:1rem;font-weight:600;color:#f0a868}
+  .nv-add{background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:6px 11px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
   .nv-add:hover{background:var(--line)}
   .nv-lista{display:flex;flex-direction:column;gap:7px}
-  .nv-empty{font-size:12px;color:var(--muted);font-style:italic;padding:4px 0}
+  .nv-empty{font-size:0.95rem;color:var(--muted);font-style:italic;padding:4px 0}
   .nv-item{display:flex;align-items:center;gap:9px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:9px 11px}
   .nv-item .ic{color:#f0a868;flex:none}
-  .nv-item .tx{flex:1;font-size:13px}
-  .nv-item .rm{background:none;border:none;color:#f85149;cursor:pointer;font-size:15px;flex:none;padding:0 2px}
+  .nv-item .tx{flex:1;font-size:1rem}
+  .nv-item .rm{background:none;border:none;color:#f85149;cursor:pointer;font-size:1rem;flex:none;padding:0 2px}
 
   /* Etiquetas en el mapa */
-  .terr-label{font-weight:700;font-size:15px;color:#0d1117;font-family:'Outfit',sans-serif;
+  .terr-label{font-weight:700;font-size:1rem;color:#0d1117;font-family:'Inter',system-ui,sans-serif;
     background:rgba(255,255,255,.88);border:1.5px solid rgba(13,17,23,.3);border-radius:8px;
     width:28px!important;height:28px!important;text-align:center;line-height:26px;
     box-shadow:0 1px 4px rgba(0,0,0,.3)}
   .terr-label span{display:block;width:100%;height:100%}
-  .clabel{background:#1d4ed8;color:#fff;border:2px solid rgba(255,255,255,.25);box-shadow:0 2px 8px rgba(0,0,0,.5);font-weight:700;font-size:11px;padding:3px 9px;border-radius:6px;font-family:'Outfit',sans-serif}
-  .mz-letra{background:#7c3aed;color:#fff;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;border:1.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);font-family:'Outfit',sans-serif}
-  .plaza-label{background:var(--plaza);color:#fff;border:none;box-shadow:0 2px 8px rgba(0,0,0,.5);font-weight:600;font-size:10px;padding:3px 8px;border-radius:6px;font-family:'Outfit',sans-serif}
+  .clabel{background:#1d4ed8;color:#fff;border:2px solid rgba(255,255,255,.25);box-shadow:0 2px 8px rgba(0,0,0,.5);font-weight:700;font-size:0.95rem;padding:3px 9px;border-radius:6px;font-family:'Inter',system-ui,sans-serif}
+  .mz-letra{background:#7c3aed;color:#fff;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;border:1.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);font-family:'Inter',system-ui,sans-serif}
+  .plaza-label{background:var(--plaza);color:#fff;border:none;box-shadow:0 2px 8px rgba(0,0,0,.5);font-weight:600;font-size:0.95rem;padding:3px 8px;border-radius:6px;font-family:'Inter',system-ui,sans-serif}
 
   /* Pin del Salón del Reino */
   .salon-pin{position:relative;width:34px;height:42px}
@@ -161,10 +163,10 @@
     background:linear-gradient(135deg,#d4a373,#b3814f);border:2px solid #fff;
     display:flex;align-items:center;justify-content:center;
     box-shadow:0 3px 10px rgba(0,0,0,.5)}
-  .salon-dot::before{content:"✦";transform:rotate(45deg);color:#fff;font-size:16px;font-weight:700}
+  .salon-dot::before{content:"✦";transform:rotate(45deg);color:#fff;font-size:1rem;font-weight:700}
 
   /* Leyenda mini */
-  .legend{position:absolute;left:16px;bottom:20px;z-index:1000;background:rgba(22,27,34,.92);border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-size:12px;display:flex;flex-direction:column;gap:7px;backdrop-filter:blur(8px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+  .legend{position:absolute;left:16px;bottom:20px;z-index:1000;background:rgba(255,253,248,.96);border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-size:0.95rem;display:flex;flex-direction:column;gap:7px;backdrop-filter:blur(8px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
   .legend .row{display:flex;align-items:center;gap:8px;color:var(--muted)}
   .legend .ln{width:18px;height:4px;border-radius:2px;display:inline-block}
   .legend .sq{width:13px;height:13px;border-radius:4px;display:inline-block}
@@ -175,17 +177,17 @@
   /* Botón Ver todos (aparece cuando hay un territorio resaltado) */
   .fab-clear{
     display:none;position:absolute;top:74px;right:16px;z-index:1160;
-    background:rgba(22,27,34,.95);color:var(--txt);border:1px solid var(--line);
-    border-radius:24px;padding:10px 16px;font-size:13px;font-weight:600;
+    background:rgba(255,253,248,.97);color:var(--txt);border:1px solid var(--line);
+    border-radius:24px;padding:10px 16px;font-size:1rem;font-weight:600;
     cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.4);backdrop-filter:blur(6px)
   }
   .fab-clear.show{display:block}
 
   @media(max-width:820px){
     #map{right:0;bottom:0}
-    .topbar{right:0;padding:12px 16px;background:linear-gradient(180deg,rgba(13,17,23,.96),rgba(13,17,23,.55) 70%,rgba(13,17,23,0))}
-    .topbar h1{font-size:18px}
-    .crest{width:38px;height:38px;font-size:19px}
+    .topbar{right:0;padding:12px 16px;background:linear-gradient(180deg,rgba(246,240,228,.98),rgba(246,240,228,.7) 70%,rgba(246,240,228,0))}
+    .topbar h1{font-size:1rem}
+    .crest{width:38px;height:38px;font-size:1.056rem}
 
     /* Panel lateral -> hoja deslizable desde abajo */
     .side{
@@ -200,35 +202,42 @@
     .side-head{padding-top:8px;position:relative}
     .side-head::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:44px;height:5px;background:var(--line);border-radius:3px}
     .side-head .title{margin-top:10px}
-    .side-close{position:absolute;top:14px;right:18px;background:var(--panel2);border:1px solid var(--line);color:var(--txt);width:34px;height:34px;border-radius:9px;font-size:15px;cursor:pointer}
+    .side-close{position:absolute;top:14px;right:18px;background:var(--panel2);border:1px solid var(--line);color:var(--txt);width:34px;height:34px;border-radius:9px;font-size:1rem;cursor:pointer}
 
     /* Botón flotante */
     .fab-list{
       display:flex;align-items:center;gap:9px;
       position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:1150;
       background:linear-gradient(135deg,var(--accent2),var(--accent));color:#04231a;
-      border:none;border-radius:30px;padding:14px 22px;font-size:15px;font-weight:700;
+      border:none;border-radius:30px;padding:14px 22px;font-size:1rem;font-weight:700;
       box-shadow:0 6px 20px rgba(47,158,111,.5);cursor:pointer;font-family:inherit
     }
-    .legend{bottom:88px;left:12px;font-size:11px;padding:9px 11px}
+    .legend{bottom:88px;left:12px;font-size:0.95rem;padding:9px 11px}
 
     /* Ficha de territorio a pantalla completa de ancho */
     .sheet{right:0;max-height:78vh;z-index:1400}
-    .terr-num{width:48px;height:48px;font-size:21px}
-    .sheet-head h2{font-size:20px}
+    .terr-num{width:48px;height:48px;font-size:1.167rem}
+    .sheet-head h2{font-size:1.111rem}
 
     /* Toques más grandes en la lista */
     .titem{padding:13px 12px}
-    .titem .sw{width:36px;height:36px;font-size:15px}
-    .titem .nm{font-size:15px}
-    .nav-btn{padding:17px;font-size:16px}
-    .nv-add{padding:9px 14px;font-size:13px}
+    .titem .sw{width:36px;height:36px;font-size:1rem}
+    .titem .nm{font-size:1rem}
+    .nav-btn{padding:17px;font-size:1rem}
+    .nv-add{padding:9px 14px;font-size:1rem}
     .list{padding:8px 12px 30px}
   }
 
   /* Ocultar botón cerrar del panel en escritorio */
   .side-close{display:none}
   @media(max-width:820px){ .side-close{display:block} }
+  /* Áreas táctiles de 48px como mínimo */
+  button, .fab-list, .pm-opt, .titem { min-height:48px; }
+  button { min-width:48px; }
+  .crest { width:48px !important; height:48px !important; }
+  .side-close, .pm-cancel, .revisita-hint button { min-width:48px; min-height:48px; }
+  :focus-visible { outline:3px solid #8a3b12; outline-offset:3px; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation:none !important; transition:none !important; } }
 </style>
 </head>
 <body>
@@ -251,7 +260,7 @@
 <button id="verTodos" class="fab-clear" onclick="verTodos()">↺ Ver todos</button>
 
 <div class="topbar">
-  <a class="crest" href="/" title="Volver al tablero" style="color:inherit;text-decoration:none">✦</a>
+  <a class="crest" href="/" title="Volver al tablero" aria-label="Volver al tablero" style="color:#fff;text-decoration:none">✦</a>
   <div>
     <h1>Mapa de Territorios</h1>
     <div class="sub">CONGREGACIÓN NORTE GARÍN</div>
@@ -1091,7 +1100,7 @@ if(Object.keys(layers).length){
 const btnNorte=L.control({position:'topleft'});
 btnNorte.onAdd=function(){
   const d=L.DomUtil.create('div','leaflet-bar');
-  d.innerHTML='<a href="#" title="Orientar al Norte" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;font-size:18px;text-decoration:none">🧭</a>';
+  d.innerHTML='<a href="#" title="Orientar al Norte" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;font-size:1rem;text-decoration:none">🧭</a>';
   L.DomEvent.disableClickPropagation(d);
   d.onclick=function(e){ e.preventDefault(); if(map.setBearing) map.setBearing(0); };
   return d;

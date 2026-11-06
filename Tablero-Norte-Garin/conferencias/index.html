@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#04091a">
+    <meta name="theme-color" content="#0f4c3a">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -40,14 +40,15 @@
 
     <style>
       :root {
-        --bg-main: #f1f5f9;
-        --bg-card: #ffffff;
-        --border: rgba(0, 0, 0, 0.08);
-        --accent: #10b981;
-        --accent-soft: rgba(16, 185, 129, 0.12);
-        --text-primary: #0f172a;
-        --text-muted: #64748b;
-        --header-bg: rgba(241, 245, 249, 0.78);
+        /* Paleta B · Verde bosque (igual que estilos.css) */
+        --bg-main: #f6f0e4;
+        --bg-card: #fffdf8;
+        --border: rgba(27, 33, 28, 0.2);
+        --accent: #0f4c3a;
+        --accent-soft: rgba(15, 76, 58, 0.12);
+        --text-primary: #1b211c;
+        --text-muted: #46463c;
+        --header-bg: rgba(246, 240, 228, 0.92);
         --btn-bg: rgba(255, 255, 255, 0.85);
         --shadow: 0 20px 50px rgba(2, 6, 23, 0.12);
         --btn-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
@@ -55,14 +56,14 @@
       }
 
       html.dark {
-        --bg-main: #0a0f1d;
-        --bg-card: #121a2a;
-        --border: rgba(255, 255, 255, 0.06);
-        --accent: #34d399;
-        --accent-soft: rgba(16, 185, 129, 0.1);
-        --text-primary: #f8fafc;
-        --text-muted: #94a3b8;
-        --header-bg: rgba(10, 15, 29, 0.75);
+        --bg-main: #111a15;
+        --bg-card: #1a261f;
+        --border: rgba(245, 240, 229, 0.2);
+        --accent: #86d6b3;
+        --accent-soft: rgba(134, 214, 179, 0.12);
+        --text-primary: #f5f0e5;
+        --text-muted: #d6cfbd;
+        --header-bg: rgba(17, 26, 21, 0.92);
         --btn-bg: rgba(18, 26, 42, 0.78);
         --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
         --btn-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
@@ -195,7 +196,7 @@
         line-height: 1.2;
       }
       .details {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
         color: var(--text-muted);
         line-height: 1.5;
       }
@@ -203,13 +204,13 @@
         color: var(--accent);
         font-weight: 800;
         text-transform: uppercase;
-        font-size: 0.7rem;
+        font-size: 0.95rem;
         margin-right: 4px;
       }
       .badge-next {
-        background: #ef4444;
+        background: #b91c1c;
         color: white;
-        font-size: 0.6rem;
+        font-size: 0.95rem;
         font-weight: 900;
         padding: 2px 8px;
         border-radius: 6px;
@@ -221,19 +222,28 @@
       .salen-title {
         font-weight: 900;
         color: var(--accent);
-        font-size: 0.8rem;
+        font-size: 0.95rem;
         padding: 0 1.5rem;
         text-transform: uppercase;
         letter-spacing: 0.1em;
       }
       .salen-item {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
         padding: 10px 15px;
         background: var(--card-bg);
         border-radius: 15px;
         border: 1px solid var(--border);
         margin: 0.5rem 1rem;
       }
+          /* Legibilidad: base 18px, nada menor a 16px, botones de 48px */
+      html { font-size: 112.5%; }
+      .text-xs, .text-\[10px\], .text-sm { font-size: 0.95rem !important; line-height: 1.45 !important; }
+      .tracking-widest, .tracking-wider { letter-spacing: 0.04em !important; }
+      .btn-header { min-height: 48px !important; min-width: 48px !important; }
+      .hero-banner h1 { color: #fff !important; }
+      .hero-banner p { color: #9fe0c4 !important; }
+      :focus-visible { outline: 3px solid #8a3b12; outline-offset: 3px; }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
     </style>
     <style>html { background-color: #04091a; }</style>
   </head>
