@@ -24,6 +24,14 @@
   --shadow-sm: 0 2px 10px rgba(27, 33, 28, 0.06);
   --shadow-md: 0 6px 22px rgba(27, 33, 28, 0.08);
   --shadow-lg: 0 18px 48px rgba(27, 33, 28, 0.14);
+  --shadow-card: 0 1px 2px rgba(27, 33, 28, 0.06), 0 4px 14px rgba(27, 33, 28, 0.05);
+  --hairline: rgba(27, 33, 28, 0.1);       /* línea fina para separar, en vez de bordes gruesos */
+  /* Ritmo de espacios: siempre estos valores */
+  --s-1: 0.5rem;    /* dentro de un bloque */
+  --s-2: 1rem;      /* entre bloques de una tarjeta y relleno de tarjeta */
+  --s-3: 1.5rem;    /* entre secciones */
+  --r-card: 12px;   /* esquinas de tarjetas */
+  --r-btn: 10px;    /* esquinas de botones */
   /* Colores de la guía oficial de Vida y Ministerio */
   --vm-tesoros: #2a6b77;
   --vm-maestros: #84590d;
@@ -57,6 +65,8 @@ html.dark {
   --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 6px 22px rgba(0, 0, 0, 0.25);
   --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 14px rgba(0, 0, 0, 0.18);
+  --hairline: rgba(245, 240, 229, 0.12);
   --vm-tesoros: #8fd0db;
   --vm-maestros: #ecc27e;
   --vm-vida: #f0a08c;
@@ -93,8 +103,7 @@ h1, h2, h3, h4, .syne { font-family: var(--font) !important; }
 .ng-topbar {
   position: sticky; top: 0; z-index: 150;
   background: var(--bg-card);
-  border-bottom: 2px solid var(--border);
-  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--hairline);
   padding-top: env(safe-area-inset-top, 0px);
 }
 .ng-wrap {
@@ -104,32 +113,16 @@ h1, h2, h3, h4, .syne { font-family: var(--font) !important; }
 }
 .ng-row { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding-block: .5rem; flex-wrap: wrap; }
 .ng-menu-btn {
-  min-height: 48px; padding: .3rem .9rem; border-radius: 12px; cursor: pointer;
+  min-height: 48px; padding: .3rem .9rem; border-radius: var(--r-btn); cursor: pointer;
   display: inline-flex; align-items: center; gap: .5rem;
-  background: var(--accent); color: var(--on-accent); border: 2px solid var(--accent);
-  font: inherit; font-weight: 700;
+  background: var(--accent); color: var(--on-accent); border: 0;
+  font: inherit; font-weight: 600;
 }
 .ng-menu-btn svg { width: 1.2rem; height: 1.2rem; }
-.ng-size { display: flex; align-items: center; gap: .25rem; }
-.ng-size > span { font-weight: 600; margin-right: .2rem; }
-.ng-size button {
-  min-width: 48px; min-height: 48px; border-radius: 10px; cursor: pointer;
-  background: var(--bg-card2); color: var(--text); border: 2px solid var(--border);
-  font: inherit; font-weight: 800;
-}
-.ng-size button[aria-pressed="true"] { border-color: var(--border-strong); }
-.ng-size button:disabled { opacity: .55; cursor: default; }
-.ng-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .3rem; padding-bottom: .5rem; }
-.ng-tabs a {
-  min-height: 48px; display: flex; align-items: center; justify-content: center; text-align: center;
-  border-radius: 10px; text-decoration: none; font-weight: 700; color: var(--text);
-  border: 2px solid var(--border); line-height: 1.15; padding: .2rem;
-}
-.ng-tabs a[aria-current="page"] { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 
 /* ── Título de cada página (reemplaza el banner oscuro) ── */
 .ng-page-head {
-  padding-top: 1.25rem !important; padding-bottom: .25rem !important;
+  padding-top: var(--s-3) !important; padding-bottom: 0 !important;
   position: relative; z-index: 1;
 }
 .ng-page-head .ng-eyebrow { font-weight: 700; color: var(--text-muted); }
@@ -140,7 +133,7 @@ h1, h2, h3, h4, .syne { font-family: var(--font) !important; }
 }
 .ng-page-head .hero-title {
   font-family: var(--font) !important; color: var(--text) !important;
-  font-size: 1.75rem !important; font-weight: 800 !important; line-height: 1.15 !important;
+  font-size: 1.75rem !important; font-weight: 700 !important; line-height: 1.15 !important;
   text-transform: none !important; letter-spacing: -.01em !important; margin: 0;
 }
 .ng-page-head .hero-sub, .ng-page-head .hero-date {
@@ -150,8 +143,8 @@ h1, h2, h3, h4, .syne { font-family: var(--font) !important; }
 .ng-page-head .hero-chips { display: flex; flex-wrap: wrap; gap: .5rem; }
 .ng-page-head .hero-chip, .ng-page-head .map-btn {
   min-height: 48px; display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .9rem;
-  border-radius: 10px; font-weight: 700; font-size: 1rem !important; text-transform: none !important; letter-spacing: 0 !important;
-  background: var(--bg-card) !important; color: var(--accent) !important; border: 2px solid var(--accent) !important;
+  border-radius: var(--r-btn); font-weight: 600; font-size: 1rem !important; text-transform: none !important; letter-spacing: 0 !important;
+  background: var(--bg-card2) !important; color: var(--accent) !important; border: 0 !important;
   backdrop-filter: none !important; text-decoration: none;
 }
 
@@ -161,9 +154,9 @@ h1, h2, h3, h4, .syne { font-family: var(--font) !important; }
 .nav-item { color: var(--text) !important; font-size: 1.05rem !important; min-height: 56px; }
 .nav-item.active { color: var(--accent) !important; }
 .ng-theme-btn {
-  margin-top: 1rem; width: 100%; min-height: 48px; border-radius: 12px; cursor: pointer;
+  margin-top: 1rem; width: 100%; min-height: 48px; border-radius: var(--r-btn); cursor: pointer;
   display: flex; align-items: center; justify-content: center; gap: .6rem;
-  background: var(--bg-card2); color: var(--text); border: 2px solid var(--border); font: inherit; font-weight: 700;
+  background: var(--bg-card2); color: var(--text); border: 0; font: inherit; font-weight: 600;
 }
 .ng-theme-btn .t-dark { display: none; }
 html.dark .ng-theme-btn .t-dark { display: inline; }
@@ -179,92 +172,104 @@ html.dark .ng-theme-btn .t-light { display: none; }
   left: max(16px, env(safe-area-inset-left, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   min-height: 56px; padding: .5rem 1.2rem; border-radius: 999px; cursor: pointer;
   display: inline-flex; align-items: center; gap: .5rem;
-  background: var(--accent); color: var(--on-accent); border: 3px solid var(--bg-card);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, .25); font: inherit; font-weight: 800;
+  background: var(--accent); color: var(--on-accent); border: 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .22); font: inherit; font-weight: 600;
 }
 
 /* ── Piezas reutilizables (Inicio, Salidas, Vida y Ministerio) ── */
-.ng-card { background: var(--bg-card); border: 2px solid var(--border); border-radius: 14px; padding: 1rem 1.1rem; }
-.ng-h2 { font-size: 1.3rem; font-weight: 800; margin: 0; }
-.ng-label { font-weight: 600; color: var(--text-muted); }
+.ng-card { background: var(--bg-card); border: 0; border-radius: var(--r-card); padding: var(--s-2); box-shadow: var(--shadow-card); }
+.ng-h2 { font-size: 1.3rem; font-weight: 700; margin: 0; }
+.ng-label { font-weight: 400; color: var(--text-muted); }
 .ng-muted { color: var(--text-muted); }
-.ng-pill { display: inline-flex; align-items: center; font-weight: 800; padding: .1rem .6rem; border-radius: 999px; background: var(--accent); color: var(--on-accent); }
-.ng-pill.alt { background: var(--bg-card2); color: var(--text); border: 2px solid var(--border-strong); }
+.ng-pill { display: inline-flex; align-items: center; font-size: .95rem; font-weight: 700; letter-spacing: .03em; padding: .05rem .55rem; border-radius: 999px; background: var(--accent); color: var(--on-accent); }
+.ng-pill.alt { background: var(--bg-card2); color: var(--text); }
 .ng-btn {
   min-height: 56px; display: flex; align-items: center; justify-content: center; gap: .6rem; text-align: center;
-  border-radius: 14px; font-weight: 700; font-size: 1.1rem; text-decoration: none; cursor: pointer; padding: .5rem 1rem;
-  background: var(--accent); color: var(--on-accent); border: 2px solid var(--accent); font-family: inherit;
+  border-radius: var(--r-btn); font-weight: 600; font-size: 1.1rem; text-decoration: none; cursor: pointer; padding: .5rem 1rem;
+  background: var(--accent); color: var(--on-accent); border: 0; font-family: inherit;
 }
-.ng-btn.secondary { background: var(--bg-card); color: var(--accent); }
+/* Botones secundarios: fondo beige, sin contorno */
+.ng-btn.secondary { background: var(--bg-card2); color: var(--accent); }
 .ng-chip {
   min-height: 48px; display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .9rem;
-  border-radius: 10px; font-weight: 700; text-decoration: none; cursor: pointer;
-  border: 2px solid var(--accent); color: var(--accent); background: var(--bg-card); font-family: inherit; font-size: 1rem;
+  border-radius: var(--r-btn); font-weight: 600; text-decoration: none; cursor: pointer;
+  border: 0; color: var(--accent); background: var(--bg-card2); font-family: inherit; font-size: 1rem;
 }
 .ng-chip[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
-.ng-note { border-left: 6px solid var(--accent); background: var(--bg-card2); padding: .9rem 1rem; border-radius: 0 14px 14px 0; }
-.ng-stack { display: grid; gap: 1rem; }
-.ng-row-wrap { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.ng-note { border-left: 4px solid var(--accent); background: var(--bg-card2); padding: var(--s-2); border-radius: 0 var(--r-card) var(--r-card) 0; }
+.ng-stack { display: grid; gap: var(--s-3); }
+.ng-row-wrap { display: flex; flex-wrap: wrap; gap: var(--s-1); align-items: center; }
 
 /* HOY / PRÓXIMA */
-.ng-hoy { background: var(--accent); color: var(--on-accent); border-radius: 20px; padding: 1.2rem; display: grid; gap: .9rem; }
-.ng-hoy .eyebrow { font-weight: 800; letter-spacing: .04em; font-size: 1.05rem; }
-.ng-hoy .item { background: var(--bg-card); color: var(--text); border-radius: 14px; padding: .9rem 1rem; display: grid; gap: .3rem; }
-.ng-hoy .item.past { border: 2px dashed var(--text-muted); }
-.ng-hoy .time { font-size: 1.6rem; font-weight: 800; font-variant-numeric: tabular-nums; }
-.ng-hoy .place { font-size: 1.2rem; font-weight: 700; }
-.ng-hoy .empty { font-size: 1.1rem; }
+.ng-hoy {
+  background: var(--bg-card); color: var(--text); border-radius: var(--r-card); box-shadow: var(--shadow-card);
+  border-left: 4px solid var(--accent); padding: var(--s-2); display: grid; gap: var(--s-1);
+}
+.ng-hoy .eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-1); font-weight: 600; color: var(--text-muted); }
+.ng-hoy .eyebrow ~ .eyebrow { margin-top: var(--s-2); padding-top: var(--s-2); border-top: 1px solid var(--hairline); }
+.ng-hoy .item { display: grid; gap: .15rem; }
+.ng-hoy .item + .item { margin-top: var(--s-1); padding-top: var(--s-2); border-top: 1px solid var(--hairline); }
+.ng-hoy .item.past { border-left: 3px dashed var(--text-muted); padding-left: var(--s-1); }
+.ng-hoy .item.past .time { color: var(--text-muted); }
+.ng-hoy .time { font-size: 1.7rem; font-weight: 700; color: var(--accent); line-height: 1.2; font-variant-numeric: tabular-nums; }
+.ng-hoy .place { font-size: 1.15rem; font-weight: 600; }
+.ng-hoy strong { font-weight: 500; }
+.ng-hoy .empty { font-size: 1.05rem; margin: 0; }
+.ng-hoy .ng-btn { margin-top: var(--s-1); }
 
 /* Salidas: semanas plegables y pestañas de días */
-details.ng-week { background: var(--bg-card); border: 2px solid var(--border); border-radius: 14px; overflow: hidden; }
-details.ng-week[open] { border-color: var(--border-strong); }
+details.ng-week { background: var(--bg-card); border: 2px solid transparent; border-radius: var(--r-card); overflow: hidden; box-shadow: var(--shadow-card); }
+details.ng-week[open] { border-color: var(--border-strong); }   /* el borde solo marca la semana abierta */
 details.ng-week > summary, details.ng-vm > summary {
-  list-style: none; cursor: pointer; padding: .9rem 1rem; min-height: 64px;
+  list-style: none; cursor: pointer; padding: var(--s-2); min-height: 64px;
   display: flex; align-items: center; justify-content: space-between; gap: .75rem;
 }
 details.ng-week > summary::-webkit-details-marker, details.ng-vm > summary::-webkit-details-marker { display: none; }
-.ng-week-h { font-weight: 800; font-size: 1.15rem; }
-.ng-toggle { flex-shrink: 0; font-weight: 700; color: var(--accent); }
+.ng-week-h { font-weight: 700; font-size: 1.15rem; }
+.ng-toggle { flex-shrink: 0; font-weight: 600; color: var(--accent); }
 .ng-toggle .o { display: none; }
 details[open] > summary .ng-toggle .o { display: inline; }
 details[open] > summary .ng-toggle .c { display: none; }
-.ng-days { border-top: 2px solid var(--border); }
-.ng-day { padding: 1rem; display: grid; gap: .6rem; border-bottom: 1px solid var(--border); }
+.ng-days { border-top: 1px solid var(--hairline); }
+.ng-day { padding: var(--s-2); display: grid; gap: var(--s-1); border-bottom: 1px solid var(--hairline); }
 .ng-day:last-child { border-bottom: none; }
 .ng-day.is-today { background: color-mix(in srgb, var(--accent) 10%, var(--bg-card)); }
-.ng-day-h { font-weight: 800; font-size: 1.15rem; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
-.ng-entry { display: grid; gap: .2rem; padding-left: .9rem; border-left: 4px solid var(--accent); }
-.ng-entry .time { font-weight: 800; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
-.ng-entry .place { font-weight: 700; }
-.ng-entry .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .3rem; }
-.ng-special { font-weight: 700; padding: .6rem .8rem; border-radius: 10px; background: var(--bg-card2); border: 2px dashed var(--border); }
-.ng-seg { display: flex; flex-wrap: wrap; gap: .5rem; }
+.ng-day-h { font-weight: 700; font-size: 1.15rem; margin: 0; display: flex; flex-wrap: wrap; gap: var(--s-1); align-items: center; }
+.ng-entry { display: grid; gap: .15rem; padding-left: var(--s-2); border-left: 3px solid var(--accent); }
+.ng-entry + .ng-entry { margin-top: var(--s-1); }
+.ng-entry .time { font-weight: 600; font-size: 1.15rem; color: var(--accent); font-variant-numeric: tabular-nums; }
+.ng-entry .place { font-weight: 600; }
+.ng-entry .actions { display: flex; flex-wrap: wrap; gap: var(--s-1); margin-top: var(--s-1); }
+.ng-special { font-weight: 500; padding: var(--s-1) var(--s-2); border-radius: var(--r-btn); background: var(--bg-card2); border: 1px dashed var(--text-muted); }
+.ng-seg { display: flex; flex-wrap: wrap; gap: var(--s-1); }
 .ng-daytabs { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .3rem; }
 .ng-daytabs button {
-  min-height: 64px; border-radius: 12px; border: 2px solid var(--border); background: var(--bg-card); color: var(--text);
-  cursor: pointer; display: grid; place-items: center; padding: .2rem 0; line-height: 1.1; font: inherit; font-weight: 700;
+  min-height: 64px; border-radius: var(--r-btn); border: 0; background: var(--bg-card2); color: var(--text);
+  cursor: pointer; display: grid; place-items: center; padding: .2rem 0; line-height: 1.1; font: inherit; font-weight: 500;
 }
-.ng-daytabs button .n { font-size: 1.25rem; font-weight: 800; }
-.ng-daytabs button.none { border-style: dashed; background: var(--bg-card2); }
-.ng-daytabs button[aria-selected="true"] { background: var(--accent); color: var(--on-accent); border-color: var(--accent); border-style: solid; }
-.ng-weeknav { display: flex; gap: .5rem; }
+.ng-daytabs button .n { font-size: 1.25rem; font-weight: 700; }
+/* Días sin salidas: sin fondo y con contorno punteado (se distinguen por la forma, no solo por el color) */
+.ng-daytabs button.none { background: transparent; outline: 1px dashed var(--text-muted); outline-offset: -1px; }
+.ng-daytabs button[aria-selected="true"] { background: var(--accent); color: var(--on-accent); outline: 0; }
+#ng-dias { gap: var(--s-2); }
+.ng-weeknav { display: flex; gap: var(--s-1); }
 .ng-weeknav .ng-btn { flex: 1; font-size: 1rem; min-height: 48px; }
 
 /* Vida y Ministerio: formato de la guía oficial */
-details.ng-vm { background: var(--bg-card); border: 2px solid var(--border); border-radius: 14px; overflow: hidden; }
+details.ng-vm { background: var(--bg-card); border: 2px solid transparent; border-radius: var(--r-card); overflow: hidden; box-shadow: var(--shadow-card); }
 details.ng-vm[open] { border-color: var(--border-strong); }
 details.ng-vm > summary { align-items: flex-start; }
 .vm-date { font-size: 1.3rem; font-weight: 700; color: var(--subdued); }
-.vm-book { font-weight: 800; }
-.vm-body { padding: 0 1rem 1.1rem; }
-.vm-open, .vm-close { display: flex; gap: .6rem; align-items: flex-start; font-weight: 700; border-top: 2px solid var(--border); padding-top: 1rem; }
-.vm-close { margin-top: 1.5rem; }
+.vm-book { font-weight: 700; }
+.vm-body { padding: 0 var(--s-2) var(--s-2); }
+.vm-open, .vm-close { display: flex; gap: .6rem; align-items: flex-start; font-weight: 600; border-top: 1px solid var(--hairline); padding-top: var(--s-2); }
+.vm-close { margin-top: var(--s-3); }
 .vm-open .sub, .vm-close .sub { display: block; font-weight: 400; color: var(--subdued); margin-top: .15rem; }
-.vm-open .sub strong, .vm-close .sub strong { color: var(--text); font-weight: 600; }
+.vm-open .sub strong, .vm-close .sub strong { color: var(--text); font-weight: 500; }
 .vm-music { width: 1.35rem; height: 1.35rem; flex-shrink: 0; margin-top: .15rem; color: var(--text); }
-.vm-sec { display: flex; align-items: center; gap: .75rem; margin-top: 1.6rem; padding-bottom: .5rem; }
-.vm-sec.maestros, .vm-sec.vida { border-bottom: 1px solid var(--border); }
-.vm-sec h4 { font-size: 1.05rem; font-weight: 800; letter-spacing: .02em; margin: 0; }
+.vm-sec { display: flex; align-items: center; gap: .75rem; margin-top: var(--s-3); padding-bottom: var(--s-1); }
+.vm-sec.maestros, .vm-sec.vida { border-bottom: 1px solid var(--hairline); }
+.vm-sec h4 { font-size: 1.05rem; font-weight: 700; letter-spacing: .02em; margin: 0; }
 .vm-ico { width: 2.1rem; height: 2.1rem; border-radius: 4px; display: grid; place-items: center; flex-shrink: 0; color: #fff; }
 .vm-ico svg { width: 1.25rem; height: 1.25rem; }
 .vm-sec.tesoros h4, .vm-part.tesoros .ti { color: var(--vm-tesoros); }
@@ -273,25 +278,27 @@ details.ng-vm > summary { align-items: flex-start; }
 .vm-sec.tesoros .vm-ico { background: var(--vm-tesoros-ico); }
 .vm-sec.maestros .vm-ico { background: var(--vm-maestros-ico); }
 .vm-sec.vida .vm-ico { background: var(--vm-vida-ico); }
-.vm-part { margin-top: 1rem; }
-.vm-part .ti { font-weight: 800; }
+.vm-part { margin-top: var(--s-2); }
+.vm-part .ti { font-weight: 700; }
 .vm-part .det { margin-left: 1.1rem; margin-top: .15rem; display: grid; gap: .1rem; }
 .vm-part .dur { color: var(--subdued); font-variant-numeric: tabular-nums; }
-.vm-part .name { font-weight: 600; }
+.vm-part .name { font-weight: 500; }
 .vm-part .name .ng-label { font-weight: 400; color: var(--subdued); }
-.vm-song { display: flex; gap: .6rem; align-items: flex-start; font-weight: 700; margin-top: 1rem; }
+.vm-song { display: flex; gap: .6rem; align-items: flex-start; font-weight: 600; margin-top: var(--s-2); }
 
 /* Inicio */
-.ng-summary .row { padding: .85rem 0; border-bottom: 1px solid var(--border); display: grid; gap: .1rem; }
-.ng-summary .row:last-child { border-bottom: none; }
-.ng-summary .k { font-weight: 700; color: var(--text-muted); }
-.ng-summary .v { font-weight: 700; font-size: 1.1rem; }
-.ng-navlist { display: grid; gap: .6rem; }
+.ng-summary .row { padding: .75rem 0; border-bottom: 1px solid var(--hairline); display: grid; gap: .1rem; }
+.ng-summary .row:last-child { border-bottom: none; padding-bottom: 0; }
+.ng-summary .k { font-weight: 400; color: var(--text-muted); }
+.ng-summary .v { font-weight: 600; font-size: 1.1rem; }
+/* Lista de secciones: una sola tarjeta con renglones separados por líneas finas */
+.ng-navlist { display: grid; gap: 0; background: var(--bg-card); border-radius: var(--r-card); box-shadow: var(--shadow-card); overflow: hidden; }
 .ng-navlist a {
-  min-height: 64px; display: flex; align-items: center; gap: .9rem; padding: .6rem 1rem; border-radius: 14px;
-  background: var(--bg-card); border: 2px solid var(--border); text-decoration: none; color: var(--text); font-weight: 700; font-size: 1.1rem;
+  min-height: 60px; display: flex; align-items: center; gap: var(--s-2); padding: var(--s-1) var(--s-2);
+  background: transparent; border: 0; border-bottom: 1px solid var(--hairline); text-decoration: none; color: var(--text); font-weight: 500; font-size: 1.1rem;
 }
-.ng-navlist a .go { margin-left: auto; color: var(--accent); font-weight: 800; }
+.ng-navlist a:last-child { border-bottom: 0; }
+.ng-navlist a .go { margin-left: auto; color: var(--text-muted); font-weight: 400; font-size: 1.4rem; }
 .ng-zoom svg { width: 1.4rem; height: 1.4rem; flex-shrink: 0; }
 
 /* ── Ajustes por página para letra grande en celular ── */
@@ -309,10 +316,10 @@ details.ng-vm > summary { align-items: flex-start; }
 
 /* ── Encabezado simple: Menú · Norte Garín · Configuración ── */
 .ng-row { flex-wrap: nowrap; }
-.ng-brand { margin-right: auto; font-weight: 800; font-size: 1.15rem; color: var(--text); text-decoration: none; min-height: 48px; display: inline-flex; align-items: center; white-space: nowrap; }
+.ng-brand { margin-right: auto; font-weight: 700; font-size: 1.15rem; color: var(--text); text-decoration: none; min-height: 48px; display: inline-flex; align-items: center; white-space: nowrap; }
 .ng-gear {
-  width: 48px; height: 48px; flex-shrink: 0; border-radius: 12px; cursor: pointer;
-  display: grid; place-items: center; background: var(--bg-card2); color: var(--text); border: 2px solid var(--border);
+  width: 48px; height: 48px; flex-shrink: 0; border-radius: var(--r-btn); cursor: pointer;
+  display: grid; place-items: center; background: var(--bg-card2); color: var(--text); border: 2px solid transparent;
 }
 .ng-gear svg { width: 1.45rem; height: 1.45rem; }
 .ng-gear[aria-expanded="true"] { border-color: var(--border-strong); }
@@ -323,21 +330,21 @@ details.ng-vm > summary { align-items: flex-start; }
   top: calc(env(safe-area-inset-top, 0px) + 4.4rem);
   right: max(12px, env(safe-area-inset-right, 0px));
   width: min(22rem, calc(100vw - 24px)); max-height: calc(100vh - 6rem); overflow-y: auto;
-  background: var(--bg-card); color: var(--text); border: 2px solid var(--border-strong); border-radius: 16px;
-  box-shadow: var(--shadow-lg); padding: 1rem; display: grid; gap: 1.1rem;
+  background: var(--bg-card); color: var(--text); border: 1px solid var(--hairline); border-radius: var(--r-card);
+  box-shadow: var(--shadow-lg); padding: var(--s-2); display: grid; gap: var(--s-3);
 }
 .ng-settings-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
-.ng-settings h2 { font-size: 1.25rem; font-weight: 800; margin: 0; }
-.ng-settings h3 { font-size: 1.05rem; font-weight: 800; margin: 0 0 .5rem; }
+.ng-settings h2 { font-size: 1.25rem; font-weight: 700; margin: 0; }
+.ng-settings h3 { font-size: 1.05rem; font-weight: 600; margin: 0 0 var(--s-1); }
 .ng-settings-close, .ng-settings-size button {
-  min-height: 48px; padding: .3rem .9rem; border-radius: 10px; cursor: pointer; font: inherit; font-weight: 700;
-  background: var(--bg-card2); color: var(--text); border: 2px solid var(--border);
+  min-height: 48px; padding: .3rem .9rem; border-radius: var(--r-btn); cursor: pointer; font: inherit; font-weight: 500;
+  background: var(--bg-card2); color: var(--text); border: 2px solid transparent;
 }
 .ng-settings-now { margin: 0 0 .6rem; color: var(--text-muted); }
 .ng-settings-now strong { color: var(--text); }
-.ng-settings-size { display: grid; gap: .5rem; }
+.ng-settings-size { display: grid; gap: var(--s-1); }
 .ng-settings-size button { display: flex; align-items: center; gap: .75rem; text-align: left; }
-.ng-settings-size button .a { min-width: 2.2rem; font-weight: 800; }
+.ng-settings-size button .a { min-width: 2.2rem; font-weight: 700; }
 .ng-settings-size button[aria-pressed="true"] { border-color: var(--border-strong); }
 .ng-settings-size button:disabled { opacity: .55; cursor: default; }
 .ng-settings .ng-theme-btn { margin-top: 0; }

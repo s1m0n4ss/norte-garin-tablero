@@ -1000,7 +1000,7 @@
           <div class="hero-date" id="today-date"></div>
         </div></div>
 
-    <main class="main-wrap ng-stack" style="padding-top:1rem">
+    <main class="main-wrap ng-stack" style="padding-top:var(--s-3)">
       <div id="notif-banner-container"></div>
 
       <div id="ng-hoy"></div>
@@ -1165,7 +1165,7 @@
         const hoy = getDateOnly(now);
         const nowMin = now.getHours() * 60 + now.getMinutes();
         const entradas = window.SALIDAS_CAL.getEntriesForDate(hoy) || [];
-        let out = '<section class="ng-hoy" aria-labelledby="t-hoy"><div class="eyebrow" id="t-hoy">HOY · ' + esc(fechaCompleta(hoy)) + "</div>";
+        let out = '<section class="ng-hoy" aria-labelledby="t-hoy"><div class="eyebrow" id="t-hoy"><span class="ng-pill">HOY</span> <span>' + esc(fechaCompleta(hoy)) + "</span></div>";
         if (!entradas.length) out += '<p class="empty">Hoy no hay salidas programadas.</p>';
         entradas.forEach((e) => {
           if (e.type) { out += '<div class="item"><div class="place">' + esc(e.l) + "</div></div>"; return; }
@@ -1182,7 +1182,7 @@
           if (e) prox = { d, e, i };
         }
         if (prox && prox.i > 0) {
-          out += '<div class="eyebrow">PRÓXIMA SALIDA · ' + (prox.i === 1 ? "MAÑANA, " : "") + esc(fechaCompleta(prox.d).toUpperCase()) + "</div>" +
+          out += '<div class="eyebrow"><span class="ng-pill alt">PRÓXIMA SALIDA</span> <span>' + (prox.i === 1 ? "Mañana, " + esc(fechaCompleta(prox.d).toLowerCase()) : esc(fechaCompleta(prox.d))) + "</span></div>" +
             '<div class="item"><div class="time">' + esc(horaTxt(prox.e.h)) + '</div><div class="place">' + esc(prox.e.l) +
             '</div><div><span class="ng-label">Conduce:</span> <strong>' + esc(conduce(prox.e)) + "</strong></div></div>";
         } else if (!prox) {

@@ -442,7 +442,7 @@
 
     <main class="main-wrap">
       <div id="notif-banner-container"></div>
-      <div class="ng-stack" style="margin-top: 1rem;">
+      <div class="ng-stack" style="margin-top: var(--s-3);">
         <div id="ng-hoy"></div>
         <div class="ng-row-wrap" role="group" aria-label="Forma de ver el programa">
           <span class="ng-label">Ver por:</span>
@@ -537,7 +537,7 @@
       function hoyHtml(now, hoy) {
         const nowMin = now.getHours() * 60 + now.getMinutes();
         const lista = entradas(hoy);
-        let out = `<section class="ng-hoy" aria-labelledby="t-hoy"><div class="eyebrow" id="t-hoy">HOY · ${fechaCompleta(hoy)}</div>`;
+        let out = `<section class="ng-hoy" aria-labelledby="t-hoy"><div class="eyebrow" id="t-hoy"><span class="ng-pill">HOY</span> <span>${fechaCompleta(hoy)}</span></div>`;
         if (!lista.length) out += '<p class="empty" style="margin:0">Hoy no hay salidas programadas.</p>';
         lista.forEach(e => {
           if (e.type) { out += `<div class="item"><div class="place">${e.l}</div></div>`; return; }
@@ -554,7 +554,7 @@
           if (e) prox = { d, e, i };
         }
         if (prox && prox.i > 0) {
-          out += `<div class="eyebrow">PRÓXIMA SALIDA · ${prox.i === 1 ? "MAÑANA, " : ""}${fechaCompleta(prox.d).toUpperCase()}</div>
+          out += `<div class="eyebrow"><span class="ng-pill alt">PRÓXIMA SALIDA</span> <span>${prox.i === 1 ? "Mañana, " + fechaCompleta(prox.d).toLowerCase() : fechaCompleta(prox.d)}</span></div>
             <div class="item"><div class="time">${horaTxt(prox.e.h)}</div><div class="place">${prox.e.l}</div>
             <div><span class="ng-label">Conduce:</span> <strong>${conduce(prox.e)}</strong></div></div>`;
         }
