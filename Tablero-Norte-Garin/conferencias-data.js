@@ -27,7 +27,7 @@ window.CONFERENCIAS_DATA = [
         speaker: "Esteban Stieb",
         congregation: "Norte Rincón",
         chairman: "Ezequiel Kunigk",
-        lector: "Sebastián Brasccetta"
+        lector: "León Segovia"
       },
       {
         date: "15",
@@ -57,7 +57,7 @@ window.CONFERENCIAS_DATA = [
         speaker: "Santiago Vega",
         congregation: "Norte Rincón",
         chairman: "Caetano Ferrari",
-        lector: "León Segovia"
+        lector: "Sebastián Brasccetta"
       }
     ],
     salen: []
