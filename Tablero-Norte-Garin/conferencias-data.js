@@ -4,102 +4,6 @@
 
 window.CONFERENCIAS_DATA = [
   {
-    month: "Septiembre 2026",
-    monthIdx: 8,
-    year: 2026,
-    vienen: [
-      {
-        date: "6",
-        day: "Dom",
-        time: "10:00",
-        title: "Estense quietos y vean cómo los salva Jehová",
-        speaker: "Horacio Salgado",
-        congregation: "Local",
-        chairman: "Adolfo Gutiérrez",
-        lector: "León Segovia"
-      },
-      {
-        date: "13",
-        day: "Dom",
-        time: "10:00",
-        title: "Confíe en el poder salvador de Jehová",
-        speaker: "Jeremías Arrichetta",
-        congregation: "Local",
-        chairman: "Caetano Ferrari",
-        lector: "Lucas Dos Santos"
-      },
-      {
-        date: "20",
-        day: "Dom",
-        time: "10:00",
-        title: "Sirva a Jehová con alegría",
-        speaker: "Tomás Gona",
-        congregation: "Villa Urquiza",
-        chairman: "Lucas Segovia",
-        lector: "Horacio Salgado"
-      },
-      {
-        date: "27",
-        day: "Dom",
-        time: "10:00",
-        title: "¿Cómo puede ayudarle la Biblia?",
-        speaker: "Sebastián Brasccetta",
-        congregation: "Local",
-        chairman: "Horacio Salgado",
-        lector: "Pablo Zúñiga"
-      }
-    ],
-    salen: []
-  },
-  {
-    month: "Octubre 2026",
-    monthIdx: 9,
-    year: 2026,
-    vienen: [
-      {
-        date: "4",
-        day: "Dom",
-        time: "10:00",
-        title: "Muestre respeto y amor en su matrimonio",
-        speaker: "Adolfo Gutiérrez",
-        congregation: "Local",
-        chairman: "Lucas Dos Santos",
-        lector: "León Segovia"
-      },
-      {
-        date: "11",
-        day: "Dom",
-        time: "10:00",
-        title: "¿A quién prefiere como amigo?",
-        speaker: "Kevin González",
-        congregation: "Local",
-        chairman: "Daniel Albis",
-        lector: "Lucas Dos Santos"
-      },
-      {
-        date: "18",
-        day: "Dom",
-        time: "10:00",
-        title: "Imitemos a Jesús, y no seamos parte del mundo",
-        speaker: "Pablo Rojas",
-        congregation: "Norte, Pacheco",
-        chairman: "Jeremías Arrichetta",
-        lector: "Lucas Segovia"
-      },
-      {
-        date: "25",
-        day: "Dom",
-        time: "10:00",
-        title: "¿Cuál es su propósito en la vida?",
-        speaker: "Matías Canal",
-        congregation: "Este, General Pacheco",
-        chairman: "Kevin González",
-        lector: "Adolfo Gutiérrez"
-      }
-    ],
-    salen: []
-  },
-  {
     month: "Noviembre 2026",
     monthIdx: 10,
     year: 2026,
@@ -119,9 +23,8 @@ window.CONFERENCIAS_DATA = [
         date: "8",
         day: "Dom",
         time: "10:00",
-        pendiente: true,
-        title: "",
-        speaker: "",
+        title: "¿Confía usted en la ciencia o en la Biblia?",
+        speaker: "Esteban Stieb",
         congregation: "",
         chairman: "Ezequiel Kunigk",
         lector: "Sebastián Brasccetta"
@@ -130,9 +33,8 @@ window.CONFERENCIAS_DATA = [
         date: "15",
         day: "Dom",
         time: "10:00",
-        pendiente: true,
-        title: "",
-        speaker: "",
+        title: "¿Qué sucederá en el futuro cercano?",
+        speaker: "Juan Genga",
         congregation: "",
         chairman: "León Segovia",
         lector: "Horacio Salgado"
@@ -141,9 +43,8 @@ window.CONFERENCIAS_DATA = [
         date: "22",
         day: "Dom",
         time: "10:00",
-        pendiente: true,
-        title: "",
-        speaker: "",
+        title: "Escuchemos y pongamos en práctica la Palabra de Dios",
+        speaker: "Abel Fernández",
         congregation: "",
         chairman: "Sebastián Brasccetta",
         lector: "Pablo Zúñiga"
@@ -152,9 +53,8 @@ window.CONFERENCIAS_DATA = [
         date: "29",
         day: "Dom",
         time: "10:00",
-        pendiente: true,
-        title: "",
-        speaker: "",
+        title: "Consigamos que nuestro corazón sea sabio",
+        speaker: "Santiago Vega",
         congregation: "",
         chairman: "Caetano Ferrari",
         lector: "León Segovia"
