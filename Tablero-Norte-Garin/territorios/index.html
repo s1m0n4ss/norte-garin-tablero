@@ -11,6 +11,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://unpkg.com/leaflet-rotate@0.2.8/dist/leaflet-rotate-src.js"></script>
+<script>
+  // Modo claro/oscuro: el mismo que eligió la persona en el tablero (clave "theme")
+  (function(){
+    var saved=null; try{ saved=localStorage.getItem('theme'); }catch(e){}
+    var prefiere=window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if(saved ? saved==='dark' : prefiere) document.documentElement.classList.add('dark');
+  })();
+</script>
 <style>
   :root{
     /* Paleta B · Verde bosque (misma que el resto del tablero, ver estilos.css) */
@@ -24,7 +32,7 @@
   html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--txt);overflow:hidden}
   #map{position:absolute;top:0;left:0;right:340px;bottom:0;background:#e9e3d6}
   .leaflet-container{background:#e9e3d6;font-family:'Inter',system-ui,sans-serif}
-  .leaflet-top.leaflet-left{top:72px}
+  .leaflet-top.leaflet-left{top:120px}
   .leaflet-control-zoom a{background:var(--panel)!important;color:var(--txt)!important;border-color:var(--line)!important}
 
   /* ===== Encabezado flotante sobre el mapa ===== */
@@ -112,7 +120,7 @@
   .nav-btn2:hover{background:var(--line);transform:none;box-shadow:none}
   /* Aviso modo revisita */
   .revisita-hint{
-    display:none;position:absolute;top:74px;left:50%;transform:translateX(-50%);z-index:1500;
+    display:none;position:absolute;top:122px;left:50%;transform:translateX(-50%);z-index:1500;
     background:#d4a373;color:#1a1205;border:none;border-radius:24px;padding:12px 20px;
     font-size:1rem;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.45);font-family:inherit;
     align-items:center;gap:10px;max-width:90vw
@@ -177,7 +185,7 @@
 
   /* Botón Ver todos (aparece cuando hay un territorio resaltado) */
   .fab-clear{
-    display:none;position:absolute;top:74px;right:16px;z-index:1160;
+    display:none;position:absolute;top:122px;right:16px;z-index:1160;
     background:rgba(255,253,248,.97);color:var(--txt);border:1px solid var(--line);
     border-radius:24px;padding:10px 16px;font-size:1rem;font-weight:600;
     cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(0,0,0,.4);backdrop-filter:blur(6px)
@@ -317,6 +325,55 @@
     .btn-gps{bottom:calc(var(--ficha,68px) + 24px)}
     .btn-gps.oculto{display:none}
   }
+  /* ===== Filtros (chips) debajo del buscador ===== */
+  .chips{position:absolute;top:74px;left:0;right:340px;z-index:1000;display:flex;gap:8px;overflow-x:auto;
+    padding:4px 20px 8px 84px;scrollbar-width:none;pointer-events:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{pointer-events:auto;flex:none;display:flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:20px;
+    border:1px solid #dadce0;background:#fff;color:#3c4043;font-family:inherit;font-size:0.95rem;font-weight:600;cursor:pointer;
+    box-shadow:0 1px 3px rgba(0,0,0,.18)}
+  .chip svg{width:18px;height:18px;flex:none}
+  .chip[aria-pressed="false"]{background:#f1f3f4;color:#5f6368;box-shadow:none;text-decoration:line-through;text-decoration-thickness:1px}
+  .chip[aria-pressed="false"] svg{opacity:.45}
+  .oculto-filtro{display:none!important}
+
+  /* ===== Botón de capas y su panel ===== */
+  .btn-capas{position:absolute;right:16px;bottom:calc(24px + 68px);z-index:1150;width:56px;height:56px;border-radius:50%;border:none;
+    background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:bottom .3s}
+  .btn-capas svg{width:26px;height:26px;fill:#5f6368}
+  .btn-capas.oculto{display:none}
+  .capas-box h3{font-size:1rem;font-weight:700;margin:6px 0 10px}
+  .tipos{display:flex;gap:12px;margin-bottom:18px}
+  .tipo{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:none;font-family:inherit;font-size:0.95rem;font-weight:600;color:var(--txt);cursor:pointer}
+  .tipo .mini{width:72px;height:56px;border-radius:12px;border:3px solid transparent;background-size:cover;background-position:center}
+  .tipo[aria-pressed="true"] .mini{border-color:var(--accent)}
+  .tipo[aria-pressed="true"]{color:var(--accent)}
+  .offline-txt{color:var(--muted);font-size:0.95rem;line-height:1.5;margin:6px 0 0}
+  .barra{height:8px;border-radius:4px;background:var(--panel2);overflow:hidden;margin-top:10px;display:none}
+  .barra.show{display:block}
+  .barra i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+
+  /* ===== Modo oscuro ===== */
+  html.dark{--bg:#111a15;--panel:#1a261f;--panel2:#24342b;--txt:#f5f0e5;--muted:#d6cfbd;--line:#3a4a40;--accent:#86d6b3;--accent2:#5fb894}
+  html.dark .leaflet-container{background:#1d2420}
+  html.dark .capa-base{filter:invert(1) hue-rotate(180deg) brightness(.92) contrast(.9) saturate(.6)}
+  html.dark .gsearch input,html.dark .gres,html.dark .btn-gps,html.dark .btn-capas,html.dark .chip,html.dark .fab-clear{background:#2a3530;color:#f5f0e5;border-color:#3a4a40}
+  html.dark .gsearch input::placeholder{color:#b8c2bc}
+  html.dark .gres button{color:#f5f0e5;border-bottom-color:#3a4a40}
+  html.dark .gres button:hover{background:#33403a}
+  html.dark .chip[aria-pressed="false"]{background:#1d2420;color:#a9b3ad}
+  html.dark .btn-gps svg,html.dark .btn-capas svg{fill:#d6cfbd}
+  html.dark .btn-gps.activo svg{fill:#8ab4f8}
+  html.dark .topbar{background:linear-gradient(180deg,rgba(17,26,21,.95),rgba(17,26,21,0))}
+  html.dark .lugar .nom,html.dark .clabel{color:#f5f0e5;text-shadow:0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 4px #000}
+  html.dark .accion .aic svg{fill:var(--accent)}
+  html.dark .accion.principal .aic svg{fill:#0e1a14}
+  html.dark .leaflet-popup-content-wrapper,html.dark .leaflet-popup-tip{background:#2a3530;color:#f5f0e5}
+
+  @media(max-width:820px){
+    .chips{right:0;padding-left:16px;top:66px}
+    .btn-capas{bottom:calc(var(--ficha,68px) + 24px + 68px)}
+  }
   @media(max-width:820px){
     .btn-gps{bottom:calc(var(--ficha,68px) + 24px)}
     .topbar{gap:10px}
@@ -352,6 +409,35 @@
     <input id="gbuscar" type="search" placeholder="Buscar territorio, calle o lugar" autocomplete="off" aria-label="Buscar territorio, calle o lugar" aria-controls="gres">
     <button class="gclear" id="gclear" type="button" aria-label="Borrar búsqueda">✕</button>
     <div class="gres" id="gres" role="listbox" aria-label="Resultados"></div>
+  </div>
+</div>
+<div class="chips" id="chips" role="group" aria-label="Qué mostrar en el mapa">
+  <button class="chip" type="button" data-filtro="salud" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#c62828"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z"/></svg>Salud</button>
+  <button class="chip" type="button" data-filtro="escuela" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#b45309"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6 9.2V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.8l-6 3.3-6-3.3z"/></svg>Escuelas</button>
+  <button class="chip" type="button" data-filtro="plaza" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#166534"><path d="M12 2a6 6 0 0 0-5.7 7.9A4.5 4.5 0 0 0 8 18h3v4h2v-4h3a4.5 4.5 0 0 0 1.7-8.1A6 6 0 0 0 12 2z"/></svg>Plazas</button>
+  <button class="chip" type="button" data-filtro="otros" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#374151"><path d="M12 2c-4 0-7 .5-7 4v9.5A3.5 3.5 0 0 0 8.5 19L7 20.5v.5h2l2-2h2l2 2h2v-.5L15.5 19a3.5 3.5 0 0 0 3.5-3.5V6c0-3.5-3-4-7-4zM17 11H7V6h10v5z"/></svg>Estación y otros</button>
+  <button class="chip" type="button" data-filtro="calles" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#d9a21b"><path d="M11 2h2v5h-2zm0 7h2v6h-2zm0 8h2v5h-2zM4 2h2v20H4zm14 0h2v20h-2z"/></svg>Calles clave</button>
+</div>
+<button class="btn-capas" id="btnCapas" type="button" aria-label="Tipo de mapa y opciones" title="Tipo de mapa">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 16.5-7.4-5.7L3 12.1l9 7 9-7-1.6-1.3zM12 14l7.4-5.7L21 7l-9-7-9 7 1.6 1.3z"/></svg>
+</button>
+<div class="pm-overlay" id="capasPanel">
+  <div class="pm-box capas-box" role="dialog" aria-label="Tipo de mapa y opciones">
+    <h3>Tipo de mapa</h3>
+    <div class="tipos">
+      <button class="tipo" type="button" data-tipo="mapa" aria-pressed="true"><span class="mini" style="background-image:url('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/16/39445/22105')"></span>Mapa</button>
+      <button class="tipo" type="button" data-tipo="satelite" aria-pressed="false"><span class="mini" style="background-image:url('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/16/39445/22105')"></span>Satélite</button>
+    </div>
+    <h3>Tema</h3>
+    <div class="tipos">
+      <button class="tipo" type="button" data-tema="light" aria-pressed="true">Claro</button>
+      <button class="tipo" type="button" data-tema="dark" aria-pressed="false">Oscuro</button>
+    </div>
+    <h3>Usar sin señal</h3>
+    <button class="nav-btn" type="button" id="btnOffline">Guardar el mapa de la zona en este celular</button>
+    <div class="barra" id="offBarra"><i></i></div>
+    <p class="offline-txt" id="offTxt">Guarda el mapa de todos los territorios (unos 10 MB) para poder verlo aunque no haya señal. Conviene hacerlo con Wi-Fi.</p>
+    <button class="pm-cancel" type="button" onclick="cerrarCapas()">Cerrar</button>
   </div>
 </div>
 <button class="btn-gps" id="btnGps" type="button" aria-label="Mostrar mi ubicación" title="Mi ubicación">
@@ -1111,7 +1197,7 @@ const LETRAS = [
 
 const map=L.map('map',{zoomControl:true,attributionControl:false,rotate:true,touchRotate:true,rotateControl:false,bearing:0,tapHold:true}).setView([-34.429068,-58.76558],14);
 // Fondo base: Esri World Street Map (sin API key, funciona publicado; calles y nombres)
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Esri'}).addTo(map);
+const capaCalles=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Esri',crossOrigin:true,className:'capa-base'}).addTo(map);
 
 // Panes ordenados de abajo hacia arriba
 map.createPane('terrPane',map.getPane('rotatePane')||undefined);   map.getPane('terrPane').style.zIndex=350;   // territorios (relleno tenue)
@@ -1119,7 +1205,7 @@ map.createPane('callePane',map.getPane('rotatePane')||undefined);  map.getPane('
 map.createPane('labelsPane',map.getPane('rotatePane')||undefined); map.getPane('labelsPane').style.zIndex=450; map.getPane('labelsPane').style.pointerEvents='none';
 
 // Capa de SOLO nombres/calles de Esri POR ENCIMA de los territorios (nombres resaltados)
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,pane:'labelsPane',opacity:1}).addTo(map);
+const capaNombres=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,pane:'labelsPane',opacity:1,crossOrigin:true,className:'capa-base'}).addTo(map);
 
 const limiteGral=L.polygon(CONTORNO,{color:'#2f9e6f',weight:2.5,fill:false,dashArray:'10,7',opacity:.8,pane:'callePane'}).addTo(map);
 
@@ -1295,7 +1381,7 @@ function flyTo(t){
   const ficha=document.getElementById('sheet');
   // en el celular la ficha mide 80vh pero solo se ve la parte "media"
   const abajo=(ficha && ficha.classList.contains('open'))?((esCelu()?ALTOS.media:ficha.offsetHeight)+30):60;
-  if(lay) map.flyToBounds(lay.getBounds(),{paddingTopLeft:[50,90],paddingBottomRight:[50,abajo],maxZoom:17,duration:.6});
+  if(lay) map.flyToBounds(lay.getBounds(),{paddingTopLeft:[50,140],paddingBottomRight:[50,abajo],maxZoom:17,duration:.6});
 }
 
 const sheet=document.getElementById('sheet');
@@ -1696,6 +1782,110 @@ abrirMenuPunto=function(lat,lng){
   _abrirMenuPunto(lat,lng);
 };
 cerrarMenuPunto=function(){ _cerrarMenuPunto(); if(pinMarcado){ map.removeLayer(pinMarcado); pinMarcado=null; } };
+
+/* ================================================================
+   CAPAS: Mapa / Satélite, tema claro/oscuro y mapa sin señal
+   ================================================================ */
+function leerPref(k,def){ try{ const v=localStorage.getItem(k); return v===null?def:v; }catch(e){ return def; } }
+function guardarPref(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+const btnCapas=document.getElementById('btnCapas'), capasPanel=document.getElementById('capasPanel');
+const capaSatelite=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,maxNativeZoom:18,crossOrigin:true});
+function ponerTipo(tipo){
+  if(tipo==='satelite'){ if(map.hasLayer(capaCalles)) map.removeLayer(capaCalles); if(!map.hasLayer(capaSatelite)) capaSatelite.addTo(map); }
+  else{ if(map.hasLayer(capaSatelite)) map.removeLayer(capaSatelite); if(!map.hasLayer(capaCalles)) capaCalles.addTo(map); }
+  document.querySelectorAll('[data-tipo]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tipo===tipo)));
+  guardarPref('territorios-tipo',tipo);
+}
+function ponerTema(tema){
+  document.documentElement.classList.toggle('dark',tema==='dark');
+  document.querySelectorAll('[data-tema]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tema===tema)));
+  guardarPref('theme',tema); // misma clave que el resto del tablero
+}
+document.querySelectorAll('[data-tipo]').forEach(b=>b.addEventListener('click',()=>ponerTipo(b.dataset.tipo)));
+document.querySelectorAll('[data-tema]').forEach(b=>b.addEventListener('click',()=>ponerTema(b.dataset.tema)));
+ponerTipo(leerPref('territorios-tipo','mapa'));
+document.querySelectorAll('[data-tema]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.tema==='dark')===document.documentElement.classList.contains('dark'))));
+btnCapas.addEventListener('click',()=>capasPanel.classList.add('show'));
+function cerrarCapas(){ capasPanel.classList.remove('show'); }
+capasPanel.addEventListener('click',e=>{ if(e.target===capasPanel) cerrarCapas(); });
+
+// El botón de capas se esconde con la ficha completa, igual que el de ubicación
+const _ponerAlto=ponerAlto, _closeSheet3=closeSheet;
+ponerAlto=function(a){ _ponerAlto(a); btnCapas.classList.toggle('oculto',a==='completa'); };
+closeSheet=function(){ _closeSheet3(); btnCapas.classList.remove('oculto'); };
+
+/* ================================================================
+   FILTROS: qué se muestra en el mapa
+   ================================================================ */
+const capasCalle=[];
+map.eachLayer(l=>{ if(l instanceof L.Polyline && !(l instanceof L.Polygon) && l.options.pane==='callePane') capasCalle.push(l); });
+function grupoDe(l){ return (l.tipo==='salud'||l.tipo==='escuela'||l.tipo==='plaza')?l.tipo:'otros'; }
+let filtros={salud:true,escuela:true,plaza:true,otros:true,calles:true};
+try{ Object.assign(filtros,JSON.parse(leerPref('territorios-filtros','{}'))); }catch(e){}
+function aplicarFiltros(){
+  LUGARES.forEach(l=>{
+    if(!l.marker) return;
+    const ver=filtros[grupoDe(l)];
+    if(ver && !map.hasLayer(l.marker)) l.marker.addTo(map);
+    if(!ver && map.hasLayer(l.marker)) map.removeLayer(l.marker);
+  });
+  capasCalle.forEach(c=>{
+    if(filtros.calles && !map.hasLayer(c)) c.addTo(map);
+    if(!filtros.calles && map.hasLayer(c)) map.removeLayer(c);
+  });
+  document.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',String(!!filtros[b.dataset.filtro])));
+  guardarPref('territorios-filtros',JSON.stringify(filtros));
+}
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{ filtros[b.dataset.filtro]=!filtros[b.dataset.filtro]; aplicarFiltros(); }));
+aplicarFiltros();
+
+/* ================================================================
+   SIN SEÑAL: usa el mismo service worker del tablero (/sw.js), que
+   guarda todo lo que se abre. El botón descarga de antemano el mapa
+   de la zona (zoom 13 a 17) para que esté guardado.
+   ================================================================ */
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
+const CACHE_TABLERO='norte-garin-v2'; // mismo nombre que en /sw.js
+function tilesDeLaZona(){
+  const b=L.featureGroup(Object.values(layers)).getBounds().pad(0.08), urls=[];
+  const plantillas=[capaCalles._url,capaNombres._url];
+  for(let z=13;z<=17;z++){
+    const a=map.project(b.getNorthWest(),z).divideBy(256).floor(), c=map.project(b.getSouthEast(),z).divideBy(256).floor();
+    for(let x=a.x;x<=c.x;x++) for(let y=a.y;y<=c.y;y++) plantillas.forEach(p=>urls.push(L.Util.template(p,{z:z,x:x,y:y})));
+  }
+  return urls;
+}
+async function guardarSinSenal(){
+  const btn=document.getElementById('btnOffline'), txt=document.getElementById('offTxt'), barra=document.getElementById('offBarra');
+  if(!('caches' in window)){ txt.textContent='Este navegador no permite guardar el mapa.'; return; }
+  btn.disabled=true; barra.classList.add('show');
+  const urls=[location.origin+location.pathname,
+    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
+    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js',
+    'https://unpkg.com/leaflet-rotate@0.2.8/dist/leaflet-rotate-src.js'].concat(tilesDeLaZona());
+  const cache=await caches.open(CACHE_TABLERO);
+  let hechos=0, errores=0, i=0;
+  async function trabajador(){
+    while(i<urls.length){
+      const u=urls[i++];
+      try{
+        const r=await fetch(u,{mode:'cors',credentials:'omit'});
+        if(r.ok) await cache.put(u,r.clone()); else errores++;
+      }catch(e){ errores++; }
+      hechos++;
+      barra.firstElementChild.style.width=(100*hechos/urls.length)+'%';
+      txt.textContent='Guardando… '+hechos+' de '+urls.length;
+    }
+  }
+  await Promise.all([1,2,3,4,5,6].map(trabajador));
+  btn.disabled=false;
+  txt.textContent = errores>urls.length*0.1
+    ? 'Se guardó una parte ('+(urls.length-errores)+' de '+urls.length+'). Volvé a intentar con mejor conexión.'
+    : 'Listo: el mapa de la zona quedó guardado en este celular. Ya podés abrirlo sin señal.';
+  guardarPref('territorios-offline',new Date().toISOString());
+}
+document.getElementById('btnOffline').addEventListener('click',guardarSinSenal);
+(function(){ const f=leerPref('territorios-offline',null); if(f){ const d=new Date(f); document.getElementById('offTxt').textContent='Ya guardaste el mapa el '+d.toLocaleDateString('es-AR',{day:'numeric',month:'long'})+'. Podés volver a guardarlo para actualizarlo.'; } })();
 </script>
 </body>
 </html>
