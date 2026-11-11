@@ -135,17 +135,6 @@
   .pm-opt.nv span{filter:none}
   .pm-cancel{width:100%;background:none;border:none;color:var(--muted);padding:13px;font-size:1rem;font-weight:600;cursor:pointer;font-family:inherit;margin-top:2px}
 
-  .novisitar{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:16px}
-  .nv-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-  .nv-head span{font-size:1rem;font-weight:600;color:#f0a868}
-  .nv-add{background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:6px 11px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
-  .nv-add:hover{background:var(--line)}
-  .nv-lista{display:flex;flex-direction:column;gap:7px}
-  .nv-empty{font-size:0.95rem;color:var(--muted);font-style:italic;padding:4px 0}
-  .nv-item{display:flex;align-items:center;gap:9px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:9px 11px}
-  .nv-item .ic{color:#f0a868;flex:none}
-  .nv-item .tx{flex:1;font-size:1rem}
-  .nv-item .rm{background:none;border:none;color:#f85149;cursor:pointer;font-size:1rem;flex:none;padding:0 2px}
 
   /* Etiquetas en el mapa */
   /* Número de territorio: placa blanca con borde del color del territorio */
@@ -236,7 +225,6 @@
     .titem .sw{width:36px;height:36px;font-size:1rem}
     .titem .nm{font-size:1rem}
     .nav-btn{padding:17px;font-size:1rem}
-    .nv-add{padding:9px 14px;font-size:1rem}
     .list{padding:8px 12px 30px}
   }
 
@@ -297,8 +285,40 @@
   .btn-gps.buscando svg{animation:gpsPulso 1s infinite alternate}
   @keyframes gpsPulso{from{opacity:1}to{opacity:.3}}
   .gps-punto{width:20px;height:20px;border-radius:50%;background:#1a73e8;border:3px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.15),0 1px 4px rgba(0,0,0,.4)}
+  /* ===== Ficha del territorio, estilo Google Maps ===== */
+  .grip{cursor:grab;touch-action:none;padding:0;height:5px;position:relative}
+  .grip::after{content:"";position:absolute;left:-30px;right:-30px;top:-12px;bottom:-12px}
+  .sheet-head{touch-action:none}
+  .acciones{display:flex;gap:10px;margin-bottom:18px;overflow-x:auto;padding-bottom:2px}
+  .accion{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;min-width:88px;min-height:48px;
+    background:none;border:none;color:var(--accent);font-family:inherit;font-size:0.95rem;font-weight:600;cursor:pointer;text-decoration:none;padding:4px 2px}
+  .accion .aic{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:var(--panel2);border:1px solid var(--line)}
+  .accion .aic svg{width:22px;height:22px;fill:var(--accent)}
+  .accion.principal .aic{background:var(--accent);border-color:var(--accent)}
+  .accion.principal .aic svg{fill:#fff}
+  .sheet-mas h3{font-size:1rem;font-weight:700;margin:4px 0 10px}
+  .manzanas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .manzanas span{width:36px;height:36px;border-radius:50%;background:#7c3aed;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:0.95rem}
+  .manzanas .nada,.limits .nada{width:auto;height:auto;background:none;color:var(--muted);font-weight:400;font-size:1rem}
+  .limits .nada{padding:11px 0;display:block}
+  .ayuda{color:var(--muted);font-size:0.95rem;line-height:1.5;margin-top:4px}
+  .pin-marcado{width:30px;height:40px}
+  .pin-marcado svg{width:30px;height:40px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.4))}
+  .btn-gps{transition:bottom .3s}
   @media(max-width:820px){
-    .btn-gps{bottom:92px}
+    /* Hoja de tres alturas: chica (solo título), media (título + acciones) y completa */
+    .sheet{height:80vh;max-height:none;overflow-y:hidden;transition:transform .3s cubic-bezier(.3,1,.5,1)}
+    .sheet.open[data-alto="chica"]{transform:translateY(calc(80vh - 104px))}
+    .sheet.open[data-alto="media"]{transform:translateY(calc(80vh - 222px))}
+    .sheet.open[data-alto="completa"]{transform:translateY(0);overflow-y:auto}
+    .sheet.arrastrando{transition:none}
+    .leaflet-control-zoom{display:none}
+    .btn-gps{bottom:calc(var(--ficha,68px) + 24px)}
+    .btn-gps.oculto{display:none}
+  }
+  @media(max-width:820px){
+    .btn-gps{bottom:calc(var(--ficha,68px) + 24px)}
     .topbar{gap:10px}
     .gsearch input{height:48px;padding-left:16px}
     .gclear{top:0}
@@ -349,17 +369,31 @@
   <div class="list" id="lista"></div>
 </div>
 
-<div class="sheet" id="sheet">
-  <div class="grip"></div>
-  <div class="sheet-head">
+<div class="sheet" id="sheet" data-alto="media">
+  <div class="grip" id="sheetGrip" role="button" tabindex="0" aria-label="Agrandar o achicar la ficha"></div>
+  <div class="sheet-head" id="sheetHead">
     <div class="terr-num" id="shNum">0</div>
     <div>
       <h2 id="shTitle">Territorio</h2>
       <div class="tag" id="shTag">Zona de predicación</div>
     </div>
-    <button class="close-x" onclick="closeSheet()">✕</button>
+    <button class="close-x" onclick="closeSheet()" aria-label="Cerrar ficha">✕</button>
   </div>
-  <button class="nav-btn" id="revisitaBtn" onclick="activarRevisita()">📌 Marcar un punto en el territorio</button>
+  <div class="acciones">
+    <a class="accion principal" id="btnLlegar" href="#" target="_blank" rel="noopener">
+      <span class="aic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 11.3 12.7 2.3a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4zM14 14.5V12h-4v3H8v-4a1 1 0 0 1 1-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg></span>Cómo llegar</a>
+    <button class="accion" id="btnCompartir" type="button">
+      <span class="aic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.1c-.8 0-1.5.3-2 .8l-7.1-4.2c.1-.2.1-.5.1-.7s0-.5-.1-.7L16 7.2c.5.5 1.2.8 2 .8a3 3 0 1 0-3-3c0 .2 0 .5.1.7L8 9.8A3 3 0 1 0 8 14.2l7.1 4.2c-.1.2-.1.4-.1.6a2.9 2.9 0 1 0 3-2.9z"/></svg></span>Compartir</button>
+    <button class="accion" id="revisitaBtn" type="button" onclick="activarRevisita()">
+      <span class="aic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></span>Marcar punto</button>
+  </div>
+  <div class="sheet-mas">
+    <h3>Manzanas</h3>
+    <div class="manzanas" id="shManzanas"></div>
+    <h3>Límites</h3>
+    <div class="limits" id="shLimites"></div>
+    <p class="ayuda">Para marcar un punto también podés mantener apretado el dedo sobre el mapa.</p>
+  </div>
 </div>
 
 <script>
@@ -1075,7 +1109,7 @@ const LETRAS = [
   {letra:'C', lat:-34.435761, lng:-58.772285}
 ];
 
-const map=L.map('map',{zoomControl:true,attributionControl:false,rotate:true,touchRotate:true,rotateControl:false,bearing:0}).setView([-34.429068,-58.76558],14);
+const map=L.map('map',{zoomControl:true,attributionControl:false,rotate:true,touchRotate:true,rotateControl:false,bearing:0,tapHold:true}).setView([-34.429068,-58.76558],14);
 // Fondo base: Esri World Street Map (sin API key, funciona publicado; calles y nombres)
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Esri'}).addTo(map);
 
@@ -1259,7 +1293,8 @@ function flyTo(t){
   const lay=layers[t.num]||layers['p'+t.num];
   // deja lugar abajo para la ficha del territorio, así no lo tapa
   const ficha=document.getElementById('sheet');
-  const abajo=(ficha && ficha.classList.contains('open'))?ficha.offsetHeight+30:60;
+  // en el celular la ficha mide 80vh pero solo se ve la parte "media"
+  const abajo=(ficha && ficha.classList.contains('open'))?((esCelu()?ALTOS.media:ficha.offsetHeight)+30):60;
   if(lay) map.flyToBounds(lay.getBounds(),{paddingTopLeft:[50,90],paddingBottomRight:[50,abajo],maxZoom:17,duration:.6});
 }
 
@@ -1359,49 +1394,6 @@ function pmNoVisitar(){
   const texto='🚫 *No visitar*\n\nUbicación: '+link+'\n\nComentario: ';
   window.open('https://wa.me/'+WHATSAPP_ENCARGADO+'?text='+encodeURIComponent(texto),'_blank');
   cerrarMenuPunto();
-}
-
-/* ===== No visitar (guardado local por territorio) ===== */
-const STORE_NV='garin_novisitar_v1';
-let _nvMem=null;
-function getNV(){
-  if(_nvMem!==null) return _nvMem;
-  try{ return JSON.parse(localStorage.getItem(STORE_NV))||{}; }catch(e){ _nvMem={}; return _nvMem; }
-}
-function setNV(obj){
-  _nvMem=obj;
-  try{ localStorage.setItem(STORE_NV,JSON.stringify(obj)); }catch(e){}
-}
-
-function cargarNoVisitar(num){
-  const data=getNV();
-  const lista=data[num]||[];
-  const cont=document.getElementById('nvLista');
-  if(!lista.length){ cont.innerHTML='<div class="nv-empty">Sin direcciones marcadas.</div>'; return; }
-  cont.innerHTML='';
-  lista.forEach((dir,i)=>{
-    const d=document.createElement('div');
-    d.className='nv-item';
-    d.innerHTML='<span class="ic">⚠</span><span class="tx"></span><button class="rm" title="Quitar">✕</button>';
-    d.querySelector('.tx').textContent=dir;
-    d.querySelector('.rm').onclick=()=>{ quitarNoVisitar(num,i); };
-    cont.appendChild(d);
-  });
-}
-function agregarNoVisitar(){
-  if(!current) return;
-  const dir=prompt('Dirección a NO visitar (ej: Falco 1234, casa de rejas verdes):');
-  if(!dir||!dir.trim()) return;
-  const data=getNV();
-  if(!data[current.num]) data[current.num]=[];
-  data[current.num].push(dir.trim());
-  setNV(data);
-  cargarNoVisitar(current.num);
-}
-function quitarNoVisitar(num,i){
-  const data=getNV();
-  if(data[num]){ data[num].splice(i,1); if(!data[num].length) delete data[num]; setNV(data); }
-  cargarNoVisitar(num);
 }
 
 // Buscador
@@ -1588,6 +1580,122 @@ btnGps.addEventListener('click',()=>{
   btnGps.classList.add('buscando'); gpsCentrarAlLlegar=true;
   if(gpsWatch===null) gpsWatch=navigator.geolocation.watchPosition(gpsMostrar,gpsError,{enableHighAccuracy:true,maximumAge:10000,timeout:20000});
 });
+
+/* ================================================================
+   FICHA DEL TERRITORIO ESTILO GOOGLE MAPS
+   - En el celular se arrastra en tres alturas: chica, media y completa
+   - Botones: Cómo llegar, Compartir, Marcar punto
+   - En la parte completa: manzanas y límites
+   ================================================================ */
+const esCelu=()=>window.matchMedia('(max-width:820px)').matches;
+const ALTOS={chica:104, media:222};
+const ORDEN_ALTOS=['chica','media','completa'];
+function ponerAlto(a){
+  sheet.dataset.alto=a;
+  sheet.style.transform='';
+  if(a==='completa'){ btnGps.classList.add('oculto'); }
+  else{ btnGps.classList.remove('oculto'); document.documentElement.style.setProperty('--ficha',ALTOS[a]+'px'); }
+  if(a!=='completa') sheet.scrollTop=0;
+}
+function letrasDe(t){
+  const s=new Set(LETRAS_DATA.filter(l=>puntoEnPolo(l.lat,l.lng,t.poly)).map(l=>l.letra));
+  return [...s].sort((a,b)=>a.localeCompare(b,'es',{numeric:true}));
+}
+function llenarFicha(t){
+  const p=puntoInterior(t.poly)||t.inicio;
+  document.getElementById('btnLlegar').href=linkComoLlegar(p[0].toFixed(6),p[1].toFixed(6));
+  const lt=letrasDe(t);
+  document.getElementById('shManzanas').innerHTML = lt.length
+    ? lt.map(l=>'<span>'+escHtml(l)+'</span>').join('')
+    : '<span class="nada">Sin letras de manzana cargadas.</span>';
+  const lim=t.limites||{}, nombres={N:'Norte',E:'Este',S:'Sur',O:'Oeste'};
+  const cargados=['N','E','S','O'].filter(k=>lim[k] && lim[k]!=='—');
+  document.getElementById('shLimites').innerHTML = cargados.length
+    ? ['N','E','S','O'].map(k=>'<div class="lrow"><span class="lk">'+nombres[k]+'</span><span class="lv">'+escHtml(lim[k]||'—')+'</span></div>').join('')
+    : '<span class="nada">Todavía no están cargados.</span>';
+}
+const _openSheet2=openSheet, _closeSheet2=closeSheet;
+openSheet=function(t){ _openSheet2(t); llenarFicha(t); ponerAlto(esCelu()?'media':'completa'); if(!esCelu()) btnGps.classList.remove('oculto'); };
+closeSheet=function(){ _closeSheet2(); sheet.style.transform=''; btnGps.classList.remove('oculto'); document.documentElement.style.removeProperty('--ficha'); };
+
+// Compartir: usa el menú del celular si existe; si no, WhatsApp
+document.getElementById('btnCompartir').addEventListener('click',()=>{
+  if(!current) return;
+  const url=location.origin+location.pathname+'#'+current.num;
+  const texto='Territorio '+current.num+' · Congregación Norte Garín';
+  if(navigator.share){ navigator.share({title:texto,text:texto,url:url}).catch(()=>{}); }
+  else{ window.open('https://wa.me/?text='+encodeURIComponent(texto+'\n'+url),'_blank'); }
+});
+
+// Arrastre de la ficha (solo celular)
+(function(){
+  let y0=null, t0=0, dy=0, tiempo0=0, movio=false;
+  function offsetDe(a){ const H=sheet.offsetHeight; return a==='completa'?0:H-ALTOS[a]; }
+  function inicio(e){
+    if(!esCelu() || !sheet.classList.contains('open')) return;
+    if(e.target.closest('button,a')) return;
+    y0=e.clientY; t0=offsetDe(sheet.dataset.alto); dy=0; movio=false; tiempo0=Date.now();
+    sheet.classList.add('arrastrando');
+    try{ e.target.setPointerCapture(e.pointerId); }catch(_){}
+  }
+  function mover(e){
+    if(y0===null) return;
+    dy=e.clientY-y0; if(Math.abs(dy)>6) movio=true;
+    const H=sheet.offsetHeight, v=Math.max(0,Math.min(H-60,t0+dy));
+    sheet.style.transform='translateY('+v+'px)';
+  }
+  function fin(){
+    if(y0===null) return;
+    sheet.classList.remove('arrastrando');
+    const actual=sheet.dataset.alto, i=ORDEN_ALTOS.indexOf(actual);
+    y0=null;
+    if(!movio){ // un toque en la manija: alterna media <-> completa
+      ponerAlto(actual==='completa'?'media':(actual==='chica'?'media':'completa')); return;
+    }
+    const rapido=Math.abs(dy)/Math.max(1,Date.now()-tiempo0)>0.5;
+    if(dy>0 && actual==='chica' && dy>50){ closeSheet(); return; }
+    let destino;
+    if(rapido || Math.abs(dy)>60){ destino=ORDEN_ALTOS[Math.max(0,Math.min(2,i+(dy<0?1:-1)))]; }
+    else{
+      const v=t0+dy; destino=ORDEN_ALTOS.reduce((m,a)=>Math.abs(offsetDe(a)-v)<Math.abs(offsetDe(m)-v)?a:m,'media');
+    }
+    ponerAlto(destino);
+  }
+  ['sheetGrip','sheetHead'].forEach(id=>{
+    const el=document.getElementById(id);
+    el.addEventListener('pointerdown',inicio);
+    el.addEventListener('pointermove',mover);
+    el.addEventListener('pointerup',fin);
+    el.addEventListener('pointercancel',fin);
+  });
+  document.getElementById('sheetGrip').addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); ponerAlto(sheet.dataset.alto==='completa'?'media':'completa'); }
+  });
+})();
+
+// Tocar el mapa vacío achica la ficha (el territorio sigue elegido)
+map.on('click',()=>{ if(!modoRevisita && esCelu() && sheet.classList.contains('open') && sheet.dataset.alto!=='chica') ponerAlto('chica'); });
+
+/* ================================================================
+   MANTENER APRETADO PARA MARCAR UN PUNTO (como soltar un pin en Google Maps)
+   ================================================================ */
+let pinMarcado=null;
+const pinIcon=L.divIcon({className:'',iconSize:[30,40],iconAnchor:[15,40],
+  html:'<div class="pin-marcado"><svg viewBox="0 0 30 40" aria-hidden="true"><path d="M15 0C6.7 0 0 6.7 0 15c0 11.2 15 25 15 25s15-13.8 15-25C30 6.7 23.3 0 15 0z" fill="#d93025"/><circle cx="15" cy="15" r="5.5" fill="#7a1b14"/></svg></div>'});
+map.on('contextmenu',e=>{
+  if(e.originalEvent && e.originalEvent.preventDefault) e.originalEvent.preventDefault();
+  if(modoRevisita) cancelarRevisita();
+  if(navigator.vibrate) try{ navigator.vibrate(30); }catch(_){}
+  abrirMenuPunto(e.latlng.lat,e.latlng.lng);
+});
+// Cada vez que se abre el menú de un punto, se ve un pin rojo en ese lugar
+const _abrirMenuPunto=abrirMenuPunto, _cerrarMenuPunto=cerrarMenuPunto;
+abrirMenuPunto=function(lat,lng){
+  if(pinMarcado) map.removeLayer(pinMarcado);
+  pinMarcado=L.marker([lat,lng],{icon:pinIcon,interactive:false,keyboard:false,pane:'lugarPane'}).addTo(map);
+  _abrirMenuPunto(lat,lng);
+};
+cerrarMenuPunto=function(){ _cerrarMenuPunto(); if(pinMarcado){ map.removeLayer(pinMarcado); pinMarcado=null; } };
 </script>
 </body>
 </html>
