@@ -7,7 +7,7 @@ Lo usan personas mayores y de todas las edades, sobre todo desde el celular.
 1. **`main` se publica en producción.** Cualquier cambio de diseño o de código se prueba primero en una rama y se muestra antes de unir a `main`.
 2. **Los datos viven en archivos `*-data.js`** (`salidas-data.js`, `vida-ministerio-data.js`, `conferencias-data.js`, etc.). Cargar programas nuevos = editar solo esos archivos. No hay base de datos ni Firebase.
 3. **No cambiar la lógica sin pedido explícito.** Cambios visuales y cambios de funcionamiento van por separado.
-4. Territorios (`territorios/index.html`) guarda los "no visitados" solo en el `localStorage` de cada celular.
+4. Territorios (`territorios/index.html`) no guarda nada en el celular: "No visitar" abre WhatsApp al encargado con la ubicación. Los datos (`TERRITORIOS`, `CALLES`, `LETRAS`) vienen de "Exportar para el visor" del editor (que no está en este repo); `PLAZAS` y `LUGARES` se mantienen a mano dentro del mismo archivo. Fondo de mapa: Esri (nunca CartoDB). Rotación: leaflet-rotate.
 
 ## Reglas de diseño (obligatorias)
 Todo lo visual compartido está en **`Tablero-Norte-Garin/estilos.css`**, que cada página carga después de su propio `<style>`.
