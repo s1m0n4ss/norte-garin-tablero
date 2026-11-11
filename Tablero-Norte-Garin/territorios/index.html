@@ -298,7 +298,7 @@
   .grip::after{content:"";position:absolute;left:-30px;right:-30px;top:-12px;bottom:-12px}
   .sheet-head{touch-action:none}
   .acciones{display:flex;gap:10px;margin-bottom:18px;overflow-x:auto;padding-bottom:2px}
-  .accion{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;min-width:88px;min-height:48px;
+  .accion{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;min-width:72px;min-height:48px;
     background:none;border:none;color:var(--accent);font-family:inherit;font-size:0.95rem;font-weight:600;cursor:pointer;text-decoration:none;padding:4px 2px}
   .accion .aic{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
     background:var(--panel2);border:1px solid var(--line)}
@@ -325,6 +325,32 @@
     .btn-gps{bottom:calc(var(--ficha,68px) + 24px)}
     .btn-gps.oculto{display:none}
   }
+  /* ===== Tarjeta para imprimir ===== */
+  #tarjeta{display:none}
+  @media print{
+    @page{size:A4 landscape;margin:10mm}
+    html,body{height:auto!important;overflow:visible!important;background:#fff!important}
+    body.imprimiendo > *:not(#tarjeta){display:none!important}
+    body.imprimiendo #tarjeta{display:block!important;color:#000;font-family:'Inter',Arial,sans-serif}
+    #tarjeta *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .tj-cab{display:flex;align-items:center;gap:5mm;margin-bottom:4mm}
+    .tj-num{width:20mm;height:20mm;border-radius:4mm;border:.6mm solid #000;display:flex;align-items:center;justify-content:center;font-size:26pt;font-weight:700;color:#000}
+    .tj-tit h1{font-size:22pt;font-weight:700;margin:0}
+    .tj-tit p{font-size:12pt;margin:1mm 0 0}
+    .tj-qr{margin-left:auto;display:flex;align-items:center;gap:3mm;font-size:9pt;max-width:55mm}
+    .tj-qr img{width:24mm;height:24mm}
+    .tj-mapa{display:block;width:100%;height:auto;border:.4mm solid #000;border-radius:2mm}
+    .tj-pie{display:grid;grid-template-columns:1fr 1fr;gap:8mm;margin-top:4mm}
+    .tj-pie h2{font-size:12pt;font-weight:700;margin:0 0 1.5mm}
+    .tj-pie table{border-collapse:collapse;width:100%;font-size:11pt}
+    .tj-pie th{text-align:left;width:22mm;padding:1mm 2mm 1mm 0;font-weight:600;vertical-align:top}
+    .tj-pie td{padding:1mm 0;border-bottom:.2mm solid #999}
+    .tj-fechas td{height:7mm}
+    .tj-mz{font-size:13pt;font-weight:700;letter-spacing:.03em;margin:0 0 3mm}
+    .tj-impreso{font-size:8pt;color:#444;margin-top:3mm}
+    .tj-aviso{font-size:12pt;border:.4mm dashed #000;padding:10mm;text-align:center}
+  }
+
   /* ===== Filtros: dentro del panel del botón de capas (no ocupan lugar en el mapa) ===== */
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
   .chips::-webkit-scrollbar{display:none}
@@ -471,6 +497,8 @@
       <span class="aic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.1c-.8 0-1.5.3-2 .8l-7.1-4.2c.1-.2.1-.5.1-.7s0-.5-.1-.7L16 7.2c.5.5 1.2.8 2 .8a3 3 0 1 0-3-3c0 .2 0 .5.1.7L8 9.8A3 3 0 1 0 8 14.2l7.1 4.2c-.1.2-.1.4-.1.6a2.9 2.9 0 1 0 3-2.9z"/></svg></span>Compartir</button>
     <button class="accion" id="revisitaBtn" type="button" onclick="activarRevisita()">
       <span class="aic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></span>Marcar punto</button>
+    <button class="accion" id="btnTarjeta" type="button">
+      <span class="aic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 8H5a3 3 0 0 0-3 3v6h4v4h12v-4h4v-6a3 3 0 0 0-3-3zm-3 11H8v-5h8v5zm3-7a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM18 3H6v4h12V3z"/></svg></span>Tarjeta</button>
   </div>
   <div class="sheet-mas">
     <h3>Manzanas</h3>
@@ -1936,6 +1964,91 @@ async function guardarSinSenal(){
 }
 document.getElementById('btnOffline').addEventListener('click',guardarSinSenal);
 (function(){ const f=leerPref('territorios-offline',null); if(f){ const d=new Date(f); document.getElementById('offTxt').textContent='Ya guardaste el mapa el '+d.toLocaleDateString('es-AR',{day:'numeric',month:'long'})+'. Podés volver a guardarlo para actualizarlo.'; } })();
+
+/* ================================================================
+   TARJETA DEL TERRITORIO PARA IMPRIMIR (o guardar como PDF)
+   Arma una imagen del mapa del territorio con las imágenes de Esri,
+   y una hoja con número, límites, manzanas y un QR al mapa.
+   ================================================================ */
+const CRS=L.CRS.EPSG3857;
+function cargarImg(src){ return new Promise(res=>{ const i=new Image(); i.crossOrigin='anonymous'; i.onload=()=>res(i); i.onerror=()=>res(null); i.src=src; }); }
+async function dibujarMapaTarjeta(t,W,H){
+  const cv=document.createElement('canvas'); cv.width=W; cv.height=H;
+  const g=cv.getContext('2d'); g.fillStyle='#f2efe9'; g.fillRect(0,0,W,H);
+  const b=L.polygon(t.poly).getBounds().pad(0.12);
+  // Zoom de las imágenes: el siguiente al último en que el territorio entra completo,
+  // achicado (escala s) para que entre justo. Así el territorio ocupa casi toda la tarjeta.
+  const tam=zz=>{ const a=CRS.latLngToPoint(b.getNorthWest(),zz), c=CRS.latLngToPoint(b.getSouthEast(),zz); return [c.x-a.x,c.y-a.y]; };
+  let z=18; for(;z>12;z--){ const d=tam(z); if(d[0]<=W && d[1]<=H) break; }
+  if(z<18){ z++; }
+  const d=tam(z), s=Math.min(1,W/d[0],H/d[1]);
+  const Wl=W/s, Hl=H/s; // tamaño "lógico" antes de achicar
+  g.setTransform(s,0,0,s,0,0);
+  const cen=CRS.latLngToPoint(b.getCenter(),z), o=L.point(cen.x-Wl/2,cen.y-Hl/2);
+  const px=ll=>{ const p=CRS.latLngToPoint(L.latLng(ll[0],ll[1]),z); return [p.x-o.x,p.y-o.y]; };
+  async function capa(url){
+    const x0=Math.floor(o.x/256), x1=Math.floor((o.x+Wl)/256), y0=Math.floor(o.y/256), y1=Math.floor((o.y+Hl)/256), tareas=[];
+    for(let x=x0;x<=x1;x++) for(let y=y0;y<=y1;y++){
+      tareas.push(cargarImg(L.Util.template(url,{z:z,x:x,y:y})).then(im=>{ if(im) g.drawImage(im,x*256-o.x,y*256-o.y); }));
+    }
+    await Promise.all(tareas);
+  }
+  const linea=(pts,cerrar)=>{ g.beginPath(); pts.forEach((p,i)=>{ const q=px(p); i?g.lineTo(q[0],q[1]):g.moveTo(q[0],q[1]); }); if(cerrar) g.closePath(); };
+  await capa(capaCalles._url);
+  // territorios vecinos: borde gris fino, para ubicarse
+  ordenados.forEach(v=>{ if(v===t) return; linea(v.poly,true); g.strokeStyle='rgba(60,60,60,.85)'; g.lineWidth=3/s; g.setLineDash([12/s,8/s]); g.stroke(); g.setLineDash([]); });
+  // calles clave (debajo del borde del territorio)
+  (typeof CALLES!=='undefined'?CALLES:[]).forEach(c=>{ linea(c.linea,false); g.strokeStyle='rgba(217,162,27,.85)'; g.lineWidth=10/s; g.lineCap='round'; g.stroke(); });
+  // el territorio: relleno suave + borde fuerte
+  linea(t.poly,true); g.fillStyle=colorTerr(t.num)+'55'; g.fill(); g.strokeStyle='#111'; g.lineWidth=7/s; g.lineJoin='round'; g.stroke();
+  await capa(capaNombres._url); // nombres de calles por encima
+  // letras de manzana
+  LETRAS_DATA.filter(l=>puntoEnPolo(l.lat,l.lng,t.poly)).forEach(l=>{
+    const q=px([l.lat,l.lng]); g.beginPath(); g.arc(q[0],q[1],30/s,0,Math.PI*2); g.fillStyle='#5b21b6'; g.fill(); g.lineWidth=5/s; g.strokeStyle='#fff'; g.stroke();
+    g.fillStyle='#fff'; g.font='bold '+Math.round(34/s)+'px Inter, Arial, sans-serif'; g.textAlign='center'; g.textBaseline='middle'; g.fillText(l.letra,q[0],q[1]+1/s);
+  });
+  // flecha del Norte (sin escala)
+  g.setTransform(1,0,0,1,0,0);
+  g.save(); g.translate(W-60,70); g.fillStyle='rgba(255,255,255,.9)'; g.beginPath(); g.arc(0,0,42,0,Math.PI*2); g.fill();
+  g.fillStyle='#b91c1c'; g.beginPath(); g.moveTo(0,-30); g.lineTo(14,8); g.lineTo(0,0); g.lineTo(-14,8); g.closePath(); g.fill();
+  g.fillStyle='#111'; g.font='bold 24px Inter, Arial, sans-serif'; g.textAlign='center'; g.fillText('N',0,30); g.restore();
+  try{ return cv.toDataURL('image/jpeg',0.9); }catch(e){ return null; }
+}
+function cargarScript(src){ return new Promise((res,rej)=>{ const s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=rej; document.head.appendChild(s); }); }
+async function qrDataUrl(texto){
+  try{
+    if(typeof qrcode==='undefined') await cargarScript('https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js');
+    const q=qrcode(0,'M'); q.addData(texto); q.make(); return q.createDataURL(6,2);
+  }catch(e){ return null; }
+}
+async function imprimirTarjeta(){
+  if(!current) return;
+  const t=current, btn=document.getElementById('btnTarjeta'), txtBtn=btn.lastChild;
+  btn.disabled=true; txtBtn.textContent='Armando…';
+  const url=location.origin+location.pathname+'#'+t.num;
+  const [img,qr]=await Promise.all([dibujarMapaTarjeta(t,2000,830),qrDataUrl(url)]);
+  const lim=t.limites||{}, nombres={N:'Norte',E:'Este',S:'Sur',O:'Oeste'};
+  const lt=letrasDe(t);
+  const hoy=new Date().toLocaleDateString('es-AR',{day:'numeric',month:'long',year:'numeric'});
+  let box=document.getElementById('tarjeta');
+  if(!box){ box=document.createElement('div'); box.id='tarjeta'; document.body.appendChild(box); }
+  box.innerHTML=
+    '<div class="tj-cab"><div class="tj-num" style="background:'+colorTerr(t.num)+'">'+t.num+'</div>'+
+      '<div class="tj-tit"><h1>Territorio '+t.num+'</h1><p>Congregación Norte Garín</p></div>'+
+      (qr?'<div class="tj-qr"><img src="'+qr+'" alt=""><span>Escaneá para abrirlo en el celular</span></div>':'')+'</div>'+
+    (img?'<img class="tj-mapa" src="'+img+'" alt="Mapa del territorio '+t.num+'">':'<p class="tj-aviso">No se pudo armar la imagen del mapa (¿hay señal?).</p>')+
+    '<div class="tj-pie"><div><h2>Límites</h2><table>'+['N','E','S','O'].map(k=>'<tr><th>'+nombres[k]+'</th><td>'+escHtml(lim[k]&&lim[k]!=='—'?lim[k]:'—')+'</td></tr>').join('')+'</table></div>'+
+      '<div><h2>Manzanas</h2><p class="tj-mz">'+(lt.length?lt.map(escHtml).join(' · '):'—')+'</p>'+
+      '<h2>Fechas</h2><table class="tj-fechas"><tr><th>Asignado</th><td></td></tr><tr><th>Terminado</th><td></td></tr></table></div></div>'+
+    '<p class="tj-impreso">Impreso el '+hoy+' · norte-garin.netlify.app/territorios/#'+t.num+'</p>';
+  // esperar a que las imágenes estén listas antes de imprimir
+  await Promise.all([...box.querySelectorAll('img')].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));
+  btn.disabled=false; txtBtn.textContent='Tarjeta';
+  document.body.classList.add('imprimiendo');
+  setTimeout(()=>{ window.print(); },50);
+}
+window.addEventListener('afterprint',()=>document.body.classList.remove('imprimiendo'));
+document.getElementById('btnTarjeta').addEventListener('click',imprimirTarjeta);
 </script>
 </body>
 </html>
