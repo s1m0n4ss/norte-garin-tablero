@@ -112,7 +112,7 @@
   .lv{color:var(--txt)}
 
   .nav-btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;
-    background:linear-gradient(135deg,var(--accent2),var(--accent));color:#04231a;border:none;
+    background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff;border:none;
     padding:15px;border-radius:13px;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;
     box-shadow:0 4px 14px rgba(47,158,111,.35);transition:.15s;font-family:inherit}
   .nav-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(47,158,111,.45)}
@@ -367,10 +367,11 @@
     background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:bottom .3s}
   .btn-capas svg{width:26px;height:26px;fill:#5f6368}
   .btn-capas.oculto{display:none}
-  .capas-box h3{font-size:1rem;font-weight:700;margin:6px 0 10px}
-  .tipos{display:flex;gap:12px;margin-bottom:18px}
+  .capas-box{max-height:calc(100vh - 12px);max-height:calc(100dvh - 12px);overflow-y:auto;overscroll-behavior:contain}
+  .capas-box h3{font-size:1rem;font-weight:700;margin:4px 0 8px}
+  .tipos{display:flex;gap:12px;margin-bottom:14px}
   .tipo{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:none;font-family:inherit;font-size:0.95rem;font-weight:600;color:var(--txt);cursor:pointer}
-  .tipo .mini{width:72px;height:56px;border-radius:12px;border:3px solid transparent;background-size:cover;background-position:center}
+  .tipo .mini{width:64px;height:46px;border-radius:12px;border:3px solid transparent;background-size:cover;background-position:center}
   .tipo[aria-pressed="true"] .mini{border-color:var(--accent)}
   .tipo[aria-pressed="true"]{color:var(--accent)}
   .offline-txt{color:var(--muted);font-size:0.95rem;line-height:1.5;margin:6px 0 0}
@@ -393,6 +394,7 @@
   html.dark .lugar .nom,html.dark .clabel{color:#f5f0e5;text-shadow:0 0 3px #000,0 0 3px #000,0 0 3px #000,0 0 4px #000}
   html.dark .accion .aic svg{fill:var(--accent)}
   html.dark .accion.principal .aic svg{fill:#0e1a14}
+  html.dark .nav-btn{color:#0e1a14}
   html.dark .leaflet-popup-content-wrapper,html.dark .leaflet-popup-tip{background:#2a3530;color:#f5f0e5}
 
   @media(max-width:820px){
