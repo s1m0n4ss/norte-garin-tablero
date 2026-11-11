@@ -12,11 +12,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://unpkg.com/leaflet-rotate@0.2.8/dist/leaflet-rotate-src.js"></script>
 <script>
-  // Modo claro/oscuro: el mismo que eligió la persona en el tablero (clave "theme")
+  // El mapa abre siempre en modo claro; solo se ve oscuro si la persona lo eligió
+  // en el panel de capas del mapa (clave propia, no la del resto del tablero)
   (function(){
-    var saved=null; try{ saved=localStorage.getItem('theme'); }catch(e){}
-    var prefiere=window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if(saved ? saved==='dark' : prefiere) document.documentElement.classList.add('dark');
+    var saved=null; try{ saved=localStorage.getItem('territorios-tema'); }catch(e){}
+    if(saved==='dark') document.documentElement.classList.add('dark');
   })();
 </script>
 <style>
@@ -444,11 +444,11 @@
   <div class="pm-box capas-box" role="dialog" aria-label="Tipo de mapa y opciones">
     <h3>Mostrar en el mapa</h3>
 <div class="chips" id="chips" role="group" aria-label="Qué mostrar en el mapa">
-  <button class="chip" type="button" data-filtro="salud" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#c62828"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z"/></svg>Salud</button>
-  <button class="chip" type="button" data-filtro="escuela" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#b45309"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6 9.2V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.8l-6 3.3-6-3.3z"/></svg>Escuelas</button>
-  <button class="chip" type="button" data-filtro="plaza" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#166534"><path d="M12 2a6 6 0 0 0-5.7 7.9A4.5 4.5 0 0 0 8 18h3v4h2v-4h3a4.5 4.5 0 0 0 1.7-8.1A6 6 0 0 0 12 2z"/></svg>Plazas</button>
-  <button class="chip" type="button" data-filtro="otros" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#374151"><path d="M12 2c-4 0-7 .5-7 4v9.5A3.5 3.5 0 0 0 8.5 19L7 20.5v.5h2l2-2h2l2 2h2v-.5L15.5 19a3.5 3.5 0 0 0 3.5-3.5V6c0-3.5-3-4-7-4zM17 11H7V6h10v5z"/></svg>Estación y otros</button>
-  <button class="chip" type="button" data-filtro="calles" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#d9a21b"><path d="M11 2h2v5h-2zm0 7h2v6h-2zm0 8h2v5h-2zM4 2h2v20H4zm14 0h2v20h-2z"/></svg>Calles clave</button>
+  <button class="chip" type="button" data-filtro="salud" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#c62828"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z"/></svg>Salud</button>
+  <button class="chip" type="button" data-filtro="escuela" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#b45309"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6 9.2V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.8l-6 3.3-6-3.3z"/></svg>Escuelas</button>
+  <button class="chip" type="button" data-filtro="plaza" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#166534"><path d="M12 2a6 6 0 0 0-5.7 7.9A4.5 4.5 0 0 0 8 18h3v4h2v-4h3a4.5 4.5 0 0 0 1.7-8.1A6 6 0 0 0 12 2z"/></svg>Plazas</button>
+  <button class="chip" type="button" data-filtro="otros" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#374151"><path d="M12 2c-4 0-7 .5-7 4v9.5A3.5 3.5 0 0 0 8.5 19L7 20.5v.5h2l2-2h2l2 2h2v-.5L15.5 19a3.5 3.5 0 0 0 3.5-3.5V6c0-3.5-3-4-7-4zM17 11H7V6h10v5z"/></svg>Estación y otros</button>
+  <button class="chip" type="button" data-filtro="calles" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#d9a21b"><path d="M11 2h2v5h-2zm0 7h2v6h-2zm0 8h2v5h-2zM4 2h2v20H4zm14 0h2v20h-2z"/></svg>Calles clave</button>
 </div>
     <h3>Tipo de mapa</h3>
     <div class="tipos">
@@ -1696,6 +1696,8 @@ function irACalle(nombre){
   map.flyToBounds(L.featureGroup(tramos).getBounds(),{padding:[60,60],maxZoom:17,duration:.6});
 }
 function irALugar(l){
+  // si ese tipo de lugar está oculto por los filtros, igual se muestra el que se buscó
+  if(l.marker && !map.hasLayer(l.marker)) l.marker.addTo(map);
   map.flyTo([l.lat,l.lng],17,{duration:.6});
   map.once('moveend',()=>{ if(l.marker) l.marker.openPopup(); });
 }
@@ -1874,16 +1876,16 @@ function ponerTipo(tipo){
   if(tipo==='satelite'){ if(map.hasLayer(capaCalles)) map.removeLayer(capaCalles); if(!map.hasLayer(capaSatelite)) capaSatelite.addTo(map); }
   else{ if(map.hasLayer(capaSatelite)) map.removeLayer(capaSatelite); if(!map.hasLayer(capaCalles)) capaCalles.addTo(map); }
   document.querySelectorAll('[data-tipo]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tipo===tipo)));
-  guardarPref('territorios-tipo',tipo);
+  // no se recuerda: el mapa abre siempre en "Mapa" (el satélite puede confundir)
 }
 function ponerTema(tema){
   document.documentElement.classList.toggle('dark',tema==='dark');
   document.querySelectorAll('[data-tema]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tema===tema)));
-  guardarPref('theme',tema); // misma clave que el resto del tablero
+  guardarPref('territorios-tema',tema);
 }
 document.querySelectorAll('[data-tipo]').forEach(b=>b.addEventListener('click',()=>ponerTipo(b.dataset.tipo)));
 document.querySelectorAll('[data-tema]').forEach(b=>b.addEventListener('click',()=>ponerTema(b.dataset.tema)));
-ponerTipo(leerPref('territorios-tipo','mapa'));
+ponerTipo('mapa');
 document.querySelectorAll('[data-tema]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.tema==='dark')===document.documentElement.classList.contains('dark'))));
 btnCapas.addEventListener('click',()=>capasPanel.classList.add('show'));
 function cerrarCapas(){ capasPanel.classList.remove('show'); }
@@ -1900,8 +1902,10 @@ closeSheet=function(){ _closeSheet3(); btnCapas.classList.remove('oculto'); };
 const capasCalle=[];
 map.eachLayer(l=>{ if(l instanceof L.Polyline && !(l instanceof L.Polygon) && l.options.pane==='callePane') capasCalle.push(l); });
 function grupoDe(l){ return (l.tipo==='salud'||l.tipo==='escuela'||l.tipo==='plaza')?l.tipo:'otros'; }
-let filtros={salud:true,escuela:true,plaza:true,otros:true,calles:true};
-try{ Object.assign(filtros,JSON.parse(leerPref('territorios-filtros','{}'))); }catch(e){}
+// Por defecto todo oculto (para no confundir); cada persona lo activa en el panel de capas.
+// Clave nueva (v2) para que también quienes ya lo abrieron empiecen con todo oculto.
+let filtros={salud:false,escuela:false,plaza:false,otros:false,calles:false};
+try{ Object.assign(filtros,JSON.parse(leerPref('territorios-filtros-v2','{}'))); }catch(e){}
 function aplicarFiltros(){
   LUGARES.forEach(l=>{
     if(!l.marker) return;
@@ -1914,9 +1918,9 @@ function aplicarFiltros(){
     if(!filtros.calles && map.hasLayer(c)) map.removeLayer(c);
   });
   document.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',String(!!filtros[b.dataset.filtro])));
-  guardarPref('territorios-filtros',JSON.stringify(filtros));
 }
-document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{ filtros[b.dataset.filtro]=!filtros[b.dataset.filtro]; aplicarFiltros(); }));
+// solo se guarda cuando la persona toca un filtro
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{ filtros[b.dataset.filtro]=!filtros[b.dataset.filtro]; aplicarFiltros(); guardarPref('territorios-filtros-v2',JSON.stringify(filtros)); }));
 aplicarFiltros();
 
 /* ================================================================
