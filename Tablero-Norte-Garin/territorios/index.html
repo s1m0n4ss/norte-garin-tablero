@@ -148,14 +148,24 @@
   .nv-item .rm{background:none;border:none;color:#f85149;cursor:pointer;font-size:1rem;flex:none;padding:0 2px}
 
   /* Etiquetas en el mapa */
+  /* Número de territorio: placa blanca con borde del color del territorio */
   .terr-label{font-weight:700;font-size:1rem;color:#0d1117;font-family:'Inter',system-ui,sans-serif;
-    background:rgba(255,255,255,.88);border:1.5px solid rgba(13,17,23,.3);border-radius:8px;
-    width:28px!important;height:28px!important;text-align:center;line-height:26px;
-    box-shadow:0 1px 4px rgba(0,0,0,.3)}
+    background:#fff;border:2.5px solid var(--tc,#0d1117);border-radius:9px;
+    width:32px!important;height:32px!important;text-align:center;line-height:27px;
+    box-shadow:0 1px 3px rgba(0,0,0,.35);font-variant-numeric:tabular-nums}
   .terr-label span{display:block;width:100%;height:100%}
-  .clabel{background:#1d4ed8;color:#fff;border:2px solid rgba(255,255,255,.25);box-shadow:0 2px 8px rgba(0,0,0,.5);font-weight:700;font-size:0.95rem;padding:3px 9px;border-radius:6px;font-family:'Inter',system-ui,sans-serif}
-  .mz-letra{background:#7c3aed;color:#fff;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;border:1.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);font-family:'Inter',system-ui,sans-serif}
-  .plaza-label{background:var(--plaza);color:#fff;border:none;box-shadow:0 2px 8px rgba(0,0,0,.5);font-weight:600;font-size:0.95rem;padding:3px 8px;border-radius:6px;font-family:'Inter',system-ui,sans-serif}
+  /* El elegido ya figura en la ficha de abajo: su placa se oculta para no tapar las letras */
+  .terr-label.sel{display:none}
+  .terr-label.apagado{background:rgba(255,255,255,.85);color:#6b7280;border-color:#cbd5e1;box-shadow:none}
+  /* Vista lejana: placas más chicas para que no se encimen */
+  .z-lejos .terr-label{width:26px!important;height:26px!important;line-height:22px;font-size:0.95rem;border-width:2px;border-radius:7px}
+  /* Nombre de calle clave: una sola etiqueta por calle, solo de cerca */
+  .clabel{background:#1d4ed8;color:#fff;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);font-weight:600;font-size:0.95rem;padding:2px 9px;border-radius:999px;font-family:'Inter',system-ui,sans-serif;white-space:nowrap}
+  .clabel::before{display:none}
+  .z-lejos .plaza-label,.z-medio .clabel.corta,.z-muylejos .clabel{display:none}
+  .mz-letra{background:#7c3aed;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45);font-family:'Inter',system-ui,sans-serif}
+  .plaza-label{background:var(--plaza);color:#fff;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);font-weight:600;font-size:0.95rem;padding:2px 9px;border-radius:999px;font-family:'Inter',system-ui,sans-serif}
+  .plaza-label::before{display:none}
 
   /* Pin del Salón del Reino */
   .salon-pin{position:relative;width:34px;height:42px}
@@ -1010,8 +1020,8 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_M
 
 // Panes ordenados de abajo hacia arriba
 map.createPane('terrPane',map.getPane('rotatePane')||undefined);   map.getPane('terrPane').style.zIndex=350;   // territorios (relleno tenue)
-map.createPane('callePane',map.getPane('rotatePane')||undefined);  map.getPane('callePane').style.zIndex=500;  // avenidas azules + contorno
-map.createPane('labelsPane',map.getPane('rotatePane')||undefined); map.getPane('labelsPane').style.zIndex=610; map.getPane('labelsPane').style.pointerEvents='none';
+map.createPane('callePane',map.getPane('rotatePane')||undefined);  map.getPane('callePane').style.zIndex=500;  // avenidas azules + contorno (encima de la capa de calles de Esri, que si no las tapa)
+map.createPane('labelsPane',map.getPane('rotatePane')||undefined); map.getPane('labelsPane').style.zIndex=450; map.getPane('labelsPane').style.pointerEvents='none';
 
 // Capa de SOLO nombres/calles de Esri POR ENCIMA de los territorios (nombres resaltados)
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,pane:'labelsPane',opacity:1}).addTo(map);
@@ -1028,12 +1038,69 @@ const salonIcon=L.divIcon({
 L.marker([-34.4241,-58.7415],{icon:salonIcon,pane:'salonPane',zIndexOffset:1000}).addTo(map)
   .bindTooltip('Salón del Reino',{direction:'top',offset:[0,-40]});
 
-// Calles clave
+// Calles clave: borde blanco por debajo (se recorta nítida sobre el mapa) + línea azul
+// Una sola etiqueta por nombre, en el tramo más largo, para no repetir carteles
 if(typeof CALLES!=='undefined' && Array.isArray(CALLES)){
-  CALLES.forEach(c=>{
-    L.polyline(c.linea,{color:'#1d4ed8',weight:6,opacity:.92,pane:'callePane'}).addTo(map)
-      .bindTooltip(c.nombre,{permanent:true,direction:'center',className:'clabel'});
+  const largo=l=>{ let s=0; for(let i=1;i<l.length;i++) s+=map.distance(l[i-1],l[i]); return s; };
+  const masLargo={};
+  CALLES.forEach((c,i)=>{ const d=largo(c.linea); if(!masLargo[c.nombre]||d>masLargo[c.nombre].d) masLargo[c.nombre]={i,d}; });
+  CALLES.forEach((c,i)=>{
+    L.polyline(c.linea,{color:'#ffffff',weight:10,opacity:.95,lineCap:'round',lineJoin:'round',interactive:false,pane:'callePane'}).addTo(map);
+    const pl=L.polyline(c.linea,{color:'#1d4ed8',weight:5,opacity:1,lineCap:'round',lineJoin:'round',interactive:false,pane:'callePane'}).addTo(map);
+    // las calles cortas (menos de 800 m) muestran su nombre solo de cerca
+    if(masLargo[c.nombre].i===i) pl.bindTooltip(c.nombre,{permanent:true,direction:'center',className:'clabel'+(masLargo[c.nombre].d<800?' corta':'')});
   });
+}
+
+// Según el zoom se muestran más o menos carteles, para que no se encimen:
+//  < 17: se ocultan los nombres de calles cortas (están pegadas entre sí)
+//  < 15: números más chicos y sin nombres de plazas
+//  < 14: sin nombres de calles clave
+function actualizarZoom(){
+  const z=map.getZoom(), c=map.getContainer();
+  c.classList.toggle('z-medio',z<17);
+  c.classList.toggle('z-lejos',z<15);
+  c.classList.toggle('z-muylejos',z<14);
+}
+map.on('zoomend',actualizarZoom);
+
+// Oscurece un color hex (para el borde de cada territorio)
+function oscurecer(hex,f){
+  const n=parseInt(hex.slice(1),16);
+  const r=Math.round(((n>>16)&255)*(1-f)), g=Math.round(((n>>8)&255)*(1-f)), b=Math.round((n&255)*(1-f));
+  return '#'+((1<<24)|(r<<16)|(g<<8)|b).toString(16).slice(1);
+}
+
+// Punto bien adentro del polígono (el más alejado de los bordes), para ubicar el número.
+// El centro del rectángulo puede caer afuera en territorios con forma de L.
+function puntoInterior(poly){
+  const k=Math.cos(poly[0][0]*Math.PI/180); // corrige la escala de la longitud
+  const P=poly.map(p=>[p[0],p[1]*k]);
+  function distBorde(y,x){
+    let min=Infinity;
+    for(let i=0,j=P.length-1;i<P.length;j=i++){
+      const [ay,ax]=P[j],[by,bx]=P[i];
+      const dx=bx-ax,dy=by-ay,l2=dx*dx+dy*dy;
+      let t=l2?((x-ax)*dx+(y-ay)*dy)/l2:0; t=Math.max(0,Math.min(1,t));
+      const ex=ax+t*dx-x,ey=ay+t*dy-y; min=Math.min(min,ex*ex+ey*ey);
+    }
+    return Math.sqrt(min);
+  }
+  let y0=Infinity,y1=-Infinity,x0=Infinity,x1=-Infinity;
+  P.forEach(([y,x])=>{y0=Math.min(y0,y);y1=Math.max(y1,y);x0=Math.min(x0,x);x1=Math.max(x1,x);});
+  let best=null,bd=-1,cy=(y0+y1)/2,cx=(x0+x1)/2,hy=(y1-y0)/2,hx=(x1-x0)/2;
+  for(let paso=0;paso<4;paso++){
+    const N=12;
+    for(let a=0;a<=N;a++)for(let b=0;b<=N;b++){
+      const y=cy-hy+2*hy*a/N, x=cx-hx+2*hx*b/N;
+      if(!puntoEnPolo(y,x/k,poly)) continue;
+      const d=distBorde(y,x);
+      if(d>bd){bd=d;best=[y,x];}
+    }
+    if(!best) break;
+    cy=best[0];cx=best[1];hy/=3;hx/=3;
+  }
+  return best?[best[0],best[1]/k]:null;
 }
 
 // Letras de manzana: se guardan y se muestran SOLO al seleccionar un territorio
@@ -1054,7 +1121,7 @@ function mostrarLetrasDe(t){
   ocultarLetras();
   LETRAS_DATA.forEach(l=>{
     if(puntoEnPolo(l.lat,l.lng,t.poly)){
-      const m=L.marker([l.lat,l.lng],{icon:L.divIcon({className:'',html:'<div class="mz-letra">'+l.letra+'</div>',iconSize:[20,20],iconAnchor:[10,10]}),interactive:false,zIndexOffset:500}).addTo(map);
+      const m=L.marker([l.lat,l.lng],{icon:L.divIcon({className:'',html:'<div class="mz-letra">'+l.letra+'</div>',iconSize:[28,28],iconAnchor:[14,14]}),interactive:false,zIndexOffset:500}).addTo(map);
       letraLayers.push(m);
     }
   });
@@ -1067,8 +1134,9 @@ function ocultarLetras(){
 function styleFor(t){
   if(esPlaza(t)) return {color:'#0a2e18',weight:1.5,fillColor:'#15803d',fillOpacity:.78,pane:'terrPane'};
   const col=colorTerr(t.num);
-  return {color:col,weight:1.5,opacity:.7,fillColor:col,fillOpacity:.22,pane:'terrPane'};
+  return {color:oscurecer(col,.35),weight:2,opacity:.9,lineJoin:'round',fillColor:col,fillOpacity:.3,pane:'terrPane'};
 }
+const etiquetas={}; // número de territorio -> elemento de su placa
 
 const layers={}; let current=null; let modoRevisita=false;
 let nTerr=0,nPlaza=0;
@@ -1087,14 +1155,17 @@ ordenados.forEach(t=>{
   }
   nTerr++;
   pg.on('click',(e)=>{ if(modoRevisita){ if(e.originalEvent) L.DomEvent.stop(e); abrirMenuPunto(e.latlng.lat,e.latlng.lng); cancelarRevisita(); return; } if(e.originalEvent) L.DomEvent.stop(e); openSheet(t); });
-  L.marker(c,{icon:L.divIcon({className:'terr-label',html:'<span>'+t.num+'</span>',iconSize:[28,28],iconAnchor:[14,14]})})
-    .addTo(map).on('click',(e)=>{ if(e.originalEvent) L.DomEvent.stop(e); if(modoRevisita){ abrirMenuPunto(e.latlng.lat,e.latlng.lng); cancelarRevisita(); return; } openSheet(t); });
+  const pos=puntoInterior(t.poly)||[c.lat,c.lng];
+  const mk=L.marker(pos,{icon:L.divIcon({className:'terr-label',html:'<span>'+t.num+'</span>',iconSize:[32,32],iconAnchor:[16,16]})});
+  mk.on('add',()=>{ const el=mk.getElement(); if(el){ el.style.setProperty('--tc',oscurecer(colorTerr(t.num),.2)); etiquetas[t.num]=el; } });
+  mk.addTo(map).on('click',(e)=>{ if(e.originalEvent) L.DomEvent.stop(e); if(modoRevisita){ abrirMenuPunto(e.latlng.lat,e.latlng.lng); cancelarRevisita(); return; } openSheet(t); });
   layers[t.num]=pg;
   addItem(t,false);
 });
 if(Object.keys(layers).length){
   map.fitBounds(L.featureGroup(Object.values(layers)).getBounds(),{padding:[50,50]});
 }
+actualizarZoom();
 
 // Botón para volver la orientación al Norte
 const btnNorte=L.control({position:'topleft'});
@@ -1124,7 +1195,10 @@ function addItem(t,plaza){
 
 function flyTo(t){
   const lay=layers[t.num]||layers['p'+t.num];
-  if(lay) map.flyToBounds(lay.getBounds(),{padding:[80,80],maxZoom:17,duration:.6});
+  // deja lugar abajo para la ficha del territorio, así no lo tapa
+  const ficha=document.getElementById('sheet');
+  const abajo=(ficha && ficha.classList.contains('open'))?ficha.offsetHeight+30:60;
+  if(lay) map.flyToBounds(lay.getBounds(),{paddingTopLeft:[50,90],paddingBottomRight:[50,abajo],maxZoom:17,duration:.6});
 }
 
 const sheet=document.getElementById('sheet');
@@ -1134,12 +1208,15 @@ function atenuarTodos(exceptoNum){
   ordenados.forEach(t=>{
     const lay=layers[t.num]||layers['p'+t.num];
     if(!lay) return;
+    const et=etiquetas[t.num];
     if(t.num===exceptoNum){
       const col=esPlaza(t)?'#166534':colorTerr(t.num);
-      lay.setStyle({color:'#0d1117',weight:3,opacity:1,fillColor:col,fillOpacity:.62,pane:'terrPane'});
+      lay.setStyle({color:'#0d1117',weight:4,opacity:1,lineJoin:'round',fillColor:col,fillOpacity:.5,pane:'terrPane'});
       lay.bringToFront();
+      if(et){ et.classList.add('sel'); et.classList.remove('apagado'); }
     }else{
-      lay.setStyle({color:'#9ca3af',weight:.8,opacity:.4,fillColor:'#9ca3af',fillOpacity:.12,pane:'terrPane'});
+      lay.setStyle({color:'#9ca3af',weight:1,opacity:.5,fillColor:'#9ca3af',fillOpacity:.12,pane:'terrPane'});
+      if(et){ et.classList.add('apagado'); et.classList.remove('sel'); }
     }
   });
   document.getElementById('verTodos').classList.add('show');
@@ -1148,6 +1225,7 @@ function restaurarTodos(){
   ordenados.forEach(t=>{
     const lay=layers[t.num]||layers['p'+t.num];
     if(lay) lay.setStyle(styleFor(t));
+    const et=etiquetas[t.num]; if(et) et.classList.remove('sel','apagado');
   });
 }
 function verTodos(){
