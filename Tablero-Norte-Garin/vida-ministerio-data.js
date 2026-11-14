@@ -976,7 +976,7 @@ window.VIDA_MINISTERIO_DATA = `
 <section class="bloque rojo">
 <h3>NUESTRA VIDA CRISTIANA</h3>
 <div class="section"><div class="sect-title"><h4><strong>Canción 63</h4></div></div>
-<div class="section"><div class="sect-title"><h4>7. Necesidades de la congregación</h4></div><span class="asignado">A CONFIRMAR</span><div class="duration">(15 mins.)</div></div>
+<div class="section"><div class="sect-title"><h4>7. Informe 7 del Cuerpo Gobernante del año 2026</h4></div><div class="duration">(15 mins.)</div></div>
 <div class="section"><div class="sect-title"><h4>9. Estudio biblico de congregación (wcg cap. 19.)</h4></div><span class="asignado">LEÓN SEGOVIA</span><div class="duration">(30 mins.)</div></div>
 </section>
 <div class="pie">Palabras de conclusión (3 mins) | <strong>Canción 134</strong> y Oración final: <span class="asignado">LUCAS SEGOVIA<</span></div>
