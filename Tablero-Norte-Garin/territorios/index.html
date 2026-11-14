@@ -349,6 +349,15 @@
     .tj-mz{font-size:13pt;font-weight:700;letter-spacing:.03em;margin:0 0 3mm}
     .tj-impreso{font-size:8pt;color:#444;margin-top:3mm}
     .tj-aviso{font-size:12pt;border:.4mm dashed #000;padding:10mm;text-align:center}
+    /* Mapa completo: mapa a la izquierda, referencias a la derecha */
+    .mc-hoja{display:grid;grid-template-columns:1fr 62mm;gap:5mm;align-items:start}
+    .mc-mapa{display:block;width:100%;height:auto;max-height:188mm;object-fit:contain;border:.4mm solid #000;border-radius:2mm}
+    .mc-lado h1{font-size:18pt;font-weight:700;margin:0}
+    .mc-lado .sub{font-size:11pt;margin:1mm 0 4mm}
+    .mc-lado h2{font-size:11pt;font-weight:700;margin:4mm 0 1.5mm}
+    .mc-ref{display:flex;align-items:center;gap:2.5mm;font-size:10pt;margin:1.2mm 0}
+    .mc-ref i{display:inline-block;flex:none}
+    .mc-lado .tj-qr{margin:4mm 0 0;max-width:none}
   }
 
   /* ===== Filtros: dentro del panel del botón de capas (no ocupan lugar en el mapa) ===== */
@@ -460,6 +469,9 @@
       <button class="tipo" type="button" data-tema="light" aria-pressed="true">Claro</button>
       <button class="tipo" type="button" data-tema="dark" aria-pressed="false">Oscuro</button>
     </div>
+    <h3>Imprimir</h3>
+    <button class="nav-btn" type="button" id="btnMapaCompleto">Imprimir el mapa completo</button>
+    <p class="offline-txt" style="margin-bottom:14px">Todos los territorios con su número, en una hoja A4 apaisada (o guardalo como PDF).</p>
     <h3>Usar sin señal</h3>
     <button class="nav-btn" type="button" id="btnOffline">Guardar el mapa de la zona en este celular</button>
     <div class="barra" id="offBarra"><i></i></div>
@@ -2055,6 +2067,89 @@ async function imprimirTarjeta(){
 }
 window.addEventListener('afterprint',()=>document.body.classList.remove('imprimiendo'));
 document.getElementById('btnTarjeta').addEventListener('click',imprimirTarjeta);
+
+/* ================================================================
+   MAPA COMPLETO PARA IMPRIMIR: todos los territorios con su número
+   ================================================================ */
+async function dibujarMapaCompleto(W,H){
+  const cv=document.createElement('canvas'); cv.width=W; cv.height=H;
+  const g=cv.getContext('2d'); g.fillStyle='#f2efe9'; g.fillRect(0,0,W,H);
+  const b=L.polygon(CONTORNO).getBounds().extend(L.featureGroup(Object.values(layers)).getBounds()).pad(0.03);
+  const tam=zz=>{ const a=CRS.latLngToPoint(b.getNorthWest(),zz), c=CRS.latLngToPoint(b.getSouthEast(),zz); return [c.x-a.x,c.y-a.y]; };
+  let z=18; for(;z>11;z--){ const d=tam(z); if(d[0]<=W && d[1]<=H) break; }
+  if(z<18) z++;
+  const d=tam(z), s=Math.min(1,W/d[0],H/d[1]), Wl=W/s, Hl=H/s;
+  g.setTransform(s,0,0,s,0,0);
+  const cen=CRS.latLngToPoint(b.getCenter(),z), o=L.point(cen.x-Wl/2,cen.y-Hl/2);
+  const px=ll=>{ const p=CRS.latLngToPoint(L.latLng(ll[0],ll[1]),z); return [p.x-o.x,p.y-o.y]; };
+  async function capa(url){
+    const x0=Math.floor(o.x/256), x1=Math.floor((o.x+Wl)/256), y0=Math.floor(o.y/256), y1=Math.floor((o.y+Hl)/256), tareas=[];
+    for(let x=x0;x<=x1;x++) for(let y=y0;y<=y1;y++) tareas.push(cargarImg(L.Util.template(url,{z:z,x:x,y:y})).then(im=>{ if(im) g.drawImage(im,x*256-o.x,y*256-o.y); }));
+    await Promise.all(tareas);
+  }
+  const linea=(pts,cerrar)=>{ g.beginPath(); pts.forEach((p,i)=>{ const q=px(p); i?g.lineTo(q[0],q[1]):g.moveTo(q[0],q[1]); }); if(cerrar) g.closePath(); };
+  await capa(capaCalles._url);
+  // velo blanco para que resalten los territorios
+  g.fillStyle='rgba(255,255,255,.35)'; g.fillRect(o.x-o.x,0,Wl,Hl);
+  // territorios
+  ordenados.forEach(t=>{
+    linea(t.poly,true);
+    g.fillStyle=esPlaza(t)?'rgba(21,128,61,.75)':colorTerr(t.num)+'70'; g.fill();
+    g.strokeStyle='#1f2937'; g.lineWidth=2.5/s; g.lineJoin='round'; g.stroke();
+  });
+  await capa(capaNombres._url); // nombres de calles
+  // calles clave
+  (typeof CALLES!=='undefined'?CALLES:[]).forEach(c=>{ linea(c.linea,false); g.strokeStyle='rgba(217,162,27,.9)'; g.lineWidth=7/s; g.lineCap='round'; g.stroke(); });
+  // límite de la congregación
+  linea(CONTORNO,true); g.strokeStyle='#15803d'; g.lineWidth=4/s; g.setLineDash([14/s,10/s]); g.stroke(); g.setLineDash([]);
+  // números de territorio
+  g.textAlign='center'; g.textBaseline='middle';
+  ordenados.filter(t=>!esPlaza(t)).forEach(t=>{
+    const p=puntoInterior(t.poly)||t.inicio, q=px(p), r=25/s;
+    g.fillStyle='#fff'; g.strokeStyle='#111'; g.lineWidth=2.5/s;
+    g.beginPath(); g.roundRect?g.roundRect(q[0]-r,q[1]-r,2*r,2*r,5/s):g.rect(q[0]-r,q[1]-r,2*r,2*r); g.fill(); g.stroke();
+    g.fillStyle='#111'; g.font='bold '+Math.round(30/s)+'px Inter, Arial, sans-serif'; g.fillText(String(t.num),q[0],q[1]+1/s);
+  });
+  // Salón del Reino
+  const sq=px([-34.4241,-58.7415]); g.fillStyle='#b3814f'; g.strokeStyle='#fff'; g.lineWidth=3/s;
+  g.beginPath(); g.arc(sq[0],sq[1],14/s,0,Math.PI*2); g.fill(); g.stroke();
+  g.fillStyle='#fff'; g.font='bold '+Math.round(16/s)+'px Arial'; g.fillText('★',sq[0],sq[1]+1/s);
+  // flecha del Norte
+  g.setTransform(1,0,0,1,0,0);
+  g.save(); g.translate(W-60,64); g.fillStyle='rgba(255,255,255,.92)'; g.beginPath(); g.arc(0,0,42,0,Math.PI*2); g.fill();
+  g.fillStyle='#b91c1c'; g.beginPath(); g.moveTo(0,-30); g.lineTo(14,8); g.lineTo(0,0); g.lineTo(-14,8); g.closePath(); g.fill();
+  g.fillStyle='#111'; g.font='bold 24px Inter, Arial, sans-serif'; g.textAlign='center'; g.fillText('N',0,30); g.restore();
+  try{ return cv.toDataURL('image/jpeg',0.9); }catch(e){ return null; }
+}
+async function imprimirMapaCompleto(){
+  const btn=document.getElementById('btnMapaCompleto'), texto=btn.textContent;
+  btn.disabled=true; btn.textContent='Armando el mapa…';
+  const url=location.origin+location.pathname;
+  const [img,qr]=await Promise.all([dibujarMapaCompleto(2000,1850),qrDataUrl(url)]);
+  const hoy=new Date().toLocaleDateString('es-AR',{day:'numeric',month:'long',year:'numeric'});
+  const nT=ordenados.filter(t=>!esPlaza(t)).length;
+  let box=document.getElementById('tarjeta');
+  if(!box){ box=document.createElement('div'); box.id='tarjeta'; document.body.appendChild(box); }
+  box.innerHTML='<div class="mc-hoja">'+
+    (img?'<img class="mc-mapa" src="'+img+'" alt="Mapa de todos los territorios">':'<p class="tj-aviso">No se pudo armar la imagen del mapa (¿hay señal?).</p>')+
+    '<div class="mc-lado"><h1>Territorios</h1><p class="sub">Congregación Norte Garín · '+nT+' territorios</p>'+
+      '<h2>Referencias</h2>'+
+      '<div class="mc-ref"><i style="width:8mm;height:5mm;border:.4mm solid #1f2937;background:#f58231aa"></i>Territorio (con su número)</div>'+
+      '<div class="mc-ref"><i style="width:8mm;height:5mm;border:.4mm solid #1f2937;background:#15803dbf"></i>Plaza (no se predica)</div>'+
+      '<div class="mc-ref"><i style="width:8mm;height:1.6mm;background:#d9a21b;border-radius:1mm"></i>Calle clave</div>'+
+      '<div class="mc-ref"><i style="width:8mm;border-top:.8mm dashed #15803d"></i>Límite de la congregación</div>'+
+      '<div class="mc-ref"><i style="width:5mm;height:5mm;border-radius:50%;background:#b3814f;border:.4mm solid #fff;box-shadow:0 0 0 .2mm #999"></i>Salón del Reino</div>'+
+      '<h2>Plazas</h2>'+Object.entries(PLAZAS).map(([n,nom])=>'<div class="mc-ref">'+escHtml(nom)+'</div>').join('')+
+      (qr?'<div class="tj-qr"><img src="'+qr+'" alt=""><span>Escaneá para abrir el mapa en el celular</span></div>':'')+
+      '<p class="tj-impreso">Impreso el '+hoy+'<br>norte-garin.netlify.app/territorios/</p>'+
+    '</div></div>';
+  await Promise.all([...box.querySelectorAll('img')].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));
+  btn.disabled=false; btn.textContent=texto;
+  cerrarCapas();
+  document.body.classList.add('imprimiendo');
+  setTimeout(()=>{ window.print(); },50);
+}
+document.getElementById('btnMapaCompleto').addEventListener('click',imprimirMapaCompleto);
 </script>
 </body>
 </html>
