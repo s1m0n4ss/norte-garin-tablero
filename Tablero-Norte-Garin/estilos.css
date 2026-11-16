@@ -348,3 +348,38 @@ details.ng-vm > summary { align-items: flex-start; }
 .ng-settings-size button[aria-pressed="true"] { border-color: var(--border-strong); }
 .ng-settings-size button:disabled { opacity: .55; cursor: default; }
 .ng-settings .ng-theme-btn { margin-top: 0; }
+
+/* Aviso temporal (aviso.js) */
+.ng-aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-1);
+  max-width: 448px;
+  margin: var(--s-2) auto 0;
+  padding: var(--s-2);
+  background: var(--bg-card);
+  color: var(--text);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+  border-left: 4px solid var(--accent-warm);
+  line-height: 1.5;
+}
+@media (max-width: 480px) {
+  .ng-aviso { margin-left: var(--s-2); margin-right: var(--s-2); }
+}
+.ng-aviso-texto { flex: 1; min-width: 0; font-size: 1rem; }
+.ng-aviso-texto strong { display: block; font-weight: 700; color: var(--accent-warm); margin-bottom: 0.25rem; }
+.ng-aviso-cerrar {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  margin: -0.5rem -0.5rem -0.5rem 0;
+  border: none;
+  border-radius: var(--r-btn);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.ng-aviso-cerrar:hover { background: var(--bg-card2); }
