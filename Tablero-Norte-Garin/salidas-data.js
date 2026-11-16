@@ -579,49 +579,49 @@
       17: [{ h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "45" }],
 
       18: [
-        { h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "33" },
+        { h: "9:00", l: "Familia Flores", c: "Francisco Araoz", t: "33" },
         { h: "16:30", l: "Andes y Fournier", c: "Adolfo Gutiérrez", t: "3" },
       ],
 
-      19: [{ h: "10:00", l: "Beliera y F. Diaz", c: "Juan Carlos Sánchez", t: "32" }],
+      19: [{ h: "9:00", l: "Beliera y F. Diaz", c: "Juan Carlos Sánchez", t: "32" }],
 
-      20: [{ h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "24" }],
+      20: [{ h: "9:00", l: "Casa Doris Talarico", c: "León Segovia", t: "24" }],
 
       21: [
-        { h: "10:00", l: "Salida congregacional · Beliera y Fructuoso Díaz", c: "Lucas Segovia", t: "26" },
+        { h: "9:30", l: "Salida congregacional · Beliera y Fructuoso Díaz", c: "Lucas Segovia", t: "26" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
       22: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      23: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "10" }],
+      23: [{ h: "9:00", l: "Casa Carmen Casas", c: "León Segovia", t: "10" }],
 
       24: [{ h: "18:00", l: "Plaza de Vicenzo", c: "Horacio Salgado", t: "46" }],
 
       25: [
-        { h: "10:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" },
+        { h: "9:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" },
         { h: "16:30", l: "Colón y San Martín", c: "Adolfo Gutiérrez", t: "7" },
         { h: "19:00", l: "📞 Por Zoom", c: "Juan Carlos Sánchez" },
       ],
 
-      26: [{ h: "10:00", l: "Francia y Alte. Brown", c: "Juan Carlos Sánchez", t: "20" }],
+      26: [{ h: "9:00", l: "Francia y Alte. Brown", c: "Juan Carlos Sánchez", t: "20" }],
 
       27: [
-        { h: "10:00", l: "Casa Doris Talarico", c: "León Segovia", t: "18" },
+        { h: "9:00", l: "Casa Doris Talarico", c: "León Segovia", t: "18" },
         { h: "18:00", l: "Familia Segovia", c: "Lucas Segovia", t: "23" },
       ],
 
       28: [
-        { h: "10:00", l: "Grupo 1 – Familia Sarraute", c: "León Segovia", t: "21" },
-        { h: "10:00", l: "Grupo 2 – Hermana Fanny Villantoy", c: "Lucas Dos Santos", t: "25" },
-        { h: "10:00", l: "Grupo 3 – Familia Miño · Visita del superintendente de servicio", c: "Horacio Salgado", t: "17" },
-        { h: "10:00", l: "Grupo 4 – Hermana Norma Barrera", c: "Adolfo Gutiérrez", t: "37" },
+        { h: "9:30", l: "Grupo 1 – Familia Sarraute", c: "León Segovia", t: "21" },
+        { h: "9:30", l: "Grupo 2 – Hermana Fanny Villantoy", c: "Lucas Dos Santos", t: "25" },
+        { h: "9:30", l: "Grupo 3 – Familia Miño · Visita del superintendente de servicio", c: "Horacio Salgado", t: "17" },
+        { h: "9:30", l: "Grupo 4 – Hermana Norma Barrera", c: "Adolfo Gutiérrez", t: "37" },
         { h: "18:00", l: "Pred. Pública · Estación Garín", c: "Adolfo Gutiérrez" },
       ],
 
       29: [{ type: "reunion", l: "Reunión de congregación" }],
 
-      30: [{ h: "10:00", l: "Casa Carmen Casas", c: "León Segovia", t: "16" }],
+      30: [{ h: "9:00", l: "Casa Carmen Casas", c: "León Segovia", t: "16" }],
     },
   };
 
