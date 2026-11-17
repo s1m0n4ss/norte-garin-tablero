@@ -580,7 +580,7 @@
 
       18: [
         { h: "9:00", l: "Familia Flores", c: "Francisco Araoz", t: "33" },
-        { h: "16:30", l: "Andes y Fournier", c: "Adolfo Gutiérrez", t: "3" },
+        { h: "18:00", l: "Andes y Fournier", c: "Adolfo Gutiérrez", t: "3" },
       ],
 
       19: [{ h: "9:00", l: "Beliera y F. Diaz", c: "Juan Carlos Sánchez", t: "32" }],
@@ -600,7 +600,7 @@
 
       25: [
         { h: "9:00", l: "Familia Flores", c: "Francisco Araoz", t: "15" },
-        { h: "16:30", l: "Colón y San Martín", c: "Adolfo Gutiérrez", t: "7" },
+        { h: "18:00", l: "Colón y San Martín", c: "Adolfo Gutiérrez", t: "7" },
         { h: "19:00", l: "📞 Por Zoom", c: "Juan Carlos Sánchez" },
       ],
 

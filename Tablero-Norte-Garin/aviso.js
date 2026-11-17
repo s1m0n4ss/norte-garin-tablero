@@ -4,11 +4,11 @@
 (function () {
   "use strict";
   var AVISO = {
-    id: "cambio-horario-salidas-2026-11",
+    id: "cambio-horario-salidas-2026-11-b",
     titulo: "Cambio de horario de las salidas",
-    texto: "Desde el miércoles 18 de noviembre, las salidas de la mañana son a las 9:00 hs de lunes a viernes y a las 9:30 hs los sábados.",
+    texto: "Desde el miércoles 18 de noviembre, las salidas de la mañana son a las 9:00 hs de lunes a viernes y a las 9:30 hs los sábados. La salida de la tarde de los miércoles pasa a las 18:00 hs, igual que los martes y viernes.",
     desde: new Date(2026, 10, 16),      // 16 de noviembre de 2026
-    hasta: new Date(2026, 10, 24)       // se deja de mostrar el 24 de noviembre
+    hasta: new Date(2026, 10, 25)       // se deja de mostrar el 25 de noviembre
   };
 
   var KEY = "ng-aviso-cerrado-" + AVISO.id;
